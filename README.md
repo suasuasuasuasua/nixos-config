@@ -13,5 +13,5 @@ export NIX_CONFIG="experimental-features = nix-command flakes"
 nix flake update
 
 # Apply system configurations
-udo nixos-rebuild switch --flake .#nixos
+nixos-rebuild switch --flake .#nixos
 ```
