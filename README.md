@@ -9,8 +9,14 @@ To start, install `git` and `nix-flakes`
 nix --version
 export NIX_CONFIG="experimental-features = nix-command flakes"
 
+# Use a shell with git
+nix-shell -p git
+
 # Update flakes
 nix flake update
+
+# Update the hardware configuration
+cp /etc/nixos/hardware-configuration.nix ./nixos/hardware-configuration.nix
 
 # Apply system configurations
 nixos-rebuild switch --flake .#nixos

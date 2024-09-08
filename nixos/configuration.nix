@@ -7,7 +7,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -53,29 +54,33 @@
     };
   };
 
-  nix = let
-    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
-    settings = {
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-      # Opinionated: disable global registry
-      flake-registry = "";
-      # Workaround for https://github.com/NixOS/nix/issues/9574
-      nix-path = config.nix.nixPath;
-    };
-    # Opinionated: disable channels
-    channel.enable = false;
+  nix =
+    let
+      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+    in
+    {
+      settings = {
+        # Enable flakes and new 'nix' command
+        experimental-features = "nix-command flakes";
+        # Opinionated: disable global registry
+        flake-registry = "";
+        # Workaround for https://github.com/NixOS/nix/issues/9574
+        nix-path = config.nix.nixPath;
+      };
+      # Opinionated: disable channels
+      channel.enable = false;
 
-    # Opinionated: make flake registry and nix path match flake inputs
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-  };
+      # Opinionated: make flake registry and nix path match flake inputs
+      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+    };
 
   # FIXME: Add the rest of your current configuration
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = {
+      inherit inputs outputs;
+    };
     users = {
       justin = import ../home-manager/home.nix;
     };
@@ -84,15 +89,29 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
 
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    plasma-browser-integration
-    kate
-    konsole
-    oxygen
-  ];
+  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.gnome.core-utilities.enable = true;
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      gnome-tour
+      gnome-connections
+    ])
+    ++ (with pkgs.gnome; [
+      epiphany
+      geary
+      evince
+    ]);
+
+  # services.desktopManager.plasma6.enable = true;
+  # services.displayManager.sddm.enable = true;
+  # environment.plasma6.excludePackages = with pkgs.kdePackages; [
+  #   plasma-browser-integration
+  #   kate
+  #   konsole
+  #   oxygen
+  # ];
 
   time.timeZone = "Americas/Denver";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -114,20 +133,36 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel" "docker"];
+      extraGroups = [
+        "wheel"
+        "docker"
+      ];
       shell = pkgs.zsh;
     };
-  }; 
+  };
 
   environment.systemPackages = with pkgs; [
     inputs.home-manager.packages.${pkgs.system}.default
-    git zip unzip wget curl
-    gcc lua cargo rustc go python3 nodejs
+    git
+    zip
+    unzip
+    wget
+    curl
+    tree-sitter
+    ripgrep
+    fd
+    gnumake
+    gcc
+    lua
+    luarocks
+    go
+    python3
+    nodejs
+    rustup
+    nixfmt-rfc-style
   ];
 
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-  ];
+  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
