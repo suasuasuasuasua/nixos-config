@@ -2,4 +2,3 @@
 *.swp
 result
 .DS_Store
-nixos/hardware-configuration.nix
