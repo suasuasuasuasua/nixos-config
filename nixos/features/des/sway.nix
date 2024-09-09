@@ -4,6 +4,16 @@
   lib,
   ...
 }: {
+  # Enable the gnome-keyring secrets vault.
+  # Will be exposed through DBus to programs willing to store secrets.
+  services.gnome.gnome-keyring.enable = true;
+
+  # enable Sway window manager
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
+
   environment.systemPackages = with pkgs; [
     grim # screenshot functionality
     slurp # screenshot functionality
@@ -23,14 +33,4 @@
     mpv
     btop
   ];
-
-  # Enable the gnome-keyring secrets vault.
-  # Will be exposed through DBus to programs willing to store secrets.
-  services.gnome.gnome-keyring.enable = true;
-
-  # enable Sway window manager
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
 }

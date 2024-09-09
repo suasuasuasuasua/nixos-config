@@ -4,17 +4,19 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's an working example:
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Neovim nightly
+    # Neovim Nightly
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    # Firefox Extensions
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -35,22 +37,26 @@
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
+    # Define the user
+    user = {
+      name = "justin";
+      home = "/home/justin";
+      fullName = "Justin Hoang";
+      email = "j124.dev@gmail.com";
+    };
   in {
     # Formatter for your nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = {
-      # List all the hostnames
-      default = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs outputs;
-        };
+    # Standalone home-manager configuration entrypoint
+    # Available through 'home-manager --flake .#your-username@your-hostname'
+    homeConfigurations = {
+      "${user.name}" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit inputs outputs user;};
+        # > Our main home-manager configuration file <
         modules = [
-          # > Our main nixos configuration file <
-          ./nixos/configuration.nix
+          ./home.nix
         ];
       };
     };

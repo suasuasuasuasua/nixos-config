@@ -9,14 +9,15 @@
   services.xserver.displayManager.gdm.enable = true;
   services.gnome.core-utilities.enable = true;
 
-  environment.gnome.excludePackages =
-    (with pkgs; [
-      gnome-tour
-      gnome-connections
-    ])
-    ++ (with pkgs.gnome; [
-      epiphany
-      geary
-      evince
-    ]);
+  environment.systemPackages = with pkgs; [
+    gnome-boxes
+  ];
+
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    gnome-connections
+    epiphany
+    geary
+    evince
+  ];
 }

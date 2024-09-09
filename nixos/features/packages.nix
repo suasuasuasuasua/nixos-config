@@ -1,12 +1,7 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   fonts.packages = with pkgs; [(nerdfonts.override {fonts = ["JetBrainsMono"];})];
 
   environment.systemPackages = with pkgs; [
-    inputs.home-manager.packages.${pkgs.system}.default
     git
     zip
     unzip

@@ -26,17 +26,11 @@
     # System Packages
     ./features/packages.nix
 
-    # Home Manager
-    ./features/home-manager.nix
-
     # Desktop environments
     ./features/des/gnome.nix
 
     # GPU options
     ./features/gpu/default.nix
-
-    # Add home manager as a NixOS module
-    inputs.home-manager.nixosModules.home-manager
   ];
 
   nixpkgs = {
