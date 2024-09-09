@@ -1,8 +1,8 @@
 {
   time.timeZone = "Americas/Denver";
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
   };
   i18n = {
     defaultLocale = "en_US.UTF-8";

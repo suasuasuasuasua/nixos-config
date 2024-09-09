@@ -80,33 +80,6 @@
     };
   };
 
-  fonts.packages = with pkgs; [(nerdfonts.override {fonts = ["JetBrainsMono"];})];
-
-  # Need to enable zsh before we can actually use it. Home manager configs it,
-  # but cannot set the login shell because that's root level operation
-  programs.zsh.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    inputs.home-manager.packages.${pkgs.system}.default
-    git
-    zip
-    unzip
-    wget
-    curl
-    tree-sitter
-    ripgrep
-    fd
-    gnumake
-    gcc
-    lua
-    luarocks
-    go
-    python3
-    nodejs
-    rustup
-    nixfmt-rfc-style
-  ];
-
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.05";
 }
