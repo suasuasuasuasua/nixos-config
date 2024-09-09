@@ -16,11 +16,18 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
 
+    # General System Configuration
     ./features/boot.nix
     ./features/locale.nix
     ./features/networking.nix
     ./features/users.nix
     ./features/virtualization.nix
+
+    # System Packages
+    ./features/packages.nix
+
+    # Home Manager
+    ./features/home-manager.nix
 
     # Desktop environments
     ./features/des/gnome.nix
@@ -69,15 +76,6 @@
     # Opinionated: make flake registry and nix path match flake inputs
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-  };
-
-  home-manager = {
-    extraSpecialArgs = {
-      inherit inputs outputs;
-    };
-    users = {
-      justin = import ../home-manager/home.nix;
-    };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
