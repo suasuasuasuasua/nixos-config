@@ -13,6 +13,7 @@
     syntaxHighlighting.enable = true;
     shellAliases = {
       ll = "ls -l";
+      c = "clear";
       update = "sudo nixos-rebuild switch";
     };
     history = {

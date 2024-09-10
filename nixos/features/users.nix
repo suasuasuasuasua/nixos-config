@@ -7,6 +7,10 @@
   # but cannot set the login shell because that's root level operation
   programs.zsh.enable = true;
 
+  nix.extraOptions = ''
+    trusted-users = root justin
+  '';
+
   users.users = {
     justin = {
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.

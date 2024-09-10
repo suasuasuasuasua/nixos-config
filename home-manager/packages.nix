@@ -8,17 +8,14 @@
 }: {
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
+    # General Apps
     thunderbird
     spotify
     discord
 
-    filelight
-    timeshift
-    yazi
-    fastfetch
-    btop
-    imv
-    mpv
-    zathura
+    # Development
+    github-desktop
+    devenv
+    bat
   ];
 }
