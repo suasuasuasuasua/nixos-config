@@ -1,9 +1,4 @@
 {pkgs, ...}: {
-  boot.kernelModules = [
-    "kvm-intel"
-    # "kvm-amd" 
-  ];
-
   # Enable virtual machines in apps like Gnome Boxes
   virtualisation.libvirtd = {
     enable = true;
@@ -23,6 +18,9 @@
       };
     };
   };
+
+  programs.dconf.enable = true; # virt-manager requires dconf to remember settings
+  environment.systemPackages = with pkgs; [virt-manager];
 
   # Enable docker
   virtualisation.docker = {

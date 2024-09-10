@@ -13,7 +13,8 @@ export NIX_CONFIG="experimental-features = nix-command flakes"
 nix-shell -p git
 
 # Update flakes
-nix flake update
+nix flake update nixos/
+nix flake update home-manager/
 
 # Update the hardware configuration
 cp /etc/nixos/hardware-configuration.nix ./nixos/hardware-configuration.nix

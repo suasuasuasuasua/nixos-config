@@ -15,22 +15,21 @@
   };
 
   environment.systemPackages = with pkgs; [
-    grim # screenshot functionality
-    slurp # screenshot functionality
+    grim
+    slurp
     swayidle
     swaylock
     pamixer
     wob
-    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    wl-clipboard
     wf-recorder
-    mako # notification system developed by swaywm maintainer
-    waybar # status bar
-    ly # sign in
-    fuzzel # application launcher
-
+    mako
+    waybar
+    ly
+    fuzzel
+    zathura
     yazi
     imv
     mpv
-    btop
   ];
 }

@@ -40,7 +40,9 @@
       default = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         # > Our main nixos configuration file <
-        modules = [./configuration.nix];
+        modules = [
+          ./default-configuration.nix
+        ];
       };
     };
   };

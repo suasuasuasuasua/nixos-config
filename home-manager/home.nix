@@ -19,6 +19,7 @@
     ./packages.nix
 
     ./programs/alacritty.nix
+    ./programs/direnv.nix
     ./programs/firefox.nix
     ./programs/fzf.nix
     ./programs/git.nix

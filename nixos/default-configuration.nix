@@ -18,8 +18,10 @@
 
     # General System Configuration
     ./features/boot.nix
+    ./features/general.nix
     ./features/locale.nix
     ./features/networking.nix
+    ./features/sharing.nix
     ./features/users.nix
     ./features/virtualization.nix
 
