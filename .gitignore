@@ -1,4 +1,5 @@
 \#*
 *.swp
 result
+hardware-configuration.nix
 .DS_Store
