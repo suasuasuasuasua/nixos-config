@@ -10,7 +10,7 @@ nix --version
 export NIX_CONFIG="experimental-features = nix-command flakes"
 
 # Use a shell with git
-nix-shell -p git
+nix-shell -p git home-manager
 
 # Update flakes
 nix flake update ./nixos/
