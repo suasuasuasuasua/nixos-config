@@ -21,6 +21,7 @@
     ./features/general.nix
     ./features/locale.nix
     ./features/networking.nix
+    ./features/power.nix
     ./features/sharing.nix
     ./features/users.nix
     ./features/virtualization.nix
@@ -30,6 +31,8 @@
 
     # Desktop environments
     ./features/des/gnome.nix
+    # ./features/des/plasma.nix
+    # ./features/des/sway.nix
 
     # GPU options
     ./features/gpu/default.nix

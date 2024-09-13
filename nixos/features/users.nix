@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  user,
   ...
 }: {
   # Need to enable zsh before we can actually use it. Home manager configs it,
@@ -8,11 +9,11 @@
   programs.zsh.enable = true;
 
   nix.extraOptions = ''
-    trusted-users = root justin
+    trusted-users = root ${user.name}
   '';
 
   users.users = {
-    justin = {
+    ${user.name} = {
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
       initialPassword = "password";

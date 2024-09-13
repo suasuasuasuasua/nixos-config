@@ -1,5 +1,5 @@
-{
-  networking.hostName = "nixos";
+{user, ...}: {
+  networking.hostName = "${user.hostname}";
   networking.networkmanager.enable = true;
 
   # This setups a SSH server. Very important if you're setting up a headless system.

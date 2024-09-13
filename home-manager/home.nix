@@ -18,6 +18,7 @@
 
     ./packages.nix
 
+    # Programs
     ./programs/alacritty.nix
     ./programs/direnv.nix
     ./programs/firefox.nix
@@ -27,6 +28,9 @@
     ./programs/tmux.nix
     ./programs/vscode.nix
     ./programs/zsh.nix
+
+    # Themes
+    ./themes/global.nix
   ];
 
   nixpkgs = {

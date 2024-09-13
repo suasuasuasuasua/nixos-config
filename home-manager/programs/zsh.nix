@@ -14,7 +14,8 @@
     shellAliases = {
       ll = "ls -l";
       c = "clear";
-      update = "sudo nixos-rebuild switch";
+      nupdate = "sudo nixos-rebuild switch --flake .";
+      hupdate = "home-manager switch --flake .";
     };
     history = {
       size = 10000;

@@ -20,8 +20,8 @@ nix flake update ./home-manager/
 cp /etc/nixos/hardware-configuration.nix ./nixos/hardware-configuration.nix
 
 # Apply system configurations for a default system
-sudo nixos-rebuild switch --flake ./nixos#default
+sudo nixos-rebuild switch --flake .#default
 
 # Apply the home manager configurations system
-home-manager switch -b backup --flake ./home-manager#justin
+home-manager switch -b backup --flake .#justin
 ```
