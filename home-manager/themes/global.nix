@@ -1,7 +1,12 @@
+{ inputs, ... }:
 let
   flavor = "mocha";
   accent = "lavender";
-in {
+in
+{
+  imports = [
+    inputs.catppuccin.homeManagerModules.catppuccin
+  ];
   catppuccin.enable = true;
   catppuccin.flavor = "${flavor}";
   catppuccin.accent = "${accent}";

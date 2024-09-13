@@ -22,6 +22,14 @@
 
     # # Neovim Nightly
     # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
+      # url = "github:nix-community/nixvim/nixos-24.05";
+
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -29,7 +37,6 @@
       self,
       nixpkgs,
       home-manager,
-      catppuccin,
       ...
     }@inputs:
     let
@@ -90,7 +97,6 @@
           # > Our main home-manager configuration file <
           modules = [
             ./home-manager/home.nix
-            catppuccin.homeManagerModules.catppuccin
           ];
         };
         # ...
