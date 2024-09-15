@@ -22,8 +22,8 @@
         #  - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
         #  - sd'   - [S]urround [D]elete [']quotes
         #  - sr)'  - [S]urround [R]eplace [)] [']
-        surround = {
-        };
+        # surround = {
+        # };
 
         # Simple and easy statusline.
         #  You could remove this setup call if you don't like it,

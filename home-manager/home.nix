@@ -7,8 +7,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -21,6 +20,7 @@
 
     # Programs
     ./programs/alacritty.nix
+    ./programs/bat.nix
     ./programs/direnv.nix
     ./programs/firefox.nix
     ./programs/fzf.nix

@@ -1,8 +1,12 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
-    # NOTE: The first thing you will want to do is uncommented on of the three imports below
-    # depending on which module you chose to use to install Nixvim.
+    # NOTE: The first thing you will want to do is uncommented on of the three
+    # imports below depending on which module you chose to use to install
+    # Nixvim.
     #
     # Uncomment if you are using the home-manager module
     inputs.nixvim.homeManagerModules.nixvim
@@ -12,128 +16,139 @@
     #inputs.nixvim.nixDarwinModules.nixvim
 
     # Plugins
-    ./plugins/gitsigns.nix
-    ./plugins/which-key.nix
-    ./plugins/telescope.nix
     ./plugins/conform.nix
+    ./plugins/gitsigns.nix
     ./plugins/lsp.nix
-    ./plugins/nvim-cmp.nix
+    ./plugins/lsp-format.nix
     ./plugins/mini.nix
+    ./plugins/nvim-cmp.nix
+    ./plugins/telescope.nix
+    ./plugins/which-key.nix
     ./plugins/treesitter.nix
 
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #
-    #  Here are some example plugins that I've included in the Kickstart repository.
-    #  Uncomment any of the lines below to enable them (you will need to restart nvim).
+    #  Here are some example plugins that I've included in the Kickstart
+    #  repository. Uncomment any of the lines below to enable them (you will
+    #  need to restart nvim).
     #
+    ./plugins/kickstart/plugins/autopairs.nix
     ./plugins/kickstart/plugins/debug.nix
     ./plugins/kickstart/plugins/indent-blankline.nix
     ./plugins/kickstart/plugins/lint.nix
-    ./plugins/kickstart/plugins/autopairs.nix
     ./plugins/kickstart/plugins/neo-tree.nix
     #
     # NOTE: Configure your own plugins `see https://nix-community.github.io/nixvim/`
     # Add your plugins to ./plugins/custom/plugins and import them below
+    ./plugins/custom/plugins/init.nix
+    ./plugins/custom/plugins/colorscheme.nix
+    ./plugins/custom/plugins/markdown.nix
+    ./plugins/custom/plugins/startify.nix
+    ./plugins/custom/plugins/surround.nix
+    ./plugins/custom/plugins/tmux.nix
+    ./plugins/custom/plugins/vimtex.nix
+    ./plugins/custom/plugins/yazi.nix
   ];
 
   /*
-    =====================================================================
-    ==================== READ THIS BEFORE CONTINUING ====================
-    =====================================================================
-    ========                                    .-----.          ========
-    ========         .----------------------.   | === |          ========
-    ========         |.-""""""""""""""""""-.|   |-----|          ========
-    ========         ||                    ||   | === |          ========
-    ========         ||  KICKSTART.NIXVIM  ||   |-----|          ========
-    ========         ||                    ||   | === |          ========
-    ========         ||                    ||   |-----|          ========
-    ========         ||:Tutor              ||   |:::::|          ========
-    ========         |'-..................-'|   |____o|          ========
-    ========         `"")----------------(""`   ___________      ========
-    ========        /::::::::::|  |::::::::::\  \ no mouse \     ========
-    ========       /:::========|  |==hjkl==:::\  \ required \    ========
-    ========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
-    ========                                                     ========
-    =====================================================================
-    =====================================================================
+  =====================================================================
+  ==================== READ THIS BEFORE CONTINUING ====================
+  =====================================================================
+  ========                                    .-----.          ========
+  ========         .----------------------.   | === |          ========
+  ========         |.-""""""""""""""""""-.|   |-----|          ========
+  ========         ||                    ||   | === |          ========
+  ========         ||  KICKSTART.NIXVIM  ||   |-----|          ========
+  ========         ||                    ||   | === |          ========
+  ========         ||                    ||   |-----|          ========
+  ========         ||:Tutor              ||   |:::::|          ========
+  ========         |'-..................-'|   |____o|          ========
+  ========         `"")----------------(""`   ___________      ========
+  ========        /::::::::::|  |::::::::::\  \ no mouse \     ========
+  ========       /:::========|  |==hjkl==:::\  \ required \    ========
+  ========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
+  ========                                                     ========
+  =====================================================================
+  =====================================================================
 
-    What is Kickstart.nixvim?
+  What is Kickstart.nixvim?
 
-      Kickstart.nixvim is a starting point for your own configuration.
-        The goal is that you can read every line of code, top-to-bottom, understand
-        what your configuration is doing, and modify it to suit your needs.
+    Kickstart.nixvim is a starting point for your own configuration.
 
-        Once you've done that, you can start exploring, configuring and tinkering to
-        make Neovim your own!
+      The goal is that you can read every line of code, top-to-bottom, understand
+      what your configuration is doing, and modify it to suit your needs.
 
-        If you don't know anything about Nixvim, Nix or Lua, I recommend taking some time to read through.
-          - https://nix-community.github.io/nixvim/
-          - https://learnxinyminutes.com/docs/nix/
-          - https://learnxinyminutes.com/docs/lua/
+      Once you've done that, you can start exploring, configuring and tinkering to
+      make Neovim your own!
 
-    Kickstart.nixvim Guide:
+      If you don't know anything about Nixvim, Nix or Lua, I recommend taking some time to read through.
+        - https://nix-community.github.io/nixvim/
+        - https://learnxinyminutes.com/docs/nix/
+        - https://learnxinyminutes.com/docs/lua/
 
-      TODO: The very first thing you should do is to run the command `:Tutor` in Neovim.
+  Kickstart.nixvim Guide:
 
-        If you don't know what this means, type the following:
-          - <escape key>
-          - :
-          - Tutor
-          - <enter key>
+    TODO: The very first thing you should do is to run the command `:Tutor` in Neovim.
 
-        (If you already know the Neovim basics, you can skip this step.)
+      If you don't know what this means, type the following:
+        - <escape key>
+        - :
+        - Tutor
+        - <enter key>
 
-      Once you've completed that, you can continue working through **AND READING** the rest
-      of the nixvim.nix.
+      (If you already know the Neovim basics, you can skip this step.)
 
-      Next, run AND READ `:help`.
-        This will open up a help window with some basic information
-        about reading, navigating and searching the builtin help documentation.
+    Once you've completed that, you can continue working through **AND READING** the rest
+    of the nixvim.nix.
 
-        This should be the first place you go to look when you're stuck or confused
-        with something. It's one of my favorite Neovim features.
+    Next, run AND READ `:help`.
+      This will open up a help window with some basic information
+      about reading, navigating and searching the builtin help documentation.
 
-        MOST IMPORTANTLY, we provide a keymap "<space>sh" to [s]earch the [h]elp documentation,
-        which is very useful when you're not exactly sure of what you're looking for.
+      This should be the first place you go to look when you're stuck or confused
+      with something. It's one of my favorite Neovim features.
 
-      I have left several `:help X` comments throughout the nixvim.nix and the plugin .nix files
-        These are hints about where to find more information about the relevant settings,
-        plugins or Neovim features used in Kickstart.nixvim.
+      MOST IMPORTANTLY, we provide a keymap "<space>sh" to [s]earch the [h]elp documentation,
+      which is very useful when you're not exactly sure of what you're looking for.
 
-       NOTE: Look for lines like this
+    I have left several `:help X` comments throughout the nixvim.nix and the plugin .nix files
+      These are hints about where to find more information about the relevant settings,
+      plugins or Neovim features used in Kickstart.nixvim.
 
-        Throughout the file. These are for you, the reader, to help you understand what is happening.
-        Feel free to delete them once you know what you're doing, but they should serve as a guide
-        for when you are first encountering a few different constructs in your Nixvim Neovim config.
+     NOTE: Look for lines like this
 
-    If you experience any errors while trying to install kickstart, run `:checkhealth` for more info.
+      Throughout the file. These are for you, the reader, to help you understand what is happening.
+      Feel free to delete them once you know what you're doing, but they should serve as a guide
+      for when you are first encountering a few different constructs in your Nixvim Neovim config.
 
-    I hope you enjoy your Neovim journey,
-    - JMartJonesy
+  If you experience any errors while trying to install kickstart, run `:checkhealth` for more info.
 
-    P.S. You can delete this when you're done too. It's your config now! :)
+  I hope you enjoy your Neovim journey,
+  - JMartJonesy
+
+  P.S. You can delete this when you're done too. It's your config now! :)
   */
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
 
-    # You can easily change to a different colorscheme.
-    # Add your colorscheme here and enable it.
-    # Don't forget to disable the colorschemes you arent using
+    # # You can easily change to a different colorscheme.
+    # # Add your colorscheme here and enable it.
+    # # Don't forget to disable the colorschemes you arent using
+    # #
+    # # If you want to see what colorschemes are already installed, you can use `:Telescope colorschme`.
+    # colorschemes = {
+    #   # https://nix-community.github.io/nixvim/colorschemes/tokyonight/index.html
+    #   tokyonight = {
+    #     enable = true;
+    #     settings = {
+    #       # Like many other themes, this one has different styles, and you could load
+    #       # any other, such as 'storm', 'moon', or 'day'.
+    #       style = "night";
+    #     };
+    #   };
+    # };
     #
-    # If you want to see what colorschemes are already installed, you can use `:Telescope colorschme`.
-    colorschemes = {
-      # https://nix-community.github.io/nixvim/colorschemes/tokyonight/index.html
-      tokyonight = {
-        enable = true;
-        settings = {
-          # Like many other themes, this one has different styles, and you could load
-          # any other, such as 'storm', 'moon', or 'day'.
-          style = "night";
-        };
-      };
-    };
-
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=globals#globals
     globals = {
       # Set <space> as the leader key
@@ -245,26 +260,26 @@
       }
       # TIP: Disable arrow keys in normal mode
       /*
-        {
-          mode = "n";
-          key = "<left>";
-          action = "<cmd>echo 'Use h to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<right>";
-          action = "<cmd>echo 'Use l to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<up>";
-          action = "<cmd>echo 'Use k to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<down>";
-          action = "<cmd>echo 'Use j to move!!'<CR>";
-        }
+      {
+        mode = "n";
+        key = "<left>";
+        action = "<cmd>echo 'Use h to move!!'<CR>";
+      }
+      {
+        mode = "n";
+        key = "<right>";
+        action = "<cmd>echo 'Use l to move!!'<CR>";
+      }
+      {
+        mode = "n";
+        key = "<up>";
+        action = "<cmd>echo 'Use k to move!!'<CR>";
+      }
+      {
+        mode = "n";
+        key = "<down>";
+        action = "<cmd>echo 'Use j to move!!'<CR>";
+      }
       */
       # Keybinds to make split navigation easier.
       #  Use CTRL+<hjkl> to switch between windows
@@ -319,7 +334,7 @@
       #  Try it with `yap` in normal mode
       #  See `:help vim.highlight.on_yank()`
       {
-        event = [ "TextYankPost" ];
+        event = ["TextYankPost"];
         desc = "Highlight when yanking (copying) text";
         group = "kickstart-highlight-yank";
         callback.__raw = ''

@@ -22,6 +22,7 @@
     nodejs
     rustup
     nixfmt-rfc-style
+    markdownlint-cli
 
     # System monitoring
     fastfetch
@@ -31,5 +32,8 @@
     # File Viewing
     zathura
     yazi
+
+    # Copy and paste
+    wl-clipboard
   ];
 }

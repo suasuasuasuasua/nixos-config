@@ -69,18 +69,41 @@
       #  - settings: Override the default settings passed when initializing the server.
       #        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       servers = {
-        # clangd = {
-        #  enable = true;
-        #}
-        # gopls = {
-        #  enable = true;
-        #}
-        # pyright = {
-        #  enable = true;
-        #}
-        # rust_analyzer = {
-        #  enable = true;
-        #}
+        # C/C++
+        clangd = {
+          enable = true;
+        };
+        # Go
+        gopls = {
+          enable = true;
+        };
+        # Python
+        pyright = {
+          enable = true;
+        };
+        # Rust
+        rust-analyzer = {
+          enable = true;
+          installCargo = false;
+          installRustc = false;
+        };
+        # Nix
+        nil-ls = {
+          enable = true;
+        };
+        # Markdown
+        marksman = {
+          enable = true;
+        };
+        # Spell Check Markdown
+        ltex = {
+          enable = true;
+        };
+        # LaTeX
+        texlab = {
+          enable = true;
+        };
+
         # ...etc. See `https://nix-community.github.io/nixvim/plugins/lsp` for a list of pre-configured LSPs
         #
         # Some languages (like typscript) have entire language plugins that can be useful:
@@ -91,6 +114,7 @@
         #  enable = true;
         #}
 
+        # Lua
         lua-ls = {
           enable = true;
 

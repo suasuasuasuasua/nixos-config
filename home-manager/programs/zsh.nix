@@ -10,6 +10,7 @@
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
+    autocd = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
       ll = "ls -l";
@@ -21,6 +22,9 @@
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
+    initExtra = ''
+      export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+    '';
     oh-my-zsh = {
       enable = true;
       plugins = [

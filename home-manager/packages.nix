@@ -16,7 +16,6 @@
     # Development
     github-desktop
     devenv
-    bat
     diff-so-fancy
   ];
 }
