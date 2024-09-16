@@ -20,7 +20,7 @@
   };
 
   programs.dconf.enable = true; # virt-manager requires dconf to remember settings
-  environment.systemPackages = with pkgs; [virt-manager];
+  environment.systemPackages = with pkgs; [virt-manager lazydocker];
 
   # Enable docker
   virtualisation.docker = {

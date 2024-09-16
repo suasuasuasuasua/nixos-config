@@ -4,9 +4,10 @@
     userEmail = "${user.email}";
     userName = "${user.fullName}";
     lfs.enable = true;
-    extraConfig = {
-      core.pager = "diff-so-fancy | less --tabs=4 -RFX";
-      interactive.diffFilter = "diff-so-fancy --patch";
-    };
+    # Support packages
+    diff-so-fancy.enable = true;
+  };
+  programs.lazygit = {
+    enable = true;
   };
 }

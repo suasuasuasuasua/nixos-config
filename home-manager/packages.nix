@@ -16,6 +16,5 @@
     # Development
     github-desktop
     devenv
-    diff-so-fancy
   ];
 }
