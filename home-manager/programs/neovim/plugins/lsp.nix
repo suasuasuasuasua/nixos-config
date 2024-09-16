@@ -69,6 +69,17 @@
       #  - settings: Override the default settings passed when initializing the server.
       #        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       servers = {
+        # Bash
+        bashls = {
+          enable = true;
+        };
+        # Docker
+        dockerls = {
+          enable = true;
+        };
+        docker-compose-language-service = {
+          enable = true;
+        };
         # C/C++
         clangd = {
           enable = true;
@@ -101,6 +112,22 @@
         };
         # LaTeX
         texlab = {
+          enable = true;
+        };
+        # Json
+        jsonls = {
+          enable = true;
+        };
+        # HTML
+        html = {
+            enable = true;
+          };
+        # CSS
+        cssls = {
+          enable = true;
+        };
+        # Javascript
+        eslint = {
           enable = true;
         };
 

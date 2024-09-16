@@ -41,6 +41,7 @@
     # NOTE: Configure your own plugins `see https://nix-community.github.io/nixvim/`
     # Add your plugins to ./plugins/custom/plugins and import them below
     ./plugins/custom/plugins/init.nix
+    ./plugins/custom/plugins/autosave.nix
     ./plugins/custom/plugins/colorscheme.nix
     ./plugins/custom/plugins/lsp-lines.nix
     ./plugins/custom/plugins/markdown.nix
@@ -132,6 +133,7 @@
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
+    vimdiffAlias = true;
 
     # # You can easily change to a different colorscheme.
     # # Add your colorscheme here and enable it.
@@ -233,6 +235,11 @@
 
       # See `:help hlsearch`
       hlsearch = true;
+
+      # Expand the tabs for spaces
+      expandtab = true;
+      shiftwidth = 2;
+      tabstop = 2;
     };
 
     # [[ Basic Keymaps ]]

@@ -16,7 +16,7 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
 
-    ## General System Configuration
+    ### General System Configuration
     ./features/boot.nix
     ./features/general.nix
     ./features/locale.nix
@@ -25,26 +25,33 @@
     ./features/users.nix
     ./features/virtualization.nix
 
-    # System Packages
+    ## System Packages
     ./features/packages.nix
 
-    # Desktop environments
+    ## Desktop environments
     ./features/des/gnome.nix
     # ./features/des/plasma.nix
     # ./features/des/sway.nix
 
-    # ## Extras (uncomment as needed!)
+    # ### Extras (uncomment as needed!)
     #
-    # # GPU options
+    # ## GPU options
     # ./features/gpu/nvidia.nix
     # # If you are running laptop!
     # ./features/gpu/nvidia-laptop.nix
     #
-    # # Development
-    # ./features/self-host/ollama.nix
+    # ## Productivity
+    # Office Suite
+    ./features/productivity/office.nix
+    # Obsidian Markdown GUI Editor
+    ./features/productivity/obsidian.nix
     #
-    # # Games
-    # ./features/steam.nix
+    # ## Self Hosted
+    # ./features/self-host/ollama.nix
+    ./features/self-host/syncthing.nix
+    #
+    # ## Games
+    # ./features/entertainment/steam.nix
   ];
 
   nixpkgs = {
