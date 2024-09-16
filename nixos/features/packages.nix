@@ -11,6 +11,7 @@
     tree-sitter
     ripgrep
     fd
+    lshw
 
     # Languages, Compilers, and Toolchains
     gnumake

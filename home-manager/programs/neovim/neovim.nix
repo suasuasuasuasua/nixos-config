@@ -42,6 +42,7 @@
     # Add your plugins to ./plugins/custom/plugins and import them below
     ./plugins/custom/plugins/init.nix
     ./plugins/custom/plugins/colorscheme.nix
+    ./plugins/custom/plugins/lsp-lines.nix
     ./plugins/custom/plugins/markdown.nix
     ./plugins/custom/plugins/startify.nix
     ./plugins/custom/plugins/surround.nix

@@ -99,6 +99,8 @@
         ];
       };
       # ...
+
+      default = self.homeConfigurations.justin;
     };
   };
 }

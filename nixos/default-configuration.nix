@@ -16,13 +16,12 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
 
-    # General System Configuration
+    ## General System Configuration
     ./features/boot.nix
     ./features/general.nix
     ./features/locale.nix
     ./features/networking.nix
     ./features/power.nix
-    ./features/sharing.nix
     ./features/users.nix
     ./features/virtualization.nix
 
@@ -34,8 +33,18 @@
     # ./features/des/plasma.nix
     # ./features/des/sway.nix
 
-    # GPU options
-    ./features/gpu/default.nix
+    # ## Extras (uncomment as needed!)
+    #
+    # # GPU options
+    # ./features/gpu/nvidia.nix
+    # # If you are running laptop!
+    # ./features/gpu/nvidia-laptop.nix
+    #
+    # # Development
+    # ./features/self-host/ollama.nix
+    #
+    # # Games
+    # ./features/steam.nix
   ];
 
   nixpkgs = {

@@ -16,7 +16,7 @@
       ll = "ls -l";
       c = "clear";
       nupdate = "sudo nixos-rebuild switch --flake .";
-      hupdate = "home-manager switch --flake .";
+      hupdate = "home-manager switch -b backup --flake .";
     };
     history = {
       size = 10000;

@@ -18,7 +18,7 @@
 
     ./packages.nix
 
-    # Programs
+    # Essentials
     ./programs/alacritty.nix
     ./programs/bat.nix
     ./programs/direnv.nix
