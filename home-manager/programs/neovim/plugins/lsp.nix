@@ -120,8 +120,8 @@
         };
         # HTML
         html = {
-            enable = true;
-          };
+          enable = true;
+        };
         # CSS
         cssls = {
           enable = true;
