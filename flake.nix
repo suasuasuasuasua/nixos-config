@@ -62,7 +62,6 @@
       name = "${name}";
       fullName = "Justin Hoang";
       home = "/home/${name}";
-      hostname = "nixos";
       email = "j124.dev@gmail.com";
     };
   in {
@@ -73,18 +72,17 @@
     # Available through 'nixos-rebuild switch --flake .#your-hostname'
     nixosConfigurations = {
       # Define the different NixOS systems
-      "${user.hostname}" = nixpkgs.lib.nixosSystem {
+      "msi" = nixpkgs.lib.nixosSystem {
         specialArgs = {
+          hostname = "msi";
           inherit inputs outputs user;
         };
         # > Our main nixos configuration file <
         modules = [
-          ./nixos/default-configuration.nix
+          ./nixos/hosts/msi/configuration.nix
         ];
       };
       # ...
-
-      default = self.nixosConfigurations.nixos;
     };
 
     # Standalone home-manager configuration entrypoint

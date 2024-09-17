@@ -1,5 +1,8 @@
-{user, ...}: {
-  networking.hostName = "${user.hostname}";
+{ hostname, ... }:
+{
+  # Define the hostname
+  networking.hostName = hostname;
+
   networking.networkmanager.enable = true;
 
   # This setups a SSH server. Very important if you're setting up a headless system.

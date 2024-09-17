@@ -1,4 +1,4 @@
-# This is your system's configuration file.
+# This is your sysem's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   inputs,
@@ -10,21 +10,25 @@
 }: {
   # You can import other NixOS modules here
   imports = [
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
+    ## General
+    ../../default-configuration.nix
+    # Import your generated (nixos-generate-config) hardware configuration
+    ./hardware-configuration.nix
 
-    ### General System Configuration
-    ./common/boot.nix
-    ./common/general.nix
-    ./common/locale.nix
-    ./common/networking.nix
-    ./common/power.nix
-    ./common/productivity.nix
-    ./common/users.nix
-    ./common/virtualization.nix
+    # Change below!
+    ../../common/des/gnome.nix
 
-    ## System Packages
-    ./common/packages.nix
+    ## GPU options
+    ../../common/gpu/nvidia.nix
+    # If you are running laptop!
+    ../../common/gpu/nvidia-laptop.nix
+
+    ## Self Hosted
+    ../../common/self-host/ollama.nix
+    ../../common/self-host/syncthing.nix
+
+    ## Games
+    ../../common/entertainment/steam.nix
   ];
 
   nixpkgs = {
