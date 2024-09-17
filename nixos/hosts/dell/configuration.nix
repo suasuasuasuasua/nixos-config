@@ -18,17 +18,8 @@
     # Change below!
     ../../common/des/gnome.nix
 
-    ## GPU options
-    ../../common/gpu/nvidia.nix
-    # If you are running laptop!
-    ../../common/gpu/nvidia-laptop.nix
-
     ## Self Hosted
-    ../../common/self-host/ollama.nix
     ../../common/self-host/syncthing.nix
-
-    ## Games
-    ../../common/entertainment/steam.nix
   ];
 
   nixpkgs = {
