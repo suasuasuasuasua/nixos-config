@@ -48,6 +48,7 @@
     ./plugins/custom/plugins/startify.nix
     ./plugins/custom/plugins/surround.nix
     ./plugins/custom/plugins/tmux.nix
+    ./plugins/custom/plugins/ufo.nix
     ./plugins/custom/plugins/vimtex.nix
     ./plugins/custom/plugins/yazi.nix
   ];

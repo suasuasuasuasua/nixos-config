@@ -82,6 +82,17 @@
           ./nixos/hosts/msi/configuration.nix
         ];
       };
+      # Define the different NixOS systems
+      "dell" = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          hostname = "dell";
+          inherit inputs outputs user;
+        };
+        # > Our main nixos configuration file <
+        modules = [
+          ./nixos/hosts/dell/configuration.nix
+        ];
+      };
       # ...
     };
 
