@@ -6,11 +6,6 @@
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's an working example:
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
-
     # Nix user repository
     nurpkgs.url = "github:nix-community/NUR";
 
@@ -21,34 +16,36 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    darwin = {
-      url = "github:LnL7/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # TODO: uncomment when I update this darwin
+    # darwin = {
+    #   url = "github:LnL7/nix-darwin/master";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    #
+    # nix-homebrew = {
+    #   url = "github:zhaofengli-wip/nix-homebrew";
+    # };
+    #
+    # homebrew-bundle = {
+    #   url = "github:homebrew/homebrew-bundle";
+    #   flake = false;
+    # };
+    #
+    # homebrew-core = {
+    #   url = "github:homebrew/homebrew-core";
+    #   flake = false;
+    # };
+    #
+    # homebrew-cask = {
+    #   url = "github:homebrew/homebrew-cask";
+    #   flake = false;
+    # };
 
-    nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
-    };
-
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
-    };
-
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
-
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # TODO:use disko eventually
+    # disko = {
+    #   url = "github:nix-community/disko";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Theming
     catppuccin.url = "github:catppuccin/nix";
@@ -67,6 +64,7 @@
     self,
     nixpkgs,
     home-manager,
+    # TODO: uncomment when I get arround to using
     # darwin,
     # nix-homebrew,
     # homebrew-bundle,
