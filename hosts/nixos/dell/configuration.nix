@@ -11,7 +11,7 @@
   # You can import other NixOS modules here
   imports = [
     ## General
-    ../../default-configuration.nix
+    ../default-configuration.nix
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
 

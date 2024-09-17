@@ -15,16 +15,6 @@
     ../../modules/shared
 
     ### General System Configuration
-    ../../modules/nixos/boot.nix
-    ../../modules/nixos/general.nix
-    ../../modules/nixos/locale.nix
-    ../../modules/nixos/networking.nix
-    ../../modules/nixos/power.nix
-    ../../modules/nixos/productivity.nix
-    ../../modules/nixos/users.nix
-    ../../modules/nixos/virtualization.nix
-
-    ## System Packages
-    ../../modules/nixos/packages.nix
+    ../../modules/nixos
   ];
 }
