@@ -22,8 +22,6 @@
     python3
     nodejs
     rustup
-    nixfmt-rfc-style
-    markdownlint-cli
 
     # System monitoring
     fastfetch

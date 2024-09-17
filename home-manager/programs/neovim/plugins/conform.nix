@@ -6,6 +6,8 @@
     extraPackages = with pkgs; [
       # Used to format Lua code
       stylua
+      # Nix
+      nixfmt-rfc-style
     ];
 
     # Autoformat

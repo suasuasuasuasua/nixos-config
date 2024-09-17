@@ -12,6 +12,8 @@
           "c"
           "diff"
           "html"
+          "python"
+          "nix"
           "lua"
           "luadoc"
           "markdown"

@@ -16,15 +16,7 @@
     #inputs.nixvim.nixDarwinModules.nixvim
 
     # Plugins
-    ./plugins/conform.nix
-    ./plugins/gitsigns.nix
-    ./plugins/lsp.nix
-    ./plugins/lsp-format.nix
-    ./plugins/mini.nix
-    ./plugins/nvim-cmp.nix
-    ./plugins/telescope.nix
-    ./plugins/which-key.nix
-    ./plugins/treesitter.nix
+    ./plugins
 
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #
@@ -32,25 +24,11 @@
     #  repository. Uncomment any of the lines below to enable them (you will
     #  need to restart nvim).
     #
-    ./plugins/kickstart/plugins/autopairs.nix
-    ./plugins/kickstart/plugins/debug.nix
-    ./plugins/kickstart/plugins/indent-blankline.nix
-    ./plugins/kickstart/plugins/lint.nix
-    ./plugins/kickstart/plugins/neo-tree.nix
+    ./plugins/kickstart/plugins
     #
     # NOTE: Configure your own plugins `see https://nix-community.github.io/nixvim/`
     # Add your plugins to ./plugins/custom/plugins and import them below
-    ./plugins/custom/plugins/init.nix
-    ./plugins/custom/plugins/autosave.nix
-    ./plugins/custom/plugins/colorscheme.nix
-    ./plugins/custom/plugins/lsp-lines.nix
-    ./plugins/custom/plugins/markdown.nix
-    ./plugins/custom/plugins/startify.nix
-    ./plugins/custom/plugins/surround.nix
-    ./plugins/custom/plugins/tmux.nix
-    ./plugins/custom/plugins/ufo.nix
-    ./plugins/custom/plugins/vimtex.nix
-    ./plugins/custom/plugins/yazi.nix
+    ./plugins/custom/plugins
   ];
 
   /*
@@ -269,7 +247,6 @@
         };
       }
       # TIP: Disable arrow keys in normal mode
-      /*
       {
         mode = "n";
         key = "<left>";
@@ -290,7 +267,7 @@
         key = "<down>";
         action = "<cmd>echo 'Use j to move!!'<CR>";
       }
-      */
+
       # Keybinds to make split navigation easier.
       #  Use CTRL+<hjkl> to switch between windows
       #
