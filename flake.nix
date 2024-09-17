@@ -15,17 +15,45 @@
     nurpkgs.url = "github:nix-community/NUR";
 
     # Home manager
-    # home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager = {
+      # url = "github:nix-community/home-manager/release-24.05";
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+    };
+
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
+
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Theming
     catppuccin.url = "github:catppuccin/nix";
 
-    # # Neovim Nightly
-    # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-
+    # Nvim through Nix
     nixvim = {
       url = "github:nix-community/nixvim";
       # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
@@ -39,25 +67,34 @@
     self,
     nixpkgs,
     home-manager,
+    # darwin,
+    # nix-homebrew,
+    # homebrew-bundle,
+    # homebrew-core,
+    # homebrew-cask,
+    # disko,
     ...
   } @ inputs: let
     inherit (self) outputs;
+
     # Supported systems for your flake packages, shell, etc.
-    systems = [
-      "aarch64-linux"
-      "i686-linux"
-      "x86_64-linux"
+    darwinSystems = [
       "aarch64-darwin"
       "x86_64-darwin"
     ];
+    nixosSystems = [
+      "aarch64-linux"
+      "i686-linux"
+      "x86_64-linux"
+    ];
+    systems = darwinSystems ++ nixosSystems;
 
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
 
-    name = "justin";
-
     # Define the user
+    name = "justin";
     user = {
       name = "${name}";
       fullName = "Justin Hoang";
@@ -68,6 +105,7 @@
     # Formatter for your nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild switch --flake .#your-hostname'
     nixosConfigurations = {
@@ -79,7 +117,7 @@
         };
         # > Our main nixos configuration file <
         modules = [
-          ./nixos/hosts/msi/configuration.nix
+          ./hosts/nixos/msi/configuration.nix
         ];
       };
       # Define the different NixOS systems
@@ -90,11 +128,41 @@
         };
         # > Our main nixos configuration file <
         modules = [
-          ./nixos/hosts/dell/configuration.nix
+          ./hosts/nixos/dell/configuration.nix
         ];
       };
       # ...
     };
+
+    # TODO: figure out the darwin configuration
+    # NixDarwin configuration entrypoint
+    # Available through 'darwin-rebuild switch --flake .#your-hostname'
+    # darwinConfigurations = {
+    #   "macos" = darwin.lib.darwinSystem {
+    #     specialArgs = {
+    #       hostname = "macos";
+    #       inherit inputs outputs user;
+    #     };
+    #     modules = [
+    #       home-manager.darwinModules.home-manager
+    #       nix-homebrew.darwinModules.nix-homebrew
+    #       {
+    #         nix-homebrew = {
+    #           inherit user;
+    #           enable = true;
+    #           taps = {
+    #             "homebrew/homebrew-core" = homebrew-core;
+    #             "homebrew/homebrew-cask" = homebrew-cask;
+    #             "homebrew/homebrew-bundle" = homebrew-bundle;
+    #           };
+    #           mutableTaps = false;
+    #           autoMigrate = true;
+    #         };
+    #       }
+    #       ./hosts/darwin
+    #     ];
+    #   };
+    # };
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager switch --flake .#your-username@your-hostname'
@@ -110,9 +178,8 @@
           ./home-manager/home.nix
         ];
       };
-      # ...
 
-      default = self.homeConfigurations.justin;
+      # ...
     };
   };
 }

@@ -10,21 +10,17 @@
 }: {
   # You can import other NixOS modules here
   imports = [
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
+    ## General
+    ../default-configuration.nix
+    # Import your generated (nixos-generate-config) hardware configuration
+    ./hardware-configuration.nix
 
-    ### General System Configuration
-    ./common/boot.nix
-    ./common/general.nix
-    ./common/locale.nix
-    ./common/networking.nix
-    ./common/power.nix
-    ./common/productivity.nix
-    ./common/users.nix
-    ./common/virtualization.nix
+    # Change below!
+    ## Desktop environment
+    ../../../modules/nixos/des/gnome.nix
 
-    ## System Packages
-    ./common/packages.nix
+    ## Self Hosted
+    ../../../modules/shared/self-host/syncthing.nix
   ];
 
   nixpkgs = {
