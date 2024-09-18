@@ -108,6 +108,7 @@
     # Available through 'nixos-rebuild switch --flake .#your-hostname'
     nixosConfigurations = {
       # Define the different NixOS systems
+      # MSI GE75 Raider 10SE
       "msi" = nixpkgs.lib.nixosSystem {
         specialArgs = {
           hostname = "msi";
@@ -118,7 +119,7 @@
           ./hosts/nixos/msi/configuration.nix
         ];
       };
-      # Define the different NixOS systems
+      # HP Optiplex 5060 Micro PC
       "dell" = nixpkgs.lib.nixosSystem {
         specialArgs = {
           hostname = "dell";
@@ -127,6 +128,17 @@
         # > Our main nixos configuration file <
         modules = [
           ./hosts/nixos/dell/configuration.nix
+        ];
+      };
+      # Acer Spin 713-3w Chromebook
+      "penguin" = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          hostname = "penguin";
+          inherit inputs outputs user;
+        };
+        # > Our main nixos configuration file <
+        modules = [
+          ./hosts/nixos/penguin/configuration.nix
         ];
       };
       # ...
@@ -173,7 +185,7 @@
         };
         # > Our main home-manager configuration file <
         modules = [
-          ./home-manager/home.nix
+          ./home-manager/nixos/home.nix
         ];
       };
 
