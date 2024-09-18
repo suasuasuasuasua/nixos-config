@@ -1,5 +1,5 @@
 {
-  time.timeZone = "Americas/Denver";
+  time.timeZone = "America/Denver";
   services.xserver = {
     xkb.layout = "us";
     xkb.variant = "";
