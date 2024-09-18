@@ -19,6 +19,9 @@
     ## Desktop environment
     ../../../modules/nixos/des/gnome.nix
 
+    ## Battery
+    ../../../modules/nixos/power.nix
+
     ## GPU options
     ../../../modules/nixos/gpu/nvidia.nix
     # If you are running laptop!

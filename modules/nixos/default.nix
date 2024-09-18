@@ -5,7 +5,6 @@
     ./boot.nix
     ./locale.nix
     ./networking.nix
-    ./power.nix
     ./printing.nix
     ./productivity.nix
     ./users.nix
