@@ -5,10 +5,9 @@
   user,
   ...
 }: {
-  home = {
-    username = "${user.name}";
-    homeDirectory = "${user.home}";
-  };
+  imports = [
+    ./users.nix
+  ];
 
   programs.home-manager.enable = true;
 

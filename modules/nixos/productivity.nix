@@ -1,9 +1,11 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    onlyoffice-bin
     obsidian
-    #   libreoffice-qt
-    #   hunspell
-    #   hunspellDicts.us_EN
+    onlyoffice-bin
+    # TODO: figure out if onlyoffice is better than libreoffice (it looks better
+    # anyway)
+    # libreoffice-qt
+    # hunspell
+    # hunspellDicts.en_US
   ];
 }

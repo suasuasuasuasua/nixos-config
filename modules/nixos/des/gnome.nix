@@ -10,7 +10,7 @@
     autoSuspend = false;
   };
 
-  services.gnome.core-utilities.enable = true;
+  services.gnome.core-utilities.enable = false;
   services.udev.packages = with pkgs; [
     gnome-settings-daemon
   ];
@@ -20,6 +20,9 @@
   # Add these gnome packages
   environment.systemPackages =
     (with pkgs; [
+      nautilus # file browser
+      baobab # disk usage analyzer
+      gnome-disk-utility
       gnome-boxes
       gnome-tweaks
     ])
@@ -32,20 +35,32 @@
 
   # Remove these gnome packages from the default installation
   environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-    gnome-connections
-    cheese # webcam tool
-    gnome-music
-    gedit # text editor
+    cheese # photo booth
+    eog # image viewer
     epiphany # web browser
-    geary # email reader
+    gedit # text editor
+    simple-scan # document scanner
+    totem # video player
+    yelp # help viewer
+    evince # document viewer
+    file-roller # archive manager
+    geary # email client
+    seahorse # password manager
+
+    # these should be self explanatory
+    gnome-calculator
+    gnome-calendar
     gnome-characters
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-    yelp # Help view
+    gnome-clocks
     gnome-contacts
-    gnome-initial-setup
+    gnome-font-viewer
+    gnome-logs
+    gnome-maps
+    gnome-music
+    gnome-photos
+    gnome-screenshot
+    gnome-system-monitor
+    gnome-weather
+    gnome-connections
   ];
 }
