@@ -29,6 +29,6 @@
     ./programs/zsh.nix
 
     # Themes
-    ./themes/global.nix
+    ./config/theme.nix
   ];
 }
