@@ -10,6 +10,8 @@
         monospace-font-name = "JetBrainsMono Nerd Font 10";
       };
 
+      "/org/gnome/mutter/dynamic-workspaces" = true;
+
       # Define the apps on the dock
       "/org/gnome/shell/favorite-apps" = [
         "org.gnome.Nautilus.desktop"

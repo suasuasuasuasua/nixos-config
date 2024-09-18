@@ -24,5 +24,8 @@
 
     ## Self Hosted
     ../../../modules/shared/self-host/syncthing.nix
+
+    ## Entertainment
+    ../../../modules/shared/entertainment/matrix.nix
   ];
 }
