@@ -28,6 +28,9 @@
     ./programs/vscode.nix
     ./programs/zsh.nix
 
+    # Desktop environment
+    ./config/gnome.nix
+
     # Themes
     ./config/theme.nix
   ];

@@ -31,8 +31,7 @@
     ++ (with pkgs.gnomeExtensions; [
       # TODO: find extensions that I like
       # Add these gnome extensions
-      # blur-my-shell
-      # pop-shell
+      tray-icons-reloaded
     ]);
 
   # Remove these gnome packages from the default installation
