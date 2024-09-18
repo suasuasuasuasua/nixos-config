@@ -10,7 +10,7 @@
     autoSuspend = false;
   };
 
-  services.gnome.core-utilities.enable = false;
+  services.gnome.core-utilities.enable = true;
   services.udev.packages = with pkgs; [
     gnome-settings-daemon
   ];
@@ -20,8 +20,10 @@
   # Add these gnome packages
   environment.systemPackages =
     (with pkgs; [
-      nautilus # file browser
       baobab # disk usage analyzer
+      file-roller # archive manager
+      nautilus # file browser
+      gnome-calendar
       gnome-disk-utility
       gnome-boxes
       gnome-tweaks
@@ -43,13 +45,11 @@
     totem # video player
     yelp # help viewer
     evince # document viewer
-    file-roller # archive manager
     geary # email client
     seahorse # password manager
 
     # these should be self explanatory
     gnome-calculator
-    gnome-calendar
     gnome-characters
     gnome-clocks
     gnome-contacts

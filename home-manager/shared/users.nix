@@ -1,5 +1,4 @@
-{user,...}:
-{
+{user, ...}: {
   # Define properties for the user
   home = {
     username = "${user.name}";
