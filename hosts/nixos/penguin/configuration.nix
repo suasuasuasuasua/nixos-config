@@ -17,7 +17,9 @@
 
     # Change below!
     ## Desktop environment
+    # TODO: figure out a better way to choose profiles
     ../../../modules/nixos/des/gnome.nix
+    # ../../../modules/nixos/des/sway.nix
 
     ## Battery
     ../../../modules/nixos/power.nix

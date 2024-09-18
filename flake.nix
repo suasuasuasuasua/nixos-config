@@ -98,6 +98,9 @@
       fullName = "Justin Hoang";
       home = "/home/${name}";
       email = "j124.dev@gmail.com";
+      browser = "firefox";
+      editor = "nvim";
+      terminal = "alacritty";
     };
   in {
     # Formatter for your nix files, available through 'nix fmt'

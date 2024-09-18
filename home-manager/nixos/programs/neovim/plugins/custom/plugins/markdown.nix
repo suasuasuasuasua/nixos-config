@@ -25,7 +25,7 @@
           alias_format = "%B %-d, %Y";
           # TODO:figure out if we can add default tags
           # # Optional, default tags to add to each new daily note created.
-          default_tags = [  "daily-notes"  ];
+          default_tags = ["daily-notes"];
           # Optional, if you want to automatically insert a template from your template directory like 'daily.md'
           template = null;
         };

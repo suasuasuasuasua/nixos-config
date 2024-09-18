@@ -5,10 +5,10 @@
     homeDirectory = "${user.home}";
 
     sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-      BROWSER = "firefox";
-      TERMINAL = "alacritty";
+      EDITOR = "${user.editor}";
+      VISUAL = "${user.editor}";
+      BROWSER = "${user.browser}";
+      TERMINAL = "${user.terminal}";
     };
   };
 }
