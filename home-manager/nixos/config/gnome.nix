@@ -40,6 +40,27 @@
         enabled-extensions = with pkgs.gnomeExtensions; [
           tray-icons-reloaded.extensionUuid
         ];
+
+        # TODO: figure out the extension too??
+        # extensions = {
+        #   trayIconsReloaded = {
+        #     # General
+        #     position-weight = 0;
+        #     icon-size = 28;
+        #     icons-limit = 3;
+        #     # Colors
+        #     icon-saturation = 0;
+        #     icon-contrast = -20;
+        #     icon-brightness = 0;
+        #     # Spacing
+        #     tray-margin-left = 0;
+        #     tray-margin-right = 0;
+        #     icon-margin-vertical = 0;
+        #     icon-margin-horizontal = 0;
+        #     icon-padding-veritcal = 0;
+        #     icon-padding-horizontal = 0;
+        #   };
+        # };
       };
     };
   };

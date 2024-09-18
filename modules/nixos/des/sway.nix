@@ -6,12 +6,22 @@
 }: {
   # Enable the gnome-keyring secrets vault.
   # Will be exposed through DBus to programs willing to store secrets.
-  services.gnome.gnome-keyring.enable = true;
+  services = {
+    gnome.gnome-keyring.enable = true;
+    displayManager.ly = {
+      enable = true;
+    };
+  };
 
   # enable Sway window manager
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
+  };
+
+  # enable wayland bar
+  programs.waybar = {
+    enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -24,9 +34,8 @@
     wl-clipboard
     wf-recorder
     mako
-    waybar
     ly
-    fuzzel
+    # fuzzel
     zathura
     yazi
     imv

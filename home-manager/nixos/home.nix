@@ -29,7 +29,9 @@
     ./programs/zsh.nix
 
     # Desktop environment
+    # TODO: figure out a better way to choose profiles
     ./config/gnome.nix
+    # ./config/sway.nix
 
     # Themes
     ./config/theme.nix
