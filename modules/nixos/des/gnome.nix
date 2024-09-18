@@ -60,6 +60,7 @@
     gnome-photos
     gnome-screenshot
     gnome-system-monitor
+    gnome-tour
     gnome-weather
     gnome-connections
   ];
