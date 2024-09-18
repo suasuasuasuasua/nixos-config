@@ -8,13 +8,15 @@
   programs.firefox = {
     enable = true;
     profiles.${user.name} = {
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        vimium
-        ublock-origin
-        darkreader
-        betterttv
-        firefox-color
-      ];
+      # TODO: why is it error on this?
+      #        Did you mean one of nrr, nurl, nut, nuv or nux?
+      # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      #   vimium
+      #   ublock-origin
+      #   darkreader
+      #   betterttv
+      #   firefox-color
+      # ];
     };
   };
 }

@@ -4,7 +4,7 @@
       enable = true;
     };
     plugins.auto-session = {
-      enable = true;
+      enable = false;
     };
   };
 }
