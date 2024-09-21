@@ -5,6 +5,9 @@
       enable = true;
     };
 
+    extraPlugins = [
+      vimPlugins.tmux
+    ];
     extraConfigLua = ''
       require("tmux").setup({
       })
