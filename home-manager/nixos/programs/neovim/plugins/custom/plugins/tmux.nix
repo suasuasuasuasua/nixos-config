@@ -5,7 +5,7 @@
       enable = true;
     };
 
-    extraPlugins = [
+    extraPlugins = with pkgs; [
       vimPlugins.tmux
     ];
     extraConfigLua = ''
