@@ -23,6 +23,7 @@
       baobab # disk usage analyzer
       file-roller # archive manager
       nautilus # file browser
+      dialect # translator
       gnome-calendar
       gnome-disk-utility
       gnome-boxes
@@ -32,6 +33,7 @@
       # TODO: find extensions that I like
       # Add these gnome extensions
       tray-icons-reloaded
+      open-bar
     ]);
 
   # Remove these gnome packages from the default installation

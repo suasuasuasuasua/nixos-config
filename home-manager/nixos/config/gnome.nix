@@ -39,6 +39,7 @@
         disable-user-extensions = false;
         enabled-extensions = with pkgs.gnomeExtensions; [
           tray-icons-reloaded.extensionUuid
+          open-bar.extensionUuid
         ];
       };
     };
