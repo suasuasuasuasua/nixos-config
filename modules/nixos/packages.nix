@@ -22,6 +22,8 @@
     python3
     nodejs
     rustup
+    markdownlint-cli
+    devcontainer
 
     # System monitoring
     fastfetch

@@ -35,6 +35,8 @@
       set-option -g renumber-windows on
 
       set -g @continuum-restore 'on'
+      # restore the pane contents
+      set -g @resurrect-capture-pane-contents 'on'
       # for vim
       set -g @resurrect-strategy-vim 'session'
       # for neovim
