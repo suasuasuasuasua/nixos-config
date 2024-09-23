@@ -4,7 +4,8 @@
 
 ## TODO
 
-- Figure out the sound issue
+- [ ] Figure out the sound issue
     - https://github.com/WeirdTreeThing/chromebook-linux-audio
-- Figure out the keyboard mapping
+    - Don't think I can fix this one..
+- [x] Figure out the keyboard mapping
     - https://github.com/WeirdTreeThing/cros-keyboard-map
