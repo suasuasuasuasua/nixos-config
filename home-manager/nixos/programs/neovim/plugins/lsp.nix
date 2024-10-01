@@ -108,7 +108,7 @@
         };
         # Spell Check Markdown
         ltex = {
-          enable = true;
+          enable = false;
         };
         # LaTeX
         texlab = {
