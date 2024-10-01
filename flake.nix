@@ -16,6 +16,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Spotify customization
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # TODO: uncomment when I update this darwin
     # darwin = {
     #   url = "github:LnL7/nix-darwin/master";

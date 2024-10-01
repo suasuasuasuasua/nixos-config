@@ -4,6 +4,11 @@
   lib,
   ...
 }: {
+  imports = [
+    ./packages.nix
+    ./theme.nix
+  ];
+
   nixpkgs = {
     # You can add overlays here
     overlays = [

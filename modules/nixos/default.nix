@@ -6,11 +6,8 @@
     ./locale.nix
     ./networking.nix
     ./printing.nix
-    ./productivity.nix
+    ./storage.nix
     ./users.nix
     ./virtualization.nix
-
-    ## System Packages
-    ./packages.nix
   ];
 }

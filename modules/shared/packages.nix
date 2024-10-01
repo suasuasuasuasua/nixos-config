@@ -29,6 +29,7 @@
     fastfetch
     btop
     timeshift
+    speedtest-cli
 
     # File Viewing
     zathura

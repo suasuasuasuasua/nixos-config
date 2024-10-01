@@ -22,12 +22,14 @@
 
     # Change below!
     ## Desktop environment
-    # TODO: figure out a better way to choose profiles
     ../../../modules/nixos/des/gnome.nix
-    # ../../../modules/nixos/des/sway.nix
 
     ## Battery
     ../../../modules/nixos/power.nix
+
+    ## Productivity
+    ../../../modules/shared/productivity/app-flowy.nix
+    ../../../modules/shared/productivity/obsidian.nix
 
     ## Self Hosted
     ../../../modules/shared/self-host/syncthing.nix
