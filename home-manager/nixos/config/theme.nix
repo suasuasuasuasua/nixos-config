@@ -13,4 +13,17 @@ in {
     enable = true;
     accent = "${accent}";
   };
+
+  gtk = {
+    enable = true;
+    catppuccin = {
+      accent = "${accent}";
+      flavor = "${flavor}";
+      icon = {
+        enable = true;
+        accent = "${accent}";
+        flavor = "${flavor}";
+      };
+    };
+  };
 }
