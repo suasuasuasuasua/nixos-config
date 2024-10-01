@@ -17,13 +17,14 @@
     ./packages.nix
 
     # Essentials
+    ./programs/neovim/neovim.nix
     ./programs/alacritty.nix
     ./programs/bat.nix
     ./programs/direnv.nix
     ./programs/firefox.nix
     ./programs/fzf.nix
     ./programs/git.nix
-    ./programs/neovim/neovim.nix
+    ./programs/spotify.nix
     ./programs/tmux.nix
     ./programs/vscode.nix
     ./programs/zsh.nix
