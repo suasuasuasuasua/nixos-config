@@ -1,5 +1,12 @@
 {pkgs, ...}: {
   programs.nixvim = {
+    # # TODO: wtf why isn't this working
+    # # Better renderer
+    # plugins.render-markdown = {
+    #   enable = true;
+    # };
+
+    # Obsdian Integration
     plugins.obsidian = {
       enable = true;
       settings = {
@@ -38,7 +45,15 @@
 
         # Disable all the mappings
         mappings = {};
+
+        # Disable the UI rendering for obsidian
+        ui.enable = false;
       };
+    };
+
+    # Preview
+    plugins.markdown-preview = {
+      enable = true;
     };
   };
 }
