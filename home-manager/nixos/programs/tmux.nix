@@ -37,10 +37,14 @@
       set -g @continuum-restore 'on'
       # restore the pane contents
       set -g @resurrect-capture-pane-contents 'on'
-      # for vim
-      set -g @resurrect-strategy-vim 'session'
       # for neovim
       set -g @resurrect-strategy-nvim 'session'
+
+      resurrect_dir="$HOME/.tmux/resurrect"
+      set -g @resurrect-dir $resurrect_dir
+      set -g @resurrect-hook-post-save-all "sed -i 's/--cmd lua.*--cmd set packpath/--cmd \"lua/g; s/--cmd set rtp.*\$/\"/' $resurrect_dir/last"
+      set -g @resurrect-capture-pane-contents 'on'
+      set -g @resurrect-processes '"~nvim"'
 
       setw -g mode-keys vi
 
