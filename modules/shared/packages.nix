@@ -23,6 +23,8 @@
     nodejs
     rustup
     markdownlint-cli
+    typst
+    typstyle
     devcontainer
 
     # System monitoring
