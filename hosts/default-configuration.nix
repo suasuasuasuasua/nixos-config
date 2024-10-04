@@ -12,9 +12,9 @@
   imports = [
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
-    ../../modules/shared
+    ../modules/shared
 
     ### General System Configuration
-    ../../modules/nixos
+    ../modules
   ];
 }

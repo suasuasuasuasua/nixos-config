@@ -17,16 +17,16 @@
 
     # Change below!
     ## Desktop environment
-    ../../../modules/nixos/des/gnome.nix
+    ../../modules/des/gnome.nix
 
     ## Productivity
-    ../../../modules/shared/productivity/app-flowy.nix
-    ../../../modules/shared/productivity/obsidian.nix
+    ../../modules/shared/productivity/app-flowy.nix
+    ../../modules/shared/productivity/obsidian.nix
 
     ## Self Hosted
-    ../../../modules/shared/self-host/syncthing.nix
+    ../../modules/shared/self-host/syncthing.nix
 
     ## Entertainment
-    ../../../modules/shared/entertainment/matrix.nix
+    ../../modules/shared/entertainment/matrix.nix
   ];
 }
