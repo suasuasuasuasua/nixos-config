@@ -13,8 +13,10 @@
     enable = true;
     enabledExtensions = with spicePkgs.extensions; [
       adblock
-      hidePodcasts
       shuffle # shuffle+ (special characters are sanitized out of extension names)
+      history
+      keyboardShortcut # vimium-like navigation
+      playlistIcons
     ];
     theme = spicePkgs.themes.catppuccin;
     colorScheme = "mocha";
