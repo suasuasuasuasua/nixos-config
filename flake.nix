@@ -107,7 +107,7 @@
         };
         # > Our main nixos configuration file <
         modules = [
-          ./hosts/nixos/configuration.nix
+          ./hosts/penguin/configuration.nix
         ];
       };
       # ...
