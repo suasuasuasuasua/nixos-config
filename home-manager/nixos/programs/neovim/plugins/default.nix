@@ -2,12 +2,13 @@
   imports = [
     ./conform.nix
     ./gitsigns.nix
-    ./lsp.nix
     ./lsp-format.nix
+    ./lsp.nix
     ./mini.nix
     ./nvim-cmp.nix
     ./telescope.nix
-    ./which-key.nix
     ./treesitter.nix
+    ./web-devicons.nix
+    ./which-key.nix
   ];
 }
