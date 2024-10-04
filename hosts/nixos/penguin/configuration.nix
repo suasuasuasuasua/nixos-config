@@ -28,6 +28,7 @@
     ../../../modules/nixos/power.nix
 
     ## Productivity
+    ../../../modules/shared/productivity/proton.nix
     ../../../modules/shared/productivity/app-flowy.nix
     ../../../modules/shared/productivity/obsidian.nix
 
