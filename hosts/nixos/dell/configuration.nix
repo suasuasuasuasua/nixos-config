@@ -19,7 +19,14 @@
     ## Desktop environment
     ../../../modules/nixos/des/gnome.nix
 
+    ## Productivity
+    ../../../modules/shared/productivity/app-flowy.nix
+    ../../../modules/shared/productivity/obsidian.nix
+
     ## Self Hosted
     ../../../modules/shared/self-host/syncthing.nix
+
+    ## Entertainment
+    ../../../modules/shared/entertainment/matrix.nix
   ];
 }
