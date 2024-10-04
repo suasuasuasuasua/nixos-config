@@ -302,21 +302,6 @@
         "type": "github"
       }
     },
-    "nurpkgs": {
-      "locked": {
-        "lastModified": 1728064328,
-        "narHash": "sha256-wn4cosi9N1bOV0q4RdIuZXnyNeOskQIoosFPL0y1v5I=",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "78bfcc800a41f0e459d1953ed4fff6575386c346",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "NUR",
-        "type": "github"
-      }
-    },
     "nuschtosSearch": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -346,7 +331,6 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
-        "nurpkgs": "nurpkgs",
         "spicetify-nix": "spicetify-nix"
       }
     },

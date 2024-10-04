@@ -6,19 +6,10 @@
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Nix user repository
-    nurpkgs.url = "github:nix-community/NUR";
-
     # Home manager
     home-manager = {
       # url = "github:nix-community/home-manager/release-24.05";
       url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Spotify customization
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -30,6 +21,12 @@
 
     # Theming
     catppuccin.url = "github:catppuccin/nix";
+
+    # Spotify customization
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Nvim through Nix
     nixvim = {
@@ -75,7 +72,7 @@
       name = "${name}";
       fullName = "Justin Hoang";
       home = "/home/${name}";
-      email = "j124.dev@gmail.com";
+      email = "j124.dev@proton.me";
       browser = "firefox";
       editor = "nvim";
       terminal = "alacritty";
