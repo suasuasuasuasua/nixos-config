@@ -1,4 +1,3 @@
-
 {
   programs.nixvim = {
     plugins.web-devicons = {
