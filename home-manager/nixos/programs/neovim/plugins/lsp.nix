@@ -69,29 +69,23 @@
       #  - settings: Override the default settings passed when initializing the server.
       #        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       servers = {
+        ## Scripting and Server
         # Bash
-        bashls = {
-          enable = true;
-        };
-        # Docker
-        dockerls = {
-          enable = true;
-        };
-        docker-compose-language-service = {
-          enable = true;
-        };
+        bashls.enable = true;
+        # Docker and Docker Compose
+        dockerls.enable = true;
+        docker-compose-language-service.enable = true;
+        nginx-language-server.enable = true;
+        sqls.enable = true;
+
+        ## General
         # C/C++
-        clangd = {
-          enable = true;
-        };
+        clangd.enable = true;
         # Go
-        gopls = {
-          enable = true;
-        };
+        gopls.enable = true;
         # Python
-        pyright = {
-          enable = true;
-        };
+        ruff.enable = true;
+        ruff-lsp.enable = true;
         # Rust
         rust-analyzer = {
           enable = true;
@@ -99,37 +93,39 @@
           installRustc = false;
         };
         # Nix
-        nil-ls = {
-          enable = true;
-        };
+        nil-ls.enable = true;
+
+        ## Markup
         # Markdown
-        marksman = {
-          enable = true;
-        };
+        marksman.enable = true;
         # Spell Check Markdown
-        ltex = {
-          enable = false;
-        };
-        # LaTeX
-        texlab = {
-          enable = true;
-        };
+        ltex.enable = false; # kinda annoying tbh!
         # Json
-        jsonls = {
-          enable = true;
-        };
+        jsonls.enable = true;
+        # TOML
+        taplo.enable = true;
+        # YAML
+        yamlls.enable = true;
+
+        ## Documents
+        # LaTeX
+        texlab.enable = true;
+        # Typst
+        typst-lsp.enable = true;
+
+        ## Web development
         # HTML
-        html = {
-          enable = true;
-        };
+        html.enable = true;
         # CSS
-        cssls = {
-          enable = true;
-        };
+        cssls.enable = true;
+        # Emmet
+        emmet-ls.enable = true;
+        # Tailwind CSS
+        tailwindcss.enable = true;
         # Javascript
-        eslint = {
-          enable = true;
-        };
+        eslint.enable = true;
+        # Typescript
+        ts-ls.enable = true;
 
         # ...etc. See `https://nix-community.github.io/nixvim/plugins/lsp` for a list of pre-configured LSPs
         #
