@@ -1,4 +1,4 @@
-{user, ...}: let
+let
   font = "JetBrainsMono Nerd Font";
 in {
   programs.kitty = {

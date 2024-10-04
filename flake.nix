@@ -39,6 +39,12 @@
 
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Firefox
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -73,6 +79,7 @@
       browser = "firefox";
       editor = "nvim";
       terminal = "alacritty";
+      system = "x86_64-linux";
     };
   in {
     # Formatter for your nix files, available through 'nix fmt'

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   programs.nixvim = {
     # # TODO: wtf why isn't this working
     # # Better renderer

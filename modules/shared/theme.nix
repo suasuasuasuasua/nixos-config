@@ -1,6 +1,5 @@
 {
   inputs,
-  pkgs,
   ...
 }: let
   flavor = "mocha";
