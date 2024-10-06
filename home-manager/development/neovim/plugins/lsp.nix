@@ -118,8 +118,6 @@
         html.enable = true;
         # CSS
         cssls.enable = true;
-        # Emmet
-        emmet-ls.enable = true;
         # Tailwind CSS
         tailwindcss.enable = true;
         # Javascript

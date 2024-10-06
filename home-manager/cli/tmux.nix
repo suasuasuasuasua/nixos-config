@@ -35,7 +35,6 @@
 
       resurrect_dir="$HOME/.tmux/resurrect"
       set -g @resurrect-dir $resurrect_dir
-      set -g @resurrect-capture-pane-contents 'on'
       set -g @resurrect-processes '"~nvim"'
 
       setw -g mode-keys vi
