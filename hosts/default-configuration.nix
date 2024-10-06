@@ -12,9 +12,8 @@
   imports = [
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
-    ../modules/shared
 
-    ### General System Configuration
+    # General System Configuration
     ../modules
   ];
 }

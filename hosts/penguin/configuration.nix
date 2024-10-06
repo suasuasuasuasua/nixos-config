@@ -14,21 +14,24 @@
     ./power.nix
 
     # Change below!
+
     ## Desktop environment
-    ../../modules/des/gnome.nix
+    ../../modules/desktop/gnome.nix
 
-    ## Battery
-    ../../modules/power.nix
+    ## Development Tools
+    # Import the default tools languages
+    ../../modules/development
 
-    ## Productivity
-    ../../modules/shared/productivity/proton.nix
-    ../../modules/shared/productivity/app-flowy.nix
-    ../../modules/shared/productivity/obsidian.nix
+    # And some more specialized ones..
+    ../../modules/development/languages/rust.nix
+    ../../modules/development/languages/typst.nix
 
-    ## Self Hosted
-    ../../modules/shared/self-host/syncthing.nix
+    ## General Apps
+    ../../modules/general/matrix.nix
+    ../../modules/general/obsidian.nix
+    ../../modules/general/proton/mail.nix
 
-    ## Entertainment
-    ../../modules/shared/entertainment/matrix.nix
+    ## Self Hosting
+    ../../modules/self-host/syncthing.nix
   ];
 }

@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # Ref:
   # https://github.com/ChocolateLoverRaj/nixos-system-config/blob/main/keyd.nix
   environment = {

@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{pkgs, ...}:
 # Ref
 # https://discourse.nixos.org/t/help-with-avoiding-50gb-worth-of-rebuils/41655/15?u=chocolateloverraj
 let

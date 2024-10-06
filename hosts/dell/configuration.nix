@@ -9,17 +9,24 @@
     ./hardware-configuration.nix
 
     # Change below!
+
     ## Desktop environment
-    ../../modules/des/gnome.nix
+    ../../modules/desktop/gnome.nix
 
-    ## Productivity
-    ../../modules/shared/productivity/app-flowy.nix
-    ../../modules/shared/productivity/obsidian.nix
+    ## Development Tools
+    # Import the default tools languages
+    ../../modules/development
 
-    ## Self Hosted
-    ../../modules/shared/self-host/syncthing.nix
+    # And some more specialized ones..
+    ../../modules/development/languages/rust.nix
+    ../../modules/development/languages/typst.nix
 
-    ## Entertainment
-    ../../modules/shared/entertainment/matrix.nix
+    ## General Apps
+    ../../modules/general/matrix.nix
+    ../../modules/general/obsidian.nix
+    ../../modules/general/proton/mail.nix
+
+    ## Self Hosting
+    ../../modules/self-host/syncthing.nix
   ];
 }
