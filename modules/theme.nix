@@ -1,4 +1,5 @@
 {
+  pkgs,
   inputs,
   ...
 }: let
@@ -7,6 +8,11 @@
 in {
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
+  ];
+  fonts.packages = with pkgs; [
+    (nerdfonts.override {
+      fonts = ["JetBrainsMono"];
+    })
   ];
 
   catppuccin = {

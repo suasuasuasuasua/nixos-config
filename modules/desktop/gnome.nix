@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   services.xserver.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager.gdm = {
@@ -29,7 +26,6 @@
       gnome-tweaks
     ])
     ++ (with pkgs.gnomeExtensions; [
-      # TODO: find extensions that I like
       # Add these gnome extensions
       tray-icons-reloaded
       open-bar

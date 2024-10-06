@@ -1,5 +1,10 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    appflowy
+    gcc
+    gdb
+    lldb
+    gnumake
+    cmake
+    meson
   ];
 }
