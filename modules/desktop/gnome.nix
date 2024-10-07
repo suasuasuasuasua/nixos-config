@@ -16,6 +16,9 @@
   # Add these gnome packages
   environment.systemPackages =
     (with pkgs; [
+      eog # image viewer
+      totem # video player
+      evince # document viewer
       baobab # disk usage analyzer
       file-roller # archive manager
       nautilus # file browser
@@ -34,13 +37,10 @@
   # Remove these gnome packages from the default installation
   environment.gnome.excludePackages = with pkgs; [
     cheese # photo booth
-    eog # image viewer
     epiphany # web browser
     gedit # text editor
     simple-scan # document scanner
-    totem # video player
     yelp # help viewer
-    evince # document viewer
     geary # email client
     seahorse # password manager
 
