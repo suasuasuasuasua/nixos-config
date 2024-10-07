@@ -26,6 +26,12 @@
     ../../modules/general/obsidian.nix
     ../../modules/general/proton/mail.nix
 
+    # Design
+    ../../modules/general/figma.nix
+    ../../modules/general/obs.nix
+    ../../modules/general/photo-editor.nix
+    ../../modules/general/video-editor.nix
+
     ## Self Hosting
     ../../modules/self-host/syncthing.nix
   ];
