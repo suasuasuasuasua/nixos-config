@@ -34,6 +34,7 @@
 
     # Games
     ../../modules/general/steam.nix
+    ../../modules/general/wine.nix
 
     ## Self Hosting
     ../../modules/self-host/syncthing.nix
