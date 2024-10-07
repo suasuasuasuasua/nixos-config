@@ -1,7 +1,6 @@
-{pkgs,...}:
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-      # Nix
-      nixfmt-rfc-style
+    # Nix
+    nixfmt-rfc-style
   ];
 }
