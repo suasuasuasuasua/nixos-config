@@ -1,5 +1,0 @@
-{
-  services.adguard = {
-    enable = true;
-  };
-}
