@@ -7,9 +7,5 @@
     extraPlugins = with pkgs; [
       vimPlugins.tmux-nvim
     ];
-    extraConfigLua = ''
-      require("tmux").setup({
-      })
-    '';
   };
 }
