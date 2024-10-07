@@ -122,8 +122,6 @@
         tailwindcss.enable = true;
         # Javascript
         eslint.enable = true;
-        # Typescript
-        ts-ls.enable = true;
 
         # ...etc. See `https://nix-community.github.io/nixvim/plugins/lsp` for a list of pre-configured LSPs
         #

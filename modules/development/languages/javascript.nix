@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs;
     [
       nodejs
-      typescript-language-server
+      typescript
     ]
     ++ (with pkgs.nodePackages; [
       prettier
