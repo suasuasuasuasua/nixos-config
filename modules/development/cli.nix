@@ -3,7 +3,6 @@
     # General
     git
     gibo
-    pre-commit
 
     zip
     unzip
