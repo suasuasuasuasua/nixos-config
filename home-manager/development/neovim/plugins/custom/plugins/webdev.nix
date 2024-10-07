@@ -4,6 +4,9 @@
     plugins.ts-autotag = {
       enable = true;
     };
+    plugins.ts-comments = {
+      enable = true;
+    };
 
     # Typescript support
     plugins.typescript-tools = {
