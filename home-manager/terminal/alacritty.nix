@@ -12,6 +12,10 @@ in {
       env.TERM = "xterm-256color";
       window = {
         decorations = "None";
+        padding = {
+          x = 10;
+          y = 10;
+        };
       };
       font = {
         size = 10;
