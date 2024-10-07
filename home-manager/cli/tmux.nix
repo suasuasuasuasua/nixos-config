@@ -33,10 +33,6 @@
       # for neovim
       set -g @resurrect-strategy-nvim 'session'
 
-      resurrect_dir="$HOME/.tmux/resurrect"
-      set -g @resurrect-dir $resurrect_dir
-      set -g @resurrect-processes '"~nvim"'
-
       setw -g mode-keys vi
 
       bind-key -T copy-mode-vi v send-keys -X begin-selection
