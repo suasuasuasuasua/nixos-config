@@ -13,6 +13,7 @@
     ripgrep
     fd
     lshw
+    just
 
     wl-clipboard
 
