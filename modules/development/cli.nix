@@ -14,8 +14,11 @@
     fd
     lshw
 
+    wl-clipboard
+
     # System monitoring
     fastfetch
+    onefetch
     btop
     timeshift
     speedtest-cli
