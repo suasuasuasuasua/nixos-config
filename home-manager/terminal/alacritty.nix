@@ -10,7 +10,9 @@ in {
 
     settings = {
       env.TERM = "xterm-256color";
-      window.decorations = "buttonless";
+      window = {
+        decorations = "None";
+      };
       font = {
         size = 10;
         bold = {
