@@ -8,7 +8,6 @@
     ./diffview.nix
     ./dressing.nix
     ./lazygit.nix
-    ./lsp-lines.nix
     ./markdown.nix
     ./neogen.nix
     ./ollama.nix
