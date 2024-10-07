@@ -32,6 +32,9 @@
     ../../modules/general/photo-editor.nix
     ../../modules/general/video-editor.nix
 
+    # Games
+    ../../modules/general/steam.nix
+
     ## Self Hosting
     ../../modules/self-host/syncthing.nix
   ];
