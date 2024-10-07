@@ -19,7 +19,5 @@
     ./ufo.nix
     ./vimtex.nix
     ./webdev.nix
-    ./yazi.nix
-    ./zen-mode.nix
   ];
 }
