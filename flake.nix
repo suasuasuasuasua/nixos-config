@@ -13,6 +13,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Pre-commit
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # TODO:use disko eventually
     # disko = {
     #   url = "github:nix-community/disko";
@@ -82,6 +88,26 @@
     # Formatter for your nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+
+    checks = forAllSystems (system: {
+      pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+        src = ./.;
+        hooks = {
+          alejandra.enable = true;
+          flake-checker.enable = true;
+          deadnix.enable = true;
+        };
+      };
+    });
+
+    devShells = forAllSystems (system: {
+      default =
+        nixpkgs.legacyPackages.${system}.mkShell
+        {
+          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+        };
+    });
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild switch --flake .#your-hostname'
