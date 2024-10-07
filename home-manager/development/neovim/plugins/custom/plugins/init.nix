@@ -9,5 +9,12 @@
       writebackup = false;
       swapfile = false;
     };
+    keymaps = [
+      {
+        mode = "i";
+        key = "jk";
+        action = "<Esc>";
+      }
+    ];
   };
 }
