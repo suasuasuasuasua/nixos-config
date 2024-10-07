@@ -9,22 +9,5 @@
       writebackup = false;
       swapfile = false;
     };
-    keymaps = [
-      {
-        mode = "i";
-        key = "jk";
-        action = "<Esc>";
-      }
-      {
-        mode = "n";
-        key = "<leader>-";
-        action = "<cmd>Yazi<cr>";
-      }
-      {
-        mode = "n";
-        key = "<leader>cw";
-        action = "<cmd>Yazi cwd<cr>";
-      }
-    ];
   };
 }
