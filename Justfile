@@ -1,10 +1,10 @@
 host := `uname -a`
 
 os:
-  nh os switch
+  nh os switch .
 
 home:
-  nh home switch
+  nh home switch .
 
 fmt:
   nix fmt

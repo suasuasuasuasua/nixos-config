@@ -120,8 +120,6 @@
         cssls.enable = true;
         # Tailwind CSS
         tailwindcss.enable = true;
-        # Javascript
-        eslint.enable = true;
 
         # ...etc. See `https://nix-community.github.io/nixvim/plugins/lsp` for a list of pre-configured LSPs
         #
