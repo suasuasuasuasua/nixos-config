@@ -15,11 +15,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    mac-app-util.url = "github:hraban/mac-app-util";
+
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Optional: Declarative tap management
     # TODO:use disko eventually
     # disko = {
     #   url = "github:nix-community/disko";
@@ -56,7 +59,7 @@
     nixpkgs,
     home-manager,
     nix-darwin,
-    # nix-homebrew,
+    nix-homebrew,
     # TODO: uncomment when I get around to using
     # disko,
     ...
@@ -82,7 +85,7 @@
     forAllSystems = nixpkgs.lib.genAttrs systems;
 
     # Define the user
-    name = "justinhoang";
+    name = "justin";
     user = {
       name = "${name}";
       fullName = "Justin Hoang";
@@ -143,10 +146,19 @@
           # > Our main nix darwin configuration file <
           ./hosts/mbp/configuration.nix
 
-          home-manager.darwinModules.home-manager
+          # homebrew
+          # TODO: move this to another file?
+          nix-homebrew.darwinModules.nix-homebrew
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
+            nix-homebrew = {
+              enable = true;
+
+              # Apple Silicon Only
+              enableRosetta = true;
+
+              # User owning the Homebrew prefix
+              user = "${user.name}";
+            };
           }
         ];
       };

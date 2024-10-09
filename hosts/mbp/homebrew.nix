@@ -1,18 +1,36 @@
 {
-  nix-homebrew,
-  user,
-  ...
-}: {
-  nix-homebrew = {
+  homebrew = {
     enable = true;
-    # Apple Silicon Only
-    enableRosetta = true;
-    # User owning the Homebrew prefix
-    user = "${user.name}";
 
-    # Migrate any existing brew configurations
-    autoMigrate = true;
-    # Delete any brew packages that don't belong to nix
+    brews = [
+      "mas"
+
+      "ollama"
+    ];
+    casks = [
+      "firefox"
+      "raycast"
+
+      "element"
+
+      "visual-studio-code"
+      "github"
+      "docker"
+
+      "shottr"
+      "iina"
+      "stats"
+
+      "adguard"
+      "logi-options+"
+      "scroll-reverser"
+    ];
+    masApps = {
+      "XCode" = 497799835;
+      "Vimari" = 1480933944;
+      "Hidden Bar" = 1452453066;
+      "Magnet" = 441258766;
+    };
     onActivation.cleanup = "zap";
   };
 }

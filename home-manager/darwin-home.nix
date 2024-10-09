@@ -1,5 +1,8 @@
-{
+{inputs, ...}: {
   imports = [
+    # Defines all the home manager programs as macos applications
+    inputs.mac-app-util.homeManagerModules.default
+
     ./theme.nix
     ./users.nix
 
@@ -13,7 +16,7 @@
 
     # Development - text editors, ides, etc.
     ./development/neovim/neovim.nix
-    ./development/vscode.nix
+    # ./development/vscode.nix
 
     # General Apps
     ./general/discord.nix

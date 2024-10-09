@@ -11,7 +11,7 @@ in {
     settings = {
       env.TERM = "xterm-256color";
       window = {
-        decorations = "None";
+        # decorations = "None";
         padding = {
           x = 10;
           y = 10;

@@ -32,7 +32,7 @@
 
     plugins.nvim-ufo = {
       enable = true;
-      providerSelector = ''
+      settings.provider_selector = ''
         -- Option 3: treesitter as a main provider instead
         -- (Note: the `nvim-treesitter` plugin is *not* needed.)
         -- ufo uses the same query files for folding (queries/<lang>/folds.scm)

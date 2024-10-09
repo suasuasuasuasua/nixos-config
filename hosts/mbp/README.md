@@ -6,6 +6,7 @@
 
 - Thunderbird
 - Github Desktop
+- Visual Studio Code
 
 ### Other
 

@@ -5,10 +5,12 @@
   # https://devenv.sh/packages/
   packages = with pkgs; [
     git
-    fastfetch
-
     pre-commit
     commitizen
+
+    just
+
+    fastfetch
   ];
 
   # https://devenv.sh/scripts/
