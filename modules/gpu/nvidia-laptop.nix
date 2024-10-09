@@ -1,6 +1,6 @@
 {
   # 1. sudo lshw -c display
-  # 2. Under 'bus info', translate the bus ID hexidecimal to decimal and format:
+  # 2. Under 'bus info', translate the bus ID hexadecimal to decimal and format:
   #    pci@0000:0e:00.0 -> PCI:14:0:0
   #    - Do this step for both the Nvidia/AMD and integrated GPU
   hardware.nvidia.prime = {

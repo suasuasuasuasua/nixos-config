@@ -5,7 +5,8 @@
 ## TODO
 
 - [ ] Figure out the sound issue
-    - https://github.com/WeirdTreeThing/chromebook-linux-audio
-    - Don't think I can fix this one..
+  - [audio script](https://github.com/WeirdTreeThing/chromebook-linux-audio)
+  - Don't think I can fix this one..
+- [ ] Thunderbolt fix??
 - [x] Figure out the keyboard mapping
-    - https://github.com/WeirdTreeThing/cros-keyboard-map
+  - [keyboard script](https://github.com/WeirdTreeThing/cros-keyboard-map)
