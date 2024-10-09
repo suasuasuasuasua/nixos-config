@@ -1,21 +1,22 @@
 {
-  description = "Your new nix config";
+  description = "suasuasuasuasua's nixos and nix-darwin config";
 
   inputs = {
-    # Nixpkgs
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Home manager
     home-manager = {
-      # url = "github:nix-community/home-manager/release-24.05";
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Pre-commit
-    pre-commit-hooks = {
-      url = "github:cachix/git-hooks.nix";
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -54,6 +55,8 @@
     self,
     nixpkgs,
     home-manager,
+    # nix-darwin,
+    # nix-homebrew,
     # TODO: uncomment when I get around to using
     # disko,
     ...
@@ -66,7 +69,13 @@
       "i686-linux"
       "x86_64-linux"
     ];
-    systems = nixosSystems;
+
+    darwinSystems = [
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
+
+    systems = nixosSystems ++ darwinSystems;
 
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
@@ -82,32 +91,11 @@
       browser = "firefox";
       editor = "nvim";
       terminal = "alacritty";
-      system = "x86_64-linux";
     };
   in {
     # Formatter for your nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-
-    checks = forAllSystems (system: {
-      pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-        src = ./.;
-        hooks = {
-          alejandra.enable = true;
-          flake-checker.enable = true;
-          deadnix.enable = true;
-        };
-      };
-    });
-
-    devShells = forAllSystems (system: {
-      default =
-        nixpkgs.legacyPackages.${system}.mkShell
-        {
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
-          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
-        };
-    });
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild switch --flake .#your-hostname'
@@ -118,10 +106,11 @@
       "dell" = nixpkgs.lib.nixosSystem {
         specialArgs = {
           hostname = "dell";
+          system = "x86_64-linux";
           inherit inputs outputs user;
         };
-        # > Our main nixos configuration file <
         modules = [
+          # > Our main nixos configuration file <
           ./hosts/dell/configuration.nix
         ];
       };
@@ -129,14 +118,31 @@
       "penguin" = nixpkgs.lib.nixosSystem {
         specialArgs = {
           hostname = "penguin";
+          system = "x86_64-linux";
           inherit inputs outputs user;
         };
-        # > Our main nixos configuration file <
         modules = [
+          # > Our main nixos configuration file <
           ./hosts/penguin/configuration.nix
         ];
       };
       # ...
+    };
+
+    # Build darwin flake using:
+    # $ darwin-rebuild build --flake .
+    darwinConfigurations = {
+      "mbp" = nix-darwin.lib.darwinSystem {
+        specialArgs = {
+          hostname = "mbp";
+          system = "aarch64-darin";
+          inherit inputs outputs user;
+        };
+        modules = [
+          # > Our main nix darwin configuration file <
+          ./hosts/mbp/configuration.nix
+        ];
+      };
     };
 
     # Standalone home-manager configuration entrypoint
