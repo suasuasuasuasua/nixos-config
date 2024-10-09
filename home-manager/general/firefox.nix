@@ -1,12 +1,13 @@
 {
   inputs,
   user,
+  system,
   ...
 }: {
   programs.firefox = {
     enable = true;
     profiles.${user.name} = {
-      extensions = with inputs.firefox-addons.packages.${user.system}; [
+      extensions = with inputs.firefox-addons.packages.${system}; [
         vimium
         ublock-origin
         # adguard  # when is this coming out?

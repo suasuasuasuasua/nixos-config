@@ -33,7 +33,7 @@ in {
         };
         normal = {
           family = font;
-          style = "Normal";
+          style = "Regular";
         };
       };
     };

@@ -46,11 +46,23 @@
       };
   };
 
+  imports = [
+    inputs.catppuccin.homeManagerModules.catppuccin
+  ];
   gtk = {
     enable = true;
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
+    catppuccin = {
+      accent = "${accent}";
+      flavor = "${flavor}";
+      icon = {
+        enable = true;
+        accent = "${accent}";
+        flavor = "${flavor}";
+      };
     };
+  };
+  catppuccin.pointerCursor = {
+    enable = true;
+    accent = "${accent}";
   };
 }

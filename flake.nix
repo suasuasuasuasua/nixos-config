@@ -10,8 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-darwin = {
-      url = "github:LnL7/nix-darwin";
+    darwin = {
+      url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -55,7 +55,7 @@
     self,
     nixpkgs,
     home-manager,
-    # nix-darwin,
+    nix-darwin,
     # nix-homebrew,
     # TODO: uncomment when I get around to using
     # disko,
@@ -82,11 +82,11 @@
     forAllSystems = nixpkgs.lib.genAttrs systems;
 
     # Define the user
-    name = "justin";
+    name = "justinhoang";
     user = {
       name = "${name}";
       fullName = "Justin Hoang";
-      home = "/home/${name}";
+      home = "/Users/${name}";
       email = "j124.dev@proton.me";
       browser = "firefox";
       editor = "nvim";
@@ -132,15 +132,22 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .
     darwinConfigurations = {
+      # Macbook M3 Max
       "mbp" = nix-darwin.lib.darwinSystem {
         specialArgs = {
           hostname = "mbp";
-          system = "aarch64-darin";
+          system = "aarch64-darwin";
           inherit inputs outputs user;
         };
         modules = [
           # > Our main nix darwin configuration file <
           ./hosts/mbp/configuration.nix
+
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }
         ];
       };
     };
@@ -149,14 +156,27 @@
     # Available through 'home-manager switch --flake .#your-username@your-hostname'
     homeConfigurations = {
       # Define the users
-      "${user.name}" = home-manager.lib.homeManagerConfiguration {
+      "nixos" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {
+          system = "x86_64-linux";
           inherit inputs outputs user;
         };
         # > Our main home-manager configuration file <
         modules = [
-          ./home-manager/home.nix
+          ./home-manager/nixos-home.nix
+        ];
+      };
+
+      "darwin" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {
+          system = "aarch64-darwin";
+          inherit inputs outputs user;
+        };
+        # > Our main home-manager configuration file <
+        modules = [
+          ./home-manager/darwin-home.nix
         ];
       };
 
