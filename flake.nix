@@ -82,11 +82,11 @@
     forAllSystems = nixpkgs.lib.genAttrs systems;
 
     # Define the user
-    name = "justinhoang";
+    name = "justin";
     user = {
       name = "${name}";
       fullName = "Justin Hoang";
-      home = "/Users/${name}";
+      home = "/home/${name}";
       email = "j124.dev@proton.me";
       browser = "firefox";
       editor = "nvim";

@@ -74,8 +74,8 @@
         bashls.enable = true;
         # Docker and Docker Compose
         dockerls.enable = true;
-        docker-compose-language-service.enable = true;
-        nginx-language-server.enable = true;
+        docker_compose_language_service.enable = true;
+        nginx_language_server.enable = true;
         sqls.enable = true;
 
         ## General
@@ -85,15 +85,15 @@
         gopls.enable = true;
         # Python
         ruff.enable = true;
-        ruff-lsp.enable = true;
+        ruff_lsp.enable = true;
         # Rust
-        rust-analyzer = {
+        rust_analyzer = {
           enable = true;
           installCargo = false;
           installRustc = false;
         };
         # Nix
-        nil-ls.enable = true;
+        nil_ls.enable = true;
 
         ## Markup
         # Markdown
@@ -111,7 +111,7 @@
         # LaTeX
         texlab.enable = true;
         # Typst
-        typst-lsp.enable = true;
+        typst_lsp.enable = true;
 
         ## Web development
         # HTML
@@ -132,7 +132,7 @@
         #}
 
         # Lua
-        lua-ls = {
+        lua_ls = {
           enable = true;
 
           # cmd = {
@@ -183,7 +183,7 @@
             };
           }
           # Jump to the implementation of the word under your cursor.
-          #  Useful when your language has ways of declaring types without an actual implementation.
+          #  _seful when your language has ways of declaring types without an actual implementation.
           {
             mode = "n";
             key = "gI";

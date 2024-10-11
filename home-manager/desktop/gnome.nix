@@ -45,24 +45,4 @@
         };
       };
   };
-
-  imports = [
-    inputs.catppuccin.homeManagerModules.catppuccin
-  ];
-  gtk = {
-    enable = true;
-    catppuccin = {
-      accent = "${accent}";
-      flavor = "${flavor}";
-      icon = {
-        enable = true;
-        accent = "${accent}";
-        flavor = "${flavor}";
-      };
-    };
-  };
-  catppuccin.pointerCursor = {
-    enable = true;
-    accent = "${accent}";
-  };
 }
