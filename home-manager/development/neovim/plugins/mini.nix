@@ -41,10 +41,14 @@
     # default behavior. For example, here we set the section for
     # cursor location to LINE:COLUMN
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraconfiglu#extraconfiglua
-    extraConfigLua = ''
-      require('mini.statusline').section_location = function()
-        return '%2l:%-2v'
-      end
-    '';
+    extraConfigLua =
+      /*
+      lua
+      */
+      ''
+        require('mini.statusline').section_location = function()
+          return '%2l:%-2v'
+        end
+      '';
   };
 }

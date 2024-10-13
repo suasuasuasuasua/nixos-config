@@ -12,12 +12,20 @@
   ];
 
   # https://devenv.sh/scripts/
-  scripts.hello.exec = ''
-    echo hello from $GREET
-  '';
+  scripts.hello.exec =
+    /*
+    bash
+    */
+    ''
+      echo hello from $GREET
+    '';
 
-  enterShell = ''
-  '';
+  enterShell =
+    /*
+    bash
+    */
+    ''
+    '';
 
   # https://devenv.sh/pre-commit-hooks/
   pre-commit.hooks = {

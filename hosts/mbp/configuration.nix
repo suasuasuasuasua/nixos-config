@@ -38,9 +38,13 @@
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  nix.extraOptions = ''
-    trusted-users = root ${user.name}
-  '';
+  nix.extraOptions =
+    /*
+    nix
+    */
+    ''
+      trusted-users = root ${user.name}
+    '';
 
   fonts.packages = [
     (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})

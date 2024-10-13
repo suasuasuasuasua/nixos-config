@@ -26,11 +26,15 @@
       # Create autocommand which carries out the actual linting
       # on the specified events.
       autoCmd = {
-        callback.__raw = ''
-          function()
-            require('lint').try_lint()
-          end
-        '';
+        callback.__raw =
+          /*
+          lua
+          */
+          ''
+            function()
+              require('lint').try_lint()
+            end
+          '';
         group = "lint";
         event = [
           "BufEnter"

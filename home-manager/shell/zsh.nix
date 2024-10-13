@@ -18,9 +18,13 @@
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-    initExtra = ''
-      export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-    '';
+    initExtra =
+      /*
+      bash
+      */
+      ''
+        export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+      '';
     oh-my-zsh = {
       enable = true;
       plugins = [

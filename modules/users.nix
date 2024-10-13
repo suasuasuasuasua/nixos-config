@@ -7,9 +7,13 @@
   # but cannot set the login shell because that's root level operation
   programs.zsh.enable = true;
 
-  nix.extraOptions = ''
-    trusted-users = root ${user.name}
-  '';
+  nix.extraOptions =
+    /*
+    gix
+    */
+    ''
+      trusted-users = root ${user.name}
+    '';
 
   users.users = {
     ${user.name} = {

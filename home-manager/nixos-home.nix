@@ -16,6 +16,7 @@
     ./cli/direnv.nix
     ./cli/fzf.nix
     ./cli/git.nix
+    ./cli/gnupg.nix
     ./cli/tmux.nix
 
     # Development - text editors, ides, etc.

@@ -6,11 +6,15 @@
       keyd
     ];
     etc = {
-      "libinput/local-overrides.quirks".text = ''
-        [keyd virtual keyboard]
-        MatchName=keyd virtual keyboard
-        AttrKeyboardIntegration=internal
-      '';
+      "libinput/local-overrides.quirks".text =
+        /*
+        bash
+        */
+        ''
+          [keyd virtual keyboard]
+          MatchName=keyd virtual keyboard
+          AttrKeyboardIntegration=internal
+        '';
     };
   };
   services.keyd = {
