@@ -12,20 +12,16 @@
       settings = {
         workspaces = [
           {
-            name = "personal";
+            name = "general";
             path = "~/Documents/vaults/personal";
           }
-          {
-            name = "research";
-            path = "~/Documents/vaults/research";
-          }
         ];
-        notes_subdir = "notes";
+        notes_subdir = "01-fleeting";
 
         # see below for full list of options 👇
         daily_notes = {
           # Optional, if you keep daily notes in a separate directory.
-          folder = "dailies";
+          folder = "00-dailies";
           # Optional, if you want to change the date format for the ID of daily notes.
           date_format = "%Y-%m-%d";
           # Optional, if you want to change the date format of the default alias of daily notes.
@@ -45,6 +41,33 @@
 
         # Disable all the mappings
         mappings = {};
+
+        # Where to put new notes. Valid options are
+        # * "current_dir" - put new notes in same directory as the current
+        # buffer.
+        # * "notes_subdir" - put new notes in the default notes subdirectory.
+        new_notes_location = "notes_subdir";
+
+        note_id_func =
+          /*
+          lua
+          */
+          ''
+            function(title)
+              local suffix = ""
+              if title ~= nil then
+                -- If title is given, transform it into valid file name.
+                suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+              else
+                -- If title is nil, just add 4 random uppercase letters to the suffix.
+                for _ = 1, 4 do
+                  suffix = suffix .. string.char(math.random(65, 90))
+                end
+              end
+
+              return tostring(os.date "%Y-%m-%dT%H-%M-%S") .. "_" .. suffix
+             end
+          '';
 
         # Disable the UI rendering for obsidian
         ui.enable = false;

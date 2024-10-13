@@ -23,6 +23,9 @@
           "vimdoc"
         ];
 
+        # Highlight code snippets in nix
+        nixvimInjections = true;
+
         highlight = {
           enable = true;
 
