@@ -3,11 +3,6 @@ let
 in {
   programs.alacritty = {
     enable = true;
-    catppuccin = {
-      enable = true;
-      flavor = "mocha";
-    };
-
     settings = {
       env.TERM = "xterm-256color";
       window = {

@@ -1,6 +1,9 @@
+# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
+  # You can import other home-manager modules here
   imports = [
-    ./theme.nix
+    # If you want to use modules your own flake exports (from modules/home-manager):
+    # outputs.homeManagerModules.example
     ./users.nix
 
     # CLI apps
@@ -9,21 +12,15 @@
     ./cli/direnv.nix
     ./cli/fzf.nix
     ./cli/git.nix
+    ./cli/gnupg.nix
     ./cli/tmux.nix
 
     # Development - text editors, ides, etc.
     ./development/neovim/neovim.nix
-    ./development/vscode.nix
-
-    # General Apps
-    ./general/discord.nix
-    ./general/spotify.nix
+    ./development/neovim/plugins/custom/plugins/webdev.nix
 
     # Shell
     ./shell/zsh.nix
-
-    # Terminal
-    ./terminal/alacritty.nix
   ];
 
   programs.home-manager.enable = true;

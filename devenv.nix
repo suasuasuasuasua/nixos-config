@@ -1,31 +1,18 @@
 {pkgs, ...}: {
-  # https://devenv.sh/basics/
-  env.GREET = "devenv";
-
   # https://devenv.sh/packages/
   packages = with pkgs; [
     git
-    fastfetch
-
     pre-commit
     commitizen
+
+    just
+
+    markdownlint-cli
+    nixfmt-rfc-style
+
+    fastfetch
+    onefetch
   ];
-
-  # https://devenv.sh/scripts/
-  scripts.hello.exec =
-    /*
-    bash
-    */
-    ''
-      echo hello from $GREET
-    '';
-
-  enterShell =
-    /*
-    bash
-    */
-    ''
-    '';
 
   # https://devenv.sh/pre-commit-hooks/
   pre-commit.hooks = {

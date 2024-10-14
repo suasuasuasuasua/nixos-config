@@ -10,16 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # TODO:use disko eventually
     # disko = {
     #   url = "github:nix-community/disko";
@@ -55,8 +45,6 @@
     self,
     nixpkgs,
     home-manager,
-    nix-darwin,
-    # nix-homebrew,
     # TODO: uncomment when I get around to using
     # disko,
     ...
@@ -129,29 +117,6 @@
       # ...
     };
 
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .
-    darwinConfigurations = {
-      # Macbook M3 Max
-      "mbp" = nix-darwin.lib.darwinSystem {
-        specialArgs = {
-          hostname = "mbp";
-          system = "aarch64-darwin";
-          inherit inputs outputs user;
-        };
-        modules = [
-          # > Our main nix darwin configuration file <
-          ./hosts/mbp/configuration.nix
-
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-          }
-        ];
-      };
-    };
-
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager switch --flake .#your-username@your-hostname'
     homeConfigurations = {
@@ -164,7 +129,19 @@
         };
         # > Our main home-manager configuration file <
         modules = [
-          ./home-manager/nixos-home.nix
+          ./home-manager/home-nixos.nix
+        ];
+      };
+
+      "wsl" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {
+          system = "x86_64-linux";
+          inherit inputs outputs user;
+        };
+        # > Our main home-manager configuration file <
+        modules = [
+          ./home-manager/home-wsl.nix
         ];
       };
 
@@ -176,7 +153,7 @@
         };
         # > Our main home-manager configuration file <
         modules = [
-          ./home-manager/darwin-home.nix
+          ./home-manager/home-darwin.nix
         ];
       };
 

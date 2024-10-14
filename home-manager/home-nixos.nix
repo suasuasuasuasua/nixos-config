@@ -21,6 +21,8 @@
 
     # Development - text editors, ides, etc.
     ./development/neovim/neovim.nix
+    ./development/neovim/plugins/custom/plugins/webdev.nix
+
     ./development/github-desktop.nix
     ./development/vscode.nix
 
