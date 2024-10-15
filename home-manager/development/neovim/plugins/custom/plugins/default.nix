@@ -10,6 +10,7 @@
     ./lazygit.nix
     ./markdown.nix
     ./neogen.nix
+    ./noice.nix
     ./repeat.nix
     ./startify.nix
     ./surround.nix
