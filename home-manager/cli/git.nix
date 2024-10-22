@@ -20,6 +20,19 @@
     };
   };
 
+  programs.gh = {
+    enable = true;
+
+    settings = {
+      editor = "nvim";
+    };
+  };
+
+  # dashboard extension for gh cli
+  programs.gh-dash = {
+    enable = true;
+  };
+
   programs.lazygit = {
     enable = true;
     settings = {
