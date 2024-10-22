@@ -29,8 +29,8 @@
     # Design
     ../../modules/general/figma.nix
     ../../modules/general/obs.nix
-    ../../modules/general/photo-editor.nix
-    ../../modules/general/video-editor.nix
+    ../../modules/general/gimp.nix
+    ../../modules/general/shotcut.nix
 
     # Games
     ../../modules/general/steam.nix
