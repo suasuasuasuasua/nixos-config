@@ -7,7 +7,10 @@
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-browser-integration
-    konsole
-    oxygen
+    elisa # music
+    oxygen # app style
+    kate # text editor
+    kwrited # text editor
+    kdevelop # text editor / ide
   ];
 }
