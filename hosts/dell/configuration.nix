@@ -17,10 +17,6 @@
     # Import the default tools languages
     ../../modules/development
 
-    # And some more specialized ones..
-    ../../modules/development/languages/rust.nix
-    ../../modules/development/languages/typst.nix
-
     ## General Apps
     ../../modules/general/matrix.nix
     ../../modules/general/obsidian.nix
