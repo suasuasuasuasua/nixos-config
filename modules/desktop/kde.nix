@@ -10,7 +10,9 @@
     filelight # disk usage
     krita # photo editing
     kdenlive # video editing
-    catppuccin-kde # theme
+    haruna # video player
+    amarok # music player
+    catppuccin-kde # global theme
   ];
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
