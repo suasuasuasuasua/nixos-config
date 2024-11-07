@@ -29,6 +29,7 @@
     # General Apps
     ./general/discord.nix
     ./general/firefox.nix
+    ./general/obs.nix
     ./general/spotify.nix
     ./general/thunderbird.nix
 
