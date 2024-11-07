@@ -24,7 +24,6 @@
 
     # Design
     ../../modules/general/figma.nix
-    ../../modules/general/obs.nix
     ../../modules/general/gimp.nix
     ../../modules/general/shotcut.nix
 
