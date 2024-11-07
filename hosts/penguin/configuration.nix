@@ -16,7 +16,7 @@
     # Change below!
 
     ## Desktop environment
-    ../../modules/desktop/gnome.nix
+    ../../modules/desktop/kde.nix
 
     ## Development Tools
     # Import the default tools languages
