@@ -4,6 +4,7 @@
     git
     gibo
 
+    # Files
     zip
     unzip
     wget
@@ -15,6 +16,10 @@
     lshw
     just
 
+    # Add markdown linter for neovim
+    markdownlint-cli
+
+    # Allow copy and paste in apps like neovim
     wl-clipboard
 
     # System monitoring
