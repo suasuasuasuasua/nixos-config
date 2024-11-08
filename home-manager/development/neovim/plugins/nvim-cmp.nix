@@ -5,7 +5,7 @@
     # Snippet Engine & its associated nvim-cmp source
     # https://nix-community.github.io/nixvim/plugins/luasnip/index.html
     plugins.luasnip = {
-      enable = false; # don't really use this...
+      enable = true;
     };
 
     # https://nix-community.github.io/nixvim/plugins/cmp-nvim-lsp.html
