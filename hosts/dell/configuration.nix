@@ -18,9 +18,9 @@
     ../../modules/development
 
     ## General Apps
+    ../../modules/general/proton/mail.nix
     ../../modules/general/matrix.nix
     ../../modules/general/obsidian.nix
-    ../../modules/general/proton/mail.nix
 
     # Design
     ../../modules/general/figma.nix

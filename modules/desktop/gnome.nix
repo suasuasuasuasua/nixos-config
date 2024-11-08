@@ -13,11 +13,6 @@
 
   programs.dconf.enable = true;
 
-  imports = [
-    ../general/shotcut.nix # video editor
-    ../general/gimp.nix # photo editor
-  ];
-
   # Add these gnome packages
   environment.systemPackages =
     (with pkgs; [
@@ -28,6 +23,11 @@
       file-roller # archive manager
       nautilus # file browser
       dialect # translator
+      shotcut # video editor
+      gimp # photo editor
+      libreoffice-qt # office suite
+      hunspell # spell check (for office suite)
+      hunspellDicts.en_US
       gnome-calendar
       gnome-disk-utility
       gnome-boxes
