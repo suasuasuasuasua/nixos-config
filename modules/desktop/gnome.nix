@@ -13,6 +13,11 @@
 
   programs.dconf.enable = true;
 
+  imports = [
+    ../general/shotcut.nix # video editor
+    ../general/gimp.nix # photo editor
+  ];
+
   # Add these gnome packages
   environment.systemPackages =
     (with pkgs; [

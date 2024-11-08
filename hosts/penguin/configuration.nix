@@ -29,8 +29,6 @@
 
     # Design
     ../../modules/general/figma.nix
-    ../../modules/general/gimp.nix
-    ../../modules/general/shotcut.nix
 
     ## Self Hosting
     ../../modules/self-host/syncthing.nix
