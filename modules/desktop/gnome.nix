@@ -30,6 +30,7 @@
       hunspellDicts.en_US
       gnome-calendar
       gnome-disk-utility
+      lollypop
       gnome-boxes
       gnome-tweaks
     ])
