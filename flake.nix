@@ -114,6 +114,18 @@
           ./hosts/penguin/configuration.nix
         ];
       };
+      # MSI Raider GE75 Gaming Laptop
+      "msi" = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          hostname = "msi";
+          system = "x86_64-linux";
+          inherit inputs outputs user;
+        };
+        modules = [
+          # > Our main nixos configuration file <
+          ./hosts/msi/configuration.nix
+        ];
+      };
       # ...
     };
 
