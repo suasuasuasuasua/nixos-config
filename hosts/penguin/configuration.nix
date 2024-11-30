@@ -26,6 +26,7 @@
     ../../modules/general/proton/mail.nix
     ../../modules/general/matrix.nix
     ../../modules/general/obsidian.nix
+    ../../modules/general/steam.nix
 
     # Design
     ../../modules/general/figma.nix
