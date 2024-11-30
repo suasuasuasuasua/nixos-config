@@ -46,7 +46,7 @@
       trusted-users = root ${user.name}
     '';
 
-  fonts.packages = [
-    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
   ];
 }

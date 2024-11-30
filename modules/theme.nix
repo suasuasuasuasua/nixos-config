@@ -10,9 +10,7 @@ in {
     inputs.catppuccin.nixosModules.catppuccin
   ];
   fonts.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = ["JetBrainsMono"];
-    })
+    nerd-fonts.jetbrains-mono
   ];
 
   catppuccin = {
