@@ -5,10 +5,7 @@
     # Add any plugins for OBS studio
     plugins = with pkgs.obs-studio-plugins; [
     ];
-  };
 
-  # Add the CLI interface as well
-  home.packages = with pkgs; [
-    obs-cli
-  ];
+    # TODO: many options for OBS
+  };
 }

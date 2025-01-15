@@ -17,6 +17,8 @@ in
     (self + /modules/nixos/development)
 
     # # GUI Apps
+    (self + /modules/nixos/gui)
+    (self + /modules/nixos/gui/obs.nix)
     # Notes
     (self + /modules/nixos/gui/obsidian.nix)
     # Chat
