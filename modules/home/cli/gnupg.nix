@@ -3,12 +3,11 @@
   programs.gpg.enable = true;
 
   home.packages = (
-    [ pkgs.pinentry-curses ] ++
-    (if pkgs.stdenv.isDarwin then [
+    if pkgs.stdenv.isDarwin then [
       pkgs.pinentry_mac
     ] else [
       pkgs.pinentry-gnome3
-    ])
+    ]
   );
 
   services.gpg-agent = {

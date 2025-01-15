@@ -1,14 +1,14 @@
-{ inputs
+{ flake
 , pkgs
 , ...
 }: {
   imports = [
-    inputs.spicetify-nix.homeManagerModules.default
+    flake.inputs.spicetify-nix.homeManagerModules.default
   ];
 
   programs.spicetify =
     let
-      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+      spicePkgs = flake.inputs.spicetify-nix.legacyPackages.${pkgs.system};
     in
     {
       enable = true;

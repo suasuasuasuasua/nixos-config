@@ -7,7 +7,7 @@
 
   # Add these kde packages
   environment.systemPackages =
-    (with pkgs; [
+    with pkgs; [
       filelight # disk usage
       kate # text editor
       krita # photo editing
@@ -16,10 +16,10 @@
       elisa # music player
       kalendar # calendar
       catppuccin-kde # global theme
-    ])
-    ++ (with pkgs.kdePackages; [
-      calligra # office suite
-    ]);
+      libreoffice-qt # office suite -- calligra wasn't working
+      hunspell # spell check
+      hunspellDicts.en_US # US english package
+    ];
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-browser-integration

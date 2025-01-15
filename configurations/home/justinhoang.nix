@@ -6,10 +6,6 @@ in
 {
   imports = [
     self.homeModules.default
-
-    # CLI and development tools
-    (self + /modules/home/cli)
-    (self + /modules/home/development)
   ];
 
   # Allow unfree packages like VSCode
