@@ -8,6 +8,7 @@
     zip
     unzip
     wget
+    comma
     curl
 
     tree-sitter
