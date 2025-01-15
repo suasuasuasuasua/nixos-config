@@ -2,7 +2,7 @@
 
 The `modules` directory is organized in the following way.
 
-```
+```text
 ❯ tree modules/
 modules/
 ├── flake-parts

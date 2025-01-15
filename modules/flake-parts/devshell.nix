@@ -3,7 +3,7 @@
   imports = [
     (inputs.git-hooks + /flake-module.nix)
   ];
-  perSystem = { pkgs, ... }: {
+  perSystem = { pkgs, config, ... }: {
     devShells.default = pkgs.mkShell {
       name = "nixos-unified-template-shell";
       meta.description = "Shell environment for modifying this Nix configuration";
@@ -18,6 +18,10 @@
         markdownlint-cli
         nixfmt-rfc-style
       ];
+      # Make sure to install the pre-commit hooks!
+      shellHook = /* bash */ ''
+        ${config.pre-commit.installationScript}
+      '';
     };
 
     pre-commit.settings = {
@@ -32,7 +36,6 @@
         ripsecrets.enable = true;
 
         # Docs
-        typos.enable = true;
         markdownlint.enable = true;
 
         # General

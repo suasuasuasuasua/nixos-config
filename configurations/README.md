@@ -2,7 +2,7 @@
 
 The `configurations` directory is organized in the following way.
 
-```
+```text
 ❯ tree configurations/
 configurations/
 ├── home

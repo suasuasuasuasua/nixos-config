@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   # Need to enable zsh before we can actually use it. Home manager configs it,
   # but cannot set the login shell because that's root level operation
@@ -49,4 +49,3 @@
   system.stateVersion = "24.11"; # Did you read the comment?
 
 }
-

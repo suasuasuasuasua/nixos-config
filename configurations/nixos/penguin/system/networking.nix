@@ -1,4 +1,4 @@
-{ hostname, ... }: {
+{
   # Define the hostname
   networking.hostName = "penguin";
   networking.hostId = "cdde5200";
