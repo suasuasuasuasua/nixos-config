@@ -1,9 +1,12 @@
 { flake, ... }:
+let
+  inherit (flake) inputs;
+in
 {
   imports = [
     # NOTE: The nix-index DB is slow to search, until
     # https://github.com/nix-community/nix-index-database/issues/130
-    flake.inputs.nix-index-database.hmModules.nix-index
+    inputs.nix-index-database.hmModules.nix-index
   ];
 
   # command-not-found handler to suggest nix way of installing stuff.

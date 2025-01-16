@@ -9,6 +9,7 @@ in
 {
   imports = ([
     ./hardware-configuration.nix
+    ./disko.nix
 
     # Desktop environment
     (self + /modules/nixos/desktop)

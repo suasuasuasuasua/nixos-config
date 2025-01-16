@@ -1,12 +1,18 @@
+{ flake, ... }:
+let
+  inherit (flake) inputs;
+in
 {
+  imports = [
+    inputs.disko.nixosModules.disko
+  ];
+
   disko.devices = {
     disk = {
       # Only 1 PCIE Gen 4 NVME SSD on this device (256GB for now...)
-      # TODO: replace with a better name?
       disk1 = {
         type = "disk";
-        # TODO: replace with the actual id for determinism (/dev/disk/by-id/<disk-id>)
-        device = "/dev/sdx";
+        device = "/dev/disk/by-id/nvme-HFM256GD3JX016N_CY11N099310901V5O_1";
         content = {
           type = "gpt";
           partitions = {
@@ -20,15 +26,15 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
-            # Swap partition
-            plainSwap = {
-              size = "8192M"; # 8.0GiB swap partition
-              content = {
-                type = "swap";
-                discardPolicy = "both";
-                resumeDevice = true; # resume from hiberation from this device
-              };
-            };
+            # # Swap partition
+            # plainSwap = {
+            #   size = "8192M"; # 8.0GiB swap partition
+            #   content = {
+            #     type = "swap";
+            #     discardPolicy = "both";
+            #     resumeDevice = true; # resume from hiberation from this device
+            #   };
+            # };
             # Format the rest of the disk for root
             zfs = {
               size = "100%";
@@ -56,24 +62,24 @@
           compression = "zstd";
           "com.sun:auto-snapshot" = "false";
         };
-        # # TODO: do i need to mount the pool itself?
-        # mountpoint = "/";
+        # TODO: do i need to mount the pool itself?
+        mountpoint = "/";
         postCreateHook = "zfs list -t snapshot -H -o name | grep -E '^zroot@blank$' || zfs snapshot zroot@blank";
 
         datasets = {
           # See examples/zfs.nix for more comprehensive usage.
-          "zpool/root" = {
+          "root" = {
             # TODO: there are two types: zfs_fs (file system) and zfs_volume (block device)
             type = "zfs_fs";
             mountpoint = "/";
             options.mountpoint = "legacy";
           };
-          "zpool/nix" = {
+          "nix" = {
             type = "zfs_fs";
             mountpoint = "/nix";
             options.mountpoint = "legacy";
           };
-          "zpool/var" = {
+          "var" = {
             type = "zfs_fs";
             mountpoint = "/var";
             options.mountpoint = "legacy";
@@ -81,7 +87,7 @@
             # Snapshot the user home!
             options."com.sun:auto-snapshot" = "true";
           };
-          "zpool/home" = {
+          "home" = {
             type = "zfs_fs";
             mountpoint = "/home";
             options.mountpoint = "legacy";
