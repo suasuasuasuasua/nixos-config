@@ -83,9 +83,6 @@
             type = "zfs_fs";
             mountpoint = "/var";
             options.mountpoint = "legacy";
-
-            # Snapshot the user home!
-            options."com.sun:auto-snapshot" = "true";
           };
           "home" = {
             type = "zfs_fs";
