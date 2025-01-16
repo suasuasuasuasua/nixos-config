@@ -1,10 +1,4 @@
-{ flake, ... }:
-let
-  inherit (flake) inputs;
-in
 {
-  imports = [ inputs.disko.nixosModules.disko ];
-
   disko.devices = {
     disk = {
       # Only 1 PCIE Gen 4 NVME SSD on this device (256GB for now...)
@@ -65,20 +59,15 @@ in
           # See examples/zfs.nix for more comprehensive usage.
           "root" = {
             type = "zfs_fs";
-            options.canmount = "off";
-          };
-
-          "root/root" = {
-            type = "zfs_fs";
             mountpoint = "/";
             options.mountpoint = "legacy";
           };
-          "root/nix" = {
+          "nix" = {
             type = "zfs_fs";
             mountpoint = "/nix";
             options.mountpoint = "legacy";
           };
-          "root/var" = {
+          "var" = {
             type = "zfs_fs";
             mountpoint = "/var";
             options.mountpoint = "legacy";
@@ -86,7 +75,7 @@ in
             # Snapshot the user home!
             options."com.sun:auto-snapshot" = "true";
           };
-          "root/home" = {
+          "home" = {
             type = "zfs_fs";
             mountpoint = "/home";
             options.mountpoint = "legacy";

@@ -8,6 +8,7 @@ let
 in
 {
   imports = ([
+    inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
     ./disko.nix
 
