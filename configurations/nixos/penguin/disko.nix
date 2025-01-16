@@ -32,10 +32,18 @@
             };
             # Format the rest of the disk for root
             zfs = {
-              size = "100%";
+              size = "-16G"; # Use everything *except* for the end
               content = {
                 type = "zfs";
                 pool = "zroot";
+              };
+            };
+            swap = {
+              size = "100%"; # Use 16GB of swap for 8GB memory machine
+              content = {
+                type = "swap";
+                discardPolicy = "both";
+                resumeDevice = true; # resume from hiberation from this device
               };
             };
           };
