@@ -3,12 +3,11 @@
 , ...
 }:
 let
-  flavor = "mocha";
-  accent = "lavender";
+  inherit (flake) inputs;
 in
 {
   imports = [
-    flake.inputs.catppuccin.nixosModules.catppuccin
+    inputs.catppuccin.nixosModules.catppuccin
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
@@ -16,7 +15,7 @@ in
 
   catppuccin = {
     enable = true;
-    accent = "${accent}";
-    flavor = "${flavor}";
+    flavor = "mocha";
+    accent = "lavender";
   };
 }

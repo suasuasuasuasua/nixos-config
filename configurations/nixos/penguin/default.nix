@@ -8,7 +8,9 @@ let
 in
 {
   imports = ([
+    inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
+    ./disko.nix
 
     # Desktop environment
     (self + /modules/nixos/desktop)
