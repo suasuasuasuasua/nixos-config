@@ -3,16 +3,14 @@ let
   inherit (flake) inputs;
 in
 {
-  imports = [
-    inputs.disko.nixosModules.disko
-  ];
+  imports = [ inputs.disko.nixosModules.disko ];
 
   disko.devices = {
     disk = {
       # Only 1 PCIE Gen 4 NVME SSD on this device (256GB for now...)
-      disk1 = {
+      main = {
         type = "disk";
-        device = "/dev/disk/by-id/nvme-HFM256GD3JX016N_CY11N099310901V5O_1";
+        device = "/dev/disk/by-id/nvme-HFM256GD3JX016N_CY11N099310901V5O";
         content = {
           type = "gpt";
           partitions = {
@@ -26,15 +24,6 @@ in
                 mountOptions = [ "umask=0077" ];
               };
             };
-            # # Swap partition
-            # plainSwap = {
-            #   size = "8192M"; # 8.0GiB swap partition
-            #   content = {
-            #     type = "swap";
-            #     discardPolicy = "both";
-            #     resumeDevice = true; # resume from hiberation from this device
-            #   };
-            # };
             # Format the rest of the disk for root
             zfs = {
               size = "100%";
@@ -53,33 +42,43 @@ in
       # Pool name is `zroot`
       zroot = {
         type = "zpool";
-        # TODO: do i need to define the topology here? or just leave empty?
-        # According to (https://github.com/nix-community/disko/blob/master/lib/types/zpool.nix),
-        # I can leave this empty?
-        mode = "";
 
         rootFsOptions = {
+          encryption = "aes-256-gcm";
+          keyformat = "passphrase";
+          keylocation = "prompt";
+
           compression = "zstd";
+          canmount = "off";
+          xattr = "sa";
+          acltype = "posixacl";
+
           "com.sun:auto-snapshot" = "false";
         };
-        # TODO: do i need to mount the pool itself?
-        mountpoint = "/";
-        postCreateHook = "zfs list -t snapshot -H -o name | grep -E '^zroot@blank$' || zfs snapshot zroot@blank";
+
+        options = {
+          ashift = "12";
+          autotrim = "on";
+        };
 
         datasets = {
           # See examples/zfs.nix for more comprehensive usage.
           "root" = {
-            # TODO: there are two types: zfs_fs (file system) and zfs_volume (block device)
+            type = "zfs_fs";
+            options.canmount = "off";
+          };
+
+          "root/root" = {
             type = "zfs_fs";
             mountpoint = "/";
             options.mountpoint = "legacy";
           };
-          "nix" = {
+          "root/nix" = {
             type = "zfs_fs";
             mountpoint = "/nix";
             options.mountpoint = "legacy";
           };
-          "var" = {
+          "root/var" = {
             type = "zfs_fs";
             mountpoint = "/var";
             options.mountpoint = "legacy";
@@ -87,7 +86,7 @@ in
             # Snapshot the user home!
             options."com.sun:auto-snapshot" = "true";
           };
-          "home" = {
+          "root/home" = {
             type = "zfs_fs";
             mountpoint = "/home";
             options.mountpoint = "legacy";
