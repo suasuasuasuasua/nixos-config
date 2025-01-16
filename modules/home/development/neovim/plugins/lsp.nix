@@ -85,7 +85,6 @@
         gopls.enable = true;
         # Python
         ruff.enable = true;
-        ruff_lsp.enable = true;
         # Rust
         rust_analyzer = {
           enable = true;

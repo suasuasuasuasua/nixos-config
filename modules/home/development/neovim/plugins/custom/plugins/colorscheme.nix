@@ -2,7 +2,7 @@
   programs.nixvim = {
     colorschemes = {
       catppuccin = {
-        enable = true;
+        # enable = true;
         settings = {
           flavour = "mocha";
           integrations = {
