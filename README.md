@@ -1,5 +1,60 @@
 # NixOS Config
 
+## Hosts
+
+### `penguin` (Acer 713-3W Chromebook NixOS)
+
+- Thin client notebook
+- Mainly for web browsing, tinkering, note-taking, and light coding
+
+## Development
+
+The initial setup is pretty simple now thanks to `disko`.
+
+1. Boot the [minimal disk ISO](https://nixos.org/download/) onto a computer
+2. Clone the repository from GitHub
+
+   ```bash
+   # First get `git` since it isn't a default package
+   nix-shell -p git
+
+   # Clone the repo
+   git clone https://github.com/suasuasuasuasua/nixos-config /tmp/nixos-config
+   ```
+
+3. Use `disko` to partition and format the drive
+
+   ```bash
+   sudo nix --experimental-features "nix-command flakes"    \
+        run github:nix-community/disko/latest               \
+        -- --mode destroy,format,mount                      \
+        # replace the HOSTNAME with the name duh            \
+        /tmp/nixos-config/configuration/nixos/${HOSTNAME}/disko.nix
+
+   # Ensure that it worked
+   mount | grep /mnt
+   ```
+
+4. Install the NixOS onto the system
+
+   ```bash
+   # Move the system config into the /mnt dir
+   mv /tmp/nixos-config /mnt/etc/nixos
+
+   # Navigate over to the /mnt directory
+   cd /mnt
+
+   # Install NixOS with some $HOSTNAME
+   nixos-install --flake ./nixos-config#${HOSTNAME}
+   ```
+
+5. Make changes and rebuild the system
+
+   ```bash
+   # Rebuild the system after any changes!
+   nix run
+   ```
+
 ## Overview
 
 Welcome to my NixOS config! This repo contains configuration files that defines
@@ -40,17 +95,3 @@ is just where I personally started somewhere in the Fall of 2024.
 > template](https://github.com/juspay/nixos-unified-template) and [this
 > config](https://github.com/srid/nixos-config). See the template for more details
 > on how to set it up!
-
-## Hosts
-
-### `penguin` (Acer 713-3W Chromebook NixOS)
-
-- Thin client notebook
-- Mainly for web browsing, tinkering, note-taking, and light coding
-
-## Development
-
-```nix
-# Rebuild the system
-nix run
-```
