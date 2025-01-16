@@ -9,7 +9,4 @@
       { devices = [ "nodev" ]; path = "/boot"; }
     ];
   };
-
-  # Automatically import zpools
-  # boot.zfs.extraPools = [ "zpool_name" ];
 }
