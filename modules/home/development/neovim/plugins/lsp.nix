@@ -98,7 +98,7 @@
         # Markdown
         marksman.enable = true;
         # Spell Check Markdown
-        ltex.enable = false; # kinda annoying tbh!
+        # ltex.enable = false; # kinda annoying tbh!
         # Json
         jsonls.enable = true;
         # TOML
