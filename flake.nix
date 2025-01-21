@@ -31,7 +31,7 @@
     nixvim.inputs.flake-parts.follows = "flake-parts";
 
     # Utility
-    git-hooks.url = "github:cachix/git-hooks.nix";
+    devenv.url = "github:cachix/devenv";
   };
 
   # Wired using https://nixos-unified.org/autowiring.html

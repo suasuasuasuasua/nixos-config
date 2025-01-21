@@ -1,31 +1,40 @@
 { inputs, ... }:
+let
+  inherit (flake) inputs;
 {
   imports = [
-    (inputs.git-hooks + /flake-module.nix)
+    inputs.devenv.flakeModule
   ];
   perSystem = { pkgs, config, ... }: {
-    devShells.default = pkgs.mkShell {
-      name = "nixos-unified-template-shell";
-      meta.description = "Shell environment for modifying this Nix configuration";
+    devenv.shells.default = {
       packages = with pkgs; [
         git
         pre-commit
         commitizen
-
+        
         just
-        nixd
 
         markdownlint-cli
-        nixfmt-rfc-style
       ];
-      # Make sure to install the pre-commit hooks!
-      shellHook = /* bash */ ''
-        ${config.pre-commit.installationScript}
-      '';
-    };
 
-    pre-commit.settings = {
-      hooks = {
+      # Programming languages
+      languages.nix.enable = true;
+
+      # Devcontainer
+      devcontainer = {
+        enable = true;
+        image = "ghcr.io/cachix/devenv:latest";
+        settings = {
+          customization.vscode.extensions = [
+            "vscodevim.vim"
+            "mkhl.direnv"
+            "jnoortheen.nix-ide"
+          ];
+        };
+      };
+
+      # Enable pre-commit hooks
+      git-hooks.hooks = {
         # Nix
         nixpkgs-fmt.enable = true;
         deadnix.enable = true;
