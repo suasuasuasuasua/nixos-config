@@ -1,3 +1,5 @@
+let poolname = "zroot";
+in
 {
   # If you see this...
   # status: Mismatch between pool hostid and system hostid on imported pool.
@@ -19,7 +21,6 @@
         content = {
           type = "gpt";
           partitions = {
-            # TODO: something is 1 million percent wrong with the boot drive...
             ESP = {
               size = "512M"; # 0.5GiB boot partition
               type = "EF00";
@@ -32,14 +33,14 @@
             };
             # Format the rest of the disk for root
             zfs = {
-              size = "-16G"; # Use everything *except* for the end
+              size = "100%"; # Use everything *except* for the end
               content = {
                 type = "zfs";
-                pool = "zroot";
+                pool = poolname;
               };
             };
             swap = {
-              size = "100%"; # Use 16GB of swap for 8GB memory machine
+              size = "16GB"; # Use 16GB of swap for 8GB memory machine
               content = {
                 type = "swap";
                 discardPolicy = "both";
@@ -53,8 +54,7 @@
 
     # https://nixos.wiki/wiki/ZFS
     zpool = {
-      # Pool name is `zroot`
-      zroot = {
+      ${poolname} = {
         type = "zpool";
 
         rootFsOptions = {
