@@ -8,7 +8,9 @@
       yank
       fpp
       vim-tmux-navigator
-      catppuccin
+
+      # Enable and disable the theme
+      # catppuccin
     ];
 
     sensibleOnTop = true;
