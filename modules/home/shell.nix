@@ -12,6 +12,7 @@
       ll = "ls -l";
       c = "clear";
       lg = "lazygit";
+      pbcopy = "wl-copy";
     };
     history = {
       size = 10000;
