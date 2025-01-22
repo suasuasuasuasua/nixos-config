@@ -1,17 +1,15 @@
 { inputs, ... }:
-let
-  inherit (flake) inputs;
 {
   imports = [
     inputs.devenv.flakeModule
   ];
-  perSystem = { pkgs, config, ... }: {
+  perSystem = { pkgs, ... }: {
     devenv.shells.default = {
       packages = with pkgs; [
         git
         pre-commit
         commitizen
-        
+
         just
 
         markdownlint-cli
@@ -23,8 +21,8 @@ let
       # Devcontainer
       devcontainer = {
         enable = true;
-        image = "ghcr.io/cachix/devenv:latest";
         settings = {
+          image = "ghcr.io/cachix/devenv:latest";
           customization.vscode.extensions = [
             "vscodevim.vim"
             "mkhl.direnv"
