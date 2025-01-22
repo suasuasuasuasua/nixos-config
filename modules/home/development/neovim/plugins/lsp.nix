@@ -69,28 +69,31 @@
       #  - settings: Override the default settings passed when initializing the server.
       #        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       servers = {
+        # TODO: enable as we go...the install is huge and i don't regularly use
+        # many of these languages
+
         ## Scripting and Server
         # Bash
         bashls.enable = true;
         # Docker and Docker Compose
         dockerls.enable = true;
         docker_compose_language_service.enable = true;
-        nginx_language_server.enable = true;
-        sqls.enable = true;
+        # nginx_language_server.enable = true;
+        # sqls.enable = true;
 
         ## General
         # C/C++
         clangd.enable = true;
-        # Go
-        gopls.enable = true;
+        # # Go
+        # gopls.enable = true;
         # Python
         ruff.enable = true;
-        # Rust
-        rust_analyzer = {
-          enable = true;
-          installCargo = false;
-          installRustc = false;
-        };
+        # # Rust
+        # rust_analyzer = {
+        #   enable = true;
+        #   installCargo = false;
+        #   installRustc = false;
+        # };
         # Nix
         nil_ls.enable = true;
 
@@ -107,18 +110,18 @@
         yamlls.enable = true;
 
         ## Documents
-        # LaTeX
-        texlab.enable = true;
+        # # LaTeX
+        # texlab.enable = true;
         # Typst
-        typst_lsp.enable = true;
+        tinymist.enable = true;
 
-        ## Web development
-        # HTML
-        html.enable = true;
-        # CSS
-        cssls.enable = true;
-        # Tailwind CSS
-        tailwindcss.enable = true;
+        # ## Web development
+        # # HTML
+        # html.enable = true;
+        # # CSS
+        # cssls.enable = true;
+        # # Tailwind CSS
+        # tailwindcss.enable = true;
 
         # ...etc. See `https://nix-community.github.io/nixvim/plugins/lsp` for a list of pre-configured LSPs
         #
@@ -129,25 +132,6 @@
         # tsserver = {
         #  enable = true;
         #}
-
-        # Lua
-        lua_ls = {
-          enable = true;
-
-          # cmd = {
-          #};
-          # filetypes = {
-          #};
-          settings = {
-            completion = {
-              callSnippet = "Replace";
-            };
-            #diagnostics = {
-            #  disable = {
-            #    "missing-fields";
-            #};
-          };
-        };
       };
 
       keymaps = {

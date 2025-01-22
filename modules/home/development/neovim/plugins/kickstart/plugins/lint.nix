@@ -9,7 +9,7 @@
       lintersByFt = {
         nix = [ "nix" ];
         markdown = [
-          "markdownlint"
+          #"markdownlint"
           #vale
         ];
         #clojure = ["clj-kondo"];
