@@ -36,7 +36,7 @@
         # Enable pre-commit hooks
         git-hooks.hooks = {
           # Nix
-          nixpkgs-fmt.enable = true;
+          nixfmt-rfc-style.enable = true;
           deadnix.enable = true;
           flake-checker.enable = true;
 

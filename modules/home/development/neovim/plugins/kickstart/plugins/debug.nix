@@ -6,23 +6,29 @@
     # be extended to other languages as well. That's why it's called
     # kickstart.nixvim and not ktichen-sink.nixvim ;)
     # https://nix-community.github.io/nixvim/plugins/dap/index.html
-    plugins.dap = {
-      enable = true;
 
-      extensions = {
-        # Creates a beautiful debugger UI
-        dap-ui = {
-          enable = true;
+    plugins = {
+      dap = {
+        enable = true;
 
-          # Set icons to characters that are more likely to work in every terminal.
-          # Feel free to remove or use ones that you like more! :)
-          # Don't feel like these are good choices.
+      };
+      # Add your own debuggers here
+      dap-go = {
+        enable = true;
+      };
+
+      dap-ui = {
+        enable = true;
+
+        # Set icons to characters that are more likely to work in every terminal.
+        # Feel free to remove or use ones that you like more! :)
+        # Don't feel like these are good choices.
+        settings = {
           icons = {
             expanded = "▾";
             collapsed = "▸";
             current_frame = "*";
           };
-
           controls = {
             icons = {
               pause = "⏸";
@@ -36,11 +42,6 @@
               disconnect = "⏏";
             };
           };
-        };
-
-        # Add your own debuggers here
-        dap-go = {
-          enable = true;
         };
       };
     };
