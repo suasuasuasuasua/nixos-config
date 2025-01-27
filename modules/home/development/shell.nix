@@ -1,7 +1,9 @@
 { config
 , pkgs
+, lib
 , ...
-}: {
+}:
+{
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -12,19 +14,15 @@
       ll = "ls -l";
       c = "clear";
       lg = "lazygit";
-      pbcopy = "wl-copy";
+      pbcopy = lib.mkDefault (if pkgs.stdenv.isDarwin then "pbcopy" else "wl-clipboard");
     };
     history = {
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-    initExtra =
-      /*
-      bash
-      */
-      ''
-        export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-      '';
+    localVariables = {
+      ZVM_VI_INSERT_ESCAPE_BINDKEY = "jk";
+    };
     oh-my-zsh = {
       enable = true;
       plugins = [
