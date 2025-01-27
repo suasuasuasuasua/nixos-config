@@ -33,9 +33,7 @@
     plugins.nvim-ufo = {
       enable = true;
       settings.provider_selector =
-        /*
-        lua
-        */
+        # lua
         ''
           -- Option 3: treesitter as a main provider instead
           -- (Note: the `nvim-treesitter` plugin is *not* needed.)

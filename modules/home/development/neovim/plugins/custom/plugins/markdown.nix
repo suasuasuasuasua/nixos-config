@@ -48,9 +48,7 @@
         new_notes_location = "notes_subdir";
 
         note_id_func =
-          /*
-          lua
-          */
+          # lua
           ''
             function(title)
               local suffix = ""

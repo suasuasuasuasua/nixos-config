@@ -15,9 +15,7 @@ in
     before = [ "systemd-suspend.service" ];
     environment = hibernateEnvironment;
     script =
-      /*
-      bash
-      */
+      # bash
       ''
         curtime=$(date +%s)
         echo "$curtime $1" >> /tmp/autohibernate.log
@@ -32,9 +30,7 @@ in
     after = [ "systemd-suspend.service" ];
     environment = hibernateEnvironment;
     script =
-      /*
-      bash
-      */
+      # bash
       ''
         curtime=$(date +%s)
         sustime=$(cat $HIBERNATE_LOCK)

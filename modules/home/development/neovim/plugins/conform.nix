@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     # Dependencies
     #
@@ -15,9 +16,7 @@
       settings = {
         notifyOnError = false;
         format_on_save =
-          /*
-          lua
-          */
+          # lua
           ''
             function(bufnr)
               -- Disable "format_on_save lsp_fallback" for lanuages that don't
@@ -48,9 +47,7 @@
         mode = "";
         key = "<leader>f";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('conform').format { async = true, lsp_fallback = true }

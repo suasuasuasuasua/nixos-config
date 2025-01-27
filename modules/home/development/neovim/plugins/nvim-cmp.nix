@@ -42,9 +42,7 @@
       settings = {
         snippet = {
           expand =
-            /*
-            lua
-            */
+            # lua
             ''
               function(args)
                 require('luasnip').lsp_expand(args.body)
@@ -92,9 +90,7 @@
           # <c-l> will move you to the right of the expansion locations.
           # <c-h> is similar, except moving you backwards.
           "<C-l>" =
-            /*
-            lua
-            */
+            # lua
             ''
               cmp.mapping(function()
                 if luasnip.expand_or_locally_jumpable() then
@@ -103,9 +99,7 @@
               end, { 'i', 's' })
             '';
           "<C-h>" =
-            /*
-            lua
-            */
+            # lua
             ''
               cmp.mapping(function()
                 if luasnip.locally_jumpable(-1) then

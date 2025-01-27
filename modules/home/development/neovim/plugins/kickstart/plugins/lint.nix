@@ -27,9 +27,7 @@
       # on the specified events.
       autoCmd = {
         callback.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('lint').try_lint()

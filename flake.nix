@@ -35,7 +35,10 @@
   };
 
   # Wired using https://nixos-unified.org/autowiring.html
-  outputs = inputs:
-    inputs.nixos-unified.lib.mkFlake
-      { inherit inputs; root = ./.; };
+  outputs =
+    inputs:
+    inputs.nixos-unified.lib.mkFlake {
+      inherit inputs;
+      root = ./.;
+    };
 }

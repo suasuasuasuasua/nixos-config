@@ -51,9 +51,7 @@
         mode = "n";
         key = "<F5>";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('dap').continue()
@@ -67,9 +65,7 @@
         mode = "n";
         key = "<F1>";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('dap').step_into()
@@ -83,9 +79,7 @@
         mode = "n";
         key = "<F2>";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('dap').step_over()
@@ -99,9 +93,7 @@
         mode = "n";
         key = "<F3>";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('dap').step_out()
@@ -115,9 +107,7 @@
         mode = "n";
         key = "<leader>b";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('dap').toggle_breakpoint()
@@ -131,9 +121,7 @@
         mode = "n";
         key = "<leader>B";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
@@ -149,9 +137,7 @@
         mode = "n";
         key = "<F7>";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('dapui').toggle()
@@ -165,9 +151,7 @@
 
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraconfiglua#extraconfiglua
     extraConfigLua =
-      /*
-      lua
-      */
+      # lua
       ''
         require('dap').listeners.after.event_initialized['dapui_config'] = require('dapui').open
         require('dap').listeners.before.event_terminated['dapui_config'] = require('dapui').close

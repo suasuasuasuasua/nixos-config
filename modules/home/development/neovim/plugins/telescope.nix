@@ -119,9 +119,7 @@
         key = "<leader>/";
         # You can pass additional configuration to Telescope to change the theme, layout, etc.
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('telescope.builtin').current_buffer_fuzzy_find(
@@ -142,9 +140,7 @@
         # It's also possible to pass additional configuration options.
         #  See `:help telescope.builtin.live_grep()` for information about particular keys
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('telescope.builtin').live_grep {
@@ -162,9 +158,7 @@
         mode = "n";
         key = "<leader>sn";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('telescope.builtin').find_files {
