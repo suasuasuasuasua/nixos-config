@@ -172,7 +172,7 @@
     zshare = {
       type = "zpool";
       mode = "raidz1"; # allow for one drive failure
-      mountpoint = "/share";
+      mountpoint = "/zshare";
 
       # TODO: figure out these options
       #       - do we need encryption?
@@ -207,7 +207,7 @@
       datasets = {
         "media" = {
           type = "zfs_fs";
-          mountpoint = "/share/media";
+          mountpoint = "/zshare/media";
           options.mountpoint = "legacy";
         };
       };
