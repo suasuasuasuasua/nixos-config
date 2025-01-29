@@ -8,6 +8,16 @@
       content = {
         type = "gpt";
         partitions = {
+          ESP = {
+            size = "512M"; # 0.5GiB boot partition
+            type = "EF00";
+            content = {
+              type = "filesystem";
+              format = "vfat";
+              mountpoint = "/boot";
+              mountOptions = [ "umask=0077" ];
+            };
+          };
           zfs = {
             size = "100%";
             content = {
