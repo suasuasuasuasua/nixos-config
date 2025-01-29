@@ -74,22 +74,8 @@
     # https://nixos.wiki/wiki/ZFS
     zroot = {
       type = "zpool";
+      mode = "mirror";
       mountpoint = "/";
-
-      mode = {
-        topology = {
-          type = "topology";
-          vdev = [
-            {
-              mode = "mirror";
-              members = [
-                "nvme0"
-                "nvme1"
-              ];
-            }
-          ];
-        };
-      };
 
       rootFsOptions = {
         compression = "zstd";
@@ -131,7 +117,7 @@
 
   #### ZSHARE ####
   disko.devices.disk = {
-    data1 = {
+    data0 = {
       type = "disk";
       # TODO: fill in the correct ID
       device = "/dev/sda";
@@ -148,7 +134,7 @@
         };
       };
     };
-    data2 = {
+    data1 = {
       type = "disk";
       # TODO: fill in the correct ID
       device = "/dev/sdb";
@@ -165,7 +151,7 @@
         };
       };
     };
-    data3 = {
+    data2 = {
       type = "disk";
       # TODO: fill in the correct ID
       device = "/dev/sdc";
@@ -188,6 +174,7 @@
     # https://nixos.wiki/wiki/ZFS
     zshare = {
       type = "zpool";
+      mode = "raidz1"; # allow for one drive failure
       mountpoint = "/share";
 
       # TODO: figure out these options
