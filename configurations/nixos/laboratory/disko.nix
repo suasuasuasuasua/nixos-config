@@ -166,7 +166,6 @@
     };
   };
 
-  boot.zfs.extraPools = [ "zshare" ];
   disko.devices.zpool = {
     # https://nixos.wiki/wiki/ZFS
     zshare = {
@@ -191,23 +190,41 @@
         autotrim = "on";
       };
 
-      # TODO: figure out which datasets i want (in order of priority?)
-      #       1. apple time machine (seen on wiki)
-      #          - can i set a quota on this here? or only through macOS time
-      #          machine?
-      #       2. general data bucket for *captures* (public?)
-      #          - screenshots, screen recordings, files
-      #          - raw recordings
-      #          - games, vlogs, demos
-      #          - nextcloud would be interesting here
-      #       3. project space (private?)
-      #          - place to assemble the videos and whatnot
-      #          - have a safe space for the intermediate and final product
-      #       4. vms or services
       datasets = {
+        # Personal data like docs, notes, etc.
+        "personal" = {
+          type = "zfs_fs";
+          mountpoint = "/zshare/personal";
+          options.mountpoint = "legacy";
+        };
+        # Videos, movies, etc.
         "media" = {
           type = "zfs_fs";
           mountpoint = "/zshare/media";
+          options.mountpoint = "legacy";
+        };
+        # Project space -- video projects
+        "projects" = {
+          type = "zfs_fs";
+          mountpoint = "/zshare/projects";
+          options.mountpoint = "legacy";
+        };
+        # Recordings, images, screenshots, etc.
+        "captures" = {
+          type = "zfs_fs";
+          mountpoint = "/zshare/captures";
+          options.mountpoint = "legacy";
+        };
+        # Development files space -- isos
+        "dev" = {
+          type = "zfs_fs";
+          mountpoint = "/zshare/dev";
+          options.mountpoint = "legacy";
+        };
+        # macOS time machine share
+        "tm_share" = {
+          type = "zfs_fs";
+          mountpoint = "/zshare/tm_share";
           options.mountpoint = "legacy";
         };
       };

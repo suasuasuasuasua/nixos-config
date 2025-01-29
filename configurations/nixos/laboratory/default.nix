@@ -13,14 +13,17 @@ in
       ./hardware-configuration.nix
       ./disko.nix
 
-      # # Desktop environment
-      # (self + /modules/nixos/desktop)
+      # Services
+      ./services.nix
 
-      # # Development
-      # (self + /modules/nixos/development)
+      # Desktop environment
+      (self + /modules/nixos/desktop)
 
-      # # GUI Apps
-      # (self + /modules/nixos/gui)
+      # Development
+      (self + /modules/nixos/development)
+
+      # GUI Apps
+      (self + /modules/nixos/gui)
     ]
     ++
     # A module that automatically imports everything else in the parent folder.

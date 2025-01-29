@@ -6,6 +6,10 @@
   <!-- TODO: fill in the services once i've built and setup the computer -->
   - ...
 
+## Quirks
+
+- Need to export `zshare` pool after installing
+
 ```text
 [justinhoang@laboratory:~/nixos-config]$ fastfetch
 # TODO: fill in the fastfetch
