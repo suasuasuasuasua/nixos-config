@@ -170,6 +170,7 @@
     };
   };
 
+  boot.zfs.extraPools = [ "zshare" ];
   disko.devices.zpool = {
     # https://nixos.wiki/wiki/ZFS
     zshare = {
