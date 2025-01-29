@@ -182,7 +182,7 @@
       #       - do we need auto-snapshots? probably?
       rootFsOptions = {
         compression = "zstd";
-        canmount = "off";
+        canmount = "on";
         xattr = "sa";
         acltype = "posixacl";
 
