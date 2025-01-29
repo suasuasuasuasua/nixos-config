@@ -38,6 +38,8 @@ The initial setup is pretty simple now thanks to `disko`.
 4. Install the NixOS onto the system
 
    ```bash
+   nixos-generate-config --no-filesystems --root /mnt
+
    # Move the system config into the /mnt dir
    mv /tmp/nixos-config /mnt/etc/nixos
 
