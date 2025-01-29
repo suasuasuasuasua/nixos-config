@@ -4,7 +4,7 @@
     # nvme 0 will be one of the M.2. NVME SSDs
     nvme0 = {
       type = "disk";
-      device = "/dev/nvme0n1";
+      device = "/dev/disk/by-id/nvme-WD_BLACK_SN770_2TB_245268800136";
       content = {
         type = "gpt";
         partitions = {
@@ -32,7 +32,7 @@
     # nvme 1 will be one of the M.2. NVME SSDs
     nvme1 = {
       type = "disk";
-      device = "/dev/nvme1n1";
+      device = "/dev/disk/by-id/nvme-WD_BLACK_SN770_2TB_245268801871";
       content = {
         type = "gpt";
         partitions = {
@@ -50,8 +50,7 @@
     # main will be a *large* 2.5in SATA SSD
     sata0 = {
       type = "disk";
-      # TODO: fill in the correct ID
-      device = "/dev/sdd";
+      device = "/dev/disk/by-id/ata-Samsung_SSD_860_EVO_500GB_S4XANE0M746762J";
       content = {
         type = "gpt";
         partitions = {
@@ -119,8 +118,7 @@
   disko.devices.disk = {
     data0 = {
       type = "disk";
-      # TODO: fill in the correct ID
-      device = "/dev/sda";
+      device = "/dev/disk/by-id/ata-ST4000VN006-3CW104_ZW62YABN";
       content = {
         type = "gpt";
         partitions = {
@@ -136,8 +134,7 @@
     };
     data1 = {
       type = "disk";
-      # TODO: fill in the correct ID
-      device = "/dev/sdb";
+      device = "/dev/disk/by-id/ata-ST4000VN006-3CW104_ZW62YARM";
       content = {
         type = "gpt";
         partitions = {
@@ -153,8 +150,7 @@
     };
     data2 = {
       type = "disk";
-      # TODO: fill in the correct ID
-      device = "/dev/sdc";
+      device = "/dev/disk/by-id/ata-ST4000VN006-3CW104_ZW62YBMB";
       content = {
         type = "gpt";
         partitions = {
