@@ -58,9 +58,8 @@
           store = {
             size = "100%"; # Use everything *except* for the end
             content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/nix";
+              type = "zfs";
+              pool = "zstore";
             };
           };
         };
@@ -71,6 +70,7 @@
 
   disko.devices.zpool = {
     # https://nixos.wiki/wiki/ZFS
+    # General root
     zroot = {
       type = "zpool";
       mode = "mirror";
@@ -109,6 +109,30 @@
 
           # Snapshot the user home!
           options."com.sun:auto-snapshot" = "true";
+        };
+      };
+    };
+
+    # Nix Store
+    zstore = {
+      type = "zpool";
+
+      rootFsOptions = {
+        compression = "zstd";
+        canmount = "off";
+        xattr = "sa";
+      };
+
+      options = {
+        ashift = "12";
+        autotrim = "on";
+      };
+
+      datasets = {
+        # See examples/zfs.nix for more comprehensive usage.
+        "root" = {
+          type = "zfs_fs";
+          options.mountpoint = "/nix";
         };
       };
     };
