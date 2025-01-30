@@ -25,6 +25,9 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  # Quick config for nix store zfs setup
+  fileSystems."/nix".options = [ "noauto" ];
+
   # Note that the disk partitioning and logical volume scheme is managed with
   # disko under ./disko.nix
 
