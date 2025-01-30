@@ -1,17 +1,23 @@
 {
-  networking.firewall.allowedTCPPorts = [
-    80
-    443
-  ];
-
   services.nginx = {
     enable = true;
-    # recommendedProxySettings = true;
-    # recommendedTlsSettings = true;
+    recommendedTlsSettings = true;
+    recommendedProxySettings = true;
+    recommendedOptimisation = true;
   };
 
-  # security.acme = {
-  #   acceptTerms = true;
-  #   defaults.email = "${user.email}";
-  # };
+  services.nginx.virtualHosts = {
+    "adguard.homelab.lan" = {
+      locations."/" = {
+        # Adguard Home Adblocker and DNS server
+        proxyPass = "http://localhost:3000";
+      };
+    };
+    "jellyfin.homelab.lab" = {
+      locations."/" = {
+        # Jellyfin Media
+        proxyPass = "http://localhost:8096";
+      };
+    };
+  };
 }

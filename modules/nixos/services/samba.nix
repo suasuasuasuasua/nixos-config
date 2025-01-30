@@ -1,7 +1,6 @@
 {
   services.samba = {
     enable = true;
-    securityType = "user";
     openFirewall = true;
   };
 
@@ -77,10 +76,10 @@
     # macOS time machine share
     tm_share = {
       "path" = "/zshare/tm_share";
-      "valid users" = "username";
+      "valid users" = "justinhoang";
       "public" = "no";
       "writeable" = "yes";
-      "force user" = "username";
+      "force user" = "justinhoang";
       "fruit:aapl" = "yes";
       "fruit:time machine" = "yes";
       "vfs objects" = "catia fruit streams_xattr";
@@ -91,7 +90,4 @@
     enable = true;
     openFirewall = true;
   };
-
-  networking.firewall.enable = true;
-  networking.firewall.allowPing = true;
 }
