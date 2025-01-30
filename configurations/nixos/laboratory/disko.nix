@@ -60,8 +60,6 @@
             content = {
               type = "zfs";
               pool = "zstore";
-              # Config for nix store zfs setup
-              mountOptions = [ "noauto" ];
             };
           };
         };
@@ -132,9 +130,10 @@
 
       datasets = {
         # See examples/zfs.nix for more comprehensive usage.
-        "root" = {
+        "nix" = {
           type = "zfs_fs";
-          options.mountpoint = "/nix";
+          mountpoint = "/nix";
+          options.mountpoint = "legacy";
         };
       };
     };
