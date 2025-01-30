@@ -5,5 +5,5 @@
   services.zfs.trim.enable = true;
 
   # Ensure that the kernel is compatible with zfs
-  kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
 }
