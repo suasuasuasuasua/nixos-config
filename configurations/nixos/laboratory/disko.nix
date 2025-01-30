@@ -171,7 +171,6 @@
     zshare = {
       type = "zpool";
       mode = "raidz1"; # allow for one drive failure
-      mountpoint = "/zshare";
 
       # TODO: figure out these options
       #       - do we need encryption?
@@ -180,9 +179,6 @@
         compression = "zstd";
         canmount = "on";
         xattr = "sa";
-        acltype = "posixacl";
-
-        "com.sun:auto-snapshot" = "false";
       };
 
       options = {
@@ -194,38 +190,32 @@
         # Personal data like docs, notes, etc.
         "personal" = {
           type = "zfs_fs";
-          mountpoint = "/zshare/personal";
-          options.mountpoint = "legacy";
+          options.mountpoint = "/zshare/personal";
         };
         # Videos, movies, etc.
         "media" = {
           type = "zfs_fs";
-          mountpoint = "/zshare/media";
-          options.mountpoint = "legacy";
+          options.mountpoint = "/zshare/media";
         };
         # Project space -- video projects
         "projects" = {
           type = "zfs_fs";
-          mountpoint = "/zshare/projects";
-          options.mountpoint = "legacy";
+          options.mountpoint = "/zshare/projects";
         };
         # Recordings, images, screenshots, etc.
         "captures" = {
           type = "zfs_fs";
-          mountpoint = "/zshare/captures";
-          options.mountpoint = "legacy";
+          options.mountpoint = "/zshare/captures";
         };
-        # Development files space -- isos
+        # Development files space -- isos and the like
         "dev" = {
           type = "zfs_fs";
-          mountpoint = "/zshare/dev";
-          options.mountpoint = "legacy";
+          options.mountpoint = "/zshare/dev";
         };
         # macOS time machine share
         "tm_share" = {
           type = "zfs_fs";
-          mountpoint = "/zshare/tm_share";
-          options.mountpoint = "legacy";
+          options.mountpoint = "/zshare/tm_share";
         };
       };
     };

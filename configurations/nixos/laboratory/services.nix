@@ -6,7 +6,7 @@ let
 in
 {
   imports = [
-    (self + /modules/nixos/services/jellyfin.nix)
+    (self + /modules/nixos/services/nginx.nix)
 
     # Port 3000
     (self + /modules/nixos/services/adguardhome.nix)
