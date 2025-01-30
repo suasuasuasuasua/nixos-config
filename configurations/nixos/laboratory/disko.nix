@@ -60,6 +60,8 @@
             content = {
               type = "zfs";
               pool = "zstore";
+              # Config for nix store zfs setup
+              mountOptions = [ "noauto" ];
             };
           };
         };
