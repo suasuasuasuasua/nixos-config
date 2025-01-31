@@ -249,7 +249,7 @@
         "iso" = {
           type = "zfs_fs";
           # options.mountpoint = "/zshare/projects/iso";
-          mountpoint = "/zshare/projects/dev";
+          mountpoint = "/zshare/projects/iso";
           options.mountpoint = "legacy";
         };
       };
