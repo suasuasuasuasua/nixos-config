@@ -4,7 +4,13 @@
     openFirewall = true;
   };
 
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
+  };
+
   services.samba.settings = {
+    # Global
     global = {
       "workgroup" = "WORKGROUP";
       "server string" = "smbnix";
@@ -18,6 +24,10 @@
       "guest account" = "nobody";
       "map to guest" = "bad user";
     };
+  };
+
+  # Media!
+  services.samba.settings = {
     # Music videos and audio!
     music = {
       "path" = "/zshare/media/music";
@@ -31,8 +41,32 @@
     };
   };
 
-  services.samba-wsdd = {
-    enable = true;
-    openFirewall = true;
+  # Projects!
+  services.samba.settings = {
+    # Music videos and audio!
+    iso = {
+      "path" = "/zshare/projects/vm/iso";
+      "browseable" = "yes";
+      "read only" = "no";
+      "guest ok" = "yes";
+      "create mask" = "0644";
+      "directory mask" = "0755";
+      # remember to create the samba group and add recursive permissions!
+      "force group" = "samba";
+    };
+  };
+
+  # Backups
+  services.samba.settings = {
+    "tm_share" = {
+      "path" = "/zshare/backup/tm_share";
+      "valid users" = "justinhoang";
+      "public" = "no";
+      "writeable" = "yes";
+      "force group" = "samba";
+      "fruit:aapl" = "yes";
+      "fruit:time machine" = "yes";
+      "vfs objects" = "catia fruit streams_xattr";
+    };
   };
 }
