@@ -1,4 +1,5 @@
 {
+  # TODO: need to setup HTTPS to continue using...
   services.actual = {
     enable = true;
     openFirewall = true;
