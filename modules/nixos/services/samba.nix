@@ -77,6 +77,7 @@
     # Music videos and audio!
     "media" = {
       "path" = "/zshare/media";
+      "valid users" = "justinhoang";
       "browseable" = "yes";
       "public" = "no";
       "read only" = "no";
