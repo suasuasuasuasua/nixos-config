@@ -38,6 +38,7 @@
       "create mask" = "0644";
       "directory mask" = "0755";
       # remember to create the samba group and add recursive permissions!
+      "force user" = "justinhoang";
       "force group" = "samba";
     };
   };
@@ -68,6 +69,7 @@
       "create mask" = "0644";
       "directory mask" = "0755";
       # remember to create the samba group and add recursive permissions!
+      "force user" = "justinhoang";
       "force group" = "samba";
     };
   };
@@ -84,6 +86,7 @@
       "create mask" = "0644";
       "directory mask" = "0755";
       # remember to create the samba group and add recursive permissions!
+      "force user" = "justinhoang";
       "force group" = "samba";
     };
   };
