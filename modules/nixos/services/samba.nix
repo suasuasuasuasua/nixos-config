@@ -44,7 +44,7 @@
 
   # Backups
   services.samba.settings = {
-    "backup/tm_share" = {
+    "tm_share" = {
       "path" = "/zshare/backup/tm_share";
       "valid users" = "justinhoang";
       "public" = "no";
@@ -61,28 +61,7 @@
     # Projects
     "projects" = {
       "path" = "/zshare/projects";
-      "browseable" = "yes";
-      "public" = "no";
-      "read only" = "no";
-      "create mask" = "0644";
-      "directory mask" = "0755";
-      # remember to create the samba group and add recursive permissions!
-      "force group" = "samba";
-    };
-    # Git Projects
-    "projects/git" = {
-      "path" = "/zshare/projects/git";
-      "browseable" = "yes";
-      "public" = "no";
-      "read only" = "no";
-      "create mask" = "0644";
-      "directory mask" = "0755";
-      # remember to create the samba group and add recursive permissions!
-      "force group" = "samba";
-    };
-    # Linux ISOs
-    "projects/vm/iso" = {
-      "path" = "/zshare/projects/vm/iso";
+      "valid users" = "justinhoang";
       "browseable" = "yes";
       "public" = "no";
       "read only" = "no";
