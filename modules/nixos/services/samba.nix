@@ -26,29 +26,15 @@
     };
   };
 
-  # Media!
+  # Personal
   services.samba.settings = {
     # Music videos and audio!
-    music = {
-      "path" = "/zshare/media/music";
+    "personal" = {
+      "path" = "/zshare/personal";
       "browseable" = "yes";
+      "valid users" = "justinhoang";
+      "public" = "no";
       "read only" = "no";
-      "guest ok" = "yes";
-      "create mask" = "0644";
-      "directory mask" = "0755";
-      # remember to create the samba group and add recursive permissions!
-      "force group" = "samba";
-    };
-  };
-
-  # Projects!
-  services.samba.settings = {
-    # Music videos and audio!
-    iso = {
-      "path" = "/zshare/projects/vm/iso";
-      "browseable" = "yes";
-      "read only" = "no";
-      "guest ok" = "yes";
       "create mask" = "0644";
       "directory mask" = "0755";
       # remember to create the samba group and add recursive permissions!
@@ -58,7 +44,7 @@
 
   # Backups
   services.samba.settings = {
-    "tm_share" = {
+    "backup/tm_share" = {
       "path" = "/zshare/backup/tm_share";
       "valid users" = "justinhoang";
       "public" = "no";
@@ -67,6 +53,58 @@
       "fruit:aapl" = "yes";
       "fruit:time machine" = "yes";
       "vfs objects" = "catia fruit streams_xattr";
+    };
+  };
+
+  # Productivity
+  services.samba.settings = {
+    # Projects
+    "projects" = {
+      "path" = "/zshare/projects";
+      "browseable" = "yes";
+      "public" = "no";
+      "read only" = "no";
+      "create mask" = "0644";
+      "directory mask" = "0755";
+      # remember to create the samba group and add recursive permissions!
+      "force group" = "samba";
+    };
+    # Git Projects
+    "projects/git" = {
+      "path" = "/zshare/projects/git";
+      "browseable" = "yes";
+      "public" = "no";
+      "read only" = "no";
+      "create mask" = "0644";
+      "directory mask" = "0755";
+      # remember to create the samba group and add recursive permissions!
+      "force group" = "samba";
+    };
+    # Linux ISOs
+    "projects/vm/iso" = {
+      "path" = "/zshare/projects/vm/iso";
+      "browseable" = "yes";
+      "public" = "no";
+      "read only" = "no";
+      "create mask" = "0644";
+      "directory mask" = "0755";
+      # remember to create the samba group and add recursive permissions!
+      "force group" = "samba";
+    };
+  };
+
+  # Media!
+  services.samba.settings = {
+    # Music videos and audio!
+    "media" = {
+      "path" = "/zshare/media";
+      "browseable" = "yes";
+      "public" = "no";
+      "read only" = "no";
+      "create mask" = "0644";
+      "directory mask" = "0755";
+      # remember to create the samba group and add recursive permissions!
+      "force group" = "samba";
     };
   };
 }
