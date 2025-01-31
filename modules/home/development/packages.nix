@@ -11,6 +11,7 @@
 
     # Test packages
     comma
+    nvd
 
     # Neovim dependencies
     tree-sitter
