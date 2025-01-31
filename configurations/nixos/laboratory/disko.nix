@@ -196,6 +196,7 @@
     zshare = {
       type = "zpool";
       mode = "raidz1"; # allow for one drive failure
+      mountpoint = "/zshare";
 
       # TODO: figure out these options
       #       - do we need encryption?
@@ -211,48 +212,83 @@
         autotrim = "on";
       };
 
+      # Personal data
       datasets = {
-        # Personal data like docs, notes, etc.
         "personal" = {
           type = "zfs_fs";
-          options.mountpoint = "/zshare/personal";
-          # mountpoint = "/zshare/personal";
-          # options.mountpoint = "legacy";
-        };
-        # Videos, movies, etc.
-        "media" = {
-          type = "zfs_fs";
-          options.mountpoint = "/zshare/media";
-          # mountpoint = "/zshare/media";
-          # options.mountpoint = "legacy";
-        };
-        # Project space -- video projects
-        "projects" = {
-          type = "zfs_fs";
-          options.mountpoint = "/zshare/projects";
-          # mountpoint = "/zshare/projects";
-          # options.mountpoint = "legacy";
-        };
-        # Recordings, images, screenshots, etc.
-        "captures" = {
-          type = "zfs_fs";
-          options.mountpoint = "/zshare/captures";
-          # mountpoint = "/zshare/captures";
-          # options.mountpoint = "legacy";
-        };
-        # Development files space -- isos and the like
-        "dev" = {
-          type = "zfs_fs";
-          options.mountpoint = "/zshare/dev";
-          # mountpoint = "/zshare/dev";
-          # options.mountpoint = "legacy";
+          # options.mountpoint = "/zshare/personal";
+          mountpoint = "/zshare/personal";
+          options.mountpoint = "legacy";
         };
         # macOS time machine share
         "tm_share" = {
           type = "zfs_fs";
-          options.mountpoint = "/zshare/tm_share";
-          # mountpoint = "/zshare/tm_share";
-          # options.mountpoint = "legacy";
+          # options.mountpoint = "/zshare/tm_share";
+          mountpoint = "/zshare/tm_share";
+          options.mountpoint = "legacy";
+        };
+      };
+
+      # Productivity
+      datasets = {
+        # Project space -- video projects
+        "projects" = {
+          type = "zfs_fs";
+          # options.mountpoint = "/zshare/projects";
+          mountpoint = "/zshare/projects";
+          options.mountpoint = "legacy";
+        };
+        # Development files space
+        "dev" = {
+          type = "zfs_fs";
+          # options.mountpoint = "/zshare/projects/dev";
+          mountpoint = "/zshare/projects/dev";
+          options.mountpoint = "legacy";
+        };
+        # Linux ISOs
+        "iso" = {
+          type = "zfs_fs";
+          # options.mountpoint = "/zshare/projects/iso";
+          mountpoint = "/zshare/projects/dev";
+          options.mountpoint = "legacy";
+        };
+      };
+
+      # Mixed Media
+      datasets = {
+        "media" = {
+          type = "zfs_fs";
+          # options.mountpoint = "/zshare/media";
+          mountpoint = "/zshare/media";
+          options.mountpoint = "legacy";
+        };
+        # Movies
+        "movies" = {
+          type = "zfs_fs";
+          # options.mountpoint = "/zshare/media/movies";
+          mountpoint = "/zshare/media/movies";
+          options.mountpoint = "legacy";
+        };
+        # TV Shows
+        "shows" = {
+          type = "zfs_fs";
+          # options.mountpoint = "/zshare/media/shows";
+          mountpoint = "/zshare/media/shows";
+          options.mountpoint = "legacy";
+        };
+        # Recordings, images, screenshots, etc.
+        "captures" = {
+          type = "zfs_fs";
+          # options.mountpoint = "/zshare/media/captures";
+          mountpoint = "/zshare/media/captures";
+          options.mountpoint = "legacy";
+        };
+        # Books -- audio and ebooks
+        "books" = {
+          type = "zfs_fs";
+          # options.mountpoint = "/zshare/media/books";
+          mountpoint = "/zshare/media/books";
+          options.mountpoint = "legacy";
         };
       };
     };
