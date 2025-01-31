@@ -216,31 +216,43 @@
         "personal" = {
           type = "zfs_fs";
           options.mountpoint = "/zshare/personal";
+          # mountpoint = "/zshare/personal";
+          # options.mountpoint = "legacy";
         };
         # Videos, movies, etc.
         "media" = {
           type = "zfs_fs";
           options.mountpoint = "/zshare/media";
+          # mountpoint = "/zshare/media";
+          # options.mountpoint = "legacy";
         };
         # Project space -- video projects
         "projects" = {
           type = "zfs_fs";
           options.mountpoint = "/zshare/projects";
+          # mountpoint = "/zshare/projects";
+          # options.mountpoint = "legacy";
         };
         # Recordings, images, screenshots, etc.
         "captures" = {
           type = "zfs_fs";
           options.mountpoint = "/zshare/captures";
+          # mountpoint = "/zshare/captures";
+          # options.mountpoint = "legacy";
         };
         # Development files space -- isos and the like
         "dev" = {
           type = "zfs_fs";
           options.mountpoint = "/zshare/dev";
+          # mountpoint = "/zshare/dev";
+          # options.mountpoint = "legacy";
         };
         # macOS time machine share
         "tm_share" = {
           type = "zfs_fs";
           options.mountpoint = "/zshare/tm_share";
+          # mountpoint = "/zshare/tm_share";
+          # options.mountpoint = "legacy";
         };
       };
     };
