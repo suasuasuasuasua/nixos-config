@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.tmux = {
     enable = true;
     plugins = with pkgs.tmuxPlugins; [
@@ -13,16 +14,14 @@
       # catppuccin
     ];
 
-    sensibleOnTop = true;
+    sensibleOnTop = false;
     mouse = true;
     prefix = "C-Space";
     keyMode = "vi";
     baseIndex = 1;
 
     extraConfig =
-      /*
-      tmux
-      */
+      # tmux
       ''
         set-option -sa terminal-overrides ",xterm*:Tc"
 

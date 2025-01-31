@@ -1,4 +1,8 @@
-{ flake, pkgs, lib, ... }:
+{ flake
+, pkgs
+, lib
+, ...
+}:
 let
   inherit (flake) inputs;
   inherit (inputs) self;
@@ -12,6 +16,8 @@ in
   nixpkgs.config.allowUnfree = true;
 
   home.username = "justinhoang";
-  home.homeDirectory = lib.mkDefault "/${if pkgs.stdenv.isDarwin then "Users" else "home"}/justinhoang";
+  home.homeDirectory = lib.mkDefault "/${
+    if pkgs.stdenv.isDarwin then "Users" else "home"
+  }/justinhoang";
   home.stateVersion = "24.11";
 }

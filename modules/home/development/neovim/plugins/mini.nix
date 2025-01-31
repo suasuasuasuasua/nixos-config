@@ -42,9 +42,7 @@
     # cursor location to LINE:COLUMN
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraconfiglu#extraconfiglua
     extraConfigLua =
-      /*
-      lua
-      */
+      # lua
       ''
         require('mini.statusline').section_location = function()
           return '%2l:%-2v'

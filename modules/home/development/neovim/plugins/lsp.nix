@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     # Dependencies
     # { 'Bilal2453/luvit-meta', lazy = true },
@@ -246,9 +247,7 @@
       #   function will be executred to configure the current buffer
       # NOTE: This is an example of an attribute that takes raw lua
       onAttach =
-        /*
-        lua
-        */
+        # lua
         ''
           -- NOTE: Remember that Lua is a real programming language, and as such it is possible
           -- to define small helper and utility functions so you don't have to repeat yourself.

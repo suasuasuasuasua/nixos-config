@@ -7,11 +7,21 @@
       enable = true;
       settings = {
         signs = {
-          add = { text = "+"; };
-          change = { text = "~"; };
-          delete = { text = "_"; };
-          topdelete = { text = "‾"; };
-          changedelete = { text = "~"; };
+          add = {
+            text = "+";
+          };
+          change = {
+            text = "~";
+          };
+          delete = {
+            text = "_";
+          };
+          topdelete = {
+            text = "‾";
+          };
+          changedelete = {
+            text = "~";
+          };
         };
       };
     };
@@ -24,9 +34,7 @@
         mode = "n";
         key = "]c";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               if vim.wo.diff then
@@ -44,9 +52,7 @@
         mode = "n";
         key = "[c";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               if vim.wo.diff then
@@ -66,9 +72,7 @@
         mode = "v";
         key = "<leader>hs";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('gitsigns').stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
@@ -82,9 +86,7 @@
         mode = "v";
         key = "<leader>hr";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('gitsigns').reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
@@ -99,9 +101,7 @@
         mode = "n";
         key = "<leader>hs";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('gitsigns').stage_hunk()
@@ -115,9 +115,7 @@
         mode = "n";
         key = "<leader>hr";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('gitsigns').reset_hunk()
@@ -131,9 +129,7 @@
         mode = "n";
         key = "<leader>hS";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('gitsigns').stage_buffer()
@@ -147,9 +143,7 @@
         mode = "n";
         key = "<leader>hu";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('gitsigns').undo_stage_hunk()
@@ -163,9 +157,7 @@
         mode = "n";
         key = "<leader>hR";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('gitsigns').reset_buffer()
@@ -179,9 +171,7 @@
         mode = "n";
         key = "<leader>hp";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('gitsigns').preview_hunk()
@@ -195,9 +185,7 @@
         mode = "n";
         key = "<leader>hb";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('gitsigns').blame_line()
@@ -211,9 +199,7 @@
         mode = "n";
         key = "<leader>hd";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('gitsigns').diffthis()
@@ -227,9 +213,7 @@
         mode = "n";
         key = "<leader>hD";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('gitsigns').diffthis '@'
@@ -244,9 +228,7 @@
         mode = "n";
         key = "<leader>tb";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('gitsigns').toggle_current_line_blame()
@@ -260,9 +242,7 @@
         mode = "n";
         key = "<leader>tD";
         action.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               require('gitsigns').toggle_deleted()

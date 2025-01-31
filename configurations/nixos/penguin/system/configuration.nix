@@ -6,9 +6,7 @@
 
   # TODO: find a way to make this dynamic!
   nix.extraOptions =
-    /*
-      nix
-    */
+    # nix
     ''
       trusted-users = root justinhoang
     '';

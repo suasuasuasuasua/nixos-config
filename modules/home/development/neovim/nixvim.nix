@@ -325,9 +325,7 @@ in
         desc = "Highlight when yanking (copying) text";
         group = "kickstart-highlight-yank";
         callback.__raw =
-          /*
-          lua
-          */
+          # lua
           ''
             function()
               vim.highlight.on_yank()
@@ -354,9 +352,7 @@ in
     # The line beneath this is called `modeline`. See `:help modeline`
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extraconfigluapost
     extraConfigLuaPost =
-      /*
-      lua
-      */
+      # lua
       ''
         -- vim: ts=2 sts=2 sw=2 et
       '';

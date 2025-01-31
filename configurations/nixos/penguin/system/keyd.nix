@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # Ref:
   # https://github.com/ChocolateLoverRaj/nixos-system-config/blob/main/keyd.nix
   environment = {
@@ -7,9 +8,7 @@
     ];
     etc = {
       "libinput/local-overrides.quirks".text =
-        /*
-        bash
-        */
+        # bash
         ''
           [keyd virtual keyboard]
           MatchName=keyd virtual keyboard
