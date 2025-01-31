@@ -4,7 +4,13 @@
     openFirewall = true;
   };
 
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
+  };
+
   services.samba.settings = {
+    # Global
     global = {
       "workgroup" = "WORKGROUP";
       "server string" = "smbnix";
@@ -18,12 +24,17 @@
       "guest account" = "nobody";
       "map to guest" = "bad user";
     };
+  };
+
+  # Personal
+  services.samba.settings = {
     # Music videos and audio!
-    music = {
-      "path" = "/zshare/media/music";
+    "personal" = {
+      "path" = "/zshare/personal";
       "browseable" = "yes";
+      "valid users" = "justinhoang";
+      "public" = "no";
       "read only" = "no";
-      "guest ok" = "yes";
       "create mask" = "0644";
       "directory mask" = "0755";
       # remember to create the samba group and add recursive permissions!
@@ -31,8 +42,49 @@
     };
   };
 
-  services.samba-wsdd = {
-    enable = true;
-    openFirewall = true;
+  # Backups
+  services.samba.settings = {
+    "tm_share" = {
+      "path" = "/zshare/backup/tm_share";
+      "valid users" = "justinhoang";
+      "public" = "no";
+      "writeable" = "yes";
+      "force group" = "samba";
+      "fruit:aapl" = "yes";
+      "fruit:time machine" = "yes";
+      "vfs objects" = "catia fruit streams_xattr";
+    };
+  };
+
+  # Productivity
+  services.samba.settings = {
+    # Projects
+    "projects" = {
+      "path" = "/zshare/projects";
+      "valid users" = "justinhoang";
+      "browseable" = "yes";
+      "public" = "no";
+      "read only" = "no";
+      "create mask" = "0644";
+      "directory mask" = "0755";
+      # remember to create the samba group and add recursive permissions!
+      "force group" = "samba";
+    };
+  };
+
+  # Media!
+  services.samba.settings = {
+    # Music videos and audio!
+    "media" = {
+      "path" = "/zshare/media";
+      "valid users" = "justinhoang";
+      "browseable" = "yes";
+      "public" = "no";
+      "read only" = "no";
+      "create mask" = "0644";
+      "directory mask" = "0755";
+      # remember to create the samba group and add recursive permissions!
+      "force group" = "samba";
+    };
   };
 }
