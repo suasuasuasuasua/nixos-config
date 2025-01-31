@@ -28,14 +28,14 @@ in
       # (self + /modules/nixos/gui)
     ]
     ++
-    # A module that automatically imports everything else in the parent folder.
-    (
-      let
-        prefix = ./system;
-      in
-      with builtins;
-      map (fn: "${prefix}/${fn}") (filter (fn: fn != "default.nix") (attrNames (readDir "${prefix}")))
-    )
+      # A module that automatically imports everything else in the parent folder.
+      (
+        let
+          prefix = ./system;
+        in
+        with builtins;
+        map (fn: "${prefix}/${fn}") (filter (fn: fn != "default.nix") (attrNames (readDir "${prefix}")))
+      )
   );
 
   # Allow unfree packages like VSCode
