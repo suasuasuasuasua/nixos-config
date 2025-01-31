@@ -7,16 +7,22 @@
   };
 
   services.nginx.virtualHosts = {
-    "adguard.homelab.lan" = {
+    "adguard.lab.home" = {
       locations."/" = {
         # Adguard Home Adblocker and DNS server
         proxyPass = "http://localhost:3000";
       };
     };
-    "jellyfin.homelab.lab" = {
+    "jellyfin.lab.home" = {
       locations."/" = {
         # Jellyfin Media
         proxyPass = "http://localhost:8096";
+      };
+    };
+    "dash.lab.home" = {
+      locations."/" = {
+        # Jellyfin Media
+        proxyPass = "http://localhost:8080";
       };
     };
   };
