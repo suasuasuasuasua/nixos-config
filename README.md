@@ -38,6 +38,8 @@ The initial setup is pretty simple now thanks to `disko`.
 4. Install the NixOS onto the system
 
    ```bash
+   nixos-generate-config --no-filesystems --root /mnt
+
    # Move the system config into the /mnt dir
    mv /tmp/nixos-config /mnt/etc/nixos
 
@@ -48,11 +50,25 @@ The initial setup is pretty simple now thanks to `disko`.
    nixos-install --flake ./nixos-config#${HOSTNAME}
    ```
 
-5. Make changes and rebuild the system
+5. Prepare the passwords and ZFS pools
+
+   ```bash
+   # Set your password
+   nixos-enter --root /mnt -c "passwd ${USERNAME}"
+
+   # Export the zpools so that they can be used by the actual computer (not the
+   # installer!)
+   zpool export -a
+
+   # Reboot to your new system!
+   reboot
+   ```
+
+6. Make changes and rebuild the system
 
    ```bash
    # Rebuild the system after any changes!
-   nix run
+   nix run .#activate
    ```
 
 ## Overview
