@@ -1,7 +1,8 @@
 {
   services.dashy = {
     enable = true;
-    port = 8080;
+    # option does not exist :(
+    # port = 8080;
 
     settings = {
       appConfig = {
