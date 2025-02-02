@@ -19,8 +19,8 @@ in
     (self + /modules/nixos/services/jellyfin.nix)
     # Port 9000
     (self + /modules/nixos/services/mealie.nix)
-    # Port 9090
-    (self + /modules/nixos/services/cockpit.nix)
+    # Port 61208
+    (self + /modules/nixos/services/glances.nix)
 
     (self + /modules/nixos/services/samba.nix)
   ];

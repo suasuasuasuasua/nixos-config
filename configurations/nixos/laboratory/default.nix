@@ -16,16 +16,8 @@ in
       # Services
       ./services.nix
 
-      # Don't need DE on server
-      # # Desktop environment
-      # (self + /modules/nixos/desktop)
-
       # Development
       (self + /modules/nixos/development)
-
-      # Don't need DE on server
-      # # GUI Apps
-      # (self + /modules/nixos/gui)
     ]
     ++
       # A module that automatically imports everything else in the parent folder.

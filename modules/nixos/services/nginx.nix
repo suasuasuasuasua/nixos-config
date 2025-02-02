@@ -14,10 +14,10 @@
         proxyPass = "http://localhost:8080";
       };
     };
-    "cockpit.lab.home" = {
+    "glances.lab.home" = {
       locations."/" = {
         # System overview
-        proxyPass = "http://localhost:9090";
+        proxyPass = "http://localhost:61208";
       };
     };
   };
