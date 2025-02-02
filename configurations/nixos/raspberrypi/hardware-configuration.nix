@@ -14,14 +14,17 @@
 
   boot.initrd.availableKernelModules = [
     "xhci_pci"
+    "usbhid"
+    "usbstorage"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";
+    device = "/dev/disk/by-label/NIXOS_SD";
     fsType = "ext4";
+    options = [ "noatime" ];
   };
 
   swapDevices = [ ];
