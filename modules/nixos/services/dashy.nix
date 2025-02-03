@@ -8,72 +8,102 @@
 
     settings = {
       appConfig = {
-        cssThemes = [
-          "example-theme-1"
-          "example-theme-2"
-        ];
         enableFontAwesome = true;
         fontAwesomeKey = "e9076c7025";
-        theme = "thebe";
+        theme = "dashy-docs";
+        layout = "vertical";
       };
       pageInfo = {
-        description = "My Awesome Dashboard";
+        description = "sua's homelab";
         navLinks = [
           {
             path = "/";
-            title = "Home";
-          }
-          {
-            path = "https://example.com";
-            title = "Example 1";
-          }
-          {
-            path = "https://example.com";
-            title = "Example 2";
+            title = "home";
           }
         ];
-        title = "Dashy";
+        title = "dashy";
+        logo = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nix-snowflake-colours.svg";
       };
+      # icon plug
+      # - https://dashy.to/docs/icons/
       sections = [
         {
+          name = "networking";
           displayData = {
-            collapsed = true;
             cols = 2;
-            customStyles = "border: 2px dashed red;";
             itemSize = "large";
           };
           items = [
             {
-              backgroundColor = "#0079ff";
-              color = "#00ffc9";
-              description = "Source code and documentation on GitHub";
-              icon = "fab fa-github";
+              title = "adguard";
+              description = "adguard home dns blocker";
+              icon = "hl-adguardhome";
               target = "sametab";
-              title = "Source";
-              url = "https://github.com/Lissy93/dashy";
-            }
-            {
-              description = "View currently open issues, or raise a new one";
-              icon = "fas fa-bug";
-              title = "Issues";
-              url = "https://github.com/Lissy93/dashy/issues";
-            }
-            {
-              description = "Live Demo #1";
-              icon = "fas fa-rocket";
-              target = "iframe";
-              title = "Demo 1";
-              url = "https://dashy-demo-1.as93.net";
-            }
-            {
-              description = "Live Demo #2";
-              icon = "favicon";
-              target = "newtab";
-              title = "Demo 2";
-              url = "https://dashy-demo-2.as93.net";
+              url = "http://adguard.lab.home";
             }
           ];
-          name = "Getting Started";
+        }
+        {
+          name = "monitoring";
+          displayData = {
+            cols = 2;
+            itemSize = "large";
+          };
+          items = [
+            {
+              title = "glances";
+              description = "system overview";
+              icon = "hl-glances";
+              target = "sametab";
+              url = "http://glances.lab.home";
+            }
+          ];
+        }
+        {
+          name = "productivity";
+          displayData = {
+            cols = 2;
+            itemSize = "large";
+          };
+          items = [
+            {
+              title = "mealie";
+              description = "recipe and meal tracker";
+              icon = "hl-mealie";
+              target = "sametab";
+              url = "http://mealie.lab.home";
+            }
+            {
+              title = "actual";
+              description = "finance tracker";
+              icon = "hl-actual";
+              target = "sametab";
+              url = "http://actual.lab.home";
+            }
+            {
+              title = "gitweb";
+              description = "gitweb server";
+              icon = "si-git";
+              target = "sametab";
+              url = "http://lab.home/gitweb";
+            }
+          ];
+        }
+        {
+          name = "media";
+          displayData = {
+            cols = 2;
+            itemSize = "large";
+          };
+          items = [
+            {
+              title = "jellyfin";
+              description = "media server";
+              icon = "hl-jellyfin";
+              target = "sametab";
+              url = "http://jellyfin.lab.home";
+            }
+          ];
         }
       ];
     };

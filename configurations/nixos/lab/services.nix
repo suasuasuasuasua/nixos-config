@@ -9,10 +9,9 @@ in
     # Networking
     [
       (self + /modules/nixos/services/nginx.nix)
+      (self + /modules/nixos/services/dashy.nix)
       # Port 3000
       (self + /modules/nixos/services/adguardhome.nix)
-      # Port ???
-      (self + /modules/nixos/services/dashy.nix)
     ]
     # Productivity
     ++ [

@@ -8,12 +8,6 @@
 
   # System
   services.nginx.virtualHosts = {
-    "dash.lab.home" = {
-      locations."/" = {
-        # Dashboard
-        proxyPass = "http://localhost:8080";
-      };
-    };
     "glances.lab.home" = {
       locations."/" = {
         # System overview
