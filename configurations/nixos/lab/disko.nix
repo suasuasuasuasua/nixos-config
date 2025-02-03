@@ -281,13 +281,6 @@
           mountpoint = "/zshare/projects";
           options.mountpoint = "legacy";
         };
-        # Git repos to serve
-        "projects/git" = {
-          type = "zfs_fs";
-          # options.mountpoint = "/zshare/projects/git";
-          mountpoint = "/zshare/projects/git";
-          options.mountpoint = "legacy";
-        };
         # VM data
         "projects/vm" = {
           type = "zfs_fs";
@@ -295,11 +288,25 @@
           mountpoint = "/zshare/projects/vm";
           options.mountpoint = "legacy";
         };
-        # Linux ISOs
-        "projects/vm/iso" = {
+        # General served content
+        "srv" = {
           type = "zfs_fs";
-          # options.mountpoint = "/zshare/projects/vm/iso";
-          mountpoint = "/zshare/projects/vm/iso";
+          # options.mountpoint = "/zshare/srv";
+          mountpoint = "/zshare/srv";
+          options.mountpoint = "legacy";
+        };
+        # Git repos to serve
+        "srv/git" = {
+          type = "zfs_fs";
+          # options.mountpoint = "/zshare/srv/git";
+          mountpoint = "/zshare/srv/git";
+          options.mountpoint = "legacy";
+        };
+        # Linux ISOs
+        "srv/iso" = {
+          type = "zfs_fs";
+          # options.mountpoint = "/zshare/srv/iso";
+          mountpoint = "/zshare/srv/iso";
           options.mountpoint = "legacy";
         };
       };

@@ -1,7 +1,7 @@
 {
   services.gitweb = {
     # projectroot = "/srv/git"; # default path
-    projectroot = "/zshare/projects/git";
+    projectroot = "/zshare/srv/git";
   };
   services.nginx.gitweb.enable = true;
 }

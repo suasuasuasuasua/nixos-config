@@ -70,6 +70,18 @@
       # remember to create the samba group and add recursive permissions!
       "force group" = "samba";
     };
+    # Served content
+    "srv" = {
+      "path" = "/zshare/srv";
+      "valid users" = "justinhoang";
+      "browseable" = "yes";
+      "public" = "no";
+      "read only" = "no";
+      "create mask" = "0644";
+      "directory mask" = "0755";
+      # remember to create the samba group and add recursive permissions!
+      "force group" = "samba";
+    };
   };
 
   # Media!
