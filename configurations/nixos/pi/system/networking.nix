@@ -1,6 +1,6 @@
 {
   # Define the hostname
-  networking.hostName = "raspberrypi";
+  networking.hostName = "pi";
   networking.hostId = "cfbe2391";
 
   networking.networkmanager.enable = true;
