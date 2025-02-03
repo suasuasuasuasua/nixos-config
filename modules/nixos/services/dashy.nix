@@ -3,6 +3,8 @@
     enable = true;
     # option does not exist :(
     # port = 8080;
+    virtualHost.enableNginx = true;
+    virtualHost.domain = "dashy.lab.home";
 
     settings = {
       appConfig = {
