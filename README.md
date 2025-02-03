@@ -74,11 +74,12 @@ The initial setup is pretty simple now thanks to `disko`.
    # Make the samba group
    groupadd samba
 
-   # Make the zshare owned by samba
-   chgrp -R samba /zshare
-
    # Add the user to the samba group
    usermod -a -G justinhoang samba
+
+   # Make the zshare owned by samba and writable
+   chgrp -R samba /zshare
+   chmod -R 775 /zshare
    ```
 
 7. Make changes and rebuild the system
