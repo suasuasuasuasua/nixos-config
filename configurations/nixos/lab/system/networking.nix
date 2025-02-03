@@ -1,6 +1,6 @@
 {
   # Define the hostname
-  networking.hostName = "laboratory";
+  networking.hostName = "lab";
   networking.hostId = "d50c497a";
 
   networking.networkmanager.enable = true;

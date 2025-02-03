@@ -11,6 +11,6 @@
 - Need to export `zshare` pool after installing
 
 ```text
-[justinhoang@laboratory:~/nixos-config]$ fastfetch
+[justinhoang@lab:~/nixos-config]$ fastfetch
 # TODO: fill in the fastfetch
 ```
