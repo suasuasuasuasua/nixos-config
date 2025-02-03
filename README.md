@@ -64,7 +64,24 @@ The initial setup is pretty simple now thanks to `disko`.
    reboot
    ```
 
-6. Make changes and rebuild the system
+6. Initialize Samba (smb) (as root)
+
+   ```bash
+   # Add a user and a password
+   smbpasswd -a ${USERNAME}
+   smbpasswd -e ${USERNAME}
+
+   # Make the samba group
+   groupadd samba
+
+   # Make the zshare owned by samba
+   chgrp -R samba /zshare
+
+   # Add the user to the samba group
+   usermod -a -G justinhoang samba
+   ```
+
+7. Make changes and rebuild the system
 
    ```bash
    # Rebuild the system after any changes!
