@@ -59,7 +59,7 @@
             size = "100%"; # Use everything *except* for the end
             content = {
               type = "zfs";
-              pool = "zstore";
+              pool = "ztmp";
             };
           };
         };
@@ -74,7 +74,7 @@
     zroot = {
       type = "zpool";
       mode = "mirror";
-      mountpoint = "/";
+      mountpoint = null;
 
       rootFsOptions = {
         compression = "zstd";
@@ -97,6 +97,11 @@
           mountpoint = "/";
           options.mountpoint = "legacy";
         };
+        "nix" = {
+          type = "zfs_fs";
+          mountpoint = "/nix";
+          options.mountpoint = "legacy";
+        };
         "var" = {
           type = "zfs_fs";
           mountpoint = "/var";
@@ -113,8 +118,8 @@
       };
     };
 
-    # Nix Store
-    zstore = {
+    # Additional *whatever* pool for whatever
+    ztmp = {
       type = "zpool";
 
       rootFsOptions = {
@@ -130,9 +135,9 @@
 
       datasets = {
         # See examples/zfs.nix for more comprehensive usage.
-        "nix" = {
+        "tmp" = {
           type = "zfs_fs";
-          mountpoint = "/nix";
+          mountpoint = "/ztmp/tmp";
           options.mountpoint = "legacy";
         };
       };
@@ -196,7 +201,7 @@
     zshare = {
       type = "zpool";
       mode = "raidz1"; # allow for one drive failure
-      mountpoint = "/zshare";
+      mountpoint = null;
 
       # TODO: figure out these options
       #       - do we need encryption?
@@ -319,6 +324,27 @@
           type = "zfs_fs";
           # options.mountpoint = "/zshare/media/captures";
           mountpoint = "/zshare/media/captures";
+          options.mountpoint = "legacy";
+        };
+        # Images, etc.
+        "media/captures/images" = {
+          type = "zfs_fs";
+          # options.mountpoint = "/zshare/media/captures/images";
+          mountpoint = "/zshare/media/captures/images";
+          options.mountpoint = "legacy";
+        };
+        # Recordings, etc.
+        "media/captures/recordings" = {
+          type = "zfs_fs";
+          # options.mountpoint = "/zshare/media/captures/recordings";
+          mountpoint = "/zshare/media/captures/recordings";
+          options.mountpoint = "legacy";
+        };
+        # Screenshots, etc.
+        "media/captures/screenshots" = {
+          type = "zfs_fs";
+          # options.mountpoint = "/zshare/media/captures/screenshots";
+          mountpoint = "/zshare/media/captures/screenshots";
           options.mountpoint = "legacy";
         };
         # Movies
