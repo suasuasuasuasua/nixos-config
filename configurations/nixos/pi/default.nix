@@ -9,6 +9,9 @@ in
 {
   imports = (
     [
+      inputs.rpi-nix.nixosModules.sd-image
+      inputs.rpi-nix.nixosModules.raspberry-pi
+
       ./hardware-configuration.nix
 
       # Services
