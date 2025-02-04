@@ -99,4 +99,20 @@
       "force group" = "samba";
     };
   };
+
+  # Temp!
+  services.samba.settings = {
+    # Music videos and audio!
+    "tmp" = {
+      "path" = "/ztmp/tmp";
+      "valid users" = "justinhoang";
+      "browseable" = "yes";
+      "public" = "no";
+      "read only" = "no";
+      "create mask" = "0644";
+      "directory mask" = "0755";
+      # remember to create the samba group and add recursive permissions!
+      "force group" = "samba";
+    };
+  };
 }
