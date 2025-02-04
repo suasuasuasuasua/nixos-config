@@ -2,10 +2,20 @@
 
 ## Hosts
 
-### `penguin` (Acer 713-3W Chromebook NixOS)
+### [`penguin`](/configurations/nixos/penguin/README.md) (Acer 713-3W Chromebook NixOS)
 
 - Thin client notebook
 - Mainly for web browsing, tinkering, note-taking, and light coding
+
+### [`lab`](/configurations/nixos/lab/README.md) (Custom Build)
+
+- Main server for services like `mealie`, `actual`, `jellyfin`, and more!
+- NAS with ZFS pooled HDDs and shared via `smb`
+
+### [`pi`](/configurations/nixos/pi/README.md) (Raspberry Pi Model 4B *(2GB RAM)*)
+
+- *For fun* single board computer (acquired in college class)
+- Runs simple services like `adguardhome`
 
 ## Development
 
