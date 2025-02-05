@@ -14,8 +14,6 @@
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
-    rpi-nix.url = "github:nix-community/raspberry-pi-nix";
-
     # Other
     # Theming
     catppuccin.url = "github:catppuccin/nix";
@@ -34,6 +32,9 @@
 
     # Utility
     devenv.url = "github:cachix/devenv";
+    # raspberry pi imaging
+    rpi-nix.url = "github:nix-community/raspberry-pi-nix";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   # Wired using https://nixos-unified.org/autowiring.html
