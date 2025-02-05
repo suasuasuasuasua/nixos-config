@@ -2,10 +2,8 @@
 
 # Default state for all rules
 default: true
-
 # Path to configuration file to extend
 extends: null
-
 # MD013/line-length : Line length : https://github.com/DavidAnson/markdownlint/blob/v0.35.0/doc/md013.md
 MD013:
   # Number of characters
@@ -24,7 +22,6 @@ MD013:
   strict: false
   # Stern length checking
   stern: false
-
 # MD024/no-duplicate-heading : Multiple headings with the same content : https://github.com/DavidAnson/markdownlint/blob/v0.35.0/doc/md024.md
 MD024:
   # Only check sibling headings

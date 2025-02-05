@@ -2,7 +2,7 @@
 
 - Running `zfs` on root partitioning scheme (see ./disko.nix for more details)
 - "Thin-client" but generally used for light programming, web browsing,
-tinkering, etc.
+  tinkering, etc.
 
 ```text
 /home/justinhoang/ [justinhoang@penguin] [23:22]

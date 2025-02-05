@@ -22,7 +22,8 @@
 The initial setup is pretty simple now thanks to `disko`.
 
 1. Boot the [minimal disk ISO](https://nixos.org/download/) onto a computer
-2. Clone the repository from GitHub
+
+1. Clone the repository from GitHub
 
    ```bash
    # First get `git` since it isn't a default package
@@ -32,7 +33,7 @@ The initial setup is pretty simple now thanks to `disko`.
    git clone https://github.com/suasuasuasuasua/nixos-config /tmp/nixos-config
    ```
 
-3. Use `disko` to partition and format the drive
+1. Use `disko` to partition and format the drive
 
    ```bash
    sudo nix --experimental-features "nix-command flakes"    \
@@ -45,7 +46,7 @@ The initial setup is pretty simple now thanks to `disko`.
    mount | grep /mnt
    ```
 
-4. Install the NixOS onto the system
+1. Install the NixOS onto the system
 
    ```bash
    nixos-generate-config --no-filesystems --root /mnt
@@ -60,7 +61,7 @@ The initial setup is pretty simple now thanks to `disko`.
    nixos-install --flake ./nixos-config#${HOSTNAME}
    ```
 
-5. Prepare the passwords and ZFS pools
+1. Prepare the passwords and ZFS pools
 
    ```bash
    # Set your password
@@ -74,7 +75,7 @@ The initial setup is pretty simple now thanks to `disko`.
    reboot
    ```
 
-6. Initialize Samba (smb) (as root)
+1. Initialize Samba (smb) (as root)
 
    ```bash
    # Add a user and a password
@@ -92,7 +93,7 @@ The initial setup is pretty simple now thanks to `disko`.
    chmod -R 775 /zshare
    ```
 
-7. Make changes and rebuild the system
+1. Make changes and rebuild the system
 
    ```bash
    # Rebuild the system after any changes!
