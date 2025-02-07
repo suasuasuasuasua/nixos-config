@@ -6,10 +6,13 @@ let
 in
 {
   imports =
-    # Networking
+    # General
     [
       (self + /modules/nixos/services/nginx.nix)
       (self + /modules/nixos/services/dashy.nix)
+    ]
+    # Networking
+    ++ [
       # Port 3000
       (self + /modules/nixos/services/adguardhome.nix)
     ]
