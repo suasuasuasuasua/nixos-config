@@ -8,7 +8,7 @@ in
   imports = [
     # TODO: figure out the nginx parameter passing! temporary creating sd
     # without nginx
-    # (self + /modules/nixos/services/nginx.nix)
+    (self + /modules/nixos/services/nginx.nix)
 
     # Port 3000
     (self + /modules/nixos/services/adguardhome.nix)
