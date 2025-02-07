@@ -4,8 +4,8 @@
 
 - not powerful enought to build system directly, so need a support machine like
   the lab
-  - [https://nix.dev/tutorials/nixos/installing-nixos-on-a-raspberry-pi.html](helpful
-  instructions here) to decompress the image after building!
+  - [helpful instructions here](https://nix.dev/tutorials/nixos/instaling-nixos-on-a-raspberry-pi.html)
+    to decompress the image after building!
 
 ```text
 /home/justinhoang [justinhoang@pi] [23:05]
