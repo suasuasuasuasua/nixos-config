@@ -284,6 +284,18 @@
             domain = "lab.local";
             answer = "192.168.0.240";
           }
+          {
+            domain = "pi.home";
+            answer = "192.168.0.250";
+          }
+          {
+            domain = "*.pi.home";
+            answer = "192.168.0.250";
+          }
+          {
+            domain = "pi.local";
+            answer = "192.168.0.250";
+          }
         ];
         safe_fs_patterns = [ "/var/lib/private/AdGuardHome/userfilters/*" ];
         safebrowsing_cache_size = 1048576;
