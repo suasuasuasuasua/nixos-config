@@ -40,6 +40,12 @@ in
         proxyPass = "http://localhost:8096";
       };
     };
+    "navidrome.${hostName}.home" = {
+      locations."/" = {
+        # Music Streaming
+        proxyPass = "http://localhost:4533";
+      };
+    };
   };
 
   # Productivity

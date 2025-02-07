@@ -25,6 +25,8 @@ in
     ]
     # Media
     ++ [
+      # Port 4533
+      (self + /modules/nixos/services/navidrome.nix)
       # Port 8096
       (self + /modules/nixos/services/jellyfin.nix)
     ]
