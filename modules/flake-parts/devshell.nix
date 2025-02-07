@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.devenv.flakeModule
+    inputs.treefmt-nix.flakeModule
   ];
   perSystem =
     { pkgs, ... }:
@@ -53,6 +54,29 @@
           end-of-file-fixer.enable = true;
           trim-trailing-whitespace.enable = true;
         };
+      };
+      treefmt = {
+        # nix
+        programs.nixfmt.enable = pkgs.lib.meta.availableOn pkgs.stdenv.buildPlatform pkgs.nixfmt-rfc-style.compiler;
+        programs.nixfmt.package = pkgs.nixfmt-rfc-style;
+
+        # json
+        programs.jsonfmt.enable = true;
+
+        # yaml
+        programs.yamlfmt.enable = true;
+
+        # markdown
+        programs.mdformat.enable = true;
+
+        # just
+        programs.just.enable = true;
+
+        # ignore certain files
+        settings.global.excludes = [
+          "*.png"
+          ".envrc"
+        ];
       };
     };
 }
