@@ -13,26 +13,20 @@ in
     ]
     # Networking
     ++ [
-      # Port 3000
       (self + /modules/nixos/services/adguardhome.nix)
     ]
     # Productivity
     ++ [
-      # Port 3001
       (self + /modules/nixos/services/actual.nix)
-      # Port 9000
       (self + /modules/nixos/services/mealie.nix)
     ]
     # Media
     ++ [
-      # Port 4533
       (self + /modules/nixos/services/navidrome.nix)
-      # Port 8096
       (self + /modules/nixos/services/jellyfin.nix)
     ]
     # System monitoring
     ++ [
-      # Port 61208
       (self + /modules/nixos/services/glances.nix)
     ]
     # File sharing
