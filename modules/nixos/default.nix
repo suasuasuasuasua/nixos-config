@@ -1,5 +1,6 @@
 {
   imports = [
     ./development
+    ./nix.nix
   ];
 }

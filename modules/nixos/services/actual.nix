@@ -1,5 +1,12 @@
-{ config, ... }:
+{
+  flake,
+  config,
+  pkgsUnstable,
+  ...
+}:
 let
+  inherit (flake) inputs;
+
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
   hostName = config.networking.hostName;
@@ -7,9 +14,15 @@ let
   port = 3001;
 in
 {
+  imports = [
+    "${inputs.nixpkgs-unstable}/nixos/modules/services/web-apps/actual.nix"
+  ];
+
   # TODO: need to setup HTTPS to continue using...
   services.actual = {
     enable = true;
+    # package = pkgs.unstable.actual-server;
+    package = pkgsUnstable.actual-server;
     openFirewall = true;
     settings = {
       # default port is 3000
