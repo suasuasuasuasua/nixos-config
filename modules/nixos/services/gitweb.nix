@@ -1,7 +1,9 @@
 {
   services.gitweb = {
-    # projectroot = "/srv/git"; # default path
+    # TODO: make this a dynamic argument?
+    # "/srv/git" is the default path
     projectroot = "/zshare/srv/git";
   };
+
   services.nginx.gitweb.enable = true;
 }
