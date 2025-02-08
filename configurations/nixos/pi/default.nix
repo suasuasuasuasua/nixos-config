@@ -5,6 +5,21 @@
 let
   inherit (flake) inputs;
   inherit (inputs) self;
+
+  # Define a function to import all .nix files except default.nix from a given prefix
+  importFolder =
+    prefix:
+    with builtins;
+    let
+      # Read the directory and filter out non-.nix files and default.nix
+      nixFiles = filter (fn: fn != "default.nix" && builtins.match "^.*\\.nix$" fn != null) (
+        attrNames (readDir "${prefix}")
+      );
+
+      # Create a list of file paths to return
+      nixPaths = map (name: "${prefix}/${name}") nixFiles;
+    in
+    nixPaths;
 in
 {
   imports = (
@@ -14,21 +29,11 @@ in
 
       ./hardware-configuration.nix
 
-      # Services
-      ./services.nix
-
       # Development
       (self + /modules/nixos/development)
     ]
-    ++
-      # A module that automatically imports everything else in the parent folder.
-      (
-        let
-          prefix = ./system;
-        in
-        with builtins;
-        map (fn: "${prefix}/${fn}") (filter (fn: fn != "default.nix") (attrNames (readDir "${prefix}")))
-      )
+    ++ importFolder ./services
+    ++ importFolder ./system
   );
 
   # Allow unfree packages like VSCode
