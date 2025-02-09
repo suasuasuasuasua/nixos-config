@@ -105,6 +105,13 @@ in
       };
       items = [
         {
+          title = "audiobook shelf";
+          description = "audiobook manager";
+          icon = "hl-audiobookshelf";
+          target = "newtab";
+          url = "http://audiobookshelf.${hostName}.home";
+        }
+        {
           title = "jellyfin";
           description = "media server";
           icon = "hl-jellyfin";

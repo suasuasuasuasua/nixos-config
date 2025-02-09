@@ -8,8 +8,8 @@ in
   imports =
     # General
     [
-      (self + /modules/nixos/services/nginx.nix)
       (self + /modules/nixos/services/dashy.nix)
+      (self + /modules/nixos/services/nginx.nix)
     ]
     # Networking
     ++ [
@@ -22,8 +22,9 @@ in
     ]
     # Media
     ++ [
-      (self + /modules/nixos/services/navidrome.nix)
+      (self + /modules/nixos/services/audiobookshelf.nix)
       (self + /modules/nixos/services/jellyfin.nix)
+      (self + /modules/nixos/services/navidrome.nix)
     ]
     # System monitoring
     ++ [
@@ -31,9 +32,9 @@ in
     ]
     # File sharing
     ++ [
-      # Share files via SMB
-      (self + /modules/nixos/services/samba.nix)
       # Share files via git web interface
       (self + /modules/nixos/services/gitweb.nix)
+      # Share files via SMB
+      (self + /modules/nixos/services/samba.nix)
     ];
 }

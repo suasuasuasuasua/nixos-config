@@ -8,8 +8,8 @@ in
   imports =
     # General
     [
-      (self + /modules/nixos/services/nginx.nix)
       (self + /modules/nixos/services/dashy.nix)
+      (self + /modules/nixos/services/nginx.nix)
     ]
     # Networking
     ++ [
