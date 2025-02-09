@@ -13,8 +13,9 @@ in
     appConfig = {
       enableFontAwesome = true;
       fontAwesomeKey = "e9076c7025";
-      theme = "dashy-docs";
-      layout = "vertical";
+      layout = "auto";
+
+      theme = "basic";
     };
     pageInfo = {
       description = "sua's homelab";
@@ -43,7 +44,7 @@ in
       items = [
         {
           title = "adguard";
-          description = "adguard home dns blocker";
+          description = "dns blocker";
           icon = "hl-adguardhome";
           target = "newtab";
           url = "http://adguard.${hostName}.home";
