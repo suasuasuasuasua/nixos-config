@@ -126,6 +126,13 @@ in
           url = "http://jellyfin.${hostName}.home";
         }
         {
+          title = "jellyseerr";
+          description = "media discovery manager";
+          icon = "hl-jellyseerr";
+          target = "newtab";
+          url = "http://jellyseerr.${hostName}.home";
+        }
+        {
           title = "navidrome";
           description = "music manager";
           icon = "hl-navidrome";

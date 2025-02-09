@@ -3,15 +3,14 @@ let
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
   hostName = config.networking.hostName;
-  # default port = 8096
-  port = 8096;
-  serviceName = "jellyfin";
+  # default port = 5055
+  port = 5055;
+  serviceName = "jellyseerr";
 in
 {
-  services.jellyfin = {
+  services.jellyseerr = {
     enable = true;
-    # no option to change port...
-    # port = 8096
+    port = port;
     openFirewall = true;
   };
 

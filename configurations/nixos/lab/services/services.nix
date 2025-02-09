@@ -25,6 +25,7 @@ in
       (self + /modules/nixos/services/audiobookshelf.nix)
       (self + /modules/nixos/services/calibre.nix)
       (self + /modules/nixos/services/jellyfin.nix)
+      (self + /modules/nixos/services/jellyseerr.nix)
       (self + /modules/nixos/services/navidrome.nix)
     ]
     # System monitoring
