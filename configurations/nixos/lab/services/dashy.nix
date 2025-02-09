@@ -105,7 +105,7 @@ in
       };
       items = [
         {
-          title = "audiobook shelf";
+          title = "audiobookshelf";
           description = "audiobook manager";
           icon = "hl-audiobookshelf";
           target = "newtab";
@@ -138,6 +138,22 @@ in
           icon = "hl-navidrome";
           target = "newtab";
           url = "http://navidrome.${hostName}.home";
+        }
+      ];
+    }
+    {
+      name = "sharing";
+      displayData = {
+        cols = 2;
+        itemSize = "large";
+      };
+      items = [
+        {
+          title = "wastebin";
+          description = "pastebin";
+          icon = "si-pastebin";
+          target = "newtab";
+          url = "http://wastebin.${hostName}.home";
         }
       ];
     }

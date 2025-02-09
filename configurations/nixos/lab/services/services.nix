@@ -35,6 +35,8 @@ in
     # File sharing
     ++ [
       # Share files via git web interface
+      (self + /modules/nixos/services/wastebin.nix)
+      # Share files via git web interface
       (self + /modules/nixos/services/gitweb.nix)
       # Share files via SMB
       (self + /modules/nixos/services/samba.nix)
