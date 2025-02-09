@@ -23,6 +23,7 @@ in
     # Media
     ++ [
       (self + /modules/nixos/services/audiobookshelf.nix)
+      (self + /modules/nixos/services/calibre.nix)
       (self + /modules/nixos/services/jellyfin.nix)
       (self + /modules/nixos/services/navidrome.nix)
     ]

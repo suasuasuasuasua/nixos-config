@@ -112,6 +112,13 @@ in
           url = "http://audiobookshelf.${hostName}.home";
         }
         {
+          title = "calibre web";
+          description = "ebook manager";
+          icon = "hl-calibre-web";
+          target = "newtab";
+          url = "http://calibre.${hostName}.home";
+        }
+        {
           title = "jellyfin";
           description = "media server";
           icon = "hl-jellyfin";
