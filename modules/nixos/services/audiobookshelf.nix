@@ -21,6 +21,7 @@ in
       locations."/" = {
         # audiobook manager
         proxyPass = "http://localhost:${toString port}";
+        proxyWebsockets = true; # needed if you need to use WebSocket
       };
     };
   };
