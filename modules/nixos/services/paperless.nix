@@ -19,7 +19,6 @@ in
     mediaDir = "/zshare/personal/docs";
 
     consumptionDirIsPublic = true;
-    address = "paperless.lab.home";
     settings = {
       PAPERLESS_CONSUMER_IGNORE_PATTERN = [
         ".DS_STORE/*"
