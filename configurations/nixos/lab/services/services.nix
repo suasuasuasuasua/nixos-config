@@ -19,6 +19,7 @@ in
     ++ [
       (self + /modules/nixos/services/actual.nix)
       (self + /modules/nixos/services/mealie.nix)
+      (self + /modules/nixos/services/paperless.nix)
     ]
     # Media
     ++ [

@@ -89,11 +89,11 @@ in
           url = "http://actual.${hostName}.home";
         }
         {
-          title = "gitweb";
-          description = "gitweb server";
-          icon = "si-git";
+          title = "paperless";
+          description = "document manager";
+          icon = "hl-paperless";
           target = "newtab";
-          url = "http://${hostName}.home/gitweb";
+          url = "http://paperless.${hostName}.home";
         }
       ];
     }
@@ -148,6 +148,13 @@ in
         itemSize = "large";
       };
       items = [
+        {
+          title = "gitweb";
+          description = "gitweb server";
+          icon = "si-git";
+          target = "newtab";
+          url = "http://${hostName}.home/gitweb";
+        }
         {
           title = "wastebin";
           description = "pastebin";
