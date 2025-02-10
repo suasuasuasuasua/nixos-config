@@ -119,6 +119,13 @@ in
           url = "http://calibre.${hostName}.home";
         }
         {
+          title = "immich";
+          description = "photo manager";
+          icon = "hl-immich";
+          target = "newtab";
+          url = "http://immich.${hostName}.home";
+        }
+        {
           title = "jellyfin";
           description = "media server";
           icon = "hl-jellyfin";
