@@ -151,7 +151,7 @@ in
     statistics = {
       dir_path = "";
       ignored = [ ];
-      interval = "24h";
+      interval = "720h";
       enabled = true;
     };
     filters = [
