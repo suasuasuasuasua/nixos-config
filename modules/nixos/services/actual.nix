@@ -1,7 +1,6 @@
 {
   flake,
   config,
-  pkgsUnstable,
   ...
 }:
 let
@@ -21,8 +20,8 @@ in
   # TODO: need to setup HTTPS to continue using...
   services.actual = {
     enable = true;
-    # package = pkgs.unstable.actual-server;
-    package = pkgsUnstable.actual-server;
+    package = flake.inputs.nixpkgs-unstable.legacyPackages.x86_64-linux.actual-server;
+    # flake.inputs.nixpkgs-unstable.legacyPackages.${system}.actual-server;
     openFirewall = true;
     settings = {
       # default port is 3000
