@@ -21,6 +21,7 @@ in
   services.actual = {
     enable = true;
     package = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux.actual-server;
+    # TODO: how to auto-select system?
     # flake.inputs.nixpkgs-unstable.legacyPackages.${system}.actual-server;
     openFirewall = true;
     settings = {
