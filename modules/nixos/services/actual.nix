@@ -20,7 +20,7 @@ in
   # TODO: need to setup HTTPS to continue using...
   services.actual = {
     enable = true;
-    package = flake.inputs.nixpkgs-unstable.legacyPackages.x86_64-linux.actual-server;
+    package = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux.actual-server;
     # flake.inputs.nixpkgs-unstable.legacyPackages.${system}.actual-server;
     openFirewall = true;
     settings = {
