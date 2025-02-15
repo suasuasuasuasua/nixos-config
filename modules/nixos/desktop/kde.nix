@@ -7,19 +7,24 @@
   services.displayManager.defaultSession = "plasma";
 
   # Add these kde packages
-  environment.systemPackages = with pkgs; [
-    filelight # disk usage
-    kate # text editor
-    krita # photo editing
-    kdenlive # video editing
-    haruna # video player
-    elisa # music player
-    kalendar # calendar
-    catppuccin-kde # global theme
-    libreoffice-qt # office suite -- calligra wasn't working
-    hunspell # spell check
-    hunspellDicts.en_US # US english package
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      filelight # disk usage
+      kate # text editor
+      krita # photo editing
+      kdenlive # video editing
+      haruna # video player
+      elisa # music player
+      kalendar # calendar
+      catppuccin-kde # global theme
+      libreoffice-qt # office suite -- calligra wasn't working
+      hunspell # spell check
+      hunspellDicts.en_US # US english package
+    ]
+    ++ (with pkgs.kdePackages; [
+      plasma-thunderbolt
+    ]);
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-browser-integration
