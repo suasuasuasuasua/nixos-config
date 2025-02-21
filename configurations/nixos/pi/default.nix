@@ -24,9 +24,11 @@ in
 {
   imports = (
     [
+      # pi setup
       inputs.rpi-nix.nixosModules.sd-image
       inputs.rpi-nix.nixosModules.raspberry-pi
 
+      # hardware
       ./hardware-configuration.nix
 
       # Development

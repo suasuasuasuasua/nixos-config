@@ -9,9 +9,16 @@ in
 {
   imports = (
     [
+      # disk setup
       inputs.disko.nixosModules.disko
-      ./hardware-configuration.nix
       ./disko.nix
+
+      # hardware setup
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
+      inputs.nixos-hardware.nixosModules.common-hidpi
+      inputs.nixos-hardware.nixosModules.common-pc-laptop
+      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      ./hardware-configuration.nix
 
       # Desktop environment
       (self + /modules/nixos/desktop)

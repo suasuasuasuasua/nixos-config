@@ -18,6 +18,8 @@
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     # Other
     # Theming
     catppuccin.url = "github:catppuccin/nix";

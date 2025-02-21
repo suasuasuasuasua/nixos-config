@@ -24,9 +24,15 @@ in
 {
   imports = (
     [
+      # disk setup
       inputs.disko.nixosModules.disko
-      ./hardware-configuration.nix
       ./disko.nix
+
+      # hardware setup
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
+      inputs.nixos-hardware.nixosModules.common-pc
+      inputs.nixos-hardware.nixosModules.common-pc-ssd
+      ./hardware-configuration.nix
 
       # Development
       (self + /modules/nixos/development)
