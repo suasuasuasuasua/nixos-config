@@ -20,11 +20,11 @@ in
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       ./hardware-configuration.nix
 
+      # Default
+      self.nixosModules.default
+
       # Desktop environment
       (self + /modules/nixos/desktop)
-
-      # Development
-      (self + /modules/nixos/development)
 
       # # GUI Apps
       (self + /modules/nixos/gui)

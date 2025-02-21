@@ -34,8 +34,8 @@ in
       inputs.nixos-hardware.nixosModules.common-pc-ssd
       ./hardware-configuration.nix
 
-      # Development
-      (self + /modules/nixos/development)
+      # Default
+      self.nixosModules.default
     ]
     ++ importFolder ./services
     ++ importFolder ./system
