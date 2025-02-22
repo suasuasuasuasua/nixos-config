@@ -1,118 +1,138 @@
 {
-  services.samba = {
-    enable = true;
-    openFirewall = true;
+  config,
+  lib,
+  ...
+}:
+let
+  # Use the hostname of the machine!
+  #   previously was hardcoding *lab* but this should work for any machine
+  serviceName = "samba";
+
+  cfg = config.services.custom.${serviceName};
+in
+{
+  options.services.custom.${serviceName} = {
+    enable = lib.mkEnableOption "Enable Samba";
+
+    # TODO: add settings to samba as an argument
   };
 
-  services.samba-wsdd = {
-    enable = true;
-    openFirewall = true;
-  };
-
-  services.samba.settings = {
-    # Global
-    global = {
-      "workgroup" = "WORKGROUP";
-      "server string" = "smbnix";
-      "netbios name" = "smbnix";
-      "security" = "user";
-      #"use sendfile" = "yes";
-      #"max protocol" = "smb2";
-      # note: localhost is the ipv6 localhost ::1
-      "hosts allow" = "192.168.0. 127.0.0.1 localhost";
-      "hosts deny" = "0.0.0.0/0";
-      "guest account" = "nobody";
-      "map to guest" = "bad user";
+  config = lib.mkIf cfg.enable {
+    services.samba = {
+      enable = true;
+      openFirewall = true;
     };
-  };
 
-  # Personal
-  services.samba.settings = {
-    # Music videos and audio!
-    "personal" = {
-      "path" = "/zshare/personal";
-      "browseable" = "yes";
-      "valid users" = "justinhoang";
-      "public" = "no";
-      "read only" = "no";
-      "create mask" = "0644";
-      "directory mask" = "0755";
-      # remember to create the samba group and add recursive permissions!
-      "force group" = "samba";
+    services.samba-wsdd = {
+      enable = true;
+      openFirewall = true;
     };
-  };
 
-  # Backups
-  services.samba.settings = {
-    "tm_share" = {
-      "path" = "/zshare/backup/tm_share";
-      "valid users" = "justinhoang";
-      "public" = "no";
-      "writeable" = "yes";
-      "force group" = "samba";
-      "fruit:aapl" = "yes";
-      "fruit:time machine" = "yes";
-      "vfs objects" = "catia fruit streams_xattr";
+    services.samba.settings = {
+      # Global
+      global = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "smbnix";
+        "netbios name" = "smbnix";
+        "security" = "user";
+        #"use sendfile" = "yes";
+        #"max protocol" = "smb2";
+        # note: localhost is the ipv6 localhost ::1
+        "hosts allow" = "192.168.0. 127.0.0.1 localhost";
+        "hosts deny" = "0.0.0.0/0";
+        "guest account" = "nobody";
+        "map to guest" = "bad user";
+      };
     };
-  };
 
-  # Productivity
-  services.samba.settings = {
-    # Projects
-    "projects" = {
-      "path" = "/zshare/projects";
-      "valid users" = "justinhoang";
-      "browseable" = "yes";
-      "public" = "no";
-      "read only" = "no";
-      "create mask" = "0644";
-      "directory mask" = "0755";
-      # remember to create the samba group and add recursive permissions!
-      "force group" = "samba";
+    # Personal
+    services.samba.settings = {
+      # Music videos and audio!
+      "personal" = {
+        "path" = "/zshare/personal";
+        "browseable" = "yes";
+        "valid users" = "justinhoang";
+        "public" = "no";
+        "read only" = "no";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        # remember to create the samba group and add recursive permissions!
+        "force group" = "samba";
+      };
     };
-    # Served content
-    "srv" = {
-      "path" = "/zshare/srv";
-      "valid users" = "justinhoang";
-      "browseable" = "yes";
-      "public" = "no";
-      "read only" = "no";
-      "create mask" = "0644";
-      "directory mask" = "0755";
-      # remember to create the samba group and add recursive permissions!
-      "force group" = "samba";
-    };
-  };
 
-  # Media!
-  services.samba.settings = {
-    # Music videos and audio!
-    "media" = {
-      "path" = "/zshare/media";
-      "valid users" = "justinhoang";
-      "browseable" = "yes";
-      "public" = "no";
-      "read only" = "no";
-      "create mask" = "0644";
-      "directory mask" = "0755";
-      # remember to create the samba group and add recursive permissions!
-      "force group" = "samba";
+    # Backups
+    services.samba.settings = {
+      "tm_share" = {
+        "path" = "/zshare/backup/tm_share";
+        "valid users" = "justinhoang";
+        "public" = "no";
+        "writeable" = "yes";
+        "force group" = "samba";
+        "fruit:aapl" = "yes";
+        "fruit:time machine" = "yes";
+        "vfs objects" = "catia fruit streams_xattr";
+      };
     };
-  };
 
-  # Temp!
-  services.samba.settings = {
-    # Music videos and audio!
-    "tmp" = {
-      "path" = "/ztmp/tmp";
-      "valid users" = "justinhoang";
-      "browseable" = "yes";
-      "public" = "no";
-      "read only" = "no";
-      "create mask" = "0644";
-      "directory mask" = "0755";
-      # remember to create the samba group and add recursive permissions!
-      "force group" = "samba";
+    # Productivity
+    services.samba.settings = {
+      # Projects
+      "projects" = {
+        "path" = "/zshare/projects";
+        "valid users" = "justinhoang";
+        "browseable" = "yes";
+        "public" = "no";
+        "read only" = "no";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        # remember to create the samba group and add recursive permissions!
+        "force group" = "samba";
+      };
+      # Served content
+      "srv" = {
+        "path" = "/zshare/srv";
+        "valid users" = "justinhoang";
+        "browseable" = "yes";
+        "public" = "no";
+        "read only" = "no";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        # remember to create the samba group and add recursive permissions!
+        "force group" = "samba";
+      };
+    };
+
+    # Media!
+    services.samba.settings = {
+      # Music videos and audio!
+      "media" = {
+        "path" = "/zshare/media";
+        "valid users" = "justinhoang";
+        "browseable" = "yes";
+        "public" = "no";
+        "read only" = "no";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        # remember to create the samba group and add recursive permissions!
+        "force group" = "samba";
+      };
+    };
+
+    # Temp!
+    services.samba.settings = {
+      # Music videos and audio!
+      "tmp" = {
+        "path" = "/ztmp/tmp";
+        "valid users" = "justinhoang";
+        "browseable" = "yes";
+        "public" = "no";
+        "read only" = "no";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        # remember to create the samba group and add recursive permissions!
+        "force group" = "samba";
+      };
     };
   };
 }

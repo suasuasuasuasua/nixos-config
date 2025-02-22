@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
@@ -6,19 +6,27 @@ let
   # default port = 5055
   port = 5055;
   serviceName = "jellyseerr";
+
+  cfg = config.services.custom.${serviceName};
 in
 {
-  services.jellyseerr = {
-    enable = true;
-    port = port;
-    openFirewall = true;
+  options.services.custom.${serviceName} = {
+    enable = lib.mkEnableOption "Enable Jellyseerr";
   };
 
-  services.nginx.virtualHosts = {
-    "${serviceName}.${hostName}.home" = {
-      locations."/" = {
-        # Jellyfin Media
-        proxyPass = "http://localhost:${toString port}";
+  config = lib.mkIf cfg.enable {
+    services.jellyseerr = {
+      enable = true;
+      port = port;
+      openFirewall = true;
+    };
+
+    services.nginx.virtualHosts = {
+      "${serviceName}.${hostName}.home" = {
+        locations."/" = {
+          # Jellyfin Media
+          proxyPass = "http://localhost:${toString port}";
+        };
       };
     };
   };

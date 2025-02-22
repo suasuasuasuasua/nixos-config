@@ -1,15 +1,29 @@
-{ pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    # Files
-    zip
-    unzip
-    wget
-    curl
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.development.cli;
+in
+{
+  options.development.cli = {
+    enable = lib.mkEnableOption "Enable general CLI tools";
+  };
 
-    lshw
+  config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      # Files
+      zip
+      unzip
+      wget
+      curl
 
-    # Allow copy and paste in apps like neovim
-    wl-clipboard
-  ];
+      lshw
+
+      # Allow copy and paste in apps like neovim
+      wl-clipboard
+    ];
+  };
 }

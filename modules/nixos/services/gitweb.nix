@@ -1,9 +1,28 @@
 {
-  services.gitweb = {
-    # TODO: make this a dynamic argument?
-    # "/srv/git" is the default path
-    projectroot = "/zshare/srv/git";
+  config,
+  lib,
+  ...
+}:
+let
+  serviceName = "gitweb";
+
+  cfg = config.services.custom.${serviceName};
+in
+{
+  options.services.custom.${serviceName} = {
+    enable = lib.mkEnableOption "Enable Gitweb";
+
+    # TODO: add the serve location here
+    # TODO: add custom theme?
   };
 
-  services.nginx.gitweb.enable = true;
+  config = lib.mkIf cfg.enable {
+    services.gitweb = {
+      # TODO: make this a dynamic argument?
+      # "/srv/git" is the default path
+      projectroot = "/zshare/srv/git";
+    };
+
+    services.nginx.gitweb.enable = true;
+  };
 }

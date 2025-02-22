@@ -1,6 +1,5 @@
 {
-  # Use KDE as the default desktop environment
-  imports = [
-    ./kde.nix
-  ];
+  imports =
+    with builtins;
+    map (fn: ./${fn}) (filter (fn: fn != "default.nix") (attrNames (readDir ./.)));
 }

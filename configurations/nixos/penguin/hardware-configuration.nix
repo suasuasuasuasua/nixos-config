@@ -17,11 +17,13 @@
     "xhci_pci"
     "thunderbolt"
     "nvme"
-    "usb_storage"
-    "sd_mod"
     "rtsx_pci_sdmmc"
   ];
-  boot.initrd.kernelModules = [ "zfs" ];
+  boot.initrd.kernelModules = [
+    "zfs"
+    "intel-pmc-mux"
+    "cros-ec-typec"
+  ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 

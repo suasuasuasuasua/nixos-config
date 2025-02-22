@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
@@ -6,27 +6,35 @@ let
   # default port = 2283
   port = 2283;
   serviceName = "immich";
+
+  cfg = config.services.custom.${serviceName};
 in
 {
-  services.immich = {
-    enable = true;
-    port = port;
-    openFirewall = true;
-
-    mediaLocation = "/zshare/personal/images/";
-    machine-learning.enable = true;
-    settings = { };
+  options.services.custom.${serviceName} = {
+    enable = lib.mkEnableOption "Enable Adguard Home";
   };
 
-  services.nginx.virtualHosts = {
-    "${serviceName}.${hostName}.home" = {
-      locations."/" = {
-        proxyPass = "http://localhost:${toString port}";
-        proxyWebsockets = true; # needed if you need to use WebSocket
+  config = lib.mkIf cfg.enable {
+    services.immich = {
+      enable = true;
+      port = port;
+      openFirewall = true;
 
-        extraConfig =
-          # allow for larger file uploads like videos through the reverse proxy
-          "client_max_body_size 0;";
+      mediaLocation = "/zshare/personal/images/";
+      machine-learning.enable = true;
+      settings = { };
+    };
+
+    services.nginx.virtualHosts = {
+      "${serviceName}.${hostName}.home" = {
+        locations."/" = {
+          proxyPass = "http://localhost:${toString port}";
+          proxyWebsockets = true; # needed if you need to use WebSocket
+
+          extraConfig =
+            # allow for larger file uploads like videos through the reverse proxy
+            "client_max_body_size 0;";
+        };
       };
     };
   };

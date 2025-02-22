@@ -7,51 +7,43 @@ let
   inherit (inputs) self;
 in
 {
-  imports = (
-    [
-      # disk setup
-      inputs.disko.nixosModules.disko
-      ./disko.nix
+  imports = ([
+    # disk setup
+    inputs.disko.nixosModules.disko
+    ./disko.nix
 
-      # hardware setup
-      inputs.nixos-hardware.nixosModules.common-cpu-intel
-      inputs.nixos-hardware.nixosModules.common-hidpi
-      inputs.nixos-hardware.nixosModules.common-pc-laptop
-      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-      ./hardware-configuration.nix
+    # hardware setup
+    inputs.nixos-hardware.nixosModules.common-cpu-intel
+    inputs.nixos-hardware.nixosModules.common-hidpi
+    inputs.nixos-hardware.nixosModules.common-pc-laptop
+    inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+    ./hardware-configuration.nix
 
-      # Default
-      self.nixosModules.default
+    # system setup
+    ./system
 
-      # Desktop environment
-      (self + /modules/nixos/desktop)
+    # Default
+    self.nixosModules.default
+  ]);
 
-      # # GUI Apps
-      (self + /modules/nixos/gui)
-      (self + /modules/nixos/gui/obs.nix)
-      # Notes
-      (self + /modules/nixos/gui/obsidian.nix)
-      # Chat
-      (self + /modules/nixos/gui/matrix.nix)
-    ]
-    ++
-      # A module that automatically imports everything else in the parent folder.
-      (
-        let
-          prefix = ./system;
-        in
-        with builtins;
-        map (fn: "${prefix}/${fn}") (filter (fn: fn != "default.nix") (attrNames (readDir "${prefix}")))
-      )
-  );
+  # desktop
+  config.desktop.kde.enable = true;
 
-  # Allow unfree packages like VSCode
-  nixpkgs.config.allowUnfree = true;
+  # development
+  config.development = {
+    cli.enable = true;
+    nh.enable = true;
+    virtualization.enable = true;
+  };
 
-  # TODO: figure out a dynamic way to allocate this (not that there any other
-  # users...just helps my brain avoid hardcode)
-  # Enable home-manager for "justinhoang" user
-  home-manager.users."justinhoang" = {
-    imports = [ (self + /configurations/home/justinhoang.nix) ];
+  # gui programs
+  config.gui = {
+    discord.enable = true;
+    element.enable = true;
+    firefox.enable = true;
+    obs.enable = true;
+    obsidian.enable = true;
+    steam.enable = true;
+    wine.enable = true;
   };
 }

@@ -1,39 +1,47 @@
 {
   flake,
   config,
+  lib,
   ...
 }:
 let
   inherit (flake) inputs;
-
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
   hostName = config.networking.hostName;
   serviceName = "actual";
   port = 3001;
+
+  cfg = config.services.custom.${serviceName};
 in
 {
   imports = [
     "${inputs.nixpkgs-unstable}/nixos/modules/services/web-apps/actual.nix"
   ];
 
-  # TODO: need to setup HTTPS to continue using...
-  services.actual = {
-    enable = true;
-    package = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux.actual-server;
-    # TODO: how to auto-select system?
-    # flake.inputs.nixpkgs-unstable.legacyPackages.${system}.actual-server;
-    openFirewall = true;
-    settings = {
-      # default port is 3000
-      port = port;
-    };
+  options.services.custom.${serviceName} = {
+    enable = lib.mkEnableOption "Enable Actual Budget";
   };
-  services.nginx.virtualHosts = {
-    "${serviceName}.${hostName}.home" = {
-      locations."/" = {
-        # Actual finance planner
-        proxyPass = "http://localhost:${toString port}";
+
+  config = lib.mkIf cfg.enable {
+    # TODO: need to setup HTTPS to continue using...
+    services.actual = {
+      enable = true;
+      package = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux.actual-server;
+      # TODO: how to auto-select system?
+      # flake.inputs.nixpkgs-unstable.legacyPackages.${system}.actual-server;
+      openFirewall = true;
+      settings = {
+        # default port is 3000
+        port = port;
+      };
+    };
+    services.nginx.virtualHosts = {
+      "${serviceName}.${hostName}.home" = {
+        locations."/" = {
+          # Actual finance planner
+          proxyPass = "http://localhost:${toString port}";
+        };
       };
     };
   };

@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 {
-  imports = [
-    ./development
-  ];
+  imports =
+    with builtins;
+    map (fn: ./${fn}) (filter (fn: fn != "default.nix") (attrNames (readDir ./.)));
 
   # write a list of system packages to /etc/current-system-packages
   environment.etc."current-system-packages".text =

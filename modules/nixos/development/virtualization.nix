@@ -1,13 +1,27 @@
-{ pkgs, ... }:
 {
-  # Enable docker
-  virtualisation.docker = {
-    enable = true;
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.development.cli;
+in
+{
+  options.development.virtualization = {
+    enable = lib.mkEnableOption "Enable virtualization tools";
   };
 
-  environment.systemPackages = with pkgs; [ lazydocker ];
+  config = lib.mkIf cfg.enable {
+    # Enable docker
+    virtualisation.docker = {
+      enable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+    };
+
+    environment.systemPackages = with pkgs; [ lazydocker ];
+  };
 }
