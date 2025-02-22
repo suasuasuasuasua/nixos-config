@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.desktop.gnome;
+  cfg = config.nixos.desktop.gnome;
 in
 {
-  options.desktop.gnome = {
+  options.nixos.desktop.gnome = {
     enable = lib.mkEnableOption "Enable Gnome desktop environment";
     # TODO: add options for enabling display managers like sddm, ly, etc.
     # TODO: add options for specific packages and default to below list

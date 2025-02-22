@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.development.cli;
+  cfg = config.nixos.development.cli;
 in
 {
-  options.development.cli = {
+  options.nixos.development.cli = {
     enable = lib.mkEnableOption "Enable general CLI tools";
   };
 

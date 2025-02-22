@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.gui.element;
+  cfg = config.nixos.gui.element;
 in
 {
-  options.gui.element = {
+  options.nixos.gui.element = {
     enable = lib.mkEnableOption "Enable Element";
   };
 

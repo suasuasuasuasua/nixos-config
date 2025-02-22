@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.gui.steam;
+  cfg = config.nixos.gui.steam;
 in
 {
-  options.gui.steam = {
+  options.nixos.gui.steam = {
     enable = lib.mkEnableOption "Enable Steam";
   };
 

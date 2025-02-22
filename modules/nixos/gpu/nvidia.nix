@@ -4,10 +4,10 @@
   ...
 }:
 let
-  cfg = config.gpu.nvidia;
+  cfg = config.nixos.gpu.nvidia;
 in
 {
-  options.gpu.nvidia = {
+  options.nixos.gpu.nvidia = {
     enable = lib.mkEnableOption "Enable Nvidia GPU drivers";
     laptop = lib.mkEnableOption "Enable Nvidia GPU drivers";
   };

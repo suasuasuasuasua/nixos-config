@@ -7,10 +7,10 @@ let
   port = 5055;
   serviceName = "jellyseerr";
 
-  cfg = config.services.custom.${serviceName};
+  cfg = config.nixos.services.${serviceName};
 in
 {
-  options.services.custom.${serviceName} = {
+  options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Jellyseerr";
   };
 

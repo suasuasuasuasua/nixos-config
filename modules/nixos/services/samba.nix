@@ -8,10 +8,10 @@ let
   #   previously was hardcoding *lab* but this should work for any machine
   serviceName = "samba";
 
-  cfg = config.services.custom.${serviceName};
+  cfg = config.nixos.services.${serviceName};
 in
 {
-  options.services.custom.${serviceName} = {
+  options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Samba";
 
     # TODO: add settings to samba as an argument

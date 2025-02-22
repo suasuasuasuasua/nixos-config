@@ -6,10 +6,10 @@ let
   serviceName = "glances";
   port = 61208;
 
-  cfg = config.services.custom.${serviceName};
+  cfg = config.nixos.services.${serviceName};
 in
 {
-  options.services.custom.${serviceName} = {
+  options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Glances";
   };
 

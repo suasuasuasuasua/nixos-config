@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.gui.discord;
+  cfg = config.nixos.gui.discord;
 in
 {
-  options.gui.discord = {
+  options.nixos.gui.discord = {
     enable = lib.mkEnableOption "Enable Discord";
   };
 

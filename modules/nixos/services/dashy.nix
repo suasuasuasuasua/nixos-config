@@ -5,10 +5,10 @@ let
   hostName = config.networking.hostName;
   serviceName = "dashy";
 
-  cfg = config.services.custom.${serviceName};
+  cfg = config.nixos.services.${serviceName};
 in
 {
-  options.services.custom.${serviceName} = {
+  options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Dashy";
   };
 

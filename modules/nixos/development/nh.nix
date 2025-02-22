@@ -1,9 +1,9 @@
 { config, lib, ... }:
 let
-  cfg = config.development.nh;
+  cfg = config.nixos.development.nh;
 in
 {
-  options.development.nh = {
+  options.nixos.development.nh = {
     enable = lib.mkEnableOption "Enable nh nix helper";
   };
 

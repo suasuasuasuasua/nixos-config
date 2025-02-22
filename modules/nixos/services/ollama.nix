@@ -7,10 +7,10 @@ let
   port1 = 11434;
   port2 = 8080;
 
-  cfg = config.services.custom.${serviceName};
+  cfg = config.nixos.services.${serviceName};
 in
 {
-  options.services.custom.${serviceName} = {
+  options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Ollama and Open WebUI";
 
     # TODO: add acceleration as an option

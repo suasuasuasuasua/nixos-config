@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.gui.obsidian;
+  cfg = config.nixos.gui.obsidian;
 in
 {
-  options.gui.obsidian = {
+  options.nixos.gui.obsidian = {
     enable = lib.mkEnableOption "Enable Obsidian";
   };
 

@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.gui.wine;
+  cfg = config.nixos.gui.wine;
 in
 {
-  options.gui.wine = {
+  options.nixos.gui.wine = {
     enable = lib.mkEnableOption "Enable Wine";
   };
 

@@ -12,14 +12,14 @@ let
   serviceName = "actual";
   port = 3001;
 
-  cfg = config.services.custom.${serviceName};
+  cfg = config.nixos.services.${serviceName};
 in
 {
   imports = [
     "${inputs.nixpkgs-unstable}/nixos/modules/services/web-apps/actual.nix"
   ];
 
-  options.services.custom.${serviceName} = {
+  options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Actual Budget";
   };
 

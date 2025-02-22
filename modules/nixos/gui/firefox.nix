@@ -1,9 +1,9 @@
 { lib, config, ... }:
 let
-  cfg = config.gui.firefox;
+  cfg = config.nixos.gui.firefox;
 in
 {
-  options.gui.firefox = {
+  options.nixos.gui.firefox = {
     enable = lib.mkEnableOption "Enable Firefox";
   };
 

@@ -7,10 +7,10 @@ let
   port = 2283;
   serviceName = "immich";
 
-  cfg = config.services.custom.${serviceName};
+  cfg = config.nixos.services.${serviceName};
 in
 {
-  options.services.custom.${serviceName} = {
+  options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Adguard Home";
   };
 

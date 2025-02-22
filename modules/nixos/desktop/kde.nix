@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.desktop.kde;
+  cfg = config.nixos.desktop.kde;
 in
 {
-  options.desktop.kde = {
+  options.nixos.desktop.kde = {
     enable = lib.mkEnableOption "Enable KDE desktop environment";
     # TODO: add options for enabling display managers like sddm, ly, etc.
     # TODO: add options for specific packages and default to below list

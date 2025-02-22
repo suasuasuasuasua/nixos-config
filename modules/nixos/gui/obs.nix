@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.gui.obs;
+  cfg = config.nixos.gui.obs;
 in
 {
-  options.gui.obs = {
+  options.nixos.gui.obs = {
     enable = lib.mkEnableOption "Enable OBS";
   };
 

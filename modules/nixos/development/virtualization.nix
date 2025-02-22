@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.development.cli;
+  cfg = config.nixos.development.cli;
 in
 {
-  options.development.virtualization = {
+  options.nixos.development.virtualization = {
     enable = lib.mkEnableOption "Enable virtualization tools";
   };
 
