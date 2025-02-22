@@ -7,7 +7,7 @@ let
   inherit (inputs) self;
 in
 {
-  imports = ([
+  imports = [
     # disk setup
     inputs.disko.nixosModules.disko
     ./disko.nix
@@ -24,7 +24,7 @@ in
 
     # Default
     self.nixosModules.default
-  ]);
+  ];
 
   # desktop
   config.desktop.kde.enable = true;

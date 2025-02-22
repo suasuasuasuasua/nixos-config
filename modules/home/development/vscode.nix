@@ -1,26 +1,41 @@
-{ pkgs, ... }:
 {
-  programs.vscode = {
-    enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      # General
-      vscodevim.vim
-      gruntfuggly.todo-tree
-      codezombiech.gitignore
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.home.development.vscode;
+in
+{
+  options.home.development.vscode = {
+    enable = lib.mkEnableOption "Enable Visual Studio Code";
+    # TODO: add default set of packages or custom config
+  };
 
-      # Remote
-      ms-vscode-remote.remote-ssh
-      ms-vscode-remote.remote-ssh-edit
-      ms-vscode-remote.remote-wsl
-      ms-vscode-remote.remote-containers
+  config = lib.mkIf cfg.enable {
+    programs.vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        # General
+        vscodevim.vim
+        gruntfuggly.todo-tree
+        codezombiech.gitignore
 
-      # Nix Dev
-      jnoortheen.nix-ide
-      mkhl.direnv
+        # Remote
+        ms-vscode-remote.remote-ssh
+        ms-vscode-remote.remote-ssh-edit
+        ms-vscode-remote.remote-wsl
+        ms-vscode-remote.remote-containers
 
-      # Theme
-      catppuccin.catppuccin-vsc
-      catppuccin.catppuccin-vsc-icons
-    ];
+        # Nix Dev
+        jnoortheen.nix-ide
+        mkhl.direnv
+
+        # Theme
+        catppuccin.catppuccin-vsc
+        catppuccin.catppuccin-vsc-icons
+      ];
+    };
   };
 }

@@ -1,8 +1,6 @@
-# By default, only do neovim!
+# A module that automatically imports everything else in the parent folder.
 {
-  imports = [
-    ./neovim
-    ./packages.nix
-    ./shell.nix
-  ]; # TODO: how to import vscode based on macOS or not? don't think is possible
+  imports =
+    with builtins;
+    map (fn: ./${fn}) (filter (fn: fn != "default.nix") (attrNames (readDir ./.)));
 }

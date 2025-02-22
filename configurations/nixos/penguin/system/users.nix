@@ -10,5 +10,28 @@ in
   # Enable home-manager for "justinhoang" user
   home-manager.users."justinhoang" = {
     imports = [ (self + /configurations/home/justinhoang.nix) ];
+
+    config.home.cli = {
+      bat.enable = true;
+      devenv.enable = true;
+      direnv.enable = true;
+      fzf.enable = true;
+      git.enable = true;
+      github.enable = true;
+      gnupg.enable = true;
+      tmux.enable = true;
+    };
+
+    config.home.development = {
+      neovim.enable = true;
+      packages.enable = true;
+      shell.enable = true;
+      terminal.enable = true;
+      vscode.enable = true;
+    };
+
+    config.home.gui = {
+      spotify.enable = true;
+    };
   };
 }
