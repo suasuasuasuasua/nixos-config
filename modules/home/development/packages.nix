@@ -1,14 +1,21 @@
 # Packages related to development
 {
+  flake,
   config,
   lib,
   pkgs,
   ...
 }:
 let
+  inherit (flake) inputs;
+
   cfg = config.home.development.packages;
 in
 {
+  imports = [
+    inputs.nix-index-database.hmModules.nix-index
+  ];
+
   options.home.development.packages = {
     enable = lib.mkEnableOption "Enable general CLI tools";
     # TODO: add default set of packages or custom config
@@ -23,7 +30,6 @@ in
       just
 
       # Test packages
-      comma
       nvd
 
       # Neovim dependencies
@@ -38,5 +44,9 @@ in
       onefetch
       btop
     ];
+
+    programs.nix-index-database = {
+      comma.enable = true;
+    };
   };
 }
