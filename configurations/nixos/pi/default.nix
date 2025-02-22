@@ -4,47 +4,24 @@
 
 let
   inherit (flake) inputs;
-  inherit (inputs) self;
-
-  # Define a function to import all .nix files except default.nix from a given prefix
-  importFolder =
-    prefix:
-    with builtins;
-    let
-      # Read the directory and filter out non-.nix files and default.nix
-      nixFiles = filter (fn: fn != "default.nix" && builtins.match "^.*\\.nix$" fn != null) (
-        attrNames (readDir "${prefix}")
-      );
-
-      # Create a list of file paths to return
-      nixPaths = map (name: "${prefix}/${name}") nixFiles;
-    in
-    nixPaths;
 in
 {
-  imports = (
-    [
-      # pi setup
-      inputs.rpi-nix.nixosModules.sd-image
-      inputs.rpi-nix.nixosModules.raspberry-pi
+  imports = [
+    # pi setup
+    inputs.rpi-nix.nixosModules.sd-image
+    inputs.rpi-nix.nixosModules.raspberry-pi
 
-      # hardware
-      ./hardware-configuration.nix
+    # hardware
+    ./hardware-configuration.nix
 
-      # Default
-      self.nixosModules.default
-    ]
-    ++ importFolder ./services
-    ++ importFolder ./system
-  );
+    # config
+    ./config.nix
+    ./home.nix
 
-  # Allow unfree packages like VSCode
-  nixpkgs.config.allowUnfree = true;
+    # system setup
+    ./system
 
-  # TODO: figure out a dynamic way to allocate this (not that there any other
-  # users...just helps my brain avoid hardcode)
-  # Enable home-manager for "justinhoang" user
-  home-manager.users."justinhoang" = {
-    imports = [ (self + /configurations/home/justinhoang.nix) ];
-  };
+    # services setup
+    ./services
+  ];
 }
