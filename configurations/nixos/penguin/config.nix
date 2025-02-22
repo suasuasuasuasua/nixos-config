@@ -8,9 +8,7 @@ let
 in
 {
 
-  imports = [
-    self.nixosModules.default
-  ];
+  imports = [ self.nixosModules.default ];
 
   # TODO: if this gets too complex/long, modularize into folders
 

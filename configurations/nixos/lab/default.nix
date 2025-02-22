@@ -5,7 +5,7 @@ let
   inherit (flake) inputs;
 in
 {
-  imports = ([
+  imports = [
     # disk setup
     inputs.disko.nixosModules.disko
     ./disko.nix
@@ -25,5 +25,5 @@ in
 
     # services setup
     ./services
-  ]);
+  ];
 }
