@@ -19,10 +19,13 @@ in
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     ./hardware-configuration.nix
 
+    # users
+    ./users.nix
+
     # system setup
     ./system
 
-    # Default
+    # default
     self.nixosModules.default
   ];
 
