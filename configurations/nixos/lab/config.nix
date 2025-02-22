@@ -1,3 +1,5 @@
+# See /modules/nixos/* for actual settings
+# This file is just *top-level* configuration.
 { flake, ... }:
 
 let
@@ -5,7 +7,17 @@ let
   inherit (inputs) self;
 in
 {
+
   imports = [ self.nixosModules.default ];
+
+  # TODO: if this gets too complex/long, modularize into folders
+
+  # development
+  config.nixos.development = {
+    cli.enable = true;
+    nh.enable = true;
+    virtualization.enable = true;
+  };
 
   # services
   config.nixos.services = {
