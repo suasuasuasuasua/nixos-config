@@ -1,15 +1,30 @@
 {
-  programs.nixvim = {
-    plugins.lazygit = {
-      enable = true;
-    };
+  lib,
+  config,
+  ...
+}:
+let
+  name = "lazygit";
+  cfg = config.home.development.neovim.plugins.${name};
+in
+{
+  options.home.development.neovim.plugins.${name} = {
+    enable = lib.mkEnableOption "Enable ${name} plugin for neovim";
+  };
 
-    keymaps = [
-      {
-        mode = "n";
-        key = "<leader>lg";
-        action = "<cmd>LazyGit<cr>";
-      }
-    ];
+  config = lib.mkIf cfg.enable {
+    programs.nixvim = {
+      plugins.${name} = {
+        enable = true;
+      };
+
+      keymaps = [
+        {
+          mode = "n";
+          key = "<leader>lg";
+          action = "<cmd>LazyGit<cr>";
+        }
+      ];
+    };
   };
 }

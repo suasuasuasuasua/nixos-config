@@ -4,7 +4,7 @@
   ...
 }:
 let
-  name = "airline";
+  name = "template";
   cfg = config.home.development.neovim.plugins.${name};
 in
 {

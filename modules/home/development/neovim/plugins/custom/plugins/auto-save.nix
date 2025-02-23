@@ -4,7 +4,7 @@
   ...
 }:
 let
-  name = "airline";
+  name = "auto-save";
   cfg = config.home.development.neovim.plugins.${name};
 in
 {

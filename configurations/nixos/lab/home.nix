@@ -44,6 +44,18 @@ in
           tinymist.enable = true;
           yamlls.enable = true;
         };
+        plugins = {
+          airline.enable = true;
+          auto-save.enable = true;
+          diffview.enable = true;
+          lazygit.enable = true;
+          markdown-preview.enable = true;
+          repeat.enable = true;
+          surround.enable = true;
+          tmux.enable = true;
+          treesitter.enable = true;
+          ufo.enable = true;
+        };
       };
       packages.enable = true;
       shell.enable = true;
