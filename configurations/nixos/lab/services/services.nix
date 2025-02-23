@@ -13,7 +13,7 @@ in
     adguard.enable = true;
     audiobookshelf.enable = true;
     calibre.enable = true;
-    code-server.enable = true;
+    # code-server.enable = true; # TODO: bug with 100% CPU usage? (1 core)
     dashy.enable = true;
     gitweb.enable = true;
     glances.enable = true;
