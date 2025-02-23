@@ -6,12 +6,11 @@
 let
   font = "JetBrainsMono Nerd Font";
 
-  cfg = config.home.development.terminal;
+  cfg = config.home.development.alacritty;
 in
 {
-  options.home.development.terminal = {
-    enable = lib.mkEnableOption "Enable a terminal emulator";
-    # TODO: add options for terminal emulator
+  options.home.development.alacritty = {
+    enable = lib.mkEnableOption "Enable alacritty";
     # TODO: add options for font
   };
 

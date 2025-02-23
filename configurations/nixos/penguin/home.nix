@@ -66,9 +66,9 @@ in
           ufo.enable = true;
         };
       };
+      alacritty.enable = true;
       packages.enable = true;
       shell.enable = true;
-      terminal.enable = true;
       vscode.enable = true;
     };
 
