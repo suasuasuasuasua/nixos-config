@@ -10,7 +10,6 @@ in
 
   # Enable home-manager for "justinhoang" user
   home-manager.users."justinhoang" = {
-    imports = [ (self + /configurations/home/justinhoang.nix) ];
     imports = [
       (self + /configurations/home/justinhoang.nix)
       self.homeModules.default
@@ -29,7 +28,23 @@ in
     };
 
     config.home.development = {
-      neovim.enable = true;
+      neovim = {
+        enable = true;
+        # enable LSPs for _server-like_ things
+        lsp = {
+          bashls.enable = true;
+          docker_compose_language_service.enable = true;
+          dockerls.enable = true;
+          jsonls.enable = true;
+          nginx_language_server.enable = true;
+          nil_ls.enable = true;
+          nixd.enable = true;
+          ruff.enable = true;
+          sqls.enable = true;
+          tinymist.enable = true;
+          yamlls.enable = true;
+        };
+      };
       packages.enable = true;
       shell.enable = true;
     };
