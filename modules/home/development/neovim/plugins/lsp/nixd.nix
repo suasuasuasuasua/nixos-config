@@ -16,6 +16,43 @@ in
     programs.nixvim.plugins.lsp.servers.${name} = {
       enable = true;
       # NOTE: add options as I need
+      settings = {
+        formatting.command = [
+          "nixfmt-rfc-style"
+        ];
+        nixpkgs = {
+          # For flake.
+          # "expr": "import (builtins.getFlake \"/home/lyc/workspace/CS/OS/NixOS/flakes\").inputs.nixpkgs { }   "
+
+          # This expression will be interpreted as "nixpkgs" toplevel
+          # Nixd provides package, lib completion/information from it.
+          #
+          # Resource Usage: Entries are lazily evaluated, entire nixpkgs takes 200~300MB for just "names".
+          #                Package documentation, versions, are evaluated by-need.
+          expr = "import <nixpkgs> { }";
+        };
+        # TODO: figure out how to include nixos and home configurations
+        # completion :(
+        # Tell the language server your desired option set, for completion
+        # This is lazily evaluated.
+        options = {
+          # # Map of eval information
+          # # If this is omitted, default search path (<nixpkgs>) will be used.
+          # nixos = {
+          #   # This name "nixos" could be arbitrary.
+          #   # The expression to eval, interpret it as option declarations.
+          #
+          #   # expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).nixosConfigurations.lab.options";
+          #   expr = "(builtins.getFlake \"/home/justinhoang/nixos-config\").nixosConfigurations.lab.options";
+          # };
+          #
+          # # By default there is no home-manager options completion, thus you can add this entry.
+          # home-manager = {
+          #   # expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).homeConfigurations.\"justinhoang@lab\".options";
+          #   expr = "(builtins.getFlake \"/home/justinhoang/nixos-config\").homeConfigurations.\"justinhoang@lab\".options";
+          # };
+        };
+      };
     };
   };
 }

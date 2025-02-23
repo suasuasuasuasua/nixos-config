@@ -16,6 +16,11 @@ in
     programs.nixvim.plugins.lsp.servers.${name} = {
       enable = true;
       # NOTE: add options as I need
+      settings = {
+        formatting.command = [
+          "nixfmt-rfc-style"
+        ];
+      };
     };
   };
 }
