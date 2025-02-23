@@ -13,6 +13,7 @@ in
     adguard.enable = true;
     audiobookshelf.enable = true;
     calibre.enable = true;
+    code-server.enable = true;
     dashy.enable = true;
     gitweb.enable = true;
     glances.enable = true;
