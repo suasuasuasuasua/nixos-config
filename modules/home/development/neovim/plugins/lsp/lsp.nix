@@ -69,71 +69,8 @@
       #  - capabilities: Override fields in capabilities. Can be used to disable certain LSP features.
       #  - settings: Override the default settings passed when initializing the server.
       #        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-      servers = {
-        # TODO: enable as we go...the install is huge and i don't regularly use
-        # many of these languages
-
-        ## Scripting and Server
-        # Bash
-        bashls.enable = true;
-        # Docker and Docker Compose
-        dockerls.enable = true;
-        docker_compose_language_service.enable = true;
-        # nginx_language_server.enable = true;
-        # sqls.enable = true;
-
-        ## General
-        # C/C++
-        clangd.enable = true;
-        # # Go
-        # gopls.enable = true;
-        # Python
-        ruff.enable = true;
-        # # Rust
-        # rust_analyzer = {
-        #   enable = true;
-        #   installCargo = false;
-        #   installRustc = false;
-        # };
-        # Nix
-        nil_ls.enable = true;
-
-        ## Markup
-        # Markdown
-        marksman.enable = true;
-        # Spell Check Markdown
-        # ltex.enable = false; # kinda annoying tbh!
-        # Json
-        jsonls.enable = true;
-        # TOML
-        taplo.enable = true;
-        # YAML
-        yamlls.enable = true;
-
-        ## Documents
-        # # LaTeX
-        # texlab.enable = true;
-        # Typst
-        tinymist.enable = true;
-
-        # ## Web development
-        # # HTML
-        # html.enable = true;
-        # # CSS
-        # cssls.enable = true;
-        # # Tailwind CSS
-        # tailwindcss.enable = true;
-
-        # ...etc. See `https://nix-community.github.io/nixvim/plugins/lsp` for a list of pre-configured LSPs
-        #
-        # Some languages (like typscript) have entire language plugins that can be useful:
-        #    `https://nix-community.github.io/nixvim/plugins/typescript-tools/index.html?highlight=typescript-tools#pluginstypescript-toolspackage`
-        #
-        # But for many setups the LSP (`tsserver`) will work just fine
-        # tsserver = {
-        #  enable = true;
-        #}
-      };
+      # NOTE: see the individual files...
+      servers = { };
 
       keymaps = {
         # Diagnostic keymaps

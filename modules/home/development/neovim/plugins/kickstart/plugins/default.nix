@@ -1,9 +1,6 @@
+# A module that automatically imports everything else in the parent folder.
 {
-  imports = [
-    ./autopairs.nix
-    ./debug.nix
-    ./indent-blankline.nix
-    ./lint.nix
-    ./neo-tree.nix
-  ];
+  imports =
+    with builtins;
+    map (fn: ./${fn}) (filter (fn: fn != "default.nix") (attrNames (readDir ./.)));
 }
