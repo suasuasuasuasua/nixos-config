@@ -1,18 +1,9 @@
 {
-  flake,
   pkgs,
   lib,
   ...
 }:
-let
-  inherit (flake) inputs;
-  inherit (inputs) self;
-in
 {
-  imports = [
-    self.homeModules.default
-  ];
-
   # Allow unfree packages like VSCode
   nixpkgs.config.allowUnfree = true;
 

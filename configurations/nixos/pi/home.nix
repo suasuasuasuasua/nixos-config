@@ -10,7 +10,10 @@ in
 
   # Enable home-manager for "justinhoang" user
   home-manager.users."justinhoang" = {
-    imports = [ (self + /configurations/home/justinhoang.nix) ];
+    imports = [
+      (self + /configurations/home/justinhoang.nix)
+      self.homeModules.default
+    ];
 
     # TODO: if this gets too complex/long, modularize into folders
     config.home.cli = {
