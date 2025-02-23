@@ -28,7 +28,44 @@ in
     };
 
     config.home.development = {
-      neovim.enable = true;
+      neovim = {
+        enable = true;
+        # enable LSPs for _server-like_ things
+        lsp = {
+          bashls.enable = true;
+          clangd.enable = true;
+          cssls.enable = true;
+          docker_compose_language_service.enable = true;
+          dockerls.enable = true;
+          gopls.enable = true;
+          html.enable = true;
+          jsonls.enable = true;
+          nginx_language_server.enable = true;
+          ltex.enable = true;
+          nil_ls.enable = true;
+          nixd.enable = true;
+          ruff.enable = true;
+          rust_analyzer.enable = true;
+          sqls.enable = true;
+          tailwindcss.enable = true;
+          taplo.enable = true;
+          texlab.enable = true;
+          tinymist.enable = true;
+          yamlls.enable = true;
+        };
+        plugins = {
+          airline.enable = true;
+          auto-save.enable = true;
+          diffview.enable = true;
+          lazygit.enable = true;
+          markdown-preview.enable = true;
+          repeat.enable = true;
+          surround.enable = true;
+          tmux.enable = true;
+          treesitter.enable = true;
+          ufo.enable = true;
+        };
+      };
       packages.enable = true;
       shell.enable = true;
       terminal.enable = true;
