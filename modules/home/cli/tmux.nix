@@ -23,9 +23,6 @@ in
         yank
         fpp
         vim-tmux-navigator
-
-        # Enable and disable the theme
-        # catppuccin
       ];
 
       sensibleOnTop = false;
