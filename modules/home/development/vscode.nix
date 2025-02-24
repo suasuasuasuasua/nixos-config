@@ -31,10 +31,6 @@ in
         # Nix Dev
         jnoortheen.nix-ide
         mkhl.direnv
-
-        # Theme
-        catppuccin.catppuccin-vsc
-        catppuccin.catppuccin-vsc-icons
       ];
     };
   };
