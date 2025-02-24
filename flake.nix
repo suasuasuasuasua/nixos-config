@@ -1,175 +1,71 @@
 {
-  description = "suasuasuasuasua's nixos and nix-darwin config";
+  description = "A home-manager template providing useful tools & settings for Nix-based development";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Principle inputs (updated by `nix run .#update`)
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    # TODO:use disko eventually
-    # disko = {
-    #   url = "github:nix-community/disko";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    # home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    nixos-unified.url = "github:srid/nixos-unified";
+    disko.url = "github:nix-community/disko/latest";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # Other
     # Theming
     catppuccin.url = "github:catppuccin/nix";
-
     # Spotify customization
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Nvim through Nix
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
-      # url = "github:nix-community/nixvim/nixos-24.05";
+    # Software inputs
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.inputs.flake-parts.follows = "flake-parts";
 
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Firefox
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Utility
+    devenv.url = "github:cachix/devenv";
+    # raspberry pi imaging
+    rpi-nix.url = "github:nix-community/raspberry-pi-nix";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    # TODO: uncomment when I get around to using
-    # disko,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
+  outputs =
+    # inputs@{ self, ... }:
+    inputs@{ ... }:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
 
-    # Supported systems for your flake packages, shell, etc.
-    nixosSystems = [
-      "aarch64-linux"
-      "i686-linux"
-      "x86_64-linux"
+      # import all the modules from modules/flake-parts
+      imports = (
+        with builtins; map (fn: ./modules/flake-parts/${fn}) (attrNames (readDir ./modules/flake-parts))
+      );
+    };
+
+  # use cachix for faster builds in places
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
     ];
-
-    darwinSystems = [
-      "aarch64-darwin"
-      "x86_64-darwin"
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
-
-    systems = nixosSystems ++ darwinSystems;
-
-    # This is a function that generates an attribute by calling a function you
-    # pass to it, with each system as an argument
-    forAllSystems = nixpkgs.lib.genAttrs systems;
-
-    # Define the user
-    name = "justin";
-    user = {
-      name = "${name}";
-      fullName = "Justin Hoang";
-      home = "/home/${name}";
-      email = "j124.dev@proton.me";
-      browser = "firefox";
-      editor = "nvim";
-      terminal = "alacritty";
-    };
-  in {
-    # Formatter for your nix files, available through 'nix fmt'
-    # Other options beside 'alejandra' include 'nixpkgs-fmt'
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild switch --flake .#your-hostname'
-    nixosConfigurations = {
-      # Define the different NixOS systems
-
-      # HP Optiplex 5060 Micro PC
-      "dell" = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          hostname = "dell";
-          system = "x86_64-linux";
-          inherit inputs outputs user;
-        };
-        modules = [
-          # > Our main nixos configuration file <
-          ./hosts/dell/configuration.nix
-        ];
-      };
-      # Acer Spin 713-3w Chromebook
-      "penguin" = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          hostname = "penguin";
-          system = "x86_64-linux";
-          inherit inputs outputs user;
-        };
-        modules = [
-          # > Our main nixos configuration file <
-          ./hosts/penguin/configuration.nix
-        ];
-      };
-      # MSI Raider GE75 Gaming Laptop
-      "msi" = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          hostname = "msi";
-          system = "x86_64-linux";
-          inherit inputs outputs user;
-        };
-        modules = [
-          # > Our main nixos configuration file <
-          ./hosts/msi/configuration.nix
-        ];
-      };
-      # ...
-    };
-
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager switch --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      # Define the users
-      "nixos" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {
-          system = "x86_64-linux";
-          inherit inputs outputs user;
-        };
-        # > Our main home-manager configuration file <
-        modules = [
-          ./home-manager/home-nixos.nix
-        ];
-      };
-
-      "wsl" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {
-          system = "x86_64-linux";
-          inherit inputs outputs user;
-        };
-        # > Our main home-manager configuration file <
-        modules = [
-          ./home-manager/home-wsl.nix
-        ];
-      };
-
-      "darwin" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {
-          system = "aarch64-darwin";
-          inherit inputs outputs user;
-        };
-        # > Our main home-manager configuration file <
-        modules = [
-          ./home-manager/home-darwin.nix
-        ];
-      };
-
-      # ...
-    };
   };
 }

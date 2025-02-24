@@ -1,0 +1,28 @@
+# Example markdownlint configuration with all properties set to their default value
+
+# Default state for all rules
+default: true
+# Path to configuration file to extend
+extends: null
+# MD013/line-length : Line length : https://github.com/DavidAnson/markdownlint/blob/v0.35.0/doc/md013.md
+MD013:
+  # Number of characters
+  line_length: 80
+  # Number of characters for headings
+  heading_line_length: 80
+  # Number of characters for code blocks
+  code_block_line_length: 120
+  # Include code blocks
+  code_blocks: false # no code blocks pls!
+  # Include tables
+  tables: false # no tables pls!
+  # Include headings
+  headings: true
+  # Strict length checking
+  strict: false
+  # Stern length checking
+  stern: false
+# MD024/no-duplicate-heading : Multiple headings with the same content : https://github.com/DavidAnson/markdownlint/blob/v0.35.0/doc/md024.md
+MD024:
+  # Only check sibling headings
+  siblings_only: true
