@@ -32,10 +32,13 @@ in
         haruna # video player
         elisa # music player
         kalendar # calendar
-        catppuccin-kde # global theme
         libreoffice-qt # office suite -- calligra wasn't working
         hunspell # spell check
         hunspellDicts.en_US # US english package
+        # macos-like theme
+        whitesur-kde
+        whitesur-cursors
+        # whitesur-icon-theme
       ]
       ++ (with pkgs.kdePackages; [
         plasma-thunderbolt
