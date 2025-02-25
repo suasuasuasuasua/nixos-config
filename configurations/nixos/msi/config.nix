@@ -17,6 +17,15 @@ in
     kde.enable = true;
   };
 
+  config.nixos.gpu = {
+    nvidia.enable = true;
+    nvidia.laptop = {
+      enable = true;
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
+
   # development
   config.nixos.development = {
     cli.enable = true;
@@ -34,4 +43,10 @@ in
     steam.enable = true;
     wine.enable = true;
   };
+
+  # services
+  config.nixos.services = {
+    ollama.enable = true;
+  };
+
 }
