@@ -23,7 +23,10 @@ in
     mealie.enable = true;
     navidrome.enable = true;
     nginx.enable = true;
-    ollama.enable = true;
+    ollama = {
+      enable = true;
+      open-webui.enable = true;
+    };
     paperless.enable = true;
     samba.enable = true;
     wastebin.enable = true;

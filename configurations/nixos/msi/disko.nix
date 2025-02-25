@@ -18,7 +18,7 @@ in
       # Only 1 PCIE Gen 4 NVME SSD on this device (256GB for now...)
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/nvme-HFM256GD3JX016N_CY11N099310901V5O";
+        device = "/dev/disk/by-id/nvme-WDC_PC_SN730_SDBPNTY-512G-1032_194461806425";
         content = {
           type = "gpt";
           partitions = {
@@ -46,6 +46,23 @@ in
                 type = "swap";
                 discardPolicy = "both";
                 resumeDevice = true; # resume from hiberation from this device
+              };
+            };
+          };
+        };
+      };
+      secondary = {
+        type = "disk";
+        device = "/dev/disk/by-id/ata-ST1000LM048-2E7172_ZDEJR0MA";
+        content = {
+          type = "gpt";
+          partitions = {
+            main = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/mnt/hdd";
               };
             };
           };
