@@ -46,7 +46,10 @@ in
 
   # services
   config.nixos.services = {
-    ollama.enable = true;
+    ollama = {
+      enable = true;
+      acceleration = "cuda";
+    };
   };
 
 }
