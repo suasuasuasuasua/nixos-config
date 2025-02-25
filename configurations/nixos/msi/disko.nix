@@ -41,7 +41,7 @@ in
               };
             };
             swap = {
-              size = "16GB"; # Use 16GB of swap for 8GB memory machine
+              size = "16G"; # Use 16GB of swap for 8GB memory machine
               content = {
                 type = "swap";
                 discardPolicy = "both";
