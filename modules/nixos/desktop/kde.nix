@@ -38,7 +38,7 @@ in
         # macos-like theme
         whitesur-kde
         whitesur-cursors
-        # whitesur-icon-theme
+        whitesur-icon-theme
       ]
       ++ (with pkgs.kdePackages; [
         plasma-thunderbolt
