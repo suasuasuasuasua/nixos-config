@@ -26,6 +26,7 @@ in
     ollama.enable = true;
     paperless.enable = true;
     samba.enable = true;
+    vscode-server.enable = true;
     wastebin.enable = true;
   };
 }

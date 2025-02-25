@@ -40,7 +40,10 @@
     devenv.url = "github:cachix/devenv";
     # raspberry pi imaging
     rpi-nix.url = "github:nix-community/raspberry-pi-nix";
+    # formatting
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    # vscode server
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
   outputs =
