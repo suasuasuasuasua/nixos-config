@@ -8,14 +8,32 @@
     { pkgs, ... }:
     {
       devenv.shells.default = {
+        devenv.root =
+          let
+            devenvRootFileContent = builtins.readFile inputs.devenv-root.outPath;
+          in
+          pkgs.lib.mkIf (devenvRootFileContent != "") devenvRootFileContent;
+
+        name = "nixos-config";
+
         packages = with pkgs; [
+          # source control
           git
           pre-commit
           commitizen
 
+          # commands
           just
 
+          # lsp
+          nixd
           markdownlint-cli
+
+          # cli
+          bunnyfetch
+          fastfetch
+          btop
+          powertop
         ];
 
         # Programming languages

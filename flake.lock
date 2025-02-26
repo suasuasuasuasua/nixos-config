@@ -68,6 +68,18 @@
         "type": "github"
       }
     },
+    "devenv-root": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
+        "type": "file",
+        "url": "file:///dev/null"
+      },
+      "original": {
+        "type": "file",
+        "url": "file:///dev/null"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -636,6 +648,7 @@
       "inputs": {
         "catppuccin": "catppuccin",
         "devenv": "devenv",
+        "devenv-root": "devenv-root",
         "disko": "disko",
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager",
