@@ -18,7 +18,7 @@ in
       # NOTE: add options as I need
       settings = {
         formatting.command = [
-          "nixfmt-rfc-style"
+          "nixfmt"
         ];
         nixpkgs = {
           # For flake.
