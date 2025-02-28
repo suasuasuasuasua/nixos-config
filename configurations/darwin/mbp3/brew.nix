@@ -51,12 +51,14 @@
       "shottr" # screenshot tool
     ];
     masApps = {
-      # utility
-      DarkReaderSafari = 1438243180;
-      Magnet = 441258766;
-      # Vimari = ""  # TODO: gone from mac app store?
       # dev
-      Xcode = 497799835;
+      xcode = 497799835;
+
+      # utility
+      dark-reader-safari = 1438243180;
+      hiddenbar = 1452453066;
+      magnet = 441258766;
+      # vimari = ""  # TODO: gone from mac app store?
     };
   };
 }
