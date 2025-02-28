@@ -21,14 +21,13 @@
           just
 
           # lsp
+          nil
           nixd
           markdownlint-cli
 
           # cli
-          bunnyfetch
           fastfetch
           btop
-          powertop
         ];
       };
     };
