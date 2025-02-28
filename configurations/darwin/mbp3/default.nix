@@ -27,6 +27,10 @@ in
         "x86_64-linux"
         "aarch64-linux"
       ];
+      config = {
+        # multi-core builds
+        virtualisation.cores = 8;
+      };
     };
   };
 
