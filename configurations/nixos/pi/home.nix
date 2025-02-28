@@ -16,14 +16,16 @@ in
     ];
 
     # TODO: if this gets too complex/long, modularize into folders
-    config.home.cli = {
-      bat.enable = true;
-      fzf.enable = true;
-      tmux.enable = true;
-    };
+    config.home = {
+      cli = {
+        bat.enable = true;
+        fzf.enable = true;
+        tmux.enable = true;
+      };
 
-    config.home.development = {
-      shell.enable = true;
+      development = {
+        shell.enable = true;
+      };
     };
   };
 }
