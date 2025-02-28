@@ -43,7 +43,7 @@ in
             nginx_language_server.enable = true;
             ltex.enable = true;
             nil_ls.enable = true;
-            nixd.enable = true;
+            # nixd.enable = true;
             ruff.enable = true;
             rust_analyzer.enable = true;
             sqls.enable = true;
