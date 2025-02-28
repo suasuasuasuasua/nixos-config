@@ -1,7 +1,7 @@
 {
   # Define the hostname
   networking = {
-    hostName = "msi";
+    hostName = "raider";
     hostId = "9b0c6d11";
     networkmanager.enable = true;
   };
