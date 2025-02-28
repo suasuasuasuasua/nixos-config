@@ -23,6 +23,7 @@
           # lsp
           nil
           nixd
+          nixpkgs-fmt
           markdownlint-cli
 
           # cli
