@@ -1,7 +1,7 @@
 # MPB3 (MacBook Pro m3 max)
 
 - Main daily driver! Love this machine to death even though it cost an arm and a
-leg.
+  leg.
 
 ## Quirks
 

@@ -23,8 +23,10 @@ in
     # package = pkgs.nixVersions.latest;
 
     nixPath = [ "nixpkgs=${flake.inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
-    registry.nixpkgs.flake = flake.inputs.nixpkgs; # Make `nix shell` etc use pinned nixpkgs
+    # TODO: figure out what this option even is
+    # registry.nixpkgs.flake = flake.inputs.nixpkgs; # Make `nix shell` etc use pinned nixpkgs
     # Opinionated: disable channels
+
     channel.enable = false;
 
     settings = {
