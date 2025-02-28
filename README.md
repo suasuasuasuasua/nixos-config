@@ -2,15 +2,20 @@
 
 ## Hosts
 
-### [`penguin`](/configurations/nixos/penguin/README.md) (Acer 713-3W Chromebook NixOS)
+### [`mbp3`](/configurations/darwin/mbp3/README.md) (MacBook Pro M3 Max)
 
-- Thin client notebook
-- Mainly for web browsing, tinkering, note-taking, and light coding
+- Main daily driver (yes I'm an apple fanboy secretly)
+- Love that `nix-darwin` allows you to use the same configuration
 
 ### [`lab`](/configurations/nixos/lab/README.md) (Custom Build)
 
 - Main server for services like `mealie`, `actual`, `jellyfin`, and more!
 - NAS with ZFS pooled HDDs and shared via `smb`
+
+### [`penguin`](/configurations/nixos/penguin/README.md) (Acer 713-3W Chromebook NixOS)
+
+- Thin client notebook
+- Mainly for web browsing, tinkering, note-taking, and light coding
 
 ### [`pi`](/configurations/nixos/pi/README.md) (Raspberry Pi Model 4B *(2GB RAM)*)
 
