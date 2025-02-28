@@ -4,13 +4,6 @@
   # but cannot set the login shell because that's root level operation
   programs.zsh.enable = true;
 
-  # TODO: find a way to make this dynamic!
-  nix.extraOptions =
-    # nix
-    ''
-      trusted-users = root justinhoang
-    '';
-
   users.users = {
     justinhoang = {
       # If you do, you can skip setting a root password by passing
