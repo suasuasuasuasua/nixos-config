@@ -39,10 +39,9 @@
     };
 
     # Utility
-    devenv.url = "github:cachix/devenv";
-    devenv-root = {
-      url = "file+file:///dev/null";
-      flake = false;
+    git-hooks-nix = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     # raspberry pi imaging
     rpi-nix.url = "github:nix-community/raspberry-pi-nix";
