@@ -2,6 +2,7 @@
   flake,
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -27,9 +28,7 @@ in
     # TODO: need to setup HTTPS to continue using...
     services.actual = {
       enable = true;
-      package = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux.actual-server;
-      # TODO: how to auto-select system?
-      # flake.inputs.nixpkgs-unstable.legacyPackages.${system}.actual-server;
+      package = pkgs.unstable.actual-server;
       openFirewall = true;
       settings = {
         # default port is 3000

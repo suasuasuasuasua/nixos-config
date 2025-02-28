@@ -51,7 +51,7 @@
   };
 
   outputs =
-    inputs@{ ... }:
+    inputs@{ self, ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
@@ -63,6 +63,28 @@
       imports = (
         with builtins; map (fn: ./modules/flake-parts/${fn}) (attrNames (readDir ./modules/flake-parts))
       );
+      perSystem =
+        { system, ... }:
+        # { lib, system, ... }:
+        {
+          # Make our overlay available to the devShell
+          # "Flake parts does not yet come with an endorsed module that initializes the pkgs argument.""
+          # So we must do this manually; https://flake.parts/overlays#consuming-an-overlay
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            # overlays = lib.attrValues self.overlays;
+            overlays = [
+              (final: prev: {
+                unstable = inputs.nixpkgs-unstable {
+                  inherit prev;
+                  system = prev.system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
+            config.allowUnfree = true;
+          };
+        };
     };
 
   # use cachix for faster builds in places
