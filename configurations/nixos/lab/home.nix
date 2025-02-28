@@ -38,7 +38,7 @@ in
             jsonls.enable = true;
             nginx_language_server.enable = true;
             nil_ls.enable = true;
-            nixd.enable = true;
+            # nixd.enable = true;
             ruff.enable = true;
             sqls.enable = true;
             tinymist.enable = true;
