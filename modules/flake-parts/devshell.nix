@@ -58,6 +58,7 @@
           nixfmt-rfc-style.enable = true;
           # deadnix.enable = true; # kind of annoying in practice
           flake-checker.enable = true;
+          statix.enable = true;
 
           # Git
           commitizen.enable = true;
@@ -75,21 +76,25 @@
       };
       treefmt = {
         # nix
-        programs.nixfmt.enable = pkgs.lib.meta.availableOn pkgs.stdenv.buildPlatform pkgs.nixfmt-rfc-style.compiler;
-        programs.nixfmt.package = pkgs.nixfmt-rfc-style;
+        programs = {
+          nixfmt = {
+            enable = pkgs.lib.meta.availableOn pkgs.stdenv.buildPlatform pkgs.nixfmt-rfc-style.compiler;
+            package = pkgs.nixfmt-rfc-style;
+          };
 
-        # json
-        programs.jsonfmt.enable = true;
+          # json
+          jsonfmt.enable = true;
 
-        # yaml
-        programs.yamlfmt.enable = true;
+          # yaml
+          yamlfmt.enable = true;
 
-        # markdown
-        programs.mdformat.enable = true;
+          # markdown
+          mdformat.enable = true;
 
-        # just
-        programs.just.enable = true;
+          # just
+          just.enable = true;
 
+        };
         # ignore certain files
         settings.global.excludes = [
           "*.png"

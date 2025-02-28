@@ -2,7 +2,7 @@
 let
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
-  hostName = config.networking.hostName;
+  inherit (config.networking) hostName;
   # default port = 8096
   port = 8096;
   serviceName = "jellyfin";

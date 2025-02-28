@@ -15,18 +15,22 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.xserver.enable = true;
-    services.xserver.desktopManager.gnome.enable = true;
-    services.xserver.displayManager.gdm = {
-      enable = true;
-      autoSuspend = false;
+    services = {
+      xserver = {
+        enable = true;
+        desktopManager.gnome.enable = true;
+        displayManager.gdm = {
+          enable = true;
+          autoSuspend = false;
+        };
+      };
+
+      gnome.core-utilities.enable = true;
+      udev.packages = with pkgs; [
+        gnome-settings-daemon
+      ];
+
     };
-
-    services.gnome.core-utilities.enable = true;
-    services.udev.packages = with pkgs; [
-      gnome-settings-daemon
-    ];
-
     programs.dconf.enable = true;
 
     # Add these gnome packages

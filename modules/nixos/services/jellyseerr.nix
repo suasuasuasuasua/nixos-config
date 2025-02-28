@@ -2,7 +2,7 @@
 let
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
-  hostName = config.networking.hostName;
+  inherit (config.networking) hostName;
   # default port = 5055
   port = 5055;
   serviceName = "jellyseerr";
@@ -17,7 +17,7 @@ in
   config = lib.mkIf cfg.enable {
     services.jellyseerr = {
       enable = true;
-      port = port;
+      inherit port;
       openFirewall = true;
     };
 

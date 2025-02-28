@@ -15,12 +15,15 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.displayManager.ly.enable = true;
-    # services.displayManager.sddm.enable = true;
-    # services.displayManager.sddm.wayland.enable = true;
-    services.desktopManager.plasma6.enable = true;
-    services.displayManager.defaultSession = "plasma";
+    services = {
+      displayManager.ly.enable = true;
+      # displayManager.sddm.enable = true;
+      # displayManager.sddm.wayland.enable = true;
 
+      desktopManager.plasma6.enable = true;
+      displayManager.defaultSession = "plasma";
+
+    };
     # Add these kde packages
     environment.systemPackages =
       with pkgs;

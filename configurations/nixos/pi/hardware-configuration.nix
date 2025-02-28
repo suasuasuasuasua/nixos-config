@@ -12,12 +12,12 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  # cachix does not usbstorage? lol
-  # boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usbstorage" ];
-  boot.initrd.availableKernelModules = [ ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd.availableKernelModules = [ ];
+    initrd.kernelModules = [ ];
+    kernelModules = [ ];
+    extraModulePackages = [ ];
+  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXOS_SD";

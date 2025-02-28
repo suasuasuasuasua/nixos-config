@@ -1,6 +1,6 @@
 {
-  #### ZROOT ####
   disko.devices.disk = {
+    #### ZROOT ####
     # nvme 0 will be one of the M.2. NVME SSDs
     nvme0 = {
       type = "disk";
@@ -28,7 +28,6 @@
         };
       };
     };
-
     # nvme 1 will be one of the M.2. NVME SSDs
     nvme1 = {
       type = "disk";
@@ -46,7 +45,6 @@
         };
       };
     };
-
     # main will be a *large* 2.5in SATA SSD
     sata0 = {
       type = "disk";
@@ -66,86 +64,7 @@
       };
     };
 
-  };
-
-  disko.devices.zpool = {
-    # https://nixos.wiki/wiki/ZFS
-    # General root
-    zroot = {
-      type = "zpool";
-      mode = "mirror";
-      mountpoint = null;
-
-      rootFsOptions = {
-        compression = "zstd";
-        canmount = "off";
-        xattr = "sa";
-        acltype = "posixacl";
-
-        "com.sun:auto-snapshot" = "false";
-      };
-
-      options = {
-        ashift = "12";
-        autotrim = "on";
-      };
-
-      datasets = {
-        # See examples/zfs.nix for more comprehensive usage.
-        "root" = {
-          type = "zfs_fs";
-          mountpoint = "/";
-          options.mountpoint = "legacy";
-        };
-        "nix" = {
-          type = "zfs_fs";
-          mountpoint = "/nix";
-          options.mountpoint = "legacy";
-        };
-        "var" = {
-          type = "zfs_fs";
-          mountpoint = "/var";
-          options.mountpoint = "legacy";
-        };
-        "home" = {
-          type = "zfs_fs";
-          mountpoint = "/home";
-          options.mountpoint = "legacy";
-
-          # Snapshot the user home!
-          options."com.sun:auto-snapshot" = "true";
-        };
-      };
-    };
-
-    # Additional *whatever* pool for whatever
-    ztmp = {
-      type = "zpool";
-
-      rootFsOptions = {
-        compression = "zstd";
-        canmount = "off";
-        xattr = "sa";
-      };
-
-      options = {
-        ashift = "12";
-        autotrim = "on";
-      };
-
-      datasets = {
-        # See examples/zfs.nix for more comprehensive usage.
-        "tmp" = {
-          type = "zfs_fs";
-          mountpoint = "/ztmp/tmp";
-          options.mountpoint = "legacy";
-        };
-      };
-    };
-  };
-
-  #### ZSHARE ####
-  disko.devices.disk = {
+    #### ZSHARE ####
     data0 = {
       type = "disk";
       device = "/dev/disk/by-id/ata-ST4000VN006-3CW104_ZW62YABN";
@@ -197,6 +116,54 @@
   };
 
   disko.devices.zpool = {
+    # https://nixos.wiki/wiki/ZFS
+    # General root
+    zroot = {
+      type = "zpool";
+      mode = "mirror";
+      mountpoint = null;
+
+      rootFsOptions = {
+        compression = "zstd";
+        canmount = "off";
+        xattr = "sa";
+        acltype = "posixacl";
+
+        "com.sun:auto-snapshot" = "false";
+      };
+
+      options = {
+        ashift = "12";
+        autotrim = "on";
+      };
+
+      datasets = {
+        # See examples/zfs.nix for more comprehensive usage.
+        "root" = {
+          type = "zfs_fs";
+          mountpoint = "/";
+          options.mountpoint = "legacy";
+        };
+        "nix" = {
+          type = "zfs_fs";
+          mountpoint = "/nix";
+          options.mountpoint = "legacy";
+        };
+        "var" = {
+          type = "zfs_fs";
+          mountpoint = "/var";
+          options.mountpoint = "legacy";
+        };
+        "home" = {
+          type = "zfs_fs";
+          mountpoint = "/home";
+          options.mountpoint = "legacy";
+
+          # Snapshot the user home!
+          options."com.sun:auto-snapshot" = "true";
+        };
+      };
+    };
     # https://nixos.wiki/wiki/ZFS
     zshare = {
       type = "zpool";
@@ -373,6 +340,30 @@
           type = "zfs_fs";
           # options.mountpoint = "/zshare/media/shows";
           mountpoint = "/zshare/media/shows";
+          options.mountpoint = "legacy";
+        };
+      };
+    };
+    # Additional *whatever* pool for whatever
+    ztmp = {
+      type = "zpool";
+
+      rootFsOptions = {
+        compression = "zstd";
+        canmount = "off";
+        xattr = "sa";
+      };
+
+      options = {
+        ashift = "12";
+        autotrim = "on";
+      };
+
+      datasets = {
+        # See examples/zfs.nix for more comprehensive usage.
+        "tmp" = {
+          type = "zfs_fs";
+          mountpoint = "/ztmp/tmp";
           options.mountpoint = "legacy";
         };
       };

@@ -2,7 +2,7 @@
 let
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
-  hostName = config.networking.hostName;
+  inherit (config.networking) hostName;
   serviceName = "mealie";
   port = 9000;
 
@@ -22,7 +22,7 @@ in
     services.mealie = {
       enable = true;
       # default port = 9000
-      port = port;
+      inherit port;
       settings = { };
     };
 

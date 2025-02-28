@@ -1,10 +1,11 @@
 {
   # Define the hostname
-  networking.hostName = "penguin";
-  networking.hostId = "cdde5200";
+  networking = {
+    hostName = "penguin";
+    hostId = "cdde5200";
+    networkmanager.enable = true;
 
-  networking.networkmanager.enable = true;
-
+  };
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
   services.openssh = {

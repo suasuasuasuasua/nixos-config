@@ -1,15 +1,16 @@
 {
   # Define the hostname
-  networking.hostName = "lab";
-  networking.hostId = "d50c497a";
+  networking = {
+    hostName = "lab";
+    hostId = "d50c497a";
+    networkmanager.enable = true;
 
-  networking.networkmanager.enable = true;
+    firewall = {
+      enable = true;
+      allowPing = true;
+    };
 
-  networking.firewall = {
-    enable = true;
-    allowPing = true;
   };
-
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
   services.openssh = {

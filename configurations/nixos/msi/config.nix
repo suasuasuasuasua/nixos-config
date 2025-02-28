@@ -12,43 +12,45 @@ in
 
   # TODO: if this gets too complex/long, modularize into folders
 
-  # desktop
-  config.nixos.desktop = {
-    kde.enable = true;
-  };
-
-  config.nixos.gpu = {
-    nvidia.enable = true;
-    nvidia.laptop = {
-      enable = true;
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
+  config.nixos = {
+    # desktop
+    desktop = {
+      kde.enable = true;
     };
-  };
 
-  # development
-  config.nixos.development = {
-    cli.enable = true;
-    nh.enable = true;
-    virtualization.enable = true;
-  };
+    gpu = {
+      nvidia.enable = true;
+      nvidia.laptop = {
+        enable = true;
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
+    };
 
-  # gui programs
-  config.nixos.gui = {
-    discord.enable = true;
-    element.enable = true;
-    firefox.enable = true;
-    obs.enable = true;
-    obsidian.enable = true;
-    steam.enable = true;
-    wine.enable = true;
-  };
+    # development
+    development = {
+      cli.enable = true;
+      nh.enable = true;
+      virtualization.enable = true;
+    };
 
-  # services
-  config.nixos.services = {
-    ollama = {
-      enable = true;
-      acceleration = "cuda";
+    # gui programs
+    gui = {
+      discord.enable = true;
+      element.enable = true;
+      firefox.enable = true;
+      obs.enable = true;
+      obsidian.enable = true;
+      steam.enable = true;
+      wine.enable = true;
+    };
+
+    # services
+    services = {
+      ollama = {
+        enable = true;
+        acceleration = "cuda";
+      };
     };
   };
 

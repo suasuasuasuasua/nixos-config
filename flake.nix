@@ -32,9 +32,11 @@
     # Software inputs
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-    nixvim.url = "github:nix-community/nixvim";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
-    nixvim.inputs.flake-parts.follows = "flake-parts";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
 
     # Utility
     devenv.url = "github:cachix/devenv";
@@ -60,9 +62,9 @@
       ];
 
       # import all the modules from modules/flake-parts
-      imports = (
-        with builtins; map (fn: ./modules/flake-parts/${fn}) (attrNames (readDir ./modules/flake-parts))
-      );
+      imports =
+        with builtins;
+        map (fn: ./modules/flake-parts/${fn}) (attrNames (readDir ./modules/flake-parts));
       perSystem =
         { lib, system, ... }:
         {

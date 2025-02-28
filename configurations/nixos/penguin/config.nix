@@ -13,25 +13,27 @@ in
   # TODO: if this gets too complex/long, modularize into folders
 
   # desktop
-  config.nixos.desktop = {
-    kde.enable = true;
-  };
+  config.nixos = {
+    desktop = {
+      kde.enable = true;
+    };
 
-  # development
-  config.nixos.development = {
-    cli.enable = true;
-    nh.enable = true;
-    virtualization.enable = true;
-  };
+    # development
+    development = {
+      cli.enable = true;
+      nh.enable = true;
+      virtualization.enable = true;
+    };
 
-  # gui programs
-  config.nixos.gui = {
-    discord.enable = true;
-    element.enable = true;
-    firefox.enable = true;
-    obs.enable = true;
-    obsidian.enable = true;
-    steam.enable = true;
-    wine.enable = true;
+    # gui programs
+    gui = {
+      discord.enable = true;
+      element.enable = true;
+      firefox.enable = true;
+      obs.enable = true;
+      obsidian.enable = true;
+      steam.enable = true;
+      wine.enable = true;
+    };
   };
 }

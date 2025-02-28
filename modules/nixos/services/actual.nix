@@ -9,7 +9,7 @@ let
   inherit (flake) inputs;
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
-  hostName = config.networking.hostName;
+  inherit (config.networking) hostName;
   serviceName = "actual";
   port = 3001;
 
@@ -32,7 +32,7 @@ in
       openFirewall = true;
       settings = {
         # default port is 3000
-        port = port;
+        inherit port;
       };
     };
     services.nginx.virtualHosts = {

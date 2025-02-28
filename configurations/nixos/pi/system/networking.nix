@@ -1,15 +1,14 @@
 {
   # Define the hostname
-  networking.hostName = "pi";
-  networking.hostId = "cfbe2391";
-
-  networking.networkmanager.enable = true;
-
-  networking.firewall = {
-    enable = true;
-    allowPing = true;
+  networking = {
+    hostName = "pi";
+    hostId = "cfbe2391";
+    networkmanager.enable = true;
+    firewall = {
+      enable = true;
+      allowPing = true;
+    };
   };
-
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
   services.openssh = {

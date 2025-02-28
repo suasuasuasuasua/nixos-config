@@ -1,9 +1,10 @@
 {
   # Define the hostname
-  networking.hostName = "msi";
-  networking.hostId = "9b0c6d11";
-
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "msi";
+    hostId = "9b0c6d11";
+    networkmanager.enable = true;
+  };
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.

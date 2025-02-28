@@ -2,7 +2,7 @@
 let
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
-  hostName = config.networking.hostName;
+  inherit (config.networking) hostName;
   serviceName = "ollama";
   port1 = 11434;
   port2 = 8080;
@@ -42,25 +42,27 @@ in
 
   config = {
     # Enable the ollama LLM backend
-    services.ollama = lib.mkIf cfg.enable {
-      enable = true;
-      acceleration = cfg.acceleration;
-      host = "127.0.0.1";
-      port = port1;
-    };
+    services = {
+      ollama = lib.mkIf cfg.enable {
+        enable = true;
+        inherit (cfg) acceleration;
+        host = "127.0.0.1";
+        port = port1;
+      };
 
-    # Enable the web interface
-    services.open-webui = lib.mkIf cfg.open-webui.enable {
-      enable = true;
-      host = "127.0.0.1";
-      port = port2;
-    };
+      # Enable the web interface
+      open-webui = lib.mkIf cfg.open-webui.enable {
+        enable = true;
+        host = "127.0.0.1";
+        port = port2;
+      };
 
-    services.nginx.virtualHosts = {
-      "${serviceName}.${hostName}.home" = {
-        locations."/" = {
-          # Expose the second port for the web interface!
-          proxyPass = "http://localhost:${toString port2}";
+      nginx.virtualHosts = {
+        "${serviceName}.${hostName}.home" = {
+          locations."/" = {
+            # Expose the second port for the web interface!
+            proxyPass = "http://localhost:${toString port2}";
+          };
         };
       };
     };

@@ -5,16 +5,18 @@
   # systemd-boot seems to be the modern, preferred option when it comes down to
   # systemd-boot vs. grub.
   # boot.initrd.systemd.enable = true;
-  boot.loader.systemd-boot = {
-    enable = true;
-    memtest86.enable = true;
+  boot = {
+    loader.systemd-boot = {
+      enable = true;
+      memtest86.enable = true;
+    };
+
+    loader.efi.canTouchEfiVariables = true;
+
+    # audio fix requires different kernel than pkgs.linuxPackages_6_6...
+    # https://discourse.nixos.org/t/intel-tiger-lake-pro-audio-no-audio/40592/
+    kernelPackages = pkgs.linuxPackages_6_12;
   };
-
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # audio fix requires different kernel than pkgs.linuxPackages_6_6...
-  # https://discourse.nixos.org/t/intel-tiger-lake-pro-audio-no-audio/40592/
-  boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   # Alternative that I'll keep around. Basically, the problem was the
   # boot.loader.grub.device was being set to an incorrect value when I was

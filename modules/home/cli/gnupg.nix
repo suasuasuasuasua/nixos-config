@@ -17,7 +17,7 @@ in
     services.gnome-keyring.enable = pkgs.stdenv.isLinux;
     programs.gpg.enable = true;
 
-    home.packages = (
+    home.packages =
       if pkgs.stdenv.isDarwin then
         [
           pkgs.pinentry_mac
@@ -25,8 +25,7 @@ in
       else
         [
           pkgs.pinentry-gnome3
-        ]
-    );
+        ];
 
     services.gpg-agent = {
       enable = true;

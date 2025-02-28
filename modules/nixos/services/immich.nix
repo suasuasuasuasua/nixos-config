@@ -2,7 +2,7 @@
 let
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
-  hostName = config.networking.hostName;
+  inherit (config.networking) hostName;
   # default port = 2283
   port = 2283;
   serviceName = "immich";
@@ -17,7 +17,7 @@ in
   config = lib.mkIf cfg.enable {
     services.immich = {
       enable = true;
-      port = port;
+      inherit port;
       openFirewall = true;
 
       mediaLocation = "/zshare/personal/images/";

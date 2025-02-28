@@ -2,7 +2,7 @@
 let
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
-  hostName = config.networking.hostName;
+  inherit (config.networking) hostName;
   serviceName = "code-server";
   # default port is 4444
   port = 4444;
@@ -19,7 +19,7 @@ in
 
     services.code-server = {
       enable = true;
-      port = port;
+      inherit port;
       proxyDomain = "code-server.${hostName}.home";
 
       user = "justinhoang";
