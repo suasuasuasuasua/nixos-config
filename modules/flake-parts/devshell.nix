@@ -56,9 +56,10 @@
         git-hooks.hooks = {
           # Nix
           nixfmt-rfc-style.enable = true;
-          # deadnix.enable = true; # kind of annoying in practice
+          deadnix.enable = true; # kind of annoying in practice
           flake-checker.enable = true;
           statix.enable = true;
+          nil.enable = true;
 
           # Git
           commitizen.enable = true;

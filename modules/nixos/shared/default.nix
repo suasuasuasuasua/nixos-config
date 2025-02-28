@@ -1,4 +1,3 @@
-{ config, pkgs, ... }:
 {
   imports =
     with builtins;
