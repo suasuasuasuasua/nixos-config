@@ -16,7 +16,7 @@ in
   ];
 
   options.home.gui.spotify = {
-    enable = lib.mkEnableOption "Enable general CLI tools";
+    enable = lib.mkEnableOption "Enable spotify (spicetify)";
     # TODO: add options for packages for custom config
     # TODO: add options for theme
   };

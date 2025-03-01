@@ -78,6 +78,8 @@ in
       };
 
       gui = {
+        firefox.enable = true;
+        obs.enable = true;
         spotify.enable = true;
       };
     };
