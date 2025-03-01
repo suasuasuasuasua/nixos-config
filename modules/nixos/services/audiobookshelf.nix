@@ -12,7 +12,7 @@ in
     enable = lib.mkEnableOption "Enable Audiobook Shelf";
     port = lib.mkOption {
       type = lib.types.port;
-      default = 3000;
+      default = 3001;
     };
   };
 
