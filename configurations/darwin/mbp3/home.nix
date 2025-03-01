@@ -68,6 +68,12 @@ in
         };
         packages.enable = true;
         shell.enable = true;
+        # modules available through home manager (preferred when possible)
+        visual-studio-code.enable = true; # text editor
+      };
+
+      gui = {
+        spotify.enable = true; # music platform
       };
     };
   };
