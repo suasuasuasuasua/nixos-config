@@ -1,11 +1,7 @@
 { config, lib, ... }:
 let
-  # Use the hostname of the machine!
-  #   previously was hardcoding *lab* but this should work for any machine
-  inherit (config.networking) hostName;
   serviceName = "ollama";
-  port1 = 11434;
-  port2 = 8080;
+  port = 11434;
 
   cfg = config.nixos.services.${serviceName};
 in
@@ -44,26 +40,10 @@ in
     # Enable the ollama LLM backend
     services = {
       ollama = lib.mkIf cfg.enable {
+        inherit port;
         enable = true;
         inherit (cfg) acceleration;
         host = "127.0.0.1";
-        port = port1;
-      };
-
-      # Enable the web interface
-      open-webui = lib.mkIf cfg.open-webui.enable {
-        enable = true;
-        host = "127.0.0.1";
-        port = port2;
-      };
-
-      nginx.virtualHosts = {
-        "${serviceName}.${hostName}.home" = {
-          locations."/" = {
-            # Expose the second port for the web interface!
-            proxyPass = "http://localhost:${toString port2}";
-          };
-        };
       };
     };
   };
