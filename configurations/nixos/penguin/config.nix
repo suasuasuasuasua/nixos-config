@@ -35,6 +35,7 @@ in
       discord.enable = true;
       element.enable = true;
       firefox.enable = true;
+      kdenlive.enable = true;
       obs.enable = true;
       obsidian.enable = true;
       steam.enable = true;

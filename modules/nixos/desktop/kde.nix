@@ -31,7 +31,6 @@ in
         filelight # disk usage
         kate # text editor
         krita # photo editing
-        kdenlive # video editing
         haruna # video player
         elisa # music player
         kalendar # calendar
