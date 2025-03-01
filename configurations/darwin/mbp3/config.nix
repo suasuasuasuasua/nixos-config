@@ -16,7 +16,6 @@ in
     (self + /modules/darwin/development)
     (self + /modules/darwin/gui)
     (self + /modules/darwin/utility)
-    (self + /modules/darwin/services)
   ];
 
   config = {
