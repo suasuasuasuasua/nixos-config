@@ -15,40 +15,42 @@
       "asimov" # time machine file ignorer (remember to start service!)
       "trash" # move files to the trash
     ];
-    # TODO: look into using nixpkgs for starred (*) apps
+    # TODO: look into using installing via nixpkgs or home manager
+    # (*) brew only
+    # (x) nixpkgs available
     casks = [
       # general
-      "discord" # voice and text chat software *
-      "element" # matrix platform client *
-      "firefox" # web browser *
-      "kdenlive" # linear video editor *
-      "obsidian" # markdown based note-taking app *
-      "obs" # studio recorder *
-      "spotify" # music platform *
+      "discord" # voice and text chat software (x)
+      "element" # matrix platform client (x)
+      "firefox" # web browser (x)
+      "kdenlive" # linear video editor (x)
+      "obsidian" # markdown based note-taking app (x)
+      "obs" # studio recorder (x)
+      "spotify" # music platform (x)
 
       # dev
-      "docker" # docker desktop (includes cli)
-      "iterm2" # terminal emulator *
-      "ollama" # llm manager *
-      "visual-studio-code" # text editor *
+      "docker" # docker desktop (includes cli) (*)
+      "iterm2" # terminal emulator (x)
+      "ollama" # llm manager (x)
+      "visual-studio-code" # text editor (x)
 
       # games
-      "battle-net" # another video game platform
-      "steam" # video game platform *
+      "battle-net" # another video game platform (*)
+      "steam" # video game platform (x)
 
       # system and isos
-      "balenaetcher" # iso writer
-      "raspberry-pi-imager" # imager for pi
-      "utm" # virtual machine manager *
+      "balenaetcher" # iso writer (*)
+      "raspberry-pi-imager" # imager for pi (*)
+      "utm" # virtual machine manager (x)
 
       # utility
-      "appcleaner" # app cleaner (cleans log/config files too) *
-      "adguard" # ad blocker
-      "betterdisplay" # macos display configuration tool
-      "iina" # media player *
-      "logi-options+" # logitech peripherals
-      "scroll-reverser" # mouse util
-      "shottr" # screenshot tool
+      "appcleaner" # app cleaner (cleans log/config files too) (x)
+      "adguard" # ad blocker (*)
+      "betterdisplay" # macos display configuration tool (*)
+      "iina" # media player (x)
+      "logi-options+" # logitech peripherals (*)
+      "scroll-reverser" # mouse util (*)
+      "shottr" # screenshot tool (*)
     ];
     masApps = {
       # dev
