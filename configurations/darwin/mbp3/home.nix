@@ -10,6 +10,8 @@ in
   # Enable home-manager for "justinhoang" user
   home-manager.users."justinhoang" = {
     imports = [
+      inputs.mac-app-util.homeManagerModules.default
+
       (self + /configurations/home/justinhoang.nix)
       self.homeModules.default
 
@@ -74,7 +76,7 @@ in
         packages.enable = true;
         shell.enable = true;
         # modules available through home manager (preferred when possible)
-        visual-studio-code.enable = true; # text editor
+        vscode.enable = true; # text editor
       };
 
       gui = {

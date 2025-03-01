@@ -19,6 +19,11 @@
       # dev
       "docker" # docker desktop (includes cli)
 
+      # general
+      "firefox" # web browser
+      "kdenlive" # linear video editor
+      "obs" # studio recorder
+
       # games
       "battle-net" # another video game platform
 

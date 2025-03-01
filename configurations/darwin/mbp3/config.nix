@@ -8,6 +8,8 @@ in
 {
 
   imports = [
+    inputs.mac-app-util.darwinModules.default
+
     self.darwinModules.default
 
     # import modules
@@ -33,9 +35,6 @@ in
       gui = {
         discord.enable = true; # voice and text chat software
         element.enable = true; # matrix platform client
-        firefox.enable = true; # web browser
-        kdenlive.enable = true; # linear video editor
-        obs.enable = true; # studio recorder
         obsidian.enable = true; # markdown based note-taking app
       };
 
