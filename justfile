@@ -16,6 +16,11 @@ update:
 lint:
     nix fmt
 
+# Build the raspberry pi image
+[group('dev')]
+build-pi:
+    nix build '.#nixosConfigurations.pi.config.system.build.sdImage'
+
 # Check nix flake
 [group('dev')]
 check:
