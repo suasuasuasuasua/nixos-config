@@ -9,10 +9,10 @@ let
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Adguard Home";
+    enable = lib.mkEnableOption "Enable Immich";
     port = lib.mkOption {
       type = lib.types.port;
-      default = 61208;
+      default = 2283;
     };
     mediaLocation = lib.mkOption {
       type = lib.types.path;

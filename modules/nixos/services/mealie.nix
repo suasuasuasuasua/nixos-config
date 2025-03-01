@@ -9,7 +9,7 @@ let
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Adguard Home";
+    enable = lib.mkEnableOption "Enable Mealie";
     port = lib.mkOption {
       type = lib.types.port;
       default = 9000;
