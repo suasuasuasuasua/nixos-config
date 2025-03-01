@@ -42,9 +42,21 @@
       # dev
       xcode = 497799835;
 
+      # entertainment
+      audible-audio-entertainment = 379693831;
+      amazon-kindle = 302584613;
+
+      # productivity
+      flow-focus-pomodoro-timer = 1423210932;
+      imovie = 408981434;
+      keynote = 409183694;
+      notability-smarter-ai-notes = 360593530;
+      numbers = 409203825;
+      pages = 409201541;
+
       # utility
-      dark-reader-safari = 1438243180;
-      hiddenbar = 1452453066;
+      dark-reader-for-safari = 1438243180;
+      hidden-bar = 1452453066;
       magnet = 441258766;
       # vimari = ""  # TODO: gone from mac app store?
     };
