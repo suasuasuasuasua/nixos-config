@@ -3,8 +3,6 @@ let
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
-  # default port = 2283
-  port = 2283;
   serviceName = "immich";
 
   cfg = config.nixos.services.${serviceName};
@@ -12,15 +10,22 @@ in
 {
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Adguard Home";
+    port = lib.mkOption {
+      type = lib.type.port;
+      default = 61208;
+    };
+    mediaLocation = lib.mkOption {
+      type = lib.type.path;
+      default = "";
+    };
   };
 
   config = lib.mkIf cfg.enable {
     services.immich = {
-      enable = true;
-      inherit port;
-      openFirewall = true;
+      inherit (cfg) port mediaLocation;
 
-      mediaLocation = "/zshare/personal/images/";
+      enable = true;
+      openFirewall = true;
       machine-learning.enable = true;
       settings = { };
     };
@@ -28,7 +33,7 @@ in
     services.nginx.virtualHosts = {
       "${serviceName}.${hostName}.home" = {
         locations."/" = {
-          proxyPass = "http://localhost:${toString port}";
+          proxyPass = "http://localhost:${toString cfg.port}";
           proxyWebsockets = true; # needed if you need to use WebSocket
 
           extraConfig =

@@ -5,26 +5,31 @@ let
   #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
   serviceName = "paperless";
-  # default port is 28981
-  port = 28981;
 
   cfg = config.nixos.services.${serviceName};
 in
 {
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Paperless";
+    port = lib.mkOption {
+      type = lib.type.port;
+      default = 28981;
+    };
+    mediaDir = lib.mkOption {
+      type = lib.type.path;
+      default = "";
+    };
   };
 
   config = lib.mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [
-      port
+      cfg.port
     ];
 
     services.paperless = {
-      enable = true;
-      inherit port;
-      mediaDir = "/zshare/personal/docs";
+      inherit (cfg) port mediaDir;
 
+      enable = true;
       consumptionDirIsPublic = true;
       settings = {
         PAPERLESS_CONSUMER_IGNORE_PATTERN = [
@@ -42,8 +47,7 @@ in
     services.nginx.virtualHosts = {
       "${serviceName}.${hostName}.home" = {
         locations."/" = {
-          # Expose the second port for the web interface!
-          proxyPass = "http://localhost:${toString port}";
+          proxyPass = "http://localhost:${toString cfg.port}";
           proxyWebsockets = true; # needed if you need to use WebSocket
 
           extraConfig =

@@ -12,22 +12,38 @@ in
     actual.enable = true;
     adguard.enable = true;
     audiobookshelf.enable = true;
-    calibre.enable = true;
+    calibre = {
+      enable = true;
+      libraries = [ "/zshare/media/books/ebooks/" ];
+    };
     # code-server.enable = true; # TODO: bug with 100% CPU usage? (1 core)
     dashy.enable = true;
-    gitweb.enable = true;
+    gitweb = {
+      enable = true;
+      projectroot = "/zshare/srv/git";
+    };
     glances.enable = true;
-    immich.enable = true;
+    immich = {
+      enable = true;
+      mediaLocation = "/zshare/personal/images";
+    };
     jellyfin.enable = true;
     jellyseerr.enable = true;
     mealie.enable = true;
-    navidrome.enable = true;
+    navidrome = {
+      enable = true;
+      MusicFolder = "/zshare/media/music";
+    };
     nginx.enable = true;
     ollama = {
       enable = true;
-      open-webui.enable = true;
+      acceleration = false; # no gpu sadge
     };
-    paperless.enable = true;
+    open-webui.enable = true;
+    paperless = {
+      enable = true;
+      mediaDir = "/zshare/personal/docs";
+    };
     samba.enable = true;
     vscode-server.enable = true;
     wastebin.enable = true;

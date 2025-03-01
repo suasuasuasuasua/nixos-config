@@ -15,8 +15,6 @@ in
   config = lib.mkIf cfg.enable {
     services.dashy = {
       enable = true;
-      # option does not exist :(
-      # port = 8080;
       virtualHost.enableNginx = true;
       virtualHost.domain = "${serviceName}.${hostName}.home";
     };

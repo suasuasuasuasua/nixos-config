@@ -7,7 +7,6 @@ let
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
-  port = 3000;
   serviceName = "adguard";
 
   cfg = config.nixos.services.${serviceName};
@@ -15,43 +14,28 @@ in
 {
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Adguard Home";
+    port = lib.mkOption {
+      type = lib.type.port;
+      default = 3000;
+    };
   };
 
   config = lib.mkIf cfg.enable {
-    networking.firewall = {
-      # https://github.com/AdguardTeam/AdGuardHome/wiki/Docker
-      # copying these ports
-      allowedTCPPorts = [
-        53
-        68
-        80
-        443
-        853
-      ];
-      allowedUDPPorts = [
-        53
-        67
-        68
-      ];
-    };
-
     services = {
       adguardhome = {
+        inherit (cfg) port;
+
         enable = true;
-        # default = 3000
-        inherit port;
         # https://search.nixos.org/options?channel=24.11&show=services.adguardhome.openFirewall&from=0&size=50&sort=relevance&type=packages&query=adguard
         # opens the web port, not the dns port!
         openFirewall = true;
 
       };
 
-      # Networking
       nginx.virtualHosts = {
         "${serviceName}.${hostName}.home" = {
           locations."/" = {
-            # Adguard Home Adblocker and DNS server
-            proxyPass = "http://localhost:${toString port}";
+            proxyPass = "http://localhost:${toString cfg.port}";
           };
         };
       };
@@ -369,5 +353,23 @@ in
         schema_version = 29;
       };
     };
+
+    networking.firewall = {
+      # https://github.com/AdguardTeam/AdGuardHome/wiki/Docker
+      # copying these ports
+      allowedTCPPorts = [
+        53
+        68
+        80
+        443
+        853
+      ];
+      allowedUDPPorts = [
+        53
+        67
+        68
+      ];
+    };
+
   };
 }

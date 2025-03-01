@@ -1,15 +1,16 @@
 { config, lib, ... }:
 let
   serviceName = "ollama";
-  port = 11434;
 
   cfg = config.nixos.services.${serviceName};
 in
 {
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Ollama";
-    open-webui.enable = lib.mkEnableOption "Enable Open WebUI";
-
+    port = lib.mkOption {
+      type = lib.type.port;
+      default = 11434;
+    };
     acceleration = lib.mkOption {
       type = lib.types.nullOr (
         lib.types.enum [
@@ -37,12 +38,11 @@ in
   };
 
   config = {
-    # Enable the ollama LLM backend
     services = {
       ollama = lib.mkIf cfg.enable {
-        inherit port;
+        inherit (cfg) port acceleration;
+
         enable = true;
-        inherit (cfg) acceleration;
         host = "127.0.0.1";
       };
     };

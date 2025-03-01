@@ -4,13 +4,20 @@ let
   #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
   serviceName = "navidrome";
-  port = 4533;
 
   cfg = config.nixos.services.${serviceName};
 in
 {
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Navidrome";
+    Port = lib.mkOption {
+      type = lib.type.port;
+      default = 4533;
+    };
+    MusicFolder = lib.mkOption {
+      type = lib.type.path;
+      default = "";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -19,20 +26,17 @@ in
       openFirewall = true;
 
       settings = {
-        Port = port;
+        inherit (cfg) Port MusicFolder;
+
         Address = "127.0.0.1";
         EnableInsightsCollector = false;
-
-        MusicFolder = "/zshare/media/music";
       };
     };
 
     services.nginx.virtualHosts = {
-      # Media
       "${serviceName}.${hostName}.home" = {
         locations."/" = {
-          # Music Streaming
-          proxyPass = "http://localhost:${toString port}";
+          proxyPass = "http://localhost:${toString cfg.port}";
         };
       };
     };

@@ -4,23 +4,24 @@ let
   #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
   serviceName = "code-server";
-  # default port is 4444
-  port = 4444;
 
   cfg = config.nixos.services.${serviceName};
 in
 {
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Code Server";
+    port = lib.mkOption {
+      type = lib.type.port;
+      default = 4444;
+    };
   };
 
   config = lib.mkIf cfg.enable {
-    networking.firewall.allowedTCPPorts = [ port ];
-
     services.code-server = {
+      inherit (cfg) port;
+
       enable = true;
-      inherit port;
-      proxyDomain = "code-server.${hostName}.home";
+      proxyDomain = "${serviceName}.${hostName}.home";
 
       user = "justinhoang";
 
@@ -36,8 +37,7 @@ in
     services.nginx.virtualHosts = {
       "${serviceName}.${hostName}.home" = {
         locations."/" = {
-          # Expose the second port for the web interface!
-          proxyPass = "http://localhost:${toString port}";
+          proxyPass = "http://localhost:${toString cfg.port}";
           proxyWebsockets = true; # needed if you need to use WebSocket
 
           extraConfig =
@@ -46,5 +46,7 @@ in
         };
       };
     };
+
+    networking.firewall.allowedTCPPorts = [ cfg.port ];
   };
 }

@@ -11,16 +11,15 @@ in
 {
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Gitweb";
-
-    # TODO: add the serve location here
-    # TODO: add custom theme?
+    projectroot = lib.mkOption {
+      type = lib.types.path;
+      default = "/srv/git";
+    };
   };
 
   config = lib.mkIf cfg.enable {
     services.gitweb = {
-      # TODO: make this a dynamic argument?
-      # "/srv/git" is the default path
-      projectroot = "/zshare/srv/git";
+      inherit (cfg) projectroot;
     };
 
     services.nginx.gitweb.enable = true;

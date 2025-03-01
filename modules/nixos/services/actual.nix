@@ -11,7 +11,6 @@ let
   #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
   serviceName = "actual";
-  port = 3001;
 
   cfg = config.nixos.services.${serviceName};
 in
@@ -22,6 +21,10 @@ in
 
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Actual Budget";
+    port = lib.mkOption {
+      type = lib.type.port;
+      default = 3001;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -31,15 +34,14 @@ in
       package = pkgs.unstable.actual-server;
       openFirewall = true;
       settings = {
-        # default port is 3000
-        inherit port;
+        inherit (cfg) port;
       };
     };
+
     services.nginx.virtualHosts = {
       "${serviceName}.${hostName}.home" = {
         locations."/" = {
-          # Actual finance planner
-          proxyPass = "http://localhost:${toString port}";
+          proxyPass = "http://localhost:${toString cfg.port}";
         };
       };
     };
