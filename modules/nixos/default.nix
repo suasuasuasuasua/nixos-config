@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 {
-  imports =
-    with builtins;
-    map (fn: ./${fn}) (filter (fn: fn != "default.nix") (attrNames (readDir ./.)));
-
+  imports = [ ./shared ];
   # write a list of system packages to /etc/current-system-packages
   environment.etc."current-system-packages".text =
     let

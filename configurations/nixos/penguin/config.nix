@@ -8,7 +8,14 @@ let
 in
 {
 
-  imports = [ self.nixosModules.default ];
+  imports = [
+    self.nixosModules.default
+
+    # import the modules
+    (self + /modules/nixos/desktop)
+    (self + /modules/nixos/development)
+    (self + /modules/nixos/gui)
+  ];
 
   # TODO: if this gets too complex/long, modularize into folders
   config = {

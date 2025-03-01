@@ -12,6 +12,10 @@ in
     imports = [
       (self + /configurations/home/justinhoang.nix)
       self.homeModules.default
+
+      # import the modules
+      (self + /modules/home/cli)
+      (self + /modules/home/development)
     ];
 
     # TODO: if this gets too complex/long, modularize into folders

@@ -5,7 +5,7 @@ let
   inherit (inputs) self;
 in
 {
-  imports = [ self.nixosModules.default ];
+  imports = [ (self + /modules/nixos/services) ];
 
   # services
   config.nixos.services = {
