@@ -13,8 +13,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [
-      pkgs.discord
+    environment.systemPackages = with pkgs; [
+      discord
     ];
   };
 }
