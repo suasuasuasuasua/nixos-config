@@ -10,7 +10,7 @@ in
   # services
   config.nixos.services = {
     actual.enable = true;
-    adguard.enable = true;
+    adguardhome.enable = true;
     audiobookshelf.enable = true;
     calibre = {
       enable = true;

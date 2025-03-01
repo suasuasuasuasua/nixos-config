@@ -14,7 +14,7 @@ in
 
   # services
   config.nixos.services = {
-    adguard.enable = true;
+    adguardhome.enable = true;
     dashy.enable = true;
     nginx.enable = true;
   };

@@ -7,7 +7,7 @@ let
   # Use the hostname of the machine!
   #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
-  serviceName = "adguard";
+  serviceName = "adguardhome";
 
   cfg = config.nixos.services.${serviceName};
 in
@@ -15,14 +15,14 @@ in
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Adguard Home";
     port = lib.mkOption {
-      type = lib.type.port;
+      type = lib.types.port;
       default = 3000;
     };
   };
 
   config = lib.mkIf cfg.enable {
     services = {
-      adguardhome = {
+      ${serviceName} = {
         inherit (cfg) port;
 
         enable = true;
