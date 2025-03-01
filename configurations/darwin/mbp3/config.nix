@@ -25,7 +25,7 @@ in
         iterm2.enable = true; # terminal emulator
         utm.enable = true; # virtual machine manager
       };
-      gui = {
+      utility = {
         appcleaner.enable = true; # (cleans log/config files too)
         iina.enable = true; # media player
       };
