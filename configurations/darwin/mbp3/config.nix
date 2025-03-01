@@ -16,6 +16,7 @@ in
     (self + /modules/darwin/development)
     (self + /modules/darwin/gui)
     (self + /modules/darwin/utility)
+    (self + /modules/darwin/services)
   ];
 
   config = {
@@ -28,6 +29,7 @@ in
     # shared cross plataform apps
     darwin = {
       development = {
+        cli.enable = true; # useful cli tools
         iterm2.enable = true; # terminal emulator
         utm.enable = true; # virtual machine manager
       };
