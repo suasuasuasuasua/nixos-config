@@ -8,7 +8,7 @@ in
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Ollama";
     port = lib.mkOption {
-      type = lib.type.port;
+      type = lib.types.port;
       default = 11434;
     };
     acceleration = lib.mkOption {

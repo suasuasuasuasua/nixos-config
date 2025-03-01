@@ -11,11 +11,11 @@ in
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Navidrome";
     Port = lib.mkOption {
-      type = lib.type.port;
+      type = lib.types.port;
       default = 4533;
     };
     MusicFolder = lib.mkOption {
-      type = lib.type.path;
+      type = lib.types.path;
       default = "";
     };
   };
@@ -36,7 +36,7 @@ in
     services.nginx.virtualHosts = {
       "${serviceName}.${hostName}.home" = {
         locations."/" = {
-          proxyPass = "http://localhost:${toString cfg.port}";
+          proxyPass = "http://localhost:${toString cfg.Port}";
         };
       };
     };

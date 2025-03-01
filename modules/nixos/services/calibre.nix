@@ -17,11 +17,11 @@ in
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable calibre EBook Manager";
     port = lib.mkOption {
-      type = lib.type.port;
+      type = lib.types.port;
       default = 8083;
     };
     libraries = lib.mkOption {
-      type = with lib.type; listOf path;
+      type = with lib.types; listOf path;
       default = [ ];
     };
   };

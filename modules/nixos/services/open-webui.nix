@@ -11,16 +11,15 @@ in
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Open WebUI";
     port = lib.mkOption {
-      type = lib.type.port;
+      type = lib.types.port;
       default = 8080;
     };
   };
 
   config = {
-    # Enable the ollama LLM backend
     services = {
       # Enable the web interface
-      open-webui = lib.mkIf cfg.open-webui.enable {
+      open-webui = lib.mkIf cfg.enable {
         inherit (cfg) port;
 
         enable = true;

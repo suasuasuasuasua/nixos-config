@@ -22,7 +22,7 @@ in
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Actual Budget";
     port = lib.mkOption {
-      type = lib.type.port;
+      type = lib.types.port;
       default = 3001;
     };
   };

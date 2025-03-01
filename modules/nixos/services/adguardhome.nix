@@ -21,26 +21,15 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services = {
-      ${serviceName} = {
-        inherit (cfg) port;
+    services.adguardhome = {
+      inherit (cfg) port;
 
-        enable = true;
-        # https://search.nixos.org/options?channel=24.11&show=services.adguardhome.openFirewall&from=0&size=50&sort=relevance&type=packages&query=adguard
-        # opens the web port, not the dns port!
-        openFirewall = true;
+      enable = true;
+      # https://search.nixos.org/options?channel=24.11&show=services.adguardhome.openFirewall&from=0&size=50&sort=relevance&type=packages&query=adguard
+      # opens the web port, not the dns port!
+      openFirewall = true;
 
-      };
-
-      nginx.virtualHosts = {
-        "${serviceName}.${hostName}.home" = {
-          locations."/" = {
-            proxyPass = "http://localhost:${toString cfg.port}";
-          };
-        };
-      };
-
-      adguardhome.settings = {
+      settings = {
         # https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration#configuration-file
         http = {
           pprof = {
@@ -354,6 +343,14 @@ in
       };
     };
 
+    services.nginx.virtualHosts = {
+      "${serviceName}.${hostName}.home" = {
+        locations."/" = {
+          proxyPass = "http://localhost:${toString cfg.port}";
+        };
+      };
+    };
+
     networking.firewall = {
       # https://github.com/AdguardTeam/AdGuardHome/wiki/Docker
       # copying these ports
@@ -370,6 +367,6 @@ in
         68
       ];
     };
-
   };
+
 }

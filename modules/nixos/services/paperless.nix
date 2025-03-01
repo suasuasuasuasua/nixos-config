@@ -12,11 +12,11 @@ in
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Paperless";
     port = lib.mkOption {
-      type = lib.type.port;
+      type = lib.types.port;
       default = 28981;
     };
     mediaDir = lib.mkOption {
-      type = lib.type.path;
+      type = lib.types.path;
       default = "";
     };
   };

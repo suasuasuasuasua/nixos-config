@@ -11,11 +11,11 @@ in
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Adguard Home";
     port = lib.mkOption {
-      type = lib.type.port;
+      type = lib.types.port;
       default = 61208;
     };
     mediaLocation = lib.mkOption {
-      type = lib.type.path;
+      type = lib.types.path;
       default = "";
     };
   };

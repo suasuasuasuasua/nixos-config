@@ -11,7 +11,7 @@ in
   options.nixos.services.${serviceName} = {
     enable = lib.mkEnableOption "Enable Code Server";
     port = lib.mkOption {
-      type = lib.type.port;
+      type = lib.types.port;
       default = 4444;
     };
   };
