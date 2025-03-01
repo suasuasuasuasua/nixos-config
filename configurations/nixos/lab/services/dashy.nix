@@ -45,11 +45,11 @@ in
         };
         items = [
           {
-            title = "adguard";
+            title = "adguardhome";
             description = "dns blocker";
             icon = "hl-adguardhome";
             target = "newtab";
-            url = "http://adguard.${hostName}.home";
+            url = "http://adguardhome.${hostName}.home";
           }
         ];
       }
