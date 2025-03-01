@@ -6,8 +6,6 @@ let
 in
 {
   imports = [
-    self.nixosModules.default
-
     # import the modules
     (self + /modules/nixos/services)
   ];
