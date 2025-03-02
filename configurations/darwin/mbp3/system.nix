@@ -87,9 +87,29 @@
       #
       # All custom entries can be found by running `defaults read` command.
       # or `defaults read xxx` to read a specific domain.
-      CustomUserPreferences = { };
+      CustomUserPreferences = {
+        "com.microsoft.VSCode" = {
+          # enable key repeat in vscode (useful for vim)
+          ApplePressAndHoldEnabled = false;
+        };
+        "com.googlecode.iterm2" = {
+          # enable key repeat in iterm (useful for vim)
+          ApplePressAndHoldEnabled = false;
+        };
+        "com.apple.desktopservices" = {
+          # Avoid creating .DS_Store files on network or USB volumes
+          DSDontWriteNetworkStores = true;
+          DSDontWriteUSBStores = true;
+        };
+        "com.apple.spaces" = {
+          "spans-displays" = 0; # Display have seperate spaces
+        };
+      };
 
-      loginwindow = { };
+      loginwindow = {
+        GuestEnabled = false; # disable guest user
+        SHOWFULLNAME = true; # show full name in login window
+      };
     };
 
     # keyboard settings is not very useful on macOS
