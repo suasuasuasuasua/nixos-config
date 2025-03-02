@@ -73,9 +73,8 @@ in
             ufo.enable = true;
           };
         };
-        packages.enable = true;
+        comma.enable = true;
         shell.enable = true;
-        # modules available through home manager (preferred when possible)
         vscode.enable = true; # text editor
       };
 

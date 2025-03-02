@@ -14,9 +14,10 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      ffmpeg
-      yt-dlp
-      zstd
+      asitop # perf monitoring cli tool for apple silicon
+      ffmpeg # solution to record, convert and stream audio and video
+      yt-dlp # cli tool to download videos from YouTube.com and other sites
+      zstd # Zstandard real-time compression algorithm
     ];
   };
 }

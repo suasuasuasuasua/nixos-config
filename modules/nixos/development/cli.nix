@@ -14,16 +14,23 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      # Files
-      zip
-      unzip
-      wget
-      curl
+      # hardware
+      lshw # show information on the hardware configuration of the machine
 
-      lshw
+      # file operations
+      curl # command line tool for transferring files with url syntax
+      unzip # extraction utility for archives compressed in .zip format
+      wget # tool for retrieving files using http, https, and ftp
+      wl-clipboard # command-line copy/paste utilities for wayland
+      zip # compressor/archiver for creating and modifying zipfiles
 
-      # Allow copy and paste in apps like neovim
-      wl-clipboard
+      # system monitoring
+      btop # monitor of resources
+      fastfetch # system information tool
+      onefetch # git repository summary on your terminal
+
+      # nix utilty
+      nvd # nix/nixos package version diff tool
     ];
   };
 }

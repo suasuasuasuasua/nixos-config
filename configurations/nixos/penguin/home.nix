@@ -33,6 +33,8 @@ in
       };
 
       development = {
+        alacritty.enable = true;
+        comma.enable = true;
         neovim = {
           enable = true;
           # enable LSPs for _server-like_ things
@@ -71,8 +73,6 @@ in
             ufo.enable = true;
           };
         };
-        alacritty.enable = true;
-        packages.enable = true;
         shell.enable = true;
         vscode.enable = true;
       };

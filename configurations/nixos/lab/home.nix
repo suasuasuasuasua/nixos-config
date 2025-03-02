@@ -32,6 +32,7 @@ in
       };
 
       development = {
+        comma.enable = true;
         neovim = {
           enable = true;
           # enable LSPs for _server-like_ things
@@ -61,7 +62,6 @@ in
             ufo.enable = true;
           };
         };
-        packages.enable = true;
         shell.enable = true;
       };
     };
