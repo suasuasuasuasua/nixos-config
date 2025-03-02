@@ -54,6 +54,7 @@
       notability-smarter-ai-notes = 360593530;
       numbers = 409203825;
       pages = 409201541;
+      tot = 1491071483;
 
       # utility
       dark-reader-for-safari = 1438243180;
