@@ -13,6 +13,7 @@
     ];
     brews = [
       "asimov" # time machine file ignorer (remember to start service!)
+      "ollama" # llm runner and manager
       "trash" # move files to the trash
     ];
     casks = [
