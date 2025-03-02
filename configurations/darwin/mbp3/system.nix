@@ -28,8 +28,9 @@
         show-recents = false; # disable recent apps
 
         # customize Hot Corners
+        #   https://daiderd.com/nix-darwin/manual/index.html#opt-system.defaults.dock.wvous-bl-corner
         wvous-tl-corner = 2; # top-left - Mission Control
-        wvous-tr-corner = 13; # top-right - Lock Screen
+        wvous-tr-corner = 1; # top-right - Disabled
         wvous-bl-corner = 3; # bottom-left - Application Windows
         wvous-br-corner = 4; # bottom-right - Desktop
       };
@@ -46,9 +47,10 @@
 
       # customize trackpad
       trackpad = {
-        Clicking = true; # enable tap to click
+        Clicking = false; # disables tap to click
+        ActuationStrength = 0; # 0-1, 0 is silent clicking
         TrackpadRightClick = true; # enable two finger right click
-        TrackpadThreeFingerDrag = true; # enable three finger drag
+        TrackpadThreeFingerDrag = false; # disable three finger drag
       };
 
       # customize settings that not supported by nix-darwin directly
@@ -58,7 +60,7 @@
         # `defaults read NSGlobalDomain "xxx"`
         "com.apple.swipescrolldirection" = true; # enable natural scrolling(default to true)
         "com.apple.sound.beep.feedback" = 0; # disable beep sound when pressing volume up/down key
-        AppleInterfaceStyle = null; # dark mode
+        AppleInterfaceStyle = null; # disable dark mode (null or "dark")
         AppleInterfaceStyleSwitchesAutomatically = true; # switches light and dark automatically
         AppleKeyboardUIMode = 3; # Mode 3 enables full keyboard control.
         ApplePressAndHoldEnabled = true; # enable press and hold
