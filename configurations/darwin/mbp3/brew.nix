@@ -26,9 +26,6 @@
       "kdenlive" # linear video editor
       "obs" # studio recorder
 
-      # games
-      "battle-net" # another video game platform
-
       # system and isos
       "balenaetcher" # iso writer (*)
       "raspberry-pi-imager" # imager for pi
