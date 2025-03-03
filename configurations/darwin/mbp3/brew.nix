@@ -36,6 +36,9 @@
       "logi-options+" # logitech peripherals
       "scroll-reverser" # mouse util
       "shottr" # screenshot tool
+      # TODO: can't use because macOS says they are unsafe
+      # "vladdoster/formulae/vimari" # vim-like bindings for safari
+      # "dzirtusss/tap/vifari" # vim-like bindings for safari
     ];
     masApps = {
       # dev
@@ -58,7 +61,6 @@
       dark-reader-for-safari = 1438243180; # dark mode for safari
       hidden-bar = 1452453066; # macOS menubar organizer
       magnet = 441258766; # macOS workspace organizer
-      # vimari = ""  # TODO: gone from mac app store?
     };
   };
 }
