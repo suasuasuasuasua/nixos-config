@@ -20,6 +20,31 @@ in
   };
 
   nix = {
+    optimise = {
+      automatic = true;
+      interval = [
+        # at midnight everyday
+        {
+          Hour = 0;
+          Minute = 0;
+        }
+      ];
+    };
+
+    # Automatic garbage collection
+    gc = {
+      automatic = true;
+      interval = [
+        # at midnight every week start
+        {
+          Hour = 0;
+          Minute = 0;
+          Weekday = 7;
+        }
+      ];
+      options = "--delete-older-than 30d";
+    };
+
     # enable cross platform builds
     linux-builder = {
       enable = true;
