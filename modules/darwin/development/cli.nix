@@ -26,6 +26,9 @@ in
       btop # monitor of resources
       fastfetch # system information tool
       onefetch # git repository summary on your terminal
+
+      # nix utilty
+      nvd # nix/nixos package version diff tool
     ];
   };
 }

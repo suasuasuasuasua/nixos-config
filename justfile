@@ -16,6 +16,11 @@ update:
 lint:
     nix fmt
 
+# Lint nix files
+[group('dev')]
+diff:
+    nvd diff /run/current-system result
+
 # Build the raspberry pi image
 [group('dev')]
 build-pi:
