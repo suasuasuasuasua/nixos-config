@@ -35,7 +35,6 @@ in
 
       gui = {
         discord.enable = true; # voice and text chat software
-        element.enable = true; # matrix platform client
         obsidian.enable = true; # markdown based note-taking app
       };
 
