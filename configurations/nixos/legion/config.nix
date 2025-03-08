@@ -59,6 +59,10 @@ in
         acceleration = "cuda";
       };
       open-webui.enable = true;
+      openrgb = {
+        enable = true;
+        motherboard = "intel";
+      };
     };
   };
 }
