@@ -18,7 +18,7 @@ in
       # Only 1 PCIE Gen 4 NVME SSD on this device (256GB for now...)
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/nvme-HFM256GD3JX016N_CY11N099310901V5O";
+        device = "/dev/disk/by-id/ata-Samsung_SSD_860_EVO_1TB_S3Z8NB0KB42977K";
         content = {
           type = "gpt";
           partitions = {
