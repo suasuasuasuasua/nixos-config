@@ -25,7 +25,7 @@ in
       host = "127.0.0.1";
     };
 
-    nginx.virtualHosts = {
+    services.nginx.virtualHosts = {
       "${serviceName}.${hostName}.home" = {
         locations."/" = {
           # Expose the second port for the web interface!
