@@ -16,22 +16,20 @@ in
     };
   };
 
-  config = {
-    services = {
+  config = lib.mkIf cfg.enable {
+    services.open-webui = {
       # Enable the web interface
-      open-webui = lib.mkIf cfg.enable {
-        inherit (cfg) port;
+      inherit (cfg) port;
 
-        enable = true;
-        host = "127.0.0.1";
-      };
+      enable = true;
+      host = "127.0.0.1";
+    };
 
-      nginx.virtualHosts = {
-        "${serviceName}.${hostName}.home" = {
-          locations."/" = {
-            # Expose the second port for the web interface!
-            proxyPass = "http://localhost:${toString cfg.port}";
-          };
+    nginx.virtualHosts = {
+      "${serviceName}.${hostName}.home" = {
+        locations."/" = {
+          # Expose the second port for the web interface!
+          proxyPass = "http://localhost:${toString cfg.port}";
         };
       };
     };
