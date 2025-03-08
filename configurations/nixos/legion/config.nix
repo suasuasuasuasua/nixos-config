@@ -14,7 +14,9 @@ in
     # import the modules
     (self + /modules/nixos/desktop)
     (self + /modules/nixos/development)
+    (self + /modules/nixos/gpu)
     (self + /modules/nixos/gui)
+    (self + /modules/nixos/services)
   ];
 
   # TODO: if this gets too complex/long, modularize into folders
