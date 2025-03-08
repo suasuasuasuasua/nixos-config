@@ -2,17 +2,18 @@
 let
   inherit (flake) inputs;
 in
-# deadnix: skip
-final: prev: {
+_: prev: {
   # pkgs.unstable.X
   unstable = import inputs.nixpkgs-unstable {
     inherit prev;
     inherit (prev) system;
     config.allowUnfree = true;
   };
-  # TODO: doesn't actually work...override not defined or something
-  # # pkgs.nix-darwin.X
-  # darwin = import inputs.nixpkgs-darwin {
+
+  nur = import inputs.nur.overlays;
+
+  # # TODO: add as an overlay
+  # firefox-addons = import inputs.firefox-addons {
   #   inherit prev;
   #   inherit (prev) system;
   #   config.allowUnfree = true;

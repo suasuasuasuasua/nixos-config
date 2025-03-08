@@ -26,8 +26,6 @@ in
     # registry.nixpkgs.flake = flake.inputs.nixpkgs; # Make `nix shell` etc use pinned nixpkgs
     # Opinionated: disable channels
 
-    channel.enable = false;
-
     settings = {
       max-jobs = "auto";
       experimental-features = "nix-command flakes";
