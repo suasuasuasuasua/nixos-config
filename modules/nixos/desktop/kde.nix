@@ -44,6 +44,7 @@ in
       ]
       ++ (with pkgs.kdePackages; [
         plasma-thunderbolt
+        bluedevil
       ]);
 
     environment.plasma6.excludePackages = with pkgs.kdePackages; [
