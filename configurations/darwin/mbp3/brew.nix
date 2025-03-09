@@ -1,4 +1,4 @@
-{ flake, ... }:
+{ flake, config, ... }:
 let
   inherit (flake) inputs;
 in
@@ -6,6 +6,34 @@ in
   imports = [
     inputs.nix-homebrew.darwinModules.nix-homebrew
   ];
+
+  nix-homebrew = {
+    # Install Homebrew under the default prefix
+    enable = true;
+
+    # Apple Silicon Only: Also install Homebrew under the default Intel prefix
+    # for Rosetta 2
+    enableRosetta = true;
+
+    # User owning the Homebrew prefix
+    user = "justinhoang";
+
+    # Automatically migrate existing Homebrew installations
+    autoMigrate = true;
+
+    # Optional: Declarative tap management
+    taps = with inputs; {
+      "homebrew/homebrew-core" = homebrew-core;
+      "homebrew/homebrew-cask" = homebrew-cask;
+      "homebrew/homebrew-bundle" = homebrew-bundle;
+      "homebrew/homebrew-services" = homebrew-services;
+    };
+
+    # Optional: Enable fully-declarative tap management
+    #
+    # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+    mutableTaps = false;
+  };
 
   homebrew = {
     enable = true;
@@ -17,14 +45,14 @@ in
       cleanup = "zap";
     };
 
-    taps = [
-      "homebrew/services"
-    ];
+    taps = builtins.attrNames config.nix-homebrew.taps;
+
     brews = [
       "asimov" # time machine file ignorer (remember to start service!)
       "ollama" # llm runner and manager
       "trash" # move files to the trash
     ];
+
     casks = [
       # dev
       "docker" # docker desktop (includes cli)
@@ -49,6 +77,7 @@ in
       # "vladdoster/formulae/vimari" # vim-like bindings for safari
       # "dzirtusss/tap/vifari" # vim-like bindings for safari
     ];
+
     masApps = {
       # dev
       xcode = 497799835; # macOS, iOS, etc. IDE
@@ -71,31 +100,5 @@ in
       hidden-bar = 1452453066; # macOS menubar organizer
       magnet = 441258766; # macOS workspace organizer
     };
-  };
-
-  nix-homebrew = {
-    # Install Homebrew under the default prefix
-    enable = true;
-
-    # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-    enableRosetta = true;
-
-    # User owning the Homebrew prefix
-    user = "justinhoang";
-
-    # Automatically migrate existing Homebrew installations
-    autoMigrate = true;
-
-    # # Optional: Declarative tap management
-    taps = with inputs; {
-      "homebrew/homebrew-core" = homebrew-core;
-      "homebrew/homebrew-cask" = homebrew-cask;
-      "homebrew/homebrew-bundle" = homebrew-bundle;
-    };
-    #
-    # Optional: Enable fully-declarative tap management
-    #
-    # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-    # mutableTaps = false;
   };
 }
