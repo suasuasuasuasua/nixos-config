@@ -11,22 +11,22 @@ in
   options.home.development.vscode = {
     enable = lib.mkEnableOption "Enable Visual Studio Code";
     # TODO: add default set of packages or custom config
-  };
-
-  config = lib.mkIf cfg.enable {
-    programs.vscode = {
-      enable = true;
-      # # get and update packages through nixpkgs
-      # mutableExtensionsDir = false;
-      extensions = with pkgs.vscode-extensions; [
+    extensions = lib.mkOption {
+      type = with lib.types; listOf package;
+      default = with pkgs.vscode-extensions; [
         # General
         codezombiech.gitignore
+        esbenp.prettier-vscode
         gruntfuggly.todo-tree
         vscodevim.vim
         waderyan.gitblame
 
-        # Langs
-        ms-python.python
+        # Languages (general)
+        ms-azuretools.vscode-docker # docker
+        ms-toolsai.jupyter # jupyter
+        ms-python.python # python
+        ms-python.isort # python
+        skellock.just # just
 
         # Nix Dev
         jnoortheen.nix-ide
@@ -38,6 +38,16 @@ in
         ms-vscode-remote.remote-ssh-edit
         ms-vscode-remote.remote-wsl
       ];
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    programs.vscode = {
+      inherit (cfg) extensions;
+
+      enable = true;
+      # get and update packages through nixpkgs ONLY if false
+      mutableExtensionsDir = true;
       userSettings = {
         # vim setup
         vim = {

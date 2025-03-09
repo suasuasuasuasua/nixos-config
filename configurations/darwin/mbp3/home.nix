@@ -1,4 +1,9 @@
-{ flake, ... }:
+{
+  flake,
+  options,
+  pkgs,
+  ...
+}:
 let
   inherit (flake) inputs;
   inherit (inputs) self;
@@ -75,7 +80,16 @@ in
         };
         comma.enable = true;
         shell.enable = true;
-        vscode.enable = true; # text editor
+        vscode = {
+          enable = true;
+          extensions =
+            # default extensions...
+            options.home.development.vscode.extensions.default
+            # plus some more for this specific config
+            ++ (with pkgs; [
+              ms-pyright.pyright
+            ]);
+        };
       };
 
       gui = {
