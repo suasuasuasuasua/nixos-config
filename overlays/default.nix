@@ -10,9 +10,8 @@ _: prev: {
     config.allowUnfree = true;
   };
 
-  nur = import inputs.nur.overlays;
-
   # # TODO: add as an overlay
+  # nur = import inputs.nur.overlays.default;
   # firefox-addons = import inputs.firefox-addons {
   #   inherit prev;
   #   inherit (prev) system;
