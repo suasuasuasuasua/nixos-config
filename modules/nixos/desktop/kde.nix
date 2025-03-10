@@ -28,23 +28,25 @@ in
     environment.systemPackages =
       with pkgs;
       [
-        filelight # disk usage
-        kate # text editor
-        krita # photo editing
-        haruna # video player
         elisa # music player
-        kalendar # calendar
-        libreoffice-qt # office suite -- calligra wasn't working
+        filelight # disk usage
+        haruna # video player
         hunspell # spell check
         hunspellDicts.en_US # US english package
+        kate # text editor
+        krita # photo editing
+        kalendar # calendar
+        libreoffice-qt # office suite -- calligra wasn't working
         # macos-like theme
         whitesur-kde
         whitesur-cursors
         whitesur-icon-theme
       ]
       ++ (with pkgs.kdePackages; [
-        plasma-thunderbolt
         bluedevil
+        kmail
+        kmail-account-wizard
+        plasma-thunderbolt
       ]);
 
     environment.plasma6.excludePackages = with pkgs.kdePackages; [
