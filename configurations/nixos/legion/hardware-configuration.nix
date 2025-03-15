@@ -22,7 +22,7 @@
       "sd_mod"
       "sr_mod"
     ];
-    initrd.kernelModules = [ "zfs" ];
+    initrd.kernelModules = [ ];
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };
