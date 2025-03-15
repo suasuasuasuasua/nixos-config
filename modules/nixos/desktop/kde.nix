@@ -28,8 +28,10 @@ in
     environment.systemPackages =
       with pkgs;
       [
+        dmidecode
         elisa # music player
         filelight # disk usage
+        fwupd
         haruna # video player
         hunspell # spell check
         hunspellDicts.en_US # US english package
@@ -43,10 +45,11 @@ in
         whitesur-icon-theme
       ]
       ++ (with pkgs.kdePackages; [
-        bluedevil
-        kmail
-        kmail-account-wizard
-        plasma-thunderbolt
+        koi # light/dark switcher
+        kmail # mail client
+        kmail-account-wizard # mail client helper
+        kwin # window manager (not sure why not installed by default?)
+        plasma-thunderbolt # thunderbolt panel
       ]);
 
     environment.plasma6.excludePackages = with pkgs.kdePackages; [
