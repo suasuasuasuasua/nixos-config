@@ -21,7 +21,6 @@
       "rtsx_pci_sdmmc"
     ];
     initrd.kernelModules = [
-      "zfs"
       "intel-pmc-mux"
       "cros-ec-typec"
     ];
