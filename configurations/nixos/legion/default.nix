@@ -26,6 +26,13 @@ in
     ./system
   ];
 
+  nixpkgs = {
+    config = {
+      # enable builds with cuda support!
+      cudaSupport = true;
+    };
+  };
+
   # Need to enable zsh before we can actually use it. Home manager configs it,
   # but cannot set the login shell because that's root level operation
   programs.zsh.enable = true;
