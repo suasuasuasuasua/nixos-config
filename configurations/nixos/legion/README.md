@@ -2,7 +2,7 @@
 
 - Running `zfs` on root partitioning scheme (see ./disko.nix for more details)
 - For-fun NixOS on the Windows gaming computer. When I upgrade computers, I may
-run NixOS main driver, with Windows as the backup
+  run NixOS main driver, with Windows as the backup
 
 ```text
           ▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖             justinhoang@legion

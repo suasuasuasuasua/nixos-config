@@ -15,7 +15,7 @@
 ### [`Legion`](./configurations/nixos/legion/README.md) (custom build)
 
 - For-fun NixOS on the Windows gaming computer. When I upgrade computers, I may
-run NixOS main driver, with Windows as the backup
+  run NixOS main driver, with Windows as the backup
 
 ### [`penguin`](./configurations/nixos/penguin/README.md) (Acer 713-3W Chromebook NixOS)
 
