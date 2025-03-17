@@ -12,10 +12,8 @@ in
   nixpkgs = {
     overlays = lib.attrValues self.overlays;
 
-    config = {
-      allowBroken = true;
-      allowUnfree = true;
-    };
+    # allows us to install apps like vscode
+    config.allowUnfree = true;
   };
 
   nix = {
