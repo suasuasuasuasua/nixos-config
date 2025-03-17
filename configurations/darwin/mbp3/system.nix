@@ -63,9 +63,11 @@
         AppleInterfaceStyle = null; # disable dark mode (null or "dark")
         AppleInterfaceStyleSwitchesAutomatically = true; # switches light and dark automatically
         AppleKeyboardUIMode = 3; # Mode 3 enables full keyboard control.
-        ApplePressAndHoldEnabled = true; # enable press and hold
+        # TODO: this should be enabled and disabled on an app by app basis...
+        # ApplePressAndHoldEnabled = true; # (disable) press and hold
 
-        # If you press and hold certain keyboard keys when in a text area, the key’s character begins to repeat.
+        # If you press and hold certain keyboard keys when in a text area, the
+        # key’s character begins to repeat.
         # This is very useful for vim users, they use `hjkl` to move cursor.
         # sets how long it takes before it starts repeating.
         InitialKeyRepeat = 15; # normal minimum is 15 (225 ms), maximum is 120 (1800 ms)
