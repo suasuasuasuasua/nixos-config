@@ -23,7 +23,7 @@
       "usb_storage"
       "sd_mod"
     ];
-    initrd.kernelModules = [ "zfs" ];
+    initrd.kernelModules = [ ];
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };

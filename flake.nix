@@ -56,28 +56,13 @@
 
     # utility
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    disko = {
-      url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    rpi-nix = {
-      url = "github:nix-community/raspberry-pi-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    disko.url = "github:nix-community/disko/latest";
+    rpi-nix.url = "github:nix-community/raspberry-pi-nix";
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-unified.url = "github:srid/nixos-unified";
-    git-hooks-nix = {
-      url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    vscode-server = {
-      url = "github:nix-community/nixos-vscode-server";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    git-hooks-nix.url = "github:cachix/git-hooks.nix";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     # software inputs
     nix-index-database = {
@@ -86,15 +71,12 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
 
     # extras
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    catppuccin.url = "github:catppuccin/nix";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
   # use cachix for faster builds in places
   nixConfig = {

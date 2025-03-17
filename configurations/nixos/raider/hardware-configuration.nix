@@ -21,7 +21,7 @@
       "sd_mod"
       "rtsx_pci_sdmmc"
     ];
-    initrd.kernelModules = [ "zfs" ];
+    initrd.kernelModules = [ ];
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
 

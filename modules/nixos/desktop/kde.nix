@@ -28,22 +28,28 @@ in
     environment.systemPackages =
       with pkgs;
       [
-        filelight # disk usage
-        kate # text editor
-        krita # photo editing
-        haruna # video player
+        dmidecode
         elisa # music player
-        kalendar # calendar
-        libreoffice-qt # office suite -- calligra wasn't working
+        filelight # disk usage
+        fwupd
+        haruna # video player
         hunspell # spell check
         hunspellDicts.en_US # US english package
+        kate # text editor
+        krita # photo editing
+        kalendar # calendar
+        libreoffice-qt # office suite -- calligra wasn't working
         # macos-like theme
         whitesur-kde
         whitesur-cursors
         whitesur-icon-theme
       ]
       ++ (with pkgs.kdePackages; [
-        plasma-thunderbolt
+        koi # light/dark switcher
+        kmail # mail client
+        kmail-account-wizard # mail client helper
+        kwin # window manager (not sure why not installed by default?)
+        plasma-thunderbolt # thunderbolt panel
       ]);
 
     environment.plasma6.excludePackages = with pkgs.kdePackages; [

@@ -16,10 +16,17 @@ update:
 lint:
     nix fmt
 
-# Lint nix files
+# build and check the diff
 [group('dev')]
+[macos]
 diff:
-    nvd diff /run/current-system result
+    darwin-rebuild build --flake . && nvd diff /run/current-system result
+
+# build and check the diff
+[group('dev')]
+[linux]
+diff:
+    nixos-rebuild build --flake . && nvd diff /run/current-system result
 
 # Build the raspberry pi image
 [group('dev')]
