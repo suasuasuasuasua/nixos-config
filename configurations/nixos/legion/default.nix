@@ -48,6 +48,7 @@ in
         "wheel"
         "docker"
         "libvirtd"
+        "video"
       ];
       shell = pkgs.zsh;
     };

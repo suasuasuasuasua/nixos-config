@@ -16,13 +16,18 @@ in
 
   config = lib.mkIf cfg.enable {
     services = {
-      displayManager.ly.enable = true;
-      # displayManager.sddm.enable = true;
-      # displayManager.sddm.wayland.enable = true;
+      # displayManager.ly.enable = true;
+      displayManager = {
+        sddm = {
+          enable = true;
+          autoNumlock = true;
+          wayland.enable = true;
+        };
+
+        defaultSession = "plasma";
+      };
 
       desktopManager.plasma6.enable = true;
-      displayManager.defaultSession = "plasma";
-
     };
     # Add these kde packages
     environment.systemPackages =
