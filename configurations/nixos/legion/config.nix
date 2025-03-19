@@ -29,7 +29,8 @@ in
   # desktop
   config.nixos = {
     desktop = {
-      kde.enable = true;
+      # kde.enable = true;
+      sway.enable = true;
     };
 
     # development
@@ -39,9 +40,9 @@ in
       virtualization.enable = true;
     };
 
-    gpu = {
-      nvidia.enable = true;
-    };
+    # gpu = {
+    #   nvidia.enable = true;
+    # };
 
     # gui programs
     gui = {
