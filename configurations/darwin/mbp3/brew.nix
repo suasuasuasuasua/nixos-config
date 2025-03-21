@@ -3,9 +3,7 @@ let
   inherit (flake) inputs;
 in
 {
-  imports = [
-    inputs.nix-homebrew.darwinModules.nix-homebrew
-  ];
+  imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
 
   nix-homebrew = {
     # Install Homebrew under the default prefix
@@ -23,10 +21,8 @@ in
 
     # Optional: Declarative tap management
     taps = with inputs; {
-      "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
-      "homebrew/homebrew-bundle" = homebrew-bundle;
-      "homebrew/homebrew-services" = homebrew-services;
+      "homebrew/homebrew-core" = homebrew-core;
     };
 
     # Optional: Enable fully-declarative tap management
@@ -39,8 +35,8 @@ in
     enable = true;
     onActivation = {
       # don't upgrade automatically -- let's do manual brew upgrades
-      upgrade = false;
-      autoUpdate = false;
+      upgrade = true;
+      autoUpdate = true;
       # uninstall brew apps not specified here
       cleanup = "zap";
     };

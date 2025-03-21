@@ -29,7 +29,8 @@
       # url = "github:LnL7/nix-darwin/master"; # unstable
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    # nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nix-homebrew.url = "git+https://github.com/zhaofengli/nix-homebrew?ref=refs/pull/71/merge";
     # Optional: Declarative tap management
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -37,14 +38,6 @@
     };
     homebrew-cask = {
       url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
-    };
-    homebrew-services = {
-      url = "github:homebrew/homebrew-services";
       flake = false;
     };
     mac-app-util.url = "github:hraban/mac-app-util";
