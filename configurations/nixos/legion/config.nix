@@ -48,6 +48,7 @@ in
       discord.enable = true;
       element.enable = true;
       kdenlive.enable = true;
+      lutris.enable = true;
       obsidian.enable = true;
       steam.enable = true;
       wine.enable = true;
