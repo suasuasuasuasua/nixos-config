@@ -47,6 +47,7 @@ in
     gui = {
       discord.enable = true;
       element.enable = true;
+      gimp.enable = true;
       kdenlive.enable = true;
       lutris.enable = true;
       obsidian.enable = true;
