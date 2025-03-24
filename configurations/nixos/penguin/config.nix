@@ -41,10 +41,7 @@ in
     gui = {
       discord.enable = true;
       element.enable = true;
-      kdenlive.enable = true;
       obsidian.enable = true;
-      steam.enable = true;
-      wine.enable = true;
     };
   };
 }
