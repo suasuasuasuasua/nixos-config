@@ -39,10 +39,6 @@ in
         krita # photo editing
         kalendar # calendar
         libreoffice-qt # office suite -- calligra wasn't working
-        # macos-like theme
-        whitesur-kde
-        whitesur-cursors
-        whitesur-icon-theme
       ]
       ++ (with pkgs.kdePackages; [
         koi # light/dark switcher
