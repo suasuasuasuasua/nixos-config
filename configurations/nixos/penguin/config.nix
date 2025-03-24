@@ -15,6 +15,7 @@ in
     (self + /modules/nixos/desktop)
     (self + /modules/nixos/development)
     (self + /modules/nixos/gui)
+    (self + /modules/nixos/services)
   ];
 
   # TODO: if this gets too complex/long, modularize into folders
@@ -42,6 +43,10 @@ in
       discord.enable = true;
       element.enable = true;
       obsidian.enable = true;
+    };
+
+    services = {
+      syncthing.enable = true;
     };
   };
 }
