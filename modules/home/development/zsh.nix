@@ -24,7 +24,6 @@ in
         ll = "ls -l";
         c = "clear";
         lg = "lazygit";
-        pbcopy = lib.mkDefault (if pkgs.stdenv.isDarwin then "pbcopy" else "wl-clipboard");
       };
       history = {
         size = 10000;
