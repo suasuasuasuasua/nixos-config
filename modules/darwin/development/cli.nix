@@ -14,9 +14,11 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      # dev
+      docker
+
       # files
       zstd # Zstandard real-time compression algorithm
-
       # media
       ffmpeg # solution to record, convert and stream audio and video
       yt-dlp # cli tool to download videos from YouTube.com and other sites

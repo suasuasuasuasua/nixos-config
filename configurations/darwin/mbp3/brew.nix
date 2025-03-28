@@ -50,9 +50,6 @@ in
     ];
 
     casks = [
-      # dev
-      "docker" # docker desktop (includes cli)
-
       # general
       "element" # chat
       "firefox" # web browser
