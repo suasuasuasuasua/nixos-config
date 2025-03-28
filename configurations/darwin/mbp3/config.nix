@@ -35,6 +35,7 @@ in
 
       gui = {
         discord.enable = true; # voice and text chat software
+        element.enable = false; # element signin link is broken?
         obsidian.enable = true; # markdown based note-taking app
         rpi-imager.enable = false; # broken on version 1.8.5 and  channel 24.11
       };
