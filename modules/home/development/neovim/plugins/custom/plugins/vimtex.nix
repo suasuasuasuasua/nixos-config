@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -17,6 +18,10 @@ in
       plugins.vimtex = {
         enable = true;
       };
+
+      extraPackages = with pkgs; [
+        biber
+      ];
     };
   };
 }

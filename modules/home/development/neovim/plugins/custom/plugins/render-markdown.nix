@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }:
@@ -16,7 +17,16 @@ in
     programs.nixvim = {
       plugins.${name} = {
         enable = true;
+        settings = {
+          latex = {
+            position = "below";
+          };
+        };
       };
+
+      extraPackages = with pkgs; [
+        python312Packages.pylatexenc
+      ];
     };
   };
 }
