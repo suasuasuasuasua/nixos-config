@@ -66,6 +66,7 @@ in
             diffview.enable = true;
             lazygit.enable = true;
             markdown-preview.enable = true;
+            neogit.enable = true;
             ollama = {
               enable = true;
               model = "gemma3";
