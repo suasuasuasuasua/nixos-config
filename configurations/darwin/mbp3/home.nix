@@ -66,11 +66,19 @@ in
             diffview.enable = true;
             lazygit.enable = true;
             markdown-preview.enable = true;
+            ollama = {
+              enable = true;
+              model = "gemma3";
+              url = "http://127.0.0.1:11434"; # local ollama instance
+            };
+            render-markdown.enable = true;
             repeat.enable = true;
             surround.enable = true;
             tmux.enable = true;
             treesitter.enable = true;
             ufo.enable = true;
+            vimtex.enable = true;
+            zen-mode.enable = true;
           };
         };
         comma.enable = true;
