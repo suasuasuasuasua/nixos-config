@@ -1,11 +1,10 @@
 {
   lib,
-  pkgs,
   config,
   ...
 }:
 let
-  name = "render-markdown";
+  name = "typst";
   cfg = config.home.development.neovim.plugins.${name};
 in
 {
@@ -15,18 +14,13 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      plugins.${name} = {
+      plugins.typst-vim = {
         enable = true;
-        settings = {
-          latex = {
-            position = "below";
-          };
-        };
       };
 
-      extraPackages = with pkgs; [
-        python312Packages.pylatexenc
-      ];
+      plugins.typst-preview = {
+        enable = true;
+      };
     };
   };
 }
