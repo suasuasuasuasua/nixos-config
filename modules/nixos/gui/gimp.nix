@@ -9,7 +9,9 @@ let
 in
 {
   options.nixos.gui.gimp = {
-    enable = lib.mkEnableOption "Enable gimp";
+    enable = lib.mkEnableOption ''
+      GNU Image Manipulation Program
+    '';
     # TODO: add extra libraries and packages?
   };
 

@@ -8,7 +8,9 @@ let
 in
 {
   options.home.cli.github = {
-    enable = lib.mkEnableOption "Enable gh (CLI)";
+    enable = lib.mkEnableOption ''
+      GitHub CLI tool
+    '';
     # TODO: add default set of packages or custom config
   };
 

@@ -8,16 +8,17 @@ let
 in
 {
   options.home.cli.direnv = {
-    enable = lib.mkEnableOption "Enable direnv";
-    # TODO: add default set of packages or custom config
+    enable = lib.mkEnableOption ''
+      Shell extension that manages your environment
+    '';
   };
 
   config = lib.mkIf cfg.enable {
     programs.direnv = {
       enable = true;
-      enableZshIntegration = true; # see note on other shells below
-      nix-direnv.enable = true;
-      silent = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true; # faster implementation for nix
+      silent = true; # silent mode so it doesn't flood stdout
     };
   };
 }

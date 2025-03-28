@@ -9,7 +9,9 @@ let
 in
 {
   options.home.cli.tmux = {
-    enable = lib.mkEnableOption "Enable tmux";
+    enable = lib.mkEnableOption ''
+      Terminal multiplexer
+    '';
     # TODO: add default set of packages or custom config
   };
 

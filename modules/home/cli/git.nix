@@ -8,8 +8,9 @@ let
 in
 {
   options.home.cli.git = {
-    enable = lib.mkEnableOption "Enable git";
-    # TODO: add default set of packages or custom config
+    enable = lib.mkEnableOption ''
+      Distributed version control system
+    '';
     # TODO: add dynamic username, emial, gpg signing, etc.
   };
 

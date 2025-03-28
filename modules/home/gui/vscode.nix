@@ -32,6 +32,8 @@ in
         jnoortheen.nix-ide
         mkhl.direnv
       ];
+
+      # TODO: profiles available in 25.05 unstable...
     };
   };
 }

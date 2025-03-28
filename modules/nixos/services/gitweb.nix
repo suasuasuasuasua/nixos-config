@@ -10,7 +10,9 @@ let
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Gitweb";
+    enable = lib.mkEnableOption ''
+      Distributed version control system
+    '';
     projectroot = lib.mkOption {
       type = lib.types.path;
       default = "/srv/git";

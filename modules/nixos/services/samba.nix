@@ -4,15 +4,15 @@
   ...
 }:
 let
-  # Use the hostname of the machine!
-  #   previously was hardcoding *lab* but this should work for any machine
   serviceName = "samba";
 
   cfg = config.nixos.services.${serviceName};
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Samba";
+    enable = lib.mkEnableOption ''
+      Standard Windows interoperability suite of programs for Linux and Unix
+    '';
 
     # TODO: add settings to samba as an argument
   };

@@ -9,7 +9,9 @@ let
 in
 {
   options.nixos.gui.lutris = {
-    enable = lib.mkEnableOption "Enable Lutris";
+    enable = lib.mkEnableOption ''
+      Open Source gaming platform for GNU/Linux
+    '';
     # TODO: add extra libraries and packages?
   };
 

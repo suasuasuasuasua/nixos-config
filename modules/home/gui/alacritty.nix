@@ -4,14 +4,17 @@
   ...
 }:
 let
-  font = "JetBrainsMono Nerd Font";
-
   cfg = config.home.gui.alacritty;
 in
 {
   options.home.gui.alacritty = {
     enable = lib.mkEnableOption "Enable alacritty";
-    # TODO: add options for font
+
+    # TODO: add better options for font
+    font = lib.mkOption {
+      type = lib.types.str;
+      default = "JetBrainsMono Nerd Font";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -29,19 +32,19 @@ in
         font = {
           size = 10;
           bold = {
-            family = font;
+            family = cfg.font;
             style = "Bold";
           };
           italic = {
-            family = font;
+            family = cfg.font;
             style = "Italic";
           };
           bold_italic = {
-            family = font;
+            family = cfg.font;
             style = "Bold Italic";
           };
           normal = {
-            family = font;
+            family = cfg.font;
             style = "Regular";
           };
         };

@@ -44,7 +44,6 @@ in
         nautilus # file browser
         dialect # translator
         shotcut # video editor
-        gimp # photo editor
         libreoffice-qt # office suite
         hunspell # spell check (for office suite)
         hunspellDicts.en_US

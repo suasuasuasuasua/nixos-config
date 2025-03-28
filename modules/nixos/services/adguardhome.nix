@@ -4,8 +4,6 @@
   ...
 }:
 let
-  # Use the hostname of the machine!
-  #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
   serviceName = "adguardhome";
 
@@ -13,7 +11,9 @@ let
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Adguard Home";
+    enable = lib.mkEnableOption ''
+      Network-wide ads & trackers blocking DNS server
+    '';
     port = lib.mkOption {
       type = lib.types.port;
       default = 3000;

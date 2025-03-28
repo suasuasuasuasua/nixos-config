@@ -10,6 +10,10 @@ in
 {
   options.home.development.neovim.plugins.${name} = {
     enable = lib.mkEnableOption "Enable ${name} plugin for neovim";
+    workspaces = lib.mkOption {
+      type = with lib.types; nullOr (listOf submodule);
+      default = [ ];
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -17,12 +21,8 @@ in
       plugins.${name} = {
         enable = true;
         settings = {
-          workspaces = [
-            {
-              name = "general";
-              path = "~/Documents/vaults/personal";
-            }
-          ];
+          inherit (cfg) workspaces;
+
           notes_subdir = "01-fleeting";
 
           # see below for full list of options 👇

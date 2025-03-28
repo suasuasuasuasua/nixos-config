@@ -1,7 +1,5 @@
 { config, lib, ... }:
 let
-  # Use the hostname of the machine!
-  #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
   serviceName = "dashy";
 
@@ -9,7 +7,9 @@ let
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Dashy";
+    enable = lib.mkEnableOption ''
+      dashy
+    '';
   };
 
   config = lib.mkIf cfg.enable {

@@ -1,7 +1,5 @@
 { config, lib, ... }:
 let
-  # Use the hostname of the machine!
-  #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
   serviceName = "mealie";
 
@@ -9,7 +7,9 @@ let
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Mealie";
+    enable = lib.mkEnableOption ''
+      Self hosted recipe manager and meal planner
+    '';
     port = lib.mkOption {
       type = lib.types.port;
       default = 9000;

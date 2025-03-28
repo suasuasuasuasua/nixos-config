@@ -9,7 +9,9 @@ let
 in
 {
   options.home.cli.gnupg = {
-    enable = lib.mkEnableOption "Enable gnupg";
+    enable = lib.mkEnableOption ''
+      Modern release of the GNU Privacy Guard, a GPL OpenPGP implementation
+    '';
     # TODO: add default set of packages or custom config
   };
 
@@ -30,7 +32,7 @@ in
       pinentryPackage = pkgs.pinentry-curses;
 
       # config for signing in neovim
-      defaultCacheTtl = 28800;
+      defaultCacheTtl = 28800; # increase time before entering password
       maxCacheTtl = 28800;
       extraConfig = ''
         allow-loopback-pinentry

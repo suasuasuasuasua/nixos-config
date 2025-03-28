@@ -7,20 +7,18 @@
 }:
 let
   inherit (flake) inputs;
-  # Use the hostname of the machine!
-  #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
   serviceName = "actual";
 
   cfg = config.nixos.services.${serviceName};
 in
 {
-  imports = [
-    "${inputs.nixpkgs-unstable}/nixos/modules/services/web-apps/actual.nix"
-  ];
+  imports = [ "${inputs.nixpkgs-unstable}/nixos/modules/services/web-apps/actual.nix" ];
 
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Actual Budget";
+    enable = lib.mkEnableOption ''
+      Super fast privacy-focused app for managing your finances
+    '';
     port = lib.mkOption {
       type = lib.types.port;
       default = 3001;

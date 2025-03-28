@@ -1,7 +1,5 @@
 { config, lib, ... }:
 let
-  # Use the hostname of the machine!
-  #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
   serviceName = "immich";
 
@@ -9,7 +7,9 @@ let
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Immich";
+    enable = lib.mkEnableOption ''
+      Self-hosted photo and video backup solution
+    '';
     port = lib.mkOption {
       type = lib.types.port;
       default = 2283;

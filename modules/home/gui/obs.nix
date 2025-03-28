@@ -1,19 +1,12 @@
 {
-  flake,
   config,
   lib,
   ...
 }:
 let
-  inherit (flake) inputs;
-
   cfg = config.home.gui.obs;
 in
 {
-  imports = [
-    inputs.spicetify-nix.homeManagerModules.default
-  ];
-
   options.home.gui.obs = {
     enable = lib.mkEnableOption "Enable general CLI tools";
     # TODO: add options for packages for custom config

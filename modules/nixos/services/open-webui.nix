@@ -1,7 +1,5 @@
 { config, lib, ... }:
 let
-  # Use the hostname of the machine!
-  #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
   serviceName = "open-webui";
 
@@ -9,7 +7,9 @@ let
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Open WebUI";
+    enable = lib.mkEnableOption ''
+      Comprehensive suite for LLMs with a user-friendly WebUI
+    '';
     port = lib.mkOption {
       type = lib.types.port;
       default = 8080;

@@ -1,19 +1,12 @@
 {
-  flake,
   config,
   lib,
   ...
 }:
 let
-  inherit (flake) inputs;
-
   cfg = config.home.gui.firefox;
 in
 {
-  imports = [
-    inputs.spicetify-nix.homeManagerModules.default
-  ];
-
   options.home.gui.firefox = {
     enable = lib.mkEnableOption "Enable firefox";
   };
