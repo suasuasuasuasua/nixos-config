@@ -1,16 +1,20 @@
-{ flake, pkgs, ... }:
+{
+  flake,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (flake) inputs;
   inherit (inputs) self;
 in
 {
-  imports = [
-    # config
-    ./config.nix
-    ./home.nix
-    ./brew.nix
-    ./system.nix
-  ];
+  # A module that automatically imports everything else in the parent folder.
+  imports =
+    with builtins;
+    map (fn: ./${fn}) (
+      filter (fn: fn != "default.nix" && lib.hasSuffix ".nix" fn) (attrNames (readDir ./.))
+    );
 
   # For home-manager to work.
   users.users.justinhoang = {
@@ -60,8 +64,8 @@ in
   # Create /etc/zshrc that loads the nix-darwin environment.
   # this is required if you want to use darwin's default shell - zsh
   programs.zsh.enable = true;
-  environment.shells = [
-    pkgs.zsh
+  environment.shells = with pkgs; [
+    zsh
   ];
 
   # Fonts
