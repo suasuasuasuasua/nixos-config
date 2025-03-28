@@ -49,10 +49,10 @@ in
       "trash" # move files to the trash
     ];
 
-    casks = [
-      # dev
-      "docker" # docker desktop (includes cli)
+    # TODO: look into whalebrews?
+    whalebrews = [ ];
 
+    casks = [
       # general
       "element" # chat
       "firefox" # web browser
@@ -65,11 +65,12 @@ in
 
       # utility
       "adguard" # ad blocker
-      "betterdisplay" # macos display configuration tool
+      "betterdisplay" # macos display configuration tool (TODO: nixpkgs unstable 25.05)
       "logi-options+" # logitech peripherals
       "scroll-reverser" # mouse util
       "shottr" # screenshot tool
       # TODO: can't use because macOS says they are unsafe
+      # (https://github.com/televator-apps/vimari/issues/304)
       # "vladdoster/formulae/vimari" # vim-like bindings for safari
       # "dzirtusss/tap/vifari" # vim-like bindings for safari
     ];
