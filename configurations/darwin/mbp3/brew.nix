@@ -65,7 +65,7 @@ in
 
       # utility
       "adguard" # ad blocker
-      "betterdisplay" # macos display configuration tool
+      "betterdisplay" # macos display configuration tool (TODO: nixpkgs unstable 25.05)
       "logi-options+" # logitech peripherals
       "scroll-reverser" # mouse util
       "shottr" # screenshot tool
