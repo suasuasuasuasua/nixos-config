@@ -5,8 +5,6 @@ let
 in
 {
   imports = [
-    (self + /modules/nixos/shared)
-
     # config
     ./config.nix
     ./home.nix
