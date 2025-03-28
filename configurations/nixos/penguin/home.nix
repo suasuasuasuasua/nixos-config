@@ -66,11 +66,14 @@ in
             diffview.enable = true;
             lazygit.enable = true;
             markdown-preview.enable = true;
+            render-markdown.enable = true;
             repeat.enable = true;
             surround.enable = true;
             tmux.enable = true;
             treesitter.enable = true;
             ufo.enable = true;
+            vimtex.enable = true;
+            zen-mode.enable = true;
           };
         };
         shell.enable = true;
