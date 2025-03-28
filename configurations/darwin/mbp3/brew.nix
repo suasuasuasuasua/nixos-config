@@ -49,6 +49,9 @@ in
       "trash" # move files to the trash
     ];
 
+    # TODO: look into whalebrews?
+    whalebrews = [ ];
+
     casks = [
       # general
       "element" # chat
