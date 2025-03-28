@@ -76,6 +76,7 @@ in
             surround.enable = true;
             tmux.enable = true;
             treesitter.enable = true;
+            typst.enable = true;
             ufo.enable = true;
             vimtex.enable = true;
             zen-mode.enable = true;
