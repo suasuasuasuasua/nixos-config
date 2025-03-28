@@ -75,7 +75,7 @@ in
             zen-mode.enable = true;
           };
         };
-        shell.enable = true;
+        zsh.enable = true;
       };
 
       gui = {

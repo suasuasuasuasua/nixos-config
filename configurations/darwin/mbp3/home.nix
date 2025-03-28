@@ -84,7 +84,7 @@ in
           };
         };
         comma.enable = true;
-        shell.enable = true;
+        zsh.enable = true;
       };
 
       gui = {

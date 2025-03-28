@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.home.development.shell;
+  cfg = config.home.development.zsh;
 in
 {
-  options.home.development.shell = {
+  options.home.development.zsh = {
     enable = lib.mkEnableOption "Enable ZSH shell config";
     # TODO: add default set of packages or custom config
   };
