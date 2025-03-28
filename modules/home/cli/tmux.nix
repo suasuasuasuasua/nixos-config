@@ -25,7 +25,7 @@ in
         vim-tmux-navigator
       ];
 
-      sensibleOnTop = false;
+      sensibleOnTop = true;
       mouse = true;
       prefix = "C-Space";
       keyMode = "vi";
@@ -35,6 +35,9 @@ in
         # tmux
         ''
           set-option -sa terminal-overrides ",xterm*:Tc"
+
+          set -gu default-command
+          set -g default-shell "$SHELL"
 
           bind '"' split-window -c "#{pane_current_path}"
           set-option -g renumber-windows on
