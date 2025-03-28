@@ -23,6 +23,7 @@ in
     config.home = {
       cli = {
         bat.enable = true;
+        comma.enable = true;
         devenv.enable = true;
         direnv.enable = true;
         fzf.enable = true;
@@ -33,7 +34,6 @@ in
       };
 
       development = {
-        comma.enable = true;
         neovim = {
           enable = true;
           # enable LSPs for _server-like_ things

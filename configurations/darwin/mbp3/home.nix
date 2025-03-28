@@ -25,6 +25,7 @@ in
     config.home = {
       cli = {
         bat.enable = true;
+        comma.enable = true;
         devenv.enable = true;
         direnv.enable = true;
         fzf.enable = true;
@@ -83,7 +84,6 @@ in
             zen-mode.enable = true;
           };
         };
-        comma.enable = true;
         zsh.enable = true;
       };
 
