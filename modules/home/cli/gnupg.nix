@@ -15,7 +15,12 @@ in
 
   config = lib.mkIf cfg.enable {
     services.gnome-keyring.enable = pkgs.stdenv.isLinux;
-    programs.gpg.enable = true;
+    programs.gpg = {
+      enable = true;
+      settings = {
+        pinentry-mode = "loopback";
+      };
+    };
 
     services.gpg-agent = {
       enable = true;
@@ -23,6 +28,13 @@ in
       enableZshIntegration = true;
       enableSshSupport = true;
       pinentryPackage = pkgs.pinentry-curses;
+
+      # config for signing in neovim
+      defaultCacheTtl = 28800;
+      maxCacheTtl = 28800;
+      extraConfig = ''
+        allow-loopback-pinentry
+      '';
     };
   };
 }
