@@ -70,6 +70,7 @@ in
       "scroll-reverser" # mouse util
       "shottr" # screenshot tool
       # TODO: can't use because macOS says they are unsafe
+      # (https://github.com/televator-apps/vimari/issues/304)
       # "vladdoster/formulae/vimari" # vim-like bindings for safari
       # "dzirtusss/tap/vifari" # vim-like bindings for safari
     ];
