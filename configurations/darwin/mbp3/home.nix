@@ -85,11 +85,11 @@ in
         };
         comma.enable = true;
         shell.enable = true;
-        vscode.enable = true; # text editor
       };
 
       gui = {
         spotify.enable = true; # music platform
+        vscode.enable = true; # text editor
       };
     };
   };

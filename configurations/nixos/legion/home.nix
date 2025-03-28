@@ -33,7 +33,6 @@ in
       };
 
       development = {
-        alacritty.enable = true;
         comma.enable = true;
         neovim = {
           enable = true;
@@ -74,13 +73,14 @@ in
           };
         };
         shell.enable = true;
-        vscode.enable = true;
       };
 
       gui = {
+        alacritty.enable = true;
         firefox.enable = true;
         obs.enable = true;
         spotify.enable = true;
+        vscode.enable = true;
       };
     };
   };

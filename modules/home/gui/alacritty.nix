@@ -6,10 +6,10 @@
 let
   font = "JetBrainsMono Nerd Font";
 
-  cfg = config.home.development.alacritty;
+  cfg = config.home.gui.alacritty;
 in
 {
-  options.home.development.alacritty = {
+  options.home.gui.alacritty = {
     enable = lib.mkEnableOption "Enable alacritty";
     # TODO: add options for font
   };
