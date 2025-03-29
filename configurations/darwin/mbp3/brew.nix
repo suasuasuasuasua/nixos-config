@@ -44,15 +44,16 @@ in
     taps = builtins.attrNames config.nix-homebrew.taps;
 
     brews = [
-      "asimov" # time machine file ignorer (remember to start service!)
       "ollama" # llm runner and manager
-      "trash" # move files to the trash
     ];
 
     # TODO: look into whalebrews?
     whalebrews = [ ];
 
     casks = [
+      # dev
+      "docker" # container runner and manager
+
       # general
       "element" # chat
       "firefox" # web browser

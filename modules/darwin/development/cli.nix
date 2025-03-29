@@ -14,8 +14,8 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      # dev
-      docker
+      # # dev
+      # docker # TODO: figure out how to add as service?
 
       # files
       zstd # Zstandard real-time compression algorithm
