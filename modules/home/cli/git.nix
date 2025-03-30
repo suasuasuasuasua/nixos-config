@@ -24,6 +24,12 @@ in
       # Support packages
       diff-so-fancy.enable = true;
 
+      ignores = [
+        "*~"
+        "*.swp"
+        ".DS_Store"
+      ];
+
       signing = {
         key = "j124.dev@proton.me";
         signByDefault = true;
