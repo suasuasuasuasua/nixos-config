@@ -19,12 +19,13 @@ in
     programs.tmux = {
       enable = true;
       plugins = with pkgs.tmuxPlugins; [
-        sensible
-        resurrect
-        continuum
-        yank
-        fpp
-        vim-tmux-navigator
+        continuum # continuous saving and start of tmux
+        fpp # find and open files in the current buffer
+        resurrect # save sessions past system restarts
+        sensible # sensible config
+        tmux-powerline # pretty powerline
+        vim-tmux-navigator # prettier statusline
+        yank # better copy and paste functionality
       ];
 
       sensibleOnTop = true;
@@ -55,7 +56,6 @@ in
           bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
 
           # tmux sessionizer
-          set -g status-right " #(tms sessions)"
           bind -r '(' switch-client -p\; refresh-client -S
           bind -r ')' switch-client -n\; refresh-client -S
 
