@@ -50,6 +50,7 @@ in
             jsonls.enable = true;
             nginx_language_server.enable = true;
             ltex.enable = true;
+            marksman.enable = true;
             nil_ls.enable = true;
             # nixd.enable = true;
             ruff.enable = true;
@@ -64,6 +65,7 @@ in
           plugins = {
             airline.enable = true;
             auto-save.enable = true;
+            clipboard-image.enable = true;
             diffview.enable = true;
             lazygit.enable = true;
             markdown-preview.enable = true;
