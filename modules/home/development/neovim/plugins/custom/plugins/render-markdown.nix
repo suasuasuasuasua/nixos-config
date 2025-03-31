@@ -19,7 +19,7 @@ in
         enable = true;
         settings = {
           latex = {
-            position = "below";
+            enabled = false; # latex kinda annoying when bouncing around
           };
         };
       };
