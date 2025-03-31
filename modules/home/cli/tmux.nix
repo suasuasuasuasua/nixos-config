@@ -19,9 +19,28 @@ in
     programs.tmux = {
       enable = true;
       plugins = with pkgs.tmuxPlugins; [
-        continuum # continuous saving and start of tmux
+        {
+          plugin = continuum; # continuous saving and start of tmux
+          extraConfig =
+            # tmux
+            ''
+              # restore the pane contents for sessions and for neovim
+              set -g @continuum-restore 'on'
+            '';
+        }
         fpp # find and open files in the current buffer
-        resurrect # save sessions past system restarts
+        {
+
+          plugin = resurrect; # save sessions past system restarts
+          extraConfig =
+            # tmux
+            ''
+              # restore the pane contents for sessions and for neovim
+              set -g @resurrect-capture-pane-contents 'on'
+              set -g @resurrect-strategy-vim 'session'
+              set -g @resurrect-strategy-nvim 'session'
+            '';
+        }
         sensible # sensible config
         tmux-powerline # pretty powerline
         vim-tmux-navigator # prettier statusline
@@ -45,11 +64,6 @@ in
           bind '"' split-window -c "#{pane_current_path}"
           set-option -g renumber-windows on
 
-          # restore the pane contents for sessions and for neovim
-          set -g @continuum-restore 'on'
-          set -g @resurrect-capture-pane-contents 'on'
-          set -g @resurrect-strategy-nvim 'session'
-
           # vim-like copy and pasting
           bind-key -T copy-mode-vi v send-keys -X begin-selection
           bind-key -T copy-mode-vi C-v send-keys -X rectangle-selection
@@ -58,7 +72,6 @@ in
           # tmux sessionizer
           bind -r '(' switch-client -p\; refresh-client -S
           bind -r ')' switch-client -n\; refresh-client -S
-
           bind C-t display-popup -E "tms" # find the sessions/repos
           bind C-j display-popup -E "tms switch" # switch the sessions
         '';
