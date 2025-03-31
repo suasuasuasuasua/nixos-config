@@ -49,9 +49,18 @@ in
           set -g @resurrect-capture-pane-contents 'on'
           set -g @resurrect-strategy-nvim 'session'
 
+          # vim-like copy and pasting
           bind-key -T copy-mode-vi v send-keys -X begin-selection
           bind-key -T copy-mode-vi C-v send-keys -X rectangle-selection
           bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
+          # tmux sessionizer
+          set -g status-right " #(tms sessions)"
+          bind -r '(' switch-client -p\; refresh-client -S
+          bind -r ')' switch-client -n\; refresh-client -S
+
+          bind C-t display-popup -E "tms" # find the sessions/repos
+          bind C-j display-popup -E "tms switch" # switch the sessions
         '';
     };
 
