@@ -53,6 +53,7 @@ in
             marksman.enable = true;
             nil_ls.enable = true;
             # nixd.enable = true;
+            pyright.enable = true;
             ruff.enable = true;
             rust_analyzer.enable = true;
             sqls.enable = true;
