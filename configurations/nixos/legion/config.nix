@@ -29,8 +29,7 @@ in
   # desktop
   config.nixos = {
     desktop = {
-      # kde.enable = true;
-      sway.enable = true;
+      kde.enable = true;
     };
 
     # development
