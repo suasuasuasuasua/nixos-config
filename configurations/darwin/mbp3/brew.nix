@@ -3,9 +3,7 @@ let
   inherit (flake) inputs;
 in
 {
-  imports = [
-    inputs.nix-homebrew.darwinModules.nix-homebrew
-  ];
+  imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
 
   nix-homebrew = {
     # Install Homebrew under the default prefix
@@ -23,10 +21,8 @@ in
 
     # Optional: Declarative tap management
     taps = with inputs; {
-      "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
-      "homebrew/homebrew-bundle" = homebrew-bundle;
-      "homebrew/homebrew-services" = homebrew-services;
+      "homebrew/homebrew-core" = homebrew-core;
     };
 
     # Optional: Enable fully-declarative tap management
@@ -39,8 +35,8 @@ in
     enable = true;
     onActivation = {
       # don't upgrade automatically -- let's do manual brew upgrades
-      upgrade = false;
-      autoUpdate = false;
+      upgrade = true;
+      autoUpdate = true;
       # uninstall brew apps not specified here
       cleanup = "zap";
     };
@@ -48,14 +44,15 @@ in
     taps = builtins.attrNames config.nix-homebrew.taps;
 
     brews = [
-      "asimov" # time machine file ignorer (remember to start service!)
       "ollama" # llm runner and manager
-      "trash" # move files to the trash
     ];
+
+    # TODO: look into whalebrews?
+    whalebrews = [ ];
 
     casks = [
       # dev
-      "docker" # docker desktop (includes cli)
+      "docker" # container runner and manager
 
       # general
       "element" # chat
@@ -69,11 +66,12 @@ in
 
       # utility
       "adguard" # ad blocker
-      "betterdisplay" # macos display configuration tool
+      "betterdisplay" # macos display configuration tool (TODO: nixpkgs unstable 25.05)
       "logi-options+" # logitech peripherals
       "scroll-reverser" # mouse util
       "shottr" # screenshot tool
       # TODO: can't use because macOS says they are unsafe
+      # (https://github.com/televator-apps/vimari/issues/304)
       # "vladdoster/formulae/vimari" # vim-like bindings for safari
       # "dzirtusss/tap/vifari" # vim-like bindings for safari
     ];

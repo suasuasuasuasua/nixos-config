@@ -15,6 +15,7 @@ in
     (self + /modules/nixos/desktop)
     (self + /modules/nixos/development)
     (self + /modules/nixos/gui)
+    (self + /modules/nixos/services)
   ];
 
   # TODO: if this gets too complex/long, modularize into folders
@@ -41,10 +42,11 @@ in
     gui = {
       discord.enable = true;
       element.enable = true;
-      kdenlive.enable = true;
       obsidian.enable = true;
-      steam.enable = true;
-      wine.enable = true;
+    };
+
+    services = {
+      syncthing.enable = true;
     };
   };
 }

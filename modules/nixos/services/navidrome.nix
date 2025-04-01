@@ -1,7 +1,5 @@
 { config, lib, ... }:
 let
-  # Use the hostname of the machine!
-  #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
   serviceName = "navidrome";
 
@@ -9,7 +7,9 @@ let
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Navidrome";
+    enable = lib.mkEnableOption ''
+      Navidrome Music Server and Streamer compatible with Subsonic/Airsonic
+    '';
     Port = lib.mkOption {
       type = lib.types.port;
       default = 4533;

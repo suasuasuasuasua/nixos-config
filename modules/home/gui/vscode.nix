@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.home.development.vscode;
+  cfg = config.home.gui.vscode;
 in
 {
-  options.home.development.vscode = {
+  options.home.gui.vscode = {
     enable = lib.mkEnableOption "Enable Visual Studio Code";
     # TODO: add default set of packages or custom config
   };
@@ -32,6 +32,8 @@ in
         jnoortheen.nix-ide
         mkhl.direnv
       ];
+
+      # TODO: profiles available in 25.05 unstable...
     };
   };
 }

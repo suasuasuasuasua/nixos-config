@@ -6,7 +6,9 @@ let
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable nginx";
+    enable = lib.mkEnableOption ''
+      Reverse proxy and lightweight webserver
+    '';
   };
 
   config = lib.mkIf cfg.enable {

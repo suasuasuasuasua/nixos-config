@@ -4,7 +4,7 @@
   ...
 }:
 let
-  name = "template";
+  name = "zen-mode";
   cfg = config.home.development.neovim.plugins.${name};
 in
 {
@@ -14,7 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      plugins.${name} = {
+      plugins.zen-mode = {
         enable = true;
       };
     };

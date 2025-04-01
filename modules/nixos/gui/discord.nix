@@ -9,7 +9,9 @@ let
 in
 {
   options.nixos.gui.discord = {
-    enable = lib.mkEnableOption "Enable Discord";
+    enable = lib.mkEnableOption ''
+      All-in-one cross-platform voice and text chat for gamers
+    '';
   };
 
   config = lib.mkIf cfg.enable {

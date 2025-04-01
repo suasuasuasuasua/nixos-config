@@ -25,6 +25,7 @@ in
     config.home = {
       cli = {
         bat.enable = true;
+        comma.enable = true;
         devenv.enable = true;
         direnv.enable = true;
         fzf.enable = true;
@@ -49,8 +50,10 @@ in
             jsonls.enable = true;
             nginx_language_server.enable = true;
             ltex.enable = true;
+            marksman.enable = true;
             nil_ls.enable = true;
             # nixd.enable = true;
+            pyright.enable = true;
             ruff.enable = true;
             rust_analyzer.enable = true;
             sqls.enable = true;
@@ -63,23 +66,33 @@ in
           plugins = {
             airline.enable = true;
             auto-save.enable = true;
+            clipboard-image.enable = true;
             diffview.enable = true;
             lazygit.enable = true;
             markdown-preview.enable = true;
+            neogit.enable = true;
+            ollama = {
+              enable = true;
+              model = "gemma3";
+              url = "http://127.0.0.1:11434"; # local ollama instance
+            };
+            render-markdown.enable = true;
             repeat.enable = true;
             surround.enable = true;
             tmux.enable = true;
             treesitter.enable = true;
+            typst.enable = true;
             ufo.enable = true;
+            vimtex.enable = true;
+            zen-mode.enable = true;
           };
         };
-        comma.enable = true;
-        shell.enable = true;
-        vscode.enable = true; # text editor
+        zsh.enable = true;
       };
 
       gui = {
         spotify.enable = true; # music platform
+        vscode.enable = true; # text editor
       };
     };
   };

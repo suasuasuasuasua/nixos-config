@@ -9,12 +9,12 @@ let
 in
 {
   options.home.cli.devenv = {
-    enable = lib.mkEnableOption "Enable devenv";
-    # TODO: add default set of packages or custom config
+    enable = lib.mkEnableOption ''
+      Fast, Declarative, Reproducible, and Composable Developer Environments
+    '';
   };
 
   config = lib.mkIf cfg.enable {
-    # Add stuff for your user as you see fit:
     home.packages = with pkgs; [
       devenv
     ];

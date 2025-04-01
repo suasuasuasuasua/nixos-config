@@ -13,7 +13,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.nixvim.plugins.lsp.servers.${name} = {
+    programs.nixvim.plugins.lsp.servers.dockerls = {
       enable = true;
       # NOTE: add options as I need
     };

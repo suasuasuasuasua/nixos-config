@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }:
@@ -14,9 +15,18 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      plugins.${name} = {
+      plugins.render-markdown = {
         enable = true;
+        settings = {
+          latex = {
+            enabled = false; # latex kinda annoying when bouncing around
+          };
+        };
       };
+
+      extraPackages = with pkgs; [
+        python312Packages.pylatexenc
+      ];
     };
   };
 }

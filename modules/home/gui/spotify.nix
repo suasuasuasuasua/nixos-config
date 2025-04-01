@@ -19,6 +19,10 @@ in
     enable = lib.mkEnableOption "Enable spotify (spicetify)";
     # TODO: add options for packages for custom config
     # TODO: add options for theme
+    colorScheme = lib.mkOption {
+      type = lib.types.str;
+      default = "mocha";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -27,6 +31,8 @@ in
         spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
       in
       {
+        inherit (cfg) colorScheme;
+
         enable = true;
         enabledExtensions = with spicePkgs.extensions; [
           adblock
@@ -36,7 +42,6 @@ in
           playlistIcons
         ];
         theme = spicePkgs.themes.catppuccin;
-        colorScheme = "mocha";
       };
   };
 }

@@ -7,24 +7,25 @@
     { pkgs, ... }:
     {
       treefmt = {
-        # nix
+        # run the following programs on `nix fmt`
         programs = {
           nixfmt = {
+            # format the nix files
             enable = pkgs.lib.meta.availableOn pkgs.stdenv.buildPlatform pkgs.nixfmt-rfc-style.compiler;
             package = pkgs.nixfmt-rfc-style;
           };
 
           # json
-          jsonfmt.enable = true;
+          jsonfmt.enable = true; # format json
 
           # yaml
-          yamlfmt.enable = true;
+          yamlfmt.enable = true; # format yaml
 
           # markdown
-          mdformat.enable = true;
+          mdformat.enable = true; # format markdown
 
           # just
-          just.enable = true;
+          just.enable = true; # format just files
 
         };
         # ignore certain files

@@ -6,7 +6,9 @@ let
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Open WebUI";
+    enable = lib.mkEnableOption ''
+      Open source RGB lighting control
+    '';
     port = lib.mkOption {
       type = lib.types.port;
       default = 6742;

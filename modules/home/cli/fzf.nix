@@ -8,14 +8,16 @@ let
 in
 {
   options.home.cli.fzf = {
-    enable = lib.mkEnableOption "Enable fzf";
-    # TODO: add default set of packages or custom config
+    enable = lib.mkEnableOption ''
+      Command-line fuzzy finder written in Go
+    '';
   };
 
   config = lib.mkIf cfg.enable {
     programs.fzf = {
       enable = true;
       enableZshIntegration = true;
+      tmux.enableShellIntegration = true;
     };
   };
 }

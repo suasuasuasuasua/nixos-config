@@ -4,7 +4,7 @@
   ...
 }:
 let
-  name = "template";
+  name = "marksman";
   cfg = config.home.development.neovim.lsp.${name};
 in
 {
@@ -13,7 +13,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.nixvim.plugins.lsp.servers.${name} = {
+    programs.nixvim.plugins.lsp.servers.marksman = {
       enable = true;
       # NOTE: add options as I need
     };

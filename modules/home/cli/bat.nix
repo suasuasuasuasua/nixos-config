@@ -9,8 +9,9 @@ let
 in
 {
   options.home.cli.bat = {
-    enable = lib.mkEnableOption "Enable bat";
-    # TODO: add default set of packages or custom config
+    enable = lib.mkEnableOption ''
+      Cat(1) clone with syntax highlighting and Git integration
+    '';
   };
 
   config = lib.mkIf cfg.enable {

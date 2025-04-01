@@ -1,5 +1,8 @@
 {
-  time.timeZone = "America/Denver";
+  time = {
+    timeZone = "America/Denver";
+    hardwareClockInLocalTime = true; # windows and nixos dualboot
+  };
   services.xserver = {
     xkb.layout = "us";
     xkb.variant = "";

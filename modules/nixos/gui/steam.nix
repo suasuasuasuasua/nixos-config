@@ -9,7 +9,9 @@ let
 in
 {
   options.nixos.gui.steam = {
-    enable = lib.mkEnableOption "Enable Steam";
+    enable = lib.mkEnableOption ''
+      Digital distribution platform
+    '';
   };
 
   config = lib.mkIf cfg.enable {

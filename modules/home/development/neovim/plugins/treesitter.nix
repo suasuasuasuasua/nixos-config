@@ -7,21 +7,7 @@
 
       # TODO: Don't think I need this as nixGrammars is true which should auto install these???
       settings = {
-        ensureInstalled = [
-          "bash"
-          "c"
-          "diff"
-          "html"
-          "python"
-          "nix"
-          "lua"
-          "luadoc"
-          "markdown"
-          "markdown_inline"
-          "query"
-          "vim"
-          "vimdoc"
-        ];
+        ensureInstalled = "all";
 
         # Highlight code snippets in nix
         nixvimInjections = true;
@@ -33,12 +19,7 @@
           additional_vim_regex_highlighting = true;
         };
 
-        indent = {
-          enable = true;
-          disable = [
-            "ruby"
-          ];
-        };
+        indent.enable = true;
 
         # There are additional nvim-treesitter modules that you can use to interact
         # with nvim-treesitter. You should go explore a few and see what interests you:

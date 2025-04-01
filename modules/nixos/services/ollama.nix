@@ -6,7 +6,9 @@ let
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Ollama";
+    enable = lib.mkEnableOption ''
+      Get up and running with large language models locally
+    '';
     port = lib.mkOption {
       type = lib.types.port;
       default = 11434;

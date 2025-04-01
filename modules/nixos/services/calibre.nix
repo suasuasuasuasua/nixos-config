@@ -5,8 +5,6 @@
   ...
 }:
 let
-  # Use the hostname of the machine!
-  #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
   serviceName = "calibre";
 
@@ -15,7 +13,9 @@ in
 {
 
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Calibre EBook Manager";
+    enable = lib.mkEnableOption ''
+      Comprehensive e-book software
+    '';
     port = lib.mkOption {
       type = lib.types.port;
       default = 8083;

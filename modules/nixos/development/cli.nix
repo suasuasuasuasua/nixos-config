@@ -29,6 +29,9 @@ in
       fastfetch # system information tool
       onefetch # git repository summary on your terminal
 
+      # scripting
+      python3
+
       # nix utilty
       nvd # nix/nixos package version diff tool
     ];

@@ -14,7 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      plugins.${name} = {
+      plugins.lazygit = {
         enable = true;
       };
 

@@ -1,8 +1,6 @@
 # sudo /var/lib/paperless/paperless-manage createsuperuser
 { config, lib, ... }:
 let
-  # Use the hostname of the machine!
-  #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
   serviceName = "paperless";
 
@@ -10,7 +8,9 @@ let
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Paperless";
+    enable = lib.mkEnableOption ''
+      Tool to scan, index, and archive all of your physical documents
+    '';
     port = lib.mkOption {
       type = lib.types.port;
       default = 28981;

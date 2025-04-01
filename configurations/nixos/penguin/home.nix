@@ -23,6 +23,7 @@ in
     config.home = {
       cli = {
         bat.enable = true;
+        comma.enable = true;
         devenv.enable = true;
         direnv.enable = true;
         fzf.enable = true;
@@ -33,8 +34,6 @@ in
       };
 
       development = {
-        alacritty.enable = true;
-        comma.enable = true;
         neovim = {
           enable = true;
           # enable LSPs for _server-like_ things
@@ -49,8 +48,10 @@ in
             jsonls.enable = true;
             nginx_language_server.enable = true;
             ltex.enable = true;
+            marksman.enable = true;
             nil_ls.enable = true;
             # nixd.enable = true;
+            pyright.enable = true;
             ruff.enable = true;
             rust_analyzer.enable = true;
             sqls.enable = true;
@@ -63,24 +64,31 @@ in
           plugins = {
             airline.enable = true;
             auto-save.enable = true;
+            clipboard-image.enable = true;
             diffview.enable = true;
             lazygit.enable = true;
             markdown-preview.enable = true;
+            neogit.enable = true;
+            render-markdown.enable = true;
             repeat.enable = true;
             surround.enable = true;
             tmux.enable = true;
             treesitter.enable = true;
+            typst.enable = true;
             ufo.enable = true;
+            vimtex.enable = true;
+            zen-mode.enable = true;
           };
         };
-        shell.enable = true;
-        vscode.enable = true;
+        zsh.enable = true;
       };
 
       gui = {
+        alacritty.enable = true;
         firefox.enable = true;
         obs.enable = true;
         spotify.enable = true;
+        vscode.enable = true;
       };
     };
   };

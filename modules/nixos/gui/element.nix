@@ -9,12 +9,13 @@ let
 in
 {
   options.nixos.gui.element = {
-    enable = lib.mkEnableOption "Enable Element";
+    enable = lib.mkEnableOption ''
+      A feature-rich client for Matrix.org
+    '';
   };
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      # The electron client (prettiest)
       element-desktop
     ];
   };

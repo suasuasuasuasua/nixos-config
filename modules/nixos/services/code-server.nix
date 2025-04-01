@@ -1,7 +1,5 @@
 { config, lib, ... }:
 let
-  # Use the hostname of the machine!
-  #   previously was hardcoding *lab* but this should work for any machine
   inherit (config.networking) hostName;
   serviceName = "code-server";
 
@@ -9,7 +7,9 @@ let
 in
 {
   options.nixos.services.${serviceName} = {
-    enable = lib.mkEnableOption "Enable Code Server";
+    enable = lib.mkEnableOption ''
+      Run VS Code on a remote server
+    '';
     port = lib.mkOption {
       type = lib.types.port;
       default = 4444;

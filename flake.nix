@@ -39,14 +39,6 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
-    };
-    homebrew-services = {
-      url = "github:homebrew/homebrew-services";
-      flake = false;
-    };
     mac-app-util.url = "github:hraban/mac-app-util";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11"; # head

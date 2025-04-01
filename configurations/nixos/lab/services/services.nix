@@ -45,6 +45,7 @@ in
       mediaDir = "/zshare/personal/docs";
     };
     samba.enable = true;
+    syncthing.enable = true;
     vscode-server.enable = true;
     wastebin.enable = true;
   };
