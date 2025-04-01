@@ -7,9 +7,16 @@ let
   cfg = config.home.desktop.sway;
 in
 {
-  options.home.desktop.alacritty = {
+  options.home.desktop.sway = {
     enable = lib.mkEnableOption "Enable sway config";
     # TODO: finish
+    output = lib.mkOption {
+      type = with lib.types; attrsOf (attrsOf str);
+      default = { };
+      description = ''
+        do `swaymsg -t get_outputs` to find available options
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -20,6 +27,8 @@ in
       checkConfig = true;
       # config options
       config = rec {
+        inherit (cfg) output;
+
         # logo key; Mod1 for Alt, Mod4 for Win
         modifier = "Mod1";
 
@@ -37,24 +46,8 @@ in
         # can be opened on the original workspace that the command was run on.
         menu = "dmenu_path | dmenu | xargs swaymsg exec --";
 
-        ### Output configuration
-        # TODO: modularize these display setting for other computers
-        output = {
-          # TODO: modularize wallpaper
-          # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-          "* bg" = "/usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill";
-          #
-          # Example configuration:
-          #
-          #   output HDMI-A-1 resolution 1920x1080 position 1920,0
-          #
-          # You can get the names of your outputs by running: swaymsg -t
-          # get_outputs laptop display example
-          "DP-1" = {
-            scale = 1.5;
-            mode = "2560x1440@165Hz";
-          };
-        };
+        # Disable the bars (using waybar)
+        bars = [ ];
       };
     };
   };

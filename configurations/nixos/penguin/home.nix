@@ -15,6 +15,7 @@ in
 
       # import the modules
       (self + /modules/home/cli)
+      (self + /modules/home/desktop)
       (self + /modules/home/development)
       (self + /modules/home/gui)
     ];
@@ -31,6 +32,16 @@ in
         github.enable = true;
         gnupg.enable = true;
         tmux.enable = true;
+      };
+
+      desktop.sway = {
+        enable = true;
+        output = {
+          eDP-1 = {
+            scale = "2.0";
+            mode = "2256x1504@60hz"; # no 60hz xd
+          };
+        };
       };
 
       development = {
