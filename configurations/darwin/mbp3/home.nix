@@ -91,6 +91,7 @@ in
       };
 
       gui = {
+        firefox.enable = true;
         spotify.enable = true; # music platform
         vscode.enable = true; # text editor
       };

@@ -56,7 +56,6 @@ in
 
       # general
       "element" # chat
-      "firefox" # web browser
       "kdenlive" # linear video editor
       "obs" # studio recorder
 
