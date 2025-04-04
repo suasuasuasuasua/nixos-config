@@ -97,6 +97,7 @@ in
         ];
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           betterttv # twitch [dot] tv integration
+          darkreader # automatic dark mode
           don-t-fuck-with-paste # prevent websites from modifying copy+paste
           edit-with-emacs # allow emacs-like editing in text fields
           octotree # better github
