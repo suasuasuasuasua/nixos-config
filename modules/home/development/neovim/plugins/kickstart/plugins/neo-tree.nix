@@ -12,6 +12,8 @@
           };
         };
       };
+
+      closeIfLastWindow = true;
     };
 
     # https://nix-community.github.io/nixvim/keymaps/index.html
