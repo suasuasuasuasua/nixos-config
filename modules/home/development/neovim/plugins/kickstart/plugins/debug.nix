@@ -10,8 +10,8 @@
     plugins = {
       dap = {
         enable = true;
-
       };
+
       # Add your own debuggers here
       dap-go = {
         enable = true;
@@ -154,9 +154,12 @@
     extraConfigLua =
       # lua
       ''
-        require('dap').listeners.after.event_initialized['dapui_config'] = require('dapui').open
-        require('dap').listeners.before.event_terminated['dapui_config'] = require('dapui').close
-        require('dap').listeners.before.event_exited['dapui_config'] = require('dapui').close
+        local dap = require 'dap'
+        local dapui = require 'dapui'
+
+        dap.listeners.after.event_initialized['dapui_config'] = dapui.open
+        dap.listeners.before.event_terminated['dapui_config'] = dapui.close
+        dap.listeners.before.event_exited['dapui_config'] = dapui.close
       '';
   };
 }
