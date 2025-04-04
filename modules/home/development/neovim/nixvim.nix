@@ -266,27 +266,6 @@ in
             desc = "Exit terminal mode";
           };
         }
-        # TIP: Disable arrow keys in normal mode
-        {
-          mode = "n";
-          key = "<left>";
-          action = "<cmd>echo 'Use h to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<right>";
-          action = "<cmd>echo 'Use l to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<up>";
-          action = "<cmd>echo 'Use k to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<down>";
-          action = "<cmd>echo 'Use j to move!!'<CR>";
-        }
 
         # Keybinds to make split navigation easier.
         #  Use CTRL+<hjkl> to switch between windows
