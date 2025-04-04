@@ -323,12 +323,6 @@ in
           enable = true;
         };
 
-        # Highlight todo, notes, etc in comments
-        # https://nix-community.github.io/nixvim/plugins/todo-comments/index.html
-        todo-comments = {
-          enable = true;
-          settings.signs = true;
-        };
       };
 
       # The line beneath this is called `modeline`. See `:help modeline`
