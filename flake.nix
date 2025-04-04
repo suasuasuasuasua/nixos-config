@@ -23,11 +23,10 @@
     # packages
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
     nix-darwin = {
       url = "github:LnL7/nix-darwin/nix-darwin-24.11"; # head
       # url = "github:LnL7/nix-darwin/master"; # unstable
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     # Optional: Declarative tap management
