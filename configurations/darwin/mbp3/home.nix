@@ -66,6 +66,7 @@ in
           plugins = {
             airline.enable = true;
             auto-save.enable = true;
+            auto-session.enable = true;
             clipboard-image.enable = true;
             diffview.enable = true;
             lazygit.enable = true;
