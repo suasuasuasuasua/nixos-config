@@ -49,6 +49,9 @@ let
     "extensions.pocket.oAuthConsumerKey" = "";
     "extensions.pocket.showHome" = false;
     "extensions.pocket.site" = "";
+
+    # Automatically enable extensions
+    "extensions.autoDisableScopes" = 0;
   };
 in
 {
@@ -61,11 +64,52 @@ in
       enable = true;
       # TODO: firefox is in unstable for darwin...remove in may 2025
       package = with pkgs; if stdenv.isDarwin then unstable.firefox else firefox;
-      # TODO: figure out profiles
+
+      # TODO: research policies: https://mozilla.github.io/policy-templates/
+      policies = { };
       profiles.personal = {
         inherit settings;
 
         id = 0;
+        bookmarks = [
+          {
+            name = "bookmarks toolbar";
+            toolbar = true;
+            bookmarks = [
+              {
+                name = "youtube";
+                url = "https://youtube.com/";
+              }
+              {
+                name = "gmail";
+                url = "https://mail.google.com/";
+              }
+              {
+                name = "reddit";
+                url = "https://reddit.com/";
+              }
+              {
+                name = "hacker news";
+                url = "https://news.ycombinator.com/";
+              }
+            ];
+          }
+        ];
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          betterttv # twitch [dot] tv integration
+          don-t-fuck-with-paste # prevent websites from modifying copy+paste
+          edit-with-emacs # allow emacs-like editing in text fields
+          octotree # better github
+          reddit-enhancement-suite # better reddit
+          seventv # another twitch add-on
+          ublock-origin # block ads
+          vimium # vim-like movements
+        ];
+      };
+      profiles.productivity = {
+        inherit settings;
+
+        id = 1;
         bookmarks = [
           {
             name = "wikipedia";
@@ -96,17 +140,6 @@ in
             ];
           }
         ];
-        # TODO: add firefox extensions
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          betterttv
-          ublock-origin
-          vimium
-        ];
-      };
-      profiles.productivity = {
-        inherit settings;
-
-        id = 1;
       };
     };
   };
