@@ -42,7 +42,7 @@ in
             '';
         }
         sensible # sensible config
-        tmux-powerline # pretty powerline
+        # tmux-powerline # pretty powerline # TODO: customize the things
         vim-tmux-navigator # prettier statusline
         yank # better copy and paste functionality
       ];
