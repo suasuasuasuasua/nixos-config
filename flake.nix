@@ -67,6 +67,10 @@
 
     # extras
     catppuccin.url = "github:catppuccin/nix";
+    nur = {
+      url = "github:nix-community/nur";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
   # use cachix for faster builds in places
