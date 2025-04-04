@@ -65,6 +65,7 @@ in
           };
           plugins = {
             airline.enable = true;
+            arrow.enable = true;
             auto-save.enable = true;
             auto-session.enable = true;
             clipboard-image.enable = true;
