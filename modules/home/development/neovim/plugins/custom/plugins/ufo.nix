@@ -21,30 +21,30 @@ in
         foldlevelstart = 99;
       };
 
-      keymaps = [
-        {
-          mode = "n";
-          key = "zR";
-          action =
-            # lua
-            ''
-              function()
-                require("ufo").openAllFolds()
-              end
-            '';
-        }
-        {
-          mode = "n";
-          key = "zM";
-          action =
-            # lua
-            ''
-              function()
-                require("ufo").closeAllFolds()
-              end
-            '';
-        }
-      ];
+      # keymaps = [
+      #   {
+      #     mode = "n";
+      #     key = "zR";
+      #     action =
+      #       # lua
+      #       ''
+      #         function()
+      #           require("ufo").openAllFolds()
+      #         end
+      #       '';
+      #   }
+      #   {
+      #     mode = "n";
+      #     key = "zM";
+      #     action =
+      #       # lua
+      #       ''
+      #         function()
+      #           require("ufo").closeAllFolds()
+      #         end
+      #       '';
+      #   }
+      # ];
 
       plugins.nvim-ufo = {
         enable = true;
