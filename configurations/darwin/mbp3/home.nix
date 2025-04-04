@@ -64,7 +64,6 @@ in
             yamlls.enable = true; # yaml
           };
           plugins = {
-            airline.enable = true; # status line
             arrow.enable = true; # bookmarks (;)
             auto-save.enable = true; # autosave the file
             auto-session.enable = false; # auto generate and load a session file
@@ -73,6 +72,7 @@ in
             diffview.enable = true; # show git-rev diffs
             dropbar.enable = true; # breadcrumb navigation
             lazygit.enable = true; # lazygit integration
+            lualine.enable = true; # status line 3
             markdown-preview.enable = true; # local live markdown preview server
             neogit.enable = true; # git integration (secondary to lazygit)
             ollama = {

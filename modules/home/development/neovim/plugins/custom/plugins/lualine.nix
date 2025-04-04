@@ -4,7 +4,7 @@
   ...
 }:
 let
-  name = "airline";
+  name = "lualine";
   cfg = config.home.development.neovim.plugins.${name};
 in
 {
@@ -14,20 +14,8 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      plugins.airline = {
+      plugins.lualine = {
         enable = true;
-
-        # theme = "everforest";
-        settings = {
-          symbols = {
-            branch = "";
-            colnr = " ℅:";
-            readonly = "";
-            linenr = " :";
-            maxlinenr = "☰ ";
-            dirty = "⚡";
-          };
-        };
       };
     };
   };
