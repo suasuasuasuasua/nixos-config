@@ -23,6 +23,9 @@ in
           mode = "n";
           key = "<leader>lg";
           action = "<cmd>LazyGit<cr>";
+          options = {
+            desc = "Open LazyGit";
+          };
         }
       ];
     };
