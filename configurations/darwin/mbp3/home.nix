@@ -67,8 +67,8 @@ in
             airline.enable = true; # status line
             arrow.enable = true; # bookmarks (;)
             auto-save.enable = true; # autosave the file
-            # auto-session.enable = true; # auto gen/lod a session file
             barbar.enable = true; # better tabs
+            auto-session.enable = false; # auto gen/lod a session file
             clipboard-image.enable = true; # paste images from clipboard
             diffview.enable = true; # show git-rev diffs
             dropbar.enable = true; # breadcrumb navigation
