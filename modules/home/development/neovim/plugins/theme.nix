@@ -7,6 +7,25 @@
     # If you want to see what colorschemes are already installed, you can use
     # `:Telescope colorschme`.
     colorschemes = {
+      # https://nix-community.github.io/nixvim/colorschemes/catppuccin/index.html
+      catppuccin = {
+        enable = false;
+        settings = {
+          default_integrations = true;
+          # one of “latte”, “mocha”, “frappe”, “macchiato”, “auto”
+          flavour = "mocha";
+        };
+      };
+      # https://nix-community.github.io/nixvim/colorschemes/everforest/index.html
+      # * current
+      everforest = {
+        enable = true;
+        settings = {
+          enable_italic = 1;
+          # one of “hard”, “medium”, “soft”
+          background = "hard";
+        };
+      };
       # https://nix-community.github.io/nixvim/colorschemes/tokyonight/index.html
       tokyonight = {
         enable = false;
@@ -14,6 +33,14 @@
           # Like many other themes, this one has different styles, and you could
           # load any other, such as 'storm', 'moon', or 'day'.
           style = "night";
+        };
+      };
+      # https://nix-community.github.io/nixvim/colorschemes/vscode/index.html
+      vscode = {
+        enable = false;
+        settings = {
+          italic_comments = true;
+          underline_links = true;
         };
       };
     };
