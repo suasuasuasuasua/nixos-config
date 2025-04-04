@@ -16,7 +16,7 @@
       extraSources = [ "document_symbols" ];
 
       filesystem = {
-        followCurrentFile.enabled = true;
+        followCurrentFile.enabled = false;
         window.mappings = {
           # close neo-tree window
           "\\" = "close_window";
