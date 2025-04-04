@@ -4,9 +4,10 @@
     # https://nix-community.github.io/nixvim/plugins/mini.html
     plugins.mini = {
       enable = true;
+      # TODO: research mini more! i could be a mini merchant
 
       modules = {
-        # Better Around/Inside textobjects
+        # better around/inside textobjects (https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md)
         #
         # Examples:
         #  - va)  - [V]isually select [A]round [)]paren
@@ -16,37 +17,51 @@
           n_lines = 500;
         };
 
-        # Add/delete/replace surroundings (brackets, quotes, etc.)
-        #
-        # Examples:
-        #  - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-        #  - sd'   - [S]urround [D]elete [']quotes
-        #  - sr)'  - [S]urround [R]eplace [)] [']
-        # surround = {
-        # };
+        # manage sessions (https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-sessions.md)
+        sessions = { };
 
-        # Simple and easy statusline.
-        #  You could remove this setup call if you don't like it,
-        #  and try some other statusline plugin
-        statusline = {
-          use_icons.__raw = "vim.g.have_nerd_font";
+        # gS to split and join (https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-splitjoin.md)
+        splitjoin = { };
+
+        starter = {
+          content_hooks = {
+            "__unkeyed-1.adding_bullet" = {
+              __raw = "require('mini.starter').gen_hook.adding_bullet()";
+            };
+            "__unkeyed-2.indexing" = {
+              __raw = "require('mini.starter').gen_hook.indexing('all', { 'Builtin actions' })";
+            };
+            "__unkeyed-3.padding" = {
+              __raw = "require('mini.starter').gen_hook.aligning('center', 'center')";
+            };
+          };
+          evaluate_single = true;
+          header = ''
+            ███╗   ██╗██╗██╗  ██╗██╗   ██╗██╗███╗   ███╗
+            ████╗  ██║██║╚██╗██╔╝██║   ██║██║████╗ ████║
+            ██╔██╗ ██║██║ ╚███╔╝ ██║   ██║██║██╔████╔██║
+            ██║╚██╗██║██║ ██╔██╗ ╚██╗ ██╔╝██║██║╚██╔╝██║
+            ██║ ╚████║██║██╔╝ ██╗ ╚████╔╝ ██║██║ ╚═╝ ██║
+          '';
+          items = {
+            "__unkeyed-1.buildtin_actions" = {
+              __raw = "require('mini.starter').sections.builtin_actions()";
+            };
+            "__unkeyed-2.sessions" = {
+              __raw = "require('mini.starter').sections.sessions(5, true)";
+            };
+            "__unkeyed-3.recent_files_current_directory" = {
+              __raw = "require('mini.starter').sections.recent_files(10, false)";
+            };
+            "__unkeyed-4.recent_files" = {
+              __raw = "require('mini.starter').sections.recent_files(10, true)";
+            };
+          };
         };
 
         # ... and there is more!
         # Check out: https://github.com/echasnovski/mini.nvim
       };
     };
-
-    # You can configure sections in the statusline by overriding their
-    # default behavior. For example, here we set the section for
-    # cursor location to LINE:COLUMN
-    # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraconfiglu#extraconfiglua
-    extraConfigLua =
-      # lua
-      ''
-        require('mini.statusline').section_location = function()
-          return '%2l:%-2v'
-        end
-      '';
   };
 }
