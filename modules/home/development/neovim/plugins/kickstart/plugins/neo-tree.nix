@@ -23,6 +23,7 @@
         action = "<cmd>Neotree reveal<cr>";
         options = {
           desc = "NeoTree reveal";
+          silent = true;
         };
       }
     ];
