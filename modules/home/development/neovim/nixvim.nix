@@ -316,15 +316,6 @@ in
         }
       ];
 
-      plugins = {
-        # Detect tabstop and shiftwidth automatically
-        # https://nix-community.github.io/nixvim/plugins/sleuth/index.html
-        sleuth = {
-          enable = true;
-        };
-
-      };
-
       # The line beneath this is called `modeline`. See `:help modeline`
       # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extraconfigluapost
       extraConfigLuaPost =
