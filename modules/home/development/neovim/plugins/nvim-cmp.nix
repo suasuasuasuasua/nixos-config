@@ -6,7 +6,7 @@
       # Snippet Engine & its associated nvim-cmp source
       # https://nix-community.github.io/nixvim/plugins/luasnip/index.html
       luasnip.enable = true;
-      cmp-luasnip.enable = true;
+      cmp_luasnip.enable = true;
 
       # https://nix-community.github.io/nixvim/plugins/cmp-nvim-lsp.html
       cmp-nvim-lsp.enable = true;
@@ -36,7 +36,6 @@
           completion = {
             completeopt = "menu,menuone,noinsert";
           };
-
           # For an understanding of why these mappings were
           # chosen, you will need to read `:help ins-completion`
           #
@@ -78,9 +77,8 @@
             "<C-l>" =
               # lua
               ''
-                local luasnip = require 'luasnip'
-                luasnip.config.setup {}
                 cmp.mapping(function()
+                  local luasnip = require 'luasnip'
                   if luasnip.expand_or_locally_jumpable() then
                     luasnip.expand_or_jump()
                   end
@@ -89,9 +87,8 @@
             "<C-h>" =
               # lua
               ''
-                local luasnip = require 'luasnip'
-                luasnip.config.setup {}
                 cmp.mapping(function()
+                  local luasnip = require 'luasnip'
                   if luasnip.locally_jumpable(-1) then
                     luasnip.jump(-1)
                   end
