@@ -1,4 +1,4 @@
-{ flake, ... }:
+{ flake, pkgs, ... }:
 let
   inherit (flake) inputs;
   inherit (inputs) self;
@@ -52,9 +52,7 @@ in
           eDP-1 = {
             scale = "2.0";
             mode = "2256x1504@60hz";
-            # TODO: figure out how to get a wallpaper?
-            # bg = "/usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill";
-            # bg = "\${pkgs}.nixos-artwork.wallpapers.simple-dark-gray fill";
+            bg = "${pkgs}/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill";
           };
         };
       };
