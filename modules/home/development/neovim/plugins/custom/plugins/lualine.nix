@@ -4,7 +4,7 @@
   ...
 }:
 let
-  name = "lazygit";
+  name = "lualine";
   cfg = config.home.development.neovim.plugins.${name};
 in
 {
@@ -14,20 +14,9 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      plugins.lazygit = {
+      plugins.lualine = {
         enable = true;
       };
-
-      keymaps = [
-        {
-          mode = "n";
-          key = "<leader>lg";
-          action = "<cmd>LazyGit<cr>";
-          options = {
-            desc = "Open LazyGit";
-          };
-        }
-      ];
     };
   };
 }

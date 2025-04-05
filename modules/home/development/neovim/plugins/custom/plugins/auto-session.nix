@@ -4,7 +4,7 @@
   ...
 }:
 let
-  name = "airline";
+  name = "auto-session";
   cfg = config.home.development.neovim.plugins.${name};
 in
 {
@@ -14,19 +14,16 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      plugins.airline = {
+      plugins.auto-session = {
         enable = true;
 
-        # theme = "everforest";
         settings = {
-          symbols = {
-            branch = "";
-            colnr = " ℅:";
-            readonly = "";
-            linenr = " :";
-            maxlinenr = "☰ ";
-            dirty = "⚡";
-          };
+          enabled = true;
+          auto_create = true;
+          # TODO: not saving when false?
+          # could change in the future--but leave it up to mini.starter
+          auto_restore = true;
+          auto_save = true;
         };
       };
     };

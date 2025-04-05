@@ -128,23 +128,6 @@ in
       defaultEditor = true;
       vimdiffAlias = true;
 
-      # # You can easily change to a different colorscheme.
-      # # Add your colorscheme here and enable it.
-      # # Don't forget to disable the colorschemes you arent using
-      # #
-      # # If you want to see what colorschemes are already installed, you can use `:Telescope colorschme`.
-      # colorschemes = {
-      #   # https://nix-community.github.io/nixvim/colorschemes/tokyonight/index.html
-      #   tokyonight = {
-      #     enable = true;
-      #     settings = {
-      #       # Like many other themes, this one has different styles, and you could load
-      #       # any other, such as 'storm', 'moon', or 'day'.
-      #       style = "night";
-      #     };
-      #   };
-      # };
-      #
       # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=globals#globals
       globals = {
         # Set <space> as the leader key
@@ -153,7 +136,7 @@ in
         maplocalleader = " ";
 
         # Set to true if you have a Nerd Font installed and selected in the terminal
-        have_nerd_font = false;
+        have_nerd_font = true; # we _should_ have nerd fonts
       };
 
       # [[ Setting options ]]
@@ -226,6 +209,12 @@ in
         # Minimal number of screen lines to keep above and below the cursor
         scrolloff = 10;
 
+        # if performing an operation that would fail due to unsaved changes in
+        # the buffer (like `:q`), instead raise a dialog asking if you wish to
+        # save the current file(s)
+        # See `:help 'confirm'`
+        confirm = true;
+
         # See `:help hlsearch`
         hlsearch = true;
 
@@ -259,27 +248,6 @@ in
           options = {
             desc = "Exit terminal mode";
           };
-        }
-        # TIP: Disable arrow keys in normal mode
-        {
-          mode = "n";
-          key = "<left>";
-          action = "<cmd>echo 'Use h to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<right>";
-          action = "<cmd>echo 'Use l to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<up>";
-          action = "<cmd>echo 'Use k to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<down>";
-          action = "<cmd>echo 'Use j to move!!'<CR>";
         }
 
         # Keybinds to make split navigation easier.
@@ -342,26 +310,11 @@ in
             # lua
             ''
               function()
-                vim.highlight.on_yank()
+                vim.hl.on_yank()
               end
             '';
         }
       ];
-
-      plugins = {
-        # Detect tabstop and shiftwidth automatically
-        # https://nix-community.github.io/nixvim/plugins/sleuth/index.html
-        sleuth = {
-          enable = true;
-        };
-
-        # Highlight todo, notes, etc in comments
-        # https://nix-community.github.io/nixvim/plugins/todo-comments/index.html
-        todo-comments = {
-          enable = true;
-          settings.signs = true;
-        };
-      };
 
       # The line beneath this is called `modeline`. See `:help modeline`
       # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extraconfigluapost

@@ -7,6 +7,7 @@
 }:
 let
   inherit (flake) self;
+  inherit (self) inputs;
 in
 {
   # write a list of system packages to /etc/current-system-packages
@@ -19,7 +20,11 @@ in
     formatted;
 
   nixpkgs = {
-    overlays = lib.attrValues self.overlays;
+    overlays = lib.attrValues self.overlays ++ [
+      # TODO: should add to overlays/default.nix but doesn't work omg -- my
+      # bandaid for now
+      inputs.nur.overlays.default
+    ];
 
     # allows us to install apps like vscode
     config.allowUnfree = true;

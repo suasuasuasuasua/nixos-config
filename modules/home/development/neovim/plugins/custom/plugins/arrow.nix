@@ -4,7 +4,7 @@
   ...
 }:
 let
-  name = "lazygit";
+  name = "arrow";
   cfg = config.home.development.neovim.plugins.${name};
 in
 {
@@ -14,20 +14,13 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      plugins.lazygit = {
+      plugins.arrow = {
         enable = true;
-      };
 
-      keymaps = [
-        {
-          mode = "n";
-          key = "<leader>lg";
-          action = "<cmd>LazyGit<cr>";
-          options = {
-            desc = "Open LazyGit";
-          };
-        }
-      ];
+        settings = {
+          leader_key = ";";
+        };
+      };
     };
   };
 }
