@@ -36,10 +36,25 @@ in
 
       desktop.sway = {
         enable = true;
+        modifier = "Mod4"; # super key
+        input = {
+          # built-in touchpad
+          "type:touchpad" = {
+            natural_scroll = "enabled";
+            # tap to click
+            dwt = "enabled";
+            tap = "enabled";
+            middle_emulation = "enabled";
+            scroll_factor = "0.15";
+          };
+        };
         output = {
           eDP-1 = {
             scale = "2.0";
-            mode = "2256x1504@60hz"; # no 60hz xd
+            mode = "2256x1504@60hz";
+            # TODO: figure out how to get a wallpaper?
+            # bg = "/usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill";
+            # bg = "\${pkgs}.nixos-artwork.wallpapers.simple-dark-gray fill";
           };
         };
       };
