@@ -66,13 +66,12 @@ in
           plugins = {
             arrow.enable = true; # bookmarks (;)
             auto-save.enable = true; # autosave the file
-            auto-session.enable = false; # auto generate and load a session file
-            barbar.enable = false; # better tabs
+            bufferline.enable = true; # prettier bufferline top bar
             clipboard-image.enable = true; # paste images from clipboard
             diffview.enable = true; # show git-rev diffs
             dropbar.enable = true; # breadcrumb navigation
             lazygit.enable = true; # lazygit integration
-            lualine.enable = true; # status line 3
+            lualine.enable = true; # status line
             markdown-preview.enable = true; # local live markdown preview server
             neogit.enable = true; # git integration (secondary to lazygit)
             ollama = {
@@ -83,6 +82,7 @@ in
             };
             render-markdown.enable = true; # render markdown in the terminal
             repeat.enable = true; # repeat edits (.)
+            scope.enable = true;
             surround.enable = true; # surround operations
             tmux.enable = true; # tmux navigation integration
             treesitter.enable = true; # treesitter extensions integration
