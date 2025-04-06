@@ -50,6 +50,8 @@ in
             pager = "diff-so-fancy";
           };
         };
+        # disable prompt tp return from subprocess
+        promptToReturnFromSubprocess = false;
       };
     };
   };
