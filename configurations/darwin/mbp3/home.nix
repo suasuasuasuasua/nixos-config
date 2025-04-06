@@ -75,14 +75,13 @@ in
             markdown-preview.enable = true; # local live markdown preview server
             neogit.enable = true; # git integration (secondary to lazygit)
             ollama = {
-              # ollama llm integration
-              enable = true;
+              enable = true; # ollama llm integration
               model = "gemma3";
               url = "http://127.0.0.1:11434"; # local ollama instance
             };
             render-markdown.enable = true; # render markdown in the terminal
             repeat.enable = true; # repeat edits (.)
-            scope.enable = true;
+            scope.enable = true; # scope the buffers (open files) to tabs
             surround.enable = true; # surround operations
             tmux.enable = true; # tmux navigation integration
             treesitter.enable = true; # treesitter extensions integration
