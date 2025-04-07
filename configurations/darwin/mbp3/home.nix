@@ -70,6 +70,8 @@ in
             clipboard-image.enable = true; # paste images from clipboard
             diffview.enable = true; # show git-rev diffs
             dropbar.enable = true; # breadcrumb navigation
+            flash.enable = true; # navigate faster with s,f,t
+            grug-far.enable = true; # find and rename across files
             lazygit.enable = true; # lazygit integration
             lualine.enable = true; # status line
             markdown-preview.enable = true; # local live markdown preview server
@@ -85,6 +87,7 @@ in
             surround.enable = true; # surround operations
             tmux.enable = true; # tmux navigation integration
             treesitter.enable = true; # treesitter extensions integration
+            trouble.enable = true; # better fix diagnostics
             typst.enable = true; # typst preview and syntax
             ufo.enable = true; # better folding support
             vimtex.enable = true; # latex support
