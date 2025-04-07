@@ -33,42 +33,34 @@ The initial setup is pretty simple now thanks to `disko`.
 
 1. Boot the [minimal disk ISO](https://nixos.org/download/) onto a computer
 
-1. Clone the repository from GitHub
+1. Connect to the Internet
 
    ```bash
-   # First get `git` since it isn't a default package
-   nix-shell -p git
+   # Enter sudo mode
+   sudo -i
 
-   # Clone the repo
-   git clone https://github.com/suasuasuasuasua/nixos-config /tmp/nixos-config
-   ```
+   # Start the service
+   systemctl start wpa_supplicant.service
 
-1. Use `disko` to partition and format the drive
+   # Use the CLI to connect
+   wpa_cli
 
-   ```bash
-   sudo nix --experimental-features "nix-command flakes"    \
-        run github:nix-community/disko/latest               \
-        -- --mode destroy,format,mount                      \
-        # replace the HOSTNAME with the name duh            \
-        /tmp/nixos-config/configuration/nixos/${HOSTNAME}/disko.nix
+   > add_network 0
+   > set_network 0 ssid "<network name>"
+   > set_network 0 psk "<password>"
+   > enable_network 0
+   ```nix-shell -p disko
 
-   # Ensure that it worked
-   mount | grep /mnt
-   ```
-
-1. Install the NixOS onto the system
+1. Run the `disko` utility
 
    ```bash
-   nixos-generate-config --no-filesystems --root /mnt
+   # Add the program to the path
+   nix-shell -p disko
 
-   # Move the system config into the /mnt dir
-   mv /tmp/nixos-config /mnt/etc/nixos
-
-   # Navigate over to the /mnt directory
-   cd /mnt
-
-   # Install NixOS with some $HOSTNAME
-   nixos-install --flake ./nixos-config#${HOSTNAME}
+   CONFIG_PATH="github:suasuasuasuasua/nixos-config" # or you could clone locally first
+   NAME="penguin" # for example
+   disko --mode disko --flake "${CONFIG_PATH}"#"${NAME}"
+   nixos-install --no-channel-copy --no-root-password --flake "${CONFIG_PATH}"#"${NAME}"
    ```
 
 1. Prepare the passwords and ZFS pools
@@ -85,7 +77,7 @@ The initial setup is pretty simple now thanks to `disko`.
    reboot
    ```
 
-1. Initialize Samba (smb) (as root)
+1. Initialize Samba (`smb`) (as root)
 
    ```bash
    # Add a user and a password
@@ -110,7 +102,7 @@ The initial setup is pretty simple now thanks to `disko`.
    nix run .#activate
    ```
 
-> Inspired by the [this unified
+> Inspired by [this unified
 > template](https://github.com/juspay/nixos-unified-template) and [this
-> config](https://github.com/srid/nixos-config). See the template for more details
-> on how to set it up!
+> config](https://github.com/srid/nixos-config). See the template for more
+> details on how to set it up!
