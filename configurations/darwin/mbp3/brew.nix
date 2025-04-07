@@ -93,6 +93,7 @@ in
       tot = 1491071483; # daily note and task tracker
 
       # utility
+      amphetamine = 937984704; # powerful keep-awake utility
       dark-reader-for-safari = 1438243180; # dark mode for safari
       hidden-bar = 1452453066; # macOS menubar organizer
       magnet = 441258766; # macOS workspace organizer
