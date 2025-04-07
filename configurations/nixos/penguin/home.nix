@@ -41,18 +41,35 @@ in
           # built-in touchpad
           "type:touchpad" = {
             natural_scroll = "enabled";
-            # tap to click
-            dwt = "enabled";
-            tap = "enabled";
-            middle_emulation = "enabled";
-            scroll_factor = "0.15";
+            dwt = "disabled"; # enable typing while using touchpad
+            tap = "enabled"; # tap to click
+            middle_emulation = "enabled"; # middle finger triple click
+            scroll_factor = "0.15"; # scroll speed
+          };
+
+          # logitech mouse
+          "1133:16468:Logitech_Wireless_Mouse" = {
+            pointer_accel = "0.25"; # mouse speed
           };
         };
         output = {
+          "*" = {
+            bg = "${pkgs.sway}/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill";
+          };
+          # TODO: workspace 1 is the built-in monitor even though it's closed??
+
+          # BOE 0x095F Unknown
+          # built-in monitor
           eDP-1 = {
             scale = "2.0";
             mode = "2256x1504@60hz";
-            bg = "${pkgs.sway}/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill";
+          };
+
+          # AOC Q27G3XMN 1APQAJA005364
+          # gaming monitor
+          HDMI-A-1 = {
+            scale = "2.0";
+            mode = "2560x1440@144Hz";
           };
         };
       };
@@ -62,46 +79,50 @@ in
           enable = true;
           # enable LSPs for _server-like_ things
           lsp = {
-            bashls.enable = true;
-            clangd.enable = true;
-            cssls.enable = true;
-            docker_compose_language_service.enable = true;
-            dockerls.enable = true;
-            gopls.enable = true;
-            html.enable = true;
-            jsonls.enable = true;
-            nginx_language_server.enable = true;
-            ltex.enable = true;
-            marksman.enable = true;
-            nil_ls.enable = true;
-            # nixd.enable = true;
-            pyright.enable = true;
-            ruff.enable = true;
-            rust_analyzer.enable = true;
-            sqls.enable = true;
-            tailwindcss.enable = true;
-            taplo.enable = true;
-            texlab.enable = true;
-            tinymist.enable = true;
-            yamlls.enable = true;
+            bashls.enable = true; # bash
+            clangd.enable = true; # c/c++
+            cssls.enable = true; # css
+            docker_compose_language_service.enable = true; # docker compose
+            dockerls.enable = true; # dockerfile
+            gopls.enable = true; # go
+            html.enable = true; # html
+            jsonls.enable = true; # json
+            nginx_language_server.enable = true; # nginx
+            ltex.enable = true; # latex
+            marksman.enable = true; # markdown
+            nil_ls.enable = true; # nix
+            # nixd.enable = true; # nix
+            pyright.enable = true; # python
+            ruff.enable = true; # python
+            rust_analyzer.enable = true; # rust
+            sqls.enable = true; # sql
+            tailwindcss.enable = true; # tailwindcss
+            taplo.enable = true; # toml
+            texlab.enable = true; # latex
+            tinymist.enable = true; # typst
+            yamlls.enable = true; # yaml
           };
           plugins = {
-            airline.enable = true;
-            auto-save.enable = true;
-            clipboard-image.enable = true;
-            diffview.enable = true;
-            lazygit.enable = true;
-            markdown-preview.enable = true;
-            neogit.enable = true;
-            render-markdown.enable = true;
-            repeat.enable = true;
-            surround.enable = true;
-            tmux.enable = true;
-            treesitter.enable = true;
-            typst.enable = true;
-            ufo.enable = true;
-            vimtex.enable = true;
-            zen-mode.enable = true;
+            arrow.enable = true; # bookmarks (;)
+            auto-save.enable = true; # autosave the file
+            auto-session.enable = false; # auto generate and load a session file
+            barbar.enable = false; # better tabs
+            clipboard-image.enable = true; # paste images from clipboard
+            diffview.enable = true; # show git-rev diffs
+            dropbar.enable = true; # breadcrumb navigation
+            lazygit.enable = true; # lazygit integration
+            lualine.enable = true; # status line 3
+            markdown-preview.enable = true; # local live markdown preview server
+            neogit.enable = true; # git integration (secondary to lazygit)
+            render-markdown.enable = true; # render markdown in the terminal
+            repeat.enable = true; # repeat edits (.)
+            surround.enable = true; # surround operations
+            tmux.enable = true; # tmux navigation integration
+            treesitter.enable = true; # treesitter extensions integration
+            typst.enable = true; # typst preview and syntax
+            ufo.enable = true; # better folding support
+            vimtex.enable = true; # latex support
+            zen-mode.enable = true; # zen mode support
           };
         };
         zsh.enable = true;

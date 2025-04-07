@@ -34,7 +34,23 @@ in
             command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
             user = "greeter";
           };
+          # The virtual console (tty) that greetd should use
+          # There seems to be a conflict with the default value of 1
+          vt = 7;
         };
+      };
+    };
+
+    # enable power profiles
+    services.power-profiles-daemon.enable = true;
+
+    # More greetd config so that it isn't overwritten in the reboot phase
+    systemd.services.greetd = {
+      unitConfig = {
+        After = lib.mkOverride 0 [ "multi-user.target" ];
+      };
+      serviceConfig = {
+        Type = "idle";
       };
     };
 
@@ -49,7 +65,7 @@ in
     environment.systemPackages = with pkgs; [
       grim # screenshot functionality
       mako # notification system developed by swaywm maintainer
-      pulseaudio
+      pulseaudio # TODO: migrate to pipewire
       slurp # screenshot functionality
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     ];
