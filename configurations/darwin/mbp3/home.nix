@@ -65,6 +65,7 @@ in
           };
           plugins = {
             arrow.enable = true; # bookmarks (;)
+            auto-dark-mode.enable = true; # switch theme based on os
             auto-save.enable = true; # autosave the file
             bufferline.enable = true; # prettier bufferline top bar
             clipboard-image.enable = true; # paste images from clipboard
