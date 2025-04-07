@@ -59,10 +59,6 @@ in
         type = "zpool";
 
         rootFsOptions = {
-          encryption = "aes-256-gcm";
-          keyformat = "passphrase";
-          keylocation = "prompt";
-
           compression = "zstd";
           canmount = "off";
           xattr = "sa";
