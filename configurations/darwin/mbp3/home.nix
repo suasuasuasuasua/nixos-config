@@ -88,6 +88,7 @@ in
             tmux.enable = true; # tmux navigation integration
             treesitter.enable = true; # treesitter extensions integration
             trouble.enable = true; # better fix diagnostics
+            twilight.enable = true; # focused writing
             typst.enable = true; # typst preview and syntax
             ufo.enable = true; # better folding support
             vimtex.enable = true; # latex support
