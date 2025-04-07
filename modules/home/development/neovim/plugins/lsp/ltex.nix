@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }:
 let
@@ -21,22 +20,9 @@ in
         # NOTE: add options as I need
       };
 
-      # implement code actiosn from lsp specifications
-      extraPlugins = with pkgs; [
-        vimPlugins.ltex_extra-nvim
-      ];
-
-      # https://github.com/barreiroleo/ltex_extra.nvim
-      extraConfigLua =
-        # lua
-        ''
-          require("lspconfig").ltex.setup {
-            on_attach = function(client, bufnr)
-              -- rest of your on_attach process.
-              require("ltex_extra").setup { }
-            end
-          }
-        '';
+      plugins.ltex-extra = {
+        enable = true;
+      };
     };
   };
 }
