@@ -62,7 +62,7 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # extras
