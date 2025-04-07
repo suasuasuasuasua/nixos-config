@@ -65,11 +65,15 @@ in
           };
           plugins = {
             arrow.enable = true; # bookmarks (;)
+            auto-dark-mode.enable = true; # switch theme based on os
             auto-save.enable = true; # autosave the file
             bufferline.enable = true; # prettier bufferline top bar
             clipboard-image.enable = true; # paste images from clipboard
             diffview.enable = true; # show git-rev diffs
             dropbar.enable = true; # breadcrumb navigation
+            flash.enable = true; # navigate faster with s,f,t
+            grug-far.enable = true; # find and rename across files
+            hex.enable = true; # hex editor
             lazygit.enable = true; # lazygit integration
             lualine.enable = true; # status line
             markdown-preview.enable = true; # local live markdown preview server
@@ -85,6 +89,8 @@ in
             surround.enable = true; # surround operations
             tmux.enable = true; # tmux navigation integration
             treesitter.enable = true; # treesitter extensions integration
+            trouble.enable = true; # better fix diagnostics
+            twilight.enable = true; # focused writing
             typst.enable = true; # typst preview and syntax
             ufo.enable = true; # better folding support
             vimtex.enable = true; # latex support

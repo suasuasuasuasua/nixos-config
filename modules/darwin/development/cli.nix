@@ -23,7 +23,6 @@ in
       # media
       ffmpeg # solution to record, convert and stream audio and video
       yt-dlp # cli tool to download videos from YouTube.com and other sites
-      pngpaste # paste image files from clipbaord to file on macOS
 
       # system monitoring
       asitop # perf monitoring cli tool for apple silicon

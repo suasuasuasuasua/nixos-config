@@ -16,6 +16,11 @@ in
     programs.nixvim.plugins.lsp.servers.tinymist = {
       enable = true;
       # NOTE: add options as I need
+      settings = {
+        formatterMode = "typstyle";
+        # generally i like 80, but links, math blocks, etc. can be large
+        formatterPrintWidth = 120;
+      };
     };
   };
 }

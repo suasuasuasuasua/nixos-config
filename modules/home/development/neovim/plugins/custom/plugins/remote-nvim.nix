@@ -4,7 +4,7 @@
   ...
 }:
 let
-  name = "lightline";
+  name = "remote-nvim";
   cfg = config.home.development.neovim.plugins.${name};
 in
 {
@@ -14,11 +14,9 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      plugins.lightline = {
+      # NOTE: available on unstable 25.05 currently
+      plugins.remote-nvim = {
         enable = true;
-        lazyLoad = {
-          enable = true;
-        };
       };
     };
   };
