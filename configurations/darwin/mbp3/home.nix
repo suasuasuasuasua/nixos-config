@@ -95,6 +95,7 @@ in
       };
 
       gui = {
+        alacritty.enable = true; # browser
         firefox.enable = true; # browser
         spotify.enable = true; # music platform
         vscode.enable = true; # text editor
