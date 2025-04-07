@@ -16,6 +16,9 @@ in
     programs.nixvim = {
       plugins.markview = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+        };
       };
     };
   };

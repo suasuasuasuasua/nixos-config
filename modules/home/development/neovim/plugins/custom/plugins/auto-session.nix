@@ -16,6 +16,9 @@ in
     programs.nixvim = {
       plugins.auto-session = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+        };
 
         settings = {
           enabled = true;

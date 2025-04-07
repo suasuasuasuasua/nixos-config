@@ -30,6 +30,19 @@
       # [[ Configure Telescope ]]
       # See `:help telescope` and `:help telescope.setup()`
       enable = true;
+      # not yet enabled lazy loading provider
+      lazyLoad = {
+        enable = false;
+        settings = {
+          cmd = "Telescope";
+          keys = [
+            "<leader>sf"
+            "<leader>sg"
+            "<leader>sh"
+            "<leader><leader>"
+          ];
+        };
+      };
 
       # Enable Telescope extensions
       extensions = {

@@ -16,6 +16,13 @@ in
     programs.nixvim = {
       plugins.zen-mode = {
         enable = true;
+        # not yet enabled lazy loading provider
+        lazyLoad = {
+          enable = false;
+          settings = {
+            cmd = "ZenMode";
+          };
+        };
       };
     };
   };

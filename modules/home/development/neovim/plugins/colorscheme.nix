@@ -10,6 +10,7 @@
       # https://nix-community.github.io/nixvim/colorschemes/catppuccin/index.html
       catppuccin = {
         enable = false;
+        lazyLoad.enable = true;
         settings = {
           default_integrations = true;
           # one of “latte”, “mocha”, “frappe”, “macchiato”, “auto”
@@ -29,6 +30,7 @@
       # https://nix-community.github.io/nixvim/colorschemes/tokyonight/index.html
       tokyonight = {
         enable = false;
+        lazyLoad.enable = true;
         settings = {
           # Like many other themes, this one has different styles, and you could
           # load any other, such as 'storm', 'moon', or 'day'.
@@ -38,6 +40,7 @@
       # https://nix-community.github.io/nixvim/colorschemes/vscode/index.html
       vscode = {
         enable = false;
+        lazyLoad.enable = true;
         settings = {
           italic_comments = true;
           underline_links = true;

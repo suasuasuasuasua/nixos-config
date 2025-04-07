@@ -9,6 +9,13 @@
     # https://nix-community.github.io/nixvim/plugins/which-key/index.html
     plugins.which-key = {
       enable = true;
+      # not yet enabled lazy loading provider
+      lazyLoad = {
+        enable = false;
+        settings = {
+          cmd = "WhichKey";
+        };
+      };
 
       # Document existing key chains
       settings = {

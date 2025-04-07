@@ -16,6 +16,9 @@ in
     programs.nixvim = {
       plugins.airline = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+        };
 
         # theme = "everforest";
         settings = {

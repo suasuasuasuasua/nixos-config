@@ -16,6 +16,14 @@ in
     programs.nixvim = {
       plugins.arrow = {
         enable = true;
+        # not yet enabled lazy loading provider
+        lazyLoad = {
+          enable = false;
+          settings = {
+            cmd = "Arrow";
+            keys = [ ";" ];
+          };
+        };
 
         settings = {
           leader_key = ";";

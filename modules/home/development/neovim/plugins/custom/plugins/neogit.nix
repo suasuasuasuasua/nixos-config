@@ -16,6 +16,13 @@ in
     programs.nixvim = {
       plugins.neogit = {
         enable = true;
+        # not yet enabled lazy loading provider
+        lazyLoad = {
+          enable = false;
+          settings = {
+            cmd = "Neogit";
+          };
+        };
       };
     };
   };

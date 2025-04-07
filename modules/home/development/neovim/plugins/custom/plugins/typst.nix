@@ -20,6 +20,13 @@ in
 
       plugins.typst-preview = {
         enable = true;
+        # not yet enabled lazy loading provider
+        lazyLoad = {
+          enable = false;
+          settings = {
+            cmd = "TypstPreview";
+          };
+        };
       };
     };
   };

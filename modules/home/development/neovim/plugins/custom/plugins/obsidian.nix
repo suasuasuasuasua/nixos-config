@@ -20,6 +20,9 @@ in
     programs.nixvim = {
       plugins.${name} = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+        };
         settings = {
           inherit (cfg) workspaces;
 

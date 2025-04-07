@@ -16,6 +16,9 @@ in
     programs.nixvim = {
       plugins.barbar = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+        };
 
         keymaps = {
           # Move to previous/next

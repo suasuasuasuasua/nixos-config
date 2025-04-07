@@ -16,6 +16,9 @@ in
     programs.nixvim = {
       plugins.lightline = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+        };
       };
     };
   };
