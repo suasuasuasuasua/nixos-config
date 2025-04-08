@@ -92,6 +92,31 @@ in
                 name = "hacker news";
                 url = "https://news.ycombinator.com/";
               }
+              {
+                name = "nix related";
+                bookmarks = [
+                  {
+                    name = "nixpkgs";
+                    url = "https://search.nixos.org/packages";
+                  }
+                  {
+                    name = "nixpkgs options";
+                    url = "https://search.nixos.org/options?";
+                  }
+                  {
+                    name = "nix-darwin";
+                    url = "https://nix-darwin.github.io/nix-darwin/manual/index.html";
+                  }
+                  {
+                    name = "home-manager";
+                    url = "https://home-manager-options.extranix.com/";
+                  }
+                  {
+                    name = "nixvim";
+                    url = "https://nix-community.github.io/nixvim/";
+                  }
+                ];
+              }
             ];
           }
         ];
