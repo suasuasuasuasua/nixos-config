@@ -15,6 +15,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/ekickx/clipboard-image.nvim/
       plugins.clipboard-image = {
         enable = true;
         # not yet enabled lazy loading provider

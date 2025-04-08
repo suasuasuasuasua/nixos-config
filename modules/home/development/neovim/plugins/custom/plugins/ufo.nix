@@ -47,6 +47,7 @@ in
       # ];
 
       plugins.nvim-ufo = {
+        # https://github.com/kevinhwang91/nvim-ufo
         enable = true;
         settings = {
           fold_virt_text_handler =

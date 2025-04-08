@@ -14,6 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/otavioschwanck/arrow.nvim/
       plugins.arrow = {
         enable = true;
         # not yet enabled lazy loading provider

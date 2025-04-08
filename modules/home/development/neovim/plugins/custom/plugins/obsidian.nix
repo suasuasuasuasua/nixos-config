@@ -18,6 +18,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/epwalsh/obsidian.nvim
       plugins.obsidian = {
         enable = true;
         lazyLoad = {

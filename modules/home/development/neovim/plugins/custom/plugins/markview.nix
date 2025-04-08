@@ -14,6 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/OXY2DEV/markview.nvim
       plugins.markview = {
         enable = true;
         lazyLoad = {

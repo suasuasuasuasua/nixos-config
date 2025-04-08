@@ -14,6 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/folke/flash.nvim/
       plugins.flash = {
         enable = true;
       };

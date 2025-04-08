@@ -14,6 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/okuuva/auto-save.nvim/
       plugins.auto-save = {
         enable = true;
       };

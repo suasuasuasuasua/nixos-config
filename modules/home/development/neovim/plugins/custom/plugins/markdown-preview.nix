@@ -14,6 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/iamcco/markdown-preview.nvim/
       plugins.markdown-preview = {
         enable = true;
       };

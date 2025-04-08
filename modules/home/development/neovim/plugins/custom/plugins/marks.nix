@@ -14,6 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/chentoast/marks.nvim
       plugins.marks = {
         enable = true;
       };

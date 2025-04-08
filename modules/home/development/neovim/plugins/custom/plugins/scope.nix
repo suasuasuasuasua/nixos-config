@@ -14,6 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/tiagovla/scope.nvim
       plugins.scope = {
         enable = true;
       };

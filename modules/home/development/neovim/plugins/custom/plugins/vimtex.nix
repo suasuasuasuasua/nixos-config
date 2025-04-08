@@ -15,6 +15,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/lervag/vimtex
       plugins.vimtex = {
         enable = true;
       };

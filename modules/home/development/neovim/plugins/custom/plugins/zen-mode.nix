@@ -14,6 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/folke/zen-mode.nvim
       plugins.zen-mode = {
         enable = true;
         # not yet enabled lazy loading provider

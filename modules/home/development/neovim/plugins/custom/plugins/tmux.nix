@@ -15,11 +15,13 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/christoomey/vim-tmux-navigator
       plugins.tmux-navigator = {
         enable = true;
       };
 
       extraPlugins = with pkgs; [
+        # https://github.com/aserowy/tmux.nvim
         vimPlugins.tmux-nvim
       ];
     };

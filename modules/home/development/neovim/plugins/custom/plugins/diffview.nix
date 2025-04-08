@@ -14,6 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/sindrets/diffview.nvim
       plugins.diffview = {
         enable = true;
       };

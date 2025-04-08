@@ -16,9 +16,9 @@ in
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
       extraPlugins = [
+        # https://github.com/f-person/auto-dark-mode.nvim
         (pkgs.vimUtils.buildVimPlugin {
           name = "auto-dark-mode";
-          # https://github.com/f-person/auto-dark-mode.nvim
           src = pkgs.fetchFromGitHub {
             owner = "f-person";
             repo = "auto-dark-mode.nvim";

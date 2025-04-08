@@ -14,6 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/tpope/vim-surround
       plugins.vim-surround = {
         enable = true;
       };

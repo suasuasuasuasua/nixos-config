@@ -14,6 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/MagicDuck/grug-far.nvim/
       plugins.grug-far = {
         enable = true;
       };

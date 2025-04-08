@@ -14,6 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/nvim-lualine/lualine.nvim
       plugins.lualine = {
         enable = true;
       };

@@ -22,6 +22,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/nomnivore/ollama.nvim
       plugins.ollama = {
         inherit (cfg) model url;
 

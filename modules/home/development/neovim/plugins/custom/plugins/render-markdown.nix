@@ -15,6 +15,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      # https://github.com/MeanderingProgrammer/render-markdown.nvim
       plugins.render-markdown = {
         enable = true;
         # not yet enabled lazy loading provider
