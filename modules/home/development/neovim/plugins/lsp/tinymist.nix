@@ -21,6 +21,11 @@ in
         # generally i like 80, but links, math blocks, etc. can be large
         formatterPrintWidth = 120;
       };
+
+      # See https://github.com/neovim/neovim/issues/30675
+      extraOptions = {
+        offset_encoding = "utf-8";
+      };
     };
   };
 }
