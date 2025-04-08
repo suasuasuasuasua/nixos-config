@@ -91,6 +91,7 @@ in
             twilight.enable = true; # focused writing
             typst.enable = true; # typst preview and syntax
             ufo.enable = true; # better folding support
+            undotree.enable = true; # undo tree visualizer
             vimtex.enable = true; # latex support
             zen-mode.enable = true; # zen mode support
           };
