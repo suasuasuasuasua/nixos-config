@@ -73,6 +73,7 @@ in
             grug-far.enable = true; # find and rename across files
             hex.enable = true; # hex editor
             lazygit.enable = true; # lazygit integration
+            leetcode.enable = true; # leetcode sadge
             lualine.enable = true; # status line
             markdown-preview.enable = true; # local live markdown preview server
             neogit.enable = true; # git integration (secondary to lazygit)
