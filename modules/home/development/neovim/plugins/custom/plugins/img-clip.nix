@@ -5,7 +5,7 @@
   ...
 }:
 let
-  name = "clipboard-image";
+  name = "img-clip";
   cfg = config.home.development.neovim.plugins.${name};
 in
 {
@@ -15,17 +15,17 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      # https://github.com/ekickx/clipboard-image.nvim/
-      plugins.clipboard-image = {
-        enable = true;
-        # not yet enabled lazy loading provider
-        lazyLoad = {
-          enable = false;
-          settings = {
-            cmd = "PasteImg";
+      # https://github.com/HakonHarnes/img-clip.nvim
+      extraPlugins = with pkgs.vimPlugins; [
+        img-clip-nvim
+      ];
+
+      extraConfigLua =
+        # lua
+        ''
+          require("img-clip").setup {
           };
-        };
-      };
+        '';
 
       extraPackages =
         with pkgs;

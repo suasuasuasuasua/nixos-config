@@ -57,7 +57,7 @@ in
             ruff.enable = true; # python
             rust_analyzer.enable = true; # rust
             sqls.enable = true; # sql
-            tailwindcss.enable = true; # tailwindcss
+            tailwindcss.enable = false; # tailwindcss
             taplo.enable = true; # toml
             texlab.enable = true; # latex
             tinymist.enable = true; # typst
@@ -68,12 +68,12 @@ in
             auto-dark-mode.enable = true; # switch theme based on os
             auto-save.enable = true; # autosave the file
             bufferline.enable = true; # prettier bufferline top bar
-            clipboard-image.enable = true; # paste images from clipboard
             diffview.enable = true; # show git-rev diffs
             dropbar.enable = true; # breadcrumb navigation
             flash.enable = true; # navigate faster with s,f,t
             grug-far.enable = true; # find and rename across files
             hex.enable = true; # hex editor
+            img-clip.enable = true; # paste images from clipboard
             lazygit.enable = true; # lazygit integration
             lualine.enable = true; # status line
             markdown-preview.enable = true; # local live markdown preview server
