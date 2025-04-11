@@ -60,6 +60,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    home.sessionVariables = {
+      MOZ_ENABLE_WAYLAND = "1";
+    };
+
     programs.firefox = {
       enable = true;
       # TODO: firefox is in unstable for darwin...remove in may 2025
