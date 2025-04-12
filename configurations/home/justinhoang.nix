@@ -1,4 +1,6 @@
 {
+  inputs,
+  outputs,
   pkgs,
   lib,
   ...
@@ -7,6 +9,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    extraSpecialArgs = { inherit inputs outputs; };
 
     users."justinhoang" = {
       home = {

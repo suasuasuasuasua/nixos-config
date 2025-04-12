@@ -94,9 +94,6 @@
             ./configurations/nixos/penguin
 
             home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = { inherit inputs outputs; };
-            }
             ./configurations/home/justinhoang.nix
           ];
           specialArgs = {
