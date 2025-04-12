@@ -49,7 +49,9 @@ The initial setup is pretty simple now thanks to `disko`.
    > set_network 0 ssid "<network name>"
    > set_network 0 psk "<password>"
    > enable_network 0
-   ```nix-shell -p disko
+
+   nix-shell -p disko
+   ```
 
 1. Run the `disko` utility
 
