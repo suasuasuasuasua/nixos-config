@@ -16,6 +16,18 @@ update:
 lint:
     nix fmt
 
+# switch the build
+[group('dev')]
+[macos]
+switch:
+    darwin-rebuild switch --flake .
+
+# switch the build
+[group('dev')]
+[linux]
+switch:
+    nixos-rebuild switch --flake .
+
 # build and check the diff
 [group('dev')]
 [macos]

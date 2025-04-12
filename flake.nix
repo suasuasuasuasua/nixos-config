@@ -1,28 +1,12 @@
 {
   description = "suasuasuasuasua's nixos configuration";
 
-  outputs =
-    inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      # import all the flake-modules from modules/flake-parts
-      imports =
-        with builtins;
-        map (fn: ./modules/flake-parts/${fn}) (attrNames (readDir ./modules/flake-parts));
-
-      # all the systems this flake is defined for
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
-    };
-
   inputs = {
     # Principle inputs (updated by `nix run .#update`)
     # packages
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    systems.url = "github:nix-systems/default-linux";
     nix-darwin = {
       url = "github:LnL7/nix-darwin/nix-darwin-24.11"; # head
       # url = "github:LnL7/nix-darwin/master"; # unstable
@@ -50,7 +34,6 @@
     disko.url = "github:nix-community/disko/latest";
     rpi-nix.url = "github:nix-community/raspberry-pi-nix";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    nixos-unified.url = "github:srid/nixos-unified";
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
@@ -73,6 +56,53 @@
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
+
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      systems,
+      ...
+    }@inputs:
+    let
+      inherit (self) outputs;
+
+      lib = nixpkgs.lib // home-manager.lib;
+      forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
+      pkgsFor = lib.genAttrs (import systems) (
+        system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        }
+      );
+    in
+    {
+      inherit lib;
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
+
+      overlays = import ./overlays { inherit inputs outputs; };
+
+      devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
+      formatter = forEachSystem (pkgs: pkgs.nixfmt-rfc-style);
+
+      nixosConfigurations = {
+        penguin = lib.nixosSystem {
+          modules = [
+            ./configurations/nixos/penguin
+
+            home-manager.nixosModules.home-manager
+            ./configurations/home/justinhoang.nix
+          ];
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
+      };
+    };
+
   # use cachix for faster builds in places
   nixConfig = {
     extra-substituters = [
@@ -82,4 +112,5 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
+
 }

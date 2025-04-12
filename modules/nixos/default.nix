@@ -1,14 +1,10 @@
 {
-  flake,
+  inputs,
   lib,
   config,
   pkgs,
   ...
 }:
-let
-  inherit (flake) self;
-  inherit (self) inputs;
-in
 {
   # write a list of system packages to /etc/current-system-packages
   environment.etc."current-system-packages".text =
@@ -20,9 +16,8 @@ in
     formatted;
 
   nixpkgs = {
-    overlays = lib.attrValues self.overlays ++ [
-      # TODO: should add to overlays/default.nix but doesn't work omg -- my
-      # bandaid for now
+    # TODO: figure out how to reference overlays above?
+    overlays = [
       inputs.nur.overlays.default
     ];
 
@@ -34,7 +29,7 @@ in
     # Choose from https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=nix
     # package = pkgs.nixVersions.latest;
 
-    nixPath = [ "nixpkgs=${flake.inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
     # TODO: figure out what this option even is
     # registry.nixpkgs.flake = flake.inputs.nixpkgs; # Make `nix shell` etc use pinned nixpkgs
     # Opinionated: disable channels

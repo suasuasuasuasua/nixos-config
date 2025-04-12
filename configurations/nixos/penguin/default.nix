@@ -1,9 +1,10 @@
 # See /modules/nixos/* for actual settings
 # This file is just *top-level* configuration.
-{ flake, pkgs, ... }:
-let
-  inherit (flake) inputs;
-in
+{
+  inputs,
+  pkgs,
+  ...
+}:
 {
   imports = [
     # disk setup
