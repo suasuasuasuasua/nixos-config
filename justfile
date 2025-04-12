@@ -26,7 +26,7 @@ switch:
 [group('dev')]
 [linux]
 switch:
-    nixos-rebuild switch --flake .
+    nh os switch .
 
 # build and check the diff
 [group('dev')]
@@ -38,7 +38,7 @@ diff:
 [group('dev')]
 [linux]
 diff:
-    nixos-rebuild build --flake . && nvd diff /run/current-system result
+    nh os build . && nvd diff /run/current-system result
 
 # Build the raspberry pi image
 [group('dev')]
