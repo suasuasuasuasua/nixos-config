@@ -16,6 +16,10 @@
 
   # Adds pkgs.unstable == inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}
   unstable = final: _: {
-    unstable = inputs.nixpkgs-stable.legacyPackages.${final.system};
+    unstable = inputs.nixpkgs-unstable.legacyPackages.${final.system};
   };
+
+  # nix user repository
+  # NOTE: add it explicitly so i can set config options
+  nur = inputs.nur.overlays.default;
 }

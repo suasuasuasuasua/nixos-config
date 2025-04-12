@@ -1,7 +1,4 @@
-{ flake, config, ... }:
-let
-  inherit (flake) inputs;
-in
+{ inputs, config, ... }:
 {
   imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
 

@@ -1,8 +1,4 @@
-{ flake, ... }:
-let
-  inherit (flake) inputs;
-  inherit (inputs) self;
-in
+{ inputs, ... }:
 {
   # TODO: figure out a dynamic way to allocate this (not that there any other
   # users...just helps my brain avoid hardcode)
@@ -10,15 +6,14 @@ in
   # Enable home-manager for "justinhoang" user
   home-manager.users."justinhoang" = {
     imports = [
-      inputs.mac-app-util.homeManagerModules.default
-
-      (self + /configurations/home/justinhoang.nix)
-      self.homeModules.default
-
       # import modules
-      (self + /modules/home/cli)
-      (self + /modules/home/development)
-      (self + /modules/home/gui)
+      "${inputs.self}/modules/home"
+
+      "${inputs.self}/modules/home/cli"
+      "${inputs.self}/modules/home/development"
+      "${inputs.self}/modules/home/gui"
+
+      inputs.mac-app-util.homeManagerModules.default
     ];
 
     # TODO: if this gets too complex/long, modularize into folders
