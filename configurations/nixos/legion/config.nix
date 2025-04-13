@@ -1,22 +1,16 @@
 # See /modules/nixos/* for actual settings
 # This file is just *top-level* configuration.
-{ flake, ... }:
-
-let
-  inherit (flake) inputs;
-  inherit (inputs) self;
-in
+{ inputs, ... }:
 {
-
   imports = [
-    self.nixosModules.default
+    "${inputs.self}/module/nixos"
 
     # import the modules
-    (self + /modules/nixos/desktop)
-    (self + /modules/nixos/development)
-    (self + /modules/nixos/gpu)
-    (self + /modules/nixos/gui)
-    (self + /modules/nixos/services)
+    "${inputs.self}/module/nixos/desktop"
+    "${inputs.self}/module/nixos/development"
+    "${inputs.self}/module/nixos/gpu"
+    "${inputs.self}/module/nixos/gui"
+    "${inputs.self}/module/nixos/services"
   ];
 
   # TODO: if this gets too complex/long, modularize into folders

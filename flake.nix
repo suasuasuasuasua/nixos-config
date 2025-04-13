@@ -176,9 +176,9 @@
       );
 
       nixosConfigurations = {
-        penguin = lib.nixosSystem {
+        lab = lib.nixosSystem {
           modules = [
-            ./configurations/nixos/penguin
+            ./configurations/nixos/lab
 
             home-manager.nixosModules.home-manager
             ./configurations/home/justinhoang.nix
@@ -187,9 +187,20 @@
             inherit inputs outputs;
           };
         };
-        lab = lib.nixosSystem {
+        legion = lib.nixosSystem {
           modules = [
-            ./configurations/nixos/lab
+            ./configurations/nixos/legion
+
+            home-manager.nixosModules.home-manager
+            ./configurations/home/justinhoang.nix
+          ];
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
+        penguin = lib.nixosSystem {
+          modules = [
+            ./configurations/nixos/penguin
 
             home-manager.nixosModules.home-manager
             ./configurations/home/justinhoang.nix
