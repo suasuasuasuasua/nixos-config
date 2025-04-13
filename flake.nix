@@ -154,22 +154,26 @@
                 pkgs.nix
               ]
               ++ (with pkgs; [
-                # source control
-                git # source control program
-                commitizen # templated commits and bumping
+                # cli
+                fastfetch # system information
+                btop # system monitoring
 
                 # commands
                 just # command runner
 
                 # lsp
-                nil # lsp 1 (don't ask)
-                nixd # lsp 2 (don't ask)
+                nil # lsp 1
+                nixd # lsp 2
                 nixfmt-rfc-style # nix formatter
                 markdownlint-cli # markdown linter
 
-                # cli
-                fastfetch # system information
-                btop # system monitoring
+                # nix support
+                nix-output-monitor # nix output monitor
+                nvd # nix/nixos package version diff tool
+
+                # source control
+                git # source control program
+                commitizen # templated commits and bumping
               ]);
           };
         }
@@ -201,6 +205,17 @@
         penguin = lib.nixosSystem {
           modules = [
             ./configurations/nixos/penguin
+
+            home-manager.nixosModules.home-manager
+            ./configurations/home/justinhoang.nix
+          ];
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
+        pi = lib.nixosSystem {
+          modules = [
+            ./configurations/nixos/pi
 
             home-manager.nixosModules.home-manager
             ./configurations/home/justinhoang.nix

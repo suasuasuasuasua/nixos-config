@@ -1,6 +1,5 @@
 # custom dashy config per-host
 # https://dashy.to/docs/configuring/
-
 { config, ... }:
 let
   # Use the hostname of the machine!
