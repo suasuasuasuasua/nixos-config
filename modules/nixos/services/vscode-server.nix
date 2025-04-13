@@ -1,11 +1,10 @@
 {
-  flake,
+  inputs,
   config,
   lib,
   ...
 }:
 let
-  inherit (flake) inputs;
   serviceName = "vscode-server";
 
   cfg = config.nixos.services.${serviceName};

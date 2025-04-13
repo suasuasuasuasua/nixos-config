@@ -1,19 +1,15 @@
 {
-  flake,
+  inputs,
   config,
   lib,
   pkgs,
   ...
 }:
 let
-  inherit (flake) inputs;
-
   cfg = config.home.gui.spotify;
 in
 {
-  imports = [
-    inputs.spicetify-nix.homeManagerModules.default
-  ];
+  imports = [ inputs.spicetify-nix.homeManagerModules.default ];
 
   options.home.gui.spotify = {
     enable = lib.mkEnableOption "Enable spotify (spicetify)";

@@ -1,13 +1,9 @@
 {
-  flake,
+  self,
   lib,
   pkgs,
   ...
 }:
-let
-  inherit (flake) inputs;
-  inherit (inputs) self;
-in
 {
   # A module that automatically imports everything else in the parent folder.
   imports =
@@ -54,6 +50,7 @@ in
         "x86_64-linux"
         "aarch64-linux"
       ];
+
       config = {
         # multi-core builds
         virtualisation.cores = 8;

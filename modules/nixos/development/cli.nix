@@ -31,9 +31,6 @@ in
 
       # scripting
       python3
-
-      # nix utilty
-      nvd # nix/nixos package version diff tool
     ];
   };
 }

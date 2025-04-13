@@ -1,13 +1,8 @@
-{ flake, ... }:
-
-let
-  inherit (flake) inputs;
-  inherit (inputs) self;
-in
+{ inputs, ... }:
 {
   imports = [
     # import the modules
-    (self + /modules/nixos/services)
+    "${inputs.self}/modules/nixos/services"
   ];
 
   # services

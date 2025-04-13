@@ -1,23 +1,6 @@
 {
   description = "suasuasuasuasua's nixos configuration";
 
-  outputs =
-    inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      # import all the flake-modules from modules/flake-parts
-      imports =
-        with builtins;
-        map (fn: ./modules/flake-parts/${fn}) (attrNames (readDir ./modules/flake-parts));
-
-      # all the systems this flake is defined for
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
-    };
-
   inputs = {
     # Principle inputs (updated by `nix run .#update`)
     # packages
@@ -50,7 +33,6 @@
     disko.url = "github:nix-community/disko/latest";
     rpi-nix.url = "github:nix-community/raspberry-pi-nix";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    nixos-unified.url = "github:srid/nixos-unified";
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
@@ -73,13 +55,147 @@
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
+
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nix-darwin,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      inherit (self) outputs;
+
+      # Supported systems for your flake packages, shell, etc.
+      systems = [
+        # linux
+        "aarch64-linux"
+        "x86_64-linux"
+        # macOS
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+
+      lib = nixpkgs.lib // nix-darwin.lib // home-manager.lib;
+      # This is a function that generates an attribute by calling a function you
+      # pass to it, with each system as an argument
+      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
+      pkgsFor = lib.genAttrs systems (system: nixpkgs.legacyPackages.${system});
+
+      # Eval the treefmt modules from ./treefmt.nix
+      treefmtEval = forEachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+    in
+    {
+      inherit lib;
+
+      overlays = import ./overlays { inherit inputs outputs; };
+      formatter = forEachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+
+      # TODO: should i split the pre-commits into its own file?
+      checks = {
+        formatting = forEachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.check self);
+        git-hooks-check = forEachSystem (
+          pkgs:
+          let
+            inherit (pkgs) system;
+          in
+          inputs.git-hooks-nix.lib.${system}.run {
+            src = ./.;
+            imports = [ ./git-hooks.nix ];
+          }
+        );
+      };
+      # TODO: should i split this dev shell into its own file?
+      devShells = forEachSystem (pkgs: {
+        default = import ./shell.nix {
+          inherit self pkgs;
+        };
+      });
+
+      nixosConfigurations = {
+        lab = lib.nixosSystem {
+          modules = [
+            ./configurations/nixos/lab
+
+            home-manager.nixosModules.home-manager
+            ./configurations/home/justinhoang.nix
+          ];
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
+        legion = lib.nixosSystem {
+          modules = [
+            ./configurations/nixos/legion
+
+            home-manager.nixosModules.home-manager
+            ./configurations/home/justinhoang.nix
+          ];
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
+        penguin = lib.nixosSystem {
+          modules = [
+            ./configurations/nixos/penguin
+
+            home-manager.nixosModules.home-manager
+            ./configurations/home/justinhoang.nix
+          ];
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
+        pi = lib.nixosSystem {
+          modules = [
+            ./configurations/nixos/pi
+
+            home-manager.nixosModules.home-manager
+            ./configurations/home/justinhoang.nix
+          ];
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
+      };
+
+      darwinConfigurations = {
+        mbp3 = lib.darwinSystem {
+          modules = [
+            ./configurations/darwin/mbp3
+
+            home-manager.darwinModules.home-manager
+            ./configurations/home/justinhoang.nix
+          ];
+          specialArgs = {
+            inherit self inputs outputs;
+          };
+        };
+      };
+
+      # TODO: implement standalone home manager
+      # homeConfigurations = {
+      #   # Standalone HM only
+      #   "localhost" = lib.homeManagerConfiguration {
+      #     modules = [ ];
+      #     pkgs = pkgsFor.aarch64-darwin;
+      #     extraSpecialArgs = {
+      #       inherit inputs outputs;
+      #     };
+      #   };
+      # };
+    };
+
   # use cachix for faster builds in places
   nixConfig = {
     extra-substituters = [
       "https://nix-community.cachix.org"
+      "https://pre-commit-hooks.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
     ];
   };
 }

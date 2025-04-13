@@ -1,12 +1,11 @@
 {
-  flake,
+  inputs,
   config,
   lib,
   pkgs,
   ...
 }:
 let
-  inherit (flake) inputs;
   inherit (config.networking) hostName;
   serviceName = "actual";
 

@@ -1,7 +1,4 @@
-{ flake, config, ... }:
-let
-  inherit (flake) inputs;
-in
+{ inputs, config, ... }:
 {
   imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
 
@@ -52,6 +49,7 @@ in
 
     casks = [
       # dev
+      "kate" # kde text editor
       "docker" # container runner and manager
 
       # general

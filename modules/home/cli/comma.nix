@@ -1,12 +1,10 @@
 {
-  flake,
+  inputs,
   config,
   lib,
   ...
 }:
 let
-  inherit (flake) inputs;
-
   cfg = config.home.cli.comma;
 in
 {
