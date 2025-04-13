@@ -21,5 +21,5 @@
 
   # nix user repository
   # NOTE: add it explicitly so i can set config options
-  nur = inputs.nur.overlays.default;
+  firefox-addons = inputs.firefox-addons.overlays.default;
 }
