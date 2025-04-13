@@ -117,7 +117,20 @@
             ./configurations/nixos/lab
 
             home-manager.nixosModules.home-manager
-            ./configurations/home/justinhoang.nix
+            (import ./configurations/home/module.nix {
+              inherit inputs outputs;
+              # define the users
+              users =
+                let
+                  pkgs = pkgsFor.x86_64-linux;
+                in
+                {
+                  # define each user separately
+                  justinhoang = import ./configurations/home/justinhoang.nix {
+                    inherit pkgs lib;
+                  };
+                };
+            })
           ];
           specialArgs = {
             inherit inputs outputs;
@@ -128,7 +141,20 @@
             ./configurations/nixos/legion
 
             home-manager.nixosModules.home-manager
-            ./configurations/home/justinhoang.nix
+            (import ./configurations/home/module.nix {
+              inherit inputs outputs;
+              # define the users
+              users =
+                let
+                  pkgs = pkgsFor.x86_64-linux;
+                in
+                {
+                  # define each user separately
+                  justinhoang = import ./configurations/home/justinhoang.nix {
+                    inherit pkgs lib;
+                  };
+                };
+            })
           ];
           specialArgs = {
             inherit inputs outputs;
@@ -139,7 +165,20 @@
             ./configurations/nixos/penguin
 
             home-manager.nixosModules.home-manager
-            ./configurations/home/justinhoang.nix
+            (import ./configurations/home/module.nix {
+              inherit inputs outputs;
+              # define the users
+              users =
+                let
+                  pkgs = pkgsFor.x86_64-linux;
+                in
+                {
+                  # define each user separately
+                  justinhoang = import ./configurations/home/justinhoang.nix {
+                    inherit pkgs lib;
+                  };
+                };
+            })
           ];
           specialArgs = {
             inherit inputs outputs;
@@ -150,7 +189,20 @@
             ./configurations/nixos/pi
 
             home-manager.nixosModules.home-manager
-            ./configurations/home/justinhoang.nix
+            (import ./configurations/home/module.nix {
+              inherit inputs outputs;
+              # define the users
+              users =
+                let
+                  pkgs = pkgsFor.x86_64-linux;
+                in
+                {
+                  # define each user separately
+                  justinhoang = import ./configurations/home/justinhoang.nix {
+                    inherit pkgs lib;
+                  };
+                };
+            })
           ];
           specialArgs = {
             inherit inputs outputs;
@@ -164,7 +216,20 @@
             ./configurations/darwin/mbp3
 
             home-manager.darwinModules.home-manager
-            ./configurations/home/justinhoang.nix
+            (import ./configurations/home/module.nix {
+              inherit inputs outputs;
+              # define the users
+              users =
+                let
+                  pkgs = pkgsFor.aarch64-darwin;
+                in
+                {
+                  # define each user separately
+                  justinhoang = import ./configurations/home/justinhoang.nix {
+                    inherit pkgs lib;
+                  };
+                };
+            })
           ];
           specialArgs = {
             inherit self inputs outputs;
@@ -172,17 +237,24 @@
         };
       };
 
-      # TODO: implement standalone home manager
-      # homeConfigurations = {
-      #   # Standalone HM only
-      #   "localhost" = lib.homeManagerConfiguration {
-      #     modules = [ ];
-      #     pkgs = pkgsFor.aarch64-darwin;
-      #     extraSpecialArgs = {
-      #       inherit inputs outputs;
-      #     };
-      #   };
-      # };
+      # Define some standalone home-manager profiles
+      homeConfigurations = {
+        justinhoang =
+          let
+            pkgs = pkgsFor.x86_64-linux;
+          in
+          lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [
+              ./configurations/home/justinhoang.nix
+              ./configurations/home/standalone.nix
+            ];
+
+            extraSpecialArgs = {
+              inherit inputs outputs;
+            };
+          };
+      };
     };
 
   # use cachix for faster builds in places

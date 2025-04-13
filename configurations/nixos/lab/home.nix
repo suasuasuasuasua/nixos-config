@@ -7,13 +7,10 @@
   home-manager.users."justinhoang" = {
     imports = [
       # import the modules
-      "${inputs.self}/modules/home"
-
       "${inputs.self}/modules/home/cli"
       "${inputs.self}/modules/home/development"
     ];
 
-    # TODO: if this gets too complex/long, modularize into folders
     config.home = {
       cli = {
         bat.enable = true;
