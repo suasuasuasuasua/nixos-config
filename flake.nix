@@ -92,6 +92,7 @@
       overlays = import ./overlays { inherit inputs outputs; };
       formatter = forEachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
 
+      # TODO: should i split the pre-commits into its own file?
       checks = {
         formatting = forEachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.check self);
         git-hooks-check = forEachSystem (
@@ -131,6 +132,7 @@
           }
         );
       };
+      # TODO: should i split this dev shell into its own file?
       devShells = forEachSystem (
         pkgs:
         let
