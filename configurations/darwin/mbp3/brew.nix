@@ -49,6 +49,7 @@
 
     casks = [
       # dev
+      "kate" # kde text editor
       "docker" # container runner and manager
 
       # general
