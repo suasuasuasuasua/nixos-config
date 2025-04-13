@@ -20,6 +20,8 @@ lint:
 [group('dev')]
 [macos]
 switch:
+    # NOTE: https://github.com/nix-community/nh/issues/149
+    # wait until version 4.0.0
     darwin-rebuild switch --flake .
 
 # switch the build
@@ -32,6 +34,8 @@ switch:
 [group('dev')]
 [macos]
 diff:
+    # NOTE: https://github.com/nix-community/nh/issues/149
+    # wait until version 4.0.0
     darwin-rebuild build --flake . && nvd diff /run/current-system result
 
 # build and check the diff
