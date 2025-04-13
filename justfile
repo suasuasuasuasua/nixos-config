@@ -47,7 +47,7 @@ diff:
 # Build the raspberry pi image
 [group('dev')]
 build-pi:
-    nix build '.#nixosConfigurations.pi.config.system.build.sdImage'
+    nom build '.#nixosConfigurations.pi.config.system.build.sdImage'
 
 # Check nix flake
 [group('dev')]
@@ -57,9 +57,4 @@ check:
 # Manually enter dev shell
 [group('dev')]
 dev:
-    nix develop
-
-# Activate the configuration
-[group('Main')]
-run:
-    nix run
+    nom develop
