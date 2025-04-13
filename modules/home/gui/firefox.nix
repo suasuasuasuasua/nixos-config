@@ -116,6 +116,10 @@ in
                     url = "https://home-manager-options.extranix.com/";
                   }
                   {
+                    name = "noogle";
+                    url = "https://noogle.dev/";
+                  }
+                  {
                     name = "nixvim";
                     url = "https://nix-community.github.io/nixvim/";
                   }
