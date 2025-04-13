@@ -42,7 +42,7 @@ diff:
 [group('dev')]
 [linux]
 diff:
-    nh os build . && nvd diff /run/current-system result
+    nh os build .
 
 # Build the raspberry pi image
 [group('dev')]
