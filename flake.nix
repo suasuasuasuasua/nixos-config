@@ -102,82 +102,16 @@
           in
           inputs.git-hooks-nix.lib.${system}.run {
             src = ./.;
-            hooks = {
-              # Docs
-              markdownlint.enable = true; # format markdown files
-
-              # Git
-              commitizen.enable = true; # ensure conventional commits standard
-              ripsecrets.enable = true; # remove any hardcoded secrets
-
-              # General
-              check-added-large-files.enable = true; # warning about large files (lfs?)
-              check-merge-conflicts.enable = true; # don't commit merge conflicts
-              end-of-file-fixer.enable = true; # add a line at the end of the file
-              trim-trailing-whitespace.enable = true; # trim trailing whitespace
-
-              # Nix
-              nixfmt-rfc-style.enable = true; # format nix files to rfc standards
-              deadnix.enable = true; # remove any unused variabes and imports
-              # https://github.com/determinatesystems/flake-checker/issues/156
-              flake-checker.enable = false; # run `flake check`
-              statix.enable = true; # check "good practices" for nix
-              nil.enable = true; # lsp that also has formatter
-
-              # Shell
-              beautysh.enable = true; # format bash files
-              shellcheck.enable = true; # static shell script checker
-              shfmt.enable = true; # another formatter
-            };
+            imports = [ ./git-hooks.nix ];
           }
         );
       };
       # TODO: should i split this dev shell into its own file?
-      devShells = forEachSystem (
-        pkgs:
-        let
-          inherit (pkgs) system;
-        in
-        {
-          default = pkgs.mkShell {
-            # enable the shell hooks
-            inherit (self.checks.git-hooks-check.${system}) shellHook;
-
-            # define the programs available when running `nix develop`
-            # add the packages from the git-hooks list too
-            buildInputs = self.checks.git-hooks-check.${system}.enabledPackages;
-            packages =
-              [
-                # general nix programs
-                # NOTE: for some reason being shadowed by home-manager argument
-                pkgs.home-manager
-                pkgs.nix
-              ]
-              ++ (with pkgs; [
-                # cli
-                fastfetch # system information
-                btop # system monitoring
-
-                # commands
-                just # command runner
-
-                # lsp
-                nil # lsp 1
-                nixd # lsp 2
-                nixfmt-rfc-style # nix formatter
-                markdownlint-cli # markdown linter
-
-                # nix support
-                nix-output-monitor # nix output monitor
-                nvd # nix/nixos package version diff tool
-
-                # source control
-                git # source control program
-                commitizen # templated commits and bumping
-              ]);
-          };
-        }
-      );
+      devShells = forEachSystem (pkgs: {
+        default = import ./shell.nix {
+          inherit self pkgs;
+        };
+      });
 
       nixosConfigurations = {
         lab = lib.nixosSystem {
