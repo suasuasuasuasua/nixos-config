@@ -187,10 +187,21 @@
             inherit inputs outputs;
           };
         };
+        lab = lib.nixosSystem {
+          modules = [
+            ./configurations/nixos/lab
+
+            home-manager.nixosModules.home-manager
+            ./configurations/home/justinhoang.nix
+          ];
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
       };
 
       darwinConfigurations = {
-        "mbp3" = lib.darwinSystem {
+        mbp3 = lib.darwinSystem {
           modules = [
             ./configurations/darwin/mbp3
 

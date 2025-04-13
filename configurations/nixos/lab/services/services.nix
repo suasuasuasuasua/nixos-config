@@ -1,6 +1,6 @@
-{ self, ... }:
+{ inputs, ... }:
 {
-  imports = [ "${self}/modules/nixos/services" ];
+  imports = [ "${inputs.self}/modules/nixos/services" ];
 
   # services
   config.nixos.services = {
