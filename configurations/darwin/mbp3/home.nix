@@ -47,7 +47,7 @@
             ltex.enable = true; # latex
             marksman.enable = true; # markdown
             nil_ls.enable = true; # nix
-            # nixd.enable = true; # nix
+            nixd.enable = true; # nix
             pyright.enable = true; # python
             ruff.enable = true; # python
             rust_analyzer.enable = true; # rust

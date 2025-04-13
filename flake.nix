@@ -204,6 +204,18 @@
           };
         };
       };
+
+      # TODO: implement standalone home manager
+      # homeConfigurations = {
+      #   # Standalone HM only
+      #   "localhost" = lib.homeManagerConfiguration {
+      #     modules = [ ];
+      #     pkgs = pkgsFor.aarch64-darwin;
+      #     extraSpecialArgs = {
+      #       inherit inputs outputs;
+      #     };
+      #   };
+      # };
     };
 
   # use cachix for faster builds in places
