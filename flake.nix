@@ -92,56 +92,58 @@
       overlays = import ./overlays { inherit inputs outputs; };
       formatter = forEachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
 
-      checks = (lib.genAttrs systems) (system: {
-        formatting =
+      checks = {
+        formatting = forEachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.check self);
+        git-hooks-check = forEachSystem (
+          pkgs:
           let
-            pkgs = pkgsFor.${system};
+            inherit (pkgs) system;
           in
-          treefmtEval.${pkgs.system}.config.build.check self;
-        git-hooks-check = inputs.git-hooks-nix.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            # Docs
-            markdownlint.enable = true; # format markdown files
+          inputs.git-hooks-nix.lib.${system}.run {
+            src = ./.;
+            hooks = {
+              # Docs
+              markdownlint.enable = true; # format markdown files
 
-            # Git
-            commitizen.enable = true; # ensure conventional commits standard
-            ripsecrets.enable = true; # remove any hardcoded secrets
+              # Git
+              commitizen.enable = true; # ensure conventional commits standard
+              ripsecrets.enable = true; # remove any hardcoded secrets
 
-            # General
-            check-added-large-files.enable = true; # warning about large files (lfs?)
-            check-merge-conflicts.enable = true; # don't commit merge conflicts
-            end-of-file-fixer.enable = true; # add a line at the end of the file
-            trim-trailing-whitespace.enable = true; # trim trailing whitespace
+              # General
+              check-added-large-files.enable = true; # warning about large files (lfs?)
+              check-merge-conflicts.enable = true; # don't commit merge conflicts
+              end-of-file-fixer.enable = true; # add a line at the end of the file
+              trim-trailing-whitespace.enable = true; # trim trailing whitespace
 
-            # Nix
-            nixfmt-rfc-style.enable = true; # format nix files to rfc standards
-            deadnix.enable = true; # remove any unused variabes and imports
-            # https://github.com/determinatesystems/flake-checker/issues/156
-            flake-checker.enable = false; # run `flake check`
-            statix.enable = true; # check "good practices" for nix
-            nil.enable = true; # lsp that also has formatter
+              # Nix
+              nixfmt-rfc-style.enable = true; # format nix files to rfc standards
+              deadnix.enable = true; # remove any unused variabes and imports
+              # https://github.com/determinatesystems/flake-checker/issues/156
+              flake-checker.enable = false; # run `flake check`
+              statix.enable = true; # check "good practices" for nix
+              nil.enable = true; # lsp that also has formatter
 
-            # Shell
-            beautysh.enable = true; # format bash files
-            shellcheck.enable = true; # static shell script checker
-            shfmt.enable = true; # another formatter
-          };
-        };
-      });
-      devShells = (lib.genAttrs systems) (system: {
-        default =
-          let
-            pkgs = pkgsFor.${system};
-          in
-          pkgs.mkShell {
+              # Shell
+              beautysh.enable = true; # format bash files
+              shellcheck.enable = true; # static shell script checker
+              shfmt.enable = true; # another formatter
+            };
+          }
+        );
+      };
+      devShells = forEachSystem (
+        pkgs:
+        let
+          inherit (pkgs) system;
+        in
+        {
+          default = pkgs.mkShell {
             # enable the shell hooks
-            inherit (self.checks.${system}.git-hooks-check) shellHook;
-
-            NIX_CONFIG = "extra-experimental-features = nix-command flakes ca-derivations";
-            buildInputs = self.checks.${system}.git-hooks-check.enabledPackages;
+            inherit (self.checks.git-hooks-check.${system}) shellHook;
 
             # define the programs available when running `nix develop`
+            # add the packages from the git-hooks list too
+            buildInputs = self.checks.git-hooks-check.${system}.enabledPackages;
             packages =
               [
                 # general nix programs
@@ -168,7 +170,8 @@
                 btop # system monitoring
               ]);
           };
-      });
+        }
+      );
 
       nixosConfigurations = {
         penguin = lib.nixosSystem {
