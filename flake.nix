@@ -81,13 +81,8 @@
       # This is a function that generates an attribute by calling a function you
       # pass to it, with each system as an argument
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-      pkgsFor = lib.genAttrs systems (
-        system:
-        import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        }
-      );
+      pkgsFor = lib.genAttrs systems (system: nixpkgs.legacyPackages.${system});
+
       # Eval the treefmt modules from ./treefmt.nix
       treefmtEval = forEachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
@@ -100,7 +95,7 @@
       checks = (lib.genAttrs systems) (system: {
         formatting =
           let
-            pkgs = import nixpkgs { inherit system; };
+            pkgs = pkgsFor.${system};
           in
           treefmtEval.${pkgs.system}.config.build.check self;
         git-hooks-check = inputs.git-hooks-nix.lib.${system}.run {
@@ -137,9 +132,7 @@
       devShells = (lib.genAttrs systems) (system: {
         default =
           let
-            pkgs = import nixpkgs {
-              inherit system;
-            };
+            pkgs = pkgsFor.${system};
           in
           pkgs.mkShell {
             # enable the shell hooks
