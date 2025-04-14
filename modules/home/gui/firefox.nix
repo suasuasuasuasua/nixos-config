@@ -128,15 +128,19 @@ in
             ];
           }
         ];
+        # TODO: add configs for extensions
+        #       for example, dark reader should follow system theme
+        # https://nur.nix-community.org/repos/rycee/
         extensions = with pkgs.firefox-addons; [
           betterttv # twitch [dot] tv integration
+          bypass-paywalls-clean # bypass the paywalls
           darkreader # automatic dark mode
           don-t-fuck-with-paste # prevent websites from modifying copy+paste
           edit-with-emacs # allow emacs-like editing in text fields
-          octotree # better github
           reddit-enhancement-suite # better reddit
           seventv # another twitch add-on
           ublock-origin # block ads
+          unpaywall # read research papers for free
           vimium # vim-like movements
         ];
       };
