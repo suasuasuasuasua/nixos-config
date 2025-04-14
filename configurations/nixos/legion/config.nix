@@ -3,14 +3,14 @@
 { inputs, ... }:
 {
   imports = [
-    "${inputs.self}/module/nixos"
+    "${inputs.self}/modules/nixos"
 
     # import the modules
-    "${inputs.self}/module/nixos/desktop"
-    "${inputs.self}/module/nixos/development"
-    "${inputs.self}/module/nixos/gpu"
-    "${inputs.self}/module/nixos/gui"
-    "${inputs.self}/module/nixos/services"
+    "${inputs.self}/modules/nixos/desktop"
+    "${inputs.self}/modules/nixos/development"
+    "${inputs.self}/modules/nixos/gpu"
+    "${inputs.self}/modules/nixos/gui"
+    "${inputs.self}/modules/nixos/services"
   ];
 
   # TODO: if this gets too complex/long, modularize into folders
