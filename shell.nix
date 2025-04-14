@@ -30,6 +30,7 @@ pkgs.mkShell {
     # nix support
     home-manager
     nix
+    nh # nix helper
     nix-output-monitor # nix output monitor
     nvd # nix/nixos package version diff tool
 

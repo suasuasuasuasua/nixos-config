@@ -120,16 +120,14 @@
             (import ./configurations/home/module.nix {
               inherit inputs outputs;
               # define the users
-              users =
-                let
+              users = {
+                # define each user separately
+                justinhoang = import ./configurations/home/base.nix {
+                  inherit lib;
                   pkgs = pkgsFor.x86_64-linux;
-                in
-                {
-                  # define each user separately
-                  justinhoang = import ./configurations/home/justinhoang.nix {
-                    inherit pkgs lib;
-                  };
+                  username = "justinhoang";
                 };
+              };
             })
           ];
           specialArgs = {
@@ -144,16 +142,14 @@
             (import ./configurations/home/module.nix {
               inherit inputs outputs;
               # define the users
-              users =
-                let
+              users = {
+                # define each user separately
+                justinhoang = import ./configurations/home/base.nix {
+                  inherit lib;
                   pkgs = pkgsFor.x86_64-linux;
-                in
-                {
-                  # define each user separately
-                  justinhoang = import ./configurations/home/justinhoang.nix {
-                    inherit pkgs lib;
-                  };
+                  username = "justinhoang";
                 };
+              };
             })
           ];
           specialArgs = {
@@ -168,16 +164,14 @@
             (import ./configurations/home/module.nix {
               inherit inputs outputs;
               # define the users
-              users =
-                let
+              users = {
+                # define each user separately
+                justinhoang = import ./configurations/home/base.nix {
+                  inherit lib;
                   pkgs = pkgsFor.x86_64-linux;
-                in
-                {
-                  # define each user separately
-                  justinhoang = import ./configurations/home/justinhoang.nix {
-                    inherit pkgs lib;
-                  };
+                  username = "justinhoang";
                 };
+              };
             })
           ];
           specialArgs = {
@@ -192,16 +186,14 @@
             (import ./configurations/home/module.nix {
               inherit inputs outputs;
               # define the users
-              users =
-                let
+              users = {
+                # define each user separately
+                justinhoang = import ./configurations/home/base.nix {
+                  inherit lib;
                   pkgs = pkgsFor.x86_64-linux;
-                in
-                {
-                  # define each user separately
-                  justinhoang = import ./configurations/home/justinhoang.nix {
-                    inherit pkgs lib;
-                  };
+                  username = "justinhoang";
                 };
+              };
             })
           ];
           specialArgs = {
@@ -209,7 +201,6 @@
           };
         };
       };
-
       darwinConfigurations = {
         mbp3 = lib.darwinSystem {
           modules = [
@@ -219,16 +210,14 @@
             (import ./configurations/home/module.nix {
               inherit inputs outputs;
               # define the users
-              users =
-                let
+              users = {
+                # define each user separately
+                justinhoang = import ./configurations/home/base.nix {
+                  inherit lib;
                   pkgs = pkgsFor.aarch64-darwin;
-                in
-                {
-                  # define each user separately
-                  justinhoang = import ./configurations/home/justinhoang.nix {
-                    inherit pkgs lib;
-                  };
+                  username = "justinhoang";
                 };
+              };
             })
           ];
           specialArgs = {
@@ -236,20 +225,21 @@
           };
         };
       };
-
-      # Define some standalone home-manager profiles
       homeConfigurations = {
-        justinhoang =
+        # windows subsystem for linux
+        wsl =
           let
             pkgs = pkgsFor.x86_64-linux;
           in
           lib.homeManagerConfiguration {
             inherit pkgs;
             modules = [
-              ./configurations/home/justinhoang.nix
-              ./configurations/home/standalone.nix
+              (import ./configurations/home/base.nix {
+                inherit pkgs lib;
+                username = "justinhoang";
+              })
+              ./configurations/home/wsl.nix
             ];
-
             extraSpecialArgs = {
               inherit inputs outputs;
             };

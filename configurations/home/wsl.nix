@@ -9,7 +9,6 @@
 
     "${inputs.self}/modules/home/cli"
     "${inputs.self}/modules/home/development"
-    "${inputs.self}/modules/home/gui"
   ];
 
   config.home = {
@@ -90,14 +89,6 @@
         };
       };
       zsh.enable = true;
-    };
-
-    gui = {
-      alacritty.enable = true;
-      firefox.enable = true;
-      obs.enable = true;
-      spotify.enable = true;
-      vscode.enable = true;
     };
   };
 }

@@ -1,13 +1,14 @@
 {
   pkgs,
   lib,
+  username,
   ...
 }:
 {
   home = {
-    username = "justinhoang";
+    inherit username;
 
-    homeDirectory = lib.mkDefault "/${if pkgs.stdenv.isDarwin then "Users" else "home"}/justinhoang";
+    homeDirectory = lib.mkDefault "/${if pkgs.stdenv.isDarwin then "Users" else "home"}/${username}";
     # For macOS, $PATH must contain these.
     sessionPath = lib.mkIf pkgs.stdenv.isDarwin [
       "/etc/profiles/per-user/$USER/bin" # To access home-manager binaries
