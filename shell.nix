@@ -8,11 +8,11 @@ let
 in
 pkgs.mkShell {
   # enable the shell hooks
-  inherit (self.checks.git-hooks-check.${system}) shellHook;
+  inherit (self.checks.${system}.git-hooks-check) shellHook;
 
   # define the programs available when running `nix develop`
   # add the packages from the git-hooks list too
-  buildInputs = self.checks.git-hooks-check.${system}.enabledPackages;
+  buildInputs = self.checks.${system}.git-hooks-check.enabledPackages;
   packages = with pkgs; [
     # cli
     btop # system monitoring

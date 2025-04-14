@@ -92,19 +92,42 @@
       overlays = import ./overlays { inherit inputs outputs; };
       formatter = forEachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
 
-      checks = {
-        formatting = forEachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.check self);
-        git-hooks-check = forEachSystem (
-          pkgs:
-          let
-            inherit (pkgs) system;
-          in
-          inputs.git-hooks-nix.lib.${system}.run {
-            src = ./.;
-            imports = [ ./git-hooks.nix ];
-          }
-        );
-      };
+      checks = forEachSystem (pkgs: {
+        formatting = treefmtEval.${pkgs.system}.config.build.check self;
+        git-hooks-check = inputs.git-hooks-nix.lib.${pkgs.system}.run {
+          src = ./.;
+          imports = [
+            (import ./git-hooks.nix {
+              inherit pkgs;
+            })
+          ];
+        };
+        # https://discourse.nixos.org/t/nix-flake-check-to-check-for-error-messages/20832/4
+        neovim-check-config =
+          pkgs.runCommand "neovim-check-config"
+            {
+              buildInputs = with pkgs; [
+                git
+                neovim
+              ];
+            }
+            # bash
+            ''
+              # We *must* create some output, usually contains test logs for
+              # checks
+              mkdir -p "$out"
+
+              # Probably want to do something to ensure your config file is
+              # read, too
+              export HOME=$TMPDIR
+              ${pkgs.neovim}/bin/nvim --headless -c "q" 2> "$out/nvim.log"
+
+              if [ -n "$(cat "$out/nvim.log")" ]; then
+                echo "output: "$(cat "$out/nvim.log")""
+                exit 1
+              fi
+            '';
+      });
       devShells = forEachSystem (pkgs: {
         default = import ./shell.nix {
           inherit self pkgs;

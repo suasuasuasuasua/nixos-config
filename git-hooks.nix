@@ -1,4 +1,6 @@
+{ pkgs, ... }:
 {
+  # https://github.com/cachix/git-hooks.nix
   hooks = {
     # Docs
     markdownlint.enable = true; # format markdown files
@@ -14,12 +16,14 @@
     trim-trailing-whitespace.enable = true; # trim trailing whitespace
 
     # Nix
-    nixfmt-rfc-style.enable = true; # format nix files to rfc standards
     deadnix.enable = true; # remove any unused variabes and imports
-    # https://github.com/determinatesystems/flake-checker/issues/156
-    flake-checker.enable = false; # run `flake check`
-    statix.enable = true; # check "good practices" for nix
+    flake-checker = {
+      enable = true; # run `flake check`
+      package = pkgs.flake-checker;
+    };
     nil.enable = true; # lsp that also has formatter
+    nixfmt-rfc-style.enable = true; # format nix files to rfc standards
+    statix.enable = true; # check "good practices" for nix
 
     # Shell
     beautysh.enable = true; # format bash files
