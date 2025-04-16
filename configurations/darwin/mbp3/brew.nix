@@ -32,8 +32,8 @@
     enable = true;
     onActivation = {
       # don't upgrade automatically -- let's do manual brew upgrades
-      upgrade = true;
-      autoUpdate = true;
+      upgrade = false;
+      autoUpdate = false;
       # uninstall brew apps not specified here
       cleanup = "zap";
     };
@@ -51,6 +51,9 @@
       # dev
       "kate" # kde text editor
       "docker" # container runner and manager
+
+      # games
+      "battle-net"
 
       # general
       "element" # chat
