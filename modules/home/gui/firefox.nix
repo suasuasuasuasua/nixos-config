@@ -60,7 +60,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.sessionVariables = {
+    home.sessionVariables = lib.mkIf pkgs.stdenv.isLinux {
       MOZ_ENABLE_WAYLAND = "1";
     };
 
