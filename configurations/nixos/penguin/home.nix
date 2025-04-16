@@ -8,6 +8,7 @@
     imports = [
       # import the modules
       "${inputs.self}/modules/home/cli"
+      "${inputs.self}/modules/home/desktop"
       "${inputs.self}/modules/home/development"
       "${inputs.self}/modules/home/gui"
     ];
@@ -23,6 +24,10 @@
         github.enable = true; # github cli integration
         gnupg.enable = true; # gpg key signing
         tmux.enable = true; # terminal multiplexer
+      };
+
+      desktop = {
+        plasma-manager.enable = true;
       };
 
       development = {
