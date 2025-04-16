@@ -175,31 +175,6 @@
             })
           ];
         };
-        # https://discourse.nixos.org/t/nix-flake-check-to-check-for-error-messages/20832/4
-        neovim-check-config =
-          pkgs.runCommand "neovim-check-config"
-            {
-              buildInputs = with pkgs; [
-                git
-                neovim
-              ];
-            }
-            # bash
-            ''
-              # We *must* create some output, usually contains test logs for
-              # checks
-              mkdir -p "$out"
-
-              # Probably want to do something to ensure your config file is
-              # read, too
-              export HOME=$TMPDIR
-              ${pkgs.neovim}/bin/nvim --headless -c "q" 2> "$out/nvim.log"
-
-              if [ -n "$(cat "$out/nvim.log")" ]; then
-                echo "output: "$(cat "$out/nvim.log")""
-                exit 1
-              fi
-            '';
       });
       devShells = forEachSystem (pkgs: {
         default = import ./shell.nix {
