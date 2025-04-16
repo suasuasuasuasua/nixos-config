@@ -35,10 +35,6 @@
         utm.enable = true; # virtual machine manager
       };
 
-      gui = {
-        rpi-imager.enable = false; # broken on version 1.8.5 and  channel 24.11
-      };
-
       utility = {
         appcleaner.enable = true; # cleans log/config files
         iina.enable = true; # media player
