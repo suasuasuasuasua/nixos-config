@@ -56,11 +56,11 @@ in
           # TODO: implement standalone home manager configuration first
           # # By default there is no home-manager options completion, thus you can
           # # add this entry.
-          # home-manager = {
-          #   expr = ''
-          #     (builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations."justinhoang@lab".options;
-          #   '';
-          # };
+          home-manager = {
+            expr = ''
+              (builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations."wsl".options;
+            '';
+          };
         };
       };
     };

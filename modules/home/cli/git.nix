@@ -11,7 +11,7 @@ in
     enable = lib.mkEnableOption ''
       Distributed version control system
     '';
-    # TODO: add dynamic username, emial, gpg signing, etc.
+    # TODO: add dynamic username, email, gpg signing, etc.
   };
 
   config = lib.mkIf cfg.enable {

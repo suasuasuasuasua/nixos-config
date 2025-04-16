@@ -69,7 +69,6 @@ in
         # 2. Under 'bus info', translate the bus ID hexadecimal to decimal and format:
         #    pci@0000:0e:00.0 -> PCI:14:0:0
         #    - Do this step for both the Nvidia/AMD and integrated GPU
-        # TODO: not just for laptops?
         prime = lib.mkIf cfg.laptop.enable {
           offload = {
             enable = true;

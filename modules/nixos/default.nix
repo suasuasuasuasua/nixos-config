@@ -4,6 +4,7 @@
   lib,
   config,
   pkgs,
+  userConfigs,
   ...
 }:
 {
@@ -35,8 +36,7 @@
         flake-registry = "";
         trusted-users = [
           "root"
-          "justinhoang" # TODO: make this dynamic
-        ];
+        ] ++ map ({ username, ... }: username) userConfigs;
       };
 
       # Opinionated: make flake registry and nix path match flake inputs

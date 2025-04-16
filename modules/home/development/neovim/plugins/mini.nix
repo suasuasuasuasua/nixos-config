@@ -5,7 +5,6 @@
 
     plugins.mini = {
       enable = true;
-      # TODO: research mini more! i could be a mini merchant
 
       modules = {
         # better around/inside textobjects (https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md)

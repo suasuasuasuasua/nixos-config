@@ -49,7 +49,7 @@ in
         openFirewall = true;
 
         options = {
-          # TODO: kinda ugly but you can only access one library
+          # NOTE: kinda ugly but you can only access one library
           calibreLibrary = builtins.elemAt cfg.libraries 0;
           reverseProxyAuth = {
             enable = true;

@@ -13,7 +13,6 @@
     "${inputs.self}/modules/nixos/services"
   ];
 
-  # TODO: if this gets too complex/long, modularize into folders
   config = {
     environment.variables = {
       EDITOR = "nvim";

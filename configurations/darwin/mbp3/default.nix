@@ -2,6 +2,7 @@
   self,
   lib,
   pkgs,
+  userConfigs,
   ...
 }:
 {
@@ -13,9 +14,19 @@
     );
 
   # For home-manager to work.
-  users.users.justinhoang = {
-    home = "/Users/justinhoang";
-  };
+  users.users =
+    let
+      helper =
+        acc:
+        { username, ... }:
+        {
+          ${username} = {
+            home = "/Users/${username}";
+          };
+        }
+        // acc;
+    in
+    builtins.foldl' helper { } userConfigs;
 
   nix = {
     optimise = {

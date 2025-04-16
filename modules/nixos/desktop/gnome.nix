@@ -10,8 +10,6 @@ in
 {
   options.nixos.desktop.gnome = {
     enable = lib.mkEnableOption "Enable Gnome desktop environment";
-    # TODO: add options for enabling display managers like sddm, ly, etc.
-    # TODO: add options for specific packages and default to below list
   };
 
   config = lib.mkIf cfg.enable {
