@@ -133,7 +133,7 @@ in
         # https://nur.nix-community.org/repos/rycee/
         extensions = with pkgs.firefox-addons; [
           betterttv # twitch [dot] tv integration
-          bypass-paywalls-clean # bypass the paywalls
+          # bypass-paywalls-clean # WARNING: bypass the paywalls - not available
           darkreader # automatic dark mode
           don-t-fuck-with-paste # prevent websites from modifying copy+paste
           edit-with-emacs # allow emacs-like editing in text fields
