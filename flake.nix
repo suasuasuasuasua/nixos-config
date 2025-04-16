@@ -90,11 +90,13 @@
       defineUsers =
         acc:
         { username, system }:
+        let
+          pkgs = pkgsFor.${system};
+        in
         {
           ${username} =
             import ./configurations/home/base.nix {
-              inherit lib username;
-              pkgs = pkgsFor.${system};
+              inherit lib pkgs username;
             }
             // acc;
         };
