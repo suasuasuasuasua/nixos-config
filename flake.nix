@@ -85,11 +85,84 @@
 
       # Eval the treefmt modules from ./treefmt.nix
       treefmtEval = forEachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+
+      # Helper function for making nixos and darwin user configurations
+      defineUsers =
+        acc:
+        { username, system }:
+        {
+          ${username} =
+            import ./configurations/home/base.nix {
+              inherit lib username;
+              pkgs = pkgsFor.${system};
+            }
+            // acc;
+        };
+      # Helper function for making nixos systems
+      defineNixosSystem =
+        name: usernames:
+        lib.nixosSystem {
+          modules = [
+            ./configurations/nixos/${name}
+            home-manager.nixosModules.home-manager
+            (import ./configurations/home/module.nix {
+              inherit inputs outputs;
+              # build the attrset
+              # https://noogle.dev/f/builtins/foldl'
+              users = builtins.foldl' defineUsers { } usernames;
+            })
+          ];
+          # Pass these arguments through the modules
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
+      # Helper function for making darwin systems
+      defineDarwinSystem =
+        name: usernames:
+        lib.darwinSystem {
+          modules = [
+            ./configurations/darwin/${name}
+            home-manager.darwinModules.home-manager
+            (import ./configurations/home/module.nix {
+              inherit inputs outputs;
+              # build the attrset
+              # https://noogle.dev/f/builtins/foldl'
+              users = builtins.foldl' defineUsers { } usernames;
+            })
+          ];
+          # Pass these arguments through the modules
+          specialArgs = {
+            inherit self inputs outputs;
+          };
+        };
+      # Helper function for making standalone home-manager configurations
+      defineHomeConfiguration =
+        {
+          username,
+          system,
+          profile,
+        }:
+        let
+          pkgs = pkgsFor.${system};
+        in
+        lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            (import ./configurations/home/base.nix {
+              inherit pkgs lib username;
+            })
+            ./configurations/home/${profile}.nix
+          ];
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+        };
     in
     {
       inherit lib;
 
-      overlays = import ./overlays { inherit inputs outputs; };
+      overlays = import ./overlays { inherit inputs; };
       formatter = forEachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
 
       checks = forEachSystem (pkgs: {
@@ -135,138 +208,46 @@
       });
 
       nixosConfigurations = {
-        lab = lib.nixosSystem {
-          modules = [
-            ./configurations/nixos/lab
-
-            home-manager.nixosModules.home-manager
-            (import ./configurations/home/module.nix {
-              inherit inputs outputs;
-              # define the users
-              users = {
-                # define each user separately
-                justinhoang = import ./configurations/home/base.nix {
-                  inherit lib;
-                  pkgs = pkgsFor.x86_64-linux;
-                  username = "justinhoang";
-                };
-              };
-            })
-          ];
-          specialArgs = {
-            inherit inputs outputs;
-          };
-        };
-        legion = lib.nixosSystem {
-          modules = [
-            ./configurations/nixos/legion
-
-            home-manager.nixosModules.home-manager
-            (import ./configurations/home/module.nix {
-              inherit inputs outputs;
-              # define the users
-              users = {
-                # define each user separately
-                justinhoang = import ./configurations/home/base.nix {
-                  inherit lib;
-                  pkgs = pkgsFor.x86_64-linux;
-                  username = "justinhoang";
-                };
-              };
-            })
-          ];
-          specialArgs = {
-            inherit inputs outputs;
-          };
-        };
-        penguin = lib.nixosSystem {
-          modules = [
-            ./configurations/nixos/penguin
-
-            home-manager.nixosModules.home-manager
-            (import ./configurations/home/module.nix {
-              inherit inputs outputs;
-              # define the users
-              users = {
-                # define each user separately
-                justinhoang = import ./configurations/home/base.nix {
-                  inherit lib;
-                  pkgs = pkgsFor.x86_64-linux;
-                  username = "justinhoang";
-                };
-              };
-            })
-          ];
-          specialArgs = {
-            inherit inputs outputs;
-          };
-        };
-        pi = lib.nixosSystem {
-          modules = [
-            ./configurations/nixos/pi
-
-            home-manager.nixosModules.home-manager
-            (import ./configurations/home/module.nix {
-              inherit inputs outputs;
-              # define the users
-              users = {
-                # define each user separately
-                justinhoang = import ./configurations/home/base.nix {
-                  inherit lib;
-                  pkgs = pkgsFor.x86_64-linux;
-                  username = "justinhoang";
-                };
-              };
-            })
-          ];
-          specialArgs = {
-            inherit inputs outputs;
-          };
-        };
+        lab = defineNixosSystem "lab" [
+          {
+            username = "justinhoang";
+            system = "x86_64-linux";
+          }
+        ];
+        legion = defineNixosSystem "legion" [
+          {
+            username = "justinhoang";
+            system = "x86_64-linux";
+          }
+        ];
+        penguin = defineNixosSystem "penguin" [
+          {
+            username = "justinhoang";
+            system = "x86_64-linux";
+          }
+        ];
+        pi = defineNixosSystem "pi" [
+          {
+            username = "justinhoang";
+            system = "aarch64-linux";
+          }
+        ];
       };
       darwinConfigurations = {
-        mbp3 = lib.darwinSystem {
-          modules = [
-            ./configurations/darwin/mbp3
-
-            home-manager.darwinModules.home-manager
-            (import ./configurations/home/module.nix {
-              inherit inputs outputs;
-              # define the users
-              users = {
-                # define each user separately
-                justinhoang = import ./configurations/home/base.nix {
-                  inherit lib;
-                  pkgs = pkgsFor.aarch64-darwin;
-                  username = "justinhoang";
-                };
-              };
-            })
-          ];
-          specialArgs = {
-            inherit self inputs outputs;
-          };
-        };
+        mbp3 = defineDarwinSystem "mbp3" [
+          {
+            username = "justinhoang";
+            system = "aarch64-darwin";
+          }
+        ];
       };
       homeConfigurations = {
         # windows subsystem for linux
-        wsl =
-          let
-            pkgs = pkgsFor.x86_64-linux;
-          in
-          lib.homeManagerConfiguration {
-            inherit pkgs;
-            modules = [
-              (import ./configurations/home/base.nix {
-                inherit pkgs lib;
-                username = "justinhoang";
-              })
-              ./configurations/home/wsl.nix
-            ];
-            extraSpecialArgs = {
-              inherit inputs outputs;
-            };
-          };
+        wsl = defineHomeConfiguration {
+          username = "justinhoang";
+          system = "x86_64-linux";
+          profile = "wsl";
+        };
       };
     };
 
