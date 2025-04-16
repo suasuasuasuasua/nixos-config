@@ -14,7 +14,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.sessionVariables = {
+    home.sessionVariables = lib.mkIf pkgs.stdenv.isLinux {
       NIXOS_OZONE_WL = "1";
     };
 
