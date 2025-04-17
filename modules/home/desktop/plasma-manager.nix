@@ -17,11 +17,14 @@ in
     '';
 
     # TODO: how to add other settings?
+    # Use the following command to discover current settings
+    # nix run github:nix-community/plasma-manager
   };
 
   config = lib.mkIf cfg.enable {
     # https://github.com/nix-community/plasma-manager
     # https://nix-community.github.io/plasma-manager/options.xhtml
+    # https://github.com/nix-community/plasma-manager/blob/trunk/examples/home.nix
     programs.plasma = {
       enable = true;
 
@@ -32,24 +35,18 @@ in
         clickItemTo = "open"; # If you liked the click-to-open default from plasma 5
         lookAndFeel = "org.kde.breezedark.desktop";
         cursor = {
-          theme = "Bibata-Modern-Ice";
-          size = 32;
+          theme = "breeze";
+          size = 24;
         };
-        iconTheme = "Papirus-Dark";
-        wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
+        iconTheme = "breeze-dark";
+        # Milky way is goated
+        wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/MilkyWay/contents/images/5120x2280.png";
       };
 
       hotkeys.commands."launch-konsole" = {
         name = "Launch Konsole";
         key = "Meta+Alt+K";
         command = "konsole";
-      };
-
-      fonts = {
-        general = {
-          family = "JetBrains Mono";
-          pointSize = 12;
-        };
       };
 
       desktop.widgets = [
@@ -71,12 +68,9 @@ in
         # Windows-like panel at the bottom
         {
           location = "bottom";
+          # NOTE: prefer verbose widget name
+          # if no configuration is needed, then specify the name only
           widgets = [
-            # We can configure the widgets by adding the name and config
-            # attributes. For example to add the the kickoff widget and set the
-            # icon to "nix-snowflake-white" use the below configuration. This will
-            # add the "icon" key to the "General" group for the widget in
-            # ~/.config/plasma-org.kde.plasma.desktop-appletsrc.
             {
               name = "org.kde.plasma.kickoff";
               config = {
@@ -86,27 +80,7 @@ in
                 };
               };
             }
-            # Or you can configure the widgets by adding the widget-specific options for it.
-            # See modules/widgets for supported widgets and options for these widgets.
-            # For example:
-            {
-              kickoff = {
-                sortAlphabetically = true;
-                icon = "nix-snowflake-white";
-              };
-            }
-            # Adding configuration to the widgets can also for example be used to
-            # pin apps to the task-manager, which this example illustrates by
-            # pinning dolphin and konsole to the task-manager by default with widget-specific options.
-            {
-              iconTasks = {
-                launchers = [
-                  "applications:org.kde.dolphin.desktop"
-                  "applications:org.kde.konsole.desktop"
-                ];
-              };
-            }
-            # Or you can do it manually, for example:
+            "org.kde.plasma.marginsseparator"
             {
               name = "org.kde.plasma.icontasks";
               config = {
@@ -114,41 +88,18 @@ in
                   launchers = [
                     "applications:org.kde.dolphin.desktop"
                     "applications:org.kde.konsole.desktop"
+                    "applications:org.kde.kate.desktop"
+                    "applications:code.desktop"
+                    "applications:firefox.desktop"
+                    "applications:spotify.desktop"
                   ];
                 };
               };
             }
-            # If no configuration is needed, specifying only the name of the
-            # widget will add them with the default configuration.
             "org.kde.plasma.marginsseparator"
-            # If you need configuration for your widget, instead of specifying the
-            # the keys and values directly using the config attribute as shown
-            # above, plasma-manager also provides some higher-level interfaces for
-            # configuring the widgets. See modules/widgets for supported widgets
-            # and options for these widgets. The widgets below shows two examples
-            # of usage, one where we add a digital clock, setting 12h time and
-            # first day of the week to Sunday and another adding a systray with
-            # some modifications in which entries to show.
-            {
-              digitalClock = {
-                calendar.firstDayOfWeek = "sunday";
-                time.format = "12h";
-              };
-            }
-            {
-              systemTray.items = {
-                # We explicitly show bluetooth and battery
-                shown = [
-                  "org.kde.plasma.battery"
-                  "org.kde.plasma.bluetooth"
-                ];
-                # And explicitly hide networkmanagement and volume
-                hidden = [
-                  "org.kde.plasma.networkmanagement"
-                  "org.kde.plasma.volume"
-                ];
-              };
-            }
+            "org.kde.plasma.systemtray"
+            "org.kde.plasma.digitalclock"
+            "org.kde.plasma.showdesktop"
           ];
           hiding = "autohide";
         }
@@ -170,11 +121,6 @@ in
                 };
                 overrideForMaximized.enable = false;
                 titleReplacements = [
-                  {
-                    type = "regexp";
-                    originalTitle = "^Brave Web Browser$";
-                    newTitle = "Brave";
-                  }
                   {
                     type = "regexp";
                     originalTitle = ''\\bDolphin\\b'';
@@ -249,22 +195,36 @@ in
 
       powerdevil = {
         AC = {
-          powerButtonAction = "lockScreen";
           autoSuspend = {
-            action = "shutDown";
-            idleTimeout = 1000;
+            action = "sleep";
+            idleTimeout = 1200; # 20 minutes
           };
           turnOffDisplay = {
-            idleTimeout = 1000;
+            idleTimeout = 600; # 10 minutes
             idleTimeoutWhenLocked = "immediately";
           };
+          powerButtonAction = "lockScreen";
+          powerProfile = "performance";
         };
         battery = {
-          powerButtonAction = "sleep";
           whenSleepingEnter = "standbyThenHibernate";
+          powerButtonAction = "sleep";
+          powerProfile = "balanced";
         };
         lowBattery = {
+          displayBrightness = 30;
           whenLaptopLidClosed = "hibernate";
+          powerProfile = "powerSaving";
+        };
+
+        batteryLevels = {
+          lowLevel = 20;
+          criticalLevel = 5;
+          criticalAction = "hibernate";
+        };
+
+        general = {
+          pausePlayersOnSuspend = true;
         };
       };
 
@@ -272,7 +232,12 @@ in
         edgeBarrier = 0; # Disables the edge-barriers introduced in plasma 6.1
         cornerBarrier = false;
 
-        scripts.polonium.enable = true;
+        scripts.polonium = {
+          enable = true;
+          settings = {
+            layout.engine = "binaryTree";
+          };
+        };
       };
 
       kscreenlocker = {
