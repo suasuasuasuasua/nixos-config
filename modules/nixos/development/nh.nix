@@ -7,7 +7,6 @@ in
     enable = lib.mkEnableOption ''
       Yet another nix cli helper
     '';
-    # TODO: modularize flake path in a better way
     flake = lib.mkOption {
       type = with lib.types; nullOr path;
       default = null;

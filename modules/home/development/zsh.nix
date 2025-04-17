@@ -10,7 +10,6 @@ in
 {
   options.home.development.zsh = {
     enable = lib.mkEnableOption "Enable ZSH shell config";
-    # TODO: add default set of packages or custom config
   };
 
   config = lib.mkIf cfg.enable {

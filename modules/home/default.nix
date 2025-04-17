@@ -3,6 +3,7 @@
   outputs,
   lib,
   pkgs,
+  userConfigs,
   ...
 }:
 {
@@ -30,8 +31,7 @@
         flake-registry = "";
         trusted-users = [
           "root"
-          "justinhoang" # TODO: make this dynamic
-        ];
+        ] ++ map ({ username, ... }: username) userConfigs;
 
         # darwin specific extra platform builders
         extra-platforms = lib.mkIf pkgs.stdenv.isDarwin "aarch64-darwin x86_64-darwin";

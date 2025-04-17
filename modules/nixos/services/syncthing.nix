@@ -28,8 +28,6 @@ in
 
       guiAddress = "http://localhost:${toString cfg.port}";
       openDefaultPorts = true;
-      # # TODO: do we need any settings for syncthing?
-      # settings = { };
     };
 
     services.nginx.virtualHosts = {

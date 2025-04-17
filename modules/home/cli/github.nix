@@ -11,13 +11,11 @@ in
     enable = lib.mkEnableOption ''
       GitHub CLI tool
     '';
-    # TODO: add default set of packages or custom config
   };
 
   config = lib.mkIf cfg.enable {
     programs.gh = {
       enable = true;
-      # TODO: add extensions as necessary
       extensions = [ ];
 
       settings = {

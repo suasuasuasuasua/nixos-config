@@ -31,8 +31,8 @@
         options = "-d sat";
       }
 
-      # TODO: i guess these nvme's can't do the smart test? i am reading that
-      # it's fine anyway and ssds don't need this?
+      # i guess these nvme's can't do the smart test? i am reading that it's
+      # fine anyway and ssds don't need this?
       # # nvme 1
       # {
       #   device = "/dev/disk/by-id/nvme-WD_BLACK_SN770_2TB_245268800136";

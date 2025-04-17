@@ -3,6 +3,7 @@
 {
   inputs,
   pkgs,
+  userConfigs,
   ...
 }:
 {
@@ -30,21 +31,29 @@
   # but cannot set the login shell because that's root level operation
   programs.zsh.enable = true;
 
-  users.users = {
-    justinhoang = {
-      # If you do, you can skip setting a root password by passing
-      # '--no-root-passwd' to nixos-install. Be sure to change it (using passwd)
-      # after rebooting!
-      initialPassword = "password";
-      isNormalUser = true;
-      extraGroups = [
-        "wheel"
-        "docker"
-        "libvirtd"
-      ];
-      shell = pkgs.zsh;
-    };
-  };
+  users.users =
+    let
+      helper =
+        acc:
+        { username, ... }:
+        {
+          ${username} = {
+            # If you do, you can skip setting a root password by passing
+            # '--no-root-passwd' to nixos-install. Be sure to change it (using
+            # passwd) after rebooting!
+            initialPassword = "password";
+            isNormalUser = true;
+            extraGroups = [
+              "wheel"
+              "docker"
+              "libvirtd"
+            ];
+            shell = pkgs.zsh;
+          };
+        }
+        // acc;
+    in
+    builtins.foldl' helper { } userConfigs;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
@@ -64,5 +73,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }

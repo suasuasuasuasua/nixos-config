@@ -12,7 +12,6 @@ in
     enable = lib.mkEnableOption ''
       GNU Image Manipulation Program
     '';
-    # TODO: add extra libraries and packages?
   };
 
   config = lib.mkIf cfg.enable {

@@ -10,7 +10,6 @@ in
   options.home.gui.alacritty = {
     enable = lib.mkEnableOption "Enable alacritty";
 
-    # TODO: add better options for font
     font = lib.mkOption {
       type = lib.types.str;
       default = "JetBrainsMono Nerd Font";

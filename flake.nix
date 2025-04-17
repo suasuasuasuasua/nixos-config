@@ -95,54 +95,76 @@
 
       # Helper function for making nixos and darwin user configurations
       defineUsers =
-        acc:
-        { username, system }:
         let
-          pkgs = pkgsFor.${system};
-        in
-        {
-          ${username} =
-            import ./configurations/home/base.nix {
-              inherit lib pkgs username;
+          # Inner function to collect the configuration for each user
+          defineUser =
+            acc:
+            # deconstruct each user to find their username and system
+            { username, system }:
+            let
+              pkgs = pkgsFor.${system};
+            in
+            {
+              ${username} = import ./configurations/home/base.nix {
+                inherit lib pkgs username;
+              };
             }
             // acc;
-        };
+        in
+        # build the attrset
+        # https://noogle.dev/f/builtins/foldl'
+        userConfigs: builtins.foldl' defineUser { } userConfigs;
       # Helper function for making nixos systems
       defineNixosSystem =
-        name: usernames:
+        name: userConfigs:
         lib.nixosSystem {
           modules = [
             ./configurations/nixos/${name}
             home-manager.nixosModules.home-manager
-            (import ./configurations/home/module.nix {
-              inherit inputs outputs;
-              # build the attrset
-              # https://noogle.dev/f/builtins/foldl'
-              users = builtins.foldl' defineUsers { } usernames;
-            })
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit inputs outputs;
+                };
+
+                users = defineUsers userConfigs;
+              };
+            }
           ];
           # Pass these arguments through the modules
           specialArgs = {
-            inherit inputs outputs;
+            inherit inputs outputs userConfigs;
           };
         };
       # Helper function for making darwin systems
       defineDarwinSystem =
-        name: usernames:
+        name: userConfigs:
         lib.darwinSystem {
           modules = [
             ./configurations/darwin/${name}
             home-manager.darwinModules.home-manager
-            (import ./configurations/home/module.nix {
-              inherit inputs outputs;
-              # build the attrset
-              # https://noogle.dev/f/builtins/foldl'
-              users = builtins.foldl' defineUsers { } usernames;
-            })
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit inputs outputs;
+                };
+
+                users = defineUsers userConfigs;
+              };
+            }
           ];
           # Pass these arguments through the modules
           specialArgs = {
-            inherit self inputs outputs;
+            inherit
+              self
+              inputs
+              outputs
+              userConfigs
+              ;
           };
         };
       # Helper function for making standalone home-manager configurations
@@ -158,13 +180,11 @@
         lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            (import ./configurations/home/base.nix {
-              inherit pkgs lib username;
-            })
+            ./configurations/home/base.nix
             ./configurations/home/${profile}.nix
           ];
           extraSpecialArgs = {
-            inherit inputs outputs;
+            inherit inputs outputs username;
           };
         };
     in
@@ -228,9 +248,9 @@
       homeConfigurations = {
         # windows subsystem for linux
         wsl = defineHomeConfiguration {
+          profile = "wsl";
           username = "justinhoang";
           system = "x86_64-linux";
-          profile = "wsl";
         };
       };
     };

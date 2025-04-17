@@ -14,8 +14,8 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      # # dev
-      # docker # TODO: figure out how to add as service?
+      # dev
+      # docker # TODO: either use nixpkgs version (with service) or brew
 
       # files
       zstd # Zstandard real-time compression algorithm

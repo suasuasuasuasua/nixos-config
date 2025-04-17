@@ -12,7 +12,6 @@ in
     enable = lib.mkEnableOption ''
       Open Source gaming platform for GNU/Linux
     '';
-    # TODO: add extra libraries and packages?
   };
 
   config = lib.mkIf cfg.enable {

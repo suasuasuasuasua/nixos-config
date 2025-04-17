@@ -3,6 +3,4 @@
 { inputs, ... }:
 {
   imports = [ "${inputs.self}/modules/nixos" ];
-
-  # TODO: if this gets too complex/long, modularize into folders
 }

@@ -12,7 +12,6 @@ in
     enable = lib.mkEnableOption ''
       Terminal multiplexer
     '';
-    # TODO: add default set of packages or custom config
   };
 
   config = lib.mkIf cfg.enable {
@@ -42,7 +41,6 @@ in
             '';
         }
         sensible # sensible config
-        # tmux-powerline # pretty powerline # TODO: customize the things
         vim-tmux-navigator # prettier statusline
         yank # better copy and paste functionality
       ];

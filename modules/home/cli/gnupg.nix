@@ -12,7 +12,6 @@ in
     enable = lib.mkEnableOption ''
       Modern release of the GNU Privacy Guard, a GPL OpenPGP implementation
     '';
-    # TODO: add default set of packages or custom config
   };
 
   config = lib.mkIf cfg.enable {

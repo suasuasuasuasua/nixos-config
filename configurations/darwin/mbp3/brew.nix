@@ -44,9 +44,6 @@
       "ollama" # llm runner and manager
     ];
 
-    # TODO: look into whalebrews?
-    whalebrews = [ ];
-
     casks = [
       # dev
       "kate" # kde text editor

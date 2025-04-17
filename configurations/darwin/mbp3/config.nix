@@ -27,7 +27,7 @@
   };
 
   config = {
-    # shared cross plataform apps
+    # shared cross platform apps
     darwin = {
       development = {
         cli.enable = true; # useful cli tools
