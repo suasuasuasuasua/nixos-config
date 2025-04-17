@@ -16,7 +16,10 @@ in
     programs.nixvim = {
       # https://github.com/nvim-treesitter/nvim-treesitter-context
       plugins.treesitter-context = {
-        enable = true;
+        enable = false;
+        # TODO: https://github.com/nvim-treesitter/nvim-treesitter-context?tab=readme-ov-file#configuration
+        # research the settings when i have time. just annoying especially on
+        # long nix files
       };
       # https://github.com/nvim-treesitter/nvim-treesitter-textobjects
       plugins.treesitter-textobjects = {
