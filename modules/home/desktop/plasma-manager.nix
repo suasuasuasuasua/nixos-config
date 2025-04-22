@@ -22,7 +22,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # https://github.com/nix-community/plasma-manager5120x2880.pnreg
+    # https://github.com/nix-community/plasma-manager
     # https://nix-community.github.io/plasma-manager/options.xhtml
     # https://github.com/nix-community/plasma-manager/blob/trunk/examples/home.nix
     programs.plasma = {
