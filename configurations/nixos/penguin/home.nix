@@ -32,10 +32,10 @@
               docker_compose_language_service.enable = true; # docker compose
               dockerls.enable = true; # dockerfile
               gopls.enable = true; # go
+              harper_ls.enable = true; # spell check
               html.enable = true; # html
               jsonls.enable = true; # json
               nginx_language_server.enable = true; # nginx
-              ltex.enable = true; # latex
               marksman.enable = true; # markdown
               nil_ls.enable = true; # nix
               # nixd.enable = true; # nix

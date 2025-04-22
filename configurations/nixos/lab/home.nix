@@ -35,7 +35,6 @@
               html.enable = true; # html
               jsonls.enable = true; # json
               nginx_language_server.enable = true; # nginx
-              ltex.enable = true; # latex
               marksman.enable = true; # markdown
               nil_ls.enable = true; # nix
               # nixd.enable = true; # nix
