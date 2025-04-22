@@ -14,9 +14,12 @@ in
 
   config = lib.mkIf cfg.enable {
     services = {
-      displayManager.ly.enable = true;
-      # displayManager.sddm.enable = true;
-      # displayManager.sddm.wayland.enable = true;
+      displayManager = {
+        displayManager.sddm.enable = true;
+        displayManager.sddm.wayland.enable = true;
+
+        # displayManager.ly.enable = true;
+      };
 
       desktopManager.plasma6.enable = true;
       displayManager.defaultSession = "plasma";
@@ -32,6 +35,7 @@ in
       systemPackages =
         with pkgs;
         [
+          application-title-bar
           dmidecode
           elisa # music player
           filelight # disk usage
@@ -43,9 +47,9 @@ in
           krita # photo editing
           kalendar # calendar
           libreoffice-qt # office suite -- calligra wasn't working
+          plasmusic-toolbar
         ]
         ++ (with pkgs.kdePackages; [
-          koi # light/dark switcher
           kmail # mail client
           kmail-account-wizard # mail client helper
           kwin # window manager (not sure why not installed by default?)

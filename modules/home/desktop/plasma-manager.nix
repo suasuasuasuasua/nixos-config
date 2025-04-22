@@ -22,7 +22,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # https://github.com/nix-community/plasma-manager
+    # https://github.com/nix-community/plasma-manager5120x2880.pnreg
     # https://nix-community.github.io/plasma-manager/options.xhtml
     # https://github.com/nix-community/plasma-manager/blob/trunk/examples/home.nix
     programs.plasma = {
@@ -40,7 +40,8 @@ in
         };
         iconTheme = "breeze-dark";
         # Milky way is goated
-        wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/MilkyWay/contents/images/5120x2280.png";
+        wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Path/contents/images/2560x1600.jpg";
+        # wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/MilkyWay/contents/images/5120x2880.png";
       };
 
       hotkeys.commands."launch-konsole" = {
@@ -49,20 +50,8 @@ in
         command = "konsole";
       };
 
-      desktop.widgets = [
-        {
-          plasmusicToolbar = {
-            position = {
-              horizontal = 51;
-              vertical = 100;
-            };
-            size = {
-              width = 250;
-              height = 250;
-            };
-          };
-        }
-      ];
+      # Add any widgets
+      desktop.widgets = [ ];
 
       panels = [
         # Windows-like panel at the bottom
@@ -101,7 +90,7 @@ in
             "org.kde.plasma.digitalclock"
             "org.kde.plasma.showdesktop"
           ];
-          hiding = "autohide";
+          # hiding = "autohide";
         }
         # Application name, Global menu and Song information and playback controls at the top
         {
@@ -233,7 +222,7 @@ in
         cornerBarrier = false;
 
         scripts.polonium = {
-          enable = true;
+          enable = false;
           settings = {
             layout.engine = "binaryTree";
           };
@@ -271,11 +260,6 @@ in
       configFile = {
         baloofilerc."Basic Settings"."Indexing-Enabled" = false;
         kwinrc."org.kde.kdecoration2".ButtonsOnLeft = "SF";
-        kwinrc.Desktops.Number = {
-          value = 8;
-          # Forces kde to not change this value (even through the settings app).
-          immutable = true;
-        };
         kscreenlockerrc = {
           Greeter.WallpaperPlugin = "org.kde.potd";
           # To use nested groups use / as a separator. In the below example,

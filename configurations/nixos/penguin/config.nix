@@ -34,6 +34,7 @@
 
     # gui programs
     gui = {
+      appflowy.enable = true;
       discord.enable = true;
       element.enable = true;
       obsidian.enable = true;
