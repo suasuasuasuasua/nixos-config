@@ -50,10 +50,8 @@
               yamlls.enable = true; # yaml
             };
             plugins = {
-              arrow.enable = true; # bookmarks (;)
               auto-dark-mode.enable = true; # switch theme based on os
               auto-save.enable = true; # autosave the file
-              bufferline.enable = true; # prettier bufferline top bar
               diffview.enable = true; # show git-rev diffs
               dropbar.enable = true; # breadcrumb navigation
               flash.enable = true; # navigate faster with s,f,t
