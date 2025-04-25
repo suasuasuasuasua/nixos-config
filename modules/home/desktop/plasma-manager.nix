@@ -78,7 +78,7 @@ in
                     "applications:org.kde.dolphin.desktop"
                     "applications:org.kde.konsole.desktop"
                     "applications:org.kde.kate.desktop"
-                    "applications:code.desktop"
+                    "applications:codium.desktop"
                     "applications:firefox.desktop"
                     "applications:spotify.desktop"
                   ];
