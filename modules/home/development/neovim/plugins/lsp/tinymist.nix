@@ -24,7 +24,8 @@ in
 
       # See https://github.com/neovim/neovim/issues/30675
       extraOptions = {
-        offset_encoding = "utf-8";
+        # offset_encoding = "utf-8";
+        offset_encoding = "utf-16";
       };
     };
   };
