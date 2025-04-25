@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -18,6 +19,10 @@ in
       plugins.grug-far = {
         enable = true;
       };
+
+      extraPackages = with pkgs; [
+        ast-grep
+      ];
     };
   };
 }

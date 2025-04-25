@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   programs.nixvim = {
     # Highlight, edit, and navigate code
@@ -30,5 +31,10 @@
         #    - Treesitter + textobjects: https://nix-community.github.io/nixvim/plugins/treesitter-textobjects/index.html
       };
     };
+
+    extraPackages = with pkgs; [
+      nodejs
+      tree-sitter
+    ];
   };
 }
