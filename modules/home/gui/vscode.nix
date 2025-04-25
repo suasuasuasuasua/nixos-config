@@ -20,44 +20,61 @@ in
 
     programs.vscode = {
       enable = true;
-      package = pkgs.vscodium; # NOTE: fhs version exists
-      extensions = with pkgs.vscode-extensions; [
-        # General
-        aaron-bond.better-comments # colorized comments
-        adpyke.codesnap # screenshot code
-        christian-kohler.path-intellisense # autofill file and folder paths
-        codezombiech.gitignore # gitignore templates
-        gruntfuggly.todo-tree # todo tree view
-        hediet.vscode-drawio # draw.io integration
-        johnpapa.vscode-peacock # colorized projects
-        mikestead.dotenv # [dot] env file integration
-        mkhl.direnv # direnv integration
-        vscodevim.vim # vim emulation
-        waderyan.gitblame # git blame
+      # NOTE: fhs version exists
+      package = with pkgs; if stdenv.isLinux then vscodium else vscode;
 
-        # Formatters and Linters
-        davidanson.vscode-markdownlint # Markdown
-        esbenp.prettier-vscode # General
-        ms-python.black-formatter # Python
-        valentjn.vscode-ltex # Spell-check (NOTE: "plus" and harper not in nixpkgs)
+      extensions =
+        with pkgs.vscode-extensions;
+        [
+          # General
+          aaron-bond.better-comments # colorized comments
+          adpyke.codesnap # screenshot code
+          christian-kohler.path-intellisense # autofill file and folder paths
+          codezombiech.gitignore # gitignore templates
+          gruntfuggly.todo-tree # todo tree view
+          hediet.vscode-drawio # draw.io integration
+          johnpapa.vscode-peacock # colorized projects
+          mikestead.dotenv # [dot] env file integration
+          mkhl.direnv # direnv integration
+          vscodevim.vim # vim emulation
+          waderyan.gitblame # git blame
 
-        # LSPs and more
-        james-yu.latex-workshop # LaTeX
-        jnoortheen.nix-ide # Nix
-        mads-hartmann.bash-ide-vscode # Bash
-        ms-python.python # Python
-        ms-toolsai.jupyter # Jupyter
-        ms-vscode.cpptools # C/C++
-        myriad-dreamin.tinymist # Typst
-        redhat.java # Java
-        redhat.vscode-yaml # YAML
+          # Formatters and Linters
+          davidanson.vscode-markdownlint # Markdown
+          esbenp.prettier-vscode # General
+          ms-python.black-formatter # Python
+          valentjn.vscode-ltex # Spell-check (NOTE: "plus" and harper not in nixpkgs)
 
-        # Remote
-        ms-vscode-remote.remote-ssh
-        ms-vscode-remote.remote-ssh-edit
-        ms-vscode-remote.remote-wsl
-        ms-vscode-remote.remote-containers
-      ];
+          # LSPs and more
+          james-yu.latex-workshop # LaTeX
+          jnoortheen.nix-ide # Nix
+          mads-hartmann.bash-ide-vscode # Bash
+          ms-python.python # Python
+          ms-toolsai.jupyter # Jupyter
+          myriad-dreamin.tinymist # Typst
+          redhat.java # Java
+          redhat.vscode-yaml # YAML
+
+          # Remote
+          ms-vscode-remote.remote-ssh
+          ms-vscode-remote.remote-ssh-edit
+          ms-vscode-remote.remote-wsl
+          ms-vscode-remote.remote-containers
+        ]
+        ++ (
+          if pkgs.stdenv.isLinux then
+            with pkgs.vscode-extensions;
+            [
+              ms-vscode.cpptools
+            ]
+          else
+            [
+              # WARNING: cpptools not support on darwin. tracking here...
+              # https://github.com/NixOS/nixpkgs/issues/377294
+              # https://github.com/nix-community/nix-vscode-extensions/issues/113
+            ]
+
+        );
 
       # TODO: profiles available in 25.05 unstable...
     };
