@@ -173,9 +173,16 @@
           username,
           system,
           profile,
-        }:
+        }@userConfig:
         let
           pkgs = pkgsFor.${system};
+          # NOTE: home/default.nix expects a list of userConfigs to add to the
+          # trustedUsers. The reasoning is that a NixOS or macOS system may have
+          # multiple users, but the home-manager doesn't
+          # This is a bit hacky but meh
+          userConfigs = [
+            userConfig
+          ];
         in
         lib.homeManagerConfiguration {
           inherit pkgs;
@@ -184,7 +191,12 @@
             ./configurations/home/${profile}.nix
           ];
           extraSpecialArgs = {
-            inherit inputs outputs username;
+            inherit
+              inputs
+              outputs
+              username
+              userConfigs
+              ;
           };
         };
     in
