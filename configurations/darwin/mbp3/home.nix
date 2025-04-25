@@ -32,6 +32,7 @@
             lsp = {
               bashls.enable = true; # bash
               clangd.enable = true; # c/c++
+              cmake.enable = true; # cmake
               cssls.enable = true; # css
               docker_compose_language_service.enable = true; # docker compose
               dockerls.enable = true; # dockerfile
@@ -54,13 +55,13 @@
               yamlls.enable = true; # yaml
             };
             plugins = {
-              arrow.enable = true; # bookmarks (;)
+              # arrow.enable = true; # bookmarks (;)
               auto-dark-mode.enable = true; # switch theme based on os
               auto-save.enable = true; # autosave the file
-              bufferline.enable = true; # prettier bufferline top bar
+              # bufferline.enable = true; # prettier bufferline top bar
               diffview.enable = true; # show git-rev diffs
               dropbar.enable = true; # breadcrumb navigation
-              flash.enable = true; # navigate faster with s,f,t
+              # flash.enable = true; # navigate faster with s,f,t
               grug-far.enable = true; # find and rename across files
               hex.enable = true; # hex editor
               img-clip.enable = true; # paste images from clipboard
