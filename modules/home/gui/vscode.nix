@@ -10,24 +10,9 @@ in
 {
   options.home.gui.vscode = {
     enable = lib.mkEnableOption "Enable Visual Studio Code";
-    # TODO: add default set of packages or custom config
-  };
-
-  config = lib.mkIf cfg.enable {
-    home.sessionVariables = lib.mkIf pkgs.stdenv.isLinux {
-      NIXOS_OZONE_WL = "1";
-    };
-
-    programs.vscode = {
-      enable = true;
-      # NOTE: fhs version exists
-      # NOTE:
-      # workaround in macOS if app does not automatically run
-      # 1. settings>privacy&security>security
-      # 2. click allow app
-      package = pkgs.vscodium;
-
-      extensions =
+    extensions = lib.mkOption {
+      type = with lib.types; listOf package;
+      default =
         with pkgs.vscode-extensions;
         [
           # General
@@ -79,6 +64,40 @@ in
             ]
 
         );
+    };
+    userSettings = lib.mkOption {
+      inherit (pkgs.formats.json { }) type;
+      default = {
+        "vim.insertModeKeyBindings" = [
+          {
+            "before" = [
+              "j"
+              "k"
+            ];
+            "after" = [
+              "<Esc>"
+            ];
+          }
+        ];
+      };
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    home.sessionVariables = lib.mkIf pkgs.stdenv.isLinux {
+      NIXOS_OZONE_WL = "1";
+    };
+
+    programs.vscode = {
+      inherit (cfg) extensions userSettings;
+
+      enable = true;
+      # NOTE: fhs version exists
+      # NOTE:
+      # workaround in macOS if app does not automatically run
+      # 1. settings>privacy&security>security
+      # 2. click allow app
+      package = pkgs.vscodium;
 
       # TODO: profiles available in 25.05 unstable...
     };
