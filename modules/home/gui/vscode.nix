@@ -21,7 +21,11 @@ in
     programs.vscode = {
       enable = true;
       # NOTE: fhs version exists
-      package = with pkgs; if stdenv.isLinux then vscodium else vscode;
+      # NOTE:
+      # workaround in macOS if app does not automatically run
+      # 1. settings>privacy&security>security
+      # 2. click allow app
+      package = pkgs.vscodium;
 
       extensions =
         with pkgs.vscode-extensions;
