@@ -16,44 +16,44 @@ update:
 lint:
     nix fmt
 
-## Switch
+# Switch
 [group('dev')]
 [macos]
 switch:
     # NOTE: https://github.com/nix-community/nh/issues/149
     # wait until version 4.0.0
     darwin-rebuild switch --flake .
+
 [group('dev')]
 [linux]
 switch:
     nh os switch .
-## Switch
 
-## Boot
+# Boot
 [group('dev')]
 [macos]
 boot:
     # NOTE: https://github.com/nix-community/nh/issues/149
     # wait until version 4.0.0
     darwin-rebuild boot --flake .
+
 [group('dev')]
 [linux]
 boot:
     nh os boot .
-## Boot
 
-## Difference
+# Difference
 [group('dev')]
 [macos]
 diff:
     # NOTE: https://github.com/nix-community/nh/issues/149
     # wait until version 4.0.0
     darwin-rebuild build --flake . && nvd diff /run/current-system result
+
 [group('dev')]
 [linux]
 diff:
     nh os build .
-## Difference
 
 # Build the raspberry pi image
 [group('dev')]
