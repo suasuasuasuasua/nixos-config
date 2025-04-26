@@ -123,6 +123,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager = {
+                backupFileExtension = "bak";
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
@@ -147,6 +148,7 @@
             home-manager.darwinModules.home-manager
             {
               home-manager = {
+                backupFileExtension = "bak";
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
