@@ -123,6 +123,10 @@ in
                     name = "nixvim";
                     url = "https://nix-community.github.io/nixvim/";
                   }
+                  {
+                    name = "nixvim search";
+                    url = "https://nix-community.github.io/nixvim/search/";
+                  }
                 ];
               }
             ];
