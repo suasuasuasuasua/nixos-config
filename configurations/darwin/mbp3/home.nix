@@ -1,6 +1,5 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
-  # Enable home-manager for "justinhoang" user
   home-manager.users = {
     "justinhoang" = {
       imports = [
@@ -92,10 +91,16 @@
         };
 
         gui = {
-          alacritty.enable = true; # browser
+          alacritty.enable = true; # terminal emulator
           firefox.enable = true; # browser
           spotify.enable = true; # music platform
-          vscode.enable = true; # text editor
+          vscode = {
+            enable = true;
+            extensions = with pkgs.vscode-extensions; [
+              rust-lang.rust-analyzer # rust
+            ];
+            package = pkgs.vscodium;
+          };
         };
       };
     };
