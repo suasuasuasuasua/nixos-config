@@ -7,6 +7,16 @@
 }:
 let
   cfg = config.home.gui.vscode;
+
+  extensions =
+    options.home.gui.vscode.extensions.default
+    ++ lib.optionals (cfg.extensions != [ ]) cfg.extensions;
+  keybindings =
+    options.home.gui.vscode.keybindings.default
+    ++ lib.optionals (cfg.keybindings != [ ]) cfg.keybindings;
+  userSettings =
+    options.home.gui.vscode.userSettings.default
+    // lib.optionalAttrs (cfg.userSettings != { }) cfg.userSettings;
 in
 {
   options.home.gui.vscode = {
@@ -20,12 +30,17 @@ in
       type =
         with lib.types;
         with pkgs;
-        enum [
-          vscode
-          # vscode-fhs
-          vscodium
-          vscodium-fhs
-        ];
+        enum (
+          [
+            vscode
+            vscodium
+          ]
+          # Add the fhs versions for linux only
+          ++ lib.optionals pkgs.stdenv.isLinux [
+            vscode-fhs
+            vscodium-fhs
+          ]
+        );
       default = pkgs.vscodium;
     };
 
@@ -45,23 +60,14 @@ in
       NIXOS_OZONE_WL = "1";
     };
 
-    programs.vscode = with lib; {
+    programs.vscode = {
       inherit (cfg) package;
+      inherit extensions keybindings userSettings;
 
       enable = true;
       enableExtensionUpdateCheck = false;
       enableUpdateCheck = false;
       mutableExtensionsDir = false;
-
-      extensions =
-        options.home.gui.vscode.extensions.default
-        ++ lists.flatten (optional (cfg.extensions != [ ]) cfg.extensions);
-      keybindings =
-        options.home.gui.vscode.keybindings.default
-        ++ lists.flatten (optional (cfg.keybindings != [ ]) cfg.keybindings);
-      userSettings =
-        options.home.gui.vscode.userSettings.default
-        // optionalAttrs (cfg.userSettings != { }) cfg.userSettings;
 
       # TODO: profiles available in 25.05 unstable...
     };
