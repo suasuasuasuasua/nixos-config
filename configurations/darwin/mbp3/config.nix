@@ -16,6 +16,7 @@
     "${inputs.self}/modules/nixos/gui/appflowy.nix"
     "${inputs.self}/modules/nixos/gui/discord.nix"
     "${inputs.self}/modules/nixos/gui/obsidian.nix"
+    "${inputs.self}/modules/nixos/gui/protonmail.nix"
 
     inputs.mac-app-util.darwinModules.default
   ];
@@ -46,6 +47,7 @@
         appflowy.enable = true; # open source notion
         discord.enable = true; # voice and text chat software
         obsidian.enable = true; # markdown based note-taking app
+        protonmail.enable = true; # protonmail client
       };
     };
   };
