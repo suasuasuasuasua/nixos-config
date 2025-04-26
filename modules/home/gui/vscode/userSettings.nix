@@ -23,10 +23,14 @@ let
     "jupyter.askForKernelRestart" = false;
   };
   nixSettings = {
-    "nixformatterPath" = "nixfmt";
+    "nix.formatterPath" = "treefmt";
     "nix.enableLanguageServer" = true;
     "nix.serverSettings" = {
-      "nil.formatting.command" = [ "nixfmt" ];
+      "nil" = {
+        "formatting" = {
+          "command" = [ "nixfmt" ];
+        };
+      };
     };
   };
   typescriptSettings = {
