@@ -18,13 +18,15 @@ let
     # add any language specific extensions
     ++ builtins.foldl' (
       acc: name:
-      optionals cfg.languages.${name}.enable (
-        opts.languages.${name}.extensions.default
+      optionals cfg.languages-configurations.${name}.enable (
+        opts.languages-configurations.${name}.extensions.default
         # also add any additional language specific extensions
-        ++ (optionals (opts.languages.${name}.extensions != [ ]) cfg.languages.${name}.extensions)
+        ++ (optionals (
+          opts.languages-configurations.${name}.extensions != [ ]
+        ) cfg.languages-configurations.${name}.extensions)
       )
       ++ acc
-    ) [ ] (lib.attrNames cfg.languages);
+    ) [ ] (lib.attrNames cfg.languages-configurations);
   keybindings =
     with lib;
     # add base keybindings
@@ -34,13 +36,15 @@ let
     # add any language specific keybindings
     ++ builtins.foldl' (
       acc: name:
-      optionals cfg.languages.${name}.enable (
-        opts.languages.${name}.keybindings.default
+      optionals cfg.languages-configurations.${name}.enable (
+        opts.languages-configurations.${name}.keybindings.default
         # also add any additional language specific keybindings
-        ++ (optionals (opts.languages.${name}.keybindings != [ ]) cfg.languages.${name}.keybindings)
+        ++ (optionals (
+          opts.languages-configurations.${name}.keybindings != [ ]
+        ) cfg.languages-configurations.${name}.keybindings)
       )
       ++ acc
-    ) [ ] (lib.attrNames cfg.languages);
+    ) [ ] (lib.attrNames cfg.languages-configurations);
   userSettings =
     with lib;
     # add base userSettings
@@ -50,13 +54,15 @@ let
     # add any language specific userSettings
     // builtins.foldl' (
       acc: name:
-      optionalAttrs cfg.languages.${name}.enable (
-        opts.languages.${name}.userSettings.default
+      optionalAttrs cfg.languages-configurations.${name}.enable (
+        opts.languages-configurations.${name}.userSettings.default
         # also add any additional language specific userSettings
-        // (optionalAttrs (opts.languages.${name}.userSettings != { }) cfg.languages.${name}.userSettings)
+        // (optionalAttrs (
+          opts.languages-configurations.${name}.userSettings != { }
+        ) cfg.languages-configurations.${name}.userSettings)
       )
       // acc
-    ) { } (lib.attrNames cfg.languages);
+    ) { } (lib.attrNames cfg.languages-configurations);
 in
 {
   options.home.gui.vscode = {
@@ -85,9 +91,10 @@ in
     };
 
     extensions = import ./extensions.nix { inherit lib pkgs; };
-    languages = import ./language-specific.nix { inherit lib pkgs; };
     keybindings = import ./keybindings.nix { inherit lib pkgs; };
     userSettings = import ./userSettings.nix { inherit lib pkgs; };
+
+    languages-configurations = import ./language-configurations.nix { inherit lib pkgs; };
   };
 
   config = lib.mkIf cfg.enable {

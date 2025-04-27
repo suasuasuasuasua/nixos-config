@@ -72,7 +72,42 @@ in
           ms-vscode.cmake-tools
           ms-vscode.makefile-tools
         ]
+        # NOTE: not available for nix-darwin yet...
+        # https://github.com/NixOS/nixpkgs/issues/377294
+        # https://github.com/nix-community/nix-vscode-extensions/issues/113
         ++ lib.optional pkgs.stdenv.isLinux pkgs.vscode-extensions.cpptools;
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
+  css = {
+    enable = mkEnableOption "Enable CSS";
+    extensions = mkOption {
+      type = with types; listOf package;
+      default = with pkgs.vscode-extensions; [
+        bradlc.vscode-tailwindcss
+      ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
+  html = {
+    enable = mkEnableOption "Enable html";
+    extensions = mkOption {
+      type = with types; listOf package;
+      default = [ ];
     };
     keybindings = mkOption {
       type = keybindingSubmodule;
@@ -254,9 +289,23 @@ in
       };
     };
   };
-  # TODO: add typescript
-  #   "typescript.preferences.importModuleSpecifier" = "non-relative";
-  # enabled by default
+  typescript = {
+    enable = mkEnableOption "Enable Typescript";
+    extensions = mkOption {
+      type = with types; listOf package;
+      default = [ ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = {
+        "typescript.preferences.importModuleSpecifier" = "non-relative";
+      };
+    };
+  };
   typst = {
     enable = mkOption {
       type = types.bool;

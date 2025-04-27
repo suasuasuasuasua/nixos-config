@@ -97,7 +97,7 @@
           vscode = {
             enable = true;
             extensions = [ ];
-            languages = {
+            languages-configurations = {
               c_cplusplus.enable = true;
               java.enable = true;
               latex.enable = true;
