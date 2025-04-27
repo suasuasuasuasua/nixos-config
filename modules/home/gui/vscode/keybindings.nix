@@ -1,7 +1,6 @@
 { lib, pkgs, ... }:
 let
   jsonFormat = pkgs.formats.json { };
-
   keybindingSubmodule =
     with lib.types;
     listOf (
