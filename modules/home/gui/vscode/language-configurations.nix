@@ -261,12 +261,29 @@ in
     userSettings = mkOption {
       inherit (jsonFormat) type;
       default = {
-        "nix.formatterPath" = "nixfmt";
         "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nixd";
         "nix.serverSettings" = {
-          "nil" = {
+          "nixd" = {
             "formatting" = {
               "command" = [ "nixfmt" ];
+            };
+            "options" = {
+              "nixos" = {
+                "expr" = ''
+                  (builtins.getFlake ("git+file://" + toString /home/justinhoang/nixos-config)).nixosConfigurations."penguin".options;
+                '';
+              };
+              "darwin" = {
+                "expr" = ''
+                  (builtins.getFlake ("git+file://" + toString /Users/justinhoang/nixos-config)).darwinConfigurations."mbp3".options;
+                '';
+              };
+              "home-manager" = {
+                "expr " = ''
+                  (builtins.getFlake ("git+file://" + toString /home/justinhoang/nixos-config)).homeConfigurations."wsl".options;
+                '';
+              };
             };
           };
         };
