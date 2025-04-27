@@ -72,10 +72,13 @@ in
           ms-vscode.cmake-tools
           ms-vscode.makefile-tools
         ]
-        # NOTE: not available for nix-darwin yet...
-        # https://github.com/NixOS/nixpkgs/issues/377294
-        # https://github.com/nix-community/nix-vscode-extensions/issues/113
-        ++ lib.optional pkgs.stdenv.isLinux pkgs.vscode-extensions.cpptools;
+        ++ (with pkgs.vscode-marketplace; [
+          # # NOTE: not available for nix-darwin yet...
+          # # https://github.com/NixOS/nixpkgs/issues/377294
+          # # https://github.com/nix-community/nix-vscode-extensions/issues/113
+          ms-vscode.cpp-tools
+        ]);
+      # ++ lib.optional pkgs.stdenv.isLinux pkgs.vscode-extensions.ms-vscode.cpptools;
     };
     keybindings = mkOption {
       type = keybindingSubmodule;
@@ -308,6 +311,32 @@ in
       inherit (jsonFormat) type;
       default = {
         "jupyter.askForKernelRestart" = false;
+      };
+    };
+  };
+  # enabled by default
+  spell = {
+    enable = mkOption {
+      type = types.bool;
+      default = true;
+      description = "Enable Spellcheck [harper]";
+    };
+    extensions = mkOption {
+      type = with types; listOf package;
+      default = with pkgs.vscode-marketplace; [
+        elijah-potter.harper
+      ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = {
+        "harper.dialect" = "American";
+        "harper.fileDictPath" = ".harper";
+        "harper.userDictPath" = "~/.harper";
       };
     };
   };

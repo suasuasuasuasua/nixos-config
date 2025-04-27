@@ -22,4 +22,7 @@
   # nix user repository
   # NOTE: add it explicitly so i can set config options
   firefox-addons = inputs.firefox-addons.overlays.default;
+
+  # more vscode extenions!
+  vscode-extensions = inputs.nix-vscode-extensions.overlays.default;
 }
