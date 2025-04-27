@@ -7,15 +7,28 @@
 }:
 let
   cfg = config.home.gui.vscode;
+  opts = options.home.gui.vscode;
 
   extensions =
-    options.home.gui.vscode.extensions.default
-    ++ lib.optionals (cfg.extensions != [ ]) cfg.extensions;
-  keybindings =
-    options.home.gui.vscode.keybindings.default
-    ++ lib.optionals (cfg.keybindings != [ ]) cfg.keybindings;
+    with lib;
+    opts.extensions.default
+    # add any additional extensions
+    ++ optionals (cfg.extensions != [ ]) cfg.extensions
+    # add any language specific extensions
+    ++ builtins.foldl' (
+      acc: name:
+      optionals cfg.languages.${name}.enable (
+        opts.languages.${name}.extensions.default
+        # also add any additional language specific extensions
+        ++ (optionals (opts.languages.${name}.extensions != [ ]) cfg.languages.${name}.extensions)
+      )
+      ++ acc
+    ) [ ] (lib.attrNames cfg.languages);
+  # TODO: add the language specific config for keybindings
+  keybindings = opts.keybindings.default ++ lib.optionals (cfg.keybindings != [ ]) cfg.keybindings;
+  # TODO: add the language specific config for userSettings
   userSettings =
-    options.home.gui.vscode.userSettings.default
+    opts.userSettings.default
     // lib.optionalAttrs (cfg.userSettings != { }) cfg.userSettings;
 in
 {
@@ -44,15 +57,10 @@ in
       default = pkgs.vscodium;
     };
 
-    extensions = import ./extensions.nix {
-      inherit lib pkgs;
-    };
-    keybindings = import ./keybindings.nix {
-      inherit lib pkgs;
-    };
-    userSettings = import ./userSettings.nix {
-      inherit lib pkgs;
-    };
+    extensions = import ./extensions.nix { inherit lib pkgs; };
+    languages = import ./language-specific.nix { inherit lib pkgs; };
+    keybindings = import ./keybindings.nix { inherit lib pkgs; };
+    userSettings = import ./userSettings.nix { inherit lib pkgs; };
   };
 
   config = lib.mkIf cfg.enable {

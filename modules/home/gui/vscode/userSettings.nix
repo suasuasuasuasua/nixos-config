@@ -23,7 +23,7 @@ let
     "jupyter.askForKernelRestart" = false;
   };
   nixSettings = {
-    "nix.formatterPath" = "treefmt";
+    "nix.formatterPath" = "nixfmt";
     "nix.enableLanguageServer" = true;
     "nix.serverSettings" = {
       "nil" = {

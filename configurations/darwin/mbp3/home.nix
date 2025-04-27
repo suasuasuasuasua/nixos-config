@@ -96,9 +96,11 @@
           spotify.enable = true; # music platform
           vscode = {
             enable = true;
-            extensions = with pkgs.vscode-extensions; [
-              rust-lang.rust-analyzer # rust
-            ];
+            languages = {
+              c_cplusplus.enable = true;
+              java.enable = true;
+              latex.enable = true;
+            };
             package = pkgs.vscodium;
           };
         };
