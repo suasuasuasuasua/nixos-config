@@ -21,6 +21,14 @@ in
       # https://github.com/folke/twilight.nvim
       plugins.twilight = {
         enable = true;
+
+        # TODO: figure out lazyload event -- maybe on Zen or Twilight call?
+        lazyLoad = {
+          enable = true;
+          settings = {
+            cmd = "Twilight";
+          };
+        };
       };
     };
   };

@@ -22,6 +22,11 @@ in
       plugins.lualine = {
         enable = true;
       };
+
+      # TODO: figure out the lazyLoad event
+      # lazyLoad = {
+      #   enable = true;
+      # };
     };
   };
 }

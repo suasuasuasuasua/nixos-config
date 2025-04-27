@@ -99,6 +99,12 @@ in
               })
             '';
         };
+
+        # TODO: figure which option for ufo lazyload?
+        # lazyLoad = {
+        #   enable = true;
+        #   settings = { };
+        # };
       };
     };
   };

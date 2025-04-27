@@ -23,7 +23,7 @@ in
         enable = true;
         # not yet enabled lazy loading provider
         lazyLoad = {
-          enable = false;
+          enable = true;
           settings = {
             cmd = "ZenMode";
           };

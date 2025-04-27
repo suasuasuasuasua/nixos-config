@@ -22,6 +22,11 @@ in
       plugins.auto-save = {
         enable = true;
       };
+
+      # TODO: figure out the lazyLoad event -- on write or on file open?
+      # lazyLoad = {
+      #   enable = true;
+      # };
     };
   };
 }
