@@ -20,20 +20,17 @@ in
     # Uncomment if you are using the nix-darwin module
     #inputs.nixvim.nixDarwinModules.nixvim
 
-    # Plugins
-    ./plugins
-
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #
     #  Here are some example plugins that I've included in the Kickstart
     #  repository. Uncomment any of the lines below to enable them (you will
     #  need to restart nvim).
     #
-    ./plugins/kickstart/plugins
+    ./plugins/kickstart
     #
     # NOTE: Configure your own plugins `see https://nix-community.github.io/nixvim/`
     # Add your plugins to ./plugins/custom/plugins and import them below
-    ./plugins/custom/plugins
+    ./plugins/custom
   ];
 
   options.home.development.neovim = {
