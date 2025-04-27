@@ -234,7 +234,11 @@ in
     };
     userSettings = mkOption {
       inherit (jsonFormat) type;
-      default = { };
+      default = {
+        # Multiple choices for configured formatters
+        "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
+        # "editor.defaultFormatter": "esbenp.prettier-vscode"
+      };
     };
   };
   # enabled by default
