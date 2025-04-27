@@ -374,7 +374,9 @@ in
     };
     userSettings = mkOption {
       inherit (jsonFormat) type;
-      default = { };
+      default = {
+        "tinymist.formatterMode" = "typstyle";
+      };
     };
   };
   # enabled by default
