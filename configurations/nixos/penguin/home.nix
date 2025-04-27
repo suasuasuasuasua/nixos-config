@@ -24,9 +24,10 @@
         development = {
           neovim = {
             enable = true;
-            # enable LSPs for _server-like_ things
             lsp = { };
-            plugins = { };
+            plugins = {
+              leetcode.enable = true;
+            };
           };
           zsh.enable = true;
         };
