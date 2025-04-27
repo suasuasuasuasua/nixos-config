@@ -55,6 +55,11 @@ diff:
 diff:
     nh os build .
 
+# Count number of lines of code
+[group('dev')]
+count:
+    tokei .
+
 # Build the raspberry pi image
 [group('dev')]
 build-pi:

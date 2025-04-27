@@ -20,6 +20,7 @@ pkgs.mkShell {
 
     # commands
     just # command runner
+    tokei # lines of code
 
     # lsp
     nil # lsp 1
