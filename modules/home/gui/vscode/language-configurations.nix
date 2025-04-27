@@ -191,23 +191,45 @@ in
     };
     keybindings = mkOption {
       type = keybindingSubmodule;
-      default = [
-        {
-          key = "ctrl+cmd+v";
-          command = "markdown.showPreviewToSide";
-          when = "!notebookEditorFocused && editorLangId == 'markdown'";
-        }
-        {
-          key = "cmd+k v";
-          command = "-markdown.showPreviewToSide";
-          when = "!notebookEditorFocused && editorLangId == 'markdown'";
-        }
-        {
-          key = "shift+cmd+v";
-          command = "-markdown.showPreview";
-          when = "!notebookEditorFocused && editorLangId == 'markdown'";
-        }
-      ];
+      default =
+        with lib;
+        with pkgs;
+        (
+          optionals stdenv.isDarwin [
+            {
+              key = "ctrl+cmd+v";
+              command = "markdown.showPreviewToSide";
+              when = "!notebookEditorFocused && editorLangId == 'markdown'";
+            }
+            {
+              key = "cmd+k v";
+              command = "-markdown.showPreviewToSide";
+              when = "!notebookEditorFocused && editorLangId == 'markdown'";
+            }
+            {
+              key = "shift+cmd+v";
+              command = "-markdown.showPreview";
+              when = "!notebookEditorFocused && editorLangId == 'markdown'";
+            }
+          ]
+          ++ optionals stdenv.isLinux [
+            {
+              key = "ctrl+alt+v";
+              command = "markdown.showPreviewToSide";
+              when = "!notebookEditorFocused && editorLangId == 'markdown'";
+            }
+            {
+              key = "ctrl+k v";
+              command = "-markdown.showPreviewToSide";
+              when = "!notebookEditorFocused && editorLangId == 'markdown'";
+            }
+            {
+              key = "shift+ctrl+v";
+              command = "-markdown.showPreview";
+              when = "!notebookEditorFocused && editorLangId == 'markdown'";
+            }
+          ]
+        );
     };
     userSettings = mkOption {
       inherit (jsonFormat) type;
@@ -306,6 +328,7 @@ in
       };
     };
   };
+  # enabled by default
   typst = {
     enable = mkOption {
       type = types.bool;
