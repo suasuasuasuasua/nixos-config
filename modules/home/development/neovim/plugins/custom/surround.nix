@@ -18,9 +18,14 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      # https://github.com/tpope/vim-surround
-      plugins.vim-surround = {
+      # https://github.com/kylechui/nvim-surround
+      plugins.nvim-surround = {
         enable = true;
+
+        # TODO: figure out lazyload event -- maybe on surround?
+        # lazyLoad = {
+        #   enable = true;
+        # };
       };
     };
   };
