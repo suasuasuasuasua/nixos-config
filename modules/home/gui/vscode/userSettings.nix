@@ -12,6 +12,16 @@ let
       80
       81
     ];
+    "editor.fontFamily" =
+      with pkgs;
+      if stdenv.isDarwin then
+        ''
+          Menlo, Monaco, 'Courier New', monospace
+        ''
+      else
+        ''
+          'JetBrainsMono Nerd Font', Consolas, 'Droid Sans Mono', monospace
+        '';
     "explorer.confirmDelete" = false;
     "explorer.confirmDragAndDrop" = false;
     "window.autoDetectColorScheme" = true;
