@@ -94,6 +94,9 @@ in
     keybindings = import ./keybindings.nix { inherit lib pkgs; };
     userSettings = import ./userSettings.nix { inherit lib pkgs; };
 
+    # TODO: add globalSnippets and languageSnippets
+    # TODO: add userTasks
+
     languages-configurations = import ./language-configurations.nix { inherit lib pkgs; };
   };
 
