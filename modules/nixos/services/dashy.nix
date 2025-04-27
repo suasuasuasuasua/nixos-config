@@ -25,13 +25,13 @@ in
     settings = lib.mkOption {
       inherit (jsonFormat) type;
       default = {
-        # appConfig = {
-        #   enableFontAwesome = true;
-        #   fontAwesomeKey = "e9076c7025";
-        #   layout = "auto";
+        appConfig = {
+          enableFontAwesome = true;
+          fontAwesomeKey = "e9076c7025";
+          layout = "auto";
 
-        #   theme = "basic";
-        # };
+          theme = "basic";
+        };
       };
     };
   };
