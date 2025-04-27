@@ -78,7 +78,8 @@ in
                     "applications:org.kde.dolphin.desktop"
                     "applications:org.kde.konsole.desktop"
                     "applications:org.kde.kate.desktop"
-                    "applications:codium.desktop"
+                    # TODO: why can't i find codium?
+                    # "applications:codium.desktop"
                     "applications:firefox.desktop"
                     "applications:spotify.desktop"
                   ];
