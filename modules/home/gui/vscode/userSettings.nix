@@ -31,6 +31,9 @@ let
     "window.newWindowProfile" = "Default";
     "window.titleBarStyle" = "custom";
     "workbench.layoutControl.enabled" = false;
+    "workbench.welcomePage.walkthroughs.openOnInstall" = true;
+    "workbench.welcomePage.extraAnnouncements" = true;
+    "workbench.startupEditor" = "none";
   };
   vimSettings = {
     vim = {
