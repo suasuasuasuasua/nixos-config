@@ -29,20 +29,14 @@ in
 
       extraPackages =
         with pkgs;
-        if stdenv.isDarwin then
-          [
-            pngpaste # paste image files from clipbaord to file on macOS
-          ]
-        else if stdenv.isLinux then
-          [
-            xclip # x11
-            wl-clipboard # wayland
-          ]
-        else
-          [
-            # something horrible has gone wrong!
-          ];
-
+        with lib;
+        optionals stdenv.isDarwin [
+          pngpaste # macOS
+        ]
+        ++ optionals stdenv.isLinux [
+          xclip # x11
+          wl-clipboard # wayland
+        ];
     };
   };
 }
