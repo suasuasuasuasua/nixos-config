@@ -53,13 +53,12 @@ let
         }
       ]
       ++ optionals stdenv.isLinux [
-
         {
           key = "ctrl+alt+j";
           command = "workbench.action.togglePanel";
         }
         {
-          key = "ctrl+j";
+          key = "ctrl+alt+j";
           command = "-workbench.action.togglePanel";
         }
       ]
@@ -520,18 +519,33 @@ let
         }
       ]
     );
-  terminalBindings = [
-    {
-      key = "ctrl+cmd+k";
-      command = "workbench.action.terminal.toggleTerminal";
-      when = "terminal.active";
-    }
-    {
-      key = "ctrl+`";
-      command = "-workbench.action.terminal.toggleTerminal";
-      when = "terminal.active";
-    }
-  ];
+  terminalBindings =
+    with lib;
+    with pkgs;
+    (
+      [
+        {
+          key = "ctrl+`";
+          command = "-workbench.action.terminal.toggleTerminal";
+          when = "terminal.active";
+
+        }
+      ]
+      ++ optionals stdenv.isDarwin [
+        {
+          key = "ctrl+cmd+k";
+          command = "workbench.action.terminal.toggleTerminal";
+          when = "terminal.active";
+        }
+      ]
+      ++ optionals stdenv.isLinux [
+        {
+          key = "ctrl+alt+k";
+          command = "workbench.action.terminal.toggleTerminal";
+          when = "terminal.active";
+        }
+      ]
+    );
   vimBindings = [
     {
       key = "ctrl+h";
