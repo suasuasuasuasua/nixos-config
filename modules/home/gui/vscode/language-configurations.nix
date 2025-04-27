@@ -236,8 +236,10 @@ in
       inherit (jsonFormat) type;
       default = {
         # Multiple choices for configured formatters
-        "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
-        # "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "[markdown]" = {
+          "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
+          # "editor.defaultFormatter": "esbenp.prettier-vscode"
+        };
       };
     };
   };
