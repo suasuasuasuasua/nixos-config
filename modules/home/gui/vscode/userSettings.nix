@@ -39,6 +39,11 @@ let
       "cursorStylePerMode.visualblock" = "underline";
       "cursorStylePerMode.visualline" = "underline";
       foldfix = true;
+      handleKeys = {
+        # disable the ctrl+b and ctrl+f movement
+        "<C-b>" = false;
+        "<C-f>" = false;
+      };
       "highlightedyank.textColor" = "'blue'";
       insertModeKeyBindings = [
         {
