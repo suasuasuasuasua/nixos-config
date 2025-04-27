@@ -60,5 +60,9 @@ in
 lib.mkOption {
   inherit (jsonFormat) type;
 
-  default = sourceControl // userInterface // vimSettings;
+  default = lib.mergeAttrList [
+    sourceControl
+    userInterface
+    vimSettings
+  ];
 }

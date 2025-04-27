@@ -1,4 +1,7 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
+let
+  inherit (config.networking) hostName;
+in
 {
   imports = [ "${inputs.self}/modules/nixos/services" ];
 
@@ -12,7 +15,12 @@
       libraries = [ "/zshare/media/books/ebooks/" ];
     };
     # code-server.enable = true; # WARNING: bug with 100% CPU usage? (1 core)
-    dashy.enable = true;
+    dashy = {
+      enable = true;
+      settings = import ./dashy.nix {
+        inherit hostName config;
+      };
+    };
     gitweb = {
       enable = true;
       projectroot = "/zshare/srv/git";
@@ -39,7 +47,10 @@
       enable = true;
       mediaDir = "/zshare/personal/docs";
     };
-    samba.enable = true;
+    samba = {
+      enable = true;
+      settings = import ./samba.nix;
+    };
     syncthing.enable = true;
     vscode-server.enable = true;
     wastebin.enable = true;

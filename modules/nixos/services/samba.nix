@@ -1,12 +1,49 @@
 {
   config,
+  options,
   lib,
+  pkgs,
   ...
 }:
 let
+  # https://github.com/NixOS/nixpkgs/blob/nixos-24.11/nixos/modules/services/network-filesystems/samba.nix
   serviceName = "samba";
 
   cfg = config.nixos.services.${serviceName};
+  opt = options.nixos.services.${serviceName};
+
+  settingsFormat = pkgs.formats.ini {
+    listToValue = lib.concatMapStringsSep " " (lib.generators.mkValueStringDefault { });
+  };
+  sambaType = lib.types.submodule {
+    freeformType = settingsFormat.type;
+    options = {
+      global = {
+        "security" = lib.mkOption {
+          type = lib.types.enum [
+            "auto"
+            "user"
+            "domain"
+            "ads"
+          ];
+          default = "user";
+          description = "Samba security type.";
+        };
+        "invalid users" = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
+          default = [ "root" ];
+          description = "List of users who are denied to login via Samba.";
+        };
+        "passwd program" = lib.mkOption {
+          type = lib.types.str;
+          default = "/run/wrappers/bin/passwd %u";
+          description = "Path to a program that can be used to set UNIX user passwords.";
+        };
+      };
+    };
+  };
+
+  settings = with lib; opt.settings.default // optionalAttrs (cfg.settings != { }) cfg.settings;
 in
 {
   options.nixos.services.${serviceName} = {
@@ -15,30 +52,16 @@ in
     '';
 
     # TODO: add settings to samba as an argument
-  };
-
-  config = lib.mkIf cfg.enable {
-    services = {
-
-      samba = {
-        enable = true;
-        openFirewall = true;
-      };
-
-      samba-wsdd = {
-        enable = true;
-        openFirewall = true;
-      };
-
-      samba.settings = {
-        # Global
+    settings = lib.mkOption {
+      type = sambaType;
+      default = {
         global = {
           "workgroup" = "WORKGROUP";
           "server string" = "smbnix";
           "netbios name" = "smbnix";
           "security" = "user";
-          #"use sendfile" = "yes";
-          #"max protocol" = "smb2";
+          # "use sendfile" = "yes";
+          # "max protocol" = "smb2";
           # note: localhost is the ipv6 localhost ::1
           "hosts allow" = "192.168.0. 127.0.0.1 localhost";
           "hosts deny" = "0.0.0.0/0";
@@ -46,95 +69,21 @@ in
           "map to guest" = "bad user";
         };
       };
+    };
+  };
 
-      # Personal
-      samba.settings = {
-        # Music videos and audio!
-        "personal" = {
-          "path" = "/zshare/personal";
-          "browseable" = "yes";
-          "valid users" = "justinhoang";
-          "public" = "no";
-          "read only" = "no";
-          "create mask" = "0644";
-          "directory mask" = "0755";
-          # remember to create the samba group and add recursive permissions!
-          "force group" = "samba";
-        };
+  config = lib.mkIf cfg.enable {
+    services = {
+      samba = {
+        inherit settings;
+
+        enable = true;
+        openFirewall = true;
       };
 
-      # Backups
-      samba.settings = {
-        "tm_share" = {
-          "path" = "/zshare/backup/tm_share";
-          "valid users" = "justinhoang";
-          "public" = "no";
-          "writeable" = "yes";
-          "force group" = "samba";
-          "fruit:aapl" = "yes";
-          "fruit:time machine" = "yes";
-          "vfs objects" = "catia fruit streams_xattr";
-        };
-      };
-
-      # Productivity
-      samba.settings = {
-        # Projects
-        "projects" = {
-          "path" = "/zshare/projects";
-          "valid users" = "justinhoang";
-          "browseable" = "yes";
-          "public" = "no";
-          "read only" = "no";
-          "create mask" = "0644";
-          "directory mask" = "0755";
-          # remember to create the samba group and add recursive permissions!
-          "force group" = "samba";
-        };
-        # Served content
-        "srv" = {
-          "path" = "/zshare/srv";
-          "valid users" = "justinhoang";
-          "browseable" = "yes";
-          "public" = "no";
-          "read only" = "no";
-          "create mask" = "0644";
-          "directory mask" = "0755";
-          # remember to create the samba group and add recursive permissions!
-          "force group" = "samba";
-        };
-      };
-
-      # Media!
-      samba.settings = {
-        # Music videos and audio!
-        "media" = {
-          "path" = "/zshare/media";
-          "valid users" = "justinhoang";
-          "browseable" = "yes";
-          "public" = "no";
-          "read only" = "no";
-          "create mask" = "0644";
-          "directory mask" = "0755";
-          # remember to create the samba group and add recursive permissions!
-          "force group" = "samba";
-        };
-      };
-
-      # Temp!
-      samba.settings = {
-        # Music videos and audio!
-        "tmp" = {
-          "path" = "/ztmp/tmp";
-          "valid users" = "justinhoang";
-          "browseable" = "yes";
-          "public" = "no";
-          "read only" = "no";
-          "create mask" = "0644";
-          "directory mask" = "0755";
-          # remember to create the samba group and add recursive permissions!
-          "force group" = "samba";
-        };
+      samba-wsdd = {
+        enable = true;
+        openFirewall = true;
       };
     };
   };
