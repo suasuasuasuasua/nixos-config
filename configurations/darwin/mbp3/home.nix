@@ -96,6 +96,7 @@
           spotify.enable = true; # music platform
           vscode = {
             enable = true;
+            extensions = [ ];
             languages = {
               c_cplusplus.enable = true;
               java.enable = true;

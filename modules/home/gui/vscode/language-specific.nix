@@ -1,5 +1,44 @@
 { lib, pkgs, ... }:
 with lib;
+let
+  jsonFormat = pkgs.formats.json { };
+  keybindingSubmodule =
+    with lib.types;
+    listOf (
+      types.submodule {
+        options = {
+          key = lib.mkOption {
+            type = types.str;
+            example = "ctrl+c";
+            description = "The key or key-combination to bind.";
+          };
+
+          command = lib.mkOption {
+            type = types.str;
+            example = "editor.action.clipboardCopyAction";
+            description = "The VS Code command to execute.";
+          };
+
+          when = lib.mkOption {
+            type = types.nullOr types.str;
+            default = null;
+            example = "textInputFocus";
+            description = "Optional context filter.";
+          };
+
+          # https://code.visualstudio.com/docs/getstarted/keybindings#_command-arguments
+          args = lib.mkOption {
+            type = types.nullOr jsonFormat.type;
+            default = null;
+            example = {
+              direction = "up";
+            };
+            description = "Optional arguments for a command.";
+          };
+        };
+      }
+    );
+in
 {
   # enabled by default
   bash = {
@@ -14,6 +53,14 @@ with lib;
         mads-hartmann.bash-ide-vscode
       ];
     };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
   };
   c_cplusplus = {
     enable = mkEnableOption "Enable C/C++";
@@ -27,6 +74,14 @@ with lib;
         ]
         ++ lib.optional pkgs.stdenv.isLinux pkgs.vscode-extensions.cpptools;
     };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
   };
   java = {
     enable = mkEnableOption "Enable Java";
@@ -35,6 +90,14 @@ with lib;
       default = with pkgs.vscode-extensions; [
         redhat.java
       ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
     };
   };
   # enabled by default
@@ -50,6 +113,14 @@ with lib;
         nefrob.vscode-just-syntax
       ];
     };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
   };
   latex = {
     enable = mkEnableOption "Enable LaTeX";
@@ -59,6 +130,14 @@ with lib;
         james-yu.latex-workshop
         valentjn.vscode-ltex # Spell-check (NOTE: "ltex plus" and harper not in nixpkgs yet)
       ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
     };
   };
   # enabled by default
@@ -75,6 +154,30 @@ with lib;
         valentjn.vscode-ltex # Spell-check (NOTE: "ltex plus" and harper not in nixpkgs yet)
       ];
     };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [
+        {
+          key = "ctrl+cmd+v";
+          command = "markdown.showPreviewToSide";
+          when = "!notebookEditorFocused && editorLangId == 'markdown'";
+        }
+        {
+          key = "cmd+k v";
+          command = "-markdown.showPreviewToSide";
+          when = "!notebookEditorFocused && editorLangId == 'markdown'";
+        }
+        {
+          key = "shift+cmd+v";
+          command = "-markdown.showPreview";
+          when = "!notebookEditorFocused && editorLangId == 'markdown'";
+        }
+      ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
   };
   # enabled by default
   nix = {
@@ -88,6 +191,24 @@ with lib;
       default = with pkgs.vscode-extensions; [
         jnoortheen.nix-ide
       ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = {
+        "nix.formatterPath" = "nixfmt";
+        "nix.enableLanguageServer" = true;
+        "nix.serverSettings" = {
+          "nil" = {
+            "formatting" = {
+              "command" = [ "nixfmt" ];
+            };
+          };
+        };
+      };
     };
   };
   # enabled by default
@@ -111,7 +232,30 @@ with lib;
         ms-toolsai.jupyter-keymap
       ];
     };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [
+        {
+          key = "u";
+          command = "undo";
+          when = "notebookEditorFocused && !inputFocus";
+        }
+        {
+          key = "z";
+          command = "-undo";
+          when = "notebookEditorFocused && !inputFocus";
+        }
+      ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = {
+        "jupyter.askForKernelRestart" = false;
+      };
+    };
   };
+  # TODO: add typescript
+  #   "typescript.preferences.importModuleSpecifier" = "non-relative";
   # enabled by default
   typst = {
     enable = mkOption {
@@ -126,6 +270,14 @@ with lib;
         valentjn.vscode-ltex # Spell-check (NOTE: "ltex plus" and harper not in nixpkgs yet)
       ];
     };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
   };
   # enabled by default
   yaml = {
@@ -139,6 +291,14 @@ with lib;
       default = with pkgs.vscode-extensions; [
         redhat.vscode-yaml
       ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
     };
   };
 }

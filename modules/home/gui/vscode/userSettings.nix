@@ -19,26 +19,6 @@ let
     "window.newWindowProfile" = "Default";
     "workbench.layoutControl.enabled" = false;
   };
-  jupyterSettings = {
-    "jupyter.askForKernelRestart" = false;
-  };
-  nixSettings = {
-    "nix.formatterPath" = "nixfmt";
-    "nix.enableLanguageServer" = true;
-    "nix.serverSettings" = {
-      "nil" = {
-        "formatting" = {
-          "command" = [ "nixfmt" ];
-        };
-      };
-    };
-  };
-  typescriptSettings = {
-    "typescript.preferences.importModuleSpecifier" = "non-relative";
-  };
-  # combine the language settings
-  languageSettings = jupyterSettings // nixSettings // typescriptSettings;
-
   vimSettings = {
     vim = {
       "cursorStylePerMode.normal" = "block";
@@ -80,5 +60,5 @@ in
 lib.mkOption {
   inherit (jsonFormat) type;
 
-  default = sourceControl // userInterface // languageSettings // vimSettings;
+  default = sourceControl // userInterface // vimSettings;
 }

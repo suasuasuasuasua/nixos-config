@@ -11,6 +11,7 @@ let
 
   extensions =
     with lib;
+    # add base extensions
     opts.extensions.default
     # add any additional extensions
     ++ optionals (cfg.extensions != [ ]) cfg.extensions
@@ -24,12 +25,38 @@ let
       )
       ++ acc
     ) [ ] (lib.attrNames cfg.languages);
-  # TODO: add the language specific config for keybindings
-  keybindings = opts.keybindings.default ++ lib.optionals (cfg.keybindings != [ ]) cfg.keybindings;
-  # TODO: add the language specific config for userSettings
+  keybindings =
+    with lib;
+    # add base keybindings
+    opts.keybindings.default
+    # add any additional keybindings
+    ++ optionals (cfg.keybindings != [ ]) cfg.keybindings
+    # add any language specific keybindings
+    ++ builtins.foldl' (
+      acc: name:
+      optionals cfg.languages.${name}.enable (
+        opts.languages.${name}.keybindings.default
+        # also add any additional language specific keybindings
+        ++ (optionals (opts.languages.${name}.keybindings != [ ]) cfg.languages.${name}.keybindings)
+      )
+      ++ acc
+    ) [ ] (lib.attrNames cfg.languages);
   userSettings =
+    with lib;
+    # add base userSettings
     opts.userSettings.default
-    // lib.optionalAttrs (cfg.userSettings != { }) cfg.userSettings;
+    # add any additional userSettings
+    // optionalAttrs (cfg.userSettings != { }) cfg.userSettings
+    # add any language specific userSettings
+    // builtins.foldl' (
+      acc: name:
+      optionalAttrs cfg.languages.${name}.enable (
+        opts.languages.${name}.userSettings.default
+        # also add any additional language specific userSettings
+        // (optionalAttrs (opts.languages.${name}.userSettings != { }) cfg.languages.${name}.userSettings)
+      )
+      // acc
+    ) { } (lib.attrNames cfg.languages);
 in
 {
   options.home.gui.vscode = {

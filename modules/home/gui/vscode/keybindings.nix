@@ -256,36 +256,7 @@ let
     }
   ];
 
-  jupyterBindings = [
-    {
-      key = "u";
-      command = "undo";
-      when = "notebookEditorFocused && !inputFocus";
-    }
-    {
-      key = "z";
-      command = "-undo";
-      when = "notebookEditorFocused && !inputFocus";
-    }
-  ];
-  languageBindings = jupyterBindings;
-
   previewerBindings = [
-    {
-      key = "ctrl+cmd+v";
-      command = "markdown.showPreviewToSide";
-      when = "!notebookEditorFocused && editorLangId == 'markdown'";
-    }
-    {
-      key = "cmd+k v";
-      command = "-markdown.showPreviewToSide";
-      when = "!notebookEditorFocused && editorLangId == 'markdown'";
-    }
-    {
-      key = "shift+cmd+v";
-      command = "-markdown.showPreview";
-      when = "!notebookEditorFocused && editorLangId == 'markdown'";
-    }
     {
       key = "ctrl+cmd+v";
       command = "livePreview.start.internalPreview.atFile";
@@ -340,7 +311,6 @@ lib.mkOption {
     ++ editorNavigationBindings
     ++ explorerBindings
     ++ finderBindings
-    ++ languageBindings
     ++ previewerBindings
     ++ sourceControlBindings
     ++ terminalBindings
