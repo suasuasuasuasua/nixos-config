@@ -166,7 +166,6 @@ in
       type = with types; listOf package;
       default = with pkgs.vscode-extensions; [
         james-yu.latex-workshop
-        valentjn.vscode-ltex # Spell-check (NOTE: "ltex plus" and harper not in nixpkgs yet)
       ];
     };
     keybindings = mkOption {
@@ -189,7 +188,6 @@ in
       type = with types; listOf package;
       default = with pkgs.vscode-extensions; [
         davidanson.vscode-markdownlint
-        valentjn.vscode-ltex # Spell-check (NOTE: "ltex plus" and harper not in nixpkgs yet)
       ];
     };
     keybindings = mkOption {
@@ -368,7 +366,6 @@ in
       type = with types; listOf package;
       default = with pkgs.vscode-extensions; [
         myriad-dreamin.tinymist
-        valentjn.vscode-ltex # Spell-check (NOTE: "ltex plus" and harper not in nixpkgs yet)
       ];
     };
     keybindings = mkOption {
