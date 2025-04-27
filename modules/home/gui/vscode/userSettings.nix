@@ -16,7 +16,9 @@ let
     "explorer.confirmDragAndDrop" = false;
     "window.autoDetectColorScheme" = true;
     "window.commandCenter" = false;
+    "window.menuBarVisibility" = "compact";
     "window.newWindowProfile" = "Default";
+    "window.titleBarStyle" = "custom";
     "workbench.layoutControl.enabled" = false;
   };
   vimSettings = {
