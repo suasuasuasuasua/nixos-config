@@ -93,6 +93,9 @@
           vscode = {
             enable = true;
             package = pkgs.vscodium-fhs;
+            userSettings = {
+              "editor.fontSize" = 13;
+            };
           };
         };
       };
