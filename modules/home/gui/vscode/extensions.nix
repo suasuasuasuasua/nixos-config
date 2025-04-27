@@ -15,7 +15,6 @@ let
     ms-vscode-remote.vscode-remote-extensionpack # remote
     tomoki1207.pdf # integrated pdf viewer
     vscodevim.vim # vim emulation
-    waderyan.gitblame # git blame
   ];
 in
 lib.mkOption {

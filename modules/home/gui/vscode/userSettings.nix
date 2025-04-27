@@ -4,6 +4,7 @@ let
 
   sourceControl = {
     "git.confirmSync" = false;
+    "git.blame.editorDecoration.enabled" = true;
   };
   userInterface = {
     "chat.commandCenter.enabled" = false;
