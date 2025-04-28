@@ -50,7 +50,7 @@ let
 in
 with lib;
 {
-  data-science = {
+  "Data Science" = {
     enable = mkEnableOption "Enable Data Science Profile";
     languages = mkOption {
       type = enumLanguages;
@@ -108,7 +108,7 @@ with lib;
       default = { };
     };
   };
-  maximal = {
+  "Maximal" = {
     enable = mkEnableOption "Enable All Profile (all languages)";
     languages = mkOption {
       type = enumLanguages;
