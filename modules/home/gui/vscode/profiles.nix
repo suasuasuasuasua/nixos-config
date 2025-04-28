@@ -50,11 +50,18 @@ let
 in
 with lib;
 {
-  all = {
-    enable = mkEnableOption "Enable All Profile (all languages)";
+  data-science = {
+    enable = mkEnableOption "Enable Data Science Profile";
     languages = mkOption {
       type = enumLanguages;
-      default = lib.attrNames opts.language-configurations;
+      default = [
+        "just"
+        "markdown"
+        "python"
+        "spell"
+        "typst"
+        "yaml"
+      ];
     };
     extensions = mkOption {
       type = with types; listOf package;
@@ -101,18 +108,11 @@ with lib;
       default = { };
     };
   };
-  data-science = {
-    enable = mkEnableOption "Enable Data Science Profile";
+  maximal = {
+    enable = mkEnableOption "Enable All Profile (all languages)";
     languages = mkOption {
       type = enumLanguages;
-      default = [
-        "just"
-        "markdown"
-        "python"
-        "spell"
-        "typst"
-        "yaml"
-      ];
+      default = lib.attrNames opts.language-configurations;
     };
     extensions = mkOption {
       type = with types; listOf package;
