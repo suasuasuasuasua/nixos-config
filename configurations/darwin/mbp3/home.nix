@@ -41,8 +41,8 @@
             enable = true;
             package = pkgs.vscodium;
             profiles = {
-              "Data Science".enable = true;
-              "Maximal".enable = true;
+              data-science.enable = true;
+              maximal.enable = true;
             };
           };
         };

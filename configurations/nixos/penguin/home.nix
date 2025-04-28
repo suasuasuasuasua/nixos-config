@@ -40,8 +40,8 @@
             enable = true;
             package = pkgs.vscodium-fhs;
             profiles = {
-              "Data Science".enable = true;
-              "Maximal".enable = true;
+              data-science.enable = true;
+              maximal.enable = true;
             };
             userSettings = {
               "editor.fontSize" = 13;
