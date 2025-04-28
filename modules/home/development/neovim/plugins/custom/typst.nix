@@ -26,13 +26,15 @@ in
       # https://github.com/chomosuke/typst-preview.nvim/
       plugins.typst-preview = {
         enable = true;
-        # not yet enabled lazy loading provider
-        lazyLoad = {
-          enable = true;
-          settings = {
-            cmd = "TypstPreview";
-          };
-        };
+
+        # Nixvim (lazy loading): You have enabled lazy loading support for the
+        # following plugins but have not enabled a lazy loading provider.
+        # lazyLoad = {
+        #   enable = true;
+        #   settings = {
+        #     cmd = "TypstPreview";
+        #   };
+        # };
       };
     };
   };

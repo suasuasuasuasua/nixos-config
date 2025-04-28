@@ -22,13 +22,14 @@ in
       plugins.twilight = {
         enable = true;
 
-        # TODO: figure out lazyload event -- maybe on Zen or Twilight call?
-        lazyLoad = {
-          enable = true;
-          settings = {
-            cmd = "Twilight";
-          };
-        };
+        # Nixvim (lazy loading): You have enabled lazy loading support for the
+        # following plugins but have not enabled a lazy loading provider.
+        # lazyLoad = {
+        #   enable = true;
+        #   settings = {
+        #     cmd = "Twilight";
+        #   };
+        # };
       };
     };
   };

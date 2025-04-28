@@ -21,13 +21,15 @@ in
       # https://github.com/folke/zen-mode.nvim
       plugins.zen-mode = {
         enable = true;
-        # not yet enabled lazy loading provider
-        lazyLoad = {
-          enable = true;
-          settings = {
-            cmd = "ZenMode";
-          };
-        };
+
+        # Nixvim (lazy loading): You have enabled lazy loading support for the
+        # following plugins but have not enabled a lazy loading provider.
+        # lazyLoad = {
+        #   enable = true;
+        #   settings = {
+        #     cmd = "ZenMode";
+        #   };
+        # };
       };
     };
   };
