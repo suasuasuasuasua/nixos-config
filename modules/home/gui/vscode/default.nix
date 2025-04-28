@@ -55,11 +55,11 @@ let
           // builtins.foldl' (
             acc: curr: opts.language-configurations.${curr}.userSettings.default // acc
           ) { } cfg.profiles.${profile-name}.languages;
-      };
 
-      # Add options _only_ for default profile
-      enableExtensionUpdateCheck = mkIf (profile-name == "default") false;
-      enableUpdateCheck = mkIf (profile-name == "default") false;
+        # Add options _only_ for default profile
+        enableExtensionUpdateCheck = mkIf (profile-name == "default") false;
+        enableUpdateCheck = mkIf (profile-name == "default") false;
+      };
     }
     // acc
   ) { } (lib.attrNames cfg.profiles);
