@@ -2,7 +2,6 @@
   config,
   options,
   lib,
-  pkgs,
   ...
 }:
 let
@@ -10,40 +9,16 @@ let
   serviceName = "samba";
 
   cfg = config.nixos.services.${serviceName};
+  defaultOpts = options.services.${serviceName};
   opts = options.nixos.services.${serviceName};
 
-  settingsFormat = pkgs.formats.ini {
-    listToValue = lib.concatMapStringsSep " " (lib.generators.mkValueStringDefault { });
-  };
-  sambaType = lib.types.submodule {
-    freeformType = settingsFormat.type;
-    options = {
-      global = {
-        "security" = lib.mkOption {
-          type = lib.types.enum [
-            "auto"
-            "user"
-            "domain"
-            "ads"
-          ];
-          default = "user";
-          description = "Samba security type.";
-        };
-        "invalid users" = lib.mkOption {
-          type = lib.types.listOf lib.types.str;
-          default = [ "root" ];
-          description = "List of users who are denied to login via Samba.";
-        };
-        "passwd program" = lib.mkOption {
-          type = lib.types.str;
-          default = "/run/wrappers/bin/passwd %u";
-          description = "Path to a program that can be used to set UNIX user passwords.";
-        };
-      };
-    };
-  };
-
-  settings = with lib; opts.settings.default // optionalAttrs (cfg.settings != { }) cfg.settings;
+  settings =
+    with lib;
+    lib.mergeAttrsList [
+      defaultOpts.settings.default # default options from samba module
+      opts.settings.default # my default options from samba module
+      (optionalAttrs (cfg.settings != { }) cfg.settings) # any additional
+    ];
 in
 {
   options.nixos.services.${serviceName} = {
@@ -51,24 +26,9 @@ in
       Standard Windows interoperability suite of programs for Linux and Unix
     '';
 
-    # TODO: add settings to samba as an argument
     settings = lib.mkOption {
-      type = sambaType;
-      default = {
-        global = {
-          "workgroup" = "WORKGROUP";
-          "server string" = "smbnix";
-          "netbios name" = "smbnix";
-          "security" = "user";
-          # "use sendfile" = "yes";
-          # "max protocol" = "smb2";
-          # note: localhost is the ipv6 localhost ::1
-          "hosts allow" = "192.168.0. 127.0.0.1 localhost";
-          "hosts deny" = "0.0.0.0/0";
-          "guest account" = "nobody";
-          "map to guest" = "bad user";
-        };
-      };
+      inherit (defaultOpts.settings) type;
+      default = { };
     };
   };
 
