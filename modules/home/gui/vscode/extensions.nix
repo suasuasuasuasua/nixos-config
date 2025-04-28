@@ -1,6 +1,7 @@
 { lib, pkgs, ... }:
-let
-  baseExtensions = with pkgs.vscode-extensions; [
+lib.mkOption {
+  type = with lib.types; listOf package;
+  default = with pkgs.vscode-extensions; [
     aaron-bond.better-comments # colorized comments
     adpyke.codesnap # screenshot code
     christian-kohler.path-intellisense # autofill file and folder paths
@@ -16,8 +17,4 @@ let
     tomoki1207.pdf # integrated pdf viewer
     vscodevim.vim # vim emulation
   ];
-in
-lib.mkOption {
-  type = with lib.types; listOf package;
-  default = baseExtensions;
 }
