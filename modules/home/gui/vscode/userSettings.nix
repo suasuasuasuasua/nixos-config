@@ -2,11 +2,11 @@
 let
   jsonFormat = pkgs.formats.json { };
 
-  sourceControl = {
-    "git.confirmSync" = false;
-    "git.blame.editorDecoration.enabled" = true;
-  };
-  userInterface = {
+in
+lib.mkOption {
+  inherit (jsonFormat) type;
+
+  default = {
     "chat.commandCenter.enabled" = false;
     "editor.minimap.enabled" = false;
     "editor.rulers" = [
@@ -25,17 +25,10 @@ let
         '';
     "explorer.confirmDelete" = false;
     "explorer.confirmDragAndDrop" = false;
-    "window.autoDetectColorScheme" = true;
-    "window.commandCenter" = false;
-    "window.menuBarVisibility" = "compact";
-    "window.newWindowProfile" = "Default";
-    "window.titleBarStyle" = "custom";
-    "workbench.layoutControl.enabled" = false;
-    "workbench.welcomePage.walkthroughs.openOnInstall" = true;
-    "workbench.welcomePage.extraAnnouncements" = true;
-    "workbench.startupEditor" = "none";
-  };
-  vimSettings = {
+    "direnv.restart.automatic" = true;
+    "git.confirmSync" = false;
+    "git.blame.editorDecoration.enabled" = true;
+    "telemetry.telemetryLevel" = "off";
     "vim.cursorStylePerMode.normal" = "block";
     "vim.cursorStylePerMode.replace" = "underline";
     "vim.cursorStylePerMode.visual" = "underline";
@@ -74,14 +67,14 @@ let
         ];
       }
     ];
+    "window.autoDetectColorScheme" = true;
+    "window.commandCenter" = false;
+    "window.menuBarVisibility" = "compact";
+    "window.newWindowProfile" = "Default";
+    "window.titleBarStyle" = "custom";
+    "workbench.layoutControl.enabled" = false;
+    "workbench.welcomePage.walkthroughs.openOnInstall" = true;
+    "workbench.welcomePage.extraAnnouncements" = true;
+    "workbench.startupEditor" = "none";
   };
-in
-lib.mkOption {
-  inherit (jsonFormat) type;
-
-  default = lib.mergeAttrsList [
-    sourceControl
-    userInterface
-    vimSettings
-  ];
 }
