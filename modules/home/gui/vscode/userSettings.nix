@@ -36,46 +36,44 @@ let
     "workbench.startupEditor" = "none";
   };
   vimSettings = {
-    vim = {
-      "cursorStylePerMode.normal" = "block";
-      "cursorStylePerMode.replace" = "underline";
-      "cursorStylePerMode.visual" = "underline";
-      "cursorStylePerMode.visualblock" = "underline";
-      "cursorStylePerMode.visualline" = "underline";
-      foldfix = true;
-      handleKeys = {
-        # disable the ctrl+b and ctrl+f movement
-        "<C-b>" = false;
-        "<C-f>" = false;
-      };
-      "highlightedyank.textColor" = "'blue'";
-      insertModeKeyBindings = [
-        {
-          after = [
-            "<Esc>"
-          ];
-          before = [
-            "j"
-            "k"
-          ];
-        }
-      ];
-      joinspaces = false;
-      leader = "\\ ";
-      normalModeKeyBindings = [
-        {
-          before = [
-            "c"
-            "d"
-          ];
-          commands = [
-            {
-              command = "editor.action.rename";
-            }
-          ];
-        }
-      ];
+    "vim.cursorStylePerMode.normal" = "block";
+    "vim.cursorStylePerMode.replace" = "underline";
+    "vim.cursorStylePerMode.visual" = "underline";
+    "vim.cursorStylePerMode.visualblock" = "underline";
+    "vim.cursorStylePerMode.visualline" = "underline";
+    "vim.foldfix" = true;
+    "vim.handleKeys" = {
+      # disable the ctrl+b and ctrl+f movement
+      "<C-b>" = false;
+      "<C-f>" = false;
     };
+    "vim.highlightedyank.textColor" = "'blue'";
+    "vim.insertModeKeyBindings" = [
+      {
+        after = [
+          "<Esc>"
+        ];
+        before = [
+          "j"
+          "k"
+        ];
+      }
+    ];
+    "vim.joinspaces" = false;
+    "vim.leader" = "\\ ";
+    "vim.normalModeKeyBindings" = [
+      {
+        before = [
+          "c"
+          "d"
+        ];
+        commands = [
+          {
+            command = "editor.action.rename";
+          }
+        ];
+      }
+    ];
   };
 in
 lib.mkOption {
