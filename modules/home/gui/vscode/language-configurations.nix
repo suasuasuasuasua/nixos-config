@@ -161,7 +161,9 @@ in
     };
     userSettings = mkOption {
       inherit (jsonFormat) type;
-      default = { };
+      default = {
+        "redhat.telemetry.enabled" = false;
+      };
     };
   };
   just = {
