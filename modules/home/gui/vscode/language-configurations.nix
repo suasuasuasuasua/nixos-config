@@ -67,13 +67,10 @@ in
           ms-vscode.cmake-tools
           ms-vscode.makefile-tools
         ]
-        ++ (with pkgs.vscode-marketplace; [
-          # # NOTE: not available for nix-darwin yet...
-          # # https://github.com/NixOS/nixpkgs/issues/377294
-          # # https://github.com/nix-community/nix-vscode-extensions/issues/113
-          ms-vscode.cpp-tools
-        ]);
-      # ++ lib.optional pkgs.stdenv.isLinux pkgs.vscode-extensions.ms-vscode.cpptools;
+        # NOTE: not available for nix-darwin yet...
+        # https://github.com/NixOS/nixpkgs/issues/377294
+        # https://github.com/nix-community/nix-vscode-extensions/issues/113
+        ++ lib.optional pkgs.stdenv.isLinux pkgs.vscode-extensions.ms-vscode.cpptools;
     };
     keybindings = mkOption {
       type = keybindingSubmodule;
