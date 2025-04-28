@@ -104,7 +104,7 @@ in
     # TODO: add userTasks
 
     # per-profile extensions, keybindings, and userSettings
-    profiles = import ./profiles.nix { inherit lib pkgs; };
+    profiles = import ./profiles.nix { inherit options lib pkgs; };
   };
 
   config = lib.mkIf cfg.enable {

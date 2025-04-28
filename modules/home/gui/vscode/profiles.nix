@@ -1,5 +1,12 @@
-{ lib, pkgs, ... }:
+{
+  options,
+  lib,
+  pkgs,
+  ...
+}:
 let
+  opts = options.home.gui.vscode;
+
   jsonFormat = pkgs.formats.json { };
   keybindingSubmodule =
     with lib.types;
@@ -37,6 +44,9 @@ let
         };
       }
     );
+
+  # Only choose one of the languages specified in the language configurations
+  enumLanguages = with lib; with lib.types; listOf (enum (attrNames opts.language-configurations));
 in
 with lib;
 {
@@ -47,7 +57,7 @@ with lib;
       description = "Enable Default Profile";
     };
     languages = mkOption {
-      type = with types; listOf str;
+      type = enumLanguages;
       default = [
         "bash"
         "just"
@@ -76,7 +86,7 @@ with lib;
   data-science = {
     enable = mkEnableOption "Enable Data Science Profile";
     languages = mkOption {
-      type = with types; listOf str;
+      type = enumLanguages;
       default = [
         "just"
         "markdown"
