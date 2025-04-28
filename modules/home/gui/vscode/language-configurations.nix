@@ -81,12 +81,46 @@ in
       default = { };
     };
   };
+  csharp = {
+    enable = mkEnableOption "Enable C#";
+    extensions = mkOption {
+      type = with types; listOf package;
+      default = with pkgs.vscode-extensions; [
+        ms-dotnettools.csharp
+      ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
   css = {
     enable = mkEnableOption "Enable CSS";
     extensions = mkOption {
       type = with types; listOf package;
       default = with pkgs.vscode-extensions; [
         bradlc.vscode-tailwindcss
+      ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
+  go = {
+    enable = mkEnableOption "Enable Go";
+    extensions = mkOption {
+      type = with types; listOf package;
+      default = with pkgs.vscode-extensions; [
+        golang.go
       ];
     };
     keybindings = mkOption {
@@ -307,6 +341,23 @@ in
       };
     };
   };
+  rust = {
+    enable = mkEnableOption "Enable Rust";
+    extensions = mkOption {
+      type = with types; listOf package;
+      default = with pkgs.vscode-extensions; [
+        rust-lang.rust-analyzer
+      ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
   spell = {
     enable = mkEnableOption "Enable Spellcheck [harper]";
     extensions = mkOption {
@@ -326,6 +377,23 @@ in
         "harper.fileDictPath" = ".harper";
         "harper.userDictPath" = "~/.harper";
       };
+    };
+  };
+  swift = {
+    enable = mkEnableOption "Enable Swift";
+    extensions = mkOption {
+      type = with types; listOf package;
+      default = with pkgs.vscode-extensions; [
+        sswg.swift-lang
+      ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
     };
   };
   typescript = {
