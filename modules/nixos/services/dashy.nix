@@ -10,12 +10,12 @@ let
   serviceName = "dashy";
 
   cfg = config.nixos.services.${serviceName};
-  opt = options.nixos.services.${serviceName};
+  opts = options.nixos.services.${serviceName};
 
   # types
   jsonFormat = pkgs.formats.json { };
 
-  settings = with lib; opt.settings.default // optionalAttrs (cfg.settings != { }) cfg.settings;
+  settings = with lib; opts.settings.default // optionalAttrs (cfg.settings != { }) cfg.settings;
 in
 {
   options.nixos.services.${serviceName} = {

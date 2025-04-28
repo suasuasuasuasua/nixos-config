@@ -10,7 +10,7 @@ let
   serviceName = "samba";
 
   cfg = config.nixos.services.${serviceName};
-  opt = options.nixos.services.${serviceName};
+  opts = options.nixos.services.${serviceName};
 
   settingsFormat = pkgs.formats.ini {
     listToValue = lib.concatMapStringsSep " " (lib.generators.mkValueStringDefault { });
@@ -43,7 +43,7 @@ let
     };
   };
 
-  settings = with lib; opt.settings.default // optionalAttrs (cfg.settings != { }) cfg.settings;
+  settings = with lib; opts.settings.default // optionalAttrs (cfg.settings != { }) cfg.settings;
 in
 {
   options.nixos.services.${serviceName} = {
