@@ -40,29 +40,18 @@ in
           # Map of eval information
           # If this is omitted, default search path (<nixpkgs>) will be used.
           nixos = {
-            # This name "nixos" could be arbitrary.
-            # The expression to eval, interpret it as option declarations.
-
             expr = ''
               (builtins.getFlake ("git+file://" + toString /home/justinhoang/nixos-config)).nixosConfigurations."penguin".options;
             '';
           };
-
           darwin = {
-            # This name "nixos" could be arbitrary.
-            # The expression to eval, interpret it as option declarations.
-
             expr = ''
               (builtins.getFlake ("git+file://" + toString /Users/justinhoang/nixos-config)).darwinConfigurations."mbp3".options;
             '';
           };
-
-          # TODO: implement standalone home manager configuration first
-          # # By default there is no home-manager options completion, thus you can
-          # # add this entry.
           home-manager = {
             expr = ''
-              (builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations."wsl".options;
+              (builtins.getFlake ("git+file://" + toString /home/justinhoang/nixos-config)).homeConfigurations."wsl".options;
             '';
           };
         };
