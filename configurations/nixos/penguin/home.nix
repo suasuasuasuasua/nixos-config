@@ -38,10 +38,10 @@
           spotify.enable = true;
           vscode = {
             enable = true;
-            package = pkgs.vscodium;
+            package = pkgs.vscodium-fhs;
             profiles = {
-              all.enable = true;
               data-science.enable = true;
+              maximal.enable = true;
             };
             userSettings = {
               "editor.fontSize" = 13;
