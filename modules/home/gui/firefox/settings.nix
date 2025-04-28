@@ -1,3 +1,4 @@
+# Review about:config
 {
   # Enable HTTPS-Only Mode
   "dom.security.https_only_mode" = true;
@@ -43,4 +44,9 @@
 
   # Automatically enable extensions
   "extensions.autoDisableScopes" = 0;
+
+  # QOL
+  "browser.aboutConfig.showWarning" = false;
+  "browser.warnOnQuit" = false;
+  "browser.ml.chat.sidebar" = false;
 }
