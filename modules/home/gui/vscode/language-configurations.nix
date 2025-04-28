@@ -40,13 +40,8 @@ let
     );
 in
 {
-  # enabled by default
   bash = {
-    enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable Bash";
-    };
+    enable = mkEnableOption "Enable Bash";
     extensions = mkOption {
       type = with types; listOf package;
       default = with pkgs.vscode-extensions; [
@@ -138,13 +133,8 @@ in
       default = { };
     };
   };
-  # enabled by default
   just = {
-    enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable Typst";
-    };
+    enable = mkEnableOption "Enable Typst";
     extensions = mkOption {
       type = with types; listOf package;
       default = with pkgs.vscode-extensions; [
@@ -177,13 +167,8 @@ in
       default = { };
     };
   };
-  # enabled by default
   markdown = {
-    enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable Markdown";
-    };
+    enable = mkEnableOption "Enable Markdown";
     extensions = mkOption {
       type = with types; listOf package;
       default = with pkgs.vscode-extensions; [
@@ -243,13 +228,8 @@ in
       };
     };
   };
-  # enabled by default
   nix = {
-    enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable Nix";
-    };
+    enable = mkEnableOption "Enable Nix";
     extensions = mkOption {
       type = with types; listOf package;
       default = with pkgs.vscode-extensions; [
@@ -292,13 +272,8 @@ in
       };
     };
   };
-  # enabled by default
   python = {
-    enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable Python";
-    };
+    enable = mkEnableOption "Enable Python";
     extensions = mkOption {
       type = with types; listOf package;
       default = with pkgs.vscode-extensions; [
@@ -335,13 +310,8 @@ in
       };
     };
   };
-  # enabled by default
   spell = {
-    enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable Spellcheck [harper]";
-    };
+    enable = mkEnableOption "Enable Spellcheck [harper]";
     extensions = mkOption {
       type = with types; listOf package;
       default = with pkgs.vscode-marketplace; [
@@ -378,13 +348,8 @@ in
       };
     };
   };
-  # enabled by default
   typst = {
-    enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable Typst";
-    };
+    enable = mkEnableOption "Enable Typst";
     extensions = mkOption {
       type = with types; listOf package;
       default = with pkgs.vscode-extensions; [
@@ -402,13 +367,8 @@ in
       };
     };
   };
-  # enabled by default
   yaml = {
-    enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable YAML";
-    };
+    enable = mkEnableOption "Enable YAML";
     extensions = mkOption {
       type = with types; listOf package;
       default = with pkgs.vscode-extensions; [

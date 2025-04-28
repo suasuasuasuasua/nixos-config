@@ -40,18 +40,50 @@ let
 in
 with lib;
 {
-  data-science = {
+  default = {
     enable = mkOption {
       type = types.bool;
       default = true;
-      description = "Enable Data Science Profile";
+      description = "Enable Default Profile";
     };
     languages = mkOption {
       type = with types; listOf str;
       default = [
+        "bash"
+        "just"
+        "markdown"
+        "nix"
         "python"
         "spell"
         "typst"
+        "yaml"
+      ];
+    };
+    extensions = mkOption {
+      type = with types; listOf package;
+      default = [ ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
+
+  data-science = {
+    enable = mkEnableOption "Enable Data Science Profile";
+    languages = mkOption {
+      type = with types; listOf str;
+      default = [
+        "just"
+        "markdown"
+        "python"
+        "spell"
+        "typst"
+        "yaml"
       ];
     };
     extensions = mkOption {
