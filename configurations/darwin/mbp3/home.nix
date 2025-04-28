@@ -39,13 +39,11 @@
           spotify.enable = true; # music platform
           vscode = {
             enable = true;
-            extensions = [ ];
-            languages-configurations = {
-              c_cplusplus.enable = true;
-              java.enable = true;
-              latex.enable = true;
-            };
             package = pkgs.vscodium;
+            profiles = {
+              "Data Science".enable = true;
+              "Maximal".enable = true;
+            };
           };
         };
       };
