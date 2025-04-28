@@ -81,8 +81,6 @@
       betterttv # twitch [dot] tv integration
       darkreader # automatic dark mode
       don-t-fuck-with-paste # prevent websites from modifying copy+paste
-      edit-with-emacs # allow emacs-like editing in text fields
-      reddit-enhancement-suite # better reddit
       ublock-origin # block ads
       unpaywall # read research papers for free
       vimium # vim-like movements
