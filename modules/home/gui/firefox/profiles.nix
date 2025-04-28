@@ -62,6 +62,15 @@
               }
             ];
           }
+          {
+            name = "macOS related";
+            bookmarks = [
+              {
+                name = "brew";
+                url = "https://brew.sh/";
+              }
+            ];
+          }
         ];
       }
     ];
