@@ -40,6 +40,7 @@
             enable = true;
             package = pkgs.vscodium;
             profiles = {
+              all.enable = true;
               data-science.enable = true;
             };
             userSettings = {

@@ -50,11 +50,30 @@ let
 in
 with lib;
 {
+  all = {
+    enable = mkEnableOption "Enable All Profile (all languages)";
+    languages = mkOption {
+      type = enumLanguages;
+      default = lib.attrNames opts.language-configurations;
+    };
+    extensions = mkOption {
+      type = with types; listOf package;
+      default = [ ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
   default = {
     enable = mkOption {
       type = types.bool;
       default = true;
-      description = "Enable Default Profile";
+      description = "Enable Default Profile (default slim)";
     };
     languages = mkOption {
       type = enumLanguages;
@@ -82,7 +101,6 @@ with lib;
       default = { };
     };
   };
-
   data-science = {
     enable = mkEnableOption "Enable Data Science Profile";
     languages = mkOption {
