@@ -77,6 +77,7 @@ lib.mkOption {
     "workbench.layoutControl.enabled" = false;
     "workbench.welcomePage.walkthroughs.openOnInstall" = true;
     "workbench.welcomePage.extraAnnouncements" = true;
+    "workbench.reduceMotion" = "on";
     "workbench.startupEditor" = "none";
   };
 }
