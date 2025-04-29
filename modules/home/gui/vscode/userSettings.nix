@@ -10,10 +10,6 @@ lib.mkOption {
     "chat.commandCenter.enabled" = false;
     "direnv.restart.automatic" = true;
     "editor.minimap.enabled" = false;
-    "editor.rulers" = [
-      80
-      81
-    ];
     "editor.fontFamily" =
       with pkgs;
       if stdenv.isDarwin then
@@ -26,6 +22,10 @@ lib.mkOption {
         '';
     "editor.formatOnPaste" = true;
     "editor.formatOnSave" = true;
+    "editor.rulers" = [
+      80
+      81
+    ];
     "explorer.confirmDelete" = false;
     "explorer.confirmDragAndDrop" = false;
     "extensions.autoUpdate" = false;
