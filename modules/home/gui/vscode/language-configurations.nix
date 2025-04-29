@@ -434,6 +434,7 @@ in
       inherit (jsonFormat) type;
       default = {
         "tinymist.formatterMode" = "typstyle";
+        "tinymist.preview.invertColors" = "auto";
       };
     };
   };
