@@ -8,6 +8,7 @@ lib.mkOption {
 
   default = {
     "chat.commandCenter.enabled" = false;
+    "direnv.restart.automatic" = true;
     "editor.minimap.enabled" = false;
     "editor.rulers" = [
       80
@@ -25,7 +26,6 @@ lib.mkOption {
         '';
     "explorer.confirmDelete" = false;
     "explorer.confirmDragAndDrop" = false;
-    "direnv.restart.automatic" = true;
     "git.confirmSync" = false;
     "git.blame.editorDecoration.enabled" = true;
     "telemetry.telemetryLevel" = "off";
