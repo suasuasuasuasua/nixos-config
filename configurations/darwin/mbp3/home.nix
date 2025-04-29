@@ -44,6 +44,13 @@
               data-science.enable = true;
               maximal.enable = true;
             };
+            extensions = with pkgs.vscode-extensions; [
+              continue.continue # run local AIs
+            ];
+            userSettings = {
+              "continue.enableTabAutocomplete" = false;
+              "continue.telemetryEnabled" = false;
+            };
           };
         };
       };
