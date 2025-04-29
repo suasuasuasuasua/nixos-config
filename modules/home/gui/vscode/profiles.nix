@@ -108,6 +108,33 @@ with lib;
       default = { };
     };
   };
+  markup = {
+    enable = mkOption {
+      type = types.bool;
+      default = true;
+      description = "Enable Markup Profile";
+    };
+    languages = mkOption {
+      type = enumLanguages;
+      default = [
+        "markdown"
+        "spell"
+        "typst"
+      ];
+    };
+    extensions = mkOption {
+      type = with types; listOf package;
+      default = [ ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
   maximal = {
     enable = mkEnableOption "Enable All Profile (all languages)";
     languages = mkOption {
