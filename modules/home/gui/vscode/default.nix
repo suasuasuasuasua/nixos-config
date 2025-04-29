@@ -10,6 +10,51 @@ let
   cfg = config.home.gui.vscode;
   opts = options.home.gui.vscode;
 
+  # TODO: stolen code from vscode.nix -- find out how to reference it using
+  # options
+  jsonFormat = pkgs.formats.json { };
+  keybindingSubmodule =
+    let
+      inherit (lib.types)
+        listOf
+        submodule
+        nullOr
+        str
+        ;
+    in
+    listOf (submodule {
+      options = {
+        key = lib.mkOption {
+          type = str;
+          example = "ctrl+c";
+          description = "The key or key-combination to bind.";
+        };
+
+        command = lib.mkOption {
+          type = str;
+          example = "editor.action.clipboardCopyAction";
+          description = "The VS Code command to execute.";
+        };
+
+        when = lib.mkOption {
+          type = nullOr str;
+          default = null;
+          example = "textInputFocus";
+          description = "Optional context filter.";
+        };
+
+        # https://code.visualstudio.com/docs/getstarted/keybindings#_command-arguments
+        args = lib.mkOption {
+          type = nullOr jsonFormat.type;
+          default = null;
+          example = {
+            direction = "up";
+          };
+          description = "Optional arguments for a command.";
+        };
+      };
+    });
+
   # TODO: stolen code from 25.05 unstable...remove when merged
   toSentenceCase =
     let
@@ -19,8 +64,8 @@ let
         stringLength
         typeOf
         ;
+      inherit (lib.strings) addContextFrom toLower toUpper;
     in
-    with lib.strings;
     str:
     lib.throwIfNot (isString str)
       "toSentenceCase does only accepts string values, but got ${typeOf str}"
@@ -34,16 +79,17 @@ let
 
   profiles = builtins.foldl' (
     acc: profile:
-    with lib;
     # Pretty print the name
     # jq: 1 compile error related to spaces in profile name
     # https://github.com/nix-community/home-manager/issues/6929
     let
+      inherit (lib) mkIf optionals optionalAttrs;
+      inherit (lib.strings) concatStringsSep splitString;
       profile-name =
         if profile == "default" then
           profile
         else
-          strings.concatStringsSep " " (map toSentenceCase (strings.splitString "-" profile));
+          concatStringsSep " " (map toSentenceCase (splitString "-" profile));
     in
     # Add profiles that have been enabled
     optionalAttrs cfg.profiles.${profile}.enable {
@@ -103,34 +149,49 @@ in
       # workaround in macOS if app does not automatically run
       # 1. settings>privacy&security>security
       # 2. click allow app
-      type =
-        with lib.types;
-        with pkgs;
-        enum (
+      type = lib.types.enum (
+        (with pkgs; [
+          vscode
+          vscodium
+        ])
+        # Add the fhs versions for linux only
+        ++ lib.optionals pkgs.stdenv.isLinux (
+          with pkgs;
           [
-            vscode
-            vscodium
-          ]
-          # Add the fhs versions for linux only
-          ++ lib.optionals pkgs.stdenv.isLinux [
             vscode-fhs
             vscodium-fhs
           ]
-        );
+        )
+      );
       default = pkgs.vscodium;
     };
 
     # global extensions, keybindings, and userSettings
     extensions = import ./extensions.nix { inherit lib pkgs; };
-    keybindings = import ./keybindings.nix { inherit lib pkgs; };
+    keybindings = import ./keybindings.nix { inherit lib pkgs keybindingSubmodule; };
     userSettings = import ./userSettings.nix { inherit lib pkgs; };
-    language-configurations = import ./language-configurations.nix { inherit lib pkgs; };
+    language-configurations = import ./language-configurations.nix {
+      inherit
+        lib
+        pkgs
+        jsonFormat
+        keybindingSubmodule
+        ;
+    };
 
     # TODO: add globalSnippets and languageSnippets
     # TODO: add userTasks
 
     # per-profile extensions, keybindings, and userSettings
-    profiles = import ./profiles.nix { inherit options lib pkgs; };
+    profiles = import ./profiles.nix {
+      inherit
+        options
+        lib
+        pkgs
+        jsonFormat
+        keybindingSubmodule
+        ;
+    };
   };
 
   config = lib.mkIf cfg.enable {

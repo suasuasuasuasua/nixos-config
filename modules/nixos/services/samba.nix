@@ -13,8 +13,10 @@ let
   opts = options.nixos.services.${serviceName};
 
   settings =
-    with lib;
-    lib.mergeAttrsList [
+    let
+      inherit (lib) mergeAttrsList optionalAttrs;
+    in
+    mergeAttrsList [
       defaultOpts.settings.default # default options from samba module
       opts.settings.default # my default options from samba module
       (optionalAttrs (cfg.settings != { }) cfg.settings) # any additional

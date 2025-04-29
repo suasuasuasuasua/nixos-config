@@ -1,54 +1,24 @@
 {
   options,
   lib,
-  pkgs,
+  jsonFormat,
+  keybindingSubmodule,
   ...
 }:
 let
   opts = options.home.gui.vscode;
 
-  jsonFormat = pkgs.formats.json { };
-  keybindingSubmodule =
-    with lib.types;
-    listOf (
-      types.submodule {
-        options = {
-          key = lib.mkOption {
-            type = types.str;
-            example = "ctrl+c";
-            description = "The key or key-combination to bind.";
-          };
-
-          command = lib.mkOption {
-            type = types.str;
-            example = "editor.action.clipboardCopyAction";
-            description = "The VS Code command to execute.";
-          };
-
-          when = lib.mkOption {
-            type = types.nullOr types.str;
-            default = null;
-            example = "textInputFocus";
-            description = "Optional context filter.";
-          };
-
-          # https://code.visualstudio.com/docs/getstarted/keybindings#_command-arguments
-          args = lib.mkOption {
-            type = types.nullOr jsonFormat.type;
-            default = null;
-            example = {
-              direction = "up";
-            };
-            description = "Optional arguments for a command.";
-          };
-        };
-      }
-    );
+  inherit (lib) mkEnableOption mkOption;
+  inherit (lib.types) bool listOf package;
 
   # Only choose one of the languages specified in the language configurations
-  enumLanguages = with lib; with lib.types; listOf (enum (attrNames opts.language-configurations));
+  enumLanguages =
+    let
+      inherit (lib) attrNames;
+      inherit (lib.types) listOf enum;
+    in
+    listOf (enum (attrNames opts.language-configurations));
 in
-with lib;
 {
   data-science = {
     enable = mkEnableOption "Enable Data Science Profile";
@@ -64,7 +34,7 @@ with lib;
       ];
     };
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = [ ];
     };
     keybindings = mkOption {
@@ -78,7 +48,7 @@ with lib;
   };
   default = {
     enable = mkOption {
-      type = types.bool;
+      type = bool;
       default = true;
       description = "Enable Default Profile (default slim)";
     };
@@ -96,7 +66,7 @@ with lib;
       ];
     };
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = [ ];
     };
     keybindings = mkOption {
@@ -110,7 +80,7 @@ with lib;
   };
   markup = {
     enable = mkOption {
-      type = types.bool;
+      type = bool;
       default = true;
       description = "Enable Markup Profile";
     };
@@ -123,7 +93,7 @@ with lib;
       ];
     };
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = [ ];
     };
     keybindings = mkOption {
@@ -142,7 +112,7 @@ with lib;
       default = lib.attrNames opts.language-configurations;
     };
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = [ ];
     };
     keybindings = mkOption {

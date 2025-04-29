@@ -1,49 +1,19 @@
-{ lib, pkgs, ... }:
-with lib;
+{
+  lib,
+  pkgs,
+  jsonFormat,
+  keybindingSubmodule,
+  ...
+}:
 let
-  jsonFormat = pkgs.formats.json { };
-  keybindingSubmodule =
-    with lib.types;
-    listOf (
-      types.submodule {
-        options = {
-          key = lib.mkOption {
-            type = types.str;
-            example = "ctrl+c";
-            description = "The key or key-combination to bind.";
-          };
-
-          command = lib.mkOption {
-            type = types.str;
-            example = "editor.action.clipboardCopyAction";
-            description = "The VS Code command to execute.";
-          };
-
-          when = lib.mkOption {
-            type = types.nullOr types.str;
-            default = null;
-            example = "textInputFocus";
-            description = "Optional context filter.";
-          };
-
-          # https://code.visualstudio.com/docs/getstarted/keybindings#_command-arguments
-          args = lib.mkOption {
-            type = types.nullOr jsonFormat.type;
-            default = null;
-            example = {
-              direction = "up";
-            };
-            description = "Optional arguments for a command.";
-          };
-        };
-      }
-    );
+  inherit (lib) mkEnableOption mkOption;
+  inherit (lib.types) listOf package;
 in
 {
   bash = {
     enable = mkEnableOption "Enable Bash";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-extensions; [
         mads-hartmann.bash-ide-vscode
       ];
@@ -60,7 +30,7 @@ in
   c_cplusplus = {
     enable = mkEnableOption "Enable C/C++";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default =
         with pkgs.vscode-extensions;
         [
@@ -84,7 +54,7 @@ in
   csharp = {
     enable = mkEnableOption "Enable C#";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-extensions; [
         ms-dotnettools.csharp
       ];
@@ -101,7 +71,7 @@ in
   css = {
     enable = mkEnableOption "Enable CSS";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-extensions; [
         bradlc.vscode-tailwindcss
       ];
@@ -118,7 +88,7 @@ in
   go = {
     enable = mkEnableOption "Enable Go";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-extensions; [
         golang.go
       ];
@@ -135,7 +105,7 @@ in
   html = {
     enable = mkEnableOption "Enable html";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = [ ];
     };
     keybindings = mkOption {
@@ -150,7 +120,7 @@ in
   java = {
     enable = mkEnableOption "Enable Java";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-extensions; [
         redhat.java
       ];
@@ -169,7 +139,7 @@ in
   just = {
     enable = mkEnableOption "Enable Typst";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-extensions; [
         nefrob.vscode-just-syntax
       ];
@@ -186,7 +156,7 @@ in
   latex = {
     enable = mkEnableOption "Enable LaTeX";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-extensions; [
         james-yu.latex-workshop
       ];
@@ -203,7 +173,7 @@ in
   markdown = {
     enable = mkEnableOption "Enable Markdown";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-extensions; [
         davidanson.vscode-markdownlint
       ];
@@ -211,44 +181,44 @@ in
     keybindings = mkOption {
       type = keybindingSubmodule;
       default =
-        with lib;
-        with pkgs;
-        (
-          optionals stdenv.isDarwin [
-            {
-              key = "ctrl+cmd+v";
-              command = "markdown.showPreviewToSide";
-              when = "!notebookEditorFocused && editorLangId == 'markdown'";
-            }
-            {
-              key = "cmd+k v";
-              command = "-markdown.showPreviewToSide";
-              when = "!notebookEditorFocused && editorLangId == 'markdown'";
-            }
-            {
-              key = "shift+cmd+v";
-              command = "-markdown.showPreview";
-              when = "!notebookEditorFocused && editorLangId == 'markdown'";
-            }
-          ]
-          ++ optionals stdenv.isLinux [
-            {
-              key = "ctrl+alt+v";
-              command = "markdown.showPreviewToSide";
-              when = "!notebookEditorFocused && editorLangId == 'markdown'";
-            }
-            {
-              key = "ctrl+k v";
-              command = "-markdown.showPreviewToSide";
-              when = "!notebookEditorFocused && editorLangId == 'markdown'";
-            }
-            {
-              key = "shift+ctrl+v";
-              command = "-markdown.showPreview";
-              when = "!notebookEditorFocused && editorLangId == 'markdown'";
-            }
-          ]
-        );
+        let
+          inherit (lib) optionals;
+          inherit (pkgs.stdenv) isDarwin isLinux;
+        in
+        optionals isDarwin [
+          {
+            key = "ctrl+cmd+v";
+            command = "markdown.showPreviewToSide";
+            when = "!notebookEditorFocused && editorLangId == 'markdown'";
+          }
+          {
+            key = "cmd+k v";
+            command = "-markdown.showPreviewToSide";
+            when = "!notebookEditorFocused && editorLangId == 'markdown'";
+          }
+          {
+            key = "shift+cmd+v";
+            command = "-markdown.showPreview";
+            when = "!notebookEditorFocused && editorLangId == 'markdown'";
+          }
+        ]
+        ++ optionals isLinux [
+          {
+            key = "ctrl+alt+v";
+            command = "markdown.showPreviewToSide";
+            when = "!notebookEditorFocused && editorLangId == 'markdown'";
+          }
+          {
+            key = "ctrl+k v";
+            command = "-markdown.showPreviewToSide";
+            when = "!notebookEditorFocused && editorLangId == 'markdown'";
+          }
+          {
+            key = "shift+ctrl+v";
+            command = "-markdown.showPreview";
+            when = "!notebookEditorFocused && editorLangId == 'markdown'";
+          }
+        ];
     };
     userSettings = mkOption {
       inherit (jsonFormat) type;
@@ -265,7 +235,7 @@ in
   nix = {
     enable = mkEnableOption "Enable Nix";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-extensions; [
         jnoortheen.nix-ide
       ];
@@ -309,7 +279,7 @@ in
   python = {
     enable = mkEnableOption "Enable Python";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-extensions; [
         # Python
         ms-python.black-formatter
@@ -349,7 +319,7 @@ in
   rust = {
     enable = mkEnableOption "Enable Rust";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-extensions; [
         rust-lang.rust-analyzer
       ];
@@ -366,7 +336,7 @@ in
   spell = {
     enable = mkEnableOption "Enable Spellcheck [harper]";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-marketplace; [
         elijah-potter.harper
       ];
@@ -387,7 +357,7 @@ in
   swift = {
     enable = mkEnableOption "Enable Swift";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-extensions; [
         sswg.swift-lang
       ];
@@ -404,7 +374,7 @@ in
   typescript = {
     enable = mkEnableOption "Enable Typescript";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = [ ];
     };
     keybindings = mkOption {
@@ -421,7 +391,7 @@ in
   typst = {
     enable = mkEnableOption "Enable Typst";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-extensions; [
         myriad-dreamin.tinymist
       ];
@@ -441,7 +411,7 @@ in
   yaml = {
     enable = mkEnableOption "Enable YAML";
     extensions = mkOption {
-      type = with types; listOf package;
+      type = listOf package;
       default = with pkgs.vscode-extensions; [
         redhat.vscode-yaml
       ];

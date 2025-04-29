@@ -32,12 +32,15 @@ in
         '';
 
       extraPackages =
+        let
+          inherit (lib) optionals;
+          inherit (pkgs.stdenv) isDarwin isLinux;
+        in
         with pkgs;
-        with lib;
-        optionals stdenv.isDarwin [
+        optionals isDarwin [
           pngpaste # macOS
         ]
-        ++ optionals stdenv.isLinux [
+        ++ optionals isLinux [
           xclip # x11
           wl-clipboard # wayland
         ];
