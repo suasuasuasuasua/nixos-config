@@ -29,6 +29,7 @@ lib.mkOption {
     "files.autoSave" = "on";
     "git.confirmSync" = false;
     "git.blame.editorDecoration.enabled" = true;
+    "telemetry.feedback.enabled" = false;
     "telemetry.telemetryLevel" = "off";
     "vim.cursorStylePerMode.normal" = "block";
     "vim.cursorStylePerMode.replace" = "underline";
