@@ -26,6 +26,7 @@ lib.mkOption {
         '';
     "explorer.confirmDelete" = false;
     "explorer.confirmDragAndDrop" = false;
+    "extensions.autoUpdate" = false;
     "files.autoSave" = "on";
     "git.confirmSync" = false;
     "git.blame.editorDecoration.enabled" = true;
