@@ -50,6 +50,7 @@
             userSettings = {
               "continue.enableTabAutocomplete" = false;
               "continue.telemetryEnabled" = false;
+              "editor.fontSize" = 13;
             };
           };
         };
