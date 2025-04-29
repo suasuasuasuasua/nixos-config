@@ -24,6 +24,7 @@ lib.mkOption {
         ''
           'JetBrainsMono Nerd Font', Consolas, 'Droid Sans Mono', monospace
         '';
+    "editor.formatOnPaste" = true;
     "explorer.confirmDelete" = false;
     "explorer.confirmDragAndDrop" = false;
     "extensions.autoUpdate" = false;
