@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   home-manager.users = {
     "justinhoang" = {
@@ -36,7 +36,10 @@
           firefox.enable = true;
           obs.enable = true;
           spotify.enable = true;
-          vscode.enable = true;
+          vscode = {
+            enable = true;
+            package = pkgs.vscodium-fhs;
+          };
         };
       };
     };
