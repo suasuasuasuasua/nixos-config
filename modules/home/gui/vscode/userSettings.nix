@@ -30,6 +30,7 @@ lib.mkOption {
     "files.autoSave" = "on";
     "git.confirmSync" = false;
     "git.blame.editorDecoration.enabled" = true;
+    "pdf-preview.default.scale" = "page-fit";
     "telemetry.feedback.enabled" = false;
     "telemetry.telemetryLevel" = "off";
     "vim.cursorStylePerMode.normal" = "block";
