@@ -340,6 +340,7 @@ in
     userSettings = mkOption {
       inherit (jsonFormat) type;
       default = {
+        "black-formatter.importStrategy" = "fromEnvironment";
         "jupyter.askForKernelRestart" = false;
       };
     };
