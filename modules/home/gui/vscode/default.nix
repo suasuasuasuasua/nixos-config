@@ -89,7 +89,8 @@ let
         if profile == "default" then
           profile
         else
-          concatStringsSep " " (map toSentenceCase (splitString "-" profile));
+          # concatStringsSep " " (map toSentenceCase (splitString "-" profile));
+          concatStringsSep "-" (map toSentenceCase (splitString "-" profile));
     in
     # Add profiles that have been enabled
     optionalAttrs cfg.profiles.${profile}.enable {
