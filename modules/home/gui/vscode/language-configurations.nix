@@ -258,6 +258,7 @@ in
           "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
           # "editor.defaultFormatter": "esbenp.prettier-vscode"
         };
+        "markdownlint.run" = "onSave";
       };
     };
   };
