@@ -30,6 +30,7 @@ lib.mkOption {
     "explorer.confirmDragAndDrop" = false;
     "extensions.autoUpdate" = false;
     "files.autoSave" = "on";
+    "git.autofetch" = true;
     "git.confirmSync" = false;
     "git.blame.editorDecoration.enabled" = true;
     "pdf-preview.default.scale" = "page-fit";
