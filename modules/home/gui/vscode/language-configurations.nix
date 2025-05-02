@@ -173,6 +173,23 @@ in
       };
     };
   };
+  julia = {
+    enable = mkEnableOption "Enable Julia";
+    extensions = mkOption {
+      type = listOf package;
+      default = with pkgs.vscode-extensions; [
+        julialang.language-julia
+      ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
   just = {
     enable = mkEnableOption "Enable Typst";
     extensions = mkOption {
