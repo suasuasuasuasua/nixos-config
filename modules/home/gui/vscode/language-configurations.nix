@@ -85,6 +85,24 @@ in
       default = { };
     };
   };
+  dart = {
+    enable = mkEnableOption "Enable Dart";
+    extensions = mkOption {
+      type = listOf package;
+      default = with pkgs.vscode-extensions; [
+        dart-code.dart-code
+        dart-code.flutter
+      ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
   go = {
     enable = mkEnableOption "Enable Go";
     extensions = mkOption {
