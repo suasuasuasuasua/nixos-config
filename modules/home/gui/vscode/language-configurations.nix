@@ -448,7 +448,7 @@ in
     enable = mkEnableOption "Enable Swift";
     extensions = mkOption {
       type = listOf package;
-      default = with pkgs.vscode-extensions; [
+      default = with pkgs.vscode-marketplace; [
         swiftlang.swift-vscode
       ];
     };
