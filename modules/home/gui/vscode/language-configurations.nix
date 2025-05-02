@@ -512,6 +512,7 @@ in
       default = {
         "tinymist.exportPdf" = "onSave";
         "tinymist.formatterMode" = "typstyle";
+        "tinymist.formatterPrintWidth" = 80;
         "tinymist.preview.invertColors" = "auto";
       };
     };
