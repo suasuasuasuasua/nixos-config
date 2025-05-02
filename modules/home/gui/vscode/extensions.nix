@@ -7,6 +7,9 @@ lib.mkOption {
     christian-kohler.path-intellisense # autofill file and folder paths
     codezombiech.gitignore # gitignore templates
     esbenp.prettier-vscode # general linter/formatter
+    github.codespaces # codespaces
+    github.vscode-github-actions # github actions
+    github.vscode-pull-request-github # pull requests
     gruntfuggly.todo-tree # todo tree view
     hediet.vscode-drawio # draw.io integration
     johnpapa.vscode-peacock # colorized projects
