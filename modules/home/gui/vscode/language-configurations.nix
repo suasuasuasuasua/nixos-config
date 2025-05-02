@@ -514,6 +514,7 @@ in
         "tinymist.formatterMode" = "typstyle";
         "tinymist.formatterPrintWidth" = 80;
         "tinymist.preview.invertColors" = "auto";
+        "tinymist.preview.partialRendering" = false;
       };
     };
   };
