@@ -354,7 +354,9 @@ in
       default = with pkgs.vscode-extensions; [
         # Python
         ms-python.black-formatter
+        ms-python.isort
         ms-python.python
+        ms-python.pylint
         # Jupyter
         ms-toolsai.jupyter
         ms-toolsai.vscode-jupyter-cell-tags
