@@ -10,6 +10,7 @@ lib.mkOption {
 
   default = {
     "chat.commandCenter.enabled" = false;
+    "codesnap.transparentBackground" = true;
     "direnv.restart.automatic" = true;
     "editor.minimap.enabled" = false;
     "editor.fontFamily" =
