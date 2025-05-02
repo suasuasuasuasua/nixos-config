@@ -8,7 +8,7 @@ let
 in
 {
   options.home.gui.obs = {
-    enable = lib.mkEnableOption "Enable general CLI tools";
+    enable = lib.mkEnableOption "Enable OBS";
   };
 
   config = lib.mkIf cfg.enable {
