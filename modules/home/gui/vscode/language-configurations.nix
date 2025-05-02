@@ -510,6 +510,7 @@ in
     userSettings = mkOption {
       inherit (jsonFormat) type;
       default = {
+        "tinymist.exportPdf" = "onSave";
         "tinymist.formatterMode" = "typstyle";
         "tinymist.preview.invertColors" = "auto";
       };
