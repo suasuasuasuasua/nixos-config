@@ -30,6 +30,7 @@ lib.mkOption {
     ];
     "explorer.confirmDelete" = false;
     "explorer.confirmDragAndDrop" = false;
+    "explorer.confirmPasteNative" = false;
     "extensions.autoUpdate" = false;
     "files.autoSave" = "afterDelay";
     "git.autofetch" = true;
