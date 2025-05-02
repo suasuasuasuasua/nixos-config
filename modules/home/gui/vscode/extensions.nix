@@ -16,7 +16,9 @@ lib.mkOption {
     mikestead.dotenv # [dot] env file integration
     mkhl.direnv # direnv integration
     ms-azuretools.vscode-docker # docker support
-    ms-vscode-remote.vscode-remote-extensionpack # remote
+    ms-vscode-remote.remote-ssh-edit # edit ssh config files
+    ms-vscode-remote.remote-ssh # ssh
+    ms-vscode-remote.remote-containers # devcontainers
     tomoki1207.pdf # integrated pdf viewer
     vscodevim.vim # vim emulation
   ];
