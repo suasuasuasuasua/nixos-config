@@ -449,7 +449,7 @@ in
     extensions = mkOption {
       type = listOf package;
       default = with pkgs.vscode-extensions; [
-        sswg.swift-lang
+        swiftlang.swift-vscode
       ];
     };
     keybindings = mkOption {

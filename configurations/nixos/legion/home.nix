@@ -38,7 +38,12 @@
           spotify.enable = true;
           vscode = {
             enable = true;
-            package = pkgs.vscodium-fhs;
+            # package = pkgs.vscodium-fhs;
+            package = pkgs.vscode-fhs;
+            profiles = {
+              data-science.enable = true;
+              maximal.enable = true;
+            };
           };
         };
       };
