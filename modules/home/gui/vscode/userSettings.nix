@@ -29,7 +29,7 @@ lib.mkOption {
     "explorer.confirmDelete" = false;
     "explorer.confirmDragAndDrop" = false;
     "extensions.autoUpdate" = false;
-    "files.autoSave" = "on";
+    "files.autoSave" = "afterDelay";
     "git.autofetch" = true;
     "git.confirmSync" = false;
     "git.blame.editorDecoration.enabled" = true;
