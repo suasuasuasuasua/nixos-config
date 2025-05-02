@@ -68,6 +68,25 @@ in
       default = { };
     };
   };
+  common_lisp = {
+    enable = mkEnableOption "Enable CommonLisp";
+    extensions = mkOption {
+      type = listOf package;
+      default = with pkgs.vscode-marketplace; [
+        rheller.alive
+      ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = {
+        "redhat.telemetry.enabled" = false;
+      };
+    };
+  };
   css = {
     enable = mkEnableOption "Enable CSS";
     extensions = mkOption {
