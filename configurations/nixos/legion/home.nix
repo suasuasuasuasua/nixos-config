@@ -34,6 +34,7 @@
         gui = {
           alacritty.enable = true;
           firefox.enable = true;
+          freetube.enable = true;
           obs.enable = true;
           spotify.enable = true;
           vscode = {
