@@ -461,6 +461,23 @@ in
       default = { };
     };
   };
+  toml = {
+    enable = mkEnableOption "Enable TOML";
+    extensions = mkOption {
+      type = listOf package;
+      default = with pkgs.vscode-extensions; [
+        tamasfe.even-better-toml
+      ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
   typescript = {
     enable = mkEnableOption "Enable Typescript";
     extensions = mkOption {
