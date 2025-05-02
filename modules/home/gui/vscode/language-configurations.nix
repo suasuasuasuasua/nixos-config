@@ -330,6 +330,23 @@ in
       };
     };
   };
+  ocaml = {
+    enable = mkEnableOption "Enable OCaml";
+    extensions = mkOption {
+      type = listOf package;
+      default = with pkgs.vscode-extensions; [
+        ocamllabs.ocaml-platform
+      ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
   python = {
     enable = mkEnableOption "Enable Python";
     extensions = mkOption {
