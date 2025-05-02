@@ -389,6 +389,23 @@ in
       };
     };
   };
+  r = {
+    enable = mkEnableOption "Enable R";
+    extensions = mkOption {
+      type = listOf package;
+      default = with pkgs.vscode-extensions; [
+        reditorsupport.r
+      ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
   rust = {
     enable = mkEnableOption "Enable Rust";
     extensions = mkOption {
