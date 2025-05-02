@@ -15,10 +15,11 @@ in
   config = lib.mkIf cfg.enable {
     services = {
       displayManager = {
-        sddm.enable = true;
-        sddm.wayland.enable = true;
-
-        # ly.enable = true;
+        sddm = {
+          enable = true;
+          wayland.enable = true;
+          autoNumlock = true;
+        };
       };
 
       desktopManager.plasma6.enable = true;
