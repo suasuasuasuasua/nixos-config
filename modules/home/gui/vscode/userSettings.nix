@@ -12,7 +12,6 @@ lib.mkOption {
     "chat.commandCenter.enabled" = false;
     "codesnap.transparentBackground" = true;
     "direnv.restart.automatic" = true;
-    "editor.minimap.enabled" = false;
     "editor.fontFamily" =
       with pkgs;
       if stdenv.isDarwin then
@@ -25,6 +24,7 @@ lib.mkOption {
         '';
     "editor.formatOnPaste" = true;
     "editor.formatOnSave" = true;
+    "editor.minimap.enabled" = false;
     "editor.rulers" = [
       80
       81
