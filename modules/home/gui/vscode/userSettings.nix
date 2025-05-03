@@ -31,6 +31,7 @@ lib.mkOption {
       81
     ];
     "editor.suggest.localityBonus" = true;
+    "editor.suggestSelection" = "recentlyUsed";
     "explorer.confirmDelete" = false;
     "explorer.confirmDragAndDrop" = false;
     "explorer.confirmPasteNative" = false;
