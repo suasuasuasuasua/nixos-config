@@ -12,13 +12,13 @@
 
 ### [`lab`](./configurations/nixos/lab/README.md) (custom build)
 
-- main server for services like `mealie`, `actual`, `jellyfin`, and more!
-- nas with zfs pooled hdds and shared via `smb`
+- Main server for services like `mealie`, `actual`, `jellyfin`, and more!
+- NAS with ZFS pooled hdds and shared via `smb`
 
-### [`Legion`](./configurations/nixos/legion/README.md) (custom build)
+### [`legion`](./configurations/nixos/legion/README.md) (pre-built)
 
-- For-fun NixOS on the Windows gaming computer. When I upgrade computers, I may
-  run NixOS main driver, with Windows as the backup
+- Main drivers Windows 11 but experimenting with NixOS
+- Gaming is the main factor stopping me from running full NixOS
 
 ### [`penguin`](./configurations/nixos/penguin/README.md) (Acer 713-3W Chromebook NixOS)
 
