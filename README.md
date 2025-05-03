@@ -1,5 +1,8 @@
 # NixOS Config
 
+| [![.github/workflows/flake-checker.yml](https://github.com/suasuasuasuasua/nixos-config/actions/workflows/flake-checker.yml/badge.svg)](https://github.com/suasuasuasuasua/nixos-config/actions/workflows/flake-checker.yml) | [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org) |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+
 ## Hosts
 
 ### [`mbp3`](./configurations/darwin/mbp3/README.md) (MacBook Pro M3 Max)
