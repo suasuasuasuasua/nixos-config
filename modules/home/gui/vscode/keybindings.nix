@@ -15,19 +15,11 @@ let
         key = "ctrl+cmd+j";
         command = "workbench.action.togglePanel";
       }
-      {
-        key = "cmd+j";
-        command = "-workbench.action.togglePanel";
-      }
     ]
     ++ optionals isLinux [
       {
         key = "ctrl+alt+j";
         command = "workbench.action.togglePanel";
-      }
-      {
-        key = "ctrl+alt+j";
-        command = "-workbench.action.togglePanel";
       }
     ];
   editorManipulationBindings =
