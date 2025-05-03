@@ -26,6 +26,11 @@ lib.mkOption {
     "editor.formatOnPaste" = true;
     "editor.formatOnSave" = true;
     "editor.minimap.enabled" = false;
+    "editor.quickSuggestions" = {
+      "other" = "inline";
+      "comments" = "off";
+      "strings" = "off";
+    };
     "editor.rulers" = [
       80
       81
