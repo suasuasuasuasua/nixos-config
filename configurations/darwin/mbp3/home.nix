@@ -28,7 +28,12 @@
           neovim = {
             enable = true; # enable nixvim config
             lsp = { };
-            plugins = { };
+            plugins = {
+              ollama = {
+                enable = true;
+                model = "gemma3";
+              };
+            };
           };
           zsh.enable = true; # preferred shell
         };
