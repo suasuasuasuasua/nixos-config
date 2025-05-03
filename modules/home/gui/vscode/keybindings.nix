@@ -25,6 +25,11 @@ let
   editorManipulationBindings =
     [
       {
+        key = "ctrl+y";
+        command = "acceptSelectedSuggestion";
+        when = "acceptSuggestionOnEnter && suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus";
+      }
+      {
         key = "ctrl+alt+h";
         command = "workbench.action.moveEditorLeftInGroup";
       }
