@@ -11,14 +11,28 @@
   # write a list of system packages to /etc/current-system-packages
   environment.etc."current-system-packages".text =
     let
-      packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
-      sortedUnique = builtins.sort builtins.lessThan (pkgs.lib.lists.unique packages);
-      formatted = builtins.concatStringsSep "\n" sortedUnique;
+      inherit (builtins)
+        lessThan
+        map
+        sort
+        concatStringsSep
+        ;
+      inherit (pkgs.lib.lists) unique;
+
+      packages = map (p: "${p.name}") config.environment.systemPackages;
+      sortedUnique = sort lessThan (unique packages);
+      formatted = concatStringsSep "\n" sortedUnique;
     in
     formatted;
 
   nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
+    overlays = builtins.attrValues outputs.overlays ++ [
+      # NOTE: https://github.com/NixOS/nixpkgs/issues/402079#issuecomment-2846741344
+      (_: prev: {
+        nodejs = prev.nodejs_22;
+        nodejs-slim = prev.nodejs-slim_22;
+      })
+    ];
 
     # allows us to install apps like vscode
     config.allowUnfree = true;

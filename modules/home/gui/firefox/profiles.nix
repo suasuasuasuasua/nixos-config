@@ -41,7 +41,11 @@
                 url = "https://nix-darwin.github.io/nix-darwin/manual/index.html";
               }
               {
-                name = "home-manager";
+                name = "home-manager options";
+                url = "https://nix-community.github.io/home-manager/options.xhtml";
+              }
+              {
+                name = "home-manager extranix options";
                 url = "https://home-manager-options.extranix.com/";
               }
               {
