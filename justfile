@@ -20,9 +20,7 @@ lint:
 [group('dev')]
 [macos]
 switch:
-    # NOTE: https://github.com/nix-community/nh/issues/149
-    # wait until version 4.0.0
-    darwin-rebuild switch --flake .
+    nh darwin switch .
 
 [group('dev')]
 [linux]
@@ -33,9 +31,7 @@ switch:
 [group('dev')]
 [macos]
 boot:
-    # NOTE: https://github.com/nix-community/nh/issues/149
-    # wait until version 4.0.0
-    darwin-rebuild boot --flake .
+    nh darwin boot .
 
 [group('dev')]
 [linux]
@@ -46,9 +42,7 @@ boot:
 [group('dev')]
 [macos]
 diff:
-    # NOTE: https://github.com/nix-community/nh/issues/149
-    # wait until version 4.0.0
-    darwin-rebuild build --flake . && nvd diff /run/current-system result
+    nh darwin build .
 
 [group('dev')]
 [linux]
