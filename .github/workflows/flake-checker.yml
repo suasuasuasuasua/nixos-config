@@ -1,0 +1,17 @@
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Check inputs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Nix flake inputs
+        uses: DeterminateSystems/flake-checker-action@v4
+        with:
+          fail-mode: true
+        env:
+          FLAKE_CHECKER_NO_TELEMETRY: true
