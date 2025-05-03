@@ -30,6 +30,7 @@ lib.mkOption {
       80
       81
     ];
+    "editor.suggest.localityBonus" = true;
     "explorer.confirmDelete" = false;
     "explorer.confirmDragAndDrop" = false;
     "explorer.confirmPasteNative" = false;
