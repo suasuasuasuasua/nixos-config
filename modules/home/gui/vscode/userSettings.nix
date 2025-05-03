@@ -12,6 +12,7 @@ lib.mkOption {
     "chat.commandCenter.enabled" = false;
     "codesnap.transparentBackground" = true;
     "direnv.restart.automatic" = true;
+    "editor.acceptSuggestionOnEnter" = "off";
     "editor.fontFamily" =
       with pkgs;
       if stdenv.isDarwin then
