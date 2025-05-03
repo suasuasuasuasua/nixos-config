@@ -30,6 +30,16 @@ let
         when = "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus";
       }
       {
+        key = "ctrl+y";
+        command = "editor.action.inlineSuggest.commit";
+        when = "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible";
+      }
+      {
+        key = "ctrl+y";
+        command = "editor.action.inlineSuggest.commit";
+        when = "inInlineEditsPreviewEditor";
+      }
+      {
         key = "ctrl+alt+h";
         command = "workbench.action.moveEditorLeftInGroup";
       }
