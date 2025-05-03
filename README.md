@@ -106,8 +106,3 @@ The initial setup is pretty simple now thanks to `disko`.
    # Rebuild the system after any changes!
    nix run .#activate
    ```
-
-> Inspired by [this unified
-> template](https://github.com/juspay/nixos-unified-template) and [this
-> config](https://github.com/srid/nixos-config). See the template for more
-> details on how to set it up!
