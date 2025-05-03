@@ -57,11 +57,7 @@
 
     casks = [
       # dev
-      "kate" # kde text editor
       "docker" # container runner and manager
-
-      # games
-      "battle-net"
 
       # general
       "element" # chat
