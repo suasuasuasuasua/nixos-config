@@ -27,7 +27,11 @@
         development = {
           neovim = {
             enable = true; # enable nixvim config
-            lsp = { };
+            lsp = {
+              cssls.enable = true;
+              html.enable = true;
+              vtsls.enable = true;
+            };
             plugins = {
               ollama = {
                 enable = true;
