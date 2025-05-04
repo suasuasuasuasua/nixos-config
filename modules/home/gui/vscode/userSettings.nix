@@ -17,7 +17,7 @@ lib.mkOption {
       with pkgs;
       if stdenv.isDarwin then
         ''
-          Menlo, Monaco, 'Courier New', monospace
+          'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace
         ''
       else
         ''
