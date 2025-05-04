@@ -23,6 +23,7 @@ in
       treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
         c
         cpp
+        printf
       ];
     };
   };
