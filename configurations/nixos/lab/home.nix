@@ -24,6 +24,7 @@
         development = {
           neovim = {
             enable = true;
+            colorscheme.enable = false;
             lsp = { };
             plugins = { };
           };
