@@ -24,6 +24,14 @@ in
           key = "jk";
           action = "<Esc>";
         }
+        {
+          mode = "t";
+          key = "jk";
+          action = "<C-\\><C-n>";
+          options = {
+            desc = "Exit terminal mode (jk)";
+          };
+        }
       ];
 
       # Performance tweaks
