@@ -16,9 +16,9 @@ in
     # Uncomment if you are using the home-manager module
     inputs.nixvim.homeManagerModules.nixvim
     # Uncomment if you are using the nixos module
-    #inputs.nixvim.nixosModules.nixvim
+    # inputs.nixvim.nixosModules.nixvim
     # Uncomment if you are using the nix-darwin module
-    #inputs.nixvim.nixDarwinModules.nixvim
+    # inputs.nixvim.nixDarwinModules.nixvim
 
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #
@@ -35,8 +35,6 @@ in
 
   options.home.development.neovim = {
     enable = lib.mkEnableOption "Enable neovim";
-    # TODO: add default set of packages
-    # TODO: add options for custom plugins
   };
 
   config = lib.mkIf cfg.enable {
