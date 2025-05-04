@@ -23,6 +23,11 @@
         enable = true;
       };
 
+      # lsp-format = {
+      #   enable = true;
+      #   lspServersToEnable = "all";
+      # };
+
       # Brief aside: **What is LSP?**
       #
       # LSP is an initialism you've probably heard, but might not understand
