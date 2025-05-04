@@ -54,6 +54,11 @@ diff:
 count:
     tokei .
 
+# Profile neovim
+[group('dev')]
+profile-nvim:
+    vim-startuptime -vimpath nvim -count 100
+
 # Build the raspberry pi image
 [group('dev')]
 build-pi:

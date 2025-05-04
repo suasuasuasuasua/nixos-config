@@ -26,6 +26,7 @@ pkgs.mkShell {
       # commands
       just # command runner
       tokei # lines of code
+      vim-startuptime # proflie vim and neovim
 
       # lsp
       nil # lsp 1
