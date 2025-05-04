@@ -57,6 +57,8 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
+      # TODO: switch once unstable hits
+      # url = "github:nix-community/nixvim/nixos-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
