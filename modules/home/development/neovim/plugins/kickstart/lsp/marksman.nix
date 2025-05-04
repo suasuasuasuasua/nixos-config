@@ -27,6 +27,7 @@ in
       treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
         markdown
         markdown-inline
+        mermaid
       ];
     };
   };
