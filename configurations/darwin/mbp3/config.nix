@@ -38,7 +38,7 @@
 
       utility = {
         appcleaner.enable = true; # cleans log/config files
-        betterdisplay.enable = true; # configure the displays
+        # betterdisplay.enable = true; # configure the displays
         iina.enable = true; # media player
       };
     };
