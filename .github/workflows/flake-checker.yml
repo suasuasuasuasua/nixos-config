@@ -2,7 +2,6 @@ on:
   pull_request:
   push:
     branches: [main]
-
 jobs:
   build:
     name: Check inputs
