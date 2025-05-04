@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -17,14 +18,15 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.nixvim.plugins.lsp.servers.nil_ls = {
-      enable = true;
-      # NOTE: add options as I need
-      settings = {
-        formatting.command = [
-          "nixfmt"
-        ];
+    programs.nixvim.plugins = {
+      lsp.servers.nil_ls = {
+        enable = true;
+        # NOTE: add options as I need
       };
+
+      treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+        nix
+      ];
     };
   };
 }

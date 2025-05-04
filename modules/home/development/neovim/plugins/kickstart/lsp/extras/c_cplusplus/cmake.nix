@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -13,9 +14,15 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.nixvim.plugins.lsp.servers.neocmake = {
-      enable = true;
-      # NOTE: add options as I need
+    programs.nixvim.plugins = {
+      lsp.servers.cmake = {
+        enable = true;
+        # NOTE: add options as I need
+      };
+
+      treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+        cmake
+      ];
     };
   };
 }

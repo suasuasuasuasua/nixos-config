@@ -8,6 +8,8 @@
 
       # By default, all available grammars packaged in the nvim-treesitter
       # package are installed.
+      grammarPackages = [ ];
+
       settings = {
         # Highlight code snippets in nix
         nixvimInjections = true;

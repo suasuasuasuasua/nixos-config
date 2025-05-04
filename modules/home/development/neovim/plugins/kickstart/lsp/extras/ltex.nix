@@ -14,13 +14,13 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    programs.nixvim = {
-      plugins.lsp.servers.ltex = {
+    programs.nixvim.plugins = {
+      lsp.servers.ltex = {
         enable = true;
         # NOTE: add options as I need
       };
 
-      plugins.ltex-extra = {
+      ltex-extra = {
         enable = true;
       };
     };

@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -13,11 +14,17 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.nixvim.plugins.lsp.servers.rust_analyzer = {
-      enable = true;
-      # NOTE: add options as I need
-      installCargo = false;
-      installRustc = false;
+    programs.nixvim.plugins = {
+      lsp.servers.rust_analyzer = {
+        enable = true;
+        # NOTE: add options as I need
+        installCargo = false;
+        installRustc = false;
+      };
+
+      treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+        rust
+      ];
     };
   };
 }
