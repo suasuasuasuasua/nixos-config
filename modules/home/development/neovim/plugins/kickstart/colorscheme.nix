@@ -1,16 +1,45 @@
 {
-  programs.nixvim = {
+  config,
+  lib,
+  ...
+}:
+let
+  cfg = config.home.development.neovim;
+
+  inherit (lib.types) bool enum;
+in
+{
+  options.home.development.neovim = {
+    colorscheme = {
+      enable = lib.mkOption {
+        type = bool;
+        default = true;
+        description = "Enable colorschemes for Neovim";
+      };
+      name = lib.mkOption {
+        type = enum [
+          "catppuccin"
+          "everforest"
+          "tokyonight"
+          "vscode"
+        ];
+        default = "vscode";
+      };
+    };
+  };
+
+  config = lib.mkIf cfg.colorscheme.enable {
     # You can easily change to a different colorscheme.
     # Add your colorscheme here and enable it.
     # Don't forget to disable the colorschemes you arent using
     #
     # If you want to see what colorschemes are already installed, you can use
-    # `:Telescope colorschme`.
-    colorschemes = {
+    # `:Telescope colorscheme`.
+    programs.nixvim.colorschemes = lib.mkIf cfg.colorscheme.enable {
       # https://nix-community.github.io/nixvim/colorschemes/catppuccin/index.html
-      catppuccin = {
-        enable = false;
-        lazyLoad.enable = true;
+      catppuccin = lib.mkIf (cfg.colorscheme.name == "catppuccin") {
+        enable = true;
+        # lazyLoad.enable = true; # TODO: still finnicky
         settings = {
           default_integrations = true;
           # one of “latte”, “mocha”, “frappe”, “macchiato”, “auto”
@@ -19,7 +48,7 @@
       };
       # https://nix-community.github.io/nixvim/colorschemes/everforest/index.html
       # * current
-      everforest = {
+      everforest = lib.mkIf (cfg.colorscheme.name == "everforest") {
         enable = true;
         settings = {
           enable_italic = 1;
@@ -28,9 +57,9 @@
         };
       };
       # https://nix-community.github.io/nixvim/colorschemes/tokyonight/index.html
-      tokyonight = {
-        enable = false;
-        lazyLoad.enable = true;
+      tokyonight = lib.mkIf (cfg.colorscheme.name == "tokyonight") {
+        enable = true;
+        # lazyLoad.enable = true; # TODO: still finnicky
         settings = {
           # Like many other themes, this one has different styles, and you could
           # load any other, such as 'storm', 'moon', or 'day'.
@@ -38,9 +67,9 @@
         };
       };
       # https://nix-community.github.io/nixvim/colorschemes/vscode/index.html
-      vscode = {
-        enable = false;
-        lazyLoad.enable = true;
+      vscode = lib.mkIf (cfg.colorscheme.name == "vscode") {
+        enable = true;
+        # lazyLoad.enable = true; # TODO: still finnicky
         settings = {
           italic_comments = true;
           underline_links = true;
