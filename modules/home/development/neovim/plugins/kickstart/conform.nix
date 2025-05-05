@@ -1,14 +1,6 @@
 { pkgs, ... }:
 {
   programs.nixvim = {
-    # Dependencies
-    #
-    # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extrapackages
-    extraPackages = with pkgs; [
-      # Used to format Lua code
-      stylua
-    ];
-
     # Autoformat
     # https://nix-community.github.io/nixvim/plugins/conform-nvim.html
     plugins.conform-nvim = {
@@ -40,7 +32,23 @@
           # javascript = [ [ "prettierd" "prettier" ] ];
         };
       };
+
+      lazyLoad = {
+        enable = true;
+        settings = {
+          event = [ "BufWritePre" ];
+          cmd = [ "ConformInfo" ];
+        };
+      };
     };
+
+    # Dependencies
+    #
+    # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extrapackages
+    extraPackages = with pkgs; [
+      # Used to format Lua code
+      stylua
+    ];
 
     # https://nix-community.github.io/nixvim/keymaps/index.html
     keymaps = [

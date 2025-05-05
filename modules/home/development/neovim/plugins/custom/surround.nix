@@ -22,10 +22,12 @@ in
       plugins.nvim-surround = {
         enable = true;
 
-        # TODO: figure out lazyload event -- maybe on surround?
-        # lazyLoad = {
-        #   enable = true;
-        # };
+        lazyLoad = {
+          enable = true;
+          settings = {
+            event = "VeryLazy";
+          };
+        };
       };
     };
   };

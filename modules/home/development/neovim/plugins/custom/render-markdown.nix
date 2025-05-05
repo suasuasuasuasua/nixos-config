@@ -22,16 +22,17 @@ in
       # https://github.com/MeanderingProgrammer/render-markdown.nvim
       plugins.render-markdown = {
         enable = true;
-        # not yet enabled lazy loading provider
-        lazyLoad = {
-          enable = false;
-          settings = {
-            ft = "markdown";
-          };
-        };
+
         settings = {
           latex = {
             enabled = false; # latex kinda annoying when bouncing around
+          };
+        };
+
+        lazyLoad = {
+          enable = true;
+          settings = {
+            ft = "markdown";
           };
         };
       };

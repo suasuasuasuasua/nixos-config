@@ -21,9 +21,7 @@ in
       # https://github.com/epwalsh/obsidian.nvim
       plugins.obsidian = {
         enable = true;
-        lazyLoad = {
-          enable = true;
-        };
+
         settings = {
           inherit (cfg) workspaces;
 
@@ -79,6 +77,13 @@ in
 
           # Disable the UI rendering for obsidian
           ui.enable = false;
+        };
+      };
+
+      lazyLoad = {
+        enable = true;
+        settings = {
+          ft = "markdown";
         };
       };
     };

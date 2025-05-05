@@ -1,10 +1,6 @@
 { pkgs, ... }:
 {
   programs.nixvim = {
-    extraPackages = with pkgs; [
-      fd
-    ];
-
     # Fuzzy Finder (files, lsp, etc)
     # https://nix-community.github.io/nixvim/plugins/telescope/index.html
     plugins.telescope = {
@@ -128,6 +124,10 @@
         extensions.__raw = "{ ['ui-select'] = { require('telescope.themes').get_dropdown() } }";
       };
     };
+
+    extraPackages = with pkgs; [
+      fd
+    ];
 
     # https://nix-community.github.io/nixvim/keymaps/index.html
     keymaps = [

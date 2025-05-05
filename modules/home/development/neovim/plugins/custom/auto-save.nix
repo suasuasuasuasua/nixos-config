@@ -21,12 +21,34 @@ in
       # https://github.com/okuuva/auto-save.nvim/
       plugins.auto-save = {
         enable = true;
-      };
 
-      # TODO: figure out the lazyLoad event -- on write or on file open?
-      # lazyLoad = {
-      #   enable = true;
-      # };
+        settings = {
+          condition.__raw =
+            # lua
+            ''
+              function(buf)
+                local fn = vim.fn
+
+                -- don't save for special-buffers
+                if fn.getbufvar(buf, "&buftype") ~= "" then
+                  return false
+                end
+                return true
+              end
+            '';
+        };
+
+        lazyLoad = {
+          enable = true;
+          settings = {
+            cmd = "ASToggle";
+            event = [
+              "InsertLeave"
+              "TextChanged"
+            ];
+          };
+        };
+      };
     };
   };
 }

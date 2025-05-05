@@ -13,7 +13,7 @@
       lazyLoad = {
         enable = false;
         settings = {
-          cmd = "WhichKey";
+          event = "VeryLazy";
         };
       };
 

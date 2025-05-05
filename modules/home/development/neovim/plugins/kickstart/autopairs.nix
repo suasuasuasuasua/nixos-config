@@ -4,6 +4,13 @@
   programs.nixvim = {
     plugins.nvim-autopairs = {
       enable = true;
+
+      lazyLoad = {
+        enable = true;
+        settings = {
+          event = "InsertEnter";
+        };
+      };
     };
 
     # If you want to automatically add `(` after selecting a function or method
