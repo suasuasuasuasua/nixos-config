@@ -23,10 +23,10 @@ in
         enable = true;
 
         lazyLoad = {
-          enable = true;
-          settings = {
-            event = "VeryLazy";
-          };
+          enable = false;
+          # settings = {
+          #   event = "VeryLazy"; # TODO: what does VeryLazy mean?
+          # };
         };
       };
     };
