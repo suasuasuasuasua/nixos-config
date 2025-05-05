@@ -10,10 +10,10 @@
     plugins.which-key = {
       enable = true;
       lazyLoad = {
-        enable = false;
-        # settings = {
-        #   cmd = "VeryLazy"; # TODO: what does VeryLazy mean?
-        # };
+        enable = true;
+        settings = {
+          user = "DeferredUiEnter";
+        };
       };
 
       # Document existing key chains

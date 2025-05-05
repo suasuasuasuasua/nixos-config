@@ -15,13 +15,6 @@
       # Add your own debuggers here
       dap-go = {
         enable = true;
-        # not yet enabled lazy loading provider
-        lazyLoad = {
-          enable = false;
-          settings = {
-            ft = "go";
-          };
-        };
       };
 
       dap-ui = {

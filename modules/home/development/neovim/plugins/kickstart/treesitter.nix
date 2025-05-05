@@ -55,6 +55,13 @@
         #    - Show your current context: https://nix-community.github.io/nixvim/plugins/treesitter-context/index.html
         #    - Treesitter + textobjects: https://nix-community.github.io/nixvim/plugins/treesitter-textobjects/index.html
       };
+
+      lazyLoad = {
+        enable = true;
+        settings = {
+          user = "DeferredUIEnter";
+        };
+      };
     };
 
     extraPackages = with pkgs; [

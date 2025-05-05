@@ -4,6 +4,14 @@
     # plugins used for completion, annotations and signatures of Neovim apis
     plugins.lazydev = {
       enable = true;
+
+      lazyLoad = {
+        enable = true;
+        settings = {
+          ft = "lua";
+          cmd = "LazyDev";
+        };
+      };
     };
   };
 }

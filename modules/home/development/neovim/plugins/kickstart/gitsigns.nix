@@ -24,6 +24,14 @@
           };
         };
       };
+
+      lazyLoad = {
+        enable = true;
+        settings = {
+          # LazyFile is a shorthand that lazy.nvim uses
+          event = [ "BufReadPost BufWritePost BufNewFile" ];
+        };
+      };
     };
 
     # NOTE: add gitsigns recommended keymaps if you are interested

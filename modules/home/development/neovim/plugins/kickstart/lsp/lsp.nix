@@ -13,20 +13,26 @@
       #
       # Allows extra capabilities providied by nvim-cmp
       # https://nix-community.github.io/nixvim/plugins/cmp-nvim-lsp.html
-      cmp-nvim-lsp = {
-        enable = true;
-      };
+      cmp-nvim-lsp.enable = true;
 
       # Useful status updates for LSP.
       # https://nix-community.github.io/nixvim/plugins/fidget/index.html
       fidget = {
         enable = true;
+
+        lazyLoad = {
+          enable = true;
+          settings = {
+            # LazyFile is a shorthand that lazy.nvim uses
+            event = [ "BufReadPost BufWritePost BufNewFile" ];
+          };
+        };
       };
 
-      # lsp-format = {
-      #   enable = true;
-      #   lspServersToEnable = "all";
-      # };
+      lsp-format = {
+        enable = true;
+        lspServersToEnable = "all";
+      };
 
       # Brief aside: **What is LSP?**
       #

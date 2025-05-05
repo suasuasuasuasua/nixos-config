@@ -23,10 +23,10 @@ in
         enable = true;
 
         lazyLoad = {
-          enable = false;
-          # settings = {
-          #   event = "VeryLazy"; # TODO: what does VeryLazy mean?
-          # };
+          enable = true;
+          settings = {
+            user = "DeferredUiEnter";
+          };
         };
       };
     };

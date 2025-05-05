@@ -26,19 +26,6 @@
       # [[ Configure Telescope ]]
       # See `:help telescope` and `:help telescope.setup()`
       enable = true;
-      # not yet enabled lazy loading provider
-      lazyLoad = {
-        enable = false;
-        settings = {
-          cmd = "Telescope";
-          keys = [
-            "<leader>sf"
-            "<leader>sg"
-            "<leader>sh"
-            "<leader><leader>"
-          ];
-        };
-      };
 
       # Enable Telescope extensions
       extensions = {
@@ -122,6 +109,13 @@
       };
       settings = {
         extensions.__raw = "{ ['ui-select'] = { require('telescope.themes').get_dropdown() } }";
+      };
+
+      lazyLoad = {
+        enable = true;
+        settings = {
+          event = [ "BufReadPost BufWritePost BufNewFile" ];
+        };
       };
     };
 

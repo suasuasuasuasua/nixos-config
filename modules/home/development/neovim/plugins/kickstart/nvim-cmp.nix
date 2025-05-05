@@ -5,7 +5,16 @@
       #
       # Snippet Engine & its associated nvim-cmp source
       # https://nix-community.github.io/nixvim/plugins/luasnip/index.html
-      luasnip.enable = true;
+      luasnip = {
+        enable = true;
+        lazyLoad = {
+          enable = true;
+          settings = {
+            # LazyFile is a shorthand that lazy.nvim uses
+            event = [ "BufReadPost BufWritePost BufNewFile" ];
+          };
+        };
+      };
       cmp_luasnip.enable = true;
 
       # https://nix-community.github.io/nixvim/plugins/cmp-nvim-lsp.html
@@ -117,6 +126,13 @@
             { name = "path"; }
             { name = "nvim_lsp_signature_help"; }
           ];
+        };
+
+        lazyLoad = {
+          enable = true;
+          settings = {
+            event = [ "InsertEnter" ];
+          };
         };
       };
     };

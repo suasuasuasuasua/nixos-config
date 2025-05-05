@@ -27,14 +27,13 @@ in
       plugins.typst-preview = {
         enable = true;
 
-        # Nixvim (lazy loading): You have enabled lazy loading support for the
-        # following plugins but have not enabled a lazy loading provider.
-        # lazyLoad = {
-        #   enable = true;
-        #   settings = {
-        #     cmd = "TypstPreview";
-        #   };
-        # };
+        lazyLoad = {
+          enable = true;
+          settings = {
+            cmd = "TypstPreview";
+            ft = "typst";
+          };
+        };
       };
     };
   };
