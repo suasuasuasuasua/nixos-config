@@ -24,6 +24,32 @@ in
 
         # https://nix-community.github.io/nixvim/plugins/lz-n/plugins.html
         plugins = [
+          # auto-dark-mode
+          {
+            __unkeyed-1 = "auto-dark-mode.nvim"; # the plugin's name (:h packadd)
+            after = ''
+              function()
+                require("auto-dark-mode").setup {
+                  set_dark_mode = function()
+                    vim.api.nvim_set_option_value("background", "dark", {})
+                  end,
+                  set_light_mode = function()
+                    vim.api.nvim_set_option_value("background", "light", {})
+                  end,
+                  update_interval = 3000,
+                  fallback = "dark"
+                };
+              end
+            '';
+            enabled = ''
+              function()
+                return true
+              end
+            '';
+            event = [
+              "DeferredUIEnter"
+            ];
+          }
           # neotree
           {
             __unkeyed-1 = "neo-tree.nvim"; # the plugin's name (:h packadd)
