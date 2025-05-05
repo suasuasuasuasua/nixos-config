@@ -24,13 +24,6 @@ in
         img-clip-nvim
       ];
 
-      extraConfigLua =
-        # lua
-        ''
-          require("img-clip").setup {
-          };
-        '';
-
       extraPackages =
         let
           inherit (lib) optionals;

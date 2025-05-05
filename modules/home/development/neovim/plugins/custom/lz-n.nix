@@ -50,6 +50,18 @@ in
               "DeferredUIEnter"
             ];
           }
+          # img-clip-nvim
+          {
+            __unkeyed-1 = "img-clip.nvim"; # the plugin's name (:h packadd)
+            after = ''
+              function()
+                require("img-clip").setup()
+              end
+            '';
+            event = [
+              "DeferredUIEnter"
+            ];
+          }
           # neotree
           {
             __unkeyed-1 = "neo-tree.nvim"; # the plugin's name (:h packadd)
