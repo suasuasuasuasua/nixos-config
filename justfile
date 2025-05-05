@@ -62,7 +62,7 @@ profile-nvim:
 # Build the raspberry pi image
 [group('dev')]
 build-pi:
-    nom build '.#nixosConfigurations.pi.config.system.build.sdImage'
+    nom build .#nixosConfigurations.pi.config.formats.sd-aarch64
 
 # Check nix flake
 [group('dev')]
