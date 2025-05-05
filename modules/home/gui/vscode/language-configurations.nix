@@ -385,7 +385,6 @@ in
       default = {
         "black-formatter.importStrategy" = "fromEnvironment";
         "jupyter.askForKernelRestart" = false;
-        "jupyter.themeMatplotlibPlots" = true;
       };
     };
   };
