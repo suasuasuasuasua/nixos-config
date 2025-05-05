@@ -24,6 +24,7 @@ pkgs.mkShell {
       fastfetch # system information
 
       # commands
+      bat # better cat
       just # command runner
       tokei # lines of code
       vim-startuptime # proflie vim and neovim

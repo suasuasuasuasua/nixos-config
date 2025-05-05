@@ -57,7 +57,7 @@ count:
 # Profile neovim
 [group('dev')]
 profile-nvim:
-    vim-startuptime -vimpath nvim -count 100
+    vim-startuptime -vimpath nvim -count 100 | bat
 
 # Build the raspberry pi image
 [group('dev')]
