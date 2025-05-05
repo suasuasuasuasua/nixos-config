@@ -62,6 +62,24 @@ in
               "DeferredUIEnter"
             ];
           }
+          # markdown-preview-nvim
+          {
+            __unkeyed-1 = "markdown-preview.nvim";
+            cmd = [
+              "MarkdownPreview"
+            ];
+            event = [
+              "DeferredUIEnter"
+            ];
+            ft = [ "markdown" ];
+            keys = [
+              {
+                __unkeyed-1 = "<leader>mp";
+                __unkeyed-2 = "<cmd>MarkdownPreview<cr>";
+                desc = "Start Markdown Preview server";
+              }
+            ];
+          }
           # neotree
           {
             __unkeyed-1 = "neo-tree.nvim"; # the plugin's name (:h packadd)

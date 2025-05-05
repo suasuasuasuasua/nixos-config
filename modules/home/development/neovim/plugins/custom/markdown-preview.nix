@@ -22,17 +22,6 @@ in
       plugins.markdown-preview = {
         enable = true;
       };
-
-      keymaps = [
-        {
-          mode = "n";
-          key = "<leader>mp";
-          action = "<cmd>MarkdownPreview<cr>";
-          options = {
-            desc = "Start Markdown Preview server";
-          };
-        }
-      ];
     };
   };
 }
