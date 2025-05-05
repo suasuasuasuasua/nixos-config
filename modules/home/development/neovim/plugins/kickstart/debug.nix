@@ -7,6 +7,7 @@
     # kickstart.nixvim and not ktichen-sink.nixvim ;)
     # https://nix-community.github.io/nixvim/plugins/dap/index.html
 
+    # TODO: move the keymaps and setup into lazyLoad settings
     plugins = {
       dap = {
         enable = true;
