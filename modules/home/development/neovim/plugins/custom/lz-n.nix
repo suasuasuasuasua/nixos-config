@@ -90,9 +90,12 @@ in
             '';
             enabled = ''
               function()
-              return true
+                return true
               end
             '';
+            event = [
+              "DeferredUIEnter"
+            ];
             keys = [
               {
                 __unkeyed-1 = "<leader>ft";
@@ -106,6 +109,9 @@ in
             __unkeyed-1 = "telescope.nvim";
             cmd = [
               "Telescope"
+            ];
+            event = [
+              "DeferredUIEnter"
             ];
             keys = [
               {
