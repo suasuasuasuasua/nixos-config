@@ -35,6 +35,11 @@ in
           # Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
           delete_to_trash = false;
         };
+
+        # NOTE: not recommended according to GitHub
+        lazyLoad = {
+          enable = false;
+        };
       };
     };
   };
