@@ -9,12 +9,11 @@
     # https://nix-community.github.io/nixvim/plugins/which-key/index.html
     plugins.which-key = {
       enable = true;
-      # not yet enabled lazy loading provider
       lazyLoad = {
         enable = false;
-        settings = {
-          event = "VeryLazy";
-        };
+        # settings = {
+        #   cmd = "VeryLazy"; # TODO: what does VeryLazy mean?
+        # };
       };
 
       # Document existing key chains
