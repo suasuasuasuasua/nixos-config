@@ -8,19 +8,29 @@
   imports = [
     # hardware setup
     # see https://github.com/NixOS/nixos-hardware/blob/master/raspberry-pi/4/default.nixh
+    inputs.nixos-generators.nixosModules.all-formats
     inputs.nixos-hardware.nixosModules.raspberry-pi-4
     ./hardware-configuration.nix
     ./services
     ./system
   ];
 
-  users.users.admin = {
+  users.users.justinhoang = {
     # If you do, you can skip setting a root password by passing
     # '--no-root-passwd' to nixos-install. Be sure to change it (using
     # passwd) after rebooting!
     initialHashedPassword = "$y$j9T$sXZCGwjtugZIt/C2nU8bk/$D36OrIe3eyGSM7rPysbQI1OyT56TdtJZtcvnOne2Ge0";
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+  };
+
+  # https://github.com/NixOS/nixpkgs/issues/154163#issuecomment-1350599022
+  nixpkgs = {
+    overlays = [
+      (_: prev: {
+        makeModulesClosure = x: prev.makeModulesClosure (x // { allowMissing = true; });
+      })
+    ];
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,

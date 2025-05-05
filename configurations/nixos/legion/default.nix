@@ -1,6 +1,11 @@
 # See /modules/nixos/* for actual settings
 # This file is just *top-level* configuration.
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  userConfigs,
+  ...
+}:
 {
   imports = [
     # disk setup
@@ -34,21 +39,30 @@
   # but cannot set the login shell because that's root level operation
   programs.zsh.enable = true;
 
-  users.users = {
-    justinhoang = {
-      # If you do, you can skip setting a root password by passing
-      # '--no-root-passwd' to nixos-install. Be sure to change it (using passwd)
-      # after rebooting!
-      initialPassword = "password";
-      isNormalUser = true;
-      extraGroups = [
-        "wheel"
-        "docker"
-        "libvirtd"
-      ];
-      shell = pkgs.zsh;
-    };
-  };
+  users.users =
+    let
+      helper =
+        acc:
+        { username, initialHashedPassword, ... }:
+        {
+          ${username} = {
+            # If you do, you can skip setting a root password by passing
+            # '--no-root-passwd' to nixos-install. Be sure to change it (using
+            # passwd) after rebooting!
+            inherit initialHashedPassword;
+
+            isNormalUser = true;
+            extraGroups = [
+              "wheel"
+              "docker"
+              "libvirtd"
+            ];
+            shell = pkgs.zsh;
+          };
+        }
+        // acc;
+    in
+    builtins.foldl' helper { } userConfigs;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

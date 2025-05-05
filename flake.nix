@@ -34,7 +34,10 @@
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
     mac-app-util.url = "github:hraban/mac-app-util";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    rpi-nix.url = "github:nix-community/raspberry-pi-nix";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     systems.url = "github:nix-systems/default";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
@@ -87,16 +90,17 @@
       treefmtEval = forEachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
 
       # Helper function for making nixos and darwin user configurations
-      defineUsers =
+      mkUsers =
+        system: userConfigs:
         let
+          # Define packages based on the system architecture
+          pkgs = pkgsFor.${system};
+
           # Inner function to collect the configuration for each user
-          defineUser =
+          mkUser =
             acc:
-            # deconstruct each user to find their username and system
-            { username, system }:
-            let
-              pkgs = pkgsFor.${system};
-            in
+            # deconstruct each user to find their username
+            { username, ... }:
             {
               ${username} = import ./configurations/home/base.nix {
                 inherit lib pkgs username;
@@ -106,94 +110,111 @@
         in
         # build the attrset
         # https://noogle.dev/f/builtins/foldl'
-        userConfigs: builtins.foldl' defineUser { } userConfigs;
-      # Helper function for making nixos systems
-      defineNixosSystem =
-        name: userConfigs:
-        lib.nixosSystem {
-          modules = [
-            ./configurations/nixos/${name}
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                backupFileExtension = "bak";
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = {
-                  inherit inputs outputs;
-                };
-
-                users = defineUsers userConfigs;
-              };
-            }
-          ];
-          # Pass these arguments through the modules
-          specialArgs = {
+        builtins.foldl' mkUser { } userConfigs;
+      # Helper function for setting up home manager
+      mkHomeManagerConfig = system: userConfigs: {
+        home-manager = {
+          backupFileExtension = "bak";
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {
             inherit inputs outputs userConfigs;
+          };
+
+          users = mkUsers system userConfigs;
+        };
+      };
+
+      # Helper function for making nixos systems
+      mkNixosSystem =
+        {
+          name,
+          system,
+          userConfigs,
+          enableHomeManager ? true,
+        }:
+        {
+          ${name} = lib.nixosSystem {
+            modules =
+              [
+                ./configurations/nixos/${name}
+              ]
+              ++ lib.optionals enableHomeManager [
+                home-manager.nixosModules.home-manager
+                (mkHomeManagerConfig system userConfigs)
+              ];
+            # Pass these arguments through the modules
+            specialArgs = {
+              inherit inputs outputs userConfigs;
+            };
           };
         };
       # Helper function for making darwin systems
-      defineDarwinSystem =
-        name: userConfigs:
-        lib.darwinSystem {
-          modules = [
-            ./configurations/darwin/${name}
-            home-manager.darwinModules.home-manager
-            {
-              home-manager = {
-                backupFileExtension = "bak";
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = {
-                  inherit inputs outputs;
-                };
-
-                users = defineUsers userConfigs;
-              };
-            }
-          ];
-          # Pass these arguments through the modules
-          specialArgs = {
-            inherit
-              self
-              inputs
-              outputs
-              userConfigs
-              ;
+      mkDarwinSystem =
+        {
+          name,
+          system,
+          userConfigs,
+          enableHomeManager ? true,
+        }:
+        {
+          ${name} = lib.darwinSystem {
+            modules =
+              [
+                ./configurations/darwin/${name}
+              ]
+              ++ lib.optionals enableHomeManager [
+                home-manager.darwinModules.home-manager
+                (mkHomeManagerConfig system userConfigs)
+              ];
+            # Pass these arguments through the modules
+            specialArgs = {
+              inherit
+                self
+                inputs
+                outputs
+                userConfigs
+                ;
+            };
           };
         };
       # Helper function for making standalone home-manager configurations
-      defineHomeConfiguration =
+      mkHomeConfiguration =
         {
-          username,
+          name,
           system,
-          profile,
-        }@userConfig:
+          userConfig,
+        }:
         let
+          inherit (userConfig) username;
+
           pkgs = pkgsFor.${system};
-          # NOTE: home/default.nix expects a list of userConfigs to add to the
-          # trustedUsers. The reasoning is that a NixOS or macOS system may have
-          # multiple users, but the home-manager doesn't
-          # This is a bit hacky but meh
-          userConfigs = [
-            userConfig
-          ];
         in
-        lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            ./configurations/home/base.nix
-            ./configurations/home/${profile}.nix
-          ];
-          extraSpecialArgs = {
-            inherit
-              inputs
-              outputs
-              username
-              userConfigs
-              ;
+        {
+          ${name} = lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [
+              ./configurations/home/base.nix
+              ./configurations/home/${name}.nix
+            ];
+            extraSpecialArgs = {
+              inherit
+                inputs
+                outputs
+                userConfig
+                username
+                ;
+            };
           };
         };
+
+      # Define the users
+      # NOTE: maybe move this to a json file in the future
+      justinhoang = {
+        username = "justinhoang";
+        email = "j124.dev@proton.me";
+        initialHashedPassword = "$y$j9T$sXZCGwjtugZIt/C2nU8bk/$D36OrIe3eyGSM7rPysbQI1OyT56TdtJZtcvnOne2Ge0";
+      };
     in
     {
       inherit lib;
@@ -224,48 +245,49 @@
           };
       });
 
-      nixosConfigurations = {
-        lab = defineNixosSystem "lab" [
+      nixosConfigurations = lib.mergeAttrsList (
+        map mkNixosSystem [
           {
-            username = "justinhoang";
+            name = "lab";
             system = "x86_64-linux";
+            userConfigs = [ justinhoang ];
           }
-        ];
-        legion = defineNixosSystem "legion" [
           {
-            username = "justinhoang";
+            name = "legion";
             system = "x86_64-linux";
+            userConfigs = [ justinhoang ];
           }
-        ];
-        penguin = defineNixosSystem "penguin" [
           {
-            username = "justinhoang";
+            name = "penguin";
             system = "x86_64-linux";
+            userConfigs = [ justinhoang ];
           }
-        ];
-        pi = defineNixosSystem "pi" [
           {
-            username = "justinhoang";
+            name = "pi";
             system = "aarch64-linux";
+            userConfigs = [ justinhoang ];
+            enableHomeManager = false;
           }
-        ];
-      };
-      darwinConfigurations = {
-        mbp3 = defineDarwinSystem "mbp3" [
+        ]
+      );
+      darwinConfigurations = lib.mergeAttrsList (
+        map mkDarwinSystem [
           {
-            username = "justinhoang";
+            name = "mbp3";
             system = "aarch64-darwin";
+            userConfigs = [ justinhoang ];
           }
-        ];
-      };
-      homeConfigurations = {
-        # windows subsystem for linux
-        wsl = defineHomeConfiguration {
-          profile = "wsl";
-          username = "justinhoang";
-          system = "x86_64-linux";
-        };
-      };
+        ]
+      );
+      homeConfigurations = lib.mergeAttrsList (
+        map mkHomeConfiguration [
+          {
+            name = "wsl";
+            system = "x86_64-linux";
+            userConfig = justinhoang;
+          }
+        ]
+      );
     };
 
   # use cachix for faster builds in places
