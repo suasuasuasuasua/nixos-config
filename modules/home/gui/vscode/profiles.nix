@@ -29,6 +29,7 @@ in
         "markdown"
         "python"
         "spell"
+        "toml"
         "typst"
         "yaml"
       ];
@@ -61,6 +62,7 @@ in
         "nix"
         "python"
         "spell"
+        "toml"
         "typst"
         "yaml"
       ];
