@@ -288,6 +288,46 @@
           }
         ]
       );
+
+      # Build the configurations
+      # https://saylesss88.github.io/blog/building-your-configuration-as-a-package/
+      packages = forEachSystem (
+        _:
+        let
+          nixosBuilds = builtins.foldl' (
+            acc: name:
+            {
+              ${name} = self.nixosConfigurations.${name}.config.system.build.toplevel;
+            }
+            // acc
+          ) { } (lib.attrNames self.nixosConfigurations);
+          darwinBuilds = builtins.foldl' (
+            acc: name:
+            {
+              ${name} = self.darwinConfigurations.${name}.config.system.build.toplevel;
+            }
+            // acc
+          ) { } (lib.attrNames self.darwinConfigurations);
+        in
+        nixosBuilds // darwinBuilds
+      );
+
+      apps = forEachSystem (pkgs: {
+        deploy-nixos = {
+          type = "app";
+          program = toString (
+            pkgs.writeScript "deploy-nixos" ''
+              #!/bin/sh
+              nix build .#nixos
+              sudo ./result/bin/switch-to-configuration switch
+            ''
+          );
+          meta = {
+            description = "Build and deploy NixOS configuration using nix build";
+            license = lib.licenses.mit;
+          };
+        };
+      });
     };
 
   # use cachix for faster builds in places
