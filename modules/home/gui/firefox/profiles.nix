@@ -18,6 +18,19 @@
             url = "https://mail.google.com/";
           }
           {
+            name = "proton";
+            bookmarks = [
+              {
+                name = "mail";
+                url = "https://mail.proton.me";
+              }
+              {
+                name = "calendar";
+                url = "https://calendar.proton.me";
+              }
+            ];
+          }
+          {
             name = "reddit";
             url = "https://reddit.com/";
           }
