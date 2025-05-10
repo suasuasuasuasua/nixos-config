@@ -506,6 +506,9 @@ in
       inherit (jsonFormat) type;
       default = {
         "typescript.preferences.importModuleSpecifier" = "non-relative";
+        "[typescriptreact]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
       };
     };
   };
