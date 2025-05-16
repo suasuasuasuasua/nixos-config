@@ -39,7 +39,7 @@
             url = "https://news.ycombinator.com/";
           }
           {
-            name = "nix related";
+            name = "nix";
             bookmarks = [
               {
                 name = "nixpkgs";
@@ -80,7 +80,7 @@
             ];
           }
           {
-            name = "macOS related";
+            name = "macOS";
             bookmarks = [
               {
                 name = "brew";
