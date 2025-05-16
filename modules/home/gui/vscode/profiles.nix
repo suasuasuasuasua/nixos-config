@@ -1,6 +1,7 @@
 {
   options,
   lib,
+  pkgs,
   jsonFormat,
   keybindingSubmodule,
   ...
@@ -29,6 +30,7 @@ in
         "markdown"
         "python"
         "spell"
+        "toml"
         "typst"
         "yaml"
       ];
@@ -61,6 +63,7 @@ in
         "nix"
         "python"
         "spell"
+        "toml"
         "typst"
         "yaml"
       ];
@@ -114,6 +117,37 @@ in
     extensions = mkOption {
       type = listOf package;
       default = [ ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
+  web-development = {
+    enable = mkEnableOption "Enable Web Development Profile";
+    languages = mkOption {
+      type = enumLanguages;
+      default = [
+        "css"
+        "javascript"
+        "just"
+        "html"
+        "markdown"
+        "spell"
+        "toml"
+        "typescript"
+        "yaml"
+      ];
+    };
+    extensions = mkOption {
+      type = listOf package;
+      default = with pkgs.vscode-extensions; [
+        unifiedjs.vscode-mdx # markdown with react
+      ];
     };
     keybindings = mkOption {
       type = keybindingSubmodule;

@@ -18,6 +18,19 @@
             url = "https://mail.google.com/";
           }
           {
+            name = "proton";
+            bookmarks = [
+              {
+                name = "mail";
+                url = "https://mail.proton.me";
+              }
+              {
+                name = "calendar";
+                url = "https://calendar.proton.me";
+              }
+            ];
+          }
+          {
             name = "reddit";
             url = "https://reddit.com/";
           }
@@ -26,7 +39,7 @@
             url = "https://news.ycombinator.com/";
           }
           {
-            name = "nix related";
+            name = "nix";
             bookmarks = [
               {
                 name = "nixpkgs";
@@ -67,7 +80,7 @@
             ];
           }
           {
-            name = "macOS related";
+            name = "macOS";
             bookmarks = [
               {
                 name = "brew";

@@ -17,6 +17,7 @@ in
         inherit hostName;
       };
     };
+    glances.enable = true;
     nginx.enable = true;
   };
 }

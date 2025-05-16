@@ -7,13 +7,14 @@
       # https://nix-community.github.io/nixvim/plugins/luasnip/index.html
       luasnip = {
         enable = true;
-        lazyLoad = {
-          enable = true;
-          settings = {
-            # LazyFile is a shorthand that lazy.nvim uses
-            event = [ "BufReadPost BufWritePost BufNewFile" ];
-          };
-        };
+        # TODO: sometimes errors with luasnip not found
+        # lazyLoad = {
+        #   enable = true;
+        #   settings = {
+        #     # LazyFile is a shorthand that lazy.nvim uses
+        #     event = [ "BufReadPost BufWritePost BufNewFile" ];
+        #   };
+        # };
       };
       cmp_luasnip.enable = true;
 

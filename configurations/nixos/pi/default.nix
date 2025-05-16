@@ -13,6 +13,8 @@
     ./hardware-configuration.nix
     ./services
     ./system
+
+    "${inputs.self}/modules/nixos"
   ];
 
   users.users.justinhoang = {

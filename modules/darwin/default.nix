@@ -50,6 +50,7 @@
         flake-registry = "";
         trusted-users = [
           "root"
+          "@admin"
         ] ++ map ({ username, ... }: username) userConfigs;
 
         # darwin specific extra platform builders
