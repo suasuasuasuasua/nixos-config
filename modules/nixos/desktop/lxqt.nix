@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -24,5 +25,9 @@ in
 
       displayManager.defaultSession = "lxqt";
     };
+
+    environment.systemPackages = with pkgs; [
+      lxqt.lxqt-wayland-session
+    ];
   };
 }

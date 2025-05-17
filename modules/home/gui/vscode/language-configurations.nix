@@ -173,6 +173,21 @@ in
       };
     };
   };
+  javascript = {
+    enable = mkEnableOption "Enable Javascript";
+    extensions = mkOption {
+      type = listOf package;
+      default = [ ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
   julia = {
     enable = mkEnableOption "Enable Julia";
     extensions = mkOption {
@@ -491,6 +506,9 @@ in
       inherit (jsonFormat) type;
       default = {
         "typescript.preferences.importModuleSpecifier" = "non-relative";
+        "[typescriptreact]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
       };
     };
   };
