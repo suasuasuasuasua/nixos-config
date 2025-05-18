@@ -38,6 +38,11 @@ in
       "${serviceName}.${hostName}.home" = {
         locations."/" = {
           proxyPass = "http://localhost:${toString cfg.port}";
+          proxyWebsockets = true; # needed if you need to use WebSocket
+
+          extraConfig =
+            # allow for larger file uploads like videos through the reverse proxy
+            "client_max_body_size 0;";
         };
       };
     };
