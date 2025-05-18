@@ -59,6 +59,13 @@
       };
       items = [
         {
+          title = "actual";
+          description = "finance tracker";
+          icon = "hl-actual";
+          target = "newtab";
+          url = "http://actual.${hostName}.home";
+        }
+        {
           title = "code-server";
           description = "vscode in the web!";
           icon = "hl-code-server";
@@ -73,18 +80,18 @@
           url = "http://mealie.${hostName}.home";
         }
         {
-          title = "actual";
-          description = "finance tracker";
-          icon = "hl-actual";
-          target = "newtab";
-          url = "http://actual.${hostName}.home";
-        }
-        {
           title = "paperless";
           description = "document manager";
           icon = "hl-paperless";
           target = "newtab";
           url = "http://paperless.${hostName}.home";
+        }
+        {
+          title = "stirling-pdf";
+          description = "pdf tools";
+          icon = "hl-stirling-pdf";
+          target = "newtab";
+          url = "http://stirling-pdf.${hostName}.home";
         }
       ];
     }
