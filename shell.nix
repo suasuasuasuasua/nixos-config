@@ -6,9 +6,15 @@
 let
   inherit (pkgs) system;
 in
-pkgs.mkShell {
+pkgs.mkShellNoCC {
   # enable the shell hooks
-  inherit (self.checks.${system}.git-hooks-check) shellHook;
+  shellHook =
+    # bash
+    ''
+      git remote update && git status -uno
+    ''
+    # install the git hooks
+    + self.checks.${system}.git-hooks-check.shellHook;
 
   # define the programs available when running `nix develop`
   # add the packages from the git-hooks list too
