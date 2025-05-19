@@ -54,6 +54,8 @@
             package = pkgs.unstable.vscode;
             profiles = {
               data-science.enable = true;
+              flutter-development.enable = true;
+              maximal.enable = true;
               web-development.enable = true;
             };
             extensions = with pkgs.vscode-extensions; [
