@@ -51,7 +51,7 @@ in
       enable = true;
 
       # 0.0.0.0 for debugging from web gui
-      guiAddress = "0.0.0.0:${toString cfg.port}";
+      guiAddress = "127.0.0.1:${toString cfg.port}";
       openDefaultPorts = true;
       overrideDevices = true;
       overrideFolders = true;
