@@ -23,6 +23,8 @@
     ./config.nix
     ./home.nix
 
+    ./services
+
     # system setup
     ./system
   ];
