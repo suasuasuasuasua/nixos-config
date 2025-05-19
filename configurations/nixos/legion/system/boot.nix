@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   # Use the systemd-boot EFI boot loader.
   #
@@ -12,10 +11,6 @@
     };
 
     loader.efi.canTouchEfiVariables = true;
-
-    # audio fix requires different kernel than pkgs.linuxPackages_6_6...
-    # https://discourse.nixos.org/t/intel-tiger-lake-pro-audio-no-audio/40592/
-    kernelPackages = pkgs.linuxPackages_6_12;
   };
 
   # Alternative that I'll keep around. Basically, the problem was the
