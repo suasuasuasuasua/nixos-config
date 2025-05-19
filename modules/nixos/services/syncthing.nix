@@ -15,6 +15,18 @@ in
     enable = lib.mkEnableOption ''
       Open Source Continuous File Synchronization
     '';
+    dataDir = lib.mkOption {
+      type = lib.types.path;
+      default = "/var/lib/syncthing";
+    };
+    group = lib.mkOption {
+      type = lib.types.str;
+      default = "syncthing";
+    };
+    user = lib.mkOption {
+      type = lib.types.str;
+      default = "syncthing";
+    };
     port = lib.mkOption {
       type = lib.types.port;
       default = 8384;
@@ -29,7 +41,12 @@ in
     networking.firewall.allowedTCPPorts = [ cfg.port ];
 
     services.syncthing = {
-      inherit (cfg) settings;
+      inherit (cfg)
+        dataDir
+        group
+        user
+        settings
+        ;
 
       enable = true;
 
