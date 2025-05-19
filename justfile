@@ -38,15 +38,15 @@ boot:
 boot:
     nh os boot .
 
-# Difference
+# Build
 [group('dev')]
 [macos]
-diff:
+build:
     nh darwin build .
 
 [group('dev')]
 [linux]
-diff:
+build:
     nh os build .
 
 # Count number of lines of code
