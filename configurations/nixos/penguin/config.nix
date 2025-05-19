@@ -10,7 +10,6 @@
     "${inputs.self}/modules/nixos/desktop"
     "${inputs.self}/modules/nixos/development"
     "${inputs.self}/modules/nixos/gui"
-    "${inputs.self}/modules/nixos/services"
   ];
 
   config = {
@@ -38,10 +37,6 @@
       discord.enable = true;
       element.enable = true;
       obsidian.enable = true;
-    };
-
-    services = {
-      syncthing.enable = true;
     };
   };
 }
