@@ -56,15 +56,10 @@
               data-science.enable = true;
               web-development.enable = true;
             };
-            extensions =
-              with pkgs.vscode-extensions;
-              [
-                # continue.continue # run local AI
-              ]
-              ++ (with pkgs.unstable.vscode-extensions; [
-                github.copilot
-                github.copilot-chat
-              ]);
+            extensions = with pkgs.vscode-extensions; [
+              github.copilot
+              github.copilot-chat
+            ];
             userSettings = {
               "chat.agent.enabled" = true;
               # "continue.enableTabAutocomplete" = false;
