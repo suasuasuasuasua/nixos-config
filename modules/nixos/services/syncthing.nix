@@ -57,6 +57,10 @@ in
       overrideFolders = true;
     };
 
+    # https://wiki.nixos.org/wiki/Syncthing#Disable_default_sync_folder
+    # don't create the default folder
+    systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
+
     services.nginx.virtualHosts = {
       "${serviceName}.${hostName}.home" = {
         locations."/" = {
