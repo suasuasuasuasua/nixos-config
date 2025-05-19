@@ -56,12 +56,12 @@
         #    - Treesitter + textobjects: https://nix-community.github.io/nixvim/plugins/treesitter-textobjects/index.html
       };
 
-      lazyLoad = {
-        enable = true;
-        settings = {
-          user = "DeferredUIEnter";
-        };
-      };
+      # lazyLoad = {
+      #   enable = true;
+      #   settings = {
+      #     user = "DeferredUIEnter";
+      #   };
+      # };
     };
 
     extraPackages = with pkgs; [

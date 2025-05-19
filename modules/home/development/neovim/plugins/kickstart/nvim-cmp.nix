@@ -129,12 +129,13 @@
           ];
         };
 
-        lazyLoad = {
-          enable = true;
-          settings = {
-            event = [ "InsertEnter" ];
-          };
-        };
+        # TODO: module cmp not found
+        # lazyLoad = {
+        #   enable = true;
+        #   settings = {
+        #     event = [ "InsertEnter" ];
+        #   };
+        # };
       };
     };
 
