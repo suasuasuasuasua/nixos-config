@@ -12,12 +12,21 @@
 ###################################################################################
 {
   system = {
-    # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
-    activationScripts.postUserActivation.text = ''
-      # activateSettings -u will reload the settings from the database and apply them to the current session,
-      # so we do not need to logout and login again to make the changes take effect.
-      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-    '';
+    # TODO: refactor once new changes come through To continue using these
+    # options, set `system.primaryUser` to the name of the user you have been
+    # using to run `darwin-rebuild`. In the long run, this setting will be
+    # deprecated and removed after all the functionality it is relevant for has
+    # been adjusted to allow specifying the relevant user separately, moved
+    # under the `users.users.*` namespace, or migrated to Home Manager.
+    primaryUser = "justinhoang";
+
+    # https://github.com/nix-darwin/nix-darwin/issues/1447
+    # # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
+    # activationScripts.postUserActivation.text = ''
+    #   # activateSettings -u will reload the settings from the database and apply them to the current session,
+    #   # so we do not need to logout and login again to make the changes take effect.
+    #   sudo /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    # '';
 
     defaults = {
       menuExtraClock.Show24Hour = true; # show 24 hour clock
@@ -128,5 +137,5 @@
   };
 
   # Add ability to used TouchID for sudo authentication
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 }
