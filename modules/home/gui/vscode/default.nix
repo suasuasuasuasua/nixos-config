@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   options,
   config,
@@ -115,10 +114,6 @@ let
   ) { } (lib.attrNames cfg.profiles);
 in
 {
-  # TODO: vscode profiles come out in 25.05...remove when stable hits
-  disabledModules = [ "${inputs.home-manager}/modules/programs/vscode.nix" ];
-  imports = [ "${inputs.home-manager-unstable}/modules/programs/vscode.nix" ];
-
   options.home.gui.vscode = {
     enable = lib.mkEnableOption "Enable Visual Studio Code";
 
