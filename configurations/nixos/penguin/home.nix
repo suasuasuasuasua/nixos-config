@@ -32,9 +32,7 @@
           zsh.enable = true;
         };
         gui = {
-          alacritty.enable = true;
           firefox.enable = true;
-          obs.enable = true;
           spotify.enable = true;
           vscode = {
             enable = true;
