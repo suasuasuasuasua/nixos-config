@@ -62,8 +62,6 @@
             ];
             userSettings = {
               "chat.agent.enabled" = true;
-              # "continue.enableTabAutocomplete" = false;
-              # "continue.telemetryEnabled" = false;
               "editor.fontSize" = 13;
             };
           };
