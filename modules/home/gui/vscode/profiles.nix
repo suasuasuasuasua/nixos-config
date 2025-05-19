@@ -81,6 +81,34 @@ in
       default = { };
     };
   };
+  flutter-development = {
+    enable = mkEnableOption "Enable Flutter Development Profile";
+    languages = mkOption {
+      type = enumLanguages;
+      default = [
+        "dart"
+        "just"
+        "markdown"
+        "python"
+        "spell"
+        "toml"
+        "typst"
+        "yaml"
+      ];
+    };
+    extensions = mkOption {
+      type = listOf package;
+      default = [ ];
+    };
+    keybindings = mkOption {
+      type = keybindingSubmodule;
+      default = [ ];
+    };
+    userSettings = mkOption {
+      inherit (jsonFormat) type;
+      default = { };
+    };
+  };
   markup = {
     enable = mkOption {
       type = bool;
