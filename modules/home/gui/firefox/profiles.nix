@@ -97,7 +97,6 @@
     extensions = with pkgs.firefox-addons; [
       betterttv # twitch [dot] tv integration
       darkreader # automatic dark mode
-      don-t-fuck-with-paste # prevent websites from modifying copy+paste
       ublock-origin # block ads
       unpaywall # read research papers for free
       vimium # vim-like movements
