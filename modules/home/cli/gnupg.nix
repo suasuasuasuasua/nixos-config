@@ -28,7 +28,7 @@ in
 
       enableZshIntegration = true;
       enableSshSupport = true;
-      pinentryPackage = pkgs.pinentry-curses;
+      pinentry.package = pkgs.pinentry-curses;
 
       # config for signing in neovim
       defaultCacheTtl = 28800; # increase time before entering password
