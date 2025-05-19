@@ -3,12 +3,14 @@
 
   inputs = {
     # main inputs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/nix-darwin-24.11"; # head
-      # url = "github:LnL7/nix-darwin/master"; # unstable
-      inputs.nixpkgs.follows = "nixpkgs";
+      # TODO: replace with 25.05 when available
+      # url = "github:nix-darwin/nix-darwin/nix-darwin-24.11"; # head
+      url = "github:nix-darwin/nix-darwin/master"; # unstable
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     # Optional: Declarative tap management
@@ -21,7 +23,7 @@
       flake = false;
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11"; # head
+      url = "github:nix-community/home-manager/release-25.05"; # head
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-unstable = {
@@ -58,12 +60,8 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      # TODO: switch once unstable hits
-      # url = "github:nix-community/nixvim/nixos-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:nix-community/nixvim/nixos-25.05";
+    # nixvim.url = "github:nix-community/nixvim"; # unstable
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions/";
   };
