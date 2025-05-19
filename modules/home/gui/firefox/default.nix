@@ -8,8 +8,6 @@ let
   cfg = config.home.gui.firefox;
 
   settings = import ./settings.nix;
-  # TODO: firefox is in unstable for darwin...remove in may 2025
-  package = with pkgs; if stdenv.isDarwin then unstable.firefox else firefox;
   profiles = import ./profiles.nix {
     inherit pkgs settings;
   };
@@ -26,7 +24,7 @@ in
     };
 
     programs.firefox = {
-      inherit package profiles policies;
+      inherit profiles policies;
 
       enable = true;
     };
