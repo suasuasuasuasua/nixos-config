@@ -273,14 +273,14 @@
       };
     };
 
-    diagnostics = {
+    diagnostic.settings = {
       severity_sort = true;
       float = {
         border = "rounded";
         source = "if_many";
       };
       underline = {
-        # severity = vim.diagnostics.severity.ERROR;
+        severity = "vim.diagnostics.severity.ERROR";
       };
       signs = lib.mkIf config.programs.nixvim.globals.have_nerd_font {
         text.vim.diagnostic.severity = {
