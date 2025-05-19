@@ -11,7 +11,23 @@ in
   options.home.development.neovim.plugins.${name} = {
     enable = lib.mkEnableOption "Enable ${name} plugin for neovim";
     workspaces = lib.mkOption {
-      type = with lib.types; nullOr (listOf submodule);
+      type =
+        with lib.types;
+        listOf (
+          types.submodule {
+            options = {
+              name = lib.mkOption {
+                type = lib.types.str;
+                description = "The name for this workspace";
+              };
+
+              path = lib.mkOption {
+                type = lib.types.path;
+                description = "The path of the workspace.";
+              };
+            };
+          }
+        );
       default = [ ];
     };
   };
@@ -41,11 +57,11 @@ in
             template = null;
           };
 
-          templates = {
-            folder = "templates";
-            date_format = "%Y-%m-%d-%a";
-            time_format = "%H:%M";
-          };
+          # templates = {
+          #   folder = "templates";
+          #   date_format = "%Y-%m-%d-%a";
+          #   time_format = "%H:%M";
+          # };
 
           # Disable all the mappings
           mappings = { };
@@ -78,13 +94,15 @@ in
           # Disable the UI rendering for obsidian
           ui.enable = false;
         };
-      };
 
-      lazyLoad = {
-        enable = true;
-        settings = {
-          ft = "markdown";
-        };
+        # NOTE: lazy loading a little bit annoying especially if i want to reach
+        # the daily notes from anywhere in nvim
+        # lazyLoad = {
+        #   enable = true;
+        #   settings = {
+        #     ft = "markdown";
+        #   };
+        # };
       };
     };
   };

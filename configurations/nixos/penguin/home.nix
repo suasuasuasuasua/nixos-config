@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   home-manager.users = {
     "justinhoang" = {
@@ -27,6 +27,15 @@
             lsp = { };
             plugins = {
               leetcode.enable = true;
+              obsidian = {
+                enable = true;
+                workspaces = [
+                  {
+                    name = "personal";
+                    path = "/home/justinhoang/Documents/vaults/personal";
+                  }
+                ];
+              };
             };
           };
           zsh.enable = true;
