@@ -232,15 +232,9 @@
         };
       });
       devShells = forEachSystem (pkgs: {
-        default =
-          let
-            # use unstable packages in shell.nix
-            newPkgs = pkgs.extend self.overlays.unstable;
-          in
-          import ./shell.nix {
-            inherit self;
-            pkgs = newPkgs;
-          };
+        default = import ./shell.nix {
+          inherit pkgs self;
+        };
       });
 
       nixosConfigurations = lib.mergeAttrsList (
