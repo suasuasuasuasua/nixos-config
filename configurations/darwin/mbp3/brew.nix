@@ -1,17 +1,10 @@
 {
   inputs,
   config,
-  pkgs,
   ...
 }:
 {
   imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
-
-  # https://github.com/nix-darwin/nix-darwin/issues/1314
-  # https://github.com/nix-darwin/nix-darwin/pull/1329
-  environment.systemPackages = with pkgs; [
-    unstable.mas
-  ];
 
   nix-homebrew = {
     # Install Homebrew under the default prefix
