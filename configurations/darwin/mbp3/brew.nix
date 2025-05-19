@@ -50,6 +50,7 @@
 
     casks = [
       # dev
+      "android-studio" # flutter, kotlin, etc. development
       "docker" # container runner and manager
 
       # general
