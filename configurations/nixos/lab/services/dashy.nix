@@ -161,13 +161,6 @@
           url = "http://${hostName}.home/gitweb";
         }
         {
-          title = "syncthing";
-          description = "syncthing file sharing";
-          icon = "si-syncthing";
-          target = "newtab";
-          url = "http://${hostName}.home/gitweb";
-        }
-        {
           title = "wastebin";
           description = "pastebin";
           icon = "si-pastebin";

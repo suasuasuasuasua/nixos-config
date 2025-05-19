@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -18,16 +19,25 @@ in
       type = lib.types.port;
       default = 8384;
     };
+    settings = lib.mkOption {
+      inherit (pkgs.formats.json { }) type;
+      default = { };
+    };
   };
 
   config = lib.mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [ cfg.port ];
 
     services.syncthing = {
+      inherit (cfg) settings;
+
       enable = true;
 
-      guiAddress = "http://localhost:${toString cfg.port}";
+      # 0.0.0.0 for debugging from web gui
+      guiAddress = "0.0.0.0:${toString cfg.port}";
       openDefaultPorts = true;
+      overrideDevices = true;
+      overrideFolders = true;
     };
 
     services.nginx.virtualHosts = {

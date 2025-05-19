@@ -52,7 +52,10 @@ in
       settings = import ./samba.nix;
     };
     stirling-pdf.enable = true;
-    syncthing.enable = true;
+    syncthing = {
+      enable = true;
+      settings = import ./syncthing.nix;
+    };
     vscode-server.enable = true;
     wastebin.enable = true;
   };
