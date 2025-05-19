@@ -116,6 +116,18 @@
             behavior = "OnOff";
           };
         };
+        "firefox@betterttv.net".settings = {
+          # auto-claim channel points and drops
+          "autoClaim" = [
+            1
+            1
+          ];
+          # add 7tv
+          "emotes" = [
+            55
+            16
+          ];
+        };
         "uBlock0@raymondhill.net".settings = {
           # add filter lists
           selectedFilterLists = [
