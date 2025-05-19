@@ -55,28 +55,6 @@ let
       };
     });
 
-  # TODO: stolen code from 25.05 unstable...remove when merged
-  toSentenceCase =
-    let
-      inherit (builtins)
-        isString
-        substring
-        stringLength
-        typeOf
-        ;
-      inherit (lib.strings) addContextFrom toLower toUpper;
-    in
-    str:
-    lib.throwIfNot (isString str)
-      "toSentenceCase does only accepts string values, but got ${typeOf str}"
-      (
-        let
-          firstChar = substring 0 1 str;
-          rest = substring 1 (stringLength str) str;
-        in
-        addContextFrom str (toUpper firstChar + toLower rest)
-      );
-
   profiles = builtins.foldl' (
     acc: profile:
     # Pretty print the name
@@ -89,8 +67,7 @@ let
         if profile == "default" then
           profile
         else
-          # concatStringsSep " " (map toSentenceCase (splitString "-" profile));
-          concatStringsSep "-" (map toSentenceCase (splitString "-" profile));
+          concatStringsSep "-" (map lib.toSentenceCase (splitString "-" profile));
     in
     # Add profiles that have been enabled
     optionalAttrs cfg.profiles.${profile}.enable {
