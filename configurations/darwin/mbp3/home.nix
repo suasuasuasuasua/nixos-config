@@ -51,17 +51,24 @@
           spotify.enable = true; # music platform
           vscode = {
             enable = true;
-            package = pkgs.vscodium;
+            package = pkgs.unstable.vscode;
             profiles = {
               data-science.enable = true;
-              maximal.enable = true;
+              web-development.enable = true;
             };
-            extensions = with pkgs.vscode-extensions; [
-              continue.continue # run local AIs
-            ];
+            extensions =
+              with pkgs.vscode-extensions;
+              [
+                # continue.continue # run local AI
+              ]
+              ++ (with pkgs.unstable.vscode-extensions; [
+                github.copilot
+                github.copilot-chat
+              ]);
             userSettings = {
-              "continue.enableTabAutocomplete" = false;
-              "continue.telemetryEnabled" = false;
+              "chat.agent.enabled" = true;
+              # "continue.enableTabAutocomplete" = false;
+              # "continue.telemetryEnabled" = false;
               "editor.fontSize" = 13;
             };
           };
