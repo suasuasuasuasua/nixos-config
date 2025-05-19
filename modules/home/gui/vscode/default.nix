@@ -131,6 +131,8 @@ in
         (with pkgs; [
           vscode
           vscodium
+          unstable.vscode
+          unstable.vscodium
         ])
         # Add the fhs versions for linux only
         ++ lib.optionals pkgs.stdenv.isLinux (
@@ -138,6 +140,8 @@ in
           [
             vscode-fhs
             vscodium-fhs
+            unstable.vscode-fhs
+            unstable.vscodium-fhs
           ]
         )
       );
