@@ -78,6 +78,10 @@
       # https://nix-community.github.io/nixvim/plugins/luasnip/index.html
       luasnip = {
         enable = true;
+        # -- lazy load the friendly snippets using luasnip for friendly-snippets
+        fromVscode = [
+          { }
+        ];
         # TODO: sometimes errors with luasnip not found
         # lazyLoad = {
         #   enable = true;
@@ -96,6 +100,5 @@
         enable = true;
       };
     };
-
   };
 }
