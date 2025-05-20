@@ -36,6 +36,15 @@
               vtsls.enable = true;
             };
             plugins = {
+              obsidian = {
+                enable = true;
+                workspaces = [
+                  {
+                    name = "personal";
+                    path = "/Users/justinhoang/Documents/vaults/personal";
+                  }
+                ];
+              };
               ollama = {
                 enable = true;
                 model = "gemma3";
