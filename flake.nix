@@ -7,9 +7,7 @@
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-darwin = {
-      # TODO: replace with 25.05 when available
-      # url = "github:nix-darwin/nix-darwin/nix-darwin-24.11"; # head
-      url = "github:nix-darwin/nix-darwin/master"; # unstable
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
@@ -23,11 +21,11 @@
       flake = false;
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05"; # head
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-unstable = {
-      url = "github:nix-community/home-manager"; # unstable
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
