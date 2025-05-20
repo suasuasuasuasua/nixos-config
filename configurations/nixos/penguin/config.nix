@@ -18,17 +18,19 @@
     };
   };
 
-  # desktop
   config.nixos = {
     desktop = {
       kde.enable = true;
     };
 
-    # development
     development = {
       cli.enable = true;
       nh.enable = true;
       virtualization.enable = true;
+    };
+
+    gui = {
+      obsidian.enable = true;
     };
   };
 }
