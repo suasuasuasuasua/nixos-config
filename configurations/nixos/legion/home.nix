@@ -33,6 +33,7 @@
 
         gui = {
           alacritty.enable = true;
+          element.enable = true;
           firefox.enable = true;
           freetube.enable = true;
           obs.enable = true;
