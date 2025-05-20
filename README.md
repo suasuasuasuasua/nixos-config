@@ -32,6 +32,8 @@
 
 ## Setup
 
+### NixOS
+
 The initial setup is pretty simple now thanks to `disko`.
 
 1. Boot the [minimal disk ISO](https://nixos.org/download/) onto a computer
@@ -105,4 +107,30 @@ The initial setup is pretty simple now thanks to `disko`.
    ```bash
    # Rebuild the system after any changes!
    just switch
+   ```
+
+### Darwin
+
+The setup for `darwin` machines is much simpler. Make sure to connect to the
+internet before beginning.
+
+1. Install `nix` on the machine. You may be prompted to install developer tools
+   (like `git`, `xcode`, etc.), so make sure to accept and be patient.
+
+   ```bash
+   curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+   ```
+
+1. Install `nix-darwin`
+
+   ```bash
+   # To use Nixpkgs 25.05:
+   sudo nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch
+   ```
+
+1. Install the configuration from GitHub
+
+   ```bash
+   # switch to the mbp3 device for example
+   darwin-rebuild switch --flake github:suasuasuasuasua/nixos-config#mbp3
    ```
