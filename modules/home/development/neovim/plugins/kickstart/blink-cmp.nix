@@ -141,7 +141,7 @@
       # Completion sources
       blink-emoji.enable = true;
       blink-cmp-git.enable = true;
-      blink-ripgrep.enable = true;
+      # blink-ripgrep.enable = true;
 
       # Dependencies
       #
