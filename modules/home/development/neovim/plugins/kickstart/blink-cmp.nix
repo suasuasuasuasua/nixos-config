@@ -50,7 +50,33 @@
               "path"
               "snippets"
               "buffer"
+              "emoji"
             ];
+            providers = {
+              # TODO: the pop-up for blink-emoji is _really_ slow for some
+              # reason
+              emoji = {
+                module = "blink-emoji";
+                name = "Emoji";
+                score_offset = 15;
+                # Optional configurations
+                opts = {
+                  insert = true;
+                };
+                should_show_items.__raw =
+                  # lua
+                  ''
+                    function()
+                      return vim.tbl_contains(
+                        -- Enable emoji completion only for git commits and markdown.
+                        -- By default, enabled for all file-types.
+                        { "gitcommit", "markdown" },
+                        vim.o.filetype
+                      )
+                    end
+                  '';
+              };
+            };
           };
           snippets = {
             preset = "luasnip";
@@ -72,6 +98,8 @@
         };
       };
 
+      # Completion sources
+      blink-emoji.enable = true;
       # Dependencies
       #
       # Snippet Engine & its associated nvim-cmp source
