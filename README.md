@@ -30,7 +30,7 @@
 - *For fun* single board computer (acquired in college class)
 - Runs simple services like `adguardhome`
 
-## Development
+## Setup
 
 The initial setup is pretty simple now thanks to `disko`.
 
