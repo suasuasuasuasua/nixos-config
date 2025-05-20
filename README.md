@@ -5,11 +5,6 @@
 
 ## Hosts
 
-### [`mbp3`](./configurations/darwin/mbp3/README.md) (MacBook Pro M3 Max)
-
-- Main daily driver (yes I'm an apple fanboy secretly)
-- Love that `nix-darwin` allows you to use the same configuration
-
 ### [`lab`](./configurations/nixos/lab/README.md) (custom build)
 
 - Main server for services like `mealie`, `actual`, `jellyfin`, and more!
@@ -19,6 +14,11 @@
 
 - Main drivers Windows 11 but experimenting with NixOS
 - Gaming is the main factor stopping me from running full NixOS
+
+### [`mbp3`](./configurations/darwin/mbp3/README.md) (MacBook Pro M3 Max)
+
+- Main daily driver (yes I'm an apple fanboy secretly)
+- Love that `nix-darwin` allows you to use the same configuration
 
 ### [`penguin`](./configurations/nixos/penguin/README.md) (Acer 713-3W Chromebook NixOS)
 
