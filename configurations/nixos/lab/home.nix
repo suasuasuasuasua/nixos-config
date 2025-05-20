@@ -26,7 +26,9 @@
             enable = true;
             colorscheme.enable = false;
             lsp = { };
-            plugins = { };
+            plugins = {
+              obsidian.enable = false;
+            };
           };
           zsh.enable = true;
         };
