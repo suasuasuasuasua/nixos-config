@@ -27,9 +27,6 @@
         development = {
           neovim = {
             enable = true; # enable nixvim config
-            colorscheme = {
-              enable = false;
-            };
             lsp = {
               cssls.enable = true;
               html.enable = true;
