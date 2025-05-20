@@ -1,7 +1,7 @@
 {
   programs.nixvim = {
     # Detect tabstop and shiftwidth automatically
-    plugins.sleuth = {
+    plugins.guess-indent = {
       enable = true;
     };
   };

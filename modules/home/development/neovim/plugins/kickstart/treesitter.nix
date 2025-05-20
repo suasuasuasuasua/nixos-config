@@ -9,28 +9,18 @@
       # By default, all available grammars packaged in the nvim-treesitter
       # package are installed.
       grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-        comment
-        csv
+        bash
+        c
         diff
-        ini
-        jq
-        gitcommit
-        gitignore
-        git-config
-        git-config
-        git-rebase
-        gitattributes
-        make
-        passwd
-        pem
-        properties
-        regex
-        requirements
-        rst
-        tmux
+        html
+        lua
+        luadoc
+        markdown
+        markdown_inline
+        nix
+        query
         vim
         vimdoc
-        xml
       ];
 
       settings = {

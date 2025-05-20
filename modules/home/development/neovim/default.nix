@@ -1,6 +1,3 @@
 {
-  imports = [
-    ./kickstart.nix
-    ./config.nix
-  ];
+  imports = [ ./kickstart.nix ];
 }

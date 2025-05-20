@@ -23,7 +23,7 @@ in
           "tokyonight"
           "vscode"
         ];
-        default = "vscode";
+        default = "tokyonight";
       };
     };
   };
@@ -35,7 +35,7 @@ in
     #
     # If you want to see what colorschemes are already installed, you can use
     # `:Telescope colorscheme`.
-    programs.nixvim.colorschemes = lib.mkIf cfg.colorscheme.enable {
+    programs.nixvim.colorschemes = {
       # https://nix-community.github.io/nixvim/colorschemes/catppuccin/index.html
       catppuccin = lib.mkIf (cfg.colorscheme.name == "catppuccin") {
         enable = true;

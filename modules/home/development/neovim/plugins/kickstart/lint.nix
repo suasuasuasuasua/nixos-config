@@ -8,19 +8,19 @@
       # NOTE: Enabling these will cause errors unless these tools are installed
       lintersByFt = {
         nix = [ "nix" ];
-        markdown = [
-          #"markdownlint"
-          #vale
-        ];
-        #clojure = ["clj-kondo"];
-        #dockerfile = ["hadolint"];
-        #inko = ["inko"];
-        #janet = ["janet"];
-        #json = ["jsonlint"];
-        #rst = ["vale"];
-        #ruby = ["ruby"];
-        #terraform = ["tflint"];
-        #text = ["vale"];
+        # markdown = [
+        #   "markdownlint"
+        #   "vale"
+        # ];
+        # clojure = [ "clj-kondo" ];
+        # dockerfile = [ "hadolint" ];
+        # inko = [ "inko" ];
+        # janet = [ "janet" ];
+        # json = [ "jsonlint" ];
+        # rst = [ "vale" ];
+        # ruby = [ "ruby" ];
+        # terraform = [ "tflint" ];
+        # text = [ "vale" ];
       };
 
       # Create autocommand which carries out the actual linting

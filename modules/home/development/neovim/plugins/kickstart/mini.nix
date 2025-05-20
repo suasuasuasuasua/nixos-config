@@ -17,9 +17,6 @@
           n_lines = 500;
         };
 
-        # manage sessions (https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-sessions.md)
-        sessions = { };
-
         # gS to split and join (https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-splitjoin.md)
         splitjoin = { };
 
