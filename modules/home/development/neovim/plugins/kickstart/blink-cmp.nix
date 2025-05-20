@@ -51,6 +51,7 @@
               "snippets"
               "buffer"
               "emoji"
+              "git"
             ];
             providers = {
               # TODO: the pop-up for blink-emoji is _really_ slow for some
@@ -76,6 +77,25 @@
                     end
                   '';
               };
+              git = {
+                module = "blink-cmp-git";
+                name = "git";
+                # -- only enable this source when filetype is gitcommit, markdown, or 'octo'
+                enabled.__raw =
+                  # lua
+                  ''
+                    function()
+                      return vim.tbl_contains({ 'octo', 'gitcommit', 'markdown' }, vim.bo.filetype)
+                    end
+                  '';
+                score_offset = 100;
+                opts = {
+                  commit = { };
+                  git_centers = {
+                    git_hub = { };
+                  };
+                };
+              };
             };
           };
           snippets = {
@@ -100,6 +120,7 @@
 
       # Completion sources
       blink-emoji.enable = true;
+      blink-cmp-git.enable = true;
       # Dependencies
       #
       # Snippet Engine & its associated nvim-cmp source
