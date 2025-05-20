@@ -49,8 +49,13 @@
   "browser.aboutConfig.showWarning" = false;
   "browser.warnOnQuit" = false;
   "browser.ml.chat.sidebar" = false;
+  # disable homepage fluff
   "browser.newtabpage.activity-stream.showWeather" = false;
   "browser.newtabpage.activity-stream.feeds.topsites" = false;
   "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-  # "browser.newtabpage.activity-stream.newtabWallpapers.wallpaper" = "light-green";
+  # add profiles
+  "browser.profiles.enabled" = true;
+  # add tab groups
+  "browser.tabs.groups.enabled" = true;
+  "browser.tabs.groups.smart.enabled" = true;
 }
