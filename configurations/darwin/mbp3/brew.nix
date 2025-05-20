@@ -45,7 +45,16 @@
     taps = builtins.attrNames config.nix-homebrew.taps;
 
     brews = [
-      "ollama" # llm runner and manager
+      {
+        name = "syncthing"; # decentralized file synchronization
+        start_service = true;
+        restart_service = "changed";
+      }
+      {
+        name = "ollama"; # llm runner and manager
+        start_service = true;
+        restart_service = "changed";
+      }
     ];
 
     casks = [
