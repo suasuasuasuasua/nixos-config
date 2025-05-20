@@ -52,7 +52,7 @@
               "buffer"
               "emoji"
               "git"
-              "ripgrep"
+              # "ripgrep"
             ];
             providers = {
               # TODO: the pop-up for blink-emoji is _really_ slow for some
@@ -60,7 +60,7 @@
               emoji = {
                 module = "blink-emoji";
                 name = "Emoji";
-                score_offset = 15;
+                score_offset = 5;
                 # Optional configurations
                 opts = {
                   insert = true;
@@ -89,7 +89,7 @@
                       return vim.tbl_contains({ 'octo', 'gitcommit', 'markdown' }, vim.bo.filetype)
                     end
                   '';
-                score_offset = 100;
+                score_offset = 10;
                 opts = {
                   commit = { };
                   git_centers = {
@@ -101,7 +101,7 @@
                 async = true;
                 module = "blink-ripgrep";
                 name = "Ripgrep";
-                score_offset = 100;
+                score_offset = 0;
                 opts = {
                   prefix_min_len = 3;
                   context_size = 5;
