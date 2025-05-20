@@ -49,7 +49,7 @@
               "lsp"
               "path"
               "snippets"
-              "luasnip"
+              "buffer"
             ];
           };
           snippets = {
