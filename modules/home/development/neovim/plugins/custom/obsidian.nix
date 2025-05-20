@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   config,
   ...
@@ -108,6 +109,22 @@ in
         #   };
         # };
       };
+
+      extraPackages =
+        let
+          inherit (lib) optionals;
+          inherit (pkgs.stdenv) isDarwin isLinux;
+        in
+        with pkgs;
+        [ ripgrep ]
+        ++ optionals isDarwin [
+          pngpaste # macOS
+        ]
+        ++ optionals isLinux [
+          xclip # x11
+          wl-clipboard # wayland
+          wsl-open # for wsl users
+        ];
     };
   };
 }
