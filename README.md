@@ -104,5 +104,5 @@ The initial setup is pretty simple now thanks to `disko`.
 
    ```bash
    # Rebuild the system after any changes!
-   nix run .#activate
+   just switch
    ```
