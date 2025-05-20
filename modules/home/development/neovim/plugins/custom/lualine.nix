@@ -21,6 +21,11 @@ in
       # https://github.com/nvim-lualine/lualine.nvim
       plugins.lualine = {
         enable = true;
+        settings = {
+          options = {
+            theme = "auto";
+          };
+        };
       };
     };
   };
