@@ -119,73 +119,71 @@
             "BufWritePost"
             "BufNewFile"
           ];
+          keys = [
+            # Slightly advanced example of overriding default behavior and theme
+            {
+              __unkeyed-1 = "<leader>/";
+              # You can pass additional configuration to Telescope to change the theme, layout, etc.
+              __unkeyed-3 =
+                # lua
+                ''
+                  function()
+                    require('telescope.builtin').current_buffer_fuzzy_find(
+                      require('telescope.themes').get_dropdown {
+                        winblend = 10,
+                        previewer = false
+                      }
+                    )
+                  end
+                '';
+              mode = "n";
+              options = {
+                desc = "[/] Fuzzily search in current buffer";
+              };
+            }
+            {
+              __unkeyed-1 = "<leader>s/";
+              # It's also possible to pass additional configuration options.
+              #  See `:help telescope.builtin.live_grep()` for information about particular keys
+              __unkeyed-3 =
+                # lua
+                ''
+                  function()
+                    require('telescope.builtin').live_grep {
+                      grep_open_files = true,
+                      prompt_title = 'Live Grep in Open Files'
+                    }
+                  end
+                '';
+              mode = "n";
+              options = {
+                desc = "[S]earch [/] in Open Files";
+              };
+            }
+            # Shortcut for searching your Neovim configuration files
+            {
+              __unkeyed-1 = "<leader>sn";
+              __unkeyed-3 =
+                # lua
+                ''
+                  function()
+                    require('telescope.builtin').find_files {
+                      cwd = vim.fn.stdpath 'config'
+                    }
+                  end
+                '';
+              mode = "n";
+              options = {
+                desc = "[S]earch [N]eovim files";
+              };
+            }
+          ];
         };
       };
     };
 
     extraPackages = with pkgs; [
       fd
-    ];
-
-    # https://nix-community.github.io/nixvim/keymaps/index.html
-    keymaps = [
-      # Slightly advanced example of overriding default behavior and theme
-      {
-        mode = "n";
-        key = "<leader>/";
-        # You can pass additional configuration to Telescope to change the theme, layout, etc.
-        action.__raw =
-          # lua
-          ''
-            function()
-              require('telescope.builtin').current_buffer_fuzzy_find(
-                require('telescope.themes').get_dropdown {
-                  winblend = 10,
-                  previewer = false
-                }
-              )
-            end
-          '';
-        options = {
-          desc = "[/] Fuzzily search in current buffer";
-        };
-      }
-      {
-        mode = "n";
-        key = "<leader>s/";
-        # It's also possible to pass additional configuration options.
-        #  See `:help telescope.builtin.live_grep()` for information about particular keys
-        action.__raw =
-          # lua
-          ''
-            function()
-              require('telescope.builtin').live_grep {
-                grep_open_files = true,
-                prompt_title = 'Live Grep in Open Files'
-              }
-            end
-          '';
-        options = {
-          desc = "[S]earch [/] in Open Files";
-        };
-      }
-      # Shortcut for searching your Neovim configuration files
-      {
-        mode = "n";
-        key = "<leader>sn";
-        action.__raw =
-          # lua
-          ''
-            function()
-              require('telescope.builtin').find_files {
-                cwd = vim.fn.stdpath 'config'
-              }
-            end
-          '';
-        options = {
-          desc = "[S]earch [N]eovim files";
-        };
-      }
     ];
   };
 }
