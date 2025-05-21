@@ -12,9 +12,6 @@
         followCursor = true;
       };
 
-      # enable any additional sources
-      extraSources = [ "document_symbols" ];
-
       filesystem = {
         followCurrentFile.enabled = false;
         window.mappings = {
@@ -119,10 +116,6 @@
           {
             displayName = "git";
             source = "git_status";
-          }
-          {
-            displayName = "sym";
-            source = "document_symbols";
           }
         ];
       };
