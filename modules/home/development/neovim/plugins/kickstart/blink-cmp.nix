@@ -136,6 +136,13 @@
             enabled = true;
           };
         };
+
+        lazyLoad = {
+          enable = true;
+          settings = {
+            event = "InsertEnter";
+          };
+        };
       };
 
       # Completion sources
