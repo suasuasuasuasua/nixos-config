@@ -124,7 +124,7 @@
             {
               __unkeyed-1 = "<leader>/";
               # You can pass additional configuration to Telescope to change the theme, layout, etc.
-              __unkeyed-3 =
+              __unkeyed-3.__raw =
                 # lua
                 ''
                   function()
@@ -137,15 +137,13 @@
                   end
                 '';
               mode = "n";
-              options = {
-                desc = "[/] Fuzzily search in current buffer";
-              };
+              desc = "[/] Fuzzily search in current buffer";
             }
             {
               __unkeyed-1 = "<leader>s/";
               # It's also possible to pass additional configuration options.
               #  See `:help telescope.builtin.live_grep()` for information about particular keys
-              __unkeyed-3 =
+              __unkeyed-3.__raw =
                 # lua
                 ''
                   function()
@@ -156,14 +154,12 @@
                   end
                 '';
               mode = "n";
-              options = {
-                desc = "[S]earch [/] in Open Files";
-              };
+              desc = "[S]earch [/] in Open Files";
             }
             # Shortcut for searching your Neovim configuration files
             {
               __unkeyed-1 = "<leader>sn";
-              __unkeyed-3 =
+              __unkeyed-3.__raw =
                 # lua
                 ''
                   function()
@@ -173,9 +169,7 @@
                   end
                 '';
               mode = "n";
-              options = {
-                desc = "[S]earch [N]eovim files";
-              };
+              desc = "[S]earch [N]eovim files";
             }
           ];
         };

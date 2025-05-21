@@ -41,7 +41,7 @@
           keys = [
             {
               __unkeyed-1 = "<leader>f";
-              __unkeyed-3 =
+              __unkeyed-3.__raw =
                 # lua
                 ''
                   function()
@@ -49,9 +49,7 @@
                   end
                 '';
               mode = "n";
-              options = {
-                desc = "[F]ormat buffer";
-              };
+              desc = "[F]ormat buffer";
             }
           ];
         };
