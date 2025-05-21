@@ -115,9 +115,8 @@
         enable = true;
         settings = {
           event = [
-            "BufReadPost"
-            "BufWritePost"
-            "BufNewFile"
+            # VeryLazy so I can use the UI picker
+            "DeferredUIEnter"
           ];
           keys = [
             # Slightly advanced example of overriding default behavior and theme
