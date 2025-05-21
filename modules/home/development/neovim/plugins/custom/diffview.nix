@@ -22,6 +22,25 @@ in
       plugins.diffview = {
         enable = true;
       };
+
+      plugins.lz-n = {
+        # https://nix-community.github.io/nixvim/plugins/lz-n/plugins.html
+        plugins = [
+          {
+            __unkeyed-1 = "diffview.nvim"; # the plugin's name (:h packadd)
+            after =
+              # lua
+              ''
+                function()
+                  require("diffview").setup()
+                end
+              '';
+            event = [
+              "DeferredUIEnter"
+            ];
+          }
+        ];
+      };
     };
   };
 }
