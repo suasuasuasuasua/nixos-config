@@ -33,7 +33,7 @@ in
               # lua
               ''
                 function()
-                  require("img-clip").setup()
+                  require('img-clip').setup()
                 end
               '';
             event = [

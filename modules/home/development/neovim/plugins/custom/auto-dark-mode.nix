@@ -41,7 +41,7 @@ in
               # lua
               ''
                 function()
-                  require("auto-dark-mode").setup {
+                  require('auto-dark-mode').setup {
                     set_dark_mode = function()
                       vim.api.nvim_set_option_value("background", "dark", {})
                     end,

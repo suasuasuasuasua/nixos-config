@@ -23,7 +23,7 @@ in
       extraConfigLua =
         # lua
         ''
-          require("leetcode").setup {
+          require('leetcode').setup {
             ---@type string
             arg = "leetcode.nvim",
 

@@ -59,7 +59,7 @@
               -- https://github.com/nvim-neo-tree/neo-tree.nvim/wiki/Tips#navigation-with-hjkl
               function (state)
                 local node = state.tree:get_node()
-                if require("neo-tree.utils").is_expandable(node) then
+                if require('neo-tree.utils').is_expandable(node) then
                   state.commands["toggle_node"](state)
                 else
                   state.commands['open'](state)

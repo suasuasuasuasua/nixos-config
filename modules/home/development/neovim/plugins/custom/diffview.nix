@@ -32,7 +32,7 @@ in
               # lua
               ''
                 function()
-                  require("diffview").setup()
+                  require('diffview').setup()
                 end
               '';
             event = [
