@@ -1,9 +1,8 @@
-{ pkgs, inputs, ... }:
+{ inputs, ... }:
 {
   home-manager.users = {
     "justinhoang" = {
       imports = [
-        # import the modules
         "${inputs.self}/modules/home/cli"
         "${inputs.self}/modules/home/development"
         "${inputs.self}/modules/home/gui"
@@ -24,9 +23,19 @@
         development = {
           neovim = {
             enable = true;
-            lsp = { };
+            lsp = {
+              bashls.enable = false;
+              jsonls.enable = false;
+              just.enable = false;
+              nil_ls.enable = false;
+              nixd.enable = false;
+              pyright.enable = false;
+              tinymist.enable = false;
+            };
             plugins = {
-              leetcode.enable = true;
+              auto-dark-mode.enable = false;
+              diffview.enable = false;
+              img-clip.enable = false;
               obsidian = {
                 enable = true;
                 workspaces = [
@@ -36,24 +45,16 @@
                   }
                 ];
               };
+              schemastore.enable = false;
+              typst.enable = false;
             };
           };
           zsh.enable = true;
         };
         gui = {
+          alacritty.enable = true;
           firefox.enable = true;
           spotify.enable = true;
-          vscode = {
-            enable = true;
-            package = pkgs.vscodium-fhs;
-            profiles = {
-              data-science.enable = true;
-              maximal.enable = true;
-            };
-            userSettings = {
-              "editor.fontSize" = 13;
-            };
-          };
         };
       };
     };
