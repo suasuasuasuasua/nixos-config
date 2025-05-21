@@ -110,14 +110,13 @@ in
           ui.enable = false;
         };
 
-        # NOTE: lazy loading a little bit annoying especially if i want to reach
-        # the daily notes from anywhere in nvim
-        # lazyLoad = {
-        #   enable = true;
-        #   settings = {
-        #     ft = "markdown";
-        #   };
-        # };
+        lazyLoad = {
+          enable = true;
+
+          settings = {
+            event = "DeferredUIEnter";
+          };
+        };
       };
 
       extraPackages =
