@@ -38,6 +38,22 @@
         settings = {
           event = [ "BufWritePre" ];
           cmd = [ "ConformInfo" ];
+          keys = [
+            {
+              __unkeyed-1 = "<leader>f";
+              __unkeyed-3 =
+                # lua
+                ''
+                  function()
+                    require('conform').format { async = true, lsp_fallback = true }
+                  end
+                '';
+              mode = "n";
+              options = {
+                desc = "[F]ormat buffer";
+              };
+            }
+          ];
         };
       };
     };
@@ -48,24 +64,6 @@
     extraPackages = with pkgs; [
       # Used to format Lua code
       stylua
-    ];
-
-    # https://nix-community.github.io/nixvim/keymaps/index.html
-    keymaps = [
-      {
-        mode = "";
-        key = "<leader>f";
-        action.__raw =
-          # lua
-          ''
-            function()
-              require('conform').format { async = true, lsp_fallback = true }
-            end
-          '';
-        options = {
-          desc = "[F]ormat buffer";
-        };
-      }
     ];
   };
 }
