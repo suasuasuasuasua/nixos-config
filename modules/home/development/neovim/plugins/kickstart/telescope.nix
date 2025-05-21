@@ -112,10 +112,14 @@
       };
 
       lazyLoad = {
-        enable = false; # TODO: move the keymaps into here
-        # settings = {
-        #   event = [ "BufReadPost BufWritePost BufNewFile" ];
-        # };
+        enable = true;
+        settings = {
+          event = [
+            "BufReadPost"
+            "BufWritePost"
+            "BufNewFile"
+          ];
+        };
       };
     };
 

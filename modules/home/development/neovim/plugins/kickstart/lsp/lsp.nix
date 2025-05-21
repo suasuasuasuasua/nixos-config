@@ -11,13 +11,17 @@
       fidget = {
         enable = true;
 
-        # lazyLoad = {
-        #   enable = true;
-        #   settings = {
-        #     # LazyFile is a shorthand that lazy.nvim uses
-        #     event = [ "BufReadPost BufWritePost BufNewFile" ];
-        #   };
-        # };
+        lazyLoad = {
+          enable = true;
+          settings = {
+            # LazyFile is a shorthand that lazy.nvim uses
+            event = [
+              "BufReadPost"
+              "BufWritePost"
+              "BufNewFile"
+            ];
+          };
+        };
       };
 
       # Brief aside: **What is LSP?**

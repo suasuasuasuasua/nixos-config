@@ -46,6 +46,19 @@
           "InsertLeave"
         ];
       };
+
+      # WARNING: need to figure out autocommand first but LazyFile is correct
+      # lazyLoad = {
+      #   enable = true;
+      #   settings = {
+      #     # LazyFile is a shorthand that lazy.nvim uses
+      #     event = [
+      #       "BufReadPost"
+      #       "BufWritePost"
+      #       "BufNewFile"
+      #     ];
+      #   };
+      # };
     };
 
     # https://nix-community.github.io/nixvim/NeovimOptions/autoGroups/index.html
