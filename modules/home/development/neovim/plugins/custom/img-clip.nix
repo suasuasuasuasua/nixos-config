@@ -24,6 +24,25 @@ in
         img-clip-nvim
       ];
 
+      plugins.lz-n = {
+        # https://nix-community.github.io/nixvim/plugins/lz-n/plugins.html
+        plugins = [
+          {
+            __unkeyed-1 = "img-clip.nvim"; # the plugin's name (:h packadd)
+            after =
+              # lua
+              ''
+                function()
+                  require("img-clip").setup()
+                end
+              '';
+            event = [
+              "DeferredUIEnter"
+            ];
+          }
+        ];
+      };
+
       extraPackages =
         let
           inherit (lib) optionals;

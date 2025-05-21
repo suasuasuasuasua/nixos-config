@@ -31,6 +31,34 @@ in
           };
         })
       ];
+
+      plugins.lz-n = {
+        # https://nix-community.github.io/nixvim/plugins/lz-n/plugins.html
+        plugins = [
+          {
+            __unkeyed-1 = "auto-dark-mode.nvim"; # the plugin's name (:h packadd)
+            after =
+              # lua
+              ''
+                function()
+                  require("auto-dark-mode").setup {
+                    set_dark_mode = function()
+                      vim.api.nvim_set_option_value("background", "dark", {})
+                    end,
+                    set_light_mode = function()
+                      vim.api.nvim_set_option_value("background", "light", {})
+                    end,
+                    update_interval = 3000,
+                    fallback = "dark"
+                  };
+                end
+              '';
+            event = [
+              "DeferredUIEnter"
+            ];
+          }
+        ];
+      };
     };
   };
 }
