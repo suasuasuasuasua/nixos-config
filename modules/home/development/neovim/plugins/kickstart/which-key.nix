@@ -12,7 +12,7 @@
       lazyLoad = {
         enable = true;
         settings = {
-          event = "DeferredUIEnter";
+          event = [ "DeferredUIEnter" ];
         };
       };
 

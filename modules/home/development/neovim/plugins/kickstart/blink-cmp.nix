@@ -140,7 +140,7 @@
         lazyLoad = {
           enable = true;
           settings = {
-            event = "InsertEnter";
+            event = [ "InsertEnter" ];
           };
         };
       };

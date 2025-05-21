@@ -114,7 +114,7 @@ in
           enable = true;
 
           settings = {
-            event = "DeferredUIEnter";
+            event = [ "DeferredUIEnter" ];
           };
         };
       };
