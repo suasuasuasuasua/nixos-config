@@ -9,7 +9,7 @@ in
   ];
 
   # services
-  config.nixos.services = {
+  nixos.services = {
     adguardhome.enable = true;
     dashy = {
       enable = true;

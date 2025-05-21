@@ -13,14 +13,12 @@
     "${inputs.self}/modules/nixos/services"
   ];
 
-  config = {
-    environment.variables = {
-      EDITOR = "nvim";
-    };
+  environment.variables = {
+    EDITOR = "nvim";
   };
 
   # desktop
-  config.nixos = {
+  nixos = {
     desktop = {
       kde.enable = true;
     };

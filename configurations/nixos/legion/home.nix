@@ -9,7 +9,7 @@
         "${inputs.self}/modules/home/gui"
       ];
 
-      config.home = {
+      home = {
         cli = {
           bat.enable = true;
           comma.enable = true;

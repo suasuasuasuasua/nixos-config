@@ -8,7 +8,7 @@
         "${inputs.self}/modules/home/gui"
       ];
 
-      config.home = {
+      home = {
         cli = {
           bat.enable = true; # better cat
           comma.enable = true; # try out programs with `,`

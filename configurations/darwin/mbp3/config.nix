@@ -20,34 +20,30 @@
     inputs.mac-app-util.darwinModules.default
   ];
 
-  config = {
-    environment.variables = {
-      EDITOR = "nvim";
+  environment.variables = {
+    EDITOR = "nvim";
+  };
+
+  # shared cross platform apps
+  darwin = {
+    development = {
+      cli.enable = true; # useful cli tools
+      iterm2.enable = true; # terminal emulator
+      utm.enable = true; # virtual machine manager
+    };
+
+    utility = {
+      appcleaner.enable = true; # cleans log/config files
+      betterdisplay.enable = true; # configure the displays
+      iina.enable = true; # media player
     };
   };
 
-  config = {
-    # shared cross platform apps
-    darwin = {
-      development = {
-        cli.enable = true; # useful cli tools
-        iterm2.enable = true; # terminal emulator
-        utm.enable = true; # virtual machine manager
-      };
-
-      utility = {
-        appcleaner.enable = true; # cleans log/config files
-        # betterdisplay.enable = true; # configure the displays
-        iina.enable = true; # media player
-      };
-    };
-
-    nixos = {
-      gui = {
-        appflowy.enable = true; # open source notion
-        discord.enable = true; # voice and text chat software
-        obsidian.enable = true; # markdown based note-taking app
-      };
+  nixos = {
+    gui = {
+      appflowy.enable = true; # open source notion
+      discord.enable = true; # voice and text chat software
+      obsidian.enable = true; # markdown based note-taking app
     };
   };
 }

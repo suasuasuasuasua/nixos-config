@@ -11,7 +11,7 @@
         inputs.mac-app-util.homeManagerModules.default
       ];
 
-      config.home = {
+      home = {
         cli = {
           bat.enable = true; # better cat
           comma.enable = true; # try out programs with `,`
@@ -33,6 +33,7 @@
               vtsls.enable = true;
             };
             plugins = {
+              # conform.enable = false;
               obsidian = {
                 enable = true;
                 workspaces = [

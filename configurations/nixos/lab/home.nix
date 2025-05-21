@@ -8,7 +8,7 @@
         "${inputs.self}/modules/home/development"
       ];
 
-      config.home = {
+      home = {
         cli = {
           bat.enable = true;
           comma.enable = true;

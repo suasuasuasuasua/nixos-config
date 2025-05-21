@@ -6,7 +6,7 @@ in
   imports = [ "${inputs.self}/modules/nixos/services" ];
 
   # services
-  config.nixos.services = {
+  nixos.services = {
     actual.enable = true;
     adguardhome.enable = true;
     audiobookshelf.enable = true;
