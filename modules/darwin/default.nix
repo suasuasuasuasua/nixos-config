@@ -26,13 +26,7 @@
     formatted;
 
   nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays ++ [
-      # NOTE: https://github.com/NixOS/nixpkgs/issues/402079#issuecomment-2846741344
-      (_: prev: {
-        nodejs = prev.nodejs_22;
-        nodejs-slim = prev.nodejs-slim_22;
-      })
-    ];
+    overlays = builtins.attrValues outputs.overlays;
 
     # allows us to install apps like vscode
     config.allowUnfree = true;
