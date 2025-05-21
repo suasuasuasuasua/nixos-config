@@ -156,18 +156,17 @@
       # https://nix-community.github.io/nixvim/plugins/luasnip/index.html
       luasnip = {
         enable = true;
-        # -- lazy load the friendly snippets using luasnip for friendly-snippets
+        # setup for friendly snippets
         fromVscode = [
           { }
         ];
-        # TODO: sometimes errors with luasnip not found
-        # lazyLoad = {
-        #   enable = true;
-        #   settings = {
-        #     # LazyFile is a shorthand that lazy.nvim uses
-        #     event = [ "BufReadPost BufWritePost BufNewFile" ];
-        #   };
-        # };
+        lazyLoad = {
+          enable = true;
+          settings = {
+            event = [ "InsertEnter" ];
+            priority = 55; # default=50, load before blink
+          };
+        };
       };
 
       # `friendly-snippets` contains a variety of premade snippets
