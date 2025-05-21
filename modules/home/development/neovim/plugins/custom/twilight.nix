@@ -24,6 +24,7 @@ in
 
         lazyLoad = {
           enable = true;
+
           settings = {
             cmd = "Twilight";
           };
