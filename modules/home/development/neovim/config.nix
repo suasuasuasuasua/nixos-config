@@ -14,10 +14,20 @@ in
         textwidth = 80;
         conceallevel = 2;
 
+        # files
         backup = false;
         writebackup = false;
         swapfile = false;
+
+        # folding
+        foldenable = true;
+        foldcolumn = "auto";
+        foldlevel = 99;
+        foldlevelstart = 99;
+        foldexpr = "nvim_treesitter#foldexpr()";
+        foldtext = "nvim_treesitter#foldtext()";
       };
+
       keymaps = [
         {
           mode = "i";
