@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  # pkgs,
   ...
 }:
 let
@@ -18,12 +17,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # TODO: add in unstable 25.05
-    # programs.nixvim.plugins.lsp.servers.just = {
-    #   enable = true;
-    #   # NOTE: add options as I need
-    #   # TODO: remove on 25.05 unstable
-    #   package = pkgs.unstable.just-lsp;
-    # };
+    programs.nixvim.plugins.lsp.servers.just = {
+      enable = true;
+    };
   };
 }
