@@ -20,12 +20,10 @@ in
         swapfile = false;
 
         # folding
-        foldenable = true;
-        foldcolumn = "auto";
+        foldcolumn = "1";
         foldlevel = 99;
         foldlevelstart = 99;
-        foldexpr = "nvim_treesitter#foldexpr()";
-        foldtext = "nvim_treesitter#foldtext()";
+        foldenable = true;
       };
 
       keymaps = [
