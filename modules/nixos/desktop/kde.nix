@@ -48,12 +48,12 @@ in
           elisa # music player
           filelight # disk usage
           haruna # video player
-          # kalendar # calendar
           kate # text editor
           kmail # mail client
           kmail-account-wizard # mail client helper
           krita # photo editing
           kwin # window manager (not sure why not installed by default?)
+          merkuro # app suite
           plasma-thunderbolt # thunderbolt panel
         ]);
 
