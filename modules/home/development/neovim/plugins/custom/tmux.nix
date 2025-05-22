@@ -28,6 +28,25 @@ in
         # https://github.com/aserowy/tmux.nvim
         vimPlugins.tmux-nvim
       ];
+
+      plugins.lz-n = {
+        # https://nix-community.github.io/nixvim/plugins/lz-n/plugins.html
+        plugins = [
+          {
+            __unkeyed-1 = "tmux.nvim"; # the plugin's name (:h packadd)
+            after =
+              # lua
+              ''
+                function()
+                  require("tmux").setup()
+                end
+              '';
+            event = [
+              "DeferredUIEnter"
+            ];
+          }
+        ];
+      };
     };
   };
 }
