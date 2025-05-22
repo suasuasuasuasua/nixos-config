@@ -26,7 +26,19 @@
     formatted;
 
   nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
+    overlays = builtins.attrValues outputs.overlays ++ [
+      # https://github.com/NixOS/nixpkgs/issues/388681
+      # TODO:remove when fixed for legion build (open-webui is broken i think)
+      (_: prev: {
+        pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+          (_: python-prev: {
+            onnxruntime = python-prev.onnxruntime.overridePythonAttrs (oldAttrs: {
+              buildInputs = lib.lists.remove pkgs.onnxruntime oldAttrs.buildInputs;
+            });
+          })
+        ];
+      })
+    ];
 
     # allows us to install apps like vscode
     config.allowUnfree = true;
