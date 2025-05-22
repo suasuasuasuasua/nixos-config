@@ -26,7 +26,9 @@
           neovim = {
             enable = true;
             lsp = { };
-            plugins = { };
+            plugins = {
+              obsidian.enable = false;
+            };
           };
           zsh.enable = true;
         };
