@@ -115,6 +115,14 @@ in
 
           settings = {
             event = [ "DeferredUIEnter" ];
+            keys = [
+              {
+                __unkeyed-1 = "<leader>so";
+                __unkeyed-3 = "<CMD>Obsidian<CR>";
+                mode = "n";
+                desc = "[S]earch [O]bsidian";
+              }
+            ];
           };
         };
       };
