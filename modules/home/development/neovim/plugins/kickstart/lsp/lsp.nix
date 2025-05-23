@@ -6,24 +6,6 @@
 {
   programs.nixvim = {
     plugins = {
-      # Useful status updates for LSP.
-      # https://nix-community.github.io/nixvim/plugins/fidget/index.html
-      fidget = {
-        enable = true;
-
-        lazyLoad = {
-          enable = true;
-          settings = {
-            # LazyFile is a shorthand that lazy.nvim uses
-            event = [
-              "BufReadPost"
-              "BufWritePost"
-              "BufNewFile"
-            ];
-          };
-        };
-      };
-
       # Brief aside: **What is LSP?**
       #
       # LSP is an initialism you've probably heard, but might not understand
@@ -187,7 +169,8 @@
           # lua
           ''
             --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
-            capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
+            local blink_capabilities = require('blink.cmp').get_lsp_capabilities()
+            capabilities = vim.tbl_deep_extend('force', capabilities, blink_capabilities)
           '';
 
         # This function gets run when an LSP attaches to a particular buffer.
@@ -267,6 +250,25 @@
             end
           '';
       };
+
+      # Useful status updates for LSP.
+      # https://nix-community.github.io/nixvim/plugins/fidget/index.html
+      fidget = {
+        enable = true;
+
+        lazyLoad = {
+          enable = true;
+          settings = {
+            # LazyFile is a shorthand that lazy.nvim uses
+            event = [
+              "BufReadPost"
+              "BufWritePost"
+              "BufNewFile"
+            ];
+          };
+        };
+      };
+
     };
 
     diagnostic.settings = {
