@@ -316,10 +316,18 @@
       };
     };
 
-    extraPackages = with pkgs; [
-      # WARNING: libuv-watchdirs has known performance issues. Consider
-      # installing inotify-tools.
-      inotify-tools
-    ];
+    extraPackages =
+      let
+        inherit (lib) optionals;
+        inherit (pkgs.stdenv) isLinux;
+      in
+      optionals isLinux (
+        with pkgs;
+        [
+          # WARNING: libuv-watchdirs has known performance issues. Consider
+          # installing inotify-tools.
+          inotify-tools
+        ]
+      );
   };
 }
