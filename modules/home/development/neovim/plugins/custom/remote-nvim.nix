@@ -21,6 +21,20 @@ in
     programs.nixvim = {
       plugins.remote-nvim = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+
+          settings = {
+            cmd = [
+              "RemoteCleanup"
+              "RemoteConfigDel"
+              "RemoteInfo"
+              "RemoteLog"
+              "RemoteStart"
+              "RemoteStop"
+            ];
+          };
+        };
       };
 
       extraPackages = with pkgs; [
