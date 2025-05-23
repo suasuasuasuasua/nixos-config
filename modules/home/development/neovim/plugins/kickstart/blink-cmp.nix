@@ -46,6 +46,9 @@
           };
           sources = {
             default = [
+              "obsidian"
+              "obsidian_new"
+              "obsidian_tags"
               "lsp"
               "path"
               "snippets"
