@@ -11,7 +11,7 @@ in
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
 
-    ./config.nix
+    ./config
     ./plugins/kickstart
     ./plugins/custom
   ];

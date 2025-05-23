@@ -42,16 +42,6 @@ in
         }
       ];
 
-      # Performance tweaks
-      # https://nix-community.github.io/nixvim/performance/byteCompileLua.html
-      performance.byteCompileLua = {
-        enable = true;
-        configs = true;
-        initLua = true;
-        nvimRuntime = true;
-        plugins = true;
-      };
-
       # Persistent folds
       #   Source: https://github.com/AstroNvim/AstroNvim/blob/271c9c3f71c2e315cb16c31276dec81ddca6a5a6/lua/astronvim/autocmds.lua#L98-L120
       autoGroups = {
