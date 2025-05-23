@@ -40,7 +40,6 @@ pkgs.mkShellNoCC {
     # nix support
     home-manager
     nix
-    # TODO: https://github.com/nix-community/nh/issues/293
     nh # nix helper
     nix-output-monitor # nix output monitor
     nvd # nix/nixos package version diff tool
