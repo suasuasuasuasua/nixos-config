@@ -34,6 +34,7 @@ pkgs.mkShellNoCC {
     nil # lsp 1
     nixd # lsp 2
     nixfmt-rfc-style # nix formatter
+    marksman # markdown
     markdownlint-cli # markdown linter
 
     # nix support
