@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 {
@@ -314,5 +315,11 @@
         clear = true;
       };
     };
+
+    extraPackages = with pkgs; [
+      # WARNING: libuv-watchdirs has known performance issues. Consider
+      # installing inotify-tools.
+      inotify-tools
+    ];
   };
 }

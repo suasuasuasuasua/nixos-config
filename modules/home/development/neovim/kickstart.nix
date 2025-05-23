@@ -208,8 +208,7 @@ in
             # lua
             ''
               function()
-                -- TODO: vim.hl.on_yank() on nvim.version=0.11
-                vim.highlight.on_yank()
+                vim.hl.on_yank()
               end
             '';
         }
