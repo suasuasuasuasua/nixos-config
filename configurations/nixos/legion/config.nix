@@ -7,7 +7,6 @@
 
     # import the modules
     "${inputs.self}/modules/nixos/desktop"
-    "${inputs.self}/modules/nixos/development"
     "${inputs.self}/modules/nixos/gpu"
     "${inputs.self}/modules/nixos/gui"
     "${inputs.self}/modules/nixos/services"

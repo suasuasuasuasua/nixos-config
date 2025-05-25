@@ -7,7 +7,6 @@
     "${inputs.self}/modules/nixos"
 
     # # import the modules
-    "${inputs.self}/modules/nixos/development"
     "${inputs.self}/modules/nixos/services"
   ];
 

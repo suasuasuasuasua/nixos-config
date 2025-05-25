@@ -8,7 +8,6 @@
     "${inputs.self}/modules/home"
 
     "${inputs.self}/modules/home/cli"
-    "${inputs.self}/modules/home/development"
   ];
 
   home = {

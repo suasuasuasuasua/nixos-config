@@ -4,7 +4,6 @@
     "justinhoang" = {
       imports = [
         "${inputs.self}/modules/home/cli"
-        "${inputs.self}/modules/home/development"
         "${inputs.self}/modules/home/gui"
       ];
 

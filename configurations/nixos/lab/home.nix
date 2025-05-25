@@ -5,7 +5,6 @@
       imports = [
         # import the modules
         "${inputs.self}/modules/home/cli"
-        "${inputs.self}/modules/home/development"
       ];
 
       home = {

@@ -5,7 +5,6 @@
       imports = [
         # import modules
         "${inputs.self}/modules/home/cli"
-        "${inputs.self}/modules/home/development"
         "${inputs.self}/modules/home/gui"
 
         inputs.mac-app-util.homeManagerModules.default
