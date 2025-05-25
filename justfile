@@ -6,10 +6,15 @@
 default:
     @just --list
 
-# Update nix flake
+# Update all flake inputs
 [group('Main')]
 update:
     nix flake update
+
+# Update nixvim config input
+[group('Main')]
+update-nixvim:
+    nix flake update nixvim-config
 
 # Lint nix files
 [group('dev')]
