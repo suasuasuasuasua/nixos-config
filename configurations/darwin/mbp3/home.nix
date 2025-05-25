@@ -22,11 +22,12 @@
           github.enable = true; # github cli integration
           gnupg.enable = true; # gpg key signing
           tmux.enable = true; # terminal multiplexer
+          zsh.enable = true; # preferred shell
         };
 
         development = {
           neovim = {
-            enable = true; # enable nixvim config
+            enable = false; # enable nixvim config
             lsp = {
               cssls.enable = true;
               html.enable = true;
@@ -49,7 +50,6 @@
               };
             };
           };
-          zsh.enable = true; # preferred shell
         };
 
         gui = {

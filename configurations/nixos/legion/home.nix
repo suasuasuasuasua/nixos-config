@@ -20,6 +20,7 @@
           github.enable = true;
           gnupg.enable = true;
           tmux.enable = true;
+          zsh.enable = true;
         };
 
         development = {
@@ -30,7 +31,6 @@
               obsidian.enable = false;
             };
           };
-          zsh.enable = true;
         };
 
         gui = {

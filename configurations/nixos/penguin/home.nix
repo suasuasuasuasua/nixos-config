@@ -19,6 +19,7 @@
           github.enable = true; # github cli integration
           gnupg.enable = true; # gpg key signing
           tmux.enable = true; # terminal multiplexer
+          zsh.enable = true;
         };
         development = {
           neovim = {
@@ -49,7 +50,6 @@
               typst.enable = false;
             };
           };
-          zsh.enable = true;
         };
         gui = {
           alacritty.enable = true;

@@ -22,6 +22,7 @@
       github.enable = true; # github cli integration
       gnupg.enable = true; # gpg key signing
       tmux.enable = true; # terminal multiplexer
+      zsh.enable = true;
     };
 
     development = {
@@ -31,7 +32,6 @@
         lsp = { };
         plugins = { };
       };
-      zsh.enable = true;
     };
   };
 }
