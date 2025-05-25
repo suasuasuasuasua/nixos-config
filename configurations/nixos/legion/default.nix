@@ -3,6 +3,7 @@
 {
   inputs,
   pkgs,
+  lib,
   userConfigs,
   ...
 }:
@@ -63,6 +64,20 @@
         // acc;
     in
     builtins.foldl' helper { } userConfigs;
+
+  nixpkgs.overlays = [
+    # https://github.com/NixOS/nixpkgs/issues/388681
+    # TODO:remove when fixed for legion build (open-webui is broken i think)
+    (_: prev: {
+      pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+        (_: python-prev: {
+          onnxruntime = python-prev.onnxruntime.overridePythonAttrs (oldAttrs: {
+            buildInputs = lib.lists.remove pkgs.onnxruntime oldAttrs.buildInputs;
+          });
+        })
+      ];
+    })
+  ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
