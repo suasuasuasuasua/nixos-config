@@ -43,14 +43,14 @@
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     # software inputs
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
-    };
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # apps
@@ -58,10 +58,9 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim.url = "github:nix-community/nixvim/nixos-25.05";
-    # nixvim.url = "github:nix-community/nixvim"; # unstable
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    nixvim-config.url = "github:suasuasuasuasua/nixvim";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions/";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs =

@@ -11,6 +11,9 @@
       ];
 
       home = {
+        # custom nixvim configuration
+        packages = [ inputs.nixvim-config.packages.aarch64-darwin.default ];
+
         cli = {
           bat.enable = true; # better cat
           comma.enable = true; # try out programs with `,`
