@@ -1,4 +1,34 @@
 { inputs, pkgs, ... }:
+let
+  inherit (pkgs.stdenv.hostPlatform) system;
+
+  # configure nixvim here!
+  nixvim = inputs.nixvim-config.packages.${system}.default.extend {
+    config.nixvim = {
+      enable = true;
+      lsp = {
+        cssls.enable = true;
+        html.enable = true;
+        vtsls.enable = true;
+      };
+      plugins = {
+        obsidian = {
+          enable = true;
+          workspaces = [
+            {
+              name = "personal";
+              path = "/Users/justinhoang/Documents/vaults/personal";
+            }
+          ];
+        };
+        ollama = {
+          enable = true;
+          model = "gemma3";
+        };
+      };
+    };
+  };
+in
 {
   home-manager.users = {
     "justinhoang" = {
@@ -11,9 +41,6 @@
       ];
 
       home = {
-        # custom nixvim configuration
-        packages = [ inputs.nixvim-config.packages.aarch64-darwin.default ];
-
         cli = {
           bat.enable = true; # better cat
           comma.enable = true; # try out programs with `,`
@@ -50,6 +77,11 @@
             };
           };
         };
+
+        # custom nixvim configuration
+        packages = [
+          nixvim
+        ];
       };
     };
   };

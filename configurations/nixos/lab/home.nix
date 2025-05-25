@@ -1,4 +1,23 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
+let
+  inherit (pkgs.stdenv.hostPlatform) system;
+
+  # configure nixvim here!
+  nixvim = inputs.nixvim-config.packages.${system}.default.extend {
+    config.nixvim = {
+      enable = true;
+      lsp = { };
+      colorscheme.enable = false;
+      plugins = {
+        auto-dark-mode.enable = false;
+        img-clip.enable = false;
+        markdown-preview.enable = false;
+        obsidian.enable = false;
+        remote-nvim.enable = false;
+      };
+    };
+  };
+in
 {
   home-manager.users = {
     "justinhoang" = {
@@ -20,6 +39,8 @@
           tmux.enable = true;
           zsh.enable = true;
         };
+
+        packages = [ nixvim ];
       };
     };
   };

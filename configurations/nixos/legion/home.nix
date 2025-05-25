@@ -1,4 +1,18 @@
 { inputs, pkgs, ... }:
+let
+  inherit (pkgs.stdenv.hostPlatform) system;
+
+  # configure nixvim here!
+  nixvim = inputs.nixvim-config.packages.${system}.default.extend {
+    config.nixvim = {
+      enable = true;
+      lsp = { };
+      plugins = {
+        obsidian.enable = false;
+      };
+    };
+  };
+in
 {
   home-manager.users = {
     "justinhoang" = {
@@ -38,6 +52,8 @@
             };
           };
         };
+
+        packages = [ nixvim ];
       };
     };
   };

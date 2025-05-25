@@ -845,11 +845,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1748197880,
-        "narHash": "sha256-/Km7+euVO256EO/67SSHvla9duYZyKDZfrXf/+V9kwQ=",
+        "lastModified": 1748198442,
+        "narHash": "sha256-xpRn7Cbt08fm2nqEvL0HFtoxJ1eK2sBelw3tvtOpD08=",
         "owner": "suasuasuasuasua",
         "repo": "nixvim",
-        "rev": "0eec18164617c1be9cdbba8b90a4152455fe8ece",
+        "rev": "f92b87e54fb30d3cfb58eff3241e251f6f76e01f",
         "type": "github"
       },
       "original": {

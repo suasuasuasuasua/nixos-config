@@ -1,4 +1,39 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
+let
+  inherit (pkgs.stdenv.hostPlatform) system;
+
+  # configure nixvim here!
+  nixvim = inputs.nixvim-config.packages.${system}.default.extend {
+    config.nixvim = {
+      enable = true;
+      lsp = {
+        bashls.enable = false;
+        jsonls.enable = false;
+        just.enable = false;
+        nil_ls.enable = false;
+        nixd.enable = false;
+        pyright.enable = false;
+        tinymist.enable = false;
+      };
+      plugins = {
+        auto-dark-mode.enable = false;
+        diffview.enable = false;
+        img-clip.enable = false;
+        obsidian = {
+          enable = true;
+          workspaces = [
+            {
+              name = "personal";
+              path = "/home/justinhoang/Documents/vaults/personal";
+            }
+          ];
+        };
+        schemastore.enable = false;
+        typst.enable = false;
+      };
+    };
+  };
+in
 {
   home-manager.users = {
     "justinhoang" = {
@@ -26,6 +61,8 @@
           firefox.enable = true;
           spotify.enable = true;
         };
+
+        packages = [ nixvim ];
       };
     };
   };

@@ -1,7 +1,19 @@
-{
-  inputs,
-  ...
-}:
+{ inputs, pkgs, ... }:
+let
+  inherit (pkgs.stdenv.hostPlatform) system;
+
+  # configure nixvim here!
+  nixvim = inputs.nixvim-config.packages.${system}.default.extend {
+    config.nixvim = {
+      enable = true;
+      lsp = { };
+      colorscheme.enable = false;
+      plugins = {
+        obsidian.enable = false;
+      };
+    };
+  };
+in
 {
   imports = [
     # import the modules
@@ -23,5 +35,7 @@
       tmux.enable = true; # terminal multiplexer
       zsh.enable = true;
     };
+
+    packages = [ nixvim ];
   };
 }
