@@ -18,7 +18,8 @@
     # Nix
     deadnix.enable = true; # remove any unused variabes and imports
     flake-checker = {
-      enable = true; # run `flake check`
+      # TODO: enable once the new version checks for 25.05
+      enable = false; # run `flake check`
       package = pkgs.flake-checker;
     };
     nil.enable = true; # lsp that also has formatter
