@@ -38,6 +38,7 @@ pkgs.mkShellNoCC {
     markdownlint-cli # markdown linter
 
     # nix support
+    caligula # burn the iso images
     home-manager
     nix
     nh # nix helper
