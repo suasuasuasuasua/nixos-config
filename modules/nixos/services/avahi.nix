@@ -14,7 +14,7 @@ in
   config = lib.mkIf cfg.enable {
     services.avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
       publish = {
         enable = true;
         addresses = true;
