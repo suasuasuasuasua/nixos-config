@@ -24,14 +24,5 @@
       tmux.enable = true; # terminal multiplexer
       zsh.enable = true;
     };
-
-    development = {
-      neovim = {
-        enable = true;
-        # enable LSPs for _server-like_ things
-        lsp = { };
-        plugins = { };
-      };
-    };
   };
 }

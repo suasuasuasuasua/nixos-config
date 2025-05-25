@@ -23,16 +23,6 @@
           zsh.enable = true;
         };
 
-        development = {
-          neovim = {
-            enable = true;
-            lsp = { };
-            plugins = {
-              obsidian.enable = false;
-            };
-          };
-        };
-
         gui = {
           alacritty.enable = true;
           firefox.enable = true;

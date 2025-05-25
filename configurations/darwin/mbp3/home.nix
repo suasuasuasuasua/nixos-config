@@ -25,33 +25,6 @@
           zsh.enable = true; # preferred shell
         };
 
-        development = {
-          neovim = {
-            enable = false; # enable nixvim config
-            lsp = {
-              cssls.enable = true;
-              html.enable = true;
-              vtsls.enable = true;
-            };
-            plugins = {
-              # conform.enable = false;
-              obsidian = {
-                enable = true;
-                workspaces = [
-                  {
-                    name = "personal";
-                    path = "/Users/justinhoang/Documents/vaults/personal";
-                  }
-                ];
-              };
-              ollama = {
-                enable = true;
-                model = "gemma3";
-              };
-            };
-          };
-        };
-
         gui = {
           alacritty.enable = true; # terminal emulator
           firefox.enable = true; # browser

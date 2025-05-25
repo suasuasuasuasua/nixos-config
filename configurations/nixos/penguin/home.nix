@@ -21,36 +21,7 @@
           tmux.enable = true; # terminal multiplexer
           zsh.enable = true;
         };
-        development = {
-          neovim = {
-            enable = true;
-            lsp = {
-              bashls.enable = false;
-              jsonls.enable = false;
-              just.enable = false;
-              nil_ls.enable = false;
-              nixd.enable = false;
-              pyright.enable = false;
-              tinymist.enable = false;
-            };
-            plugins = {
-              auto-dark-mode.enable = false;
-              diffview.enable = false;
-              img-clip.enable = false;
-              obsidian = {
-                enable = true;
-                workspaces = [
-                  {
-                    name = "personal";
-                    path = "/home/justinhoang/Documents/vaults/personal";
-                  }
-                ];
-              };
-              schemastore.enable = false;
-              typst.enable = false;
-            };
-          };
-        };
+
         gui = {
           alacritty.enable = true;
           firefox.enable = true;
