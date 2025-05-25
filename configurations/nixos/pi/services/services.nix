@@ -11,6 +11,7 @@ in
   # services
   nixos.services = {
     adguardhome.enable = true;
+    avahi.enable = true;
     dashy = {
       enable = true;
       settings = import ./dashy.nix {

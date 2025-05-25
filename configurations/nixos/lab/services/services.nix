@@ -10,6 +10,7 @@ in
     actual.enable = true;
     adguardhome.enable = true;
     audiobookshelf.enable = true;
+    avahi.enable = true;
     calibre = {
       enable = true;
       libraries = [ "/zshare/media/books/ebooks/" ];
