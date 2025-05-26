@@ -5,25 +5,26 @@ let
   # configure nixvim here!
   nixvim = inputs.nixvim-config.packages.${system}.default.extend {
     config.nixvim = {
-      enable = true;
       lsp = {
         cssls.enable = true;
         html.enable = true;
         vtsls.enable = true;
       };
       plugins = {
-        obsidian = {
-          enable = true;
-          workspaces = [
-            {
-              name = "personal";
-              path = "/Users/justinhoang/Documents/vaults/personal";
-            }
-          ];
-        };
-        ollama = {
-          enable = true;
-          model = "gemma3";
+        custom = {
+          obsidian = {
+            enable = true;
+            workspaces = [
+              {
+                name = "personal";
+                path = "/Users/justinhoang/Documents/vaults/personal";
+              }
+            ];
+          };
+          ollama = {
+            enable = true;
+            model = "gemma3";
+          };
         };
       };
     };

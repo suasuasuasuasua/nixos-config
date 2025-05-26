@@ -9,7 +9,9 @@ let
       lsp = { };
       colorscheme.enable = false;
       plugins = {
-        obsidian.enable = false;
+        custom = {
+          obsidian.enable = false;
+        };
       };
     };
   };

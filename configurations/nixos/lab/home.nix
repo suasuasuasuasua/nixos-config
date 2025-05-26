@@ -9,11 +9,13 @@ let
       lsp = { };
       colorscheme.enable = false;
       plugins = {
-        auto-dark-mode.enable = false;
-        img-clip.enable = false;
-        markdown-preview.enable = false;
-        obsidian.enable = false;
-        remote-nvim.enable = false;
+        custom = {
+          auto-dark-mode.enable = false;
+          img-clip.enable = false;
+          markdown-preview.enable = false;
+          obsidian.enable = false;
+          remote-nvim.enable = false;
+        };
       };
     };
   };

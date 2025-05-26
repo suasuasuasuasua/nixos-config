@@ -16,20 +16,22 @@ let
         tinymist.enable = false;
       };
       plugins = {
-        auto-dark-mode.enable = false;
-        diffview.enable = false;
-        img-clip.enable = false;
-        obsidian = {
-          enable = true;
-          workspaces = [
-            {
-              name = "personal";
-              path = "/home/justinhoang/Documents/vaults/personal";
-            }
-          ];
+        custom = {
+          auto-dark-mode.enable = false;
+          diffview.enable = false;
+          img-clip.enable = false;
+          obsidian = {
+            enable = true;
+            workspaces = [
+              {
+                name = "personal";
+                path = "/home/justinhoang/Documents/vaults/personal";
+              }
+            ];
+          };
+          schemastore.enable = false;
+          typst.enable = false;
         };
-        schemastore.enable = false;
-        typst.enable = false;
       };
     };
   };

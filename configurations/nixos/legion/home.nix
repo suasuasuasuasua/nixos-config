@@ -8,7 +8,9 @@ let
       enable = true;
       lsp = { };
       plugins = {
-        obsidian.enable = false;
+        custom = {
+          obsidian.enable = false;
+        };
       };
     };
   };
