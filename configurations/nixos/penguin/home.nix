@@ -5,15 +5,16 @@ let
   # configure nixvim here!
   nixvim = inputs.nixvim-config.packages.${system}.default.extend {
     config.nixvim = {
-      enable = true;
       lsp = {
-        bashls.enable = false;
-        jsonls.enable = false;
-        just.enable = false;
-        nil_ls.enable = false;
-        nixd.enable = false;
-        pyright.enable = false;
-        tinymist.enable = false;
+        languages = {
+          bashls.enable = false;
+          jsonls.enable = false;
+          just.enable = false;
+          nil_ls.enable = false;
+          nixd.enable = false;
+          pyright.enable = false;
+          tinymist.enable = false;
+        };
       };
       plugins = {
         custom = {

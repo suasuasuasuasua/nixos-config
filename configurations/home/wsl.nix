@@ -5,9 +5,8 @@ let
   # configure nixvim here!
   nixvim = inputs.nixvim-config.packages.${system}.default.extend {
     config.nixvim = {
-      enable = true;
-      lsp = { };
       colorscheme.enable = false;
+      lsp = { };
       plugins = {
         custom = {
           obsidian.enable = false;

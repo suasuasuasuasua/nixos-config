@@ -6,9 +6,11 @@ let
   nixvim = inputs.nixvim-config.packages.${system}.default.extend {
     config.nixvim = {
       lsp = {
-        cssls.enable = true;
-        html.enable = true;
-        vtsls.enable = true;
+        languages = {
+          cssls.enable = true;
+          html.enable = true;
+          vtsls.enable = true;
+        };
       };
       plugins = {
         custom = {
