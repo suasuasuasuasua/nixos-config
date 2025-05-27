@@ -221,9 +221,7 @@
         git-hooks-check = inputs.git-hooks-nix.lib.${pkgs.system}.run {
           src = ./.;
           imports = [
-            (import ./git-hooks.nix {
-              inherit pkgs;
-            })
+            (import ./git-hooks.nix { inherit pkgs; })
           ];
         };
       });
