@@ -202,13 +202,8 @@
           };
         };
 
-      # Define the users
-      # NOTE: maybe move this to a json file in the future
-      justinhoang = {
-        username = "justinhoang";
-        email = "j124.dev@proton.me";
-        initialHashedPassword = "$y$j9T$sXZCGwjtugZIt/C2nU8bk/$D36OrIe3eyGSM7rPysbQI1OyT56TdtJZtcvnOne2Ge0";
-      };
+      # Read the users from a file
+      users = builtins.fromJSON (builtins.readFile ./data/users.json);
     in
     {
       inherit lib;
@@ -238,22 +233,22 @@
           {
             name = "lab";
             system = "x86_64-linux";
-            userConfigs = [ justinhoang ];
+            userConfigs = [ users.justinhoang ];
           }
           {
             name = "legion";
             system = "x86_64-linux";
-            userConfigs = [ justinhoang ];
+            userConfigs = [ users.justinhoang ];
           }
           {
             name = "penguin";
             system = "x86_64-linux";
-            userConfigs = [ justinhoang ];
+            userConfigs = [ users.justinhoang ];
           }
           {
             name = "pi";
             system = "aarch64-linux";
-            userConfigs = [ justinhoang ];
+            userConfigs = [ users.admin ];
             enableHomeManager = false;
           }
         ]
@@ -263,7 +258,7 @@
           {
             name = "mbp3";
             system = "aarch64-darwin";
-            userConfigs = [ justinhoang ];
+            userConfigs = [ users.justinhoang ];
           }
         ]
       );
@@ -272,7 +267,7 @@
           {
             name = "wsl";
             system = "x86_64-linux";
-            userConfig = justinhoang;
+            userConfig = users.justinhoang;
           }
         ]
       );
