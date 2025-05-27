@@ -2,6 +2,7 @@
 # This file is just *top-level* configuration.
 {
   inputs,
+  pkgs,
   ...
 }:
 {
@@ -33,10 +34,14 @@
     ];
   };
 
-  environment.systemPackages = [
-    # add basic nixvim config
-    inputs.nixvim-config.packages.aarch64-linux.minimal
-  ];
+  environment.systemPackages =
+    let
+      inherit (pkgs.stdenv.hostPlatform) system;
+    in
+    [
+      # add basic nixvim config
+      inputs.nixvim-config.packages.${system}.minimal
+    ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

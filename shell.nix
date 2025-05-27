@@ -4,7 +4,7 @@
   ...
 }:
 let
-  inherit (pkgs) system;
+  inherit (pkgs.stdenv.hostPlatform) system;
 in
 pkgs.mkShellNoCC {
   # enable the shell hooks
