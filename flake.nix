@@ -214,11 +214,13 @@
       inherit lib;
 
       overlays = import ./overlays { inherit inputs; };
-      formatter = forEachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+      formatter = forEachSystem (
+        pkgs: treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.wrapper
+      );
 
       checks = forEachSystem (pkgs: {
         formatting = treefmtEval.${pkgs.system}.config.build.check self;
-        git-hooks-check = inputs.git-hooks-nix.lib.${pkgs.system}.run {
+        git-hooks-check = inputs.git-hooks-nix.lib.${pkgs.stdenv.hostPlatform.system}.run {
           src = ./.;
           imports = [
             (import ./git-hooks.nix { inherit pkgs; })
