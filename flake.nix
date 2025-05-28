@@ -28,6 +28,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Add this section to your flake inputs!
+    #
+    # Note that this assumes you have a flake-input called nixpkgs,
+    # which is often the case. If you've named it something else,
+    # you'll need to change the `nixpkgs` below.
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # utility
     disko.url = "github:nix-community/disko/latest";
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
@@ -68,6 +78,7 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+      lix-module,
       systems,
       ...
     }@inputs:
@@ -157,6 +168,7 @@
             modules =
               [
                 ./configurations/darwin/${name}
+                lix-module.nixosModules.default
               ]
               ++ lib.optionals enableHomeManager [
                 home-manager.darwinModules.home-manager
@@ -285,16 +297,4 @@
         ]
       );
     };
-
-  # use cachix for faster builds in places
-  nixConfig = {
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-      "https://pre-commit-hooks.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
-    ];
-  };
 }
