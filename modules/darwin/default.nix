@@ -28,8 +28,14 @@
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
 
-    # allows us to install apps like vscode
-    config.allowUnfree = true;
+    # # allows us to install apps like vscode
+    # config.allowUnfree = true;
+    # config.allowUnfreePredicate =
+    #   pkg:
+    #   builtins.elem (lib.getName pkg) [
+    #     # Add additional package names here
+    #     "vscode"
+    #   ];
   };
 
   nix =
