@@ -41,7 +41,30 @@ pkgs.mkShellNoCC {
     caligula # burn the iso images
     home-manager
     nix
-    nh # nix helper
+    (
+      # nix helper
+      #
+      # TODO: remove when nh=4.1.0 hits stable
+      # https://github.com/nix-community/nh/issues/293
+      if pkgs.stdenv.isDarwin then
+        nh.overrideAttrs rec {
+          pname = "nh";
+          version = "4.1.0";
+
+          src = fetchFromGitHub {
+            owner = "nix-community";
+            repo = "nh";
+            rev = "v${version}";
+            hash = "sha256-OiuhBrJe1AyVxC+AV4HMJ+vhDvUfCyLpBmj+Fy7MDtM=";
+          };
+          cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+            inherit src;
+            hash = "sha256-/tbmzGUd1b4oa+29+eFdkE4l8vxMoIdHx40YgErY9pY=";
+          };
+        }
+      else
+        nh
+    )
     nix-output-monitor # nix output monitor
     nvd # nix/nixos package version diff tool
 

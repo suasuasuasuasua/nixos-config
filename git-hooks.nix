@@ -28,7 +28,7 @@
         src = pkgs.fetchFromGitHub {
           owner = "DeterminateSystems";
           repo = "flake-checker";
-          rev = "v0.2.6";
+          rev = "v${version}";
           hash = "sha256-qEdwtyk5IaYCx67BFnLp4iUN+ewfPMl/wjs9K4hKqGc=";
         };
         cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
