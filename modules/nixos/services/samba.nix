@@ -40,12 +40,10 @@ in
         inherit settings;
 
         enable = true;
-        openFirewall = true;
       };
 
       samba-wsdd = {
         enable = true;
-        openFirewall = true;
       };
     };
   };

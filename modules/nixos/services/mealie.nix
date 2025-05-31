@@ -17,11 +17,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # no option to open firewall so do it manually!
-    networking.firewall.allowedTCPPorts = [
-      cfg.port
-    ];
-
     services.mealie = {
       inherit (cfg) port;
 

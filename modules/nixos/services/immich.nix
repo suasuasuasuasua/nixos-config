@@ -25,7 +25,6 @@ in
       inherit (cfg) port mediaLocation;
 
       enable = true;
-      openFirewall = true;
       machine-learning.enable = true;
       settings = { };
     };

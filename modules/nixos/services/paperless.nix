@@ -22,10 +22,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    networking.firewall.allowedTCPPorts = [
-      cfg.port
-    ];
-
     services.paperless = {
       inherit (cfg) port mediaDir;
 

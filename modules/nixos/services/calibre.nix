@@ -36,7 +36,6 @@ in
         inherit (cfg) libraries;
 
         enable = true;
-        openFirewall = true;
       };
 
       calibre-web = {
@@ -46,7 +45,6 @@ in
 
           ip = "127.0.0.1";
         };
-        openFirewall = true;
 
         options = {
           # NOTE: kinda ugly but you can only access one library

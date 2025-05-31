@@ -21,7 +21,6 @@ in
       inherit (cfg) port;
 
       enable = true;
-      openFirewall = true;
       extraArgs = [
         "--webserver"
       ];

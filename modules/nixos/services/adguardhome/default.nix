@@ -29,9 +29,6 @@ in
       inherit settings;
 
       enable = true;
-      # https://search.nixos.org/options?channel=24.11&show=services.adguardhome.openFirewall&from=0&size=50&sort=relevance&type=packages&query=adguard
-      # opens the web port, not the dns port!
-      openFirewall = true;
     };
 
     services.nginx.virtualHosts = {

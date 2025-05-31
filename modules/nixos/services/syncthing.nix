@@ -38,8 +38,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    networking.firewall.allowedTCPPorts = [ cfg.port ];
-
     services.syncthing = {
       inherit (cfg)
         dataDir

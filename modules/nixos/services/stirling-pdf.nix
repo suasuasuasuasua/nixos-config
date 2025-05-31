@@ -26,8 +26,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    networking.firewall.allowedTCPPorts = [ cfg.port ];
-
     services.stirling-pdf = {
       inherit environment;
 

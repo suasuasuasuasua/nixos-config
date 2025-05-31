@@ -23,7 +23,6 @@ in
   config = lib.mkIf cfg.enable {
     services.navidrome = {
       enable = true;
-      openFirewall = true;
 
       settings = {
         inherit (cfg) Port MusicFolder;
