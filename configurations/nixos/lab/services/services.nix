@@ -1,4 +1,9 @@
-{ inputs, config, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 let
   inherit (config.networking) hostName;
 in
@@ -59,5 +64,11 @@ in
     };
     vscode-server.enable = true;
     wastebin.enable = true;
+    wireguard = {
+      enable = true;
+      interfaces = import ./wireguard.nix {
+        inherit pkgs;
+      };
+    };
   };
 }
