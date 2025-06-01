@@ -264,18 +264,6 @@
             userConfigs = [ users.admin ];
             enableHomeManager = false;
           }
-          {
-            name = "vm/x86_64-linux";
-            system = "x86_64-linux";
-            userConfigs = [ users.admin ];
-            enableHomeManager = false;
-          }
-          {
-            name = "vm/aarch64-linux";
-            system = "aarch64-linux";
-            userConfigs = [ users.admin ];
-            enableHomeManager = false;
-          }
         ]
       );
       darwinConfigurations = lib.mergeAttrsList (
