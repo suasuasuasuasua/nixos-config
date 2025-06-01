@@ -25,12 +25,7 @@
     in
     formatted;
 
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-
-    # allows us to install apps like vscode
-    config.allowUnfree = true;
-  };
+  nixpkgs.overlays = builtins.attrValues outputs.overlays;
 
   nix =
     let

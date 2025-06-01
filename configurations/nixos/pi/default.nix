@@ -2,7 +2,6 @@
 # This file is just *top-level* configuration.
 {
   inputs,
-  pkgs,
   ...
 }:
 {
@@ -15,33 +14,6 @@
     ./services
     ./system
   ];
-
-  users.users.justinhoang = {
-    # If you do, you can skip setting a root password by passing
-    # '--no-root-passwd' to nixos-install. Be sure to change it (using
-    # passwd) after rebooting!
-    initialHashedPassword = "$y$j9T$sXZCGwjtugZIt/C2nU8bk/$D36OrIe3eyGSM7rPysbQI1OyT56TdtJZtcvnOne2Ge0";
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-  };
-
-  # https://github.com/NixOS/nixpkgs/issues/154163#issuecomment-1350599022
-  nixpkgs = {
-    overlays = [
-      (_: prev: {
-        makeModulesClosure = x: prev.makeModulesClosure (x // { allowMissing = true; });
-      })
-    ];
-  };
-
-  environment.systemPackages =
-    let
-      inherit (pkgs.stdenv.hostPlatform) system;
-    in
-    [
-      # add basic nixvim config
-      inputs.nixvim-config.packages.${system}.minimal
-    ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

@@ -2,9 +2,6 @@
 # This file is just *top-level* configuration.
 {
   inputs,
-  pkgs,
-  lib,
-  userConfigs,
   ...
 }:
 {
@@ -27,56 +24,6 @@
 
     # system setup
     ./system
-  ];
-
-  nixpkgs = {
-    config = {
-      # enable builds with cuda support!
-      cudaSupport = true;
-    };
-  };
-
-  # Need to enable zsh before we can actually use it. Home manager configs it,
-  # but cannot set the login shell because that's root level operation
-  programs.zsh.enable = true;
-
-  users.users =
-    let
-      helper =
-        acc:
-        { username, initialHashedPassword, ... }:
-        {
-          ${username} = {
-            # If you do, you can skip setting a root password by passing
-            # '--no-root-passwd' to nixos-install. Be sure to change it (using
-            # passwd) after rebooting!
-            inherit initialHashedPassword;
-
-            isNormalUser = true;
-            extraGroups = [
-              "wheel"
-              "docker"
-              "libvirtd"
-            ];
-            shell = pkgs.zsh;
-          };
-        }
-        // acc;
-    in
-    builtins.foldl' helper { } userConfigs;
-
-  nixpkgs.overlays = [
-    # https://github.com/NixOS/nixpkgs/issues/388681
-    # TODO:remove when fixed for legion build (open-webui is broken i think)
-    (_: prev: {
-      pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
-        (_: python-prev: {
-          onnxruntime = python-prev.onnxruntime.overridePythonAttrs (oldAttrs: {
-            buildInputs = lib.lists.remove pkgs.onnxruntime oldAttrs.buildInputs;
-          });
-        })
-      ];
-    })
   ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
