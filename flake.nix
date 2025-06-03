@@ -143,6 +143,7 @@
             modules =
               [
                 ./configurations/nixos/${name}
+                lix-module.nixosModules.default
               ]
               ++ lib.optionals enableHomeManager [
                 home-manager.nixosModules.home-manager
