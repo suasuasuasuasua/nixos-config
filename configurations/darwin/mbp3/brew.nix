@@ -100,6 +100,7 @@
       dark-reader-for-safari = 1438243180; # dark mode for safari
       hidden-bar = 1452453066; # macOS menubar organizer
       magnet = 441258766; # macOS workspace organizer
+      wireguard = 1451685025; # VPN
     };
   };
 }
