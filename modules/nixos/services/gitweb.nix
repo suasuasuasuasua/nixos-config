@@ -4,6 +4,7 @@
   ...
 }:
 let
+  inherit (config.networking) hostName;
   serviceName = "gitweb";
 
   cfg = config.nixos.services.${serviceName};
@@ -15,7 +16,6 @@ in
     '';
     projectroot = lib.mkOption {
       type = lib.types.path;
-      default = "/srv/git";
     };
   };
 
@@ -24,6 +24,10 @@ in
       inherit (cfg) projectroot;
     };
 
-    services.nginx.gitweb.enable = true;
+    services.nginx.gitweb = {
+      enable = true;
+      location = "/gitweb";
+      virtualHost = "${hostName}.home";
+    };
   };
 }
