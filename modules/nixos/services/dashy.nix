@@ -42,7 +42,7 @@ in
 
       enable = true;
       virtualHost.enableNginx = true;
-      virtualHost.domain = "${serviceName}.${hostName}.home";
+      virtualHost.domain = "${hostName}.home";
     };
   };
 }
