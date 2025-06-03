@@ -20,7 +20,7 @@ in
       enable = true;
       libraries = [ "/zshare/media/books/ebooks/" ];
     };
-    # code-server.enable = true; # WARNING: bug with 100% CPU usage? (1 core)
+    code-server.enable = true;
     dashy = {
       enable = true;
       settings = import ./dashy.nix {
