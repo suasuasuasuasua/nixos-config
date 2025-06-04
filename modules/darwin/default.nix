@@ -27,9 +27,6 @@
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
-
-    # allows us to install apps like vscode
-    config.allowUnfree = true;
   };
 
   nix =

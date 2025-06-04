@@ -10,19 +10,11 @@
           # apps
           [
             "betterttv"
-            "code"
             "discord"
             "obsidian"
             "spotify"
             "steam"
             "steam-unwrapped"
-            "vscode"
-            "vscode-extension-github-codespaces"
-            "vscode-extension-ms-dotnettools-csharp"
-            "vscode-extension-ms-vscode-cpptools"
-            "vscode-extension-ms-vscode-remote-remote-containers"
-            "vscode-extension-ms-vscode-remote-remote-ssh"
-            "vscode-extension-ms-vscode-remote-remote-ssh-edit"
           ]
           # nvidia
           ++ [
@@ -52,6 +44,17 @@
             "libnvjitlink"
             "nvidia-x11"
             "nvidia-settings"
+          ]
+          # vscode
+          ++ [
+            "code"
+            "vscode"
+            "vscode-extension-github-codespaces"
+            "vscode-extension-ms-dotnettools-csharp"
+            "vscode-extension-ms-vscode-cpptools"
+            "vscode-extension-ms-vscode-remote-remote-containers"
+            "vscode-extension-ms-vscode-remote-remote-ssh"
+            "vscode-extension-ms-vscode-remote-remote-ssh-edit"
           ]
         );
     };
