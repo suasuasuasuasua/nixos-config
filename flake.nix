@@ -231,9 +231,7 @@
         formatting = treefmtEval.${pkgs.system}.config.build.check self;
         git-hooks-check = inputs.git-hooks-nix.lib.${pkgs.stdenv.hostPlatform.system}.run {
           src = ./.;
-          imports = [
-            (import ./git-hooks.nix { inherit pkgs; })
-          ];
+          imports = [ ./git-hooks.nix ];
         };
       });
       devShells = forEachSystem (pkgs: {
