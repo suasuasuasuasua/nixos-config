@@ -49,6 +49,11 @@
         publicKey = "maAlHZyL5YGILhqm2hCCqTZepTLt7VoEGyWzQca2gVk=";
         allowedIPs = [ "10.100.0.3/32" ];
       }
+      {
+        name = "ipad";
+        publicKey = "nh/X2r1YdLV4+rGduCvBTX58DDYYtzrRkZqXfSSGmWY=";
+        allowedIPs = [ "10.100.0.4/32" ];
+      }
     ];
   };
 }
