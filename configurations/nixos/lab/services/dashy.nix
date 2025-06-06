@@ -1,6 +1,9 @@
 # custom dashy config per-host
 # https://dashy.to/docs/configuring/
-{ hostName, ... }:
+{ hostName, domain, ... }:
+let
+  mkFqdn = service: "https://${service}.${hostName}.${domain}";
+in
 {
   pageInfo = {
     description = "sua's homelab";
@@ -31,7 +34,7 @@
           description = "dns blocker";
           icon = "hl-adguardhome";
           target = "newtab";
-          url = "http://adguardhome.${hostName}.home";
+          url = mkFqdn "adguardhome";
         }
       ];
     }
@@ -47,7 +50,7 @@
           description = "system overview";
           icon = "hl-glances";
           target = "newtab";
-          url = "http://glances.${hostName}.home";
+          url = mkFqdn "glances";
         }
       ];
     }
@@ -63,35 +66,35 @@
           description = "finance tracker";
           icon = "hl-actual";
           target = "newtab";
-          url = "http://actual.${hostName}.home";
+          url = mkFqdn "glances";
         }
         {
           title = "code-server";
           description = "vscode in the web!";
           icon = "hl-code-server";
           target = "newtab";
-          url = "http://code-server.${hostName}.home";
+          url = mkFqdn "code-server";
         }
         {
           title = "mealie";
           description = "recipe and meal manager";
           icon = "hl-mealie";
           target = "newtab";
-          url = "http://mealie.${hostName}.home";
+          url = mkFqdn "mealie";
         }
         {
           title = "paperless";
           description = "document manager";
           icon = "hl-paperless";
           target = "newtab";
-          url = "http://paperless.${hostName}.home";
+          url = mkFqdn "paperless";
         }
         {
           title = "stirling-pdf";
           description = "pdf tools";
           icon = "hl-stirling-pdf";
           target = "newtab";
-          url = "http://stirling-pdf.${hostName}.home";
+          url = mkFqdn "stirling-pdf";
         }
       ];
     }
@@ -107,42 +110,42 @@
           description = "audiobook manager";
           icon = "hl-audiobookshelf";
           target = "newtab";
-          url = "http://audiobookshelf.${hostName}.home";
+          url = mkFqdn "audiobookshelf";
         }
         {
           title = "calibre web";
           description = "ebook manager";
           icon = "hl-calibre-web";
           target = "newtab";
-          url = "http://calibre.${hostName}.home";
+          url = mkFqdn "calibre";
         }
         {
           title = "immich";
           description = "photo manager";
           icon = "hl-immich";
           target = "newtab";
-          url = "http://immich.${hostName}.home";
+          url = mkFqdn "immich";
         }
         {
           title = "jellyfin";
           description = "media server";
           icon = "hl-jellyfin";
           target = "newtab";
-          url = "http://jellyfin.${hostName}.home";
+          url = mkFqdn "jellyfin";
         }
         {
           title = "jellyseerr";
           description = "media discovery manager";
           icon = "hl-jellyseerr";
           target = "newtab";
-          url = "http://jellyseerr.${hostName}.home";
+          url = mkFqdn "jellyseerr";
         }
         {
           title = "navidrome";
           description = "music manager";
           icon = "hl-navidrome";
           target = "newtab";
-          url = "http://navidrome.${hostName}.home";
+          url = mkFqdn "navidrome";
         }
       ];
     }
@@ -158,14 +161,14 @@
           description = "gitweb server";
           icon = "si-git";
           target = "newtab";
-          url = "http://${hostName}.home/gitweb";
+          url = "https://${hostName}.${domain}/gitweb";
         }
         {
           title = "wastebin";
           description = "pastebin";
           icon = "si-pastebin";
           target = "newtab";
-          url = "http://wastebin.${hostName}.home";
+          url = mkFqdn "wastebin";
         }
       ];
     }

@@ -4,7 +4,7 @@
   ...
 }:
 let
-  inherit (config.networking) hostName;
+  inherit (config.networking) hostName domain;
   serviceName = "actual";
 
   cfg = config.nixos.services.${serviceName};
@@ -21,7 +21,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # TODO: need to setup HTTPS to continue using...
     services.actual = {
       enable = true;
       settings = {
@@ -30,7 +29,10 @@ in
     };
 
     services.nginx.virtualHosts = {
-      "${serviceName}.${hostName}.home" = {
+      "${serviceName}.${hostName}.${domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        acmeRoot = null;
         locations."/" = {
           proxyPass = "http://localhost:${toString cfg.port}";
         };

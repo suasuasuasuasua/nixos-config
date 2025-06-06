@@ -5,13 +5,14 @@
   ...
 }:
 let
-  inherit (config.networking) hostName;
+  inherit (config.networking) hostName domain;
 in
 {
   imports = [ "${inputs.self}/modules/nixos/services" ];
 
   # services
   nixos.services = {
+    acme.enable = true;
     actual.enable = true;
     adguardhome.enable = true;
     audiobookshelf.enable = true;
@@ -24,7 +25,7 @@ in
     dashy = {
       enable = true;
       settings = import ./dashy.nix {
-        inherit hostName config;
+        inherit hostName domain config;
       };
     };
     gitweb = {

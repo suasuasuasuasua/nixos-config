@@ -4,7 +4,7 @@
   ...
 }:
 let
-  inherit (config.networking) hostName;
+  inherit (config.networking) hostName domain;
   serviceName = "stirling-pdf";
 
   cfg = config.nixos.services.${serviceName};
@@ -33,7 +33,10 @@ in
     };
 
     services.nginx.virtualHosts = {
-      "${serviceName}.${hostName}.home" = {
+      "${serviceName}.${hostName}.${domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        acmeRoot = null;
         locations."/" = {
           proxyPass = "http://localhost:${toString cfg.port}";
           proxyWebsockets = true; # needed if you need to use WebSocket

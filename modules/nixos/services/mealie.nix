@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  inherit (config.networking) hostName;
+  inherit (config.networking) hostName domain;
   serviceName = "mealie";
 
   cfg = config.nixos.services.${serviceName};
@@ -25,7 +25,10 @@ in
     };
 
     services.nginx.virtualHosts = {
-      "${serviceName}.${hostName}.home" = {
+      "${serviceName}.${hostName}.${domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        acmeRoot = null;
         locations."/" = {
           proxyPass = "http://localhost:${toString cfg.port}";
         };

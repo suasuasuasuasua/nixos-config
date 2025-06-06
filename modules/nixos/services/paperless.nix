@@ -1,7 +1,7 @@
 # sudo /var/lib/paperless/paperless-manage createsuperuser
 { config, lib, ... }:
 let
-  inherit (config.networking) hostName;
+  inherit (config.networking) hostName domain;
   serviceName = "paperless";
 
   cfg = config.nixos.services.${serviceName};
@@ -41,14 +41,20 @@ in
     };
 
     services.nginx.virtualHosts = {
-      "${serviceName}.${hostName}.home" = {
+      "${serviceName}.${hostName}.${domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        acmeRoot = null;
         locations."/" = {
           proxyPass = "http://localhost:${toString cfg.port}";
           proxyWebsockets = true; # needed if you need to use WebSocket
 
           extraConfig =
             # allow for larger file uploads like videos through the reverse proxy
-            "client_max_body_size 0;";
+            "client_max_body_size 0;"
+            +
+              # cert
+              "proxy_set_header X-SSL-CERT $ssl_client_escaped_cert;";
         };
       };
     };

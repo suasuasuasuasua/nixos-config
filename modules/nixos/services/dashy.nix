@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (config.networking) hostName;
+  inherit (config.networking) hostName domain;
   serviceName = "dashy";
 
   cfg = config.nixos.services.${serviceName};
@@ -42,7 +42,18 @@ in
 
       enable = true;
       virtualHost.enableNginx = true;
-      virtualHost.domain = "${hostName}.home";
+      virtualHost.domain = "${hostName}.${domain}";
+    };
+
+    # Add SSL
+    services.nginx.virtualHosts = {
+      "${hostName}.${domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        acmeRoot = null;
+
+        serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
+      };
     };
   };
 }

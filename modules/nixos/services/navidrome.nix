@@ -3,6 +3,8 @@ let
   inherit (config.networking) hostName;
   serviceName = "navidrome";
 
+  domain = "suasuasuasuasua.sh";
+
   cfg = config.nixos.services.${serviceName};
 in
 {
@@ -33,7 +35,10 @@ in
     };
 
     services.nginx.virtualHosts = {
-      "${serviceName}.${hostName}.home" = {
+      "${serviceName}.${hostName}.${domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        acmeRoot = null;
         locations."/" = {
           proxyPass = "http://localhost:${toString cfg.Port}";
         };

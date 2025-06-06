@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (config.networking) hostName;
+  inherit (config.networking) hostName domain;
   serviceName = "calibre";
 
   cfg = config.nixos.services.${serviceName};
@@ -55,12 +55,15 @@ in
           };
         };
       };
+    };
 
-      nginx.virtualHosts = {
-        "${serviceName}.${hostName}.home" = {
-          locations."/" = {
-            proxyPass = "http://localhost:${toString cfg.port}";
-          };
+    services.nginx.virtualHosts = {
+      "${serviceName}.${hostName}.${domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        acmeRoot = null;
+        locations."/" = {
+          proxyPass = "http://localhost:${toString cfg.port}";
         };
       };
     };
