@@ -245,32 +245,28 @@
     blocking_mode = "default";
     parental_block_host = "family-block.dns.adguard.com";
     safebrowsing_block_host = "standard-block.dns.adguard.com";
-    rewrites = [
-      {
-        domain = "lab.home";
-        answer = "192.168.0.240";
-      }
-      {
-        domain = "*.lab.home";
-        answer = "192.168.0.240";
-      }
-      {
-        domain = "lab.local";
-        answer = "192.168.0.240";
-      }
-      {
-        domain = "pi.home";
-        answer = "192.168.0.250";
-      }
-      {
-        domain = "*.pi.home";
-        answer = "192.168.0.250";
-      }
-      {
-        domain = "pi.local";
-        answer = "192.168.0.250";
-      }
-    ];
+    rewrites =
+      let
+        domainName = "suasuasuasuasua.sh";
+      in
+      [
+        {
+          domain = "lab.${domainName}";
+          answer = "192.168.0.240";
+        }
+        {
+          domain = "*.lab.${domainName}";
+          answer = "192.168.0.240";
+        }
+        {
+          domain = "pi.${domainName}";
+          answer = "192.168.0.240";
+        }
+        {
+          domain = "*.pi.${domainName}";
+          answer = "192.168.0.240";
+        }
+      ];
     safe_fs_patterns = [ "/var/lib/private/AdGuardHome/userfilters/*" ];
     safebrowsing_cache_size = 1048576;
     safesearch_cache_size = 1048576;
