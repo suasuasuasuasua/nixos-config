@@ -13,8 +13,8 @@ in
     enable = lib.mkEnableOption ''
       Free dynamic dns
     '';
-    domains = lib.mkOption {
-      type = with lib.types; nullOr (listOf str);
+    domainsFile = lib.mkOption {
+      type = with lib.types; nullOr path;
     };
     tokenFile = lib.mkOption {
       type = lib.types.path;
@@ -23,7 +23,7 @@ in
 
   config = lib.mkIf cfg.enable {
     services.duckdns = {
-      inherit (cfg) domains tokenFile;
+      inherit (cfg) domainsFile tokenFile;
 
       enable = true;
     };

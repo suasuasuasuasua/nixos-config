@@ -10,6 +10,7 @@ in
 
   # This is the actual specification of the secrets.
   sops.secrets = {
+    "duckdns/domains" = { };
     "duckdns/token" = { };
     "acme/namecheap_api" = { };
   };
@@ -30,7 +31,7 @@ in
     };
     duckdns = {
       enable = true;
-      domains = [ "vpn-sua" ];
+      domainsFile = config.sops.secrets."duckdns/domains".path;
       tokenFile = config.sops.secrets."duckdns/token".path;
     };
     glances.enable = true;
