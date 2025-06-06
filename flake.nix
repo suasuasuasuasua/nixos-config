@@ -82,7 +82,6 @@
       nixpkgs,
       nix-darwin,
       home-manager,
-      lix-module,
       systems,
       ...
     }@inputs:
@@ -145,10 +144,7 @@
         {
           ${name} = lib.nixosSystem {
             modules =
-              [
-                ./configurations/nixos/${name}
-                lix-module.nixosModules.default
-              ]
+              [ ./configurations/nixos/${name} ]
               ++ lib.optionals enableHomeManager [
                 home-manager.nixosModules.home-manager
                 (mkHomeManagerConfig system userConfigs)
@@ -171,10 +167,7 @@
         {
           ${name} = lib.darwinSystem {
             modules =
-              [
-                ./configurations/darwin/${name}
-                lix-module.nixosModules.default
-              ]
+              [ ./configurations/darwin/${name} ]
               ++ lib.optionals enableHomeManager [
                 home-manager.darwinModules.home-manager
                 (mkHomeManagerConfig system userConfigs)

@@ -1,17 +1,22 @@
 {
   self,
-  lib,
+  inputs,
   pkgs,
   userConfigs,
   ...
 }:
 {
   # A module that automatically imports everything else in the parent folder.
-  imports =
-    with builtins;
-    map (fn: ./${fn}) (
-      filter (fn: fn != "default.nix" && lib.hasSuffix ".nix" fn) (attrNames (readDir ./.))
-    );
+  imports = [
+    # nix setup
+    inputs.lix-module.nixosModule.default
+
+    ./brew.nix
+    ./config.nix
+    ./home.nix
+    ./nixpkgs.nix
+    ./system.nix
+  ];
 
   # For home-manager to work.
   users.users =

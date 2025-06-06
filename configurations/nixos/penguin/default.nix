@@ -17,6 +17,9 @@
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     ./hardware-configuration.nix
 
+    # nix setup
+    inputs.lix-module.nixosModule.default
+
     # config
     ./config.nix
     ./home.nix
