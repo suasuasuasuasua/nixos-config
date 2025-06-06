@@ -27,6 +27,7 @@ pkgs.mkShellNoCC {
     # commands
     bat # better cat
     just # command runner
+    sops # secrets management
     tokei # lines of code
     vim-startuptime # proflie vim and neovim
 
