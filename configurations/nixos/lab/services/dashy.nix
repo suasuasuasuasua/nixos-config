@@ -33,7 +33,6 @@ in
           title = "adguardhome";
           description = "dns blocker";
           icon = "hl-adguardhome";
-          target = "newtab";
           url = mkFqdn "adguardhome";
         }
       ];
@@ -49,8 +48,13 @@ in
           title = "glances";
           description = "system overview";
           icon = "hl-glances";
-          target = "newtab";
           url = mkFqdn "glances";
+        }
+        {
+          title = "uptime-kuma";
+          description = "fancy service monitoring";
+          icon = "hl-uptimekuma";
+          url = mkFqdn "uptime-kuma";
         }
       ];
     }
@@ -65,35 +69,30 @@ in
           title = "actual";
           description = "finance tracker";
           icon = "hl-actual";
-          target = "newtab";
           url = mkFqdn "actual";
         }
         {
           title = "code-server";
           description = "vscode in the web!";
           icon = "hl-code-server";
-          target = "newtab";
           url = mkFqdn "code-server";
         }
         {
           title = "mealie";
           description = "recipe and meal manager";
           icon = "hl-mealie";
-          target = "newtab";
           url = mkFqdn "mealie";
         }
         {
           title = "paperless";
           description = "document manager";
           icon = "hl-paperless";
-          target = "newtab";
           url = mkFqdn "paperless";
         }
         {
           title = "stirling-pdf";
           description = "pdf tools";
           icon = "hl-stirling-pdf";
-          target = "newtab";
           url = mkFqdn "stirling-pdf";
         }
       ];
@@ -109,42 +108,36 @@ in
           title = "audiobookshelf";
           description = "audiobook manager";
           icon = "hl-audiobookshelf";
-          target = "newtab";
           url = mkFqdn "audiobookshelf";
         }
         {
           title = "calibre web";
           description = "ebook manager";
           icon = "hl-calibre-web";
-          target = "newtab";
           url = mkFqdn "calibre";
         }
         {
           title = "immich";
           description = "photo manager";
           icon = "hl-immich";
-          target = "newtab";
           url = mkFqdn "immich";
         }
         {
           title = "jellyfin";
           description = "media server";
           icon = "hl-jellyfin";
-          target = "newtab";
           url = mkFqdn "jellyfin";
         }
         {
           title = "jellyseerr";
           description = "media discovery manager";
           icon = "hl-jellyseerr";
-          target = "newtab";
           url = mkFqdn "jellyseerr";
         }
         {
           title = "navidrome";
           description = "music manager";
           icon = "hl-navidrome";
-          target = "newtab";
           url = mkFqdn "navidrome";
         }
       ];
@@ -160,14 +153,12 @@ in
           title = "gitweb";
           description = "gitweb server";
           icon = "si-git";
-          target = "newtab";
           url = "https://${hostName}.${domain}/gitweb";
         }
         {
           title = "wastebin";
           description = "pastebin";
           icon = "si-pastebin";
-          target = "newtab";
           url = mkFqdn "wastebin";
         }
       ];

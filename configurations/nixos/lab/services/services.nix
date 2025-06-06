@@ -79,6 +79,7 @@ in
       enable = true;
       settings = import ./syncthing.nix;
     };
+    uptime-kuma.enable = true;
     vscode-server.enable = true;
     wastebin.enable = true;
     wireguard = {

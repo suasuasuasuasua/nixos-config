@@ -37,5 +37,6 @@ in
     glances.enable = true;
     fail2ban.enable = true;
     nginx.enable = true;
+    uptime-kuma.enable = true;
   };
 }

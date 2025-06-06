@@ -52,6 +52,12 @@ in
           target = "newtab";
           url = mkFqdn "glances";
         }
+        {
+          title = "uptime-kuma";
+          description = "fancy service monitoring";
+          icon = "hl-uptimekuma";
+          url = mkFqdn "uptime-kuma";
+        }
       ];
     }
   ];
