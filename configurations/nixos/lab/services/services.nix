@@ -10,9 +10,18 @@ in
 {
   imports = [ "${inputs.self}/modules/nixos/services" ];
 
+  # This is the actual specification of the secrets.
+  sops.secrets = {
+    "duckdns/token" = { };
+    "acme/namecheap_api" = { };
+  };
+
   # services
   nixos.services = {
-    acme.enable = true;
+    acme = {
+      enable = true;
+      environmentFile = config.sops.secrets."acme/namecheap_api".path;
+    };
     actual.enable = true;
     adguardhome.enable = true;
     audiobookshelf.enable = true;
@@ -31,6 +40,7 @@ in
     duckdns = {
       enable = true;
       domains = [ "vpn-sua" ];
+      tokenFile = config.sops.secrets."duckdns/token".path;
     };
     gitweb = {
       enable = true;

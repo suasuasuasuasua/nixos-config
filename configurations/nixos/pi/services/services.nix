@@ -8,6 +8,12 @@ in
     "${inputs.self}/modules/nixos/services"
   ];
 
+  # This is the actual specification of the secrets.
+  sops.secrets = {
+    "duckdns/token" = { };
+    "acme/namecheap_api" = { };
+  };
+
   # services
   nixos.services = {
     acme.enable = true;
@@ -18,6 +24,11 @@ in
       settings = import ./dashy.nix {
         inherit hostName domain;
       };
+    };
+    duckdns = {
+      enable = true;
+      domains = [ "vpn-sua" ];
+      tokenFile = config.sops.secrets."duckdns/token".path;
     };
     glances.enable = true;
     nginx.enable = true;

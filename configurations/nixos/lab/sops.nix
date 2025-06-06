@@ -17,9 +17,5 @@
       # This will generate a new key if the key specified above does not exist
       generateKey = true;
     };
-
-    # This is the actual specification of the secrets.
-    secrets."duckdns/token" = { };
-    secrets."acme/namecheap_api" = { };
   };
 }

@@ -13,6 +13,9 @@ in
     enable = lib.mkEnableOption ''
       Secure ACME/Let's Encrypt client
     '';
+    environmentFile = lib.mkOption {
+      type = lib.types.path;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -23,8 +26,9 @@ in
 
       # Configure ACME appropriately
       defaults = {
+        inherit (cfg) environmentFile;
+
         dnsProvider = "namecheap";
-        environmentFile = config.sops.secrets."acme/namecheap_api".path;
         dnsPropagationCheck = true;
       };
     };

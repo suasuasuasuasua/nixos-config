@@ -16,14 +16,16 @@ in
     domains = lib.mkOption {
       type = with lib.types; nullOr (listOf str);
     };
+    tokenFile = lib.mkOption {
+      type = lib.types.path;
+    };
   };
 
   config = lib.mkIf cfg.enable {
     services.duckdns = {
-      inherit (cfg) domains;
+      inherit (cfg) domains tokenFile;
 
       enable = true;
-      tokenFile = config.sops.secrets."duckdns/token".path;
     };
   };
 }
