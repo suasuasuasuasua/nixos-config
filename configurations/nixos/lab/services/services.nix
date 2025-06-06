@@ -43,6 +43,7 @@ in
       domainsFile = config.sops.secrets."duckdns/domains".path;
       tokenFile = config.sops.secrets."duckdns/token".path;
     };
+    fail2ban.enable = true;
     gitweb = {
       enable = true;
       projectroot = "/zshare/srv/git";
