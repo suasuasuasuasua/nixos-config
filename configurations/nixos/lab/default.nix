@@ -20,6 +20,9 @@
     ./config.nix
     ./home.nix
 
+    # secrets
+    ./sops.nix
+
     # system setup
     ./system
 

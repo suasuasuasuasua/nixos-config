@@ -24,7 +24,7 @@ in
       # Configure ACME appropriately
       defaults = {
         dnsProvider = "namecheap";
-        environmentFile = "/var/lib/secrets/certs.secret";
+        environmentFile = config.sops.secrets."acme/namecheap_api".path;
         dnsPropagationCheck = true;
       };
     };
