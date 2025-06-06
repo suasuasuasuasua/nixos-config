@@ -19,6 +19,7 @@
     };
 
     # This is the actual specification of the secrets.
+    secrets."duckdns/token" = { };
     secrets."acme/namecheap_api" = { };
   };
 }

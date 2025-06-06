@@ -28,6 +28,10 @@ in
         inherit hostName domain;
       };
     };
+    duckdns = {
+      enable = true;
+      domains = [ "vpn-sua" ];
+    };
     gitweb = {
       enable = true;
       projectroot = "/zshare/srv/git";
