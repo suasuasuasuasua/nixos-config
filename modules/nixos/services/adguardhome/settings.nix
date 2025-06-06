@@ -260,11 +260,11 @@
         }
         {
           domain = "pi.${domainName}";
-          answer = "192.168.0.240";
+          answer = "192.168.0.250";
         }
         {
           domain = "*.pi.${domainName}";
-          answer = "192.168.0.240";
+          answer = "192.168.0.250";
         }
       ];
     safe_fs_patterns = [ "/var/lib/private/AdGuardHome/userfilters/*" ];
