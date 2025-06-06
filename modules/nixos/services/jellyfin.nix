@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (config.networking) hostName domain;
   serviceName = "jellyfin";
@@ -20,6 +25,12 @@ in
     services.jellyfin = {
       enable = true;
     };
+
+    environment.systemPackages = with pkgs; [
+      jellyfin
+      jellyfin-web
+      jellyfin-ffmpeg
+    ];
 
     services.nginx.virtualHosts = {
       "${serviceName}.${hostName}.${domain}" = {
