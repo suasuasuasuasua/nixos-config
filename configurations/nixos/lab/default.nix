@@ -17,7 +17,7 @@
     ./hardware-configuration.nix
 
     # nix setup
-    inputs.lix-module.nixosModule.default
+    inputs.lix-module.nixosModules.default
 
     # config
     ./config.nix

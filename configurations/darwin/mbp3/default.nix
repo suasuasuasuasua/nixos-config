@@ -9,7 +9,7 @@
   # A module that automatically imports everything else in the parent folder.
   imports = [
     # nix setup
-    inputs.lix-module.nixosModule.default
+    inputs.lix-module.darwinModules.default
 
     ./brew.nix
     ./config.nix
