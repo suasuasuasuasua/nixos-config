@@ -16,7 +16,10 @@ in
 
   # services
   nixos.services = {
-    acme.enable = true;
+    acme = {
+      enable = true;
+      environmentFile = config.sops.secrets."acme/namecheap_api".path;
+    };
     adguardhome.enable = true;
     avahi.enable = true;
     dashy = {
