@@ -6,10 +6,5 @@
         makeModulesClosure = x: prev.makeModulesClosure (x // { allowMissing = true; });
       })
     ];
-
-    settings.trusted-users = [
-      "justinhoang" # allow for remote builds
-      "@users"
-    ];
   };
 }
