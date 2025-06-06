@@ -247,7 +247,7 @@
     safebrowsing_block_host = "standard-block.dns.adguard.com";
     rewrites =
       let
-        domainName = "suasuasuasuasua.sh";
+        domainName = "sua.sh";
       in
       [
         {

@@ -1,9 +1,7 @@
 { config, lib, ... }:
 let
-  inherit (config.networking) hostName;
+  inherit (config.networking) hostName domain;
   serviceName = "navidrome";
-
-  domain = "suasuasuasuasua.sh";
 
   cfg = config.nixos.services.${serviceName};
 in
