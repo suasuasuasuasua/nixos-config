@@ -77,7 +77,7 @@
             diskSize = 40 * 1024;
             memorySize = 8 * 1024;
           };
-          cores = 6;
+          cores = 8;
         };
         boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
       };
