@@ -3,6 +3,7 @@
   networking = {
     hostName = "pi";
     hostId = "cfbe2391";
+    domain = "suasuasuasuasua.sh";
     networkmanager.enable = true;
     firewall = {
       enable = true;

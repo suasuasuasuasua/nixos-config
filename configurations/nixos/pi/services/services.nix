@@ -1,6 +1,6 @@
 { inputs, config, ... }:
 let
-  inherit (config.networking) hostName;
+  inherit (config.networking) hostName domain;
 in
 {
   imports = [
@@ -10,12 +10,13 @@ in
 
   # services
   nixos.services = {
+    acme.enable = true;
     adguardhome.enable = true;
     avahi.enable = true;
     dashy = {
       enable = true;
       settings = import ./dashy.nix {
-        inherit hostName;
+        inherit hostName domain;
       };
     };
     glances.enable = true;

@@ -1,6 +1,9 @@
 # custom dashy config per-host
 # https://dashy.to/docs/configuring/
-{ hostName, ... }:
+{ hostName, domain, ... }:
+let
+  mkFqdn = service: "https://${service}.${hostName}.${domain}";
+in
 {
   pageInfo = {
     description = "sua's homelab";
@@ -31,7 +34,7 @@
           description = "dns blocker";
           icon = "hl-adguardhome";
           target = "newtab";
-          url = "http://adguardhome.${hostName}.home";
+          url = mkFqdn "adguardhome";
         }
       ];
     }
@@ -47,7 +50,7 @@
           description = "system overview";
           icon = "hl-glances";
           target = "newtab";
-          url = "http://glances.${hostName}.home";
+          url = mkFqdn "glances";
         }
       ];
     }

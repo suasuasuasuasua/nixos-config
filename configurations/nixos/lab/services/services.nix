@@ -25,7 +25,7 @@ in
     dashy = {
       enable = true;
       settings = import ./dashy.nix {
-        inherit hostName domain config;
+        inherit hostName domain;
       };
     };
     gitweb = {
