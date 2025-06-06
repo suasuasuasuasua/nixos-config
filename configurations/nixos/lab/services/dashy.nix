@@ -66,7 +66,7 @@ in
           description = "finance tracker";
           icon = "hl-actual";
           target = "newtab";
-          url = mkFqdn "glances";
+          url = mkFqdn "actual";
         }
         {
           title = "code-server";
