@@ -55,7 +55,7 @@ in
         {
           title = "uptime-kuma";
           description = "fancy service monitoring";
-          icon = "hl-uptimekuma";
+          icon = "si-uptimekuma";
           url = mkFqdn "uptime-kuma";
         }
       ];
