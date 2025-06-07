@@ -10,9 +10,9 @@ in
 
   # This is the actual specification of the secrets.
   sops.secrets = {
+    "acme/namecheap_api" = { };
     "duckdns/domains" = { };
     "duckdns/token" = { };
-    "acme/namecheap_api" = { };
   };
 
   # services
