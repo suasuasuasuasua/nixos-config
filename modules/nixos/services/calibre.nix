@@ -16,7 +16,11 @@ in
     enable = lib.mkEnableOption ''
       Comprehensive e-book software
     '';
-    port = lib.mkOption {
+    serverPort = lib.mkOption {
+      type = lib.types.port;
+      default = 8080;
+    };
+    webPort = lib.mkOption {
       type = lib.types.port;
       default = 8083;
     };
@@ -36,14 +40,14 @@ in
         inherit (cfg) libraries;
 
         enable = true;
+        port = cfg.serverPort;
       };
 
       calibre-web = {
         enable = true;
         listen = {
-          inherit (cfg) port;
-
           ip = "127.0.0.1";
+          port = cfg.webPort;
         };
 
         options = {
@@ -63,7 +67,7 @@ in
         forceSSL = true;
         acmeRoot = null;
         locations."/" = {
-          proxyPass = "http://localhost:${toString cfg.port}";
+          proxyPass = "http://localhost:${toString cfg.webPort}";
         };
       };
     };
