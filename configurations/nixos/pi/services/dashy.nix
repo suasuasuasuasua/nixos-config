@@ -32,8 +32,7 @@ in
         {
           title = "adguardhome";
           description = "dns blocker";
-          icon = "hl-adguardhome";
-          target = "newtab";
+          icon = "hl-adguard-home";
           url = mkFqdn "adguardhome";
         }
       ];
@@ -49,7 +48,6 @@ in
           title = "glances";
           description = "system overview";
           icon = "hl-glances";
-          target = "newtab";
           url = mkFqdn "glances";
         }
         {

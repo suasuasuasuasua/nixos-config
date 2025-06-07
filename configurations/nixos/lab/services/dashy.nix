@@ -32,7 +32,7 @@ in
         {
           title = "adguardhome";
           description = "dns blocker";
-          icon = "hl-adguardhome";
+          icon = "hl-adguard-home";
           url = mkFqdn "adguardhome";
         }
       ];
