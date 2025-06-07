@@ -14,6 +14,7 @@ in
       }
     ];
     title = hostName; # tagged with hostname
+    # TODO: broken safari lol
     # logo = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nix-snowflake-colours.svg";
   };
 
