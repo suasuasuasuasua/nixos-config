@@ -15,6 +15,7 @@ in
     "duckdns/domains" = { };
     "duckdns/token" = { };
     "acme/namecheap_api" = { };
+    "firefox-syncserver/token" = { };
   };
 
   # services
@@ -44,6 +45,10 @@ in
       tokenFile = config.sops.secrets."duckdns/token".path;
     };
     fail2ban.enable = true;
+    firefox-syncserver = {
+      enable = true;
+      secrets = config.sops.secrets."firefox-syncserver/token".path;
+    };
     gitweb = {
       enable = true;
       projectroot = "/zshare/srv/git";
