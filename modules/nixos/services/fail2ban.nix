@@ -33,20 +33,23 @@ in
         overalljails = true; # Calculate the bantime based on all the violations
       };
 
-      jails = {
-        apache-nohome-iptables.settings = {
-          # Block an IP address if it accessed a non-existent home directory
-          # more than 5 times in 10 minutes since that indicates that it's
-          # scanning
-          filter = "apache-nohome";
-          action = ''iptables-multiport[name=HTTP, port="http,https"]'';
-          logpath = "/var/log/httpd/error_log*";
-          backend = "auto";
-          findtime = 600;
-          bantime = 600;
-          maxretry = 5;
-        };
-      };
+      # TODO: review the jail configuration
+      #
+      # src: https://nixos.wiki/wiki/Fail2ban
+      # jails = {
+      #   apache-nohome-iptables.settings = {
+      #     # Block an IP address if it accessed a non-existent home directory
+      #     # more than 5 times in 10 minutes since that indicates that it's
+      #     # scanning
+      #     filter = "apache-nohome";
+      #     action = ''iptables-multiport[name=HTTP, port="http,https"]'';
+      #     logpath = "/var/log/httpd/error_log*";
+      #     backend = "auto";
+      #     findtime = 600;
+      #     bantime = 600;
+      #     maxretry = 5;
+      #   };
+      # };
     };
   };
 }
