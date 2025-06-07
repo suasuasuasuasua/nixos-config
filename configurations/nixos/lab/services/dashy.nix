@@ -84,6 +84,12 @@ in
           url = mkFqdn "mealie";
         }
         {
+          title = "open-webui";
+          description = "local hosted LLMs";
+          icon = "hl-open-webui";
+          url = mkFqdn "open-webui";
+        }
+        {
           title = "paperless";
           description = "document manager";
           icon = "hl-paperless";
