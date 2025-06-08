@@ -39,6 +39,21 @@ in
       ];
     }
     {
+      name = "servers";
+      displayData = {
+        cols = 2;
+        itemSize = "large";
+      };
+      items = [
+        {
+          title = "pi";
+          description = "raspberry pi";
+          icon = "hl-raspberry-pi";
+          url = "https://pi.sua.sh";
+        }
+      ];
+    }
+    {
       name = "monitoring";
       displayData = {
         cols = 2;
@@ -74,7 +89,7 @@ in
         }
         {
           title = "code-server";
-          description = "vscode in the web!";
+          description = "vscode in the web";
           icon = "hl-code-server";
           url = mkFqdn "code-server";
         }

@@ -14,8 +14,7 @@ in
       }
     ];
     title = hostName; # tagged with hostname
-    # TODO: broken safari lol
-    # logo = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nix-snowflake-colours.svg";
+    logo = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nix-snowflake-colours.svg";
   };
 
   # define the sections for the home page
@@ -35,6 +34,21 @@ in
           description = "dns blocker";
           icon = "hl-adguard-home";
           url = mkFqdn "adguardhome";
+        }
+      ];
+    }
+    {
+      name = "servers";
+      displayData = {
+        cols = 2;
+        itemSize = "large";
+      };
+      items = [
+        {
+          title = "lab";
+          description = "main lab server";
+          icon = "hl-nixos";
+          url = "https://lab.sua.sh";
         }
       ];
     }
