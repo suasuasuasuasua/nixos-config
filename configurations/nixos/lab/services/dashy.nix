@@ -117,6 +117,12 @@ in
           icon = "hl-stirling-pdf";
           url = mkFqdn "stirling-pdf";
         }
+        {
+          title = "vaultwarden";
+          description = "secure password manager";
+          icon = "hl-vaultwarden";
+          url = mkFqdn "vaultwarden";
+        }
       ];
     }
     {

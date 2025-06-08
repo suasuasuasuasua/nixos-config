@@ -17,6 +17,7 @@ in
     "duckdns/token" = { };
     "firefox-syncserver/token" = { };
     "miniflux/credentials" = { };
+    "vaultwarden/environmentFile" = { };
   };
 
   # services
@@ -90,6 +91,10 @@ in
       settings = import ./syncthing.nix;
     };
     uptime-kuma.enable = true;
+    vaultwarden = {
+      enable = true;
+      environmentFile = config.sops.secrets."vaultwarden/environmentFile".path;
+    };
     vscode-server.enable = true;
     wastebin.enable = true;
     wireguard = {
