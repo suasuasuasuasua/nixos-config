@@ -58,4 +58,6 @@
   # add tab groups
   "browser.tabs.groups.enabled" = true;
   "browser.tabs.groups.smart.enabled" = true;
+  # sync to local firefox sync server
+  "identity.sync.tokenserver.uri" = "https://firefox-syncserver.lab.sua.sh/1.0/sync/1.5";
 }
