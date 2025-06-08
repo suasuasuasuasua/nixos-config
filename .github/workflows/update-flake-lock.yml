@@ -1,10 +1,8 @@
 name: "Flake.lock: update Nix dependencies"
-
 on:
   workflow_dispatch: # allows manual triggering
   schedule:
     - cron: '0 0 * * 0' # runs weekly on Sunday at 00:00
-
 jobs:
   nix-flake-update:
     permissions:
@@ -21,7 +19,7 @@ jobs:
         uses: DeterminateSystems/update-flake-lock@main
         with:
           pr-title: "Update Nix flake inputs" # Title of PR to be created
-          pr-labels: |                  # Labels to be set on the PR
+          pr-labels: | # Labels to be set on the PR
             dependencies
             automated
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}

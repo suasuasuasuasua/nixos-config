@@ -157,6 +157,12 @@ in
       };
       items = [
         {
+          title = "gitlab";
+          description = "gitlab server";
+          icon = "si-gitlab";
+          url = mkFqdn "wastebin";
+        }
+        {
           title = "gitweb";
           description = "gitweb server";
           icon = "si-git";
