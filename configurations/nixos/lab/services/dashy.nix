@@ -15,7 +15,7 @@ in
     ];
     title = hostName; # tagged with hostname
     # TODO: broken safari lol
-    # logo = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nix-snowflake-colours.svg";
+    logo = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nix-snowflake-colours.svg";
   };
 
   # define the sections for the home page
@@ -140,6 +140,12 @@ in
           description = "media discovery manager";
           icon = "hl-jellyseerr";
           url = mkFqdn "jellyseerr";
+        }
+        {
+          title = "miniflux";
+          description = "rss feed";
+          icon = "hl-miniflux";
+          url = mkFqdn "miniflux";
         }
         {
           title = "navidrome";

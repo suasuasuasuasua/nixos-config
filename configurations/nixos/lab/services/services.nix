@@ -16,6 +16,7 @@ in
     "duckdns/domains" = { };
     "duckdns/token" = { };
     "firefox-syncserver/token" = { };
+    "miniflux/credentials" = { };
   };
 
   # services
@@ -61,6 +62,10 @@ in
     jellyfin.enable = true;
     jellyseerr.enable = true;
     mealie.enable = true;
+    miniflux = {
+      enable = true;
+      adminCredentialsFile = config.sops.secrets."miniflux/credentials".path;
+    };
     navidrome = {
       enable = true;
       MusicFolder = "/zshare/media/music";
