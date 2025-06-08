@@ -21,7 +21,7 @@ in
       inherit (cfg) port;
 
       enable = true;
-      proxyDomain = "${serviceName}.${hostName}.home";
+      proxyDomain = "${serviceName}.${hostName}.${domain}";
 
       user = "justinhoang";
 
