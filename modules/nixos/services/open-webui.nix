@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (config.networking) hostName domain;
   serviceName = "open-webui";
@@ -21,6 +26,8 @@ in
       # Enable the web interface
       inherit (cfg) port;
 
+      package = pkgs.unstable.open-webui;
+
       enable = true;
       host = "127.0.0.1";
     };
@@ -32,6 +39,11 @@ in
         acmeRoot = null;
         locations."/" = {
           proxyPass = "http://localhost:${toString cfg.port}";
+          proxyWebsockets = true; # needed if you need to use WebSocket
+
+          extraConfig =
+            # allow for larger file uploads like videos through the reverse proxy
+            "client_max_body_size 0;";
         };
       };
     };

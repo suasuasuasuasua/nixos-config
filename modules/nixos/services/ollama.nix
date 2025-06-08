@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   serviceName = "ollama";
 
@@ -43,6 +48,8 @@ in
     services = {
       ollama = lib.mkIf cfg.enable {
         inherit (cfg) port acceleration;
+
+        package = pkgs.unstable.ollama;
 
         enable = true;
         host = "127.0.0.1";
