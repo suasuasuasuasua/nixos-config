@@ -94,68 +94,18 @@
         }
       ];
     };
+    # https://nur.nix-community.org/repos/rycee/
     extensions = {
-      force = true;
+      # TODO: add configs for extensions
+      #       for example, dark reader should follow system theme
       packages = with pkgs.firefox-addons; [
         betterttv # twitch [dot] tv integration
+        bitwarden # bit/vault warden password integration
         darkreader # automatic dark mode
         ublock-origin # block ads
         unpaywall # read research papers for free
         vimium # vim-like movements
       ];
-      # https://nur.nix-community.org/repos/rycee/
-      # about:debugging#/runtime/this-firefox
-      # or export settings and view json
-      settings = {
-        # Example with uBlock origin's extensionID
-        "addon@darkreader.org".settings = {
-          # follow system theme
-          automation = {
-            enabled = true;
-            mode = "system";
-            behavior = "OnOff";
-          };
-        };
-        "firefox@betterttv.net".settings = {
-          # auto-claim channel points and drops
-          "autoClaim" = [
-            1
-            1
-          ];
-          # add 7tv
-          "emotes" = [
-            55
-            16
-          ];
-        };
-        "uBlock0@raymondhill.net".settings = {
-          # add filter lists
-          selectedFilterLists = [
-            "ublock-filters"
-            "ublock-badware"
-            "ublock-privacy"
-            "ublock-unbreak"
-            "ublock-quick-fixes"
-            "easylist"
-            "adguard-generic"
-            "adguard-mobile"
-            "easyprivacy"
-          ];
-        };
-        # vimium
-        "{d7742d87-e61d-4b78-b8a1-b469842139fa}".settings = {
-          exclusionRules = [
-            {
-              passKeys = "";
-              pattern = "https?://mail.google.com/*";
-            }
-            {
-              passKeys = "/";
-              pattern = "https?://www.google.com/*";
-            }
-          ];
-        };
-      };
     };
   };
   productivity = {
