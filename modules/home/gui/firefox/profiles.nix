@@ -20,6 +20,19 @@
               url = "https://mail.google.com/";
             }
             {
+              name = "servers";
+              bookmarks = [
+                {
+                  name = "lab";
+                  url = "https://lab.sua.sh";
+                }
+                {
+                  name = "pi";
+                  url = "https://pi.sua.sh";
+                }
+              ];
+            }
+            {
               name = "proton";
               bookmarks = [
                 {
