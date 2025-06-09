@@ -18,7 +18,6 @@
         type = "simple";
         params.keep = "10";
       };
-      type = "receiveonly";
     };
   };
 }

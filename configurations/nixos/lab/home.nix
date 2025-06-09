@@ -5,14 +5,21 @@ let
   # configure nixvim here!
   nixvim = inputs.nixvim-config.packages.${system}.default.extend {
     config.nixvim = {
-      colorscheme.enable = false;
       lsp = { };
       plugins = {
         custom = {
           auto-dark-mode.enable = false;
           img-clip.enable = false;
           markdown-preview.enable = false;
-          obsidian.enable = false;
+          obsidian = {
+            enable = true;
+            workspaces = [
+              {
+                name = "personal";
+                path = "/home/justinhoang/Documents/vaults/personal";
+              }
+            ];
+          };
           remote-nvim.enable = false;
         };
       };
