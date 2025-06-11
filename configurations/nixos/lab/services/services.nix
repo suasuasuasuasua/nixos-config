@@ -103,5 +103,6 @@ in
         inherit pkgs;
       };
     };
+    ytdl-sub.enable = true;
   };
 }
