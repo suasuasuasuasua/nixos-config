@@ -35,6 +35,11 @@ in
       calibre
     ];
 
+    users.users = {
+      calibre-server.extraGroups = [ "samba" ];
+      calibre-web.extraGroups = [ "samba" ];
+    };
+
     services = {
       calibre-server = {
         inherit (cfg) libraries;

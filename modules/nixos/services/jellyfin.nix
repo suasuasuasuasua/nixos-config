@@ -22,6 +22,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    users.users.jellyfin.extraGroups = [ "samba" ];
+
     services.jellyfin = {
       enable = true;
     };

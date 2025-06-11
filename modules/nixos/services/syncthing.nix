@@ -37,6 +37,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    users.users.syncthing.extraGroups = [ "samba" ];
+
     services.syncthing = {
       inherit (cfg)
         dataDir

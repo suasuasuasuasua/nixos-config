@@ -12,6 +12,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    users.users.ytdl-sub.extraGroups = [ "samba" ];
+
     services.ytdl-sub = {
       instances = {
         music = {

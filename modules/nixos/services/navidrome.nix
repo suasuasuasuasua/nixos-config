@@ -21,6 +21,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    users.users.navidrome.extraGroups = [ "samba" ];
+
     services.navidrome = {
       enable = true;
 
