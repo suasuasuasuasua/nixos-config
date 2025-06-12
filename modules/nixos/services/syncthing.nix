@@ -37,7 +37,12 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    users.users.syncthing.extraGroups = [ "samba" ];
+    users.users.syncthing = {
+      isSystemUser = true;
+      group = "syncthing";
+      extraGroups = [ "samba" ];
+    };
+    users.groups.syncthing = { };
 
     services.syncthing = {
       inherit (cfg)
