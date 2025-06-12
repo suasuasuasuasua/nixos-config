@@ -35,6 +35,13 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    # Remember to create the samba group
+    users.users.samba = {
+      isSystemUser = true;
+      group = "samba";
+    };
+    users.groups.samba = { };
+
     services = {
       samba = {
         inherit settings;

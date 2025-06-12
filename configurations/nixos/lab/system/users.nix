@@ -21,6 +21,9 @@
               "wheel"
               "docker"
               "libvirtd"
+              "samba"
+              "syncthing"
+              "ytdl-sub"
             ];
             shell = pkgs.zsh;
           };
