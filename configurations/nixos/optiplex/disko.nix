@@ -4,8 +4,7 @@
     # nvme 0 will be one of the M.2. NVME SSDs
     nvme0 = {
       type = "disk";
-      # TODO: replace
-      device = "ata-Micron_1300_SATA_256GB_19162192A3B0";
+      device = "/dev/disk/by-id/ata-Micron_1300_SATA_256GB_19162192A3B0";
       content = {
         type = "gpt";
         partitions = {
