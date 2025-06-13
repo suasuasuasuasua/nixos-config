@@ -105,6 +105,7 @@ in
       interfaces = import ./wireguard.nix {
         inherit config pkgs;
       };
+      type = "server";
     };
     ytdl-sub.enable = true;
   };

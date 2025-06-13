@@ -54,6 +54,11 @@
         publicKey = "nh/X2r1YdLV4+rGduCvBTX58DDYYtzrRkZqXfSSGmWY=";
         allowedIPs = [ "10.100.0.4/32" ];
       }
+      {
+        name = "optiplex";
+        publicKey = "TVE04PS7h78OUg6QNcoQSxO55oavQMWpRmauHFKPLCI=";
+        allowedIPs = [ "10.101.0.1/32" ];
+      }
     ];
   };
 }

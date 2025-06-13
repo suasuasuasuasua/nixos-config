@@ -8,14 +8,20 @@
 # - nix run nixpkgs#ssh-to-age -- -i $HOME/.ssh/id_ed25519.pub -o pub-key.txt
 keys:
   - &lab age1z873m77wql5652lewr95323ejpvl85fchwq22xg8yd6x4kperejqg9wlph
+  - &optiplex age1gg9hr3cxa28ztx75gnaqam99l3mmp2799nsvntf5dvu0kjxf5feqqwwnqu
   - &pi age1ed2wgryukz5xq6t8w6nhjvldwgvw5lj2aq37n7q23et2ycqwtueqaaw4fj
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - age:
       - *lab
+      - *optiplex
       - *pi
   - path_regex: configurations/nixos/lab/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - age:
       - *lab
+  - path_regex: configurations/nixos/optiplex/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *optiplex
