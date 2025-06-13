@@ -19,6 +19,9 @@
     # nix setup
     inputs.lix-module.nixosModules.default
 
+    # secrets
+    ./sops.nix
+
     # system setup
     ./system
 
