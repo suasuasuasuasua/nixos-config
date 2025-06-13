@@ -153,6 +153,9 @@
           type = "zfs_fs";
           mountpoint = "/var";
           options.mountpoint = "legacy";
+
+          # Snapshot the services data dir!
+          options."com.sun:auto-snapshot" = "true";
         };
         "home" = {
           type = "zfs_fs";
