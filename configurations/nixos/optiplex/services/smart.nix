@@ -6,9 +6,10 @@
   ];
 
   services.smartd = {
-    enable = true;
+    # TODO: re-enable when I get the SATA
+    enable = false;
 
-    autodetect = false;
+    # autodetect = false;
     devices = [
       # TODO: replace with the SATA drive
       # {
