@@ -18,6 +18,9 @@ in
     "firefox-syncserver/token" = { };
     "miniflux/credentials" = { };
     "vaultwarden/environmentFile" = { };
+    "wireguard/private_key" = {
+      sopsFile = "${inputs.self}/configurations/nixos/lab/secrets.yaml";
+    };
   };
 
   # services
@@ -100,8 +103,9 @@ in
     wireguard = {
       enable = true;
       interfaces = import ./wireguard.nix {
-        inherit pkgs;
+        inherit config pkgs;
       };
     };
+    ytdl-sub.enable = true;
   };
 }

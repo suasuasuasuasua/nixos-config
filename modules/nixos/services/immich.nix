@@ -21,6 +21,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    users.users.immich.extraGroups = [ "samba" ];
+
     services.immich = {
       inherit (cfg) port mediaLocation;
 

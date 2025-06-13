@@ -17,6 +17,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    users.users.audiobookshelf.extraGroups = [ "samba" ];
+
     services.audiobookshelf = {
       inherit (cfg) port;
 

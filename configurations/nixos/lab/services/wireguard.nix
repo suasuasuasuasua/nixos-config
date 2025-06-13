@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   # "wg0" is the network interface name. You can name the interface arbitrarily.
   wg0 = {
@@ -32,7 +32,7 @@
     # Note: The private key can also be included inline via the privateKey option,
     # but this makes the private key world-readable; thus, using privateKeyFile is
     # recommended.
-    privateKeyFile = "/var/secrets/wg-privatekey";
+    privateKeyFile = config.sops.secrets."wireguard/private_key".path;
 
     peers = [
       # List of allowed peers.

@@ -22,6 +22,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    users.users.paperless.extraGroups = [ "samba" ];
+
     services.paperless = {
       inherit (cfg) port mediaDir;
 
