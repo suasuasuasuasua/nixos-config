@@ -28,7 +28,6 @@ in
       enable = true;
       environmentFile = config.sops.secrets."acme/namecheap_api".path;
     };
-    adguardhome.enable = true;
     avahi.enable = true;
     dashy = {
       enable = true;

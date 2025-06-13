@@ -24,21 +24,6 @@ in
   # - https://dashy.to/docs/icons/
   sections = [
     {
-      name = "networking";
-      displayData = {
-        cols = 2;
-        itemSize = "large";
-      };
-      items = [
-        {
-          title = "adguardhome";
-          description = "dns blocker";
-          icon = "hl-adguard-home";
-          url = mkFqdn "adguardhome";
-        }
-      ];
-    }
-    {
       name = "servers";
       displayData = {
         cols = 2;
