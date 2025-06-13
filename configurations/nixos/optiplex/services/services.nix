@@ -19,7 +19,7 @@ in
     "duckdns/domains" = { };
     "duckdns/token" = { };
     "wireguard/private_key" = {
-      sopsFile = "${inputs.self}/configurations/nixos/lab/secrets.yaml";
+      sopsFile = "${inputs.self}/configurations/nixos/optiplex/secrets.yaml";
     };
   };
 
