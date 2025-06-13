@@ -55,8 +55,6 @@
     # General root
     zroot = {
       type = "zpool";
-      mode = "mirror";
-      mountpoint = null;
 
       rootFsOptions = {
         compression = "zstd";
