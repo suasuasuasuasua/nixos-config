@@ -35,7 +35,15 @@
     privateKeyFile = config.sops.secrets."wireguard/private_key".path;
 
     peers = [
-      # TODO: configure peers for network
+      # List of allowed peers.
+      {
+        # Feel free to give a meaningful name
+        name = "lab";
+        # Public key of the peer (not a file path).
+        publicKey = "JVBP0NWpR70JT0bUoFsunFkGT9YZSY8O/UeMdUxAXlU=";
+        # List of IPs assigned to this peer within the tunnel subnet. Used to configure routing.
+        allowedIPs = [ "10.100.0.1/32" ];
+      }
     ];
   };
 }

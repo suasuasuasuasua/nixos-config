@@ -21,7 +21,7 @@ creation_rules:
     key_groups:
     - age:
       - *lab
-  - path_regex: configurations/nixos/lab/[^/]+\.(yaml|json|env|ini)$
+  - path_regex: configurations/nixos/optiplex/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - age:
       - *optiplex
