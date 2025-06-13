@@ -1,7 +1,6 @@
 {
   inputs,
   config,
-  pkgs,
   ...
 }:
 let
@@ -49,8 +48,9 @@ in
     wireguard = {
       enable = true;
       interfaces = import ./wireguard.nix {
-        inherit config pkgs;
+        inherit config;
       };
+      type = "client";
     };
   };
 }
