@@ -5,7 +5,7 @@
     nvme0 = {
       type = "disk";
       # TODO: replace
-      device = "";
+      device = "ata-Micron_1300_SATA_256GB_19162192A3B0";
       content = {
         type = "gpt";
         partitions = {
@@ -94,9 +94,6 @@
           type = "zfs_fs";
           mountpoint = "/home";
           options.mountpoint = "legacy";
-
-          # Snapshot the user home!
-          options."com.sun:auto-snapshot" = "true";
         };
       };
     };
