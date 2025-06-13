@@ -19,10 +19,6 @@
     # nix setup
     inputs.lix-module.nixosModules.default
 
-    # config
-    ./config.nix
-    ./home.nix
-
     # system setup
     ./system
 
