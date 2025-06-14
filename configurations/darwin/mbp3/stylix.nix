@@ -28,15 +28,5 @@
         name = "Noto Color Emoji";
       };
     };
-
-    targets = {
-      # firefox = {
-      #   colorTheme.enable = true;
-      #   profileNames = [
-      #     "personal"
-      #     "productivity"
-      #   ];
-      # };
-    };
   };
 }
