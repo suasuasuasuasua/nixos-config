@@ -15,6 +15,7 @@
     ./config.nix
     ./home.nix
     ./nixpkgs.nix
+    ./stylix.nix
     ./system.nix
   ];
 

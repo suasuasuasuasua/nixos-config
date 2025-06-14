@@ -2,21 +2,18 @@
   description = "suasuasuasuasua's nixos configuration";
 
   inputs = {
-    # main inputs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+    disko.url = "github:nix-community/disko/latest";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    # Optional: Declarative tap management
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
+    git-hooks-nix.url = "github:cachix/git-hooks.nix";
     homebrew-cask = {
       url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
       flake = false;
     };
     home-manager = {
@@ -27,53 +24,46 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Add this section to your flake inputs!
-    #
-    # Note that this assumes you have a flake-input called nixpkgs,
-    # which is often the case. If you've named it something else,
-    # you'll need to change the `nixpkgs` below.
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # utility
-    disko.url = "github:nix-community/disko/latest";
-    git-hooks-nix.url = "github:cachix/git-hooks.nix";
     mac-app-util.url = "github:hraban/mac-app-util";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    systems.url = "github:nix-systems/default";
-    treefmt-nix.url = "github:numtide/treefmt-nix";
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
-
-    # software inputs
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions/";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixvim-config.url = "github:suasuasuasuasua/nixvim";
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-
-    # apps
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim-config.url = "github:suasuasuasuasua/nixvim";
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions/";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    systems.url = "github:nix-systems/default";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
   outputs =
@@ -82,6 +72,7 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+      stylix,
       systems,
       ...
     }@inputs:
@@ -167,7 +158,10 @@
         {
           ${name} = lib.darwinSystem {
             modules =
-              [ ./configurations/darwin/${name} ]
+              [
+                ./configurations/darwin/${name}
+                stylix.darwinModules.stylix
+              ]
               ++ lib.optionals enableHomeManager [
                 home-manager.darwinModules.home-manager
                 (mkHomeManagerConfig system userConfigs)
