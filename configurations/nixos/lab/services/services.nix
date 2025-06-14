@@ -17,6 +17,7 @@ in
     "duckdns/token" = { };
     "firefox-syncserver/token" = { };
     "miniflux/credentials" = { };
+    "navidrome/environment" = { };
     "vaultwarden/environmentFile" = { };
     "wireguard/private_key" = {
       sopsFile = "${inputs.self}/configurations/nixos/lab/secrets.yaml";
@@ -73,6 +74,7 @@ in
     navidrome = {
       enable = true;
       MusicFolder = "/zshare/media/music";
+      environmentFile = config.sops.secrets."navidrome/environment".path;
     };
     nginx.enable = true;
     ollama = {

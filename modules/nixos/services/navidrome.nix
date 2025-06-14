@@ -18,12 +18,16 @@ in
       type = lib.types.path;
       default = "";
     };
+    environmentFile = lib.mkOption {
+      type = lib.types.path;
+    };
   };
 
   config = lib.mkIf cfg.enable {
     users.users.navidrome.extraGroups = [ "samba" ];
 
     services.navidrome = {
+      inherit (cfg) environmentFile;
       enable = true;
 
       settings = {
