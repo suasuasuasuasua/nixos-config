@@ -13,10 +13,6 @@ in
 
   options.home.gui.spotify = {
     enable = lib.mkEnableOption "Enable spotify (spicetify)";
-    colorScheme = lib.mkOption {
-      type = lib.types.str;
-      default = "mocha";
-    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -25,8 +21,6 @@ in
         spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
       in
       {
-        inherit (cfg) colorScheme;
-
         enable = true;
         enabledExtensions = with spicePkgs.extensions; [
           adblock
@@ -35,7 +29,6 @@ in
           keyboardShortcut # vimium-like navigation
           playlistIcons
         ];
-        theme = spicePkgs.themes.catppuccin;
       };
   };
 }

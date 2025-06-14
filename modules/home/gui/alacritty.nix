@@ -9,11 +9,6 @@ in
 {
   options.home.gui.alacritty = {
     enable = lib.mkEnableOption "Enable alacritty";
-
-    font = lib.mkOption {
-      type = lib.types.str;
-      default = "JetBrainsMono Nerd Font";
-    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -26,25 +21,6 @@ in
           padding = {
             x = 10;
             y = 10;
-          };
-        };
-        font = {
-          size = 10;
-          bold = {
-            family = cfg.font;
-            style = "Bold";
-          };
-          italic = {
-            family = cfg.font;
-            style = "Italic";
-          };
-          bold_italic = {
-            family = cfg.font;
-            style = "Bold Italic";
-          };
-          normal = {
-            family = cfg.font;
-            style = "Regular";
           };
         };
       };

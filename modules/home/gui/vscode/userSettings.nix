@@ -13,16 +13,6 @@ lib.mkOption {
     "codesnap.transparentBackground" = true;
     "direnv.restart.automatic" = true;
     "editor.acceptSuggestionOnEnter" = "off";
-    "editor.fontFamily" =
-      with pkgs;
-      if stdenv.isDarwin then
-        ''
-          'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace
-        ''
-      else
-        ''
-          'JetBrainsMono Nerd Font', Consolas, 'Droid Sans Mono', monospace
-        '';
     "editor.formatOnPaste" = true;
     "editor.formatOnSave" = true;
     "editor.minimap.enabled" = false;

@@ -1,4 +1,8 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  ...
+}:
 let
   inherit (pkgs.stdenv.hostPlatform) system;
 
@@ -76,7 +80,8 @@ in
             ];
             userSettings = {
               "chat.agent.enabled" = true;
-              "editor.fontSize" = 13;
+              # WARNING: overriden by stylix
+              # "editor.fontSize" = 13;
             };
           };
         };

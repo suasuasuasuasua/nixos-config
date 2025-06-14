@@ -41,7 +41,6 @@ in
             '';
         }
         sensible # sensible config
-        tokyo-night-tmux # tokyo night theme
         vim-tmux-navigator # prettier statusline
         yank # better copy and paste functionality
       ];
