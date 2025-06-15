@@ -58,22 +58,17 @@
     ];
 
     casks = [
-      # dev
+      "adguard" # ad blocker
       "android-studio" # flutter, kotlin, etc. development
+      "balenaetcher" # iso writer (*)
       "docker" # container runner and manager
-
-      # general
       "element" # chat
       "kdenlive" # linear video editor
-      "obs" # studio recorder
-
-      # system and isos
-      "balenaetcher" # iso writer (*)
-      "raspberry-pi-imager" # imager for pi
-
-      # utility
-      "adguard" # ad blocker
       "logi-options+" # logitech peripherals
+      "obs" # studio recorder
+      "proton-mail"
+      "proton-mail-bridge"
+      "raspberry-pi-imager" # imager for pi
       "scroll-reverser" # mouse util
       "shottr" # screenshot tool
     ];
