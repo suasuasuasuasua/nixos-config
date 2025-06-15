@@ -60,6 +60,7 @@ in
       projectroot = "/zshare/srv/git";
     };
     glances.enable = true;
+    hydra.enable = true;
     immich = {
       enable = true;
       mediaLocation = "/zshare/personal/images";

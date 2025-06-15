@@ -190,6 +190,12 @@ in
           url = "https://${hostName}.${domain}/gitweb";
         }
         {
+          title = "hydra";
+          description = "nix continuous build system";
+          icon = "hl-nixos";
+          url = mkFqdn "hydra";
+        }
+        {
           title = "wastebin";
           description = "pastebin";
           icon = "si-pastebin";
