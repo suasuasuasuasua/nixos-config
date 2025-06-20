@@ -175,6 +175,7 @@ in
       type = listOf package;
       default = with pkgs.vscode-extensions; [
         unifiedjs.vscode-mdx # markdown with react
+        ms-vscode.live-server # live preview for web pages
       ];
     };
     keybindings = mkOption {
