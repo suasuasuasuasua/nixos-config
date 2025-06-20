@@ -135,7 +135,10 @@
         {
           ${name} = lib.nixosSystem {
             modules =
-              [ ./configurations/nixos/${name} ]
+              [
+                ./configurations/nixos/${name}
+                stylix.nixosModules.stylix
+              ]
               ++ lib.optionals enableHomeManager [
                 home-manager.nixosModules.home-manager
                 (mkHomeManagerConfig system userConfigs)
