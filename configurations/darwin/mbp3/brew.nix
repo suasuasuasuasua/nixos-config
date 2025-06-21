@@ -74,28 +74,21 @@
     ];
 
     masApps = {
-      # dev
-      xcode = 497799835; # macOS, iOS, etc. IDE
-
-      # entertainment
-      audible-audio-entertainment = 379693831; # audible client
       amazon-kindle = 302584613; # kindle client
-
-      # productivity
+      amphetamine = 937984704; # powerful keep-awake utility
+      audible-audio-entertainment = 379693831; # audible client
+      dark-reader-for-safari = 1438243180; # dark mode for safari
       flow-focus-pomodoro-timer = 1423210932; # pomodoro timer
+      hidden-bar = 1452453066; # macOS menubar organizer
       imovie = 408981434; # apple movie editor and maker
       keynote = 409183694; # apple presentation suite
+      magnet = 441258766; # macOS workspace organizer
       notability-smarter-ai-notes = 360593530; # note taking app
       numbers = 409203825; # apple spreadsheet application
       pages = 409201541; # apple word processing application
       tot = 1491071483; # daily note and task tracker
-
-      # utility
-      amphetamine = 937984704; # powerful keep-awake utility
-      dark-reader-for-safari = 1438243180; # dark mode for safari
-      hidden-bar = 1452453066; # macOS menubar organizer
-      magnet = 441258766; # macOS workspace organizer
       wireguard = 1451685025; # VPN
+      xcode = 497799835; # macOS, iOS, etc. IDE
     };
   };
 }
