@@ -109,6 +109,7 @@
     };
     # https://nur.nix-community.org/repos/rycee/
     extensions = {
+      force = true;
       # TODO: add configs for extensions
       #       for example, dark reader should follow system theme
       packages = with pkgs.firefox-addons; [
@@ -157,6 +158,11 @@
           ];
         }
       ];
+    };
+
+    # https://nur.nix-community.org/repos/rycee/
+    extensions = {
+      force = true;
     };
   };
 }

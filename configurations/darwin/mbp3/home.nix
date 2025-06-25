@@ -92,29 +92,29 @@ in
         ];
       };
 
-      # # NOTE: darwin module provides the home manager module
-      # # add under each user rather than global under stylix.nix
-      # stylix.targets = {
-      #   firefox = {
-      #     enable = true;
-      #     colorTheme.enable = true;
-      #     profileNames = [
-      #       "personal"
-      #       "productivity"
-      #     ];
-      #   };
+      # NOTE: darwin module provides the home manager module
+      # add under each user rather than global under stylix.nix
+      stylix.targets = {
+        firefox = {
+          enable = true;
+          colorTheme.enable = true;
+          profileNames = [
+            "personal"
+            "productivity"
+          ];
+        };
 
-      #   vscode = {
-      #     enable = true;
-      #     profileNames = [
-      #       "default"
-      #       "data-science"
-      #       "flutter-development"
-      #       "maximal"
-      #       "web-development"
-      #     ];
-      #   };
-      # };
+        vscode = {
+          enable = true;
+          profileNames = [
+            "default"
+            "data-science"
+            "flutter-development"
+            "maximal"
+            "web-development"
+          ];
+        };
+      };
     };
   };
 }
