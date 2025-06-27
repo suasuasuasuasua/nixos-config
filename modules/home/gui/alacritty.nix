@@ -7,7 +7,7 @@
 let
   cfg = config.home.gui.alacritty;
 
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin;
 in
 {
   options.home.gui.alacritty = {
@@ -20,12 +20,8 @@ in
       settings = {
         env.TERM = "xterm-256color";
         window = {
-          decorations =
-            if isLinux then
-              "None"
-            else
-              # transparent and buttonless is macOS only
-              "Buttonless";
+          # transparent and buttonless is macOS only
+          decorations = lib.mkIf isDarwin "Buttonless";
           padding = {
             x = 10;
             y = 10;
