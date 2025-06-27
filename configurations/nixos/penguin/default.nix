@@ -27,6 +27,7 @@
     ./services
 
     # system setup
+    ./stylix.nix
     ./system
   ];
 
