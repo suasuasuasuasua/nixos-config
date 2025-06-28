@@ -16,6 +16,7 @@ in
     "duckdns/domains" = { };
     "duckdns/token" = { };
     "firefox-syncserver/token" = { };
+    "gitea/token" = { };
     "miniflux/credentials" = { };
     "navidrome/environment" = { };
     "vaultwarden/environmentFile" = { };
@@ -58,6 +59,7 @@ in
     gitea = {
       enable = true;
       stateDir = "/zshare/srv/gitea";
+      tokenFile = config.sops.secrets."gitea/token".path;
     };
     gitweb = {
       enable = true;

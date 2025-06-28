@@ -14,7 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     virtualisation.docker = {
-      enable = false;
+      enable = true;
 
       # https://wiki.nixos.org/wiki/Docker#Rootless_Docker
       rootless = {

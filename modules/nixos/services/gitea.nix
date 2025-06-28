@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (config.networking) hostName domain;
   serviceName = "gitea";
@@ -17,6 +22,9 @@ in
     stateDir = lib.mkOption {
       type = lib.types.path;
     };
+    tokenFile = lib.mkOption {
+      type = lib.types.path;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -31,6 +39,35 @@ in
           DOMAIN = "${hostName}.${domain}";
           HTTP_PORT = cfg.port;
         };
+      };
+    };
+
+    services.gitea-actions-runner.instances = {
+      lab = {
+        inherit (cfg) tokenFile;
+
+        url = "https://${serviceName}.${hostName}.${domain}";
+        name = hostName;
+        enable = true;
+        labels = [
+          # provide a debian base with nodejs for actions
+          "debian-latest:docker://node:18-bullseye"
+          # fake the ubuntu name, because node provides no ubuntu builds
+          "ubuntu-latest:docker://node:18-bullseye"
+          # provide native execution on the host
+          "native:host"
+        ];
+        settings = { };
+        hostPackages = with pkgs; [
+          bash
+          coreutils
+          curl
+          gawk
+          gitMinimal
+          gnused
+          nodejs
+          wget
+        ];
       };
     };
 
