@@ -36,8 +36,9 @@ in
 
       settings = {
         server = {
-          DOMAIN = "${hostName}.${domain}";
+          DOMAIN = "${serviceName}.${hostName}.${domain}";
           HTTP_PORT = cfg.port;
+          ROOT_URL = "https://${serviceName}.${hostName}.${domain}";
         };
       };
     };
