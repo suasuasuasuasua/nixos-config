@@ -184,6 +184,12 @@ in
       };
       items = [
         {
+          title = "gitea";
+          description = "gitea server";
+          icon = "si-gitea";
+          url = mkFqdn "gitea";
+        }
+        {
           title = "gitweb";
           description = "gitweb server";
           icon = "si-git";
