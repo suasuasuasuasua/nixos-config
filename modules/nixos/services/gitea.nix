@@ -28,47 +28,49 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.gitea = {
-      inherit (cfg) stateDir;
+    services = {
+      gitea = {
+        inherit (cfg) stateDir;
 
-      enable = true;
-      lfs.enable = true;
+        enable = true;
+        lfs.enable = true;
 
-      settings = {
-        server = {
-          DOMAIN = "${serviceName}.${hostName}.${domain}";
-          HTTP_PORT = cfg.port;
-          ROOT_URL = "https://${serviceName}.${hostName}.${domain}";
+        settings = {
+          server = {
+            DOMAIN = "${serviceName}.${hostName}.${domain}";
+            HTTP_PORT = cfg.port;
+            ROOT_URL = "https://${serviceName}.${hostName}.${domain}";
+          };
         };
       };
-    };
 
-    services.gitea-actions-runner.instances = {
-      lab = {
-        inherit (cfg) tokenFile;
+      gitea-actions-runner.instances = {
+        lab = {
+          inherit (cfg) tokenFile;
 
-        url = "https://${serviceName}.${hostName}.${domain}";
-        name = hostName;
-        enable = true;
-        labels = [
-          # provide a debian base with nodejs for actions
-          "debian-latest:docker://node:18-bullseye"
-          # fake the ubuntu name, because node provides no ubuntu builds
-          "ubuntu-latest:docker://node:18-bullseye"
-          # provide native execution on the host
-          "native:host"
-        ];
-        settings = { };
-        hostPackages = with pkgs; [
-          bash
-          coreutils
-          curl
-          gawk
-          gitMinimal
-          gnused
-          nodejs
-          wget
-        ];
+          url = "https://${serviceName}.${hostName}.${domain}";
+          name = hostName;
+          enable = true;
+          labels = [
+            # provide a debian base with nodejs for actions
+            "debian-latest:docker://node:18-bullseye"
+            # fake the ubuntu name, because node provides no ubuntu builds
+            "ubuntu-latest:docker://node:18-bullseye"
+            # provide native execution on the host
+            "native:host"
+          ];
+          settings = { };
+          hostPackages = with pkgs; [
+            bash
+            coreutils
+            curl
+            gawk
+            gitMinimal
+            gnused
+            nodejs
+            wget
+          ];
+        };
       };
     };
 
