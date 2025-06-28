@@ -29,7 +29,7 @@ in
         path = "${config.xdg.dataHome}/zsh/history";
       };
       localVariables = {
-        ZVM_VI_INSERT_ESCAPE_BINDKEY = "jk";
+        ZVM_VI_ESCAPE_BINDKEY = "jk";
       };
       oh-my-zsh = {
         enable = true;
