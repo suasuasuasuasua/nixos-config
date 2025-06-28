@@ -186,7 +186,7 @@ in
         {
           title = "gitea";
           description = "gitea server";
-          icon = "si-gitea";
+          icon = "hl-gitea";
           url = mkFqdn "gitea";
         }
         {
@@ -204,7 +204,7 @@ in
         {
           title = "wastebin";
           description = "pastebin";
-          icon = "si-pastebin";
+          icon = "hl-pastebin";
           url = mkFqdn "wastebin";
         }
       ];
