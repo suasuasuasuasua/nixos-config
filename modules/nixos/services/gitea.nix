@@ -41,6 +41,12 @@ in
             HTTP_PORT = cfg.port;
             ROOT_URL = "https://${serviceName}.${hostName}.${domain}";
           };
+          service = {
+            DISABLE_REGISTRATION = true;
+          };
+          session = {
+            COOKIE_SECURE = true;
+          };
         };
       };
 
