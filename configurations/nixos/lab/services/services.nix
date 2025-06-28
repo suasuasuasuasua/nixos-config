@@ -55,6 +55,10 @@ in
       enable = true;
       secrets = config.sops.secrets."firefox-syncserver/token".path;
     };
+    gitea = {
+      enable = true;
+      stateDir = "/zshare/srv/gitea";
+    };
     gitweb = {
       enable = true;
       projectroot = "/zshare/srv/git";
