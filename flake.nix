@@ -25,7 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.1.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mac-app-util.url = "github:hraban/mac-app-util";
