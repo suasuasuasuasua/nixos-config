@@ -49,8 +49,11 @@ in
         wantedBy = [ "timers.target" ];
 
         timerConfig = {
-          OnCalendar = "daily";
           Persistent = true;
+          # NOTE: run daily
+          # OnCalendar = "daily";
+          OnBootSec = "5m";
+          OnUnitActiveSec = "5m";
           Unit = "update-github-repos.service";
         };
       };
