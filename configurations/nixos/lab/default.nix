@@ -6,32 +6,20 @@
 }:
 {
   imports = [
-    # disk setup
     inputs.disko.nixosModules.disko
-    ./disko.nix
-
-    # hardware setup
+    inputs.lix-module.nixosModules.default
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
-    ./hardware-configuration.nix
 
-    # nix setup
-    inputs.lix-module.nixosModules.default
-
-    # config
-    ./config.nix
-    ./home.nix
-
-    # secrets
-    ./sops.nix
-
-    # system setup
-    ./stylix.nix
-    ./system
-
-    # services setup
     ./services
+    ./system
+    ./config.nix
+    ./disko.nix
+    ./hardware-configuration.nix
+    ./home.nix
+    ./sops.nix
+    ./stylix.nix
   ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
