@@ -24,6 +24,11 @@ in
     services = {
       gitweb = {
         inherit (cfg) projectroot;
+        extraConfig = ''
+          $feature{'blame'}{'default'} = [1];
+          $feature{'ctags'}{'default'} = [1];
+          $feature{'highlight'}{'default'} = [1];
+        '';
       };
 
       nginx = {
@@ -43,6 +48,10 @@ in
         };
       };
     };
+
+    environment.systemPackages = [
+      pkgs.highlight
+    ];
 
     systemd = {
       timers."update-github-repos" = {
