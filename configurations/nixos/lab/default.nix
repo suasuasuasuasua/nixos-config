@@ -27,6 +27,7 @@
     ./sops.nix
 
     # system setup
+    ./stylix.nix
     ./system
 
     # services setup
