@@ -12,17 +12,31 @@ in
 
   # This is the actual specification of the secrets.
   sops.secrets = {
-    "acme/namecheap_api" = { };
-    "duckdns/domains" = { };
-    "duckdns/token" = { };
-    "firefox-syncserver/token" = { };
-    "gitea/token" = { };
-    "miniflux/credentials" = { };
-    "navidrome/environment" = { };
-    "vaultwarden/environmentFile" = { };
-    "wireguard/private_key" = {
-      sopsFile = "${inputs.self}/configurations/nixos/lab/secrets.yaml";
+    "acme/namecheap_api" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
     };
+    "duckdns/domains" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
+    };
+    "duckdns/token" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
+    };
+    "firefox-syncserver/token" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
+    };
+    "gitea/token" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
+    };
+    "miniflux/credentials" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
+    };
+    "navidrome/environment" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
+    };
+    "vaultwarden/environmentFile" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
+    };
+    "wireguard/private_key" = { };
   };
 
   # services
