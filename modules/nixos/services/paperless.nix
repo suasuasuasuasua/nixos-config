@@ -39,6 +39,16 @@ in
           optimize = 1;
           pdfa_image_compression = "lossless";
         };
+
+        # https://github.com/paperless-ngx/paperless-ngx/wiki/Using-a-Reverse-Proxy-with-Paperless-ngx#
+        PAPERLESS_URL = "https://${serviceName}.${hostName}.${domain}";
+        PAPERLESS_CSRF_TRUSTED_ORIGINS = "https://${serviceName}.${hostName}.${domain}";
+        PAPERLESS_USE_X_FORWARD_HOST = true;
+        PAPERLESS_USE_X_FORWARD_PORT = true;
+        PAPERLESS_PROXY_SSL_HEADER = [
+          "HTTP_X_FORWARDED_PROTO"
+          "https"
+        ];
       };
     };
 
@@ -53,10 +63,7 @@ in
 
           extraConfig =
             # allow for larger file uploads like videos through the reverse proxy
-            "client_max_body_size 0;"
-            +
-              # cert
-              "proxy_set_header X-SSL-CERT $ssl_client_escaped_cert;";
+            "client_max_body_size 0;";
         };
       };
     };
