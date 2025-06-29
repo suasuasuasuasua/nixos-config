@@ -22,12 +22,11 @@ in
     security.acme = {
       acceptTerms = true;
 
-      defaults.email = "j124.dev@proton.me";
-
       # Configure ACME appropriately
       defaults = {
         inherit (cfg) environmentFile;
 
+        email = "admin+justinhoang@sua.sh";
         dnsProvider = "namecheap";
         dnsPropagationCheck = true;
       };
