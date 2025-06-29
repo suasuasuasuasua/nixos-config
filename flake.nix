@@ -284,4 +284,15 @@
         ]
       );
     };
+
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+      "https://suasuasuasuasua.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "suasuasuasuasua.cachix.org-1:JAh0OWpJOvPHGS4zyK13xV+RBxgucR7TUwIAcr4j8KM="
+    ];
+  };
 }
