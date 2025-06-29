@@ -41,8 +41,10 @@ in
       inherit settings;
 
       enable = true;
-      virtualHost.enableNginx = true;
-      virtualHost.domain = "${hostName}.${domain}";
+      virtualHost = {
+        enableNginx = true;
+        domain = "${hostName}.${domain}";
+      };
     };
 
     # Add SSL
