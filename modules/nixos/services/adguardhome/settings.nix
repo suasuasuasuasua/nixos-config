@@ -10,7 +10,7 @@
   };
   users = [
     {
-      name = "admin";
+      name = "justinhoang";
       password = "$2a$10$z.gJA167Kf36rsjwjvgofu.LA2NTz1YL7OCEdimkag6.K/gqbNL9i";
     }
   ];
