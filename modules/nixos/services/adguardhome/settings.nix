@@ -248,23 +248,34 @@
     rewrites =
       let
         domainName = "sua.sh";
+
+        labIP = "192.168.0.240";
+        piIP = "192.168.0.240";
       in
       [
         {
           domain = "lab.${domainName}";
-          answer = "192.168.0.240";
+          answer = labIP;
         }
         {
           domain = "*.lab.${domainName}";
-          answer = "192.168.0.240";
+          answer = labIP;
         }
         {
           domain = "pi.${domainName}";
-          answer = "192.168.0.250";
+          answer = piIP;
         }
         {
           domain = "*.pi.${domainName}";
-          answer = "192.168.0.250";
+          answer = piIP;
+        }
+        {
+          domain = "*.${domainName}";
+          answer = labIP;
+        }
+        {
+          domain = "${domainName}";
+          answer = labIP;
         }
       ];
     safe_fs_patterns = [ "/var/lib/private/AdGuardHome/userfilters/*" ];
