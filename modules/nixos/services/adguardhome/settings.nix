@@ -257,12 +257,7 @@
       [
         {
           inherit domain;
-
           answer = labIP;
-        }
-        {
-          domain = "*.${domain}";
-          answer = domain;
         }
         {
           domain = "lab.${domain}";
