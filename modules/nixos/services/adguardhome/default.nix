@@ -9,7 +9,9 @@ let
 
   cfg = config.nixos.services.${serviceName};
 
-  settings = import ./settings.nix;
+  settings = import ./settings.nix {
+    inherit (config.networking) domain;
+  };
 in
 {
   options.nixos.services.${serviceName} = {

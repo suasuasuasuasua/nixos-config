@@ -1,3 +1,4 @@
+{ domain, ... }:
 {
   # https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration#configuration-file
   http = {
@@ -247,35 +248,40 @@
     safebrowsing_block_host = "standard-block.dns.adguard.com";
     rewrites =
       let
-        domainName = "sua.sh";
-
         labIP = "192.168.0.240";
-        piIP = "192.168.0.240";
+        piIP = "192.168.0.250";
       in
+      # the lab configuration
+      # - note that this configuration also points the base domain name to the
+      #   lab for external access
       [
         {
-          domain = "lab.${domainName}";
+          inherit domain;
+
           answer = labIP;
         }
         {
-          domain = "*.lab.${domainName}";
-          answer = labIP;
+          domain = "*.${domain}";
+          answer = domain;
         }
         {
-          domain = "pi.${domainName}";
+          domain = "lab.${domain}";
+          answer = domain;
+        }
+        {
+          domain = "*.lab.${domain}";
+          answer = domain;
+        }
+      ]
+      # the raspberry pi configuration
+      ++ [
+        {
+          domain = "pi.${domain}";
           answer = piIP;
         }
         {
-          domain = "*.pi.${domainName}";
-          answer = piIP;
-        }
-        {
-          domain = "*.${domainName}";
-          answer = labIP;
-        }
-        {
-          domain = "${domainName}";
-          answer = labIP;
+          domain = "*.pi.${domain}";
+          answer = "pi.${domain}";
         }
       ];
     safe_fs_patterns = [ "/var/lib/private/AdGuardHome/userfilters/*" ];
