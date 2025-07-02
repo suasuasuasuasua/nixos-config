@@ -1,10 +1,6 @@
 # Monitor the drives in the computer using smartmontools (S.M.A.R.T.)
 { pkgs, ... }:
 {
-  environment.systemPackages = [
-    pkgs.smartmontools
-  ];
-
   services.smartd = {
     enable = true;
 
@@ -45,4 +41,8 @@
       # }
     ];
   };
+
+  environment.systemPackages = [
+    pkgs.smartmontools
+  ];
 }
