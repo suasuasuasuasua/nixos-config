@@ -247,13 +247,12 @@
     parental_block_host = "family-block.dns.adguard.com";
     safebrowsing_block_host = "standard-block.dns.adguard.com";
     rewrites =
-      let
-        labIP = "192.168.0.240";
-        piIP = "192.168.0.250";
-      in
       # the lab configuration
       # - note that this configuration also points the base domain name to the
       #   lab for external access
+      let
+        labIP = "192.168.0.240";
+      in
       [
         {
           inherit domain;
@@ -269,16 +268,21 @@
         }
       ]
       # the raspberry pi configuration
-      ++ [
-        {
-          domain = "pi.${domain}";
-          answer = piIP;
-        }
-        {
-          domain = "*.pi.${domain}";
-          answer = "pi.${domain}";
-        }
-      ];
+      ++ (
+        let
+          piIP = "192.168.0.250";
+        in
+        [
+          {
+            domain = "pi.${domain}";
+            answer = piIP;
+          }
+          {
+            domain = "*.pi.${domain}";
+            answer = "pi.${domain}";
+          }
+        ]
+      );
     safe_fs_patterns = [ "/var/lib/private/AdGuardHome/userfilters/*" ];
     safebrowsing_cache_size = 1048576;
     safesearch_cache_size = 1048576;
