@@ -19,7 +19,7 @@ in
   };
 
   services.nginx.virtualHosts = {
-    "${domain}" = {
+    "${serviceName}.${domain}" = {
       enableACME = true;
       forceSSL = true;
       acmeRoot = null;
@@ -28,7 +28,6 @@ in
       };
 
       serverAliases = [
-        "${hostName}.${domain}"
         "${serviceName}.${hostName}.${domain}"
       ];
     };
