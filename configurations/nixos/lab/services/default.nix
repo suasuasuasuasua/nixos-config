@@ -12,7 +12,6 @@
     ./audiobookshelf.nix
     ./avahi.nix
     ./calibre.nix
-    ./duckdns.nix
     ./fail2ban.nix
     ./firefox-syncserver.nix
     ./gitea.nix
