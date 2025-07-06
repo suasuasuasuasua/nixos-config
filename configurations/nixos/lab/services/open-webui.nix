@@ -7,8 +7,8 @@ let
   inherit (config.networking) hostName domain;
   serviceName = "open-webui";
 
-  # default = 3000
-  port = 3003;
+  # default = 8080
+  port = 8082;
 in
 {
   services.open-webui = {
