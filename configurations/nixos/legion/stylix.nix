@@ -5,6 +5,8 @@
     autoEnable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
 
+    image = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/MilkyWay/contents/images/5120x2880.png";
+
     fonts = {
       serif = {
         package = pkgs.dejavu_fonts;
