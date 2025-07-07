@@ -1,9 +1,6 @@
 # custom dashy config per-host
 # https://dashy.to/docs/configuring/
 { hostName, domain, ... }:
-let
-  mkFqdn = service: "https://${service}.${hostName}.${domain}";
-in
 {
   pageInfo = {
     description = "sua's homelab";
@@ -33,7 +30,7 @@ in
           title = "adguardhome";
           description = "dns blocker";
           icon = "hl-adguard-home";
-          url = mkFqdn "adguardhome";
+          url = "https://adguardhome.${domain}";
         }
       ];
     }
@@ -63,13 +60,13 @@ in
           title = "glances";
           description = "system overview";
           icon = "hl-glances";
-          url = mkFqdn "glances";
+          url = "https://glances.${hostName}.${domain}";
         }
         {
           title = "uptime-kuma";
           description = "fancy service monitoring";
           icon = "hl-uptime-kuma";
-          url = mkFqdn "uptime-kuma";
+          url = "https://uptime-kuma.${domain}";
         }
       ];
     }
