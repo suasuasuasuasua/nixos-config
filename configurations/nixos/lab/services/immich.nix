@@ -25,12 +25,17 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://[::1]:${toString port}";
         proxyWebsockets = true; # needed if you need to use WebSocket
 
         extraConfig =
           # allow for larger file uploads like videos through the reverse proxy
-          "client_max_body_size 0;";
+          ''
+            client_max_body_size 50000M;
+            proxy_read_timeout   600s;
+            proxy_send_timeout   600s;
+            send_timeout         600s;
+          '';
       };
 
       serverAliases = [
