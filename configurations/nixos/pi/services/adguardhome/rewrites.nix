@@ -11,7 +11,19 @@ let
   # NOTE: a bit manual for my taste, but it's a good thing that I don't have too
   # many services
   mkServiceRewrites =
-    names: answer: builtins.foldl' (acc: cur: [ (mkServiceRewrite cur answer) ] ++ acc) [ ] names;
+    names: answer: hostName:
+    builtins.foldl' (
+      acc: cur:
+      [
+        # base rewrite
+        # ex. adguardhome.sua.sh
+        (mkServiceRewrite cur answer)
+        # fully qualified with host name rewrite
+        # ex. adguardhome.pi.sua.sh
+        (mkServiceRewrite "${cur}.${hostName}" answer)
+      ]
+      ++ acc
+    ) [ ] names;
 in
 # wildcard rewrites
 [
@@ -22,23 +34,11 @@ in
     answer = labIP;
   }
   {
-    domain = "*.${domain}";
-    answer = labIP;
-  }
-  {
     domain = "lab.${domain}";
     answer = labIP;
   }
   {
-    domain = "*.lab.${domain}";
-    answer = labIP;
-  }
-  {
     domain = "pi.${domain}";
-    answer = piIP;
-  }
-  {
-    domain = "*.pi.${domain}";
     answer = piIP;
   }
 ]
@@ -47,7 +47,6 @@ in
   "actual"
   "audiobookshelf"
   "calibre"
-  "dashy"
   "firefox-syncserver"
   "gitea"
   "hydra"
@@ -62,7 +61,14 @@ in
   "stirling-pdf"
   "vaultwarden"
   "wastebin"
-] labIP)
+] labIP "lab")
 ++ (mkServiceRewrites [
   "adguardhome"
-] piIP)
+  "uptime-kuma"
+] piIP "pi")
+++ [
+  (mkServiceRewrite "dashy.lab" labIP)
+  (mkServiceRewrite "dashy.pi" piIP)
+  (mkServiceRewrite "glances.lab" labIP)
+  (mkServiceRewrite "glances.pi" piIP)
+]
