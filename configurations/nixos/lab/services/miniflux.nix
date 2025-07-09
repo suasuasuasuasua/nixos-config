@@ -9,7 +9,7 @@ let
   serviceName = "miniflux";
 
   adminCredentialsFile = config.sops.secrets."miniflux/credentials".path;
-  Port = 9001;
+  port = 9001;
 in
 {
   sops.secrets = {
@@ -23,7 +23,7 @@ in
 
     enable = true;
     config = {
-      inherit Port;
+      LISTEN_ADDR = "127.0.0.1:${toString port}";
     };
   };
 
@@ -33,7 +33,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString Port}";
+        proxyPass = "http://127.0.0.1:${toString port}";
       };
 
       serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
