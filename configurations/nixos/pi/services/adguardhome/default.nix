@@ -41,8 +41,6 @@ in
     allowedTCPPorts = [
       53
       68
-      80
-      443
       853
     ];
     allowedUDPPorts = [
