@@ -9,15 +9,21 @@ let
   port = 2283;
 in
 {
-  users.users.immich.extraGroups = [ "samba" ];
-
+  # https://wiki.nixos.org/wiki/Immich
   services.immich = {
     inherit port mediaLocation;
 
     enable = true;
+    accelerationDevices = null;
     machine-learning.enable = true;
     settings = { };
   };
+
+  users.users.immich.extraGroups = [
+    "samba"
+    "video"
+    "render"
+  ];
 
   services.nginx.virtualHosts = {
     "${serviceName}.${domain}" = {
