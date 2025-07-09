@@ -1,6 +1,12 @@
 # custom dashy config per-host
 # https://dashy.to/docs/configuring/
 { hostName, domain, ... }:
+let
+  # service.sua.sh
+  mkFqdn = service: "https://${service}.${domain}";
+  # service.computer.sua.sh
+  mkFullFqdn = service: "https://${service}.${hostName}.${domain}";
+in
 {
   pageInfo = {
     description = "sua's homelab";
@@ -30,7 +36,7 @@
           title = "adguardhome";
           description = "dns blocker";
           icon = "hl-adguard-home";
-          url = "https://adguardhome.${domain}";
+          url = mkFqdn "adguardhome";
         }
       ];
     }
@@ -60,13 +66,13 @@
           title = "glances";
           description = "system overview";
           icon = "hl-glances";
-          url = "https://glances.${hostName}.${domain}";
+          url = mkFullFqdn "glances";
         }
         {
           title = "uptime-kuma";
           description = "fancy service monitoring";
           icon = "hl-uptime-kuma";
-          url = "https://uptime-kuma.${domain}";
+          url = mkFqdn "uptime-kuma";
         }
       ];
     }

@@ -2,7 +2,10 @@
 # https://dashy.to/docs/configuring/
 { hostName, domain, ... }:
 let
-  mkFqdn = service: "https://${service}.${hostName}.${domain}";
+  # service.sua.sh
+  mkFqdn = service: "https://${service}.${domain}";
+  # service.computer.sua.sh
+  mkFullFqdn = service: "https://${service}.${hostName}.${domain}";
 in
 {
   pageInfo = {
@@ -23,21 +26,6 @@ in
   # icon plug
   # - https://dashy.to/docs/icons/
   sections = [
-    {
-      name = "networking";
-      displayData = {
-        cols = 2;
-        itemSize = "large";
-      };
-      items = [
-        {
-          title = "adguardhome";
-          description = "dns blocker";
-          icon = "hl-adguard-home";
-          url = mkFqdn "adguardhome";
-        }
-      ];
-    }
     {
       name = "servers";
       displayData = {
@@ -64,13 +52,7 @@ in
           title = "glances";
           description = "system overview";
           icon = "hl-glances";
-          url = mkFqdn "glances";
-        }
-        {
-          title = "uptime-kuma";
-          description = "fancy service monitoring";
-          icon = "hl-uptime-kuma";
-          url = mkFqdn "uptime-kuma";
+          url = mkFullFqdn "glances";
         }
       ];
     }
