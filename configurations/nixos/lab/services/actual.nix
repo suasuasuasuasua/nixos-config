@@ -1,8 +1,5 @@
 # actual is a self hosted budgeting application
-{
-  config,
-  ...
-}:
+{ config, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "actual";

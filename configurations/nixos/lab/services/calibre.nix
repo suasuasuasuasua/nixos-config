@@ -9,10 +9,8 @@ let
   serviceName = "calibre";
 
   libraries = [ "/zshare/media/books/ebooks/" ];
-  port = {
-    server = 8080;
-    web = 8083;
-  };
+  server.port = 8080;
+  web.port = 8083;
 in
 
 {
@@ -24,16 +22,17 @@ in
   services = {
     calibre-server = {
       inherit libraries;
+      inherit (server) port;
 
       enable = true;
-      port = port.server;
     };
 
     calibre-web = {
       enable = true;
       listen = {
+        inherit (web) port;
+
         ip = "127.0.0.1";
-        port = port.web;
       };
 
       options = {
@@ -53,7 +52,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port.web}";
+        proxyPass = "http://127.0.0.1:${toString web.port}";
       };
 
       serverAliases = [ "${serviceName}.${hostName}.${domain}" ];

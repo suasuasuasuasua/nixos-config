@@ -33,7 +33,9 @@ in
           "client_max_body_size 0;";
       };
 
-      serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
+      serverAliases = [
+        "${serviceName}.${hostName}.${domain}"
+      ];
     };
   };
 }
