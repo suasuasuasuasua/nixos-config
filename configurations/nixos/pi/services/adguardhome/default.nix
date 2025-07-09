@@ -17,8 +17,6 @@ in
   services.adguardhome = {
     inherit port settings;
 
-    openFirewall = true;
-
     enable = true;
   };
 
