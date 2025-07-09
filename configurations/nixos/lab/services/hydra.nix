@@ -6,7 +6,6 @@
 let
   inherit (config.networking) hostName domain;
   serviceName = "hydra";
-  cfg = config.services.${serviceName};
 
   # default = 3000
   port = 3002;
@@ -33,7 +32,7 @@ in
       acmeRoot = null;
 
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString cfg.port}";
+        proxyPass = "http://127.0.0.1:${toString port}";
 
         extraConfig = ''
           proxy_set_header X-Forwarded-Port 443;
