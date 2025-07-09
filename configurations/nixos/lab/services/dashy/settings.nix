@@ -76,7 +76,7 @@ in
           url = mkFqdn "mealie";
         }
         {
-          title = "open-webui";
+          title = "open webui";
           description = "local hosted LLMs";
           icon = "hl-open-webui";
           url = mkFqdn "open-webui";
