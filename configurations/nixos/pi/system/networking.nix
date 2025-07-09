@@ -5,6 +5,7 @@
     hostId = "cfbe2391";
     domain = "sua.sh";
     networkmanager.enable = true;
+
     firewall = {
       enable = true;
       allowPing = true;
