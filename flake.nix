@@ -241,22 +241,22 @@
             system = "x86_64-linux";
             userConfigs = [ users.justinhoang ];
           }
-          # {
-          #   name = "legion";
-          #   system = "x86_64-linux";
-          #   userConfigs = [ users.justinhoang ];
-          # }
-          # {
-          #   name = "penguin";
-          #   system = "x86_64-linux";
-          #   userConfigs = [ users.justinhoang ];
-          # }
-          # {
-          #   name = "optiplex";
-          #   system = "x86_64-linux";
-          #   userConfigs = [ users.admin ];
-          #   enableHomeManager = false;
-          # }
+          {
+            name = "legion";
+            system = "x86_64-linux";
+            userConfigs = [ users.justinhoang ];
+          }
+          {
+            name = "penguin";
+            system = "x86_64-linux";
+            userConfigs = [ users.justinhoang ];
+          }
+          {
+            name = "optiplex";
+            system = "x86_64-linux";
+            userConfigs = [ users.admin ];
+            enableHomeManager = false;
+          }
           {
             name = "pi";
             system = "aarch64-linux";
@@ -267,20 +267,20 @@
       );
       darwinConfigurations = lib.mergeAttrsList (
         map mkDarwinSystem [
-          # {
-          #   name = "mbp3";
-          #   system = "aarch64-darwin";
-          #   userConfigs = [ users.justinhoang ];
-          # }
+          {
+            name = "mbp3";
+            system = "aarch64-darwin";
+            userConfigs = [ users.justinhoang ];
+          }
         ]
       );
       homeConfigurations = lib.mergeAttrsList (
         map mkHomeConfiguration [
-          # {
-          #   name = "wsl";
-          #   system = "x86_64-linux";
-          #   userConfig = users.justinhoang;
-          # }
+          {
+            name = "wsl";
+            system = "x86_64-linux";
+            userConfig = users.justinhoang;
+          }
         ]
       );
     };
