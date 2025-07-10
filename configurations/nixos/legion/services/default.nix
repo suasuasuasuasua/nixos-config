@@ -1,5 +1,7 @@
 {
   imports = [
-    ./services.nix
+    ./avahi.nix
+    ./ollama.nix
+    ./open-webui.nix
   ];
 }
