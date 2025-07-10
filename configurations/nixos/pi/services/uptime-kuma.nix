@@ -11,7 +11,7 @@ in
 
     appriseSupport = true;
     settings = {
-      UPTIME_KUMA_PORT = builtins.toString port;
+      UPTIME_KUMA_PORT = toString port;
     };
   };
 
