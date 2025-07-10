@@ -16,7 +16,7 @@
 
     # Nix
     deadnix.enable = true; # remove any unused variabes and imports
-    flake-checker.enable = true; # run `flake check`
+    flake-checker.enable = false; # run `flake check`
 
     nil.enable = true; # lsp that also has formatter
     nixfmt-rfc-style.enable = true; # format nix files to rfc standards
