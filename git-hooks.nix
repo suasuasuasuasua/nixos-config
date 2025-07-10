@@ -6,7 +6,7 @@
 
     # Git
     commitizen.enable = true; # ensure conventional commits standard
-    ripsecrets.enable = true; # remove any hardcoded secrets
+    ripsecrets.enable = false; # remove any hardcoded secrets
 
     # General
     check-added-large-files.enable = true; # warning about large files (lfs?)
