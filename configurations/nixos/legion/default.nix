@@ -6,27 +6,20 @@
 }:
 {
   imports = [
-    # disk setup
     inputs.disko.nixosModules.disko
-    ./disko.nix
-
-    # hardware setup
+    inputs.lix-module.nixosModules.default
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
     inputs.nixos-hardware.nixosModules.common-hidpi
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
-    ./hardware-configuration.nix
 
-    # nix setup
-    inputs.lix-module.nixosModules.default
-
-    # config
-    ./config.nix
-    ./home.nix
-
-    # system setup
     ./system
+
+    ./config.nix
+    ./disko.nix
+    ./hardware-configuration.nix
+    ./home.nix
     ./stylix.nix
   ];
 

@@ -2,7 +2,8 @@
 # https://dashy.to/docs/configuring/
 { hostName, domain, ... }:
 let
-  mkFqdn = service: "https://${service}.${hostName}.${domain}";
+  # service.computer.sua.sh
+  mkFullFqdn = service: "https://${service}.${hostName}.${domain}";
 in
 {
   pageInfo = {
@@ -55,13 +56,13 @@ in
           title = "glances";
           description = "system overview";
           icon = "hl-glances";
-          url = mkFqdn "glances";
+          url = mkFullFqdn "glances";
         }
         {
           title = "uptime-kuma";
           description = "fancy service monitoring";
           icon = "hl-uptime-kuma";
-          url = mkFqdn "uptime-kuma";
+          url = mkFullFqdn "uptime-kuma";
         }
       ];
     }

@@ -1,5 +1,7 @@
 {
   imports = [
-    ./services.nix
+    ./syncthing
+
+    ./avahi.nix
   ];
 }
