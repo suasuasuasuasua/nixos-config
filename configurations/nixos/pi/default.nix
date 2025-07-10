@@ -1,19 +1,17 @@
 # See /modules/nixos/* for actual settings
 # This file is just *top-level* configuration.
-{
-  inputs,
-  ...
-}:
+{ inputs, ... }:
 {
   imports = [
     # hardware setup
-    # see https://github.com/NixOS/nixos-hardware/blob/master/raspberry-pi/4/default.nixh
+    # see https://github.com/NixOS/nixos-hardware/blob/master/raspberry-pi/4/default.nix
     inputs.nixos-generators.nixosModules.all-formats
     inputs.nixos-hardware.nixosModules.raspberry-pi-4
-    ./hardware-configuration.nix
+
     ./services
     ./system
 
+    ./hardware-configuration.nix
     ./sops.nix
   ];
 

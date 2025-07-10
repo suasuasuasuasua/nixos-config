@@ -9,8 +9,13 @@
     firewall = {
       enable = true;
       allowPing = true;
-    };
 
+      # allow these ports for web server communications
+      allowedTCPPorts = [
+        80
+        443
+      ];
+    };
   };
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.

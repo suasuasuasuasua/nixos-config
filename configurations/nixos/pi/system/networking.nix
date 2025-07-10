@@ -5,9 +5,14 @@
     hostId = "cfbe2391";
     domain = "sua.sh";
     networkmanager.enable = true;
+
     firewall = {
       enable = true;
       allowPing = true;
+      allowedTCPPorts = [
+        80
+        443
+      ];
     };
   };
   # This setups a SSH server. Very important if you're setting up a headless system.

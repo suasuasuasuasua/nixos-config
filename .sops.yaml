@@ -13,15 +13,15 @@ keys:
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
-    - age:
-      - *lab
-      - *optiplex
-      - *pi
+      - age:
+          - *lab
+          - *optiplex
+          - *pi
   - path_regex: configurations/nixos/lab/[^/]+\.(yaml|json|env|ini)$
     key_groups:
-    - age:
-      - *lab
+      - age:
+          - *lab
   - path_regex: configurations/nixos/optiplex/[^/]+\.(yaml|json|env|ini)$
     key_groups:
-    - age:
-      - *optiplex
+      - age:
+          - *optiplex

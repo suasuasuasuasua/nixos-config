@@ -1,0 +1,26 @@
+# Services
+
+## Ports
+
+- 2283 (immich)
+- 3000 (actual)
+- 3001 (gitea)
+- 3002 (hydra)
+- 4533 (navidrome)
+- 5000 (firefox syncserver)
+- 5055 (jellyseerr)
+- 8000 (audiobookshelf)
+- 8080 (calibre server)
+- 8081 (stirling-pdf)
+- 8082 (open-webui)
+- 8083 (calibre web)
+- 8088 (wastebin)
+- 8096 (jellyfin)
+- 8222 (vaultwarden)
+- 8384 (syncthing)
+- 9000 (mealie)
+- 9001 (miniflux)
+- 11434 (ollama)
+- 28981 (paperless)
+- 51820 (wireguard)
+- 61208 (glances)
