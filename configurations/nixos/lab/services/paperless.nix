@@ -1,3 +1,4 @@
+# https://wiki.nixos.org/wiki/Paperless-ngx
 { config, ... }:
 let
   inherit (config.networking) hostName domain;

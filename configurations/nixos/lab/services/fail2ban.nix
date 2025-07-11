@@ -1,3 +1,4 @@
+# https://wiki.nixos.org/wiki/Fail2ban
 # fail2ban monitors log files looking for suspicious activity like brute force
 # attempts to login. it can ban ip addresses for a certain amount of time (hence
 # the jail)

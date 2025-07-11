@@ -1,3 +1,4 @@
+# https://wiki.nixos.org/wiki/Uptime_Kuma
 { config, ... }:
 let
   inherit (config.networking) hostName domain;

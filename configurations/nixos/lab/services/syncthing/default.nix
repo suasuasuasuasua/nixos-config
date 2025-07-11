@@ -1,3 +1,4 @@
+# https://wiki.nixos.org/wiki/Syncthing
 # syncthing is a lightweight decentralized synchronization server
 let
   # default = 8384

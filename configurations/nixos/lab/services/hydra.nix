@@ -1,3 +1,5 @@
+# https://wiki.nixos.org/wiki/Hydra
+# a tool for continuous integration testing software release
 {
   config,
   pkgs,

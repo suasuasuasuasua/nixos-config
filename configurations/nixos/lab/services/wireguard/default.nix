@@ -1,3 +1,4 @@
+# https://wiki.nixos.org/wiki/WireGuard
 # wireguard is a lightweight vpn protocol and server
 {
   config,
