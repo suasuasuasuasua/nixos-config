@@ -16,6 +16,7 @@
     ./firefox-syncserver.nix
     ./gitea.nix
     ./glances.nix
+    ./home-assistant.nix
     ./hydra.nix
     ./immich.nix
     ./jellyfin.nix
