@@ -1,22 +1,42 @@
 # Review about:config
 {
-  # Enable HTTPS-Only Mode
+  "app.update.channel" = "default";
+  "browser.aboutConfig.showWarning" = false;
+  "browser.ml.chat.sidebar" = false;
+  "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+  "browser.newtabpage.activity-stream.feeds.telemetry" = false;
+  "browser.newtabpage.activity-stream.feeds.topsites" = false;
+  "browser.newtabpage.activity-stream.showWeather" = false;
+  "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
+  "browser.newtabpage.activity-stream.telemetry" = false;
+  "browser.ping-centre.telemetry" = false;
+  "browser.profiles.enabled" = true;
+  "browser.tabs.groups.enabled" = true;
+  "browser.tabs.groups.smart.enabled" = true;
+  "browser.warnOnQuit" = false;
+  "dom.forms.autocomplete.formautofill" = false;
   "dom.security.https_only_mode" = true;
   "dom.security.https_only_mode_ever_enabled" = true;
-
-  # Disable updates (pretty pointless with nix)
-  "app.update.channel" = "default";
-
-  # Privacy settings
+  "experiments.activeExperiment" = false;
+  "experiments.enabled" = false;
+  "experiments.supported" = false;
+  "extensions.autoDisableScopes" = 0;
+  "extensions.formautofill.addresses.enabled" = false;
+  "extensions.formautofill.creditCards.enabled" = false;
+  "extensions.pocket.api" = "";
+  "extensions.pocket.enabled" = false;
+  "extensions.pocket.oAuthConsumerKey" = "";
+  "extensions.pocket.showHome" = false;
+  "extensions.pocket.site" = "";
+  "identity.sync.tokenserver.uri" = "https://firefox-syncserver.sua.sh/1.0/sync/1.5";
+  "network.allow-experiments" = false;
+  "privacy.clearHistory.formdata" = true;
+  "privacy.clearHistory.siteSettings" = true;
   "privacy.donottrackheader.enabled" = true;
+  "privacy.history.custom" = true;
   "privacy.trackingprotection.enabled" = true;
   "privacy.trackingprotection.socialtracking.enabled" = true;
   "privacy.partition.network_state.ocsp_cache" = true;
-
-  # Disable all sorts of telemetry
-  "browser.newtabpage.activity-stream.feeds.telemetry" = false;
-  "browser.newtabpage.activity-stream.telemetry" = false;
-  "browser.ping-centre.telemetry" = false;
   "toolkit.telemetry.archive.enabled" = false;
   "toolkit.telemetry.bhrPing.enabled" = false;
   "toolkit.telemetry.enabled" = false;
@@ -27,37 +47,4 @@
   "toolkit.telemetry.shutdownPingSender.enabled" = false;
   "toolkit.telemetry.unified" = false;
   "toolkit.telemetry.updatePing.enabled" = false;
-
-  # As well as Firefox 'experiments'
-  "experiments.activeExperiment" = false;
-  "experiments.enabled" = false;
-  "experiments.supported" = false;
-  "network.allow-experiments" = false;
-
-  # Disable Pocket Integration
-  "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
-  "extensions.pocket.enabled" = false;
-  "extensions.pocket.api" = "";
-  "extensions.pocket.oAuthConsumerKey" = "";
-  "extensions.pocket.showHome" = false;
-  "extensions.pocket.site" = "";
-
-  # Automatically enable extensions
-  "extensions.autoDisableScopes" = 0;
-
-  # QOL
-  "browser.aboutConfig.showWarning" = false;
-  "browser.warnOnQuit" = false;
-  "browser.ml.chat.sidebar" = false;
-  # disable homepage fluff
-  "browser.newtabpage.activity-stream.showWeather" = false;
-  "browser.newtabpage.activity-stream.feeds.topsites" = false;
-  "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-  # add profiles
-  "browser.profiles.enabled" = true;
-  # add tab groups
-  "browser.tabs.groups.enabled" = true;
-  "browser.tabs.groups.smart.enabled" = true;
-  # sync to local firefox sync server
-  "identity.sync.tokenserver.uri" = "https://firefox-syncserver.lab.sua.sh/1.0/sync/1.5";
 }
