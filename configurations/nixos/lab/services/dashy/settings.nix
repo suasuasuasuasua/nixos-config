@@ -70,6 +70,12 @@ in
           url = mkFqdn "actual";
         }
         {
+          title = "home assistant";
+          description = "self hosted home automation";
+          icon = "hl-home-assistant";
+          url = mkFqdn "home-assistant";
+        }
+        {
           title = "mealie";
           description = "recipe and meal manager";
           icon = "hl-mealie";

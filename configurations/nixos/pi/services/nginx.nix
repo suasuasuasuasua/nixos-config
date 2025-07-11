@@ -1,3 +1,4 @@
+# https://wiki.nixos.org/wiki/Nginx
 {
   services.nginx = {
     enable = true;

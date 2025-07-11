@@ -25,50 +25,57 @@ let
       ++ acc
     ) [ ] names;
 in
-# wildcard rewrites
-[
-  # - note that this configuration points the base domain name to the lab for
-  # external access
-  {
-    inherit domain;
-    answer = labIP;
-  }
-  {
-    domain = "lab.${domain}";
-    answer = labIP;
-  }
-  {
-    domain = "pi.${domain}";
-    answer = piIP;
-  }
-]
-# specific service rewrites
-++ (mkServiceRewrites [
-  "actual"
-  "audiobookshelf"
-  "calibre"
-  "firefox-syncserver"
-  "gitea"
-  "hydra"
-  "immich"
-  "jellyfin"
-  "jellyseerr"
-  "mealie"
-  "miniflux"
-  "navidrome"
-  "open-webui"
-  "paperless"
-  "stirling-pdf"
-  "vaultwarden"
-  "wastebin"
-] labIP "lab")
-++ (mkServiceRewrites [
-  "adguardhome"
-  "uptime-kuma"
-] piIP "pi")
-++ [
-  (mkServiceRewrite "dashy.lab" labIP)
-  (mkServiceRewrite "dashy.pi" piIP)
-  (mkServiceRewrite "glances.lab" labIP)
-  (mkServiceRewrite "glances.pi" piIP)
-]
+(
+  let
+    hostName = "lab";
+  in
+  mkServiceRewrites [
+    "actual"
+    "audiobookshelf"
+    "calibre"
+    "firefox-syncserver"
+    "gitea"
+    "home-assistant"
+    "hydra"
+    "immich"
+    "jellyfin"
+    "jellyseerr"
+    "mealie"
+    "miniflux"
+    "navidrome"
+    "open-webui"
+    "paperless"
+    "stirling-pdf"
+    "vaultwarden"
+    "wastebin"
+  ] labIP hostName
+  ++ [
+    {
+      inherit domain;
+      answer = labIP;
+    }
+    {
+      domain = "${hostName}.${domain}";
+      answer = labIP;
+    }
+    (mkServiceRewrite "dashy.${hostName}" labIP)
+    (mkServiceRewrite "glances.${hostName}" labIP)
+  ]
+)
+++ (
+  let
+    hostName = "pi";
+  in
+  mkServiceRewrites [
+    "adguardhome"
+    "uptime-kuma"
+  ] piIP hostName
+  ++ [
+    {
+      domain = "${hostName}.${domain}";
+      answer = piIP;
+    }
+    (mkServiceRewrite "dashy.${hostName}" piIP)
+    (mkServiceRewrite "glances.${hostName}" piIP)
+  ]
+)

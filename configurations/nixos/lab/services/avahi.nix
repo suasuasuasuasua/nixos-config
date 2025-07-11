@@ -14,5 +14,6 @@
       userServices = true;
       workstation = true;
     };
+    openFirewall = true;
   };
 }

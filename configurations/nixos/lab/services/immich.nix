@@ -1,3 +1,4 @@
+# https://wiki.nixos.org/wiki/Immich
 # immich is a self hosted photo and video organizer
 { config, ... }:
 let

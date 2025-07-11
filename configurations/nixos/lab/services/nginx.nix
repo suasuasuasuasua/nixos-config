@@ -1,3 +1,4 @@
+# https://wiki.nixos.org/wiki/Nginx
 { config, ... }:
 let
   inherit (config.networking) domain;

@@ -1,3 +1,4 @@
+# https://wiki.nixos.org/wiki/Jellyfin
 # jellyfin is a self hosted media server
 {
   config,
