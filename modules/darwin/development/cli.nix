@@ -21,6 +21,7 @@ in
       ffmpeg # solution to record, convert and stream audio and video
       nvd # nix/nixos package version diff tool
       onefetch # git repository summary on your terminal
+      tea # gitea command line tool helper
       yt-dlp # cli tool to download videos from YouTube.com and other sites
       zstd # Zstandard real-time compression algorithm
     ];

@@ -16,12 +16,6 @@ let
   port = 3001;
 in
 {
-  sops.secrets = {
-    "gitea/token" = {
-      sopsFile = "${inputs.self}/secrets/secrets.yaml";
-    };
-  };
-
   services = {
     gitea = {
       inherit stateDir;
@@ -71,6 +65,16 @@ in
           wget
         ];
       };
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    gitea # gitea command line interface
+  ];
+
+  sops.secrets = {
+    "gitea/token" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
     };
   };
 
