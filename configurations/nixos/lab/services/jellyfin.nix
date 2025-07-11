@@ -12,11 +12,11 @@ let
   port = 8096;
 in
 {
-  users.users.jellyfin.extraGroups = [ "samba" ];
-
   services.jellyfin = {
     enable = true;
   };
+
+  users.users.jellyfin.extraGroups = [ "samba" ];
 
   environment.systemPackages = with pkgs; [
     jellyfin

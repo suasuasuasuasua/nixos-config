@@ -14,11 +14,6 @@ let
 in
 
 {
-  users.users = {
-    calibre-server.extraGroups = [ "samba" ];
-    calibre-web.extraGroups = [ "samba" ];
-  };
-
   services = {
     calibre-server = {
       inherit libraries;
@@ -44,6 +39,11 @@ in
         };
       };
     };
+  };
+
+  users.users = {
+    calibre-server.extraGroups = [ "samba" ];
+    calibre-web.extraGroups = [ "samba" ];
   };
 
   services.nginx.virtualHosts = {

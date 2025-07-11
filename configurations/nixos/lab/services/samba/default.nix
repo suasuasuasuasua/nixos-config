@@ -4,9 +4,6 @@ let
   settings = import ./settings.nix;
 in
 {
-  # Remember to create the samba group
-  users.groups.samba = { };
-
   services = {
     samba = {
       inherit settings;
@@ -20,4 +17,7 @@ in
       openFirewall = true;
     };
   };
+
+  # Remember to create the samba group
+  users.groups.samba = { };
 }

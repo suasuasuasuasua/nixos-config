@@ -10,13 +10,6 @@ let
   user = "justinhoang";
 in
 {
-  users.users.syncthing = {
-    isSystemUser = true;
-    group = "syncthing";
-    extraGroups = [ "samba" ];
-  };
-  users.groups.syncthing = { };
-
   services.syncthing = {
     inherit
       dataDir
@@ -33,6 +26,13 @@ in
     overrideDevices = true;
     overrideFolders = true;
   };
+
+  users.users.syncthing = {
+    isSystemUser = true;
+    group = "syncthing";
+    extraGroups = [ "samba" ];
+  };
+  users.groups.syncthing = { };
 
   # https://wiki.nixos.org/wiki/Syncthing#Disable_default_sync_folder
   # don't create the default folder

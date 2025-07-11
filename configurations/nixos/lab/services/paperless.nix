@@ -7,9 +7,6 @@ let
   mediaDir = "/zshare/personal/docs";
 in
 {
-  # sudo /var/lib/paperless/paperless-manage createsuperuser
-  users.users.paperless.extraGroups = [ "samba" ];
-
   services.paperless = {
     inherit port mediaDir;
 
@@ -37,6 +34,9 @@ in
       ];
     };
   };
+
+  # sudo /var/lib/paperless/paperless-manage createsuperuser
+  users.users.paperless.extraGroups = [ "samba" ];
 
   services.nginx.virtualHosts = {
     "${serviceName}.${domain}" = {

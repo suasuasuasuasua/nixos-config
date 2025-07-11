@@ -10,14 +10,6 @@ let
   environmentFile = config.sops.secrets."navidrome/environment".path;
 in
 {
-  users.users.navidrome.extraGroups = [ "samba" ];
-
-  sops.secrets = {
-    "navidrome/environment" = {
-      sopsFile = "${inputs.self}/secrets/secrets.yaml";
-    };
-  };
-
   services.navidrome = {
     inherit environmentFile;
     enable = true;
@@ -27,6 +19,14 @@ in
 
       Address = "127.0.0.1";
       EnableInsightsCollector = false;
+    };
+  };
+
+  users.users.navidrome.extraGroups = [ "samba" ];
+
+  sops.secrets = {
+    "navidrome/environment" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
     };
   };
 
