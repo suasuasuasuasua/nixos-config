@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.nixos.development.cli;
+  cfg = config.custom.nixos.development.cli;
 in
 {
-  options.nixos.development.cli = {
+  options.custom.nixos.development.cli = {
     enable = lib.mkEnableOption "Enable general CLI tools";
   };
 
@@ -20,7 +20,7 @@ in
       fastfetch # system information tool
       just # save command line configs
       lshw # show information on the hardware configuration of the machine
-      nix-output-monitor # processes output of nix commands to show pretty information
+      nix-output-monitor # processes output of nix commands to show information
       onefetch # git repository summary on your terminal
       python3
       speedtest-cli # cli for testing internet bandwidth using speedtest.net

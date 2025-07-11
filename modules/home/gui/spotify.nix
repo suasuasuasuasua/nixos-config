@@ -6,12 +6,12 @@
   ...
 }:
 let
-  cfg = config.home.gui.spotify;
+  cfg = config.custom.home.gui.spotify;
 in
 {
   imports = [ inputs.spicetify-nix.homeManagerModules.default ];
 
-  options.home.gui.spotify = {
+  options.custom.home.gui.spotify = {
     enable = lib.mkEnableOption "Enable spotify (spicetify)";
   };
 

@@ -4,10 +4,10 @@
   ...
 }:
 let
-  cfg = config.home.cli.direnv;
+  cfg = config.custom.home.cli.direnv;
 in
 {
-  options.home.cli.direnv = {
+  options.custom.home.cli.direnv = {
     enable = lib.mkEnableOption ''
       Shell extension that manages your environment
     '';

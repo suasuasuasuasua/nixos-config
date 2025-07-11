@@ -1,18 +1,6 @@
 { inputs, pkgs, ... }:
 let
   inherit (pkgs.stdenv.hostPlatform) system;
-
-  # configure nixvim here!
-  nixvim = inputs.nixvim-config.packages.${system}.default.extend {
-    config.nixvim = {
-      lsp = { };
-      plugins = {
-        custom = {
-          obsidian.enable = false;
-        };
-      };
-    };
-  };
 in
 {
   home-manager.users = {
@@ -23,7 +11,7 @@ in
         "${inputs.self}/modules/home/gui"
       ];
 
-      home = {
+      custom.home = {
         cli = {
           bat.enable = true;
           comma.enable = true;
@@ -36,7 +24,6 @@ in
           tmux.enable = true;
           zsh.enable = true;
         };
-
         gui = {
           alacritty.enable = true;
           firefox.enable = true;
@@ -53,10 +40,22 @@ in
             };
           };
         };
-
-        packages = [ nixvim ];
       };
-
+      home.packages =
+        let
+          # configure nixvim here!
+          nixvim = inputs.nixvim-config.packages.${system}.default.extend {
+            config.nixvim = {
+              lsp = { };
+              plugins = {
+                custom = {
+                  obsidian.enable = false;
+                };
+              };
+            };
+          };
+        in
+        [ nixvim ];
       # NOTE: darwin module provides the home manager module
       # add under each user rather than global under stylix.nix
       stylix.targets = {

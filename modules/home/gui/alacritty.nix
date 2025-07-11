@@ -5,12 +5,12 @@
   ...
 }:
 let
-  cfg = config.home.gui.alacritty;
+  cfg = config.custom.home.gui.alacritty;
 
   inherit (pkgs.stdenv.hostPlatform) isDarwin;
 in
 {
-  options.home.gui.alacritty = {
+  options.custom.home.gui.alacritty = {
     enable = lib.mkEnableOption "Enable alacritty";
   };
 

@@ -4,10 +4,10 @@
   ...
 }:
 let
-  cfg = config.home.gui.obs;
+  cfg = config.custom.home.gui.obs;
 in
 {
-  options.home.gui.obs = {
+  options.custom.home.gui.obs = {
     enable = lib.mkEnableOption "Enable OBS";
   };
 

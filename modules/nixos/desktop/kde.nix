@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.nixos.desktop.kde;
+  cfg = config.custom.nixos.desktop.kde;
 in
 {
-  options.nixos.desktop.kde = {
+  options.custom.nixos.desktop.kde = {
     enable = lib.mkEnableOption "Enable KDE desktop environment";
   };
 

@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.home.cli.tmux;
+  cfg = config.custom.home.cli.tmux;
 in
 {
-  options.home.cli.tmux = {
+  options.custom.home.cli.tmux = {
     enable = lib.mkEnableOption ''
       Terminal multiplexer
     '';

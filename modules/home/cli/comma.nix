@@ -5,12 +5,12 @@
   ...
 }:
 let
-  cfg = config.home.cli.comma;
+  cfg = config.custom.home.cli.comma;
 in
 {
   imports = [ inputs.nix-index-database.hmModules.nix-index ];
 
-  options.home.cli.comma = {
+  options.custom.home.cli.comma = {
     enable = lib.mkEnableOption ''
       Runs programs without installing them
     '';

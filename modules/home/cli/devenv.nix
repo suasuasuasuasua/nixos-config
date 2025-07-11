@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.home.cli.devenv;
+  cfg = config.custom.home.cli.devenv;
 in
 {
-  options.home.cli.devenv = {
+  options.custom.home.cli.devenv = {
     enable = lib.mkEnableOption ''
       Fast, Declarative, Reproducible, and Composable Developer Environments
     '';

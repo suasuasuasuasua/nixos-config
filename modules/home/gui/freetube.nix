@@ -4,10 +4,10 @@
   ...
 }:
 let
-  cfg = config.home.gui.freetube;
+  cfg = config.custom.home.gui.freetube;
 in
 {
-  options.home.gui.freetube = {
+  options.custom.home.gui.freetube = {
     enable = lib.mkEnableOption "Enable FreeTube";
   };
 

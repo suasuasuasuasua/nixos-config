@@ -7,7 +7,7 @@
   ...
 }:
 let
-  opts = options.home.gui.vscode;
+  opts = options.custom.home.gui.vscode;
 
   inherit (lib) mkEnableOption mkOption;
   inherit (lib.types) bool listOf package;

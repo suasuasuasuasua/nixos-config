@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.nixos.gui.steam;
+  cfg = config.custom.nixos.steam;
 in
 {
-  options.nixos.gui.steam = {
+  options.custom.nixos.steam = {
     enable = lib.mkEnableOption ''
       Digital distribution platform
     '';

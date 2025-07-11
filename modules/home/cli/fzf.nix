@@ -4,10 +4,10 @@
   ...
 }:
 let
-  cfg = config.home.cli.fzf;
+  cfg = config.custom.home.cli.fzf;
 in
 {
-  options.home.cli.fzf = {
+  options.custom.home.cli.fzf = {
     enable = lib.mkEnableOption ''
       Command-line fuzzy finder written in Go
     '';

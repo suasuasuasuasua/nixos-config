@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.home.gui.firefox;
+  cfg = config.custom.home.gui.firefox;
 
   settings = import ./settings.nix;
   profiles = import ./profiles.nix {
@@ -14,7 +14,7 @@ let
   policies = import ./policies.nix;
 in
 {
-  options.home.gui.firefox = {
+  options.custom.home.gui.firefox = {
     enable = lib.mkEnableOption "Enable firefox";
   };
 

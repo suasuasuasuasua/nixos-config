@@ -5,49 +5,18 @@
 }:
 let
   inherit (pkgs.stdenv.hostPlatform) system;
-
-  # configure nixvim here!
-  nixvim = inputs.nixvim-config.packages.${system}.default.extend {
-    config.nixvim = {
-      lsp = {
-        languages = {
-          cssls.enable = true;
-          html.enable = true;
-          vtsls.enable = true;
-        };
-      };
-      plugins = {
-        custom = {
-          obsidian = {
-            enable = true;
-            workspaces = [
-              {
-                name = "personal";
-                path = "/Users/justinhoang/Documents/vaults/personal";
-              }
-            ];
-          };
-          ollama = {
-            enable = true;
-            model = "gemma3";
-          };
-        };
-      };
-    };
-  };
 in
 {
   home-manager.users = {
     "justinhoang" = {
       imports = [
-        # import modules
         "${inputs.self}/modules/home/cli"
         "${inputs.self}/modules/home/gui"
 
         inputs.mac-app-util.homeManagerModules.default
       ];
 
-      home = {
+      custom.home = {
         cli = {
           bat.enable = true; # better cat
           comma.enable = true; # try out programs with `,`
@@ -60,7 +29,6 @@ in
           tmux.enable = true; # terminal multiplexer
           zsh.enable = true; # preferred shell
         };
-
         gui = {
           alacritty.enable = true; # terminal emulator
           firefox.enable = true; # browser
@@ -85,13 +53,42 @@ in
             };
           };
         };
-
-        # custom nixvim configuration
-        packages = [
+      };
+      home.packages =
+        let
+          # configure nixvim here!
+          nixvim = inputs.nixvim-config.packages.${system}.default.extend {
+            config.nixvim = {
+              lsp = {
+                languages = {
+                  cssls.enable = true;
+                  html.enable = true;
+                  vtsls.enable = true;
+                };
+              };
+              plugins = {
+                custom = {
+                  obsidian = {
+                    enable = true;
+                    workspaces = [
+                      {
+                        name = "personal";
+                        path = "/Users/justinhoang/Documents/vaults/personal";
+                      }
+                    ];
+                  };
+                  ollama = {
+                    enable = true;
+                    model = "gemma3";
+                  };
+                };
+              };
+            };
+          };
+        in
+        [
           nixvim
         ];
-      };
-
       # NOTE: darwin module provides the home manager module
       # add under each user rather than global under stylix.nix
       stylix.targets = {

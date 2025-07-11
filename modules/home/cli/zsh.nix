@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.home.cli.zsh;
+  cfg = config.custom.home.cli.zsh;
 in
 {
-  options.home.cli.zsh = {
+  options.custom.home.cli.zsh = {
     enable = lib.mkEnableOption "Enable ZSH shell config";
   };
 

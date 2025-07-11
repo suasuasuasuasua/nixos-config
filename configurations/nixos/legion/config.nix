@@ -1,46 +1,39 @@
 # See /modules/nixos/* for actual settings
 # This file is just *top-level* configuration.
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     "${inputs.self}/modules/nixos"
 
-    # import the modules
     "${inputs.self}/modules/nixos/desktop"
     "${inputs.self}/modules/nixos/development"
-    "${inputs.self}/modules/nixos/gpu"
-    "${inputs.self}/modules/nixos/gui"
+
+    "${inputs.self}/modules/nixos/steam.nix"
   ];
 
-  environment.variables = {
-    EDITOR = "nvim";
+  environment = {
+    systemPackages = with pkgs; [
+      bitwarden-cli
+      bitwarden-desktop
+      element-desktop
+      discord
+      gimp
+      kdePackages.kdenlive
+      obsidian
+      protonmail-desktop
+    ];
+
+    variables = {
+      EDITOR = "nvim";
+    };
   };
 
-  # desktop
-  nixos = {
-    desktop = {
-      kde.enable = true;
-    };
-
+  custom.nixos = {
+    desktop.kde.enable = true;
     development = {
       cli.enable = true;
       nh.enable = true;
-      virtualization.enable = true;
     };
-
-    gpu = {
-      nvidia.enable = true;
-    };
-
-    gui = {
-      discord.enable = true;
-      element.enable = true;
-      gimp.enable = true;
-      kdenlive.enable = true;
-      lutris.enable = true;
-      obsidian.enable = true;
-      steam.enable = true;
-      wine.enable = true;
-    };
+    steam.enable = true;
   };
 }

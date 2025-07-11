@@ -1,29 +1,14 @@
 { inputs, pkgs, ... }:
 let
   inherit (pkgs.stdenv.hostPlatform) system;
-
-  # configure nixvim here!
-  nixvim = inputs.nixvim-config.packages.${system}.default.extend {
-    config.nixvim = {
-      colorscheme.enable = false;
-      lsp = { };
-      plugins = {
-        custom = {
-          obsidian.enable = false;
-        };
-      };
-    };
-  };
 in
 {
   imports = [
-    # import the modules
     "${inputs.self}/modules/home"
-
     "${inputs.self}/modules/home/cli"
   ];
 
-  home = {
+  home.custom = {
     cli = {
       bat.enable = true; # better cat
       comma.enable = true; # try out programs with `,`
@@ -37,6 +22,21 @@ in
       zsh.enable = true;
     };
 
-    packages = [ nixvim ];
+    packages =
+      # configure nixvim here!
+      let
+        nixvim = inputs.nixvim-config.packages.${system}.default.extend {
+          config.nixvim = {
+            colorscheme.enable = false;
+            lsp = { };
+            plugins = {
+              custom = {
+                obsidian.enable = false;
+              };
+            };
+          };
+        };
+      in
+      [ nixvim ];
   };
 }

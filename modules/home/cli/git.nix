@@ -4,10 +4,10 @@
   ...
 }:
 let
-  cfg = config.home.cli.git;
+  cfg = config.custom.home.cli.git;
 in
 {
-  options.home.cli.git = {
+  options.custom.home.cli.git = {
     enable = lib.mkEnableOption ''
       Distributed version control system
     '';

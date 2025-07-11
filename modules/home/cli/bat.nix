@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.home.cli.bat;
+  cfg = config.custom.home.cli.bat;
 in
 {
-  options.home.cli.bat = {
+  options.custom.home.cli.bat = {
     enable = lib.mkEnableOption ''
       Cat(1) clone with syntax highlighting and Git integration
     '';

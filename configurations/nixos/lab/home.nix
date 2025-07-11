@@ -1,30 +1,6 @@
 { inputs, pkgs, ... }:
 let
   inherit (pkgs.stdenv.hostPlatform) system;
-
-  # configure nixvim here!
-  nixvim = inputs.nixvim-config.packages.${system}.default.extend {
-    config.nixvim = {
-      lsp = { };
-      plugins = {
-        custom = {
-          auto-dark-mode.enable = false;
-          img-clip.enable = false;
-          markdown-preview.enable = false;
-          obsidian = {
-            enable = true;
-            workspaces = [
-              {
-                name = "personal";
-                path = "/home/justinhoang/Documents/vaults/personal";
-              }
-            ];
-          };
-          remote-nvim.enable = false;
-        };
-      };
-    };
-  };
 in
 {
   home-manager.users = {
@@ -34,7 +10,7 @@ in
         "${inputs.self}/modules/home/cli"
       ];
 
-      home = {
+      custom.home = {
         cli = {
           bat.enable = true;
           comma.enable = true;
@@ -47,9 +23,34 @@ in
           tmux.enable = true;
           zsh.enable = true;
         };
-
-        packages = [ nixvim ];
       };
+      home.packages =
+        let
+          # configure nixvim here!
+          nixvim = inputs.nixvim-config.packages.${system}.default.extend {
+            config.nixvim = {
+              lsp = { };
+              plugins = {
+                custom = {
+                  auto-dark-mode.enable = false;
+                  img-clip.enable = false;
+                  markdown-preview.enable = false;
+                  obsidian = {
+                    enable = true;
+                    workspaces = [
+                      {
+                        name = "personal";
+                        path = "/home/justinhoang/Documents/vaults/personal";
+                      }
+                    ];
+                  };
+                  remote-nvim.enable = false;
+                };
+              };
+            };
+          };
+        in
+        [ nixvim ];
     };
   };
 }

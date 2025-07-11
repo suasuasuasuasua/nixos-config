@@ -4,10 +4,10 @@
   ...
 }:
 let
-  cfg = config.home.cli.github;
+  cfg = config.custom.home.cli.github;
 in
 {
-  options.home.cli.github = {
+  options.custom.home.cli.github = {
     enable = lib.mkEnableOption ''
       GitHub CLI tool
     '';

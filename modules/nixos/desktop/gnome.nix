@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.nixos.desktop.gnome;
+  cfg = config.custom.nixos.desktop.gnome;
 in
 {
-  options.nixos.desktop.gnome = {
+  options.custom.nixos.desktop.gnome = {
     enable = lib.mkEnableOption "Enable Gnome desktop environment";
   };
 

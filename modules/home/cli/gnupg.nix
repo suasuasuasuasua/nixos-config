@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.home.cli.gnupg;
+  cfg = config.custom.home.cli.gnupg;
 in
 {
-  options.home.cli.gnupg = {
+  options.custom.home.cli.gnupg = {
     enable = lib.mkEnableOption ''
       Modern release of the GNU Privacy Guard, a GPL OpenPGP implementation
     '';

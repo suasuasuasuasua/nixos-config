@@ -1,16 +1,19 @@
-{ config, lib, ... }:
+{
+  config,
+  options,
+  lib,
+  ...
+}:
 let
-  cfg = config.nixos.development.nh;
+  cfg = config.custom.nixos.development.nh;
 in
 {
-  options.nixos.development.nh = {
+  options.custom.nixos.development.nh = {
+    inherit (options.programs.nh) flake;
+
     enable = lib.mkEnableOption ''
       Yet another nix cli helper
     '';
-    flake = lib.mkOption {
-      type = with lib.types; nullOr path;
-      default = null;
-    };
   };
 
   config = lib.mkIf cfg.enable {

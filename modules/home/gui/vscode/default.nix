@@ -6,8 +6,8 @@
   ...
 }:
 let
-  cfg = config.home.gui.vscode;
-  opts = options.home.gui.vscode;
+  cfg = config.custom.home.gui.vscode;
+  opts = options.custom.home.gui.vscode;
 
   # TODO: stolen code from vscode.nix -- find out how to reference it using
   # options
@@ -114,7 +114,7 @@ let
   ) { } (lib.attrNames cfg.profiles);
 in
 {
-  options.home.gui.vscode = {
+  options.custom.home.gui.vscode = {
     enable = lib.mkEnableOption "Enable Visual Studio Code";
 
     package = lib.mkOption {
