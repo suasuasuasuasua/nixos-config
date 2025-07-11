@@ -27,6 +27,7 @@
     ./ollama.nix
     ./open-webui.nix
     ./paperless.nix
+    ./searx.nix
     ./smart.nix
     ./stirling-pdf.nix
     ./vaultwarden.nix
