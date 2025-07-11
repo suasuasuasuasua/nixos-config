@@ -20,6 +20,15 @@
     };
   };
 
+  programs = {
+    localsend = {
+      enable = true;
+      # default port = 53317
+      # required for functionality
+      openFirewall = true;
+    };
+  };
+
   custom.nixos = {
     desktop.kde.enable = true;
     development = {
