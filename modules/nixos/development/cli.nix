@@ -14,23 +14,20 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      # hardware
-      lshw # show information on the hardware configuration of the machine
-
-      # file operations
+      btop # monitor of resources
       curl # command line tool for transferring files with url syntax
+      dig # domain name server
+      fastfetch # system information tool
+      just # save command line configs
+      lshw # show information on the hardware configuration of the machine
+      nix-output-monitor # processes output of nix commands to show pretty information
+      onefetch # git repository summary on your terminal
+      python3
+      speedtest-cli # cli for testing internet bandwidth using speedtest.net
       unzip # extraction utility for archives compressed in .zip format
       wget # tool for retrieving files using http, https, and ftp
       wl-clipboard # command-line copy/paste utilities for wayland
       zip # compressor/archiver for creating and modifying zipfiles
-
-      # system monitoring
-      btop # monitor of resources
-      fastfetch # system information tool
-      onefetch # git repository summary on your terminal
-
-      # scripting
-      python3
     ];
   };
 }
