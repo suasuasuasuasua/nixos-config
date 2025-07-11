@@ -1,4 +1,14 @@
 { pkgs, settings, ... }:
+let
+  # NOTE: you can add keyword (str) and tags (array) as well
+  #  tags are interesting...but i don't think i will ever be using it
+  mkBookmark = name: url: {
+    inherit
+      name
+      url
+      ;
+  };
+in
 {
   personal = {
     inherit settings;
@@ -11,96 +21,65 @@
           name = "bookmarks toolbar";
           toolbar = true;
           bookmarks = [
-            {
-              name = "youtube";
-              url = "https://youtube.com/";
-            }
-            {
-              name = "gmail";
-              url = "https://mail.google.com/";
-            }
+            (mkBookmark "youtube" "https://youtube.com")
             {
               name = "servers";
               bookmarks = [
-                {
-                  name = "lab";
-                  url = "https://lab.sua.sh";
-                }
-                {
-                  name = "pi";
-                  url = "https://pi.sua.sh";
-                }
+                (mkBookmark "lab" "https://lab.sua.sh")
+                (mkBookmark "pi" "https://pi.sua.sh")
               ];
             }
             {
-              name = "proton";
+              name = "self-hosted services";
               bookmarks = [
-                {
-                  name = "mail";
-                  url = "https://mail.proton.me";
-                }
-                {
-                  name = "calendar";
-                  url = "https://calendar.proton.me";
-                }
+                (mkBookmark "actual" "https://actual.sua.sh")
+                (mkBookmark "adguardhome" "https://adguardhome.sua.sh")
+                (mkBookmark "audiobookshelf" "https://audiobookshelf.sua.sh")
+                (mkBookmark "calibre" "https://calibre.sua.sh")
+                (mkBookmark "gitea" "https://gitea.sua.sh")
+                (mkBookmark "glances (lab)" "https://glances.lab.sua.sh")
+                (mkBookmark "glances (pi)" "https://glances.pi.sua.sh")
+                (mkBookmark "hydra" "https://hydra.sua.sh")
+                (mkBookmark "immich" "https://immich.sua.sh")
+                (mkBookmark "jellyfin" "https://jellyfin.sua.sh")
+                (mkBookmark "jellyseerr" "https://jellyseerr.sua.sh")
+                (mkBookmark "mealie" "https://mealie.sua.sh")
+                (mkBookmark "miniflux" "https://miniflux.sua.sh")
+                (mkBookmark "navidrome" "https://navidrome.sua.sh")
+                (mkBookmark "open webui" "https://open-webui.sua.sh")
+                (mkBookmark "paperless" "https://paperless.sua.sh")
+                (mkBookmark "stirling-pdf" "https://stirling-pdf.sua.sh")
+                (mkBookmark "uptime-kuma" "https://uptime-kuma.sua.sh")
+                (mkBookmark "vaultwarden" "https://vaultwarden.sua.sh")
+                (mkBookmark "wastebin" "https://wastebin.sua.sh")
               ];
             }
             {
-              name = "reddit";
-              url = "https://reddit.com/";
+              name = "email";
+              bookmarks = [
+                (mkBookmark "gmail" "https://mail.google.com")
+                (mkBookmark "proton" "https://mail.proton.me")
+              ];
             }
-            {
-              name = "hacker news";
-              url = "https://news.ycombinator.com/";
-            }
+            (mkBookmark "reddit" "https://reddit.com")
+            (mkBookmark "hacker news" "https://news.ycombinator.com")
             {
               name = "nix";
               bookmarks = [
-                {
-                  name = "nixpkgs";
-                  url = "https://search.nixos.org/packages";
-                }
-                {
-                  name = "nixpkgs options";
-                  url = "https://search.nixos.org/options?";
-                }
-                {
-                  name = "nix-darwin";
-                  url = "https://nix-darwin.github.io/nix-darwin/manual/index.html";
-                }
-                {
-                  name = "home-manager options";
-                  url = "https://nix-community.github.io/home-manager/options.xhtml";
-                }
-                {
-                  name = "home-manager extranix options";
-                  url = "https://home-manager-options.extranix.com/";
-                }
-                {
-                  name = "noogle";
-                  url = "https://noogle.dev/";
-                }
-                {
-                  name = "nixvim";
-                  url = "https://nix-community.github.io/nixvim/";
-                }
-                {
-                  name = "nixvim search";
-                  url = "https://nix-community.github.io/nixvim/search/";
-                }
-                {
-                  name = "nix2json webui";
-                  url = "https://json-to-nix.pages.dev";
-                }
+                (mkBookmark "nixpkgs" "https://search.nixos.org/packages")
+                (mkBookmark "nixpkgs options" "https://search.nixos.org/options?")
+                (mkBookmark "home-manager options" "https://nix-community.github.io/home-manager/options.xhtml")
+                (mkBookmark "home-manager extranix options" "https://home-manager-options.extranix.com/")
+                (mkBookmark "noogle" "https://noogle.dev/")
+                (mkBookmark "nixvim" "https://nix-community.github.io/nixvim/")
+                (mkBookmark "nixvim search" "https://nix-community.github.io/nixvim/search/")
+                (mkBookmark "nix2json webui" "https://json-to-nix.pages.dev")
               ];
             }
             {
-              name = "macOS";
+              name = "darwin";
               bookmarks = [
-                {
-                  name = "brew";
-                  url = "https://brew.sh/";
-                }
+                (mkBookmark "brew" "https://brew.sh/")
               ];
             }
           ];
@@ -129,32 +108,14 @@
     bookmarks = {
       force = true;
       settings = [
-        {
-          name = "wikipedia";
-          tags = [ "wiki" ];
-          keyword = "wiki";
-          url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
-        }
-        {
-          name = "kernel.org";
-          url = "https://www.kernel.org";
-        }
+        (mkBookmark "wikipedia" "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go")
+        (mkBookmark "kernel.org" "https://www.kernel.org")
         {
           name = "Nix sites";
           toolbar = true;
           bookmarks = [
-            {
-              name = "homepage";
-              url = "https://nixos.org/";
-            }
-            {
-              name = "wiki";
-              tags = [
-                "wiki"
-                "nix"
-              ];
-              url = "https://wiki.nixos.org/";
-            }
+            (mkBookmark "homepage" "https://nixos.org/")
+            (mkBookmark "wiki" "https://wiki.nixos.org/")
           ];
         }
       ];
