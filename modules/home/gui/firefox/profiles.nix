@@ -68,6 +68,7 @@ in
               bookmarks = [
                 (mkBookmark "nixpkgs" "https://search.nixos.org/packages")
                 (mkBookmark "nixpkgs options" "https://search.nixos.org/options?")
+                (mkBookmark "nix wiki" "https://wiki.nixos.org")
                 (mkBookmark "home-manager options" "https://nix-community.github.io/home-manager/options.xhtml")
                 (mkBookmark "home-manager extranix options" "https://home-manager-options.extranix.com/")
                 (mkBookmark "noogle" "https://noogle.dev/")
