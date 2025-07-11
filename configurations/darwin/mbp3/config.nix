@@ -27,6 +27,6 @@
   };
 
   custom.darwin = {
-    development.cli = true;
+    development.cli.enable = true;
   };
 }
