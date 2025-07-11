@@ -2,6 +2,9 @@
 
 ## Ports
 
+- 22 (ssh)
+- 80 (nginx)
+- 443 (nginx)
 - 2283 (immich)
 - 3000 (actual)
 - 3001 (gitea)
@@ -9,13 +12,16 @@
 - 4533 (navidrome)
 - 5000 (firefox syncserver)
 - 5055 (jellyseerr)
+- 5353 (avahi)
 - 8000 (audiobookshelf)
 - 8080 (calibre server)
 - 8081 (stirling-pdf)
 - 8082 (open-webui)
 - 8083 (calibre web)
+- 8084 (searxng)
 - 8088 (wastebin)
 - 8096 (jellyfin)
+- 8123 (home-assistant)
 - 8222 (vaultwarden)
 - 8384 (syncthing)
 - 9000 (mealie)
@@ -23,4 +29,4 @@
 - 11434 (ollama)
 - 28981 (paperless)
 - 51820 (wireguard)
-- 61208 (glances)
+- 61208 (glances)readme
