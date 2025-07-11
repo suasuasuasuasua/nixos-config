@@ -59,7 +59,6 @@
 
     casks = [
       "adguard" # ad blocker
-      "android-studio" # flutter, kotlin, etc. development
       "balenaetcher" # iso writer (*)
       "docker" # container runner and manager
       "element" # chat
