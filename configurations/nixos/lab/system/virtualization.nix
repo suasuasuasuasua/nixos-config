@@ -10,8 +10,9 @@
       # Optionally customize rootless Docker daemon settings
       daemon.settings = {
         dns = [
-          "1.1.1.1"
-          "8.8.8.8"
+          "192.168.0.250" # local dns
+          "1.1.1.1" # cloudflare
+          "8.8.8.8" # google
         ];
         registry-mirrors = [ "https://mirror.gcr.io" ];
       };
