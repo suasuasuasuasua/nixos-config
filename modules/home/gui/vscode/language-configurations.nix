@@ -31,16 +31,11 @@ in
     enable = mkEnableOption "Enable C/C++";
     extensions = mkOption {
       type = listOf package;
-      default =
-        with pkgs.vscode-extensions;
-        [
-          ms-vscode.cmake-tools
-          ms-vscode.makefile-tools
-        ]
-        # NOTE: not available for nix-darwin yet...
-        # https://github.com/NixOS/nixpkgs/issues/377294
-        # https://github.com/nix-community/nix-vscode-extensions/issues/113
-        ++ lib.optional pkgs.stdenv.isLinux pkgs.vscode-extensions.ms-vscode.cpptools;
+      default = with pkgs.vscode-extensions; [
+        ms-vscode.cmake-tools
+        ms-vscode.cpptools
+        ms-vscode.makefile-tools
+      ];
     };
     keybindings = mkOption {
       type = keybindingSubmodule;
