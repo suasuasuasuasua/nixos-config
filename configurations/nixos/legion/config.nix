@@ -23,6 +23,7 @@
       obsidian
       picard
       protonmail-desktop
+      yt-dlp
     ];
 
     variables = {
