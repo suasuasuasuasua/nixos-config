@@ -11,3 +11,6 @@ This seems to work _really_ well, but there are a few straggler cases.
 
 I think the best course of action forward is to define which playlists in the
 channel we want.
+
+> Another workaround is to look for "X - topic" YouTube channels which avoid
+> music avoids altogether
