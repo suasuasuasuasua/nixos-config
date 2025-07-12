@@ -71,7 +71,7 @@ in
         }
         {
           title = "home assistant";
-          description = "self hosted home automation";
+          description = "self-hosted home automation";
           icon = "hl-home-assistant";
           url = mkFqdn "home-assistant";
         }
