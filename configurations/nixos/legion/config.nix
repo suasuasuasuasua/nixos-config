@@ -17,6 +17,7 @@
       bitwarden-desktop
       element-desktop
       discord
+      feishin
       gimp
       kdePackages.kdenlive
       obsidian
