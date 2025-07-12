@@ -94,6 +94,12 @@ in
           url = mkFqdn "paperless";
         }
         {
+          title = "searx";
+          description = "self-hosted meta search engine";
+          icon = "hl-searx";
+          url = mkFqdn "searx";
+        }
+        {
           title = "stirling-pdf";
           description = "pdf tools";
           icon = "hl-stirling-pdf";

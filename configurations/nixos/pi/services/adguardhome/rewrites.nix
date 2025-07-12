@@ -45,6 +45,7 @@ in
     "navidrome"
     "open-webui"
     "paperless"
+    "searx"
     "stirling-pdf"
     "vaultwarden"
     "wastebin"
