@@ -20,6 +20,7 @@
       gimp
       kdePackages.kdenlive
       obsidian
+      picard
       protonmail-desktop
     ];
 
