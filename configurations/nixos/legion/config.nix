@@ -15,8 +15,8 @@
     systemPackages = with pkgs; [
       bitwarden-cli
       bitwarden-desktop
-      element-desktop
       discord
+      element-desktop
       feishin
       gimp
       kdePackages.kdenlive
