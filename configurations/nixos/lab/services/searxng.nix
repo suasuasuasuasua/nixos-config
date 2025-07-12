@@ -7,16 +7,16 @@
   ...
 }:
 let
-  serviceName = "searx";
+  serviceName = "searxng";
   inherit (config.networking) hostName domain;
 
-  environmentFile = config.sops.secrets."searx/environmentFile";
+  environmentFile = config.sops.secrets."searxng/environmentFile";
   # port = 8080
   port = 8084;
 in
 {
   sops.secrets = {
-    "searx/environmentFile" = {
+    "searxng/environmentFile" = {
       sopsFile = "${inputs.self}/secrets/secrets.yaml";
     };
   };

@@ -94,10 +94,10 @@ in
           url = mkFqdn "paperless";
         }
         {
-          title = "searx";
+          title = "searxng";
           description = "self-hosted meta search engine";
-          icon = "hl-searx";
-          url = mkFqdn "searx";
+          icon = "hl-searxng";
+          url = mkFqdn "searxng";
         }
         {
           title = "stirling-pdf";
