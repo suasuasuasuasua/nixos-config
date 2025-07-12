@@ -61,6 +61,7 @@ in
     }
     (mkServiceRewrite "dashy.${hostName}" labIP)
     (mkServiceRewrite "glances.${hostName}" labIP)
+    (mkServiceRewrite "vpn.${hostName}" labIP)
   ]
 )
 ++ (
