@@ -10,21 +10,27 @@
     };
   };
   "YouTube Releases" = {
-    # Sets genre tag to "Jazz"
-    "= Jazz" = {
-      "Thelonious Monk" = "https://www.youtube.com/@officialtheloniousmonk/releases";
+    "= Indie" = {
+      "Billie Eilish" = "https://www.youtube.com/channel/UCERrDZ8oN0U_n9MphMKERcg";
+      "Laufey" = "https://www.youtube.com/channel/UCJtROTPxo3qnEzww8JyDxuA";
+      "NIKI" = "https://www.youtube.com/channel/UCFeCzD2Fqr3jlMcGTt0Jnlg";
+      "The Marias" = "https://www.youtube.com/channel/UCVV5M4OEFsKnB9HBhwOhHbA";
     };
     "= K-Pop" = {
-      "aespa" = "https://www.youtube.com/@aespa/releases";
-      "BABYMONSTER" = "https://www.youtube.com/@BABYMONSTER/releases";
-      "ITZY" = "https://www.youtube.com/@ITZY/releases";
-      "IVE" = "https://www.youtube.com/@IVEstarship/releases";
-      "JENNIE" = "https://www.youtube.com/@jennierubyjane/releases";
-      "KISS OF LIFE" = "https://www.youtube.com/@KISSOFLIFE_official/releases";
-      "LE SSERAFIM" = "https://www.youtube.com/@LESSERAFIM_official/releases";
-      "NewJeans" = "https://www.youtube.com/@NewJeans_official/releases";
-      "ROSÉ" = "https://www.youtube.com/@roses_are_rosie/releases";
-      "XG" = "https://www.youtube.com/@xg_official/releases";
+      "aespa" = "https://www.youtube.com/channel/UCEdZAdnnKqbaHOlv8nM6OtA";
+      "BABYMONSTER" = "https://www.youtube.com/channel/UC47Wz6S14mj_6Jy-T59m6IQ";
+      "ITZY" = "https://www.youtube.com/channel/UCTP45_DE3fMLujU8sZ-MBzw";
+      "IVE" = "https://www.youtube.com/channel/UCTP45_DE3fMLujU8sZ-MBzw";
+      "JENNIE" = "https://www.youtube.com/channel/UCAl7xQ6q0PEgZMQD7zr4AKQ";
+      "KISS OF LIFE" = "https://www.youtube.com/channel/UCy_chGIsdShihFYBoXZyTdg";
+      "LE SSERAFIM" = "https://www.youtube.com/channel/UC-clMkTZa7k-FxmNgMjoCgQ";
+      "NewJeans" = "https://www.youtube.com/channel/UCxOqS3cYg4FaHbobICo7nFQ";
+      "ROSÉ" = "https://www.youtube.com/channel/UCbpXC82cTLngSiZrysAaE-w";
+      "XG" = "https://www.youtube.com/channel/UCafINmoeAbZbK5M4dtQzBww";
+    };
+    "= Instrumental" = {
+      "Justin Hurwitz" = "https://www.youtube.com/channel/UC2Qhpr5OGrn9skA6N5LBPGQ";
+      "Valentina Lisitsa" = "https://www.youtube.com/channel/UC54WzoB6QbFsKTFcWK6em4Q";
     };
   };
 }
