@@ -1,5 +1,20 @@
 # Services
 
+## Workflow
+
+1. Write a new service module (`.nix` file)
+2. Add the file to the `default.nix` import list
+3. Add the service name to the DNS rewrites
+   - Currently managed on the raspberry pi's AdGuard Home instance
+4. Profit!
+
+## Debugging
+
+1. Did you open the correct ports? Check the firewall...
+2. Is there an entry in the DNS for the service URL?
+3. Did the DNS fully propagatate the ACME challenge?
+4. Are you referencing the correct path for `sops`?
+
 ## Ports
 
 - 22 (ssh)
