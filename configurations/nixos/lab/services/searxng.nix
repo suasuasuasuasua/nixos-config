@@ -85,18 +85,19 @@ in
       };
 
       # Search engines (see the settings menu)
+      # https://docs.searxng.org/user/configured_engines.html
       engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {
         ## general
         # translate
-        "dictzone".disabled = true;
+        "dictzone".disabled = false;
         "libretranslate".disabled = true;
-        "lingva".disabled = true;
+        "lingva".disabled = false;
         "mozhi".disabled = true;
         "mymemory translated".disabled = false;
         # web
         "bing".disabled = true;
-        "brave".disabled = true;
-        "duckduckgo".disabled = true;
+        "brave".disabled = false;
+        "duckduckgo".disabled = false;
         "google".disabled = false;
         "mojeek".disabled = true;
         "mullvadleta".disabled = true;
@@ -111,31 +112,19 @@ in
         "goo (JA)".disabled = true;
         "naver (KO)".disabled = true;
         # wikimedia
-        "wikibooks".disabled = false;
+        "wikibooks".disabled = true;
         "wikiquote".disabled = true;
         "wikisource".disabled = true;
-        "wikispecies" = {
-          disabled = false;
-          weight = 0.5;
-        };
-        "wikiversity" = {
-          disabled = false;
-          weight = 0.5;
-        };
-        "wikivoyage" = {
-          disabled = false;
-          weight = 0.5;
-        };
+        "wikispecies".disabled = true;
+        "wikiversity".disabled = true;
+        "wikivoyage".disabled = true;
         # without further subgrouping
         "alexandria".disabled = true;
         "ask".disabled = true;
         "cloudflareai".disabled = true;
-        "crowdview".disabled = false;
+        "crowdview".disabled = true;
         "currency".disabled = false;
-        "ddg definitions" = {
-          disabled = false;
-          weight = 2;
-        };
+        "ddg definitions".disabled = true;
         "encyclosearch".disabled = true;
         "mwmbl".disabled = true;
         "right dao".disabled = true;
@@ -147,28 +136,25 @@ in
         "wolframalpha".disabled = true;
         "yacy".disabled = true;
         "yep".disabled = true;
-        "bpb (DE)".disabled = false;
-        "tagesschau (DE)".disabled = false;
-        "wikimini (FR)".disabled = false;
-        "360search (ZH)".disabled = false;
-        "baidu (ZH)".disabled = false;
-        "quark (ZH)".disabled = false;
-        "sogou (ZH)".disabled = false;
+        "bpb (DE)".disabled = true;
+        "tagesschau (DE)".disabled = true;
+        "wikimini (FR)".disabled = true;
+        "360search (ZH)".disabled = true;
+        "baidu (ZH)".disabled = true;
+        "quark (ZH)".disabled = true;
+        "sogou (ZH)".disabled = true;
         ## images
         # icons
-        "material icons" = {
-          disabled = true;
-          weight = 0.2;
-        };
-        "svgrepo".disabled = false;
+        "material icons".disabled = true;
+        "svgrepo".disabled = true;
         "uxwing".disabled = true;
         # web
-        "bing images".disabled = true;
-        "brave.images".disabled = true;
+        "bing images".disabled = false;
+        "brave.images".disabled = false;
         "duckduckgo images".disabled = true;
         "google images".disabled = false;
-        "mojeek images".disabled = false;
-        "presearch images".disabled = false;
+        "mojeek images".disabled = true;
+        "presearch images".disabled = true;
         "qwant images".disabled = false;
         "startpage images".disabled = false;
         # without further subgrouping
@@ -176,18 +162,19 @@ in
         "adobe stock".disabled = true;
         "artic".disabled = false;
         "deviantart".disabled = false;
-        "findthatmeme".disabled = false;
-        "flickr".disabled = true;
+        "findthatmeme".disabled = true;
+        "flickr".disabled = false;
         "frinkiac".disabled = true;
-        "imgur".disabled = false;
+        "imgur".disabled = true;
         "ipernity".disabled = true;
-        "library of congress".disabled = false;
+        "library of congress".disabled = true;
         "openverse".disabled = false;
-        "pinterest".disabled = true;
+        "pinterest".disabled = false;
+        "pixabay images".disabled = true;
         "public domain image archive".disabled = false;
         "sogou images".disabled = true;
         "unsplash".disabled = false;
-        "wallhaven".disabled = false;
+        "wallhaven".disabled = true;
         "wikicommons.images".disabled = false;
         "yacy images".disabled = true;
         "yep images".disabled = true;
@@ -198,7 +185,7 @@ in
         ## videos
         # web
         "bing videos".disabled = false;
-        "brave.videos".disabled = true;
+        "brave.videos".disabled = false;
         "duckduckgo videos".disabled = true;
         "google videos".disabled = false;
         "qwant videos".disabled = false;
@@ -207,16 +194,17 @@ in
         "adobe stock video".disabled = true;
         "bilibili".disabled = true;
         "bitchute".disabled = true;
-        "dailymotion".disabled = true;
+        "dailymotion".disabled = false;
         "google play movies".disabled = true;
         "livespace".disabled = true;
         "media.ccc.de".disabled = true;
         "odysee".disabled = true;
         "peertube".disabled = true;
-        "piped".disabled = true;
+        "piped".disabled = false;
+        "pixabay videos".disabled = true;
         "rumble".disabled = true;
-        "sepiasearch".disabled = true;
-        "vimeo".disabled = true;
+        "sepiasearch".disabled = false;
+        "vimeo".disabled = false;
         "wikicommons.video".disabled = false;
         "youtube".disabled = false;
         "mediathekviewweb (DE)".disabled = true;
@@ -237,8 +225,8 @@ in
         "wikinews".disabled = false;
         # without further subgrouping
         "bing news".disabled = false;
-        "brave news".disabled = true;
-        "google news".disabled = true;
+        "brave news".disabled = false;
+        "google news".disabled = false;
         "qwant news".disabled = false;
         "reuters".disabled = false;
         "yahoo news".disabled = false;
@@ -252,7 +240,7 @@ in
         # general
         "apple maps".disabled = true;
         "openstreetmap".disabled = false;
-        "photon".disabled = true;
+        "photon".disabled = false;
         ## music
         # lyrics
         "genius".disabled = false;
@@ -278,7 +266,7 @@ in
         "npm".disabled = true;
         "packagist".disabled = true;
         "pkg.go.dev".disabled = true;
-        "pypi".disabled = false;
+        "pypi".disabled = true;
         "rubygems".disabled = true;
         "voidlinux".disabled = true;
         # q&a
@@ -310,8 +298,8 @@ in
         "habrahabr".disabled = true;
         "hackernews".disabled = true;
         "lobste.rs".disabled = true;
-        "mankier".disabled = true;
-        "mdn".disabled = true;
+        "mankier".disabled = false;
+        "mdn".disabled = false;
         "microsoft learn".disabled = true;
         "searchcode code".disabled = true;
         "baidu kaifa (ZH)".disabled = true;
