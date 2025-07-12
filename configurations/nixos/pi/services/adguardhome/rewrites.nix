@@ -59,9 +59,12 @@ in
       domain = "${hostName}.${domain}";
       answer = labIP;
     }
+    {
+      domain = "vpn.${domain}";
+      answer = labIP;
+    }
     (mkServiceRewrite "dashy.${hostName}" labIP)
     (mkServiceRewrite "glances.${hostName}" labIP)
-    (mkServiceRewrite "vpn.${hostName}" labIP)
   ]
 )
 ++ (
