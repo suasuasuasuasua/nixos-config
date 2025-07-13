@@ -48,6 +48,7 @@ in
                 (mkBookmark "navidrome" "https://navidrome.sua.sh")
                 (mkBookmark "open webui" "https://open-webui.sua.sh")
                 (mkBookmark "paperless" "https://paperless.sua.sh")
+                (mkBookmark "searxng" "https://searxng.sua.sh")
                 (mkBookmark "stirling-pdf" "https://stirling-pdf.sua.sh")
                 (mkBookmark "uptime-kuma" "https://uptime-kuma.sua.sh")
                 (mkBookmark "vaultwarden" "https://vaultwarden.sua.sh")
