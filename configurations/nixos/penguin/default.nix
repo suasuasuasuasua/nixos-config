@@ -7,7 +7,6 @@
 {
   imports = [
     inputs.disko.nixosModules.disko
-    inputs.lix-module.nixosModules.default
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-hidpi
     inputs.nixos-hardware.nixosModules.common-pc-laptop
