@@ -66,7 +66,7 @@ in
 
       # Search engine settings
       search = {
-        safe_search = 2;
+        safe_search = 1;
         autocomplete_min = 2;
         autocomplete = "google";
         ban_time_on_fail = 5;
