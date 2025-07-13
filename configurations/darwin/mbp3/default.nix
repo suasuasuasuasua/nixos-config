@@ -1,6 +1,5 @@
 {
   self,
-  inputs,
   pkgs,
   userConfigs,
   ...
@@ -8,9 +7,6 @@
 {
   # A module that automatically imports everything else in the parent folder.
   imports = [
-    # nix setup
-    inputs.lix-module.nixosModules.default
-
     ./brew.nix
     ./config.nix
     ./home.nix
