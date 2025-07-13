@@ -8,7 +8,7 @@ let
   cfg = config.custom.home.cli.comma;
 in
 {
-  imports = [ inputs.nix-index-database.hmModules.nix-index ];
+  imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
   options.custom.home.cli.comma = {
     enable = lib.mkEnableOption ''
