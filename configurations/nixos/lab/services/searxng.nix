@@ -68,7 +68,7 @@ in
       search = {
         safe_search = 2;
         autocomplete_min = 2;
-        autocomplete = "duckduckgo";
+        autocomplete = "google";
         ban_time_on_fail = 5;
         max_ban_time_on_fail = 120;
       };
