@@ -49,6 +49,7 @@ in
           filelight # disk usage
           haruna # video player
           kate # text editor
+          kdeconnect-kde # connect with devices
           kmail # mail client
           kmail-account-wizard # mail client helper
           krita # photo editing
