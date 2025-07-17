@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   # default = 8080
-  port = 8082;
+  port = 8080;
 in
 {
   services.open-webui = {
