@@ -39,6 +39,9 @@
       # required for functionality
       openFirewall = true;
     };
+    # NOTE: cheat to run binaries like AppFlowy-LAI
+    #       https://github.com/NixOS/nixpkgs/issues/425964
+    nix-ld.enable = true;
   };
 
   custom.nixos = {
