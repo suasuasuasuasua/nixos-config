@@ -3,7 +3,7 @@
   ...
 }:
 let
-  acceleration = null;
+  acceleration = "cuda";
   port = 11434;
 in
 {
