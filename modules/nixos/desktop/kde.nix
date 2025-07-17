@@ -65,5 +65,22 @@ in
         kdevelop # text editor / ide
       ];
     };
+
+    networking.firewall = {
+      # KDE connect ports
+      # https://userbase.kde.org/KDEConnect#Troubleshooting
+      allowedTCPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+    };
   };
 }
