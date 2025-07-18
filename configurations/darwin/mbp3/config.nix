@@ -15,8 +15,8 @@
     };
     systemPackages = with pkgs; [
       appcleaner
-      betterdisplay
       appflowy
+      betterdisplay
       discord
       feishin
       iina
