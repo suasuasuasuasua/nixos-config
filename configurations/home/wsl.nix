@@ -8,7 +8,7 @@ in
     "${inputs.self}/modules/home/cli"
   ];
 
-  home.custom = {
+  custom.home = {
     cli = {
       bat.enable = true; # better cat
       comma.enable = true; # try out programs with `,`
@@ -21,22 +21,22 @@ in
       tmux.enable = true; # terminal multiplexer
       zsh.enable = true;
     };
+  };
 
-    packages =
-      # configure nixvim here!
-      let
-        nixvim = inputs.nixvim-config.packages.${system}.default.extend {
-          config.nixvim = {
-            colorscheme.enable = false;
-            lsp = { };
-            plugins = {
-              custom = {
-                obsidian.enable = false;
-              };
+  home.packages =
+    # configure nixvim here!
+    let
+      nixvim = inputs.nixvim-config.packages.${system}.default.extend {
+        config.nixvim = {
+          colorscheme.enable = false;
+          lsp = { };
+          plugins = {
+            custom = {
+              obsidian.enable = false;
             };
           };
         };
-      in
-      [ nixvim ];
-  };
+      };
+    in
+    [ nixvim ];
 }
