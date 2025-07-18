@@ -28,11 +28,14 @@ in
     let
       nixvim = inputs.nixvim-config.packages.${system}.default.extend {
         config.nixvim = {
-          colorscheme.enable = false;
           lsp = { };
           plugins = {
             custom = {
+              auto-dark-mode.enable = false;
+              img-clip.enable = false;
+              markdown-preview.enable = false;
               obsidian.enable = false;
+              remote-nvim.enable = false;
             };
           };
         };
