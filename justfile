@@ -25,12 +25,12 @@ lint:
 [group('dev')]
 [macos]
 switch:
-    nh darwin switch .
+    nh darwin switch . -- --accept-flake-config
 
 [group('dev')]
 [linux]
 switch:
-    nh os switch .
+    nh os switch . -- --accept-flake-config
 
 # Boot
 [group('dev')]
