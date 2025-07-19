@@ -11,6 +11,7 @@
     ./actual.nix
     ./audiobookshelf.nix
     ./avahi.nix
+    ./bookstack.nix
     ./calibre.nix
     ./fail2ban.nix
     ./firefox-syncserver.nix

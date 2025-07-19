@@ -32,6 +32,7 @@ in
   mkServiceRewrites [
     "actual"
     "audiobookshelf"
+    "bookstack"
     "calibre"
     "firefox-syncserver"
     "gitea"
