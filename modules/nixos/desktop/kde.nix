@@ -56,6 +56,7 @@ in
           kwin # window manager (not sure why not installed by default?)
           merkuro # app suite
           plasma-thunderbolt # thunderbolt panel
+          yakuake # drop down terminal
         ]);
 
       plasma6.excludePackages = with pkgs.kdePackages; [
