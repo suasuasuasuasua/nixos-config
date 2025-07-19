@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   stylix = {
     enable = true;
@@ -28,6 +28,13 @@
       emoji = {
         package = pkgs.noto-fonts-emoji;
         name = "Noto Color Emoji";
+      };
+    };
+
+    targets = {
+      qt = {
+        enable = true;
+        platform = lib.mkForce "qtct";
       };
     };
   };
