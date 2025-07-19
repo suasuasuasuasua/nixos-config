@@ -26,7 +26,6 @@ in
           zsh.enable = true;
         };
         gui = {
-          alacritty.enable = true;
           firefox.enable = true;
           spotify.enable = true;
         };
