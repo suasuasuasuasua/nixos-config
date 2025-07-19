@@ -13,6 +13,7 @@
   environment = {
     systemPackages = with pkgs; [
       appflowy
+      drawio
       obsidian
     ];
 
