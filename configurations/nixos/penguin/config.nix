@@ -14,6 +14,7 @@
     systemPackages = with pkgs; [
       appflowy
       drawio
+      feishin
       obsidian
     ];
 
