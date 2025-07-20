@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   # For every flake input, aliases 'pkgs.inputs.${flake}' to
   # 'inputs.${flake}.packages.${pkgs.system}' or
@@ -30,4 +30,18 @@
 
   # more vscode extenions!
   vscode-extensions = inputs.nix-vscode-extensions.overlays.default;
+
+  # patches
+  nixpkgs-open-webui = final: _: {
+    # https://github.com/NixOS/nixpkgs/pull/425382
+    nixpkgs-open-webui = import inputs.nixpkgs-open-webui {
+      inherit (final) system;
+
+      config.allowUnfreePredicate =
+        pkg:
+        builtins.elem (lib.getName pkg) [
+          "open-webui"
+        ];
+    };
+  };
 }

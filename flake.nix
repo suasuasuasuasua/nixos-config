@@ -51,6 +51,9 @@
     systems.url = "github:nix-systems/default";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
+
+    # patches
+    nixpkgs-open-webui.url = "github:NixOS/nixpkgs/e63467437ce61d8d9a36e09254e8d07b472da0c6";
   };
 
   outputs =
@@ -203,7 +206,7 @@
     {
       inherit lib;
 
-      overlays = import ./overlays { inherit inputs; };
+      overlays = import ./overlays { inherit inputs lib; };
       formatter = forEachSystem (
         pkgs: treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.wrapper
       );
