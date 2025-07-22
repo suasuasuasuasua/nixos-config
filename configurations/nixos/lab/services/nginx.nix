@@ -26,29 +26,29 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations = {
-        "/" = {
+        "/blog" = {
+          root = "/var/www/";
+          extraConfig = fileServeConfig;
+        };
+        "/ip" = {
+          # expose the ip address of the machine
           return = ''
-            200 '<html><body>Hello World!</body></html>'
+            200 '{"host":"$server_name","ip":"$remote_addr","port":"$remote_port","server_ip":"$server_addr","server_port":"$server_port"}\n'
           '';
           extraConfig = ''
-            add_header Content-Type text/html;
+            add_header Content-Type "application/json";
           '';
         };
         "/iso" = {
           root = "/zshare/srv/";
           extraConfig = fileServeConfig;
         };
-        "/blog" = {
-          root = "/var/www/";
-          extraConfig = fileServeConfig;
-        };
-        # expose the ip address of the machine
-        "/ip" = {
+        "/" = {
           return = ''
-            200 '{"host":"$server_name","ip":"$remote_addr","port":"$remote_port","server_ip":"$server_addr","server_port":"$server_port"}\n'
+            200 '<html><body>Hello World!</body></html>'
           '';
           extraConfig = ''
-            add_header Content-Type "application/json";
+            add_header Content-Type text/html;
           '';
         };
       };
