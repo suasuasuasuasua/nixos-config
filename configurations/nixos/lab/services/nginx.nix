@@ -2,6 +2,15 @@
 { config, ... }:
 let
   inherit (config.networking) domain;
+
+  fileServeConfig = ''
+    autoindex on;
+    sendfile on;
+    sendfile_max_chunk 1m;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+  '';
 in
 {
   services.nginx = {
@@ -27,25 +36,11 @@ in
         };
         "/iso" = {
           root = "/zshare/srv/";
-          extraConfig = ''
-            autoindex on;
-            sendfile on;
-            sendfile_max_chunk 1m;
-            tcp_nopush on;
-            tcp_nodelay on;
-            keepalive_timeout 65;
-          '';
+          extraConfig = fileServeConfig;
         };
         "/blog" = {
           root = "/var/www/";
-          extraConfig = ''
-            autoindex on;
-            sendfile on;
-            sendfile_max_chunk 1m;
-            tcp_nopush on;
-            tcp_nodelay on;
-            keepalive_timeout 65;
-          '';
+          extraConfig = fileServeConfig;
         };
         # expose the ip address of the machine
         "/ip" = {
