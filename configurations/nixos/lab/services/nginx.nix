@@ -31,7 +31,6 @@ in
             autoindex on;
             sendfile on;
             sendfile_max_chunk 1m;
-            sendfile on;
             tcp_nopush on;
             tcp_nodelay on;
             keepalive_timeout 65;
@@ -43,7 +42,6 @@ in
             autoindex on;
             sendfile on;
             sendfile_max_chunk 1m;
-            sendfile on;
             tcp_nopush on;
             tcp_nodelay on;
             keepalive_timeout 65;
