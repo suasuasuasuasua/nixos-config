@@ -2,6 +2,7 @@
   # toggle the relevant services from here
   imports = [
     ./dashy
+    ./nginx
     ./samba
     ./syncthing
     ./wireguard
@@ -24,7 +25,6 @@
     ./mealie.nix
     ./miniflux.nix
     ./navidrome.nix
-    ./nginx.nix
     ./ollama.nix
     ./open-webui.nix
     ./paperless.nix
