@@ -19,13 +19,36 @@ in
       locations = {
         "/" = {
           return = ''
-            200 '<html><body>Hello World</body></html>'
+            200 '<html><body>Hello World!</body></html>'
           '';
           extraConfig = ''
             add_header Content-Type text/html;
           '';
         };
-
+        "/iso" = {
+          root = "/zshare/srv/";
+          extraConfig = ''
+            autoindex on;
+            sendfile on;
+            sendfile_max_chunk 1m;
+            sendfile on;
+            tcp_nopush on;
+            tcp_nodelay on;
+            keepalive_timeout 65;
+          '';
+        };
+        "/blog" = {
+          root = "/var/www/";
+          extraConfig = ''
+            autoindex on;
+            sendfile on;
+            sendfile_max_chunk 1m;
+            sendfile on;
+            tcp_nopush on;
+            tcp_nodelay on;
+            keepalive_timeout 65;
+          '';
+        };
         # expose the ip address of the machine
         "/ip" = {
           return = ''
@@ -38,4 +61,6 @@ in
       };
     };
   };
+
+  users.users.nginx.extraGroups = [ "samba" ];
 }
