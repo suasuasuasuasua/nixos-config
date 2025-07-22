@@ -50,6 +50,7 @@ in
           haruna # video player
           kate # text editor
           kdeconnect-kde # connect with devices
+          kgpg # gnupg client
           kmail # mail client
           kmail-account-wizard # mail client helper
           krita # photo editing
