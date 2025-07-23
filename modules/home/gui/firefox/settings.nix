@@ -28,6 +28,7 @@
   "extensions.pocket.oAuthConsumerKey" = "";
   "extensions.pocket.showHome" = false;
   "extensions.pocket.site" = "";
+  "extensions.webextensions.restrictedDomains" = "";
   "identity.sync.tokenserver.uri" = "https://firefox-syncserver.sua.sh/1.0/sync/1.5";
   "network.allow-experiments" = false;
   "privacy.clearHistory.formdata" = true;
