@@ -13,6 +13,7 @@ in
       custom.home = {
         cli = {
           bat.enable = true;
+          btop.enable = true; # system monitor
           comma.enable = true;
           devenv.enable = true;
           direnv.enable = true;
