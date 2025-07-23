@@ -158,7 +158,9 @@ in
         nixos-wiki = {
           name = "NixOS Wiki";
           urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
-          iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
+          # NOTE: fetch url is a bit laggy sometimes
+          # iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
           definedAliases = [
             "@nixos-wiki"
             "@nw"
@@ -167,6 +169,7 @@ in
         searxng = {
           name = "SearXNG";
           urls = [ { template = "https://searxng.sua.sh/search?q={searchTerms}"; } ];
+          iconMapObj."16" = "https://searxng.sua.sh/favicon.ico";
           definedAliases = [
             "@searxng"
             "@sx"
