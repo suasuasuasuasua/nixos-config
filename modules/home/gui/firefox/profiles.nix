@@ -107,6 +107,8 @@ in
       default = "ddg"; # duckduckgo
       privateDefault = "ddg"; # duckduckgo
       engines = {
+        bing.metaData.hidden = true;
+        google.metaData.alias = "@g"; # builtin engines only support specifying one additional alias
         nix-packages = {
           name = "Nix Packages";
           urls = [
@@ -125,20 +127,58 @@ in
             }
           ];
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ "@np" ];
+          definedAliases = [
+            "@nix-packages"
+            "@np"
+          ];
+        };
+        nix-options = {
+          name = "Nix Options";
+          urls = [
+            {
+              template = "https://search.nixos.org/options";
+              params = [
+                {
+                  name = "type";
+                  value = "packages";
+                }
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = [
+            "@nix-options"
+            "@no"
+          ];
         };
         nixos-wiki = {
           name = "NixOS Wiki";
           urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
           iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
-          definedAliases = [ "@nw" ];
+          definedAliases = [
+            "@nixos-wiki"
+            "@nw"
+          ];
         };
-        bing.metaData.hidden = true;
-        wikipedia.metaData.hidden = true;
+        searxng = {
+          name = "SearXNG";
+          urls = [ { template = "https://searxng.sua.sh/search?q={searchTerms}"; } ];
+          definedAliases = [
+            "@searxng"
+            "@sx"
+          ];
+        };
+        wikipedia.metaData.alias = "@w"; # builtin engines only support specifying one additional alias
       };
       order = [
-        "ddg"
-        "google"
+        "@ddg" # duckduckgo
+        "@sx" # searxng
+        "@g" # google
+        "@w" # wikipedia
       ];
     };
   };
