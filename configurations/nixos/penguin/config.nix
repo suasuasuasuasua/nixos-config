@@ -15,6 +15,8 @@
       appflowy
       drawio
       feishin
+      joplin
+      joplin-desktop
       obsidian
     ];
 
