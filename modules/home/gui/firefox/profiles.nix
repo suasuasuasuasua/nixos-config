@@ -39,6 +39,7 @@ in
                 (mkBookmark "gitea" "https://gitea.sua.sh")
                 (mkBookmark "glances (lab)" "https://glances.lab.sua.sh")
                 (mkBookmark "glances (pi)" "https://glances.pi.sua.sh")
+                (mkBookmark "home-assistant" "https://home-assistant.sua.sh")
                 (mkBookmark "hydra" "https://hydra.sua.sh")
                 (mkBookmark "immich" "https://immich.sua.sh")
                 (mkBookmark "jellyfin" "https://jellyfin.sua.sh")
