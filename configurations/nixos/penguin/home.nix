@@ -30,6 +30,7 @@ in
           firefox.enable = true;
           obs.enable = true;
           spotify.enable = true;
+          zed.enable = true;
         };
       };
       home.packages =
