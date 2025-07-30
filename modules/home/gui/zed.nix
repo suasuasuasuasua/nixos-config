@@ -22,7 +22,32 @@ in
       # keymaps
       userKeymaps = { };
       # settings
-      userSettings = { };
+      # https://zed.dev/docs/configuring-zed
+      userSettings = {
+        "collaboration_panel" = {
+          "button" = false;
+        };
+        "disable_ai" = true;
+        "features" = {
+          "edit_prediction_provider" = "none";
+        };
+        "outline_panel" = {
+          "button" = false;
+        };
+        "preferred_line_length" = 80;
+        "show_completions_on_input" = false;
+        "soft_wrap" = "none";
+        "tab_size" = 2;
+        "title_bar" = {
+          "show_sign_in" = false;
+          "show_onboarding_banner" = false;
+          "show_user_picture" = false;
+        };
+        "wrap_guides" = [
+          80
+          81
+        ];
+      };
       # # TODO: add user tasks when unstable hits
       # userTasks = { };
     };
