@@ -63,7 +63,7 @@ in
         "preferred_line_length" = 80;
         "show_completions_on_input" = false;
         "soft_wrap" = "none";
-        "tab_size" = 2;
+        "tab_size" = 4;
         "telemetry" = {
           "diagnostics" = false;
           "metrics" = false;
