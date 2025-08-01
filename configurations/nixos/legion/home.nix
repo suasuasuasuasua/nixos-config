@@ -42,6 +42,7 @@ in
               maximal.enable = true;
             };
           };
+          zed.enable = true;
         };
       };
       home.packages =
