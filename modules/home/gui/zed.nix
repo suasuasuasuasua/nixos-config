@@ -35,6 +35,10 @@ in
         "show_completions_on_input" = false;
         "soft_wrap" = "none";
         "tab_size" = 2;
+        "telemetry" = {
+          "diagnostics" = false;
+          "metrics" = false;
+        };
         "title_bar" = {
           "show_sign_in" = false;
           "show_onboarding_banner" = false;
