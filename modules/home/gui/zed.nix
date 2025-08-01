@@ -48,6 +48,17 @@ in
         "features" = {
           "edit_prediction_provider" = "none";
         };
+        "lsp" = {
+          "nil" = {
+            "initialization_options" = {
+              "formatting"."command" = [
+                "nixfmt"
+                "--quiet"
+                "--"
+              ];
+            };
+          };
+        };
         "preferred_line_length" = 80;
         "show_completions_on_input" = false;
         "soft_wrap" = "none";
