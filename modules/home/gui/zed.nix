@@ -74,6 +74,9 @@ in
           "show_user_picture" = false;
         };
         "vim_mode" = true;
+        "vim" = {
+          "use_system_clipboard" = "never";
+        };
         "wrap_guides" = [
           80
           81
