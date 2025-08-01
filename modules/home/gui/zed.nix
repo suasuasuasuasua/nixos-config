@@ -20,9 +20,26 @@ in
       # https://github.com/zed-industries/extensions/tree/main/extensions
       extensions = [ "nix" ];
       # keymaps
-      userKeymaps = { };
-      # settings
-      # https://zed.dev/docs/configuring-zed
+      userKeymaps = [
+        {
+          "context" = "vim_mode == insert";
+          "bindings" = {
+            "j k" = "vim::NormalBefore";
+            "J k" = "vim::NormalBefore";
+            "j K" = "vim::NormalBefore";
+            "J K" = "vim::NormalBefore";
+          };
+        }
+        {
+          "context" = "Dock";
+          "bindings" = {
+            "ctrl-w h" = "workspace::ActivatePaneLeft";
+            "ctrl-w l" = "workspace::ActivatePaneRight";
+            "ctrl-w k" = "workspace::ActivatePaneUp";
+            "ctrl-w j" = "workspace::ActivatePaneDown";
+          };
+        }
+      ];
       userSettings = {
         "collaboration_panel" = {
           "button" = false;
