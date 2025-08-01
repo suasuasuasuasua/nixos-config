@@ -53,6 +53,7 @@ in
               # "editor.fontSize" = 13;
             };
           };
+          zed.enable = true;
         };
       };
       home.packages =
