@@ -80,6 +80,9 @@ lib.mkOption {
     "window.commandCenter" = false;
     "window.newWindowProfile" = "Default";
     "window.titleBarStyle" = "custom";
+    "workbench.colorTheme" = "Stylix"; # use the stylix theme
+    "workbench.preferredDarkColorTheme" = "Stylix";
+    "workbench.preferredLightColorTheme" = "Stylix";
     "workbench.layoutControl.enabled" = false;
     "workbench.reduceMotion" = "on";
     "workbench.startupEditor" = "none";
