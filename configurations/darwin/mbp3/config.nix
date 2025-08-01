@@ -17,7 +17,7 @@
       appcleaner
       appflowy
       betterdisplay
-      bitwarden-cli
+      # bitwarden-cli # TODO: broken on darwin
       bitwarden-desktop
       discord
       feishin
