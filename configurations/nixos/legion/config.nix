@@ -45,7 +45,8 @@
   };
 
   custom.nixos = {
-    desktop.kde.enable = true;
+    # desktop.kde.enable = true;
+    desktop.gnome.enable = true;
     development = {
       cli.enable = true;
       nh.enable = true;
