@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -11,10 +12,16 @@ in
     enable = lib.mkEnableOption ''
       Monitor of resources
     '';
+    package = lib.mkOption {
+      type = lib.types.package;
+      default = pkgs.btop;
+    };
   };
 
   config = lib.mkIf cfg.enable {
     programs.btop = {
+      inherit (cfg) package;
+
       enable = true;
       # https://github.com/aristocratos/btop#configurability
       settings = {

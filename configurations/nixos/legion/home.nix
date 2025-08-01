@@ -13,7 +13,10 @@ in
       custom.home = {
         cli = {
           bat.enable = true;
-          btop.enable = true; # system monitor
+          btop = {
+            enable = true; # system monitor
+            package = pkgs.btop-cuda;
+          };
           comma.enable = true;
           devenv.enable = true;
           direnv.enable = true;
