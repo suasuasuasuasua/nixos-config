@@ -18,7 +18,7 @@ in
       installRemoteServer = false;
       # a list of strings for the extensions
       # https://github.com/zed-industries/extensions/tree/main/extensions
-      extensions = [ ];
+      extensions = [ "nix" ];
       # keymaps
       userKeymaps = { };
       # settings
