@@ -61,7 +61,6 @@
       "adguard" # ad blocker
       "balenaetcher" # iso writer (*)
       "docker" # container runner and manager
-      "element" # chat
       "kdenlive" # linear video editor
       "logi-options+" # logitech peripherals
       "obs" # studio recorder
