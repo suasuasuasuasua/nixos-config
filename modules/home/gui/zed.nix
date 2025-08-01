@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -39,6 +40,13 @@ in
             "ctrl-w j" = "workspace::ActivatePaneDown";
           };
         }
+        (lib.optionalAttrs pkgs.stdenv.isLinux {
+          "context" = "Editor && !menu";
+          "bindings" = {
+            "ctrl-b" = "workspace::ToggleLeftDock"; # vim default: page up
+            "ctrl-f" = "buffer_search::Deploy"; # vim default: page down
+          };
+        })
       ];
       userSettings = {
         "collaboration_panel" = {
