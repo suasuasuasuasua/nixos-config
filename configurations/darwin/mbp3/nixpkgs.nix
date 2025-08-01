@@ -10,6 +10,7 @@
         "betterttv"
         "discord"
         "obsidian"
+        "shottr"
         "spotify"
       ]
       ++ [

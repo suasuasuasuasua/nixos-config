@@ -22,6 +22,7 @@
       iina
       iterm2
       obsidian
+      shottr
       utm
     ];
   };

@@ -69,7 +69,6 @@
       "proton-mail-bridge"
       "raspberry-pi-imager" # imager for pi
       "scroll-reverser" # mouse util
-      "shottr" # screenshot tool
     ];
 
     masApps = {
