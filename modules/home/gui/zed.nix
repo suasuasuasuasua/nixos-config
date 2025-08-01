@@ -44,6 +44,7 @@ in
           "show_onboarding_banner" = false;
           "show_user_picture" = false;
         };
+        "vim_mode" = true;
         "wrap_guides" = [
           80
           81
