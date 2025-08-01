@@ -74,7 +74,6 @@
       amazon-kindle = 302584613; # kindle client
       amphetamine = 937984704; # powerful keep-awake utility
       audible-audio-entertainment = 379693831; # audible client
-      bitwarden = 1352778147; # password manager
       dark-reader-for-safari = 1438243180; # dark mode for safari
       flow-focus-pomodoro-timer = 1423210932; # pomodoro timer
       imovie = 408981434; # apple movie editor and maker

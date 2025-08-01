@@ -17,6 +17,8 @@
       appcleaner
       appflowy
       betterdisplay
+      bitwarden-cli
+      bitwarden-desktop
       discord
       feishin
       hidden-bar
