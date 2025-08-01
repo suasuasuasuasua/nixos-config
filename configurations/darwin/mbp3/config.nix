@@ -19,6 +19,7 @@
       betterdisplay
       discord
       feishin
+      hidden-bar
       iina
       iterm2
       obsidian

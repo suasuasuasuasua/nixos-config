@@ -77,7 +77,6 @@
       bitwarden = 1352778147; # password manager
       dark-reader-for-safari = 1438243180; # dark mode for safari
       flow-focus-pomodoro-timer = 1423210932; # pomodoro timer
-      hidden-bar = 1452453066; # macOS menubar organizer
       imovie = 408981434; # apple movie editor and maker
       keynote = 409183694; # apple presentation suite
       magnet = 441258766; # macOS workspace organizer
