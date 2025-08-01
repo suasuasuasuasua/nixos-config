@@ -14,8 +14,8 @@ in
 
   config = lib.mkIf cfg.enable {
     services = {
+      # TODO: 25.11 xserver will no longer be an option
       xserver = {
-        enable = true;
         desktopManager.gnome.enable = true;
         displayManager.gdm = {
           enable = true;
@@ -23,7 +23,7 @@ in
         };
       };
 
-      gnome.core-utilities.enable = true;
+      gnome.core-apps.enable = true;
       udev.packages = with pkgs; [
         gnome-settings-daemon
       ];
