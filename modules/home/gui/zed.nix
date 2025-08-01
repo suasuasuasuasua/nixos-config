@@ -48,6 +48,7 @@ in
         "features" = {
           "edit_prediction_provider" = "none";
         };
+        "load_direnv" = "shell_hook";
         "lsp" = {
           "nil" = {
             "initialization_options" = {
