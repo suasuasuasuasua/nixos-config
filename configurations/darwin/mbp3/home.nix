@@ -31,7 +31,6 @@ in
           zsh.enable = true; # preferred shell
         };
         gui = {
-          alacritty.enable = true; # terminal emulator
           firefox.enable = true; # browser
           spotify.enable = true; # music platform
           vscode = {
