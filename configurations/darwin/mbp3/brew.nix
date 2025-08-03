@@ -60,7 +60,7 @@
     casks = [
       "adguard" # ad blocker
       "balenaetcher" # iso writer (*)
-      "docker" # container runner and manager
+      "docker-desktop" # container runner and manager
       "kdenlive" # linear video editor
       "logi-options+" # logitech peripherals
       "obs" # studio recorder
