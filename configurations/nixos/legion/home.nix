@@ -54,6 +54,7 @@ in
               plugins = {
                 custom = {
                   obsidian.enable = false;
+                  grug-far.enable = true;
                 };
               };
             };
