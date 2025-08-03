@@ -36,6 +36,13 @@ in
       home.packages =
         let
           nixvim = inputs.nixvim-config.packages.${system}.default.extend {
+            config.plugins.obsidian = {
+              package = pkgs.unstable.vimPlugins.obsidian-nvim;
+              settings = {
+                legacy_commands = false;
+              };
+            };
+
             config.nixvim = {
               lsp = {
                 languages = {
