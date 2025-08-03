@@ -53,8 +53,16 @@ in
               lsp = { };
               plugins = {
                 custom = {
-                  obsidian.enable = false;
                   grug-far.enable = true;
+                  obsidian = {
+                    enable = true;
+                    workspaces = [
+                      {
+                        name = "personal";
+                        path = "/home/justinhoang/Documents/vaults/personal";
+                      }
+                    ];
+                  };
                 };
               };
             };
