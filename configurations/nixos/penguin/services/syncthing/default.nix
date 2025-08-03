@@ -27,13 +27,6 @@ in
     overrideFolders = true;
   };
 
-  users.users.syncthing = {
-    isSystemUser = true;
-    group = "syncthing";
-    extraGroups = [ "samba" ];
-  };
-  users.groups.syncthing = { };
-
   # https://wiki.nixos.org/wiki/Syncthing#Disable_default_sync_folder
   # don't create the default folder
   systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
