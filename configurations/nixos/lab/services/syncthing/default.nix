@@ -10,6 +10,10 @@ in
     inherit settings;
 
     enable = true;
+    user = "justinhoang";
+    group = "samba";
+    dataDir = "/zshare/personal/notes/";
+    configDir = "/zshare/personal/notes/.config/syncthing";
 
     # 0.0.0.0 for debugging from web gui
     guiAddress = "127.0.0.1:${toString port}";
@@ -17,13 +21,6 @@ in
     overrideDevices = true;
     overrideFolders = true;
   };
-
-  users.users.syncthing = {
-    isSystemUser = true;
-    group = "syncthing";
-    extraGroups = [ "samba" ];
-  };
-  users.groups.syncthing = { };
 
   # https://wiki.nixos.org/wiki/Syncthing#Disable_default_sync_folder
   # don't create the default folder
