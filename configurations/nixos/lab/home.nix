@@ -48,7 +48,11 @@ in
                     workspaces = [
                       {
                         name = "personal";
-                        path = "/home/justinhoang/Documents/vaults/personal";
+                        path = "/zshare/personal/notes/personal";
+                      }
+                      {
+                        name = "productivity";
+                        path = "/zshare/personal/notes/productivity";
                       }
                     ];
                   };
