@@ -83,6 +83,10 @@ in
                         name = "personal";
                         path = "/Users/justinhoang/Documents/vaults/personal";
                       }
+                      {
+                        name = "productivity";
+                        path = "/Users/justinhoang/Documents/vaults/productivity";
+                      }
                     ];
                   };
                   ollama = {
