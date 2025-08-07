@@ -83,7 +83,6 @@
       notability-smarter-ai-notes = 360593530; # note taking app
       numbers = 409203825; # apple spreadsheet application
       pages = 409201541; # apple word processing application
-      tot = 1491071483; # daily note and task tracker
       wireguard = 1451685025; # VPN
       xcode = 497799835; # macOS, iOS, etc. IDE
     };
