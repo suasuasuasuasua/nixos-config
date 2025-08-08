@@ -20,6 +20,7 @@ in
       fastfetch # system information tool
       just # save command line configs
       lshw # show information on the hardware configuration of the machine
+      manix # cli tool for nix packages
       nix-output-monitor # processes output of nix commands to show information
       onefetch # git repository summary on your terminal
       python3
