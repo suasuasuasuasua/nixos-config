@@ -26,6 +26,7 @@ in
       python3
       speedtest-cli # cli for testing internet bandwidth using speedtest.net
       tea # gitea cli tool
+      tree
       unzip # extraction utility for archives compressed in .zip format
       wget # tool for retrieving files using http, https, and ftp
       wl-clipboard # command-line copy/paste utilities for wayland
