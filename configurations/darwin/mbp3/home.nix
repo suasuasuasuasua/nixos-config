@@ -28,6 +28,7 @@ in
           github.enable = true; # github cli integration
           gnupg.enable = true; # gpg key signing
           tmux.enable = true; # terminal multiplexer
+          zellij.enable = true;
           zsh.enable = true; # preferred shell
         };
         gui = {
