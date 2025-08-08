@@ -929,11 +929,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1754623710,
-        "narHash": "sha256-jmkvDCB8u6q3BgYs0X4edHrPelvtI88DO4+JQxq0i6A=",
+        "lastModified": 1754674386,
+        "narHash": "sha256-P0wKk6K9jErPkKmaRxUfTtpf20rx/Yi98xtAGodVn+I=",
         "owner": "suasuasuasuasua",
         "repo": "nixvim",
-        "rev": "2b86bf48ff1f078644760a47ba3f895711582062",
+        "rev": "da6041acdf59528dd14a59ac919709a17f9020c4",
         "type": "github"
       },
       "original": {
