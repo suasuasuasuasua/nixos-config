@@ -23,6 +23,7 @@ in
         ll = "ls -l";
         c = "clear";
         lg = "lazygit";
+        lc = "nvim leetcode.nvim";
       };
       history = {
         size = 10000;
