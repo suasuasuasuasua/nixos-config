@@ -76,6 +76,7 @@ in
               };
               plugins = {
                 custom = {
+                  leetcode.enable = true;
                   obsidian = {
                     enable = true;
                     workspaces = [
