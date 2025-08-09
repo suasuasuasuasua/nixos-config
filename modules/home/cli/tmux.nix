@@ -60,6 +60,7 @@ in
           set -g default-shell "$SHELL"
 
           bind '"' split-window -c "#{pane_current_path}"
+          bind '%' split-window -h -c "#{pane_current_path}"
           set-option -g renumber-windows on
 
           # vim-like copy and pasting
