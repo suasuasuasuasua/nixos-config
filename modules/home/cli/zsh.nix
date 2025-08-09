@@ -38,7 +38,6 @@ in
           "git"
           "sudo"
         ];
-        theme = "frisk";
       };
       plugins = with pkgs; [
         {
