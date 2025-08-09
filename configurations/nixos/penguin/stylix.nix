@@ -23,6 +23,10 @@
         # name = "JetBrainsMono Nerd Font";
       };
 
+      # prefer dark theme
+      # one of either, light, dark
+      polarity = "dark";
+
       emoji = {
         package = pkgs.noto-fonts-emoji;
         name = "Noto Color Emoji";

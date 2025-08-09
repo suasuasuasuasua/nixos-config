@@ -31,6 +31,10 @@
       };
     };
 
+    # prefer dark theme
+    # one of either, light, dark
+    polarity = "dark";
+
     targets = {
       qt = {
         enable = true;
