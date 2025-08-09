@@ -68,6 +68,10 @@ in
                         name = "personal";
                         path = "/home/justinhoang/Documents/vaults/personal";
                       }
+                      {
+                        name = "productivity";
+                        path = "/home/justinhoang/Documents/vaults/productivity";
+                      }
                     ];
                   };
                 };
