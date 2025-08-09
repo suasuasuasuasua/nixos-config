@@ -59,6 +59,7 @@ in
           set -gu default-command
           set -g default-shell "$SHELL"
 
+          bind 'c' new-window -c "#{pane_current_path}"
           bind '"' split-window -c "#{pane_current_path}"
           bind '%' split-window -h -c "#{pane_current_path}"
           set-option -g renumber-windows on
