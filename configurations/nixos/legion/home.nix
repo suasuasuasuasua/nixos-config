@@ -12,6 +12,7 @@ in
 
       custom.home = {
         cli = {
+          atuin.enable = true;
           bat.enable = true;
           btop = {
             enable = true; # system monitor

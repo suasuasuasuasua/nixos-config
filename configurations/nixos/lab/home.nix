@@ -12,6 +12,7 @@ in
 
       custom.home = {
         cli = {
+          atuin.enable = true;
           bat.enable = true;
           btop.enable = true; # system monitor
           comma.enable = true;
@@ -21,6 +22,7 @@ in
           git.enable = true;
           github.enable = true;
           gnupg.enable = true;
+          starship.enable = true;
           tmux.enable = true;
           zsh.enable = true;
         };
