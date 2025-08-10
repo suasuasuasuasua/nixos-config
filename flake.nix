@@ -184,6 +184,7 @@
               stylix.homeModules.stylix
 
               ./configurations/home/base.nix
+              ./configurations/home/nixpkgs.nix
               ./configurations/home/stylix.nix
               ./configurations/home/${name}.nix
             ];
@@ -264,6 +265,11 @@
       );
       homeConfigurations = lib.mergeAttrsList (
         map mkHomeConfiguration [
+          {
+            name = "penguin";
+            system = "x86_64-linux";
+            userConfig = users.justinhoang;
+          }
           {
             name = "wsl";
             system = "x86_64-linux";
