@@ -28,5 +28,9 @@
         name = "Noto Color Emoji";
       };
     };
+
+    # prefer dark theme
+    # one of either, light, dark
+    polarity = "dark";
   };
 }
