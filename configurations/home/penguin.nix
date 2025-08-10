@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (pkgs.stdenv.hostPlatform) system;
 in
@@ -75,6 +80,13 @@ in
       };
     in
     [ nixvim ];
+
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "betterttv"
+      "spotify"
+    ];
 
   stylix.targets = {
     firefox = {
