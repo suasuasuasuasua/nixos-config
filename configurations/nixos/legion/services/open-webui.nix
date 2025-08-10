@@ -8,9 +8,7 @@ in
     # Enable the web interface
     inherit port;
 
-    # TODO: remove a patched version when stable hits
-    #   https://github.com/NixOS/nixpkgs/pull/425382
-    package = pkgs.nixpkgs-open-webui.open-webui;
+    package = pkgs.unstable.open-webui;
 
     enable = true;
     host = "127.0.0.1";

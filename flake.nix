@@ -51,9 +51,6 @@
     systems.url = "github:nix-systems/default";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
-
-    # patches
-    nixpkgs-open-webui.url = "github:NixOS/nixpkgs/e63467437ce61d8d9a36e09254e8d07b472da0c6";
   };
 
   outputs =
@@ -124,15 +121,14 @@
         }:
         {
           ${name} = lib.nixosSystem {
-            modules =
-              [
-                ./configurations/nixos/${name}
-                stylix.nixosModules.stylix
-              ]
-              ++ lib.optionals enableHomeManager [
-                home-manager.nixosModules.home-manager
-                (mkHomeManagerConfig system userConfigs)
-              ];
+            modules = [
+              ./configurations/nixos/${name}
+              stylix.nixosModules.stylix
+            ]
+            ++ lib.optionals enableHomeManager [
+              home-manager.nixosModules.home-manager
+              (mkHomeManagerConfig system userConfigs)
+            ];
             # Pass these arguments through the modules
             specialArgs = {
               inherit inputs outputs userConfigs;
@@ -150,15 +146,14 @@
         }:
         {
           ${name} = lib.darwinSystem {
-            modules =
-              [
-                ./configurations/darwin/${name}
-                stylix.darwinModules.stylix
-              ]
-              ++ lib.optionals enableHomeManager [
-                home-manager.darwinModules.home-manager
-                (mkHomeManagerConfig system userConfigs)
-              ];
+            modules = [
+              ./configurations/darwin/${name}
+              stylix.darwinModules.stylix
+            ]
+            ++ lib.optionals enableHomeManager [
+              home-manager.darwinModules.home-manager
+              (mkHomeManagerConfig system userConfigs)
+            ];
             # Pass these arguments through the modules
             specialArgs = {
               inherit
