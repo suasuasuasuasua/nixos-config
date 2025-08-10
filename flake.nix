@@ -236,11 +236,6 @@
             userConfigs = [ users.justinhoang ];
           }
           {
-            name = "penguin";
-            system = "x86_64-linux";
-            userConfigs = [ users.justinhoang ];
-          }
-          {
             name = "optiplex";
             system = "x86_64-linux";
             userConfigs = [ users.admin ];
