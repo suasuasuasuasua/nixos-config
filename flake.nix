@@ -181,7 +181,10 @@
           ${name} = lib.homeManagerConfiguration {
             inherit pkgs;
             modules = [
+              stylix.homeModules.stylix
+
               ./configurations/home/base.nix
+              ./configurations/home/stylix.nix
               ./configurations/home/${name}.nix
             ];
             extraSpecialArgs = {

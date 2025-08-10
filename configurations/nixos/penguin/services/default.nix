@@ -1,7 +1,0 @@
-{
-  imports = [
-    ./syncthing
-
-    ./avahi.nix
-  ];
-}
