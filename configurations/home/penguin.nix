@@ -13,6 +13,9 @@ in
     "${inputs.self}/modules/home/gui"
   ];
 
+  # running debian 13!
+  targets.genericLinux.enable = true;
+
   custom.home = {
     cli = {
       bat.enable = true; # better cat
