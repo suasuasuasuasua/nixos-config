@@ -35,51 +35,46 @@ in
       zed.enable = true;
     };
   };
-  home.packages =
-    let
-      nixvim = inputs.nixvim-config.packages.${system}.default.extend {
-        config.plugins.obsidian = {
-          package = pkgs.unstable.vimPlugins.obsidian-nvim;
-          settings = {
-            legacy_commands = false;
-          };
-        };
 
-        config.nixvim = {
-          lsp = {
-            languages = {
-              bashls.enable = false;
-              jsonls.enable = false;
-              just.enable = false;
-              nil_ls.enable = false;
-              nixd.enable = false;
-              pyright.enable = false;
-              tinymist.enable = false;
+  home = {
+    sessionVariables = {
+      "EDITOR" = "nvim";
+    };
+    packages =
+      let
+        nixvim = inputs.nixvim-config.packages.${system}.default.extend {
+          config.plugins.obsidian = {
+            package = pkgs.unstable.vimPlugins.obsidian-nvim;
+            settings = {
+              legacy_commands = false;
             };
           };
-          plugins = {
-            custom = {
-              obsidian = {
-                enable = true;
-                workspaces = [
-                  {
-                    name = "personal";
-                    path = "/home/justinhoang/Documents/vaults/personal";
-                  }
-                  {
-                    name = "productivity";
-                    path = "/home/justinhoang/Documents/vaults/productivity";
-                  }
-                ];
+
+          config.nixvim = {
+            lsp = { };
+            plugins = {
+              custom = {
+                obsidian = {
+                  enable = true;
+                  workspaces = [
+                    {
+                      name = "personal";
+                      path = "/home/justinhoang/Documents/vaults/personal";
+                    }
+                    {
+                      name = "productivity";
+                      path = "/home/justinhoang/Documents/vaults/productivity";
+                    }
+                  ];
+                };
               };
-              schemastore.enable = false;
-              typst.enable = false;
             };
           };
         };
-      };
-    in
-    [ nixvim ];
+      in
+      [ nixvim ];
+
+  };
 
   nixpkgs.config.allowUnfreePredicate =
     pkg:
