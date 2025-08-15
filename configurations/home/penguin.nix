@@ -89,6 +89,7 @@ in
     ];
 
   stylix.targets = {
+    qt.enable = false;
     firefox = {
       enable = true;
       colorTheme.enable = true;
