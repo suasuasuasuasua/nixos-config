@@ -10,10 +10,16 @@ in
 {
   options.custom.home.gui.zed = {
     enable = lib.mkEnableOption "zed";
+    package = lib.mkOption {
+      type = lib.types.package;
+      default = pkgs.zed-editor;
+    };
   };
 
   config = lib.mkIf cfg.enable {
     programs.zed-editor = {
+      inherit (cfg) package;
+
       enable = true;
       # the remote collaboration integration
       installRemoteServer = false;
