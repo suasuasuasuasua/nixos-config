@@ -32,12 +32,13 @@ in
       tmux.enable = true; # terminal multiplexer
       zsh.enable = true;
     };
-    # NOTE: gui apps are weird
+    # TODO: enable nixGL helper module for GPU based applications
+    # https://nix-community.github.io/home-manager/index.xhtml#sec-usage-gpu-non-nixos
     gui = {
       firefox.enable = true;
-      obs.enable = true;
+      # obs.enable = true;
       spotify.enable = true;
-      zed.enable = true;
+      # zed.enable = true;
     };
   };
 
