@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   lib,
   pkgs,
@@ -16,6 +17,14 @@ in
   # running debian 13!
   targets.genericLinux.enable = true;
 
+  # nixgl for GPU applications
+  nixGL = {
+    inherit (inputs.nixgl) packages;
+    # no need for the offloading because this laptop doesn't have a discrete GPU
+    defaultWrapper = "mesa";
+    installScripts = [ "mesa" ];
+  };
+
   custom.home = {
     cli = {
       atuin.enable = true;
@@ -32,13 +41,19 @@ in
       tmux.enable = true; # terminal multiplexer
       zsh.enable = true;
     };
-    # TODO: enable nixGL helper module for GPU based applications
-    # https://nix-community.github.io/home-manager/index.xhtml#sec-usage-gpu-non-nixos
     gui = {
       firefox.enable = true;
-      # obs.enable = true;
+      obs = {
+        enable = true;
+        # NOTE: wrap the package with nixGL
+        package = config.lib.nixGL.wrap pkgs.obs-studio;
+      };
       spotify.enable = true;
-      # zed.enable = true;
+      zed = {
+        enable = true;
+        # NOTE: wrap the package with nixGL
+        package = config.lib.nixGL.wrap pkgs.zed-editor;
+      };
     };
   };
 
@@ -55,7 +70,6 @@ in
               legacy_commands = false;
             };
           };
-
           config.nixvim = {
             lsp = { };
             plugins = {
