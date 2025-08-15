@@ -32,13 +32,13 @@ in
       tmux.enable = true; # terminal multiplexer
       zsh.enable = true;
     };
-    # # NOTE: gui apps are weird
-    # gui = {
-    #   firefox.enable = true;
-    #   obs.enable = true;
-    #   spotify.enable = true;
-    #   zed.enable = true;
-    # };
+    # NOTE: gui apps are weird
+    gui = {
+      firefox.enable = true;
+      obs.enable = true;
+      spotify.enable = true;
+      zed.enable = true;
+    };
   };
 
   home = {
