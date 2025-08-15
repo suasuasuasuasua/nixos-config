@@ -9,7 +9,7 @@ let
 
   settings = import ./settings.nix;
   profiles = import ./profiles.nix {
-    inherit pkgs settings;
+    inherit lib pkgs settings;
   };
   policies = import ./policies.nix;
 in

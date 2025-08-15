@@ -1,4 +1,9 @@
-{ pkgs, settings, ... }:
+{
+  pkgs,
+  lib,
+  settings,
+  ...
+}:
 let
   # NOTE: you can add keyword (str) and tags (array) as well
   #  tags are interesting...but i don't think i will ever be using it
@@ -94,14 +99,20 @@ in
       force = true;
       # TODO: add configs for extensions
       #       for example, dark reader should follow system theme
-      packages = with pkgs.firefox-addons; [
-        betterttv # twitch [dot] tv integration
-        bitwarden # bit/vault warden password integration
-        darkreader # automatic dark mode
-        ublock-origin # block ads
-        unpaywall # read research papers for free
-        vimium # vim-like movements
-      ];
+      packages =
+        with pkgs.firefox-addons;
+        [
+          betterttv # twitch [dot] tv integration
+          bitwarden # bit/vault warden password integration
+          darkreader # automatic dark mode
+          ublock-origin # block ads
+          unpaywall # read research papers for free
+          vimium # vim-like movements
+          plasma-integration
+        ]
+        ++ lib.optionals pkgs.stdenv.isLinux [
+          plasma-integration
+        ];
     };
     search = {
       force = true;
