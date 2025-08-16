@@ -43,6 +43,7 @@ in
                 custom = {
                   auto-dark-mode.enable = false;
                   img-clip.enable = false;
+                  leetcode.enable = true;
                   markdown-preview.enable = false;
                   obsidian = {
                     enable = true;
