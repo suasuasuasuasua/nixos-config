@@ -48,7 +48,6 @@ in
                 (mkBookmark "hydra" "https://hydra.sua.sh")
                 (mkBookmark "immich" "https://immich.sua.sh")
                 (mkBookmark "jellyfin" "https://jellyfin.sua.sh")
-                (mkBookmark "jellyseerr" "https://jellyseerr.sua.sh")
                 (mkBookmark "mealie" "https://mealie.sua.sh")
                 (mkBookmark "miniflux" "https://miniflux.sua.sh")
                 (mkBookmark "navidrome" "https://navidrome.sua.sh")

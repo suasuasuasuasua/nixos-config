@@ -21,7 +21,6 @@
     ./hydra.nix
     ./immich.nix
     ./jellyfin.nix
-    ./jellyseerr.nix
     ./mealie.nix
     ./miniflux.nix
     ./navidrome.nix

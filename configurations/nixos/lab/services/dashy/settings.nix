@@ -145,12 +145,6 @@ in
           url = mkFqdn "jellyfin";
         }
         {
-          title = "jellyseerr";
-          description = "media discovery manager";
-          icon = "hl-jellyseerr";
-          url = mkFqdn "jellyseerr";
-        }
-        {
           title = "miniflux";
           description = "rss feed";
           icon = "hl-miniflux";

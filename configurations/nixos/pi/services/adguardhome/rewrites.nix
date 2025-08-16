@@ -39,7 +39,6 @@ in
     "hydra"
     "immich"
     "jellyfin"
-    "jellyseerr"
     "mealie"
     "miniflux"
     "navidrome"

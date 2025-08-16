@@ -26,7 +26,6 @@
 - 3002 (hydra)
 - 4533 (navidrome)
 - 5000 (firefox syncserver)
-- 5055 (jellyseerr)
 - 5353 (avahi)
 - 8000 (audiobookshelf)
 - 8080 (calibre server)
