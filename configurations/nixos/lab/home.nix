@@ -45,6 +45,14 @@ in
                   img-clip.enable = false;
                   leetcode.enable = true;
                   markdown-preview.enable = false;
+                  neorg = {
+                    enable = true;
+                    workspaces = {
+                      "personal" = "/zshare/personal/notes/personal";
+                      "productivity" = "/zshare/personal/notes/productivity";
+                    };
+                    default_workspace = "personal";
+                  };
                   obsidian = {
                     enable = true;
                     workspaces = [

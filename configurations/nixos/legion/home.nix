@@ -62,6 +62,14 @@ in
               plugins = {
                 custom = {
                   grug-far.enable = true;
+                  neorg = {
+                    enable = true;
+                    workspaces = {
+                      "personal" = "/home/justinhoang/Documents/vaults/personal";
+                      "productivity" = "/home/justinhoang/Documents/vaults/productivity";
+                    };
+                    default_workspace = "personal";
+                  };
                   obsidian = {
                     enable = true;
                     workspaces = [

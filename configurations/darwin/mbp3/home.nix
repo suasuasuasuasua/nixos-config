@@ -79,6 +79,14 @@ in
               plugins = {
                 custom = {
                   leetcode.enable = true;
+                  neorg = {
+                    enable = true;
+                    workspaces = {
+                      "personal" = "/Users/justinhoang/Documents/vaults/personal";
+                      "productivity" = "/Users/justinhoang/Documents/vaults/productivity";
+                    };
+                    default_workspace = "personal";
+                  };
                   obsidian = {
                     enable = true;
                     workspaces = [
