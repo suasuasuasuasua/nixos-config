@@ -16,6 +16,10 @@ in
 {
   options.custom.home.gui.firefox = {
     enable = lib.mkEnableOption "Enable firefox";
+    package = lib.mkOption {
+      type = lib.types.package;
+      default = pkgs.firefox;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -24,6 +28,7 @@ in
     };
 
     programs.firefox = {
+      inherit (cfg) package;
       inherit profiles policies;
 
       enable = true;
