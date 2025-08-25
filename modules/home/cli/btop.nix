@@ -28,6 +28,7 @@ in
         # NOTE: controlled by stylix
         # color_theme = "tokyo-night";
         theme_background = true;
+        update_ms = 100; # ms
       };
     };
   };
