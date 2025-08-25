@@ -42,16 +42,18 @@ in
       zsh.enable = true;
     };
     gui = {
-      firefox.enable = true;
+      firefox = {
+        enable = true;
+        # NOTE: use firefox ESR for stability
+        package = config.lib.nixGL.wrap pkgs.firefox-esr;
+      };
       obs = {
         enable = true;
-        # NOTE: wrap the package with nixGL
         package = config.lib.nixGL.wrap pkgs.obs-studio;
       };
       spotify.enable = true;
       zed = {
         enable = true;
-        # NOTE: wrap the package with nixGL
         package = config.lib.nixGL.wrap pkgs.zed-editor;
       };
     };
