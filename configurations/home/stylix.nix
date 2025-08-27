@@ -10,19 +10,14 @@
         package = pkgs.dejavu_fonts;
         name = "DejaVu Serif";
       };
-
       sansSerif = {
         package = pkgs.dejavu_fonts;
         name = "DejaVu Sans";
       };
-
       monospace = {
         package = pkgs.nerd-fonts.iosevka;
         name = "Iosevka Nerd Font Mono";
-        # package = pkgs.nerd-fonts.jetbrains-mono;
-        # name = "JetBrainsMono Nerd Font";
       };
-
       emoji = {
         package = pkgs.noto-fonts-emoji;
         name = "Noto Color Emoji";
