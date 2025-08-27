@@ -22,7 +22,7 @@ in
       lfs.enable = true;
 
       # Support packages
-      diff-so-fancy.enable = true;
+      delta.enable = true;
 
       ignores = [
         "*~"
@@ -48,7 +48,8 @@ in
         git = {
           paging = {
             colorArg = "always";
-            pager = "diff-so-fancy";
+            # side by side view with git-delta
+            pager = "delta --dark --paging=never --side-by-side --line-numbers";
           };
         };
         # disable prompt tp return from subprocess
