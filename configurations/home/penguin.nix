@@ -16,6 +16,8 @@ in
 
   # running debian 13!
   targets.genericLinux.enable = true;
+  # patch for kde and qt (https://github.com/nix-community/stylix/issues/412)
+  xdg.systemDirs.config = [ "/etc/xdg" ];
 
   # nixgl for GPU applications
   nixGL = {
