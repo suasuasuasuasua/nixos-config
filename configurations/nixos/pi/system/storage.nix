@@ -10,9 +10,6 @@
       "12:00"
     ];
 
-    # Optimise on each build -- results in slower build :)
-    settings.auto-optimise-store = true;
-
     # Automatic garbage collection
     gc = {
       automatic = true;
