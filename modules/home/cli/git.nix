@@ -46,6 +46,7 @@ in
       enable = true;
       settings = {
         git = {
+          overrideGpg = true;
           paging = {
             colorArg = "always";
             # side by side view with git-delta
