@@ -38,6 +38,7 @@ let
       lsp.languages = {
         cssls.enable = true;
         html.enable = true;
+        gopls.enable = true;
         vtsls.enable = true;
       };
       plugins = {
