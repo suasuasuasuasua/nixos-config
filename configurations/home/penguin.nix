@@ -10,6 +10,7 @@ let
 in
 {
   imports = [
+    "${inputs.self}/modules/home"
     "${inputs.self}/modules/home/cli"
     "${inputs.self}/modules/home/gui"
   ];
@@ -68,40 +69,36 @@ in
     packages =
       let
         nixvim = inputs.nixvim-config.packages.${system}.default.extend {
-          config.plugins.obsidian = {
-            package = pkgs.unstable.vimPlugins.obsidian-nvim;
-            settings = {
-              legacy_commands = false;
+          config.plugins = {
+            grug-far.package = pkgs.unstable.vimPlugins.grug-far-nvim;
+            neorg.settings = {
+              workspaces = {
+                "personal" = "/home/justinhoang/Documents/vaults/personal";
+                "productivity" = "/home/justinhoang/Documents/vaults/productivity";
+              };
+              default_workspace = "personal";
             };
-          };
-          config.nixvim = {
-            lsp = { };
-            plugins = {
-              custom = {
-                leetcode.enable = true;
-                neorg = {
-                  enable = true;
-                  workspaces = {
-                    "personal" = "/home/justinhoang/Documents/vaults/personal";
-                    "productivity" = "/home/justinhoang/Documents/vaults/productivity";
-                  };
-                  default_workspace = "personal";
-                };
-                obsidian = {
-                  enable = true;
-                  workspaces = [
-                    {
-                      name = "personal";
-                      path = "/home/justinhoang/Documents/vaults/personal";
-                    }
-                    {
-                      name = "productivity";
-                      path = "/home/justinhoang/Documents/vaults/productivity";
-                    }
-                  ];
-                };
+            obsidian = {
+              package = pkgs.unstable.vimPlugins.obsidian-nvim;
+              settings = {
+                legacy_commands = false;
+                workspaces = [
+                  {
+                    name = "personal";
+                    path = "/home/justinhoang/Documents/vaults/personal";
+                  }
+                  {
+                    name = "productivity";
+                    path = "/home/justinhoang/Documents/vaults/productivity";
+                  }
+                ];
               };
             };
+          };
+          config.nixvim.plugins.custom = {
+            leetcode.enable = true;
+            neorg.enable = true;
+            obsidian.enable = true;
           };
         };
       in
