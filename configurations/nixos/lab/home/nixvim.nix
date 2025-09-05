@@ -3,7 +3,7 @@ let
   inherit (pkgs.stdenv.hostPlatform) system;
   nixvim = inputs.nixvim-config.packages.${system}.default.extend {
     config.plugins = {
-      neorg.settings = {
+      neorg.settings.load."core.dirman".config = {
         workspaces = {
           "personal" = "/zshare/personal/notes/personal";
           "productivity" = "/zshare/personal/notes/productivity";

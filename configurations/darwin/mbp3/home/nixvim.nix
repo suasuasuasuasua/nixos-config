@@ -8,7 +8,7 @@ let
   inherit (pkgs.stdenv.hostPlatform) system;
   nixvim = inputs.nixvim-config.packages.${system}.default.extend {
     config.plugins = {
-      neorg.settings = {
+      neorg.settings.load."core.dirman".config = {
         workspaces = {
           "personal" = "${config.xdg.userDirs.documents}/vaults/personal";
           "productivity" = "${config.xdg.userDirs.documents}/vaults/productivity";
