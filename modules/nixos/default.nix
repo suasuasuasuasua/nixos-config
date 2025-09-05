@@ -39,7 +39,8 @@
         flake-registry = "";
         trusted-users = [
           "root"
-        ] ++ map ({ username, ... }: username) userConfigs;
+        ]
+        ++ map ({ username, ... }: username) userConfigs;
       };
 
       # Opinionated: make flake registry and nix path match flake inputs

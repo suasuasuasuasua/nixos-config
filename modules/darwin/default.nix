@@ -42,7 +42,8 @@
         trusted-users = [
           "root"
           "@admin"
-        ] ++ map ({ username, ... }: username) userConfigs;
+        ]
+        ++ map ({ username, ... }: username) userConfigs;
 
         # darwin specific extra platform builders
         extra-platforms = lib.mkIf pkgs.stdenv.isDarwin "aarch64-darwin x86_64-darwin";
