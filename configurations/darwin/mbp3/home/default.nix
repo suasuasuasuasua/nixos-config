@@ -57,6 +57,10 @@
         };
       };
 
+      home.packages = with pkgs; [
+        zathura
+      ];
+
       # NOTE: darwin module provides the home manager module
       # add under each user rather than global under stylix.nix
       stylix.targets = {
