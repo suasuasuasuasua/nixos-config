@@ -186,8 +186,7 @@
 
               ./configurations/home/base.nix
               ./configurations/home/nixpkgs.nix
-              ./configurations/home/stylix.nix
-              ./configurations/home/${name}.nix
+              ./configurations/home/${name}
             ];
             extraSpecialArgs = {
               inherit

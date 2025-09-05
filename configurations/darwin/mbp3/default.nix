@@ -5,11 +5,11 @@
   ...
 }:
 {
-  # A module that automatically imports everything else in the parent folder.
   imports = [
+    ./home
+
     ./brew.nix
     ./config.nix
-    ./home.nix
     ./nixpkgs.nix
     ./stylix.nix
     ./system.nix

@@ -1,7 +1,4 @@
 { inputs, pkgs, ... }:
-let
-  inherit (pkgs.stdenv.hostPlatform) system;
-in
 {
   imports = [
     "${inputs.self}/modules/home"
@@ -25,21 +22,9 @@ in
   };
 
   home.packages =
-    # configure nixvim here!
     let
-      nixvim = inputs.nixvim-config.packages.${system}.default.extend {
-        config.nixvim = {
-          lsp = { };
-          plugins = {
-            custom = {
-              auto-dark-mode.enable = false;
-              img-clip.enable = false;
-              markdown-preview.enable = false;
-              obsidian.enable = false;
-              remote-nvim.enable = false;
-            };
-          };
-        };
+      nixvim = import ./nixvim.nix {
+        inherit inputs pkgs;
       };
     in
     [ nixvim ];

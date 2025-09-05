@@ -13,13 +13,13 @@
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
+    ./home
     ./services
     ./system
 
     ./config.nix
     ./disko.nix
     ./hardware-configuration.nix
-    ./home.nix
     ./stylix.nix
   ];
 

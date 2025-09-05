@@ -1,18 +1,17 @@
 {
   config,
   inputs,
-  lib,
   pkgs,
+  lib,
   ...
 }:
-let
-  inherit (pkgs.stdenv.hostPlatform) system;
-in
 {
   imports = [
     "${inputs.self}/modules/home"
     "${inputs.self}/modules/home/cli"
     "${inputs.self}/modules/home/gui"
+
+    ./stylix.nix
   ];
 
   # running debian 13!
@@ -68,42 +67,11 @@ in
     };
     packages =
       let
-        nixvim = inputs.nixvim-config.packages.${system}.default.extend {
-          config.plugins = {
-            grug-far.package = pkgs.unstable.vimPlugins.grug-far-nvim;
-            neorg.settings = {
-              workspaces = {
-                "personal" = "/home/justinhoang/Documents/vaults/personal";
-                "productivity" = "/home/justinhoang/Documents/vaults/productivity";
-              };
-              default_workspace = "personal";
-            };
-            obsidian = {
-              package = pkgs.unstable.vimPlugins.obsidian-nvim;
-              settings = {
-                legacy_commands = false;
-                workspaces = [
-                  {
-                    name = "personal";
-                    path = "/home/justinhoang/Documents/vaults/personal";
-                  }
-                  {
-                    name = "productivity";
-                    path = "/home/justinhoang/Documents/vaults/productivity";
-                  }
-                ];
-              };
-            };
-          };
-          config.nixvim.plugins.custom = {
-            leetcode.enable = true;
-            neorg.enable = true;
-            obsidian.enable = true;
-          };
+        nixvim = import ./nixvim.nix {
+          inherit inputs pkgs;
         };
       in
       [ nixvim ];
-
   };
 
   nixpkgs.config.allowUnfreePredicate =
