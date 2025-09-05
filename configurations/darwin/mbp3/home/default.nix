@@ -11,6 +11,8 @@
         "${inputs.self}/modules/home/gui"
 
         inputs.mac-app-util.homeManagerModules.default
+
+        ./nixvim.nix
       ];
 
       custom.home = {
@@ -54,15 +56,7 @@
           zed.enable = true;
         };
       };
-      home.packages =
-        let
-          nixvim = import nixvim.nix {
-            inherit inputs pkgs;
-          };
-        in
-        [
-          nixvim
-        ];
+
       # NOTE: darwin module provides the home manager module
       # add under each user rather than global under stylix.nix
       stylix.targets = {

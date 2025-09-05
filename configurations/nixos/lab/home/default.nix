@@ -1,10 +1,11 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
   home-manager.users = {
     "justinhoang" = {
       imports = [
-        # import the modules
         "${inputs.self}/modules/home/cli"
+
+        ./nixvim.nix
       ];
 
       custom.home = {
@@ -23,13 +24,6 @@
           zsh.enable = true;
         };
       };
-      home.packages =
-        let
-          nixvim = import ./nixvim.nix {
-            inherit inputs pkgs;
-          };
-        in
-        [ nixvim ];
     };
   };
 }

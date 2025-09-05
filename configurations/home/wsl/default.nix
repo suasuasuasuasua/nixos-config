@@ -1,8 +1,10 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
   imports = [
     "${inputs.self}/modules/home"
     "${inputs.self}/modules/home/cli"
+
+    ./nixvim.nix
   ];
 
   custom.home = {
@@ -20,12 +22,4 @@
       zsh.enable = true;
     };
   };
-
-  home.packages =
-    let
-      nixvim = import ./nixvim.nix {
-        inherit inputs pkgs;
-      };
-    in
-    [ nixvim ];
 }
