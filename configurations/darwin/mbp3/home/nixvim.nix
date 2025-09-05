@@ -41,13 +41,11 @@ let
         gopls.enable = true;
         vtsls.enable = true;
       };
-      plugins = {
-        custom = {
-          leetcode.enable = true;
-          neorg.enable = true;
-          obsidian.enable = true;
-          ollama.enable = true;
-        };
+      plugins.custom = {
+        leetcode.enable = true;
+        neorg.enable = true;
+        obsidian.enable = true;
+        ollama.enable = true;
       };
     };
   };
