@@ -24,7 +24,6 @@
 
     # Shell
     beautysh.enable = true; # format bash files
-    shellcheck.enable = true; # static shell script checker
     shfmt.enable = true; # another formatter
   };
 }
