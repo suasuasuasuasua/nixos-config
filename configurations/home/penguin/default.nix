@@ -11,6 +11,7 @@
     "${inputs.self}/modules/home/cli"
     "${inputs.self}/modules/home/gui"
 
+    ./nixvim.nix
     ./stylix.nix
   ];
 
@@ -61,17 +62,8 @@
     };
   };
 
-  home = {
-    sessionVariables = {
-      "EDITOR" = "nvim";
-    };
-    packages =
-      let
-        nixvim = import ./nixvim.nix {
-          inherit inputs pkgs;
-        };
-      in
-      [ nixvim ];
+  home.sessionVariables = {
+    "EDITOR" = "nvim";
   };
 
   nixpkgs.config.allowUnfreePredicate =
