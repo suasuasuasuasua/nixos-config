@@ -89,6 +89,7 @@
         NSAutomaticSpellingCorrectionEnabled = false; # disable auto spelling correction
         NSNavPanelExpandedStateForSaveMode = true; # expand save panel by default
         NSNavPanelExpandedStateForSaveMode2 = true;
+        NSWindowShouldDragOnGesture = true; # click and drag
       };
 
       # Customize settings that not supported by nix-darwin directly

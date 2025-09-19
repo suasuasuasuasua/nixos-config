@@ -7,6 +7,7 @@
 {
   imports = [
     ./home
+    ./services
 
     ./brew.nix
     ./config.nix
