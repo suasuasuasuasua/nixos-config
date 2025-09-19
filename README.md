@@ -20,9 +20,9 @@
 - Main daily driver (yes I'm an apple fanboy secretly)
 - Love that `nix-darwin` allows you to use the same configuration
 
-### [`penguin`](./configurations/nixos/penguin/README.md) (Acer 713-3W Chromebook NixOS)
+### [`penguin`](./configurations/home/penguin) (Acer 713-3W Chromebook NixOS)
 
-- Thin client notebook
+- Thin client notebook (Debian 13 running home-manager only)
 - Mainly for web browsing, tinkering, note-taking, and light coding
 
 ### [`pi`](./configurations/nixos/pi/README.md) (Raspberry Pi Model 4B *(2GB RAM)*)
