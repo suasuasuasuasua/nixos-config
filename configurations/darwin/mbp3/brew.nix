@@ -62,7 +62,7 @@
       "balenaetcher" # iso writer (*)
       "docker-desktop" # container runner and manager
       "kdenlive" # linear video editor
-      "logi-options+" # logitech peripherals
+      # "logi-options+" # logitech peripherals
       "obs" # studio recorder
       "proton-mail"
       "proton-mail-bridge"
