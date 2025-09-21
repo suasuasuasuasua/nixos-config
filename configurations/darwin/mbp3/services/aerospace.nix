@@ -19,6 +19,8 @@
             right = gap;
           };
         };
+      # let launchd be responsible
+      start-at-login = false;
       mode.main.binding = {
         # See: https://nikitabobko.github.io/AeroSpace/commands#layout
         alt-slash = "layout tiles horizontal vertical";
