@@ -21,6 +21,26 @@
         };
       # let launchd be responsible
       start-at-login = false;
+      # force monitor arrangements
+      # let the macbook built in handle 1-5, then the secondary display handle
+      # 6-0
+      workspace-to-monitor-force-assignment = {
+        "1" = "Built-in Retina Display";
+        "2" = "Built-in Retina Display";
+        "3" = "Built-in Retina Display";
+        "4" = "Built-in Retina Display";
+        "5" = "Built-in Retina Display";
+        "6" = "S27C900P";
+        "7" = "S27C900P";
+        "8" = "S27C900P";
+        "9" = "S27C900P";
+        "0" = "S27C900P";
+      };
+      after-startup-command = [
+        "workspace 6"
+        "move-workspace-to-monitor --wrap-around next"
+        "workspace 1"
+      ];
       mode.main.binding = {
         # See: https://nikitabobko.github.io/AeroSpace/commands#layout
         alt-slash = "layout tiles horizontal vertical";
