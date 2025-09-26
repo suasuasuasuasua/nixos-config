@@ -10,6 +10,9 @@
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
+    # https://docs.determinate.systems/determinate-nix/
+    # https://github.com/determinatesystems/determinate?tab=readme-ov-file#installing-using-our-nix-flake
+    inputs.determinate.nixosModules.default
 
     ./home
     ./services

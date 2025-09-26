@@ -61,7 +61,6 @@
       nixpkgs,
       nix-darwin,
       home-manager,
-      determinate,
       stylix,
       systems,
       ...
@@ -127,9 +126,6 @@
             modules = [
               ./configurations/nixos/${name}
               stylix.nixosModules.stylix
-              # https://docs.determinate.systems/determinate-nix/
-              # https://github.com/determinatesystems/determinate?tab=readme-ov-file#installing-using-our-nix-flake
-              determinate.nixosModules.default
             ]
             ++ lib.optionals enableHomeManager [
               home-manager.nixosModules.home-manager
