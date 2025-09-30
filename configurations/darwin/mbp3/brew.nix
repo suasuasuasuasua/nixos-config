@@ -68,6 +68,7 @@
       "proton-mail-bridge"
       "raspberry-pi-imager" # imager for pi
       "scroll-reverser" # mouse util
+      "sf-symbols"
     ];
 
     masApps = {
