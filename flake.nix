@@ -2,6 +2,7 @@
   description = "suasuasuasuasua's nixos configuration";
 
   inputs = {
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     disko.url = "github:nix-community/disko/latest";
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";

@@ -17,10 +17,13 @@ in
       btop # monitor of resources
       curl # command line tool for transferring files with url syntax
       dig # domain name server
+      diskus # paralellelized du (disk usage)
       fastfetch # system information tool
+      hyperfine # performance judement program
       just # save command line configs
       lshw # show information on the hardware configuration of the machine
       manix # cli tool for nix packages
+      ncdu # curses interface to du
       nix-output-monitor # processes output of nix commands to show information
       onefetch # git repository summary on your terminal
       python3
