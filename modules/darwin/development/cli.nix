@@ -19,7 +19,9 @@ in
       # docker # TODO: either use nixpkgs version (with service) or brew
       fastfetch # system information tool
       ffmpeg # solution to record, convert and stream audio and video
+      just # save command line configs
       manix # cli tool for nix packages
+      nix-output-monitor # processes output of nix commands to show information
       nvd # nix/nixos package version diff tool
       onefetch # git repository summary on your terminal
       tea # gitea command line tool helper
