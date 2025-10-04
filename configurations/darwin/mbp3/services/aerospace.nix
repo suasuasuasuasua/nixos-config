@@ -1,6 +1,6 @@
 {
   services.aerospace = {
-    enable = true;
+    enable = false;
 
     settings = {
       gaps =
