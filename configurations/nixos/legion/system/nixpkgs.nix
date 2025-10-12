@@ -25,6 +25,7 @@
             "libcufft"
             "libcurand"
             "libcusparse"
+            "libnvjitlink"
             "libnpp"
             "nvidia-settings"
             "nvidia-x11"
