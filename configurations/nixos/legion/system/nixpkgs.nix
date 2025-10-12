@@ -21,7 +21,7 @@
             "cuda_cudart"
             "cuda_cccl"
             "cuda_nvcc"
-            "cuda_nvrtcl
+            "cuda_nvrtcl"
             "cudnn"
             "libcublas"
             "libcufft"
