@@ -24,6 +24,7 @@
             "libcublas"
             "libcufft"
             "libcurand"
+            "libcusparse"
             "libnpp"
             "nvidia-settings"
             "nvidia-x11"
