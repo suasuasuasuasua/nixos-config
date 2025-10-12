@@ -23,6 +23,7 @@
             "cuda_nvcc"
             "libcublas"
             "libcufft"
+            "libcurand"
             "libnpp"
             "nvidia-settings"
             "nvidia-x11"
