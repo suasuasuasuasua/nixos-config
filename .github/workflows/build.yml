@@ -1,9 +1,7 @@
 name: Build & test NixOS/Darwin configurations
-
 on:
   pull_request:
   push:
-
 jobs:
   build:
     runs-on: ${{ matrix.os }}
