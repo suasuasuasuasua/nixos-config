@@ -11,18 +11,18 @@ jobs:
       matrix:
         # Define each OS & configuration you want to build
         include:
-          - os: ubuntu-latest   # NixOS build
+          - os: ubuntu-latest # NixOS build
             config: lab
           - os: ubuntu-latest
             config: pi
-          - os: macos-latest    # Darwin build
+          - os: macos-latest # Darwin build
             config: mbp3
-      fail-fast: false        # let all matrix jobs finish even if one fails
+      fail-fast: false # let all matrix jobs finish even if one fails
     steps:
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          fetch-depth: 0        # required for `nix flake show`
+          fetch-depth: 0 # required for `nix flake show`
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
