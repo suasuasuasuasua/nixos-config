@@ -9,11 +9,14 @@ jobs:
       matrix:
         # Define each OS & configuration you want to build
         include:
-          - os: ubuntu-latest # NixOS build
-            config: lab
           - os: ubuntu-latest
+            system: nixos
+            config: lab
+          - os: ubuntu-24.04-arm
+            system: nixos
             config: pi
-          - os: macos-latest # Darwin build
+          - os: macos-latest
+            system: darwin
             config: mbp3
       fail-fast: false # let all matrix jobs finish even if one fails
     steps:
@@ -29,4 +32,4 @@ jobs:
         run: nix flake check
       - name: Build ${{ matrix.config }}
         run: |
-          nix build -L .#nixosConfigurations.${{ matrix.config }}.config.system.build.toplevel
+          nix build -L .#${{ matrix.system }}Configurations.${{ matrix.config }}.config.system.build.toplevel
