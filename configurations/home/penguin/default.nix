@@ -30,7 +30,6 @@
 
   custom.home = {
     cli = {
-      atuin.enable = true;
       bat.enable = true; # better cat
       btop.enable = true; # system monitor
       comma.enable = true; # try out programs with `,`
