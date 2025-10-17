@@ -14,7 +14,7 @@
       EDITOR = "nvim";
     };
     systemPackages = with pkgs; [
-      appcleaner
+      # appcleaner
       appflowy
       betterdisplay
       # bitwarden-cli # TODO: broken on darwin
