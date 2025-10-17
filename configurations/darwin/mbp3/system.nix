@@ -68,7 +68,7 @@
         # `defaults read NSGlobalDomain "xxx"`
         "com.apple.swipescrolldirection" = true; # enable natural scrolling(default to true)
         "com.apple.sound.beep.feedback" = 0; # disable beep sound when pressing volume up/down key
-        AppleInterfaceStyle = null; # disable dark mode (null or "dark")
+        AppleInterfaceStyle = "Dark"; # disable dark mode (null or "Dark")
         AppleInterfaceStyleSwitchesAutomatically = true; # switches light and dark automatically
         AppleKeyboardUIMode = 3; # Mode 3 enables full keyboard control.
         # TODO: this should be enabled and disabled on an app by app basis...
