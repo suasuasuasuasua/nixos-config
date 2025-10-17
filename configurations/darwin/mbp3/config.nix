@@ -23,7 +23,7 @@
       feishin
       hidden-bar
       iina
-      iterm2
+      # iterm2 # NOTE: native terminal app is pretty good now
       obsidian
       shottr
       utm
