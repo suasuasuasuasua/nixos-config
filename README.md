@@ -108,6 +108,9 @@ The initial setup is pretty simple now thanks to `disko`.
 The setup for `darwin` machines is much simpler. Make sure to connect to the
 internet before beginning.
 
+> See the [website](https://docs.determinate.systems) for an updated guide on
+> Darwin
+
 1. Install `nix` on the machine. You may be prompted to install developer tools
    (like `git`, `xcode`, etc.), so make sure to accept and be patient.
 
