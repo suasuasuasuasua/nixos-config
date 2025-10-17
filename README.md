@@ -122,7 +122,7 @@ internet before beginning.
 
    ```bash
    # To use Nixpkgs 25.05:
-   sudo nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch
+   sudo nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .
    ```
 
 1. Install the configuration from GitHub
