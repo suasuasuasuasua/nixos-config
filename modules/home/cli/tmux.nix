@@ -18,15 +18,6 @@ in
     programs.tmux = {
       enable = true;
       plugins = with pkgs.tmuxPlugins; [
-        {
-          plugin = continuum; # continuous saving and start of tmux
-          extraConfig =
-            # tmux
-            ''
-              # restore the pane contents for sessions and for neovim
-              set -g @continuum-restore 'on'
-            '';
-        }
         fpp # find and open files in the current buffer
         {
 
@@ -34,10 +25,23 @@ in
           extraConfig =
             # tmux
             ''
+              resurrect_dir="$HOME/.tmux/resurrect"
+              set -g @resurrect-dir $resurrect-dir
+              set -g @resurrect-hook-post-save-all 'target=$(readlink -f $resurrect_dir/last); sed "s| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/$USER/bin/||g; s|/home/$USER/.nix-profile/bin/||g" $target | sponge $target'
+
               # restore the pane contents for sessions and for neovim
               set -g @resurrect-capture-pane-contents 'on'
               set -g @resurrect-strategy-vim 'session'
               set -g @resurrect-strategy-nvim 'session'
+            '';
+        }
+        {
+          plugin = continuum; # continuous saving and start of tmux
+          extraConfig =
+            # tmux
+            ''
+              # restore the pane contents for sessions and for neovim
+              set -g @continuum-restore 'on'
             '';
         }
         sensible # sensible config
