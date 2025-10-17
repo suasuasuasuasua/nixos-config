@@ -19,6 +19,7 @@ in
       dig # domain name server
       diskus # paralellelized du (disk usage)
       fastfetch # system information tool
+      fd # find alternative
       hyperfine # performance judement program
       just # save command line configs
       lshw # show information on the hardware configuration of the machine
@@ -27,6 +28,7 @@ in
       nix-output-monitor # processes output of nix commands to show information
       onefetch # git repository summary on your terminal
       python3
+      ripgrep # grep alternative
       speedtest-cli # cli for testing internet bandwidth using speedtest.net
       tea # gitea cli tool
       tree

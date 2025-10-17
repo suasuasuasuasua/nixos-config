@@ -14,16 +14,18 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      # docker # TODO: either use nixpkgs version (with service) or brew
       asitop # perf monitoring cli tool for apple silicon
       btop # monitor of resources
-      # docker # TODO: either use nixpkgs version (with service) or brew
       fastfetch # system information tool
+      fd # find alternative
       ffmpeg # solution to record, convert and stream audio and video
       just # save command line configs
       manix # cli tool for nix packages
       nix-output-monitor # processes output of nix commands to show information
       nvd # nix/nixos package version diff tool
       onefetch # git repository summary on your terminal
+      ripgrep
       tea # gitea command line tool helper
       tree
       yt-dlp # cli tool to download videos from YouTube.com and other sites
