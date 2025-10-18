@@ -17,7 +17,6 @@ let
       };
       ollama.model = "gemma3";
       obsidian = {
-        package = pkgs.unstable.vimPlugins.obsidian-nvim;
         settings = {
           legacy_commands = false;
           workspaces = [

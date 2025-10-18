@@ -3,7 +3,6 @@ let
   inherit (pkgs.stdenv.hostPlatform) system;
   nixvim = inputs.nixvim-config.packages.${system}.default.extend {
     config.plugins = {
-      grug-far.package = pkgs.unstable.vimPlugins.grug-far-nvim;
       neorg.settings.load."core.dirman".config = {
         workspaces = {
           "personal" = "/zshare/personal/notes/personal";
@@ -12,7 +11,6 @@ let
         default_workspace = "personal";
       };
       obsidian = {
-        package = pkgs.unstable.vimPlugins.obsidian-nvim;
         settings = {
           legacy_commands = false;
           workspaces = [

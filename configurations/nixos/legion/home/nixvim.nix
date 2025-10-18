@@ -11,7 +11,6 @@ let
         default_workspace = "personal";
       };
       obsidian = {
-        package = pkgs.unstable.vimPlugins.obsidian-nvim;
         settings = {
           legacy_commands = false;
           workspaces = [
