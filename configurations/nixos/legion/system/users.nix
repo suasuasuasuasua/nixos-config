@@ -15,7 +15,6 @@
             isNormalUser = true;
             extraGroups = [
               "wheel"
-              "docker"
               "libvirtd"
             ];
             shell = pkgs.zsh;

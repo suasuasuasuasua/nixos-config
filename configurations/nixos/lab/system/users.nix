@@ -19,7 +19,6 @@
             isNormalUser = true;
             extraGroups = [
               "wheel"
-              "docker"
               "libvirtd"
               "samba"
               "syncthing"
