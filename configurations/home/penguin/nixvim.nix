@@ -9,7 +9,6 @@ let
 
   nixvim = inputs.nixvim-config.packages.${system}.default.extend {
     config.plugins = {
-      grug-far.package = pkgs.unstable.vimPlugins.grug-far.nvim;
       neorg.settings.load."core.dirman".config = {
         workspaces = {
           "personal" = "${config.xdg.userDirs.documents}/vaults/personal";

@@ -28,7 +28,6 @@ let
     };
 
     config.nixvim.plugins.custom = {
-      grug-far.enable = true;
       neorg.enable = true;
       obsidian.enable = true;
     };
