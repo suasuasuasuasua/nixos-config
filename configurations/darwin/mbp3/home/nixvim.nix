@@ -35,9 +35,10 @@ let
 
     config.nixvim = {
       lsp.languages = {
+        cmake.enable = true;
         cssls.enable = true;
-        html.enable = true;
         gopls.enable = true;
+        html.enable = true;
         vtsls.enable = true;
       };
       plugins.custom = {
