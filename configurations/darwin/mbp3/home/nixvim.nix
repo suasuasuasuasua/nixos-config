@@ -42,6 +42,7 @@ let
         vtsls.enable = true;
       };
       plugins.custom = {
+        auto-dark-mode.enable = true;
         leetcode.enable = true;
         neorg.enable = true;
         obsidian.enable = true;
