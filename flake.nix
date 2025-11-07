@@ -231,11 +231,11 @@
             system = "x86_64-linux";
             userConfigs = [ users.justinhoang ];
           }
-          {
-            name = "legion";
-            system = "x86_64-linux";
-            userConfigs = [ users.justinhoang ];
-          }
+          # { # NOTE: disable for now while not using...
+          #   name = "legion";
+          #   system = "x86_64-linux";
+          #   userConfigs = [ users.justinhoang ];
+          # }
           {
             name = "optiplex";
             system = "x86_64-linux";
