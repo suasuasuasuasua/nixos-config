@@ -46,15 +46,16 @@
 
     brews = [
       {
-        name = "syncthing"; # decentralized file synchronization
-        start_service = true;
-        restart_service = "changed";
-      }
-      {
         name = "ollama"; # llm runner and manager
         start_service = true;
         restart_service = "changed";
       }
+      {
+        name = "syncthing"; # decentralized file synchronization
+        start_service = true;
+        restart_service = "changed";
+      }
+      "pinentry-mac"
     ];
 
     casks = [
