@@ -11,7 +11,6 @@
         "clion"
         "discord"
         "obsidian"
-        "pycharm"
         "shottr"
         "spotify"
       ]
