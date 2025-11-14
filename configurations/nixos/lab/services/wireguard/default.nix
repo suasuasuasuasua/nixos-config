@@ -1,6 +1,7 @@
 # https://wiki.nixos.org/wiki/WireGuard
 # wireguard is a lightweight vpn protocol and server
 {
+  inputs,
   config,
   pkgs,
   ...
@@ -12,7 +13,9 @@ let
 in
 {
   sops.secrets = {
-    "wireguard/private_key" = { };
+    "wireguard/private_key" = {
+      sopsFile = "${inputs.self}/configurations/nixos/lab/secrets.yaml";
+    };
   };
   # enable NAT
   networking = {

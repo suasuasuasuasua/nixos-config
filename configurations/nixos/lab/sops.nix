@@ -4,7 +4,7 @@
 
   # This will add secrets.yml to the nix store
   sops = {
-    defaultSopsFile = "${inputs.self}/configurations/nixos/lab/secrets.yaml";
+    defaultSopsFile = "${inputs.self}/secrets/secrets.yaml";
     defaultSopsFormat = "yaml";
 
     age = {
