@@ -15,15 +15,17 @@
     };
     systemPackages = with pkgs; [
       # appcleaner
+      # bitwarden-cli # TODO: broken on darwin
+      # iterm2 # NOTE: native terminal app is pretty good now
       appflowy
       betterdisplay
-      # bitwarden-cli # TODO: broken on darwin
       bitwarden-desktop
       discord
       feishin
       hidden-bar
       iina
-      # iterm2 # NOTE: native terminal app is pretty good now
+      jetbrains.clion
+      jetbrains.pycharm-community
       obsidian
       shottr
       utm

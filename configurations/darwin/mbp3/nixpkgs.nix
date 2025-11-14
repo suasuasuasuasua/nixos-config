@@ -8,8 +8,10 @@
         "appcleaner"
         "betterdisplay"
         "betterttv"
+        "clion"
         "discord"
         "obsidian"
+        "pycharm"
         "shottr"
         "spotify"
       ]
