@@ -50,10 +50,10 @@ in
     "wastebin"
   ] labIP hostName
   ++ [
-    {
-      inherit domain;
-      answer = labIP;
-    }
+    # {
+    #   inherit domain;
+    #   answer = labIP;
+    # }
     {
       domain = "${hostName}.${domain}";
       answer = labIP;
