@@ -39,6 +39,7 @@ in
     "hydra"
     "immich"
     "jellyfin"
+    "karakeep"
     "mealie"
     "miniflux"
     "navidrome"
@@ -50,16 +51,8 @@ in
     "wastebin"
   ] labIP hostName
   ++ [
-    # {
-    #   inherit domain;
-    #   answer = labIP;
-    # }
     {
       domain = "${hostName}.${domain}";
-      answer = labIP;
-    }
-    {
-      domain = "vpn.${domain}";
       answer = labIP;
     }
     (mkServiceRewrite "dashy.${hostName}" labIP)

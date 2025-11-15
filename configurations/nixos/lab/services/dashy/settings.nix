@@ -76,6 +76,12 @@ in
           url = mkFqdn "home-assistant";
         }
         {
+          title = "karakeep";
+          description = "link saver";
+          icon = "hl-karakeep";
+          url = mkFqdn "karakeep";
+        }
+        {
           title = "mealie";
           description = "recipe and meal manager";
           icon = "hl-mealie";
