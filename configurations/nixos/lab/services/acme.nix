@@ -25,6 +25,7 @@ in
       inherit environmentFile;
 
       email = "admin+justinhoang@sua.sh";
+      dnsResolver = "8.8.8.8:53"; # Solution here. Specify the DNS resolver for txt lookups
       dnsProvider = "namecheap";
       dnsPropagationCheck = true;
     };

@@ -35,7 +35,6 @@
           spotify.enable = true; # music platform
           vscode = {
             enable = true;
-            package = pkgs.unstable.vscode;
             profiles = {
               data-science.enable = true;
               flutter-development.enable = true;

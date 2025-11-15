@@ -2,7 +2,6 @@
 # a tool for continuous integration testing software release
 {
   config,
-  pkgs,
   ...
 }:
 let
@@ -17,7 +16,6 @@ in
     inherit port;
 
     enable = true;
-    package = pkgs.unstable.hydra;
 
     hydraURL = "https://${serviceName}.${domain}"; # externally visible URL
     notificationSender = "hydra@localhost"; # e-mail of hydra service

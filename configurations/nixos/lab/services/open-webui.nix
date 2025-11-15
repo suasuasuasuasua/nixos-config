@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   ...
 }:
 let
@@ -17,7 +16,6 @@ in
 
     enable = true;
 
-    package = pkgs.unstable.open-webui;
     host = "127.0.0.1";
   };
 
