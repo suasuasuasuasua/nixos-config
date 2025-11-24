@@ -23,7 +23,7 @@ jobs:
       fail-fast: false # let all matrix jobs finish even if one fails
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0 # required for `nix flake show`
       - name: Install Nix
