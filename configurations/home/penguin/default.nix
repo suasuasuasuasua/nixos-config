@@ -2,7 +2,6 @@
   config,
   inputs,
   pkgs,
-  lib,
   ...
 }:
 {
@@ -11,6 +10,7 @@
     "${inputs.self}/modules/home/cli"
     "${inputs.self}/modules/home/gui"
 
+    ./nixpkgs.nix
     ./nixvim.nix
     ./stylix.nix
   ];
@@ -60,13 +60,6 @@
   home.sessionVariables = {
     "EDITOR" = "nvim";
   };
-
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "betterttv"
-      "spotify"
-    ];
 
   stylix.targets = {
     qt.enable = false;
