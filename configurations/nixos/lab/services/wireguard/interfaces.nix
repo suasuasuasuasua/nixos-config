@@ -55,6 +55,11 @@
         allowedIPs = [ "10.100.0.4/32" ];
       }
       {
+        name = "penguin";
+        publicKey = "sG0IdwfA4HrbZRbW7OzHIL7yiwKDT2Aq55HrRf7Wnik=";
+        allowedIPs = [ "10.100.0.5/32" ];
+      }
+      {
         name = "optiplex";
         publicKey = "TVE04PS7h78OUg6QNcoQSxO55oavQMWpRmauHFKPLCI=";
         allowedIPs = [ "10.101.0.1/32" ];
