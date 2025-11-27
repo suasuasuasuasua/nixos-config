@@ -54,10 +54,6 @@
         package = config.lib.nixGL.wrap pkgs.obs-studio;
       };
       spotify.enable = true;
-      zed = {
-        enable = true;
-        package = config.lib.nixGL.wrap pkgs.zed-editor;
-      };
     };
   };
 
