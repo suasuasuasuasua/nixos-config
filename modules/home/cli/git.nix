@@ -46,6 +46,9 @@ in
       enable = true;
       settings = {
         git = {
+          commit = {
+            signoff = true;
+          };
           overrideGpg = true;
           paging = {
             colorArg = "always";
