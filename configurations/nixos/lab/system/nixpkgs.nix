@@ -4,5 +4,6 @@
     pkg:
     builtins.elem (lib.getName pkg) [
       "intel-ocl"
+      "open-webui"
     ];
 }

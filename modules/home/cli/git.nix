@@ -15,50 +15,58 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.git = {
-      enable = true;
-      userEmail = "j124.dev@proton.me";
-      userName = "Justin Hoang";
-      lfs.enable = true;
-
-      # Support packages
-      delta.enable = true;
-
-      ignores = [
-        "*~"
-        "*.swp"
-        ".DS_Store"
-      ];
-
-      signing = {
-        key = "j124.dev@proton.me";
-        signByDefault = true;
-      };
-
-      extraConfig = {
-        init.defaultBranch = "main";
-        pull.rebase = "false";
-        push.autoSetupRemote = true;
-      };
-    };
-
-    programs.lazygit = {
-      enable = true;
-      settings = {
-        git = {
-          commit = {
-            signoff = true;
+    programs = {
+      git = {
+        enable = true;
+        settings = {
+          user = {
+            email = "j124.dev@proton.me";
+            name = "Justin Hoang";
           };
-          overrideGpg = true;
-          paging = {
-            colorArg = "always";
-            # side by side view with git-delta
-            pager = "delta --dark --paging=never --side-by-side --line-numbers";
-          };
+          init.defaultBranch = "main";
+          pull.rebase = "false";
+          push.autoSetupRemote = true;
         };
-        # disable prompt tp return from subprocess
-        promptToReturnFromSubprocess = false;
+
+        lfs.enable = true;
+
+        ignores = [
+          "*~"
+          "*.swp"
+          ".DS_Store"
+        ];
+
+        signing = {
+          key = "j124.dev@proton.me";
+          signByDefault = true;
+        };
+      };
+      lazygit = {
+        enable = true;
+        settings = {
+          git = {
+            commit = {
+              signoff = true;
+            };
+            overrideGpg = true;
+            pagers = [
+              {
+                # side by side view with git-delta
+                pager = "delta --dark --paging=never --side-by-side --line-numbers";
+                colorArg = "always";
+              }
+            ];
+          };
+          # disable prompt tp return from subprocess
+          promptToReturnFromSubprocess = false;
+        };
+      };
+
+      delta = {
+        enable = true;
+        enableGitIntegration = true;
       };
     };
+
   };
 }
