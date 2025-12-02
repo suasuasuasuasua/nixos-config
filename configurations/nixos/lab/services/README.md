@@ -24,6 +24,7 @@
 - 3000 (actual)
 - 3001 (gitea)
 - 3002 (hydra)
+- 3003 (linkwarden)
 - 4533 (navidrome)
 - 5000 (firefox syncserver)
 - 5353 (avahi)
