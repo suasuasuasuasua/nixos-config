@@ -8,8 +8,8 @@ let
   inherit (config.networking) hostName domain;
   serviceName = "linkwarden";
 
-  # default = 3000, but actual uses 3000
-  port = 3003;
+  # default = 3000
+  port = 3004;
   environmentFile = config.sops.secrets."linkwarden/environmentFile".path;
 in
 {
@@ -23,6 +23,8 @@ in
     inherit environmentFile port;
 
     enable = true;
+    host = "127.0.0.1";
+
     database.createLocally = true;
   };
 
