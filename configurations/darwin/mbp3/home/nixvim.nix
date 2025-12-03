@@ -15,7 +15,7 @@ let
         };
         default_workspace = "personal";
       };
-      ollama.model = "gemma3";
+      ollama.settings.model = "gemma3";
       obsidian = {
         settings = {
           legacy_commands = false;
