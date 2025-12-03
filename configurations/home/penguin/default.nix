@@ -16,17 +16,18 @@
   ];
 
   # running debian 13!
-  targets.genericLinux.enable = true;
+  targets.genericLinux = {
+    enable = true;
+    # nixgl for GPU applications
+    nixGL = {
+      inherit (inputs.nixgl) packages;
+      # no need for the offloading because this laptop doesn't have a discrete GPU
+      defaultWrapper = "mesa";
+      installScripts = [ "mesa" ];
+    };
+  };
   # patch for kde and qt (https://github.com/nix-community/stylix/issues/412)
   xdg.systemDirs.config = [ "/etc/xdg" ];
-
-  # nixgl for GPU applications
-  nixGL = {
-    inherit (inputs.nixgl) packages;
-    # no need for the offloading because this laptop doesn't have a discrete GPU
-    defaultWrapper = "mesa";
-    installScripts = [ "mesa" ];
-  };
 
   custom.home = {
     cli = {
