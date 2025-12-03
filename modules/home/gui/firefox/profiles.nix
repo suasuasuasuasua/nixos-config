@@ -48,6 +48,7 @@ in
                 (mkBookmark "hydra" "https://hydra.sua.sh")
                 (mkBookmark "immich" "https://immich.sua.sh")
                 (mkBookmark "jellyfin" "https://jellyfin.sua.sh")
+                (mkBookmark "linkwarden" "https://linkwarden.sua.sh")
                 (mkBookmark "mealie" "https://mealie.sua.sh")
                 (mkBookmark "miniflux" "https://miniflux.sua.sh")
                 (mkBookmark "navidrome" "https://navidrome.sua.sh")
@@ -104,10 +105,10 @@ in
           betterttv # twitch [dot] tv integration
           bitwarden # bit/vault warden password integration
           darkreader # automatic dark mode
+          linkwarden # link saver
           ublock-origin # block ads
           unpaywall # read research papers for free
           vimium # vim-like movements
-          plasma-integration
         ]
         ++ lib.optionals pkgs.stdenv.isLinux [
           plasma-integration
