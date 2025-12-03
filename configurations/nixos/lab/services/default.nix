@@ -23,6 +23,7 @@
     ./jellyfin.nix
     ./linkwarden.nix
     ./mealie.nix
+    ./meilisearch.nix
     ./miniflux.nix
     ./navidrome.nix
     ./ollama.nix

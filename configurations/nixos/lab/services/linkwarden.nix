@@ -26,6 +26,10 @@ in
     host = "127.0.0.1";
 
     database.createLocally = true;
+    environment = {
+      NEXT_PUBLIC_OLLAMA_ENDPOINT_URL = "http://localhost:11434";
+      OLLAMA_MODEL = "phi3:mini-4k";
+    };
   };
 
   services.nginx.virtualHosts = {
