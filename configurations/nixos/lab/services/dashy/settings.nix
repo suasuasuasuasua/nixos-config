@@ -76,6 +76,12 @@ in
           url = mkFqdn "home-assistant";
         }
         {
+          title = "it-tools";
+          description = "handy developer tools";
+          icon = "hl-it-tools";
+          url = mkFqdn "it-tools";
+        }
+        {
           title = "linkwarden";
           description = "link tracker";
           icon = "hl-linkwarden";
