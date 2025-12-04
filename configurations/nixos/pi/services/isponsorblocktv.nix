@@ -21,7 +21,6 @@
 #
 # Note: The service uses host networking mode to properly communicate with
 #       YouTube devices on the local network.
-{ config, ... }:
 {
   virtualisation.oci-containers.containers.isponsorblocktv = {
     # Using 'latest' tag as the project doesn't publish semantic version tags
@@ -35,8 +34,9 @@
 
     # Set user to 568:568 (equivalent to user: '568:568' in docker-compose)
     user = "568:568";
+    log-driver = "journald";
 
     # Mount the data directory (equivalent to volumes in docker-compose)
-    volumes = [ "/home/admin/isponsorblocktv:/app/data" ];
+    volumes = [ "/home/admin/isponsorblocktv:/app/data:rw" ];
   };
 }
