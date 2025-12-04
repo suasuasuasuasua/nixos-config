@@ -1,25 +1,31 @@
 { pkgs, ... }:
 {
-  virtualisation.oci-containers.backend = "docker";
-
-  virtualisation.docker = {
-    enable = true;
-
-    # https://wiki.nixos.org/wiki/Docker#Rootless_Docker
-    rootless = {
+  virtualisation = {
+    oci-containers.backend = "podman";
+    podman = {
       enable = true;
-      setSocketVariable = true;
-      # Optionally customize rootless Docker daemon settings
-      daemon.settings = {
-        dns = [
+
+      # Required for podman-tui and other tools
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+
+  # Rootless podman configuration
+  # https://wiki.nixos.org/wiki/Podman#Rootless_Podman
+  virtualisation.containers = {
+    registries.search = [ "docker.io" ];
+
+    # Configure DNS servers for containers
+    containersConf.settings = {
+      network = {
+        dns_servers = [
           "192.168.0.250" # local dns
           "1.1.1.1" # cloudflare
           "8.8.8.8" # google
         ];
-        registry-mirrors = [ "https://mirror.gcr.io" ];
       };
     };
   };
 
-  environment.systemPackages = with pkgs; [ lazydocker ];
+  environment.systemPackages = with pkgs; [ podman-tui ];
 }
