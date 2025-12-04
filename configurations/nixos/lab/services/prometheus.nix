@@ -21,12 +21,21 @@ in
         enable = true;
         enabledCollectors = [ "systemd" ];
         port = 9100;
-        extraFlags = [
-          "--collector.ethtool"
-          "--collector.softirqs"
-          "--collector.tcpstat"
-          "--collector.wifi"
-        ];
+      };
+
+      nginx = {
+        enable = true;
+        port = 9113;
+      };
+
+      wireguard = {
+        enable = true;
+        port = 9586;
+      };
+
+      zfs = {
+        enable = true;
+        port = 9134;
       };
     };
 
@@ -36,6 +45,30 @@ in
         static_configs = [
           {
             targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ];
+          }
+        ];
+      }
+      {
+        job_name = "lab-nginx";
+        static_configs = [
+          {
+            targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.nginx.port}" ];
+          }
+        ];
+      }
+      {
+        job_name = "lab-wireguard";
+        static_configs = [
+          {
+            targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.wireguard.port}" ];
+          }
+        ];
+      }
+      {
+        job_name = "lab-zfs";
+        static_configs = [
+          {
+            targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.zfs.port}" ];
           }
         ];
       }
