@@ -21,6 +21,12 @@ in
         enable = true;
         enabledCollectors = [ "systemd" ];
         port = 9100;
+        extraFlags = [
+          "--collector.ethtool"
+          "--collector.softirqs"
+          "--collector.tcpstat"
+          "--collector.wifi"
+        ];
       };
 
       nginx = {
