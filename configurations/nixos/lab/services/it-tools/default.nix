@@ -8,11 +8,7 @@ let
   port = 8085;
 in
 {
-  virtualisation.oci-containers.containers.it-tools = {
-    image = "corentinth/it-tools:2024.10.22-7ca5933";
-    ports = [ "${toString port}:80" ];
-    autoStart = true;
-  };
+  imports = [ ./compose.nix ];
 
   services.nginx.virtualHosts = {
     "${serviceName}.${domain}" = {
