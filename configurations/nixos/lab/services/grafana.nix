@@ -5,7 +5,7 @@ let
   serviceName = "grafana";
 
   # default = 3000
-  port = 3000;
+  port = 3003;
 in
 {
   services.grafana = {
@@ -42,6 +42,7 @@ in
       acmeRoot = null;
       locations."/" = {
         proxyPass = "http://127.0.0.1:${toString port}";
+        # needed if you need to use WebSocket
         proxyWebsockets = true;
       };
     };
