@@ -57,7 +57,7 @@ in
         {
           title = "grafana";
           description = "hollistic system overview";
-          icon = "hl-glances";
+          icon = "hl-grafana";
           url = mkFqdn "grafana";
         }
       ];
