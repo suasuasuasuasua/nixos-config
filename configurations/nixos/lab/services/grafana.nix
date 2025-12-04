@@ -15,8 +15,8 @@ in
       server = {
         http_addr = "127.0.0.1";
         http_port = port;
-        domain = "${serviceName}.${hostName}.${domain}";
-        root_url = "https://${serviceName}.${hostName}.${domain}";
+        domain = "${serviceName}.${domain}";
+        root_url = "https://${serviceName}.${domain}";
       };
     };
 
@@ -36,7 +36,7 @@ in
   };
 
   services.nginx.virtualHosts = {
-    "${serviceName}.${hostName}.${domain}" = {
+    "${serviceName}.${domain}" = {
       enableACME = true;
       forceSSL = true;
       acmeRoot = null;
@@ -45,6 +45,8 @@ in
         # needed if you need to use WebSocket
         proxyWebsockets = true;
       };
+
+      serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
     };
   };
 }

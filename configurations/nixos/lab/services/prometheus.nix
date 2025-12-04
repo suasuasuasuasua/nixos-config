@@ -45,13 +45,15 @@ in
   };
 
   services.nginx.virtualHosts = {
-    "${serviceName}.${hostName}.${domain}" = {
+    "${serviceName}.${domain}" = {
       enableACME = true;
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
         proxyPass = "http://127.0.0.1:${toString port}";
       };
+
+      serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
     };
   };
 }
