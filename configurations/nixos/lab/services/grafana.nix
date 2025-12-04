@@ -5,12 +5,12 @@ let
   serviceName = "grafana";
 
   # default = 3000
-  port = 3003;
+  port = 3005;
 in
 {
   services.grafana = {
     enable = true;
-    
+
     settings = {
       server = {
         http_addr = "127.0.0.1";
@@ -22,7 +22,7 @@ in
 
     provision = {
       enable = true;
-      
+
       datasources.settings.datasources = [
         {
           name = "Prometheus";

@@ -4,6 +4,12 @@
     enable = true;
     enabledCollectors = [ "systemd" ];
     port = 9100;
+    extraFlags = [
+      "--collector.ethtool"
+      "--collector.softirqs"
+      "--collector.tcpstat"
+      "--collector.wifi"
+    ];
   };
 
   # Allow Prometheus to scrape metrics from the lab host

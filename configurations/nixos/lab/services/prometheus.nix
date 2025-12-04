@@ -12,7 +12,7 @@ in
     inherit port;
 
     enable = true;
-    
+
     # Retain metrics for 15 days
     retentionTime = "15d";
 
@@ -21,6 +21,12 @@ in
         enable = true;
         enabledCollectors = [ "systemd" ];
         port = 9100;
+        extraFlags = [
+          "--collector.ethtool"
+          "--collector.softirqs"
+          "--collector.tcpstat"
+          "--collector.wifi"
+        ];
       };
     };
 
