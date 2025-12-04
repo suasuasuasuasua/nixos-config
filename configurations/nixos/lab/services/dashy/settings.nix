@@ -133,6 +133,12 @@ in
       };
       items = [
         {
+          title = "13ft";
+          description = "paywall bypasser";
+          icon = "hl-13ft";
+          url = mkFqdn "13ft";
+        }
+        {
           title = "audiobookshelf";
           description = "audiobook manager";
           icon = "hl-audiobookshelf";

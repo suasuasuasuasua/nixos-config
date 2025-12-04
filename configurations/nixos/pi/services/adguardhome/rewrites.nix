@@ -30,6 +30,7 @@ in
     hostName = "lab";
   in
   mkServiceRewrites [
+    "13ft"
     "actual"
     "audiobookshelf"
     "calibre"
