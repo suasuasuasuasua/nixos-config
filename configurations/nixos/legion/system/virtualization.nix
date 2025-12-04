@@ -1,25 +1,21 @@
 { pkgs, ... }:
 {
-  virtualisation.docker = {
+  virtualisation.podman = {
     enable = true;
 
-    # https://wiki.nixos.org/wiki/Docker#Rootless_Docker
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-      # Optionally customize rootless Docker daemon settings
-      daemon.settings = {
-        dns = [
-          "192.168.0.250" # local dns
-          "1.1.1.1" # cloudflare
-          "8.8.8.8" # google
-        ];
-        registry-mirrors = [ "https://mirror.gcr.io" ];
-      };
-    };
+    # https://wiki.nixos.org/wiki/Podman
+    # Use a Docker-compatible command line (alias docker=podman)
+    dockerCompat = true;
+
+    # Required for podman-tui and other tools
+    defaultNetwork.settings.dns_enabled = true;
   };
 
-  environment.systemPackages = with pkgs; [ lazydocker ];
+  # Rootless podman configuration
+  # https://wiki.nixos.org/wiki/Podman#Rootless_Podman
+  virtualisation.containers.registries.search = [ "docker.io" ];
+
+  environment.systemPackages = with pkgs; [ podman-tui ];
 
   # https://wiki.nixos.org/wiki/Category:Virtualization
   # Installing a hypervisor on the host system.
