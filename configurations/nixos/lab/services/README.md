@@ -34,6 +34,7 @@
 - 8082 (open-webui)
 - 8083 (calibre web)
 - 8084 (searxng)
+- 8085 (it-tools)
 - 8088 (wastebin)
 - 8096 (jellyfin)
 - 8123 (home-assistant)

@@ -38,6 +38,7 @@ in
     "home-assistant"
     "hydra"
     "immich"
+    "it-tools"
     "jellyfin"
     "linkwarden"
     "mealie"

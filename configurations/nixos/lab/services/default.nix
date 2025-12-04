@@ -20,6 +20,7 @@
     ./home-assistant.nix
     ./hydra.nix
     ./immich.nix
+    ./it-tools.nix
     ./jellyfin.nix
     ./linkwarden.nix
     ./mealie.nix
