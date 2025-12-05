@@ -6,7 +6,10 @@
   config,
   ...
 }:
-
+let
+  # default = 5000
+  port = 5001;
+in
 {
   # Enable container name DNS for all Podman networks.
   networking.firewall.interfaces =
@@ -21,7 +24,7 @@
   virtualisation.oci-containers.containers."13ft" = {
     image = "ghcr.io/wasi-master/13ft:latest";
     ports = [
-      "5001:5000/tcp"
+      "127.0.0.1:${toString port}:5000/tcp"
     ];
     log-driver = "journald";
     extraOptions = [

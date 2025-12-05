@@ -21,9 +21,9 @@ in
 
   # Containers
   virtualisation.oci-containers.containers."it-tools" = {
-    image = "corentinth/it-tools:latest";
+    image = "corentinth/it-tools:2024.10.22-7ca5933";
     ports = [
-      "${toString port}:80/tcp"
+      "127.0.0.1:${toString port}:80/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
