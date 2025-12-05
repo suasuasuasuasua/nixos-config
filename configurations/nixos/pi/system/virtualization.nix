@@ -5,8 +5,11 @@
     podman = {
       enable = true;
 
-      # Required for podman-tui and other tools
-      defaultNetwork.settings.dns_enabled = true;
+      # DNS disabled because:
+      # 1. The only container (isponsorblocktv) uses --network=host
+      # 2. AdGuard Home binds to 0.0.0.0:53, conflicting with aardvark-dns
+      # 3. AdGuard Home already provides DNS for the host
+      defaultNetwork.settings.dns_enabled = false;
     };
   };
 
