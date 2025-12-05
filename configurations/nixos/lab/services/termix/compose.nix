@@ -27,7 +27,6 @@ in
     image = "ghcr.io/lukegus/termix:release-1.9.0";
     environment = {
       # "Enable_SLL" = "true";
-      "PORT" = toString port;
       # "SSL_DOMAIN" = "termix.sua.sh";
     };
     volumes = [
