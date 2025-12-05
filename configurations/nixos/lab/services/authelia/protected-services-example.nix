@@ -29,6 +29,7 @@ let
   '';
   
   # Authelia verification endpoint configuration
+  # NOTE: Port 9091 must match the port configured in authelia/default.nix
   autheliaVerifyLocation = {
     proxyPass = "http://127.0.0.1:9091/api/verify";
     extraConfig = ''

@@ -196,14 +196,19 @@ First, uncomment the OIDC section in `authelia.nix` and add the required secrets
 Generate an RSA private key for OIDC:
 
 ```bash
-# Generate RSA private key
-openssl genrsa -out /tmp/authelia-oidc-key.pem 4096
+# Generate RSA private key in a secure location (not /tmp!)
+# Store directly in your secrets directory or use a secure temporary location
+mkdir -p ~/.local/secrets
+openssl genrsa -out ~/.local/secrets/authelia-oidc-key.pem 4096
 
 # Add to secrets/secrets.yaml:
 # authelia_oidc:
 #   hmac_secret: <generated with openssl rand -hex 32>
 #   issuer_private_key: |
 #     <contents of authelia-oidc-key.pem>
+
+# After adding to secrets file, securely delete the key:
+# shred -u ~/.local/secrets/authelia-oidc-key.pem
 ```
 
 #### 1. Generate a Client Secret
