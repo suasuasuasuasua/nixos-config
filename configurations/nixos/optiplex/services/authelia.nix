@@ -58,9 +58,9 @@ in
       session = {
         name = "authelia_session";
         domain = domain;
-        expiration = "1h";
-        inactivity = "5m";
-        remember_me = "1M";
+        expiration = "1h"; # 1 hour
+        inactivity = "5m"; # 5 minutes
+        remember_me = "1M"; # 1 Month
       };
 
       storage = {

@@ -48,14 +48,33 @@ sops -e -i secrets/secrets.yaml
 
 Create a user database file at `/var/lib/authelia-main/users_database.yml` on your server.
 
-First, generate a password hash:
+First, generate a password hash using one of these methods:
 
+**Method 1: Using Docker** (easiest if you have Docker installed)
 ```bash
-# Using Docker (easiest method)
 docker run --rm authelia/authelia:latest authelia crypto hash generate argon2 --password 'YourPasswordHere'
+```
 
-# Or using authelia CLI if installed
+**Method 2: Using Authelia on NixOS** (after deploying the module)
+```bash
+# SSH into your server after deploying Authelia
 authelia crypto hash generate argon2 --password 'YourPasswordHere'
+```
+
+**Method 3: Using Python** (no external dependencies)
+```bash
+# Install argon2-cffi if not available
+nix-shell -p python3Packages.argon2-cffi --run "python3 -c \"
+import argon2
+ph = argon2.PasswordHasher(
+    time_cost=3,
+    memory_cost=65536,
+    parallelism=4,
+    hash_len=32,
+    salt_len=16
+)
+print(ph.hash('YourPasswordHere'))
+\""
 ```
 
 Then create the users file:

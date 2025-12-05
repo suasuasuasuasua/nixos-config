@@ -67,7 +67,7 @@ in
     acmeRoot = null;
     
     locations."/" = {
-      proxyPass = "http://localhost:4000";
+      proxyPass = "http://127.0.0.1:4000";
       proxyWebsockets = true;
       extraConfig = autheliaAuthConfig;
     };
@@ -84,12 +84,12 @@ in
     # You may want to exclude certain paths from authentication
     # For example, allow public access to some sections:
     locations."/public" = {
-      proxyPass = "http://localhost:8080/public";
+      proxyPass = "http://127.0.0.1:8080/public";
       # No auth_request here - public access
     };
     
     locations."/" = {
-      proxyPass = "http://localhost:8080";
+      proxyPass = "http://127.0.0.1:8080";
       extraConfig = autheliaAuthConfig;
     };
     
@@ -104,13 +104,13 @@ in
     
     # Protect admin interface
     locations."/admin" = {
-      proxyPass = "http://localhost:8000/admin";
+      proxyPass = "http://127.0.0.1:8000/admin";
       extraConfig = autheliaAuthConfig;
     };
     
     # Allow public access to main service
     locations."/" = {
-      proxyPass = "http://localhost:8000";
+      proxyPass = "http://127.0.0.1:8000";
     };
     
     locations."/authelia" = autheliaVerifyLocation;
@@ -135,7 +135,7 @@ in
     acmeRoot = null;
     
     locations."/" = {
-      proxyPass = "http://localhost:9000";
+      proxyPass = "http://127.0.0.1:9000";
       extraConfig = autheliaAuthConfig;
     };
     
