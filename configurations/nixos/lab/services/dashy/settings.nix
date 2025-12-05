@@ -60,6 +60,12 @@ in
           icon = "hl-grafana";
           url = mkFqdn "grafana";
         }
+        {
+          title = "termix";
+          description = "multi-ssh host manager";
+          icon = "hl-termix";
+          url = mkFqdn "termix";
+        }
       ];
     }
     {
