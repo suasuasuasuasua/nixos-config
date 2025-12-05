@@ -98,34 +98,35 @@ in
       };
 
       # Identity providers configuration for SSO
-      identity_providers = {
-        oidc = {
-          # HMAC secret for OIDC
-          hmac_secret = "placeholder"; # Will be overridden by secrets file
-          
-          # Issuer URL
-          issuer_private_key = "placeholder"; # Will be overridden by secrets file
-
-          # Clients will be configured here for apps like Gitea
-          clients = [
-            # Example client configuration
-            # {
-            #   client_id = "gitea";
-            #   client_name = "Gitea";
-            #   client_secret = "$argon2id$..."; # Hashed secret
-            #   public = false;
-            #   authorization_policy = "two_factor";
-            #   redirect_uris = [ "https://gitea.${domain}/user/oauth2/authelia/callback" ];
-            #   scopes = [
-            #     "openid"
-            #     "profile"
-            #     "email"
-            #     "groups"
-            #   ];
-            # }
-          ];
-        };
-      };
+      # Uncomment and configure when you want to use Authelia as an OIDC provider
+      # identity_providers = {
+      #   oidc = {
+      #     # HMAC secret for OIDC - add to secrets if needed
+      #     # hmac_secret will be read from secrets file
+      #     
+      #     # Issuer private key - generate RSA key and add to secrets
+      #     # issuer_private_key will be read from secrets file
+      #
+      #     # Clients will be configured here for apps like Gitea
+      #     clients = [
+      #       # Example client configuration
+      #       # {
+      #       #   client_id = "gitea";
+      #       #   client_name = "Gitea";
+      #       #   client_secret = "$argon2id$..."; # Hashed secret
+      #       #   public = false;
+      #       #   authorization_policy = "two_factor";
+      #       #   redirect_uris = [ "https://gitea.${domain}/user/oauth2/authelia/callback" ];
+      #       #   scopes = [
+      #       #     "openid"
+      #       #     "profile"
+      #       #     "email"
+      #       #     "groups"
+      #       #   ];
+      #       # }
+      #     ];
+      #   };
+      # };
     };
   };
 

@@ -162,7 +162,30 @@ access_control = {
 
 Authelia can act as an OAuth2/OIDC provider for applications like Gitea, Grafana, etc.
 
+**Note**: OIDC configuration is currently commented out in `authelia.nix`. To enable it, you need to:
+
+1. Generate OIDC secrets (HMAC secret and RSA private key)
+2. Add them to your secrets file
+3. Uncomment and configure the `identity_providers.oidc` section in `authelia.nix`
+
 ### Example: Configure Gitea with Authelia SSO
+
+#### 0. Enable OIDC in Authelia
+
+First, uncomment the OIDC section in `authelia.nix` and add the required secrets.
+
+Generate an RSA private key for OIDC:
+
+```bash
+# Generate RSA private key
+openssl genrsa -out /tmp/authelia-oidc-key.pem 4096
+
+# Add to secrets/secrets.yaml:
+# authelia_oidc:
+#   hmac_secret: <generated with openssl rand -hex 32>
+#   issuer_private_key: |
+#     <contents of authelia-oidc-key.pem>
+```
 
 #### 1. Generate a Client Secret
 
@@ -176,7 +199,7 @@ docker run --rm authelia/authelia:latest authelia crypto hash generate argon2 --
 
 #### 2. Configure Authelia Client
 
-Add to `authelia.nix` in the `identity_providers.oidc.clients` section:
+Uncomment the OIDC section in `authelia.nix` and add your client configuration:
 
 ```nix
 clients = [
