@@ -10,6 +10,7 @@
     ./fail2ban.nix
     ./glances.nix
     ./nginx.nix
+    ./prometheus-node-exporter.nix
     ./uptime-kuma.nix
   ];
 }

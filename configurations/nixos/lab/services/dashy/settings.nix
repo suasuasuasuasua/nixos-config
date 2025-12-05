@@ -54,6 +54,12 @@ in
           icon = "hl-glances";
           url = mkFullFqdn "glances";
         }
+        {
+          title = "grafana";
+          description = "hollistic system overview";
+          icon = "hl-grafana";
+          url = mkFqdn "grafana";
+        }
       ];
     }
     {

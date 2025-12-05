@@ -19,6 +19,7 @@
     ./firefox-syncserver.nix
     ./gitea.nix
     ./glances.nix
+    ./grafana.nix
     ./home-assistant.nix
     ./hydra.nix
     ./immich.nix
@@ -30,6 +31,7 @@
     ./ollama.nix
     ./open-webui.nix
     ./paperless.nix
+    ./prometheus.nix
     ./searxng.nix
     ./smart.nix
     ./stirling-pdf.nix

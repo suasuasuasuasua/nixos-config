@@ -36,6 +36,7 @@ in
     "calibre"
     "firefox-syncserver"
     "gitea"
+    "grafana"
     "home-assistant"
     "hydra"
     "immich"
