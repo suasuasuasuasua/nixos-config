@@ -52,6 +52,7 @@ in
     "paperless"
     "searxng"
     "stirling-pdf"
+    "termix"
     "vaultwarden"
     "wastebin"
   ] labIP hostName

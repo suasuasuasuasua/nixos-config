@@ -1,0 +1,16 @@
+services:
+  termix:
+    image: ghcr.io/lukegus/termix:release-1.9.0
+    container_name: termix
+    restart: unless-stopped
+    ports:
+      - "8086:8080"
+    volumes:
+      - termix-data:/app/data
+    environment:
+      PORT: "8086"
+      Enable_SLL: true
+      SSL_DOMAIN: termix.sua.sh
+volumes:
+  termix-data:
+    driver: local

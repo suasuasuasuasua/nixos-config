@@ -7,6 +7,7 @@
     ./nginx
     ./samba
     ./syncthing
+    ./termix
     ./wireguard
     ./ytdl-sub
 
