@@ -5,11 +5,10 @@
     podman = {
       enable = true;
 
-      # DNS disabled because:
-      # 1. The only container (isponsorblocktv) uses --network=host
-      # 2. AdGuard Home binds to 0.0.0.0:53, conflicting with aardvark-dns
-      # 3. AdGuard Home already provides DNS for the host
-      defaultNetwork.settings.dns_enabled = false;
+      # DNS enabled for inter-container communication
+      # AdGuard Home binds only to 192.168.0.250:53 to avoid conflicts
+      # with aardvark-dns on the podman bridge (10.88.0.1:53)
+      defaultNetwork.settings.dns_enabled = true;
     };
   };
 
