@@ -6,8 +6,13 @@ let
   inherit (config.networking) hostName domain;
   serviceName = "adguardhome";
 
+  # Pi host's static IP address
+  # Note: If this IP changes, update it here and in rewrites.nix
+  piIP = "192.168.0.250";
+
   settings = import ./settings.nix {
     inherit (config.networking) domain;
+    inherit piIP;
   };
 
   # default = 3000

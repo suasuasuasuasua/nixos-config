@@ -1,4 +1,4 @@
-{ domain, ... }:
+{ domain, piIP, ... }:
 {
   # https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration#configuration-file
   http = {
@@ -23,8 +23,8 @@
   dns = {
     # Bind only to the pi's specific IP to avoid conflicts with Podman's aardvark-dns
     # This allows Podman DNS to bind to the podman bridge interface (10.88.0.1:53)
-    # while AdGuard Home handles DNS on the host interface (192.168.0.250:53)
-    bind_hosts = [ "192.168.0.250" ];
+    # while AdGuard Home handles DNS on the host interface
+    bind_hosts = [ piIP ];
     port = 53;
     anonymize_client_ip = false;
     ratelimit = 20;
