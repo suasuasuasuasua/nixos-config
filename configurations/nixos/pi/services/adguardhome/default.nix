@@ -7,7 +7,7 @@ let
   serviceName = "adguardhome";
 
   # Pi host's static IP address
-  # Note: If this IP changes, update it here and in rewrites.nix
+  # Defined in one place to avoid duplication across configuration files
   piIP = "192.168.0.250";
 
   settings = import ./settings.nix {

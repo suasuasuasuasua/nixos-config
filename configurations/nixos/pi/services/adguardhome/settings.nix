@@ -159,7 +159,7 @@
     parental_block_host = "family-block.dns.adguard.com";
     safebrowsing_block_host = "standard-block.dns.adguard.com";
     rewrites = import ./rewrites.nix {
-      inherit domain;
+      inherit domain piIP;
     };
     safe_fs_patterns = [ "/var/lib/private/AdGuardHome/userfilters/*" ];
     safebrowsing_cache_size = 1048576;
