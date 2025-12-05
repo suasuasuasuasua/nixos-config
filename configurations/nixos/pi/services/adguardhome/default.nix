@@ -6,13 +6,13 @@ let
   inherit (config.networking) hostName domain;
   serviceName = "adguardhome";
 
-  # Pi host's static IP address
-  # Defined in one place to avoid duplication across configuration files
+  # define static ips
+  labIP = "192.168.0.240";
   piIP = "192.168.0.250";
 
   settings = import ./settings.nix {
     inherit (config.networking) domain;
-    inherit piIP;
+    inherit labIP piIP;
   };
 
   # default = 3000

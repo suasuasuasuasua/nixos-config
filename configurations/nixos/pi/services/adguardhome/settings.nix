@@ -1,4 +1,9 @@
-{ domain, piIP, ... }:
+{
+  domain,
+  labIP,
+  piIP,
+  ...
+}:
 {
   # https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration#configuration-file
   http = {
@@ -159,7 +164,7 @@
     parental_block_host = "family-block.dns.adguard.com";
     safebrowsing_block_host = "standard-block.dns.adguard.com";
     rewrites = import ./rewrites.nix {
-      inherit domain piIP;
+      inherit domain labIP piIP;
     };
     safe_fs_patterns = [ "/var/lib/private/AdGuardHome/userfilters/*" ];
     safebrowsing_cache_size = 1048576;
