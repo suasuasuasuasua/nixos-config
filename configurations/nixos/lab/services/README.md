@@ -15,6 +15,22 @@
 1. Did the DNS fully propagatate the ACME challenge?
 1. Are you referencing the correct path for `sops`?
 
+## Authentication
+
+The server uses [Authelia](https://www.authelia.com/) for SSO (Single Sign-On) authentication.
+
+- **Setup Guide**: See [authelia/SETUP.md](./authelia/SETUP.md) for complete setup instructions
+- **Configuration**: [authelia/default.nix](./authelia/default.nix)
+- **Examples**:
+  - [Protecting services with forward auth](./authelia/protected-services-example.nix)
+  - [Gitea OIDC integration](./authelia/gitea-oidc-example.nix)
+
+Authelia provides:
+- Single Sign-On (SSO) across all services
+- Two-Factor Authentication (2FA)
+- OAuth2/OIDC provider for compatible applications
+- Fine-grained access control policies
+
 ## Ports
 
 - 22 (ssh)
@@ -44,6 +60,7 @@
 - 9000 (mealie)
 - 9001 (miniflux)
 - 9090 (prometheus)
+- 9091 (authelia)
 - 9100 (node-exporter)
 - 9113 (nginx-exporter)
 - 9134 (zfs-exporter)
