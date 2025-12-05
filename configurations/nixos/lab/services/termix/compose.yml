@@ -11,7 +11,6 @@ services:
       PORT: "8086"
       Enable_SLL: true
       SSL_DOMAIN: termix.sua.sh
-
 volumes:
   termix-data:
     driver: local
