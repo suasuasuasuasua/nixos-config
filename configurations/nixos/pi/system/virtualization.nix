@@ -6,7 +6,7 @@
       enable = true;
 
       # DNS enabled for inter-container communication
-      # AdGuard Home binds only to 192.168.0.250:53 to avoid conflicts
+      # AdGuard Home binds only to the pi's host IP to avoid conflicts
       # with aardvark-dns on the podman bridge (10.88.0.1:53)
       defaultNetwork.settings.dns_enabled = true;
     };
