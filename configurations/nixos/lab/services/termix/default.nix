@@ -10,15 +10,6 @@ in
 {
   imports = [ ./compose.nix ];
 
-  networking.firewall = {
-    allowedTCPPorts = [
-      port
-    ];
-    allowedUDPPorts = [
-      port
-    ];
-  };
-
   services.nginx.virtualHosts = {
     "${serviceName}.${domain}" = {
       enableACME = true;
