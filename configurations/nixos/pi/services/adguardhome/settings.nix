@@ -1,4 +1,9 @@
-{ domain, ... }:
+{
+  domain,
+  labIP,
+  piIP,
+  ...
+}:
 {
   # https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration#configuration-file
   http = {
@@ -21,7 +26,10 @@
   language = "";
   theme = "auto";
   dns = {
-    bind_hosts = [ "0.0.0.0" ];
+    # Bind only to the pi's specific IP to avoid conflicts with Podman's aardvark-dns
+    # This allows Podman DNS to bind to the podman bridge interface (10.88.0.1:53)
+    # while AdGuard Home handles DNS on the host interface
+    bind_hosts = [ piIP ];
     port = 53;
     anonymize_client_ip = false;
     ratelimit = 20;
@@ -156,7 +164,7 @@
     parental_block_host = "family-block.dns.adguard.com";
     safebrowsing_block_host = "standard-block.dns.adguard.com";
     rewrites = import ./rewrites.nix {
-      inherit domain;
+      inherit domain labIP piIP;
     };
     safe_fs_patterns = [ "/var/lib/private/AdGuardHome/userfilters/*" ];
     safebrowsing_cache_size = 1048576;

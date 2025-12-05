@@ -1,8 +1,10 @@
-{ domain, ... }:
+{
+  domain,
+  labIP,
+  piIP,
+  ...
+}:
 let
-  labIP = "192.168.0.240";
-  piIP = "192.168.0.250";
-
   mkServiceRewrite = name: answer: {
     domain = "${name}.${domain}";
     inherit answer;

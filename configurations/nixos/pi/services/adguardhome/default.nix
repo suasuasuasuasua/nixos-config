@@ -6,8 +6,13 @@ let
   inherit (config.networking) hostName domain;
   serviceName = "adguardhome";
 
+  # define static ips
+  labIP = "192.168.0.240";
+  piIP = "192.168.0.250";
+
   settings = import ./settings.nix {
     inherit (config.networking) domain;
+    inherit labIP piIP;
   };
 
   # default = 3000
