@@ -1,5 +1,7 @@
 # Pi (Raspberry Pi Model 4B *(2GB RAM)*)
 
+- Configured with **rootless Podman** for secure container management (see `/docs/rootless-podman.md`)
+
 ## Quirks
 
 - not powerful enought to build system directly, so need a support machine like

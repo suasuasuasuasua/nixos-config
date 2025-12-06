@@ -15,9 +15,25 @@
             isNormalUser = true;
             extraGroups = [
               "libvirtd"
+              "podman" # Added for rootless podman support
               "wheel"
             ];
             shell = pkgs.zsh;
+
+            # Enable rootless podman by allocating subordinate UIDs/GIDs
+            # See /docs/rootless-podman.md for detailed explanation
+            subUidRanges = [
+              {
+                startUid = 100000;
+                count = 65536;
+              }
+            ];
+            subGidRanges = [
+              {
+                startGid = 100000;
+                count = 65536;
+              }
+            ];
           };
         }
         // acc;

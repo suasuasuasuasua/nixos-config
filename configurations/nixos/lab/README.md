@@ -2,6 +2,7 @@
 
 - Running `zfs` on root partitioning scheme (see ./disko.nix for more details)
 - Also running `zfs` with RAID-Z1 scheme for 3x4TB HDDs
+- Configured with **rootless Podman** for secure container management (see `/docs/rootless-podman.md`)
 
 ## Quirks
 

@@ -5,7 +5,25 @@
     # passwd) after rebooting!
     initialHashedPassword = "$y$j9T$sXZCGwjtugZIt/C2nU8bk/$D36OrIe3eyGSM7rPysbQI1OyT56TdtJZtcvnOne2Ge0";
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [
+      "podman" # Added for rootless podman support
+      "wheel"
+    ];
+
+    # Enable rootless podman by allocating subordinate UIDs/GIDs
+    # See /docs/rootless-podman.md for detailed explanation
+    subUidRanges = [
+      {
+        startUid = 165536;
+        count = 65536;
+      }
+    ];
+    subGidRanges = [
+      {
+        startGid = 165536;
+        count = 65536;
+      }
+    ];
 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBBse2Ikd1n7K9MnQiXmC4kNdNOasAVBbgH01pozcsbm justinhoang@Justins-MacBook-Pro.local"

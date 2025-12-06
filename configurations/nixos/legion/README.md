@@ -3,6 +3,7 @@
 - Running `zfs` on root partitioning scheme (see ./disko.nix for more details)
 - For-fun NixOS on the Windows gaming computer. When I upgrade computers, I may
   run NixOS main driver, with Windows as the backup
+- Configured with **rootless Podman** for secure container management (see `/docs/rootless-podman.md`)
 
 ```text
           ▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖             justinhoang@legion
