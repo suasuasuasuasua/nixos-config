@@ -18,10 +18,10 @@
 
             isNormalUser = true;
             extraGroups = [
-              "wheel"
               "libvirtd"
               "samba"
               "syncthing"
+              "wheel"
             ];
             shell = pkgs.zsh;
 

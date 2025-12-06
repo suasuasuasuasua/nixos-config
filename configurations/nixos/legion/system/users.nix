@@ -14,8 +14,8 @@
 
             isNormalUser = true;
             extraGroups = [
-              "wheel"
               "libvirtd"
+              "wheel"
             ];
             shell = pkgs.zsh;
           };

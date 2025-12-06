@@ -7,6 +7,11 @@
 
       # Required for podman-tui and other tools
       defaultNetwork.settings.dns_enabled = true;
+
+      # Create an alias mapping docker -> podman
+      dockerCompat = true;
+      # Enable podman/kdocker socket
+      dockerSocket.enable = true;
     };
   };
 
@@ -27,5 +32,8 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ podman-tui ];
+  environment.systemPackages = with pkgs; [
+    lazydocker
+    podman-tui
+  ];
 }
