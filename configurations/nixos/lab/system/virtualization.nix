@@ -7,6 +7,9 @@
 
       # Required for podman-tui and other tools
       defaultNetwork.settings.dns_enabled = true;
+
+      # Create an alias mapping docker -> podman
+      # Uncomment to enable: dockerCompat = true;
     };
   };
 
