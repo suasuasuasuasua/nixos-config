@@ -16,6 +16,7 @@
 
     # Rootless podman configuration
     # https://wiki.nixos.org/wiki/Podman#Rootless_Podman
+    # See also: /docs/rootless-podman.md
     containers = {
       registries.search = [ "docker.io" ];
 
@@ -31,6 +32,10 @@
       };
     };
   };
+
+  # Enable unprivileged user namespaces (required for rootless containers)
+  # This allows regular users to run containers without root privileges
+  boot.kernel.sysctl."kernel.unprivileged_userns_clone" = 1;
 
   environment.systemPackages = with pkgs; [
     lazydocker
