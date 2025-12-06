@@ -16,10 +16,16 @@
         map
         sort
         concatStringsSep
+        filter
+        isAttrs
+        hasAttr
         ;
       inherit (pkgs.lib.lists) unique;
 
-      packages = map (p: "${p.name}") config.environment.systemPackages;
+      # Filter packages to only include derivations with a name attribute
+      # This handles cases where strings (like store paths) are in systemPackages
+      validPackages = filter (p: isAttrs p && hasAttr "name" p) config.environment.systemPackages;
+      packages = map (p: "${p.name}") validPackages;
       sortedUnique = sort lessThan (unique packages);
       formatted = concatStringsSep "\n" sortedUnique;
     in
