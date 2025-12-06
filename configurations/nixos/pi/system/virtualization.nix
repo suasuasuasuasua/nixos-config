@@ -5,6 +5,8 @@
     podman = {
       enable = true;
 
+      autoPrune.enable = true;
+
       # DNS enabled for inter-container communication
       # AdGuard Home binds only to the pi's host IP to avoid conflicts
       # with aardvark-dns on the podman bridge (10.88.0.1:53)

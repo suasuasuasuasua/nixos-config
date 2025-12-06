@@ -5,6 +5,8 @@
     podman = {
       enable = true;
 
+      autoPrune.enable = true;
+
       # Required for podman-tui and other tools
       defaultNetwork.settings.dns_enabled = true;
 
