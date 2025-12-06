@@ -26,10 +26,10 @@ cat /etc/subuid
 cat /etc/subgid
 
 # Example output for justinhoang user:
-# justinhoang:100000:65536
+justinhoang:100000:65536
 
 # Example output for admin user:
-# admin:165536:65536
+admin:165536:65536
 ```
 
 ### Verify kernel settings
@@ -109,8 +109,9 @@ podman run -d \
 # Check if it's running
 podman ps
 
-# Test connection
-redis-cli -h localhost ping
+# Test connection using podman exec
+podman exec redis redis-cli ping
+# Expected output: PONG
 
 # View logs
 podman logs redis

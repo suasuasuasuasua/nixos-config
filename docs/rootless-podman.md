@@ -46,7 +46,7 @@ This is configured through `/etc/subuid` and `/etc/subgid` files, which define t
 justinhoang:100000:65536
 admin:165536:65536
 
-# /etc/subgid  
+# /etc/subgid
 justinhoang:100000:65536
 admin:165536:65536
 ```
@@ -203,7 +203,7 @@ When migrating from root to rootless podman:
 
 Rootless Podman represents a significant security improvement for container workloads. By removing the requirement for root privileges, it:
 - Reduces the attack surface
-- Enables safer multi-user environments  
+- Enables safer multi-user environments
 - Maintains compatibility with OCI standards
 - Provides near-identical functionality to root mode
 
