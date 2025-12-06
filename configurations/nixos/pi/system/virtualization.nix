@@ -9,6 +9,11 @@
       # AdGuard Home binds only to the pi's host IP to avoid conflicts
       # with aardvark-dns on the podman bridge (10.88.0.1:53)
       defaultNetwork.settings.dns_enabled = true;
+
+      # Create an alias mapping docker -> podman
+      dockerCompat = true;
+      # Enable podman/kdocker socket
+      dockerSocket.enable = true;
     };
   };
 

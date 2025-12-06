@@ -1,11 +1,17 @@
 { pkgs, ... }:
 {
   virtualisation = {
+    oci-containers.backend = "podman";
     podman = {
       enable = true;
 
       # Required for podman-tui and other tools
       defaultNetwork.settings.dns_enabled = true;
+
+      # Create an alias mapping docker -> podman
+      dockerCompat = true;
+      # Enable podman/kdocker socket
+      dockerSocket.enable = true;
     };
 
     # Rootless podman configuration

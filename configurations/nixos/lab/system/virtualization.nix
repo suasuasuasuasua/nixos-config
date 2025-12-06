@@ -9,7 +9,9 @@
       defaultNetwork.settings.dns_enabled = true;
 
       # Create an alias mapping docker -> podman
-      # Uncomment to enable: dockerCompat = true;
+      dockerCompat = true;
+      # Enable podman/kdocker socket
+      dockerSocket.enable = true;
     };
   };
 
