@@ -34,5 +34,8 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ podman-tui ];
+  environment.systemPackages = with pkgs; [
+    lazydocker
+    podman-tui
+  ];
 }

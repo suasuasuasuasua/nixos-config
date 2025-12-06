@@ -19,7 +19,6 @@
             isNormalUser = true;
             extraGroups = [
               "libvirtd"
-              "podman"
               "samba"
               "syncthing"
               "wheel"

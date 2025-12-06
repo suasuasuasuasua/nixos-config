@@ -32,7 +32,10 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ podman-tui ];
+  environment.systemPackages = with pkgs; [
+    lazydocker
+    podman-tui
+  ];
 
   # https://wiki.nixos.org/wiki/Category:Virtualization
   # Installing a hypervisor on the host system.

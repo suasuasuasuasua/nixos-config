@@ -15,7 +15,6 @@
             isNormalUser = true;
             extraGroups = [
               "libvirtd"
-              "podman"
               "wheel"
             ];
             shell = pkgs.zsh;
