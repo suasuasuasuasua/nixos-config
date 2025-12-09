@@ -2,6 +2,7 @@
   # toggle the relevant services from here
   imports = [
     ./13ft
+    ./authelia
     ./dashy
     ./it-tools
     ./nginx

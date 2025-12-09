@@ -2,6 +2,8 @@
 
 - Running `zfs` on root partitioning scheme (see ./disko.nix for more details)
 - Also running `zfs` with RAID-Z1 scheme for 3x4TB HDDs
+- **SSO Authentication**: Uses [Authelia](https://www.authelia.com/) for Single Sign-On across services
+  - See [services/authelia/SETUP.md](./services/authelia/SETUP.md) for configuration details
 
 ## Quirks
 
