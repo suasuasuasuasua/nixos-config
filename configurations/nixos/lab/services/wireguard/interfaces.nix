@@ -56,7 +56,7 @@
       }
       {
         name = "penguin";
-        publicKey = "sG0IdwfA4HrbZRbW7OzHIL7yiwKDT2Aq55HrRf7Wnik=";
+        publicKey = "xF1lLvsTN9dSGqaRbdyFwORWlkMJsLtAmJpjIZ7hMho=";
         allowedIPs = [ "10.100.0.5/32" ];
       }
     ];
