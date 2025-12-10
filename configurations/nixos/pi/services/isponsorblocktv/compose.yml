@@ -6,4 +6,7 @@ services:
     network_mode: host
     volumes:
       # enter the same pathway as you used for your configurator in step 1
-      - /home/admin/isponsorblocktv:/app/data
+      - isponsorblocktv-data:/app/data
+volumes:
+  isponsorblocktv-data:
+    driver: local
