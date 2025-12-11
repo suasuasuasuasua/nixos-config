@@ -7,7 +7,7 @@ The configuration now includes filtering to download only original songs and exc
 - Covers
 - Live performances
 - Acoustic versions
-- Instrumental versions (except in the Instrumental category)
+- Instrumental versions
 - Piano versions
 - Lyric videos
 - Karaoke versions
@@ -20,6 +20,10 @@ The configuration now includes filtering to download only original songs and exc
 - Videos with subtitles markers (eng sub, legendado)
 
 This is implemented using yt-dlp's `match_filter` option in the `__preset__` overrides. The filter rejects videos whose titles match any of the above patterns (case-insensitive) and also excludes live streams.
+
+**Note:** The "instrumental" keyword filter applies to all categories in your subscriptions, including the "= Instrumental" category. If this causes issues with downloading instrumental music, you may need to either:
+1. Remove "instrumental" from the filter pattern, or
+2. Create a separate preset for the Instrumental category without that keyword
 
 ### How the Filter Works
 

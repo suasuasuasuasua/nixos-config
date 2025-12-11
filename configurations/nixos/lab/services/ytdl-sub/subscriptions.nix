@@ -11,7 +11,11 @@
       # Filter out remixes, covers, live performances, and other non-original content
       # This uses yt-dlp's match_filter syntax to reject videos based on title patterns
       # The filter rejects videos with titles containing these keywords (case-insensitive)
+      # Note: This applies globally, including to the "Instrumental" category below
       ytdl_options = {
+        # Keywords to filter: remix, cover, live, acoustic, instrumental, piano,
+        # lyric/lyrics, karaoke, reaction, tutorial, dance practice, behind, making,
+        # vlog, vlive, eng sub, legendado
         match_filter = "!is_live & title!*='(?i).*(remix|cover|live|acoustic|instrumental|piano|lyric|lyrics|karaoke|reaction|tutorial|dance practice|behind|making|vlog|vlive|eng sub|legendado).*'";
       };
     };
