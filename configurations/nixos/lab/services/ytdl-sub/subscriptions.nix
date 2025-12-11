@@ -1,3 +1,33 @@
+let
+  # Keywords to filter from video titles (case-insensitive)
+  # Note: Keywords should not contain regex special characters like ., *, ?, +, etc.
+  # If you need to filter patterns with special characters, escape them properly.
+  filteredKeywords = [
+    "remix"
+    "cover"
+    "live"
+    "acoustic"
+    "instrumental"
+    "piano"
+    "lyric"
+    "lyrics"
+    "karaoke"
+    "reaction"
+    "tutorial"
+    "dance practice"
+    "behind"
+    "making"
+    "vlog"
+    "vlive"
+    "eng sub"
+    "legendado"
+  ];
+
+  # Build the match_filter string for yt-dlp
+  # Rejects videos whose titles contain any of the keywords
+  matchFilterString = 
+    "!is_live & title!*='(?i).*(${builtins.concatStringsSep "|" filteredKeywords}).*'";
+in
 {
   "__preset__" = {
     overrides = {
@@ -7,6 +37,13 @@
       # and paste to the samba share is fine for now probably
       music_directory = "music";
       music_video_directory = "music_videos";
+
+      # Filter out remixes, covers, live performances, and other non-original content
+      # This uses yt-dlp's match_filter syntax to reject videos based on title patterns
+      # Note: This applies globally, including to the "Instrumental" category below
+      ytdl_options = {
+        match_filter = matchFilterString;
+      };
     };
   };
   "YouTube Releases" = {
