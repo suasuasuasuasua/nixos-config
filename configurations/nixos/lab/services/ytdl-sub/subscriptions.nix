@@ -1,5 +1,7 @@
 let
   # Keywords to filter from video titles (case-insensitive)
+  # Note: Keywords should not contain regex special characters like ., *, ?, +, etc.
+  # If you need to filter patterns with special characters, escape them properly.
   filteredKeywords = [
     "remix"
     "cover"
