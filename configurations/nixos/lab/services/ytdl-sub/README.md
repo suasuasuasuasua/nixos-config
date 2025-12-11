@@ -1,5 +1,47 @@
 # ytdl-sub
 
+## Filtering Strategy
+
+The configuration now includes filtering to download only original songs and exclude non-original content like:
+- Remixes
+- Covers
+- Live performances
+- Acoustic versions
+- Instrumental versions (except in the Instrumental category)
+- Piano versions
+- Lyric videos
+- Karaoke versions
+- Reactions
+- Tutorials
+- Dance practices
+- Behind-the-scenes content
+- Making-of videos
+- Vlogs
+- Videos with subtitles markers (eng sub, legendado)
+
+This is implemented using yt-dlp's `match_filter` option in the `__preset__` overrides. The filter rejects videos whose titles match any of the above patterns (case-insensitive) and also excludes live streams.
+
+### How the Filter Works
+
+The filter uses the syntax: `!is_live & title!*='(?i).*(pattern1|pattern2).*'`
+- `!is_live` - Excludes live streams
+- `title!*=` - Rejects if title matches the pattern (note: no space before `!*=`)
+- `(?i)` - Case-insensitive matching
+- `.*` - Matches any characters before/after the keywords
+- Patterns are separated by `|` (OR operator)
+
+### Alternative Approach: Using Playlists
+
+If you find that title filtering is too aggressive or misses some content, consider switching to playlist-based subscriptions instead of entire channels. You can:
+1. Find the specific "Releases" or "Official" playlist for each artist
+2. Replace the channel URL with the playlist URL
+3. This ensures you only get official releases without remixes/covers that might be uploaded to the same channel
+
+Example:
+```nix
+"Artist Name" = "https://www.youtube.com/playlist?list=PLAYLIST_ID_HERE";
+```
+
 ## Workflow
 
 The metadata generation from YouTube is sometimes messed up. I suspect it's due
@@ -13,4 +55,4 @@ I think the best course of action forward is to define which playlists in the
 channel we want.
 
 > Another workaround is to look for "X - topic" YouTube channels which avoid
-> music avoids altogether
+> music videos altogether and focus on official releases
