@@ -27,12 +27,19 @@ This is implemented using yt-dlp's `match_filter` option in the `__preset__` ove
 
 ### How the Filter Works
 
-The filter uses the syntax: `!is_live & title!*='(?i).*(pattern1|pattern2).*'`
+The filter is implemented using a clean, maintainable structure:
+1. A list of keywords (`filteredKeywords`) defines all terms to filter out
+2. The list is programmatically converted into a yt-dlp match_filter expression
+3. The filter uses the syntax: `!is_live & title!*='(?i).*(pattern1|pattern2).*'`
+
+Components explained:
 - `!is_live` - Excludes live streams
 - `title!*=` - Rejects if title matches the pattern (note: no space before `!*=`)
 - `(?i)` - Case-insensitive matching
 - `.*` - Matches any characters before/after the keywords
 - Patterns are separated by `|` (OR operator)
+
+**To add or remove filtered keywords:** Simply edit the `filteredKeywords` list at the top of `subscriptions.nix`.
 
 ### Alternative Approach: Using Playlists
 
