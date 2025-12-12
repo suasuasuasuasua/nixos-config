@@ -69,6 +69,32 @@ in
                 (mkBookmark "proton" "https://mail.proton.me")
               ];
             }
+            {
+              name = "finances";
+              bookmarks = [
+                (mkBookmark "chase" "https://secure.chase.com")
+                (mkBookmark "empower" "https://lockheedmartinsavings.empower-retirement.com")
+                (mkBookmark "fidelity" "https://digital.fidelity.com")
+                (mkBookmark "usbank" "https://onlinebanking.usbank.com")
+              ];
+            }
+            {
+              name = "benefits";
+              bookmarks = [
+                (mkBookmark "dental" "https://cigna.dental.com/dashboard")
+                (mkBookmark "health" "https://my.cigna.com")
+                (mkBookmark "vision" "https://www.vsp.com/")
+              ];
+            }
+            {
+              name = "bills";
+              bookmarks = [
+                (mkBookmark "car insurance" "https://myaccount.amfam.com/2812/overview")
+                (mkBookmark "golden ridge portal" "https://outlookgoldenridge.securecafe.com/residentservices/outlook-golden/home.aspx")
+                (mkBookmark "internet" "https://www.quantumfiber.com")
+                (mkBookmark "parking" "https://parkm.app")
+              ];
+            }
             (mkBookmark "hacker news" "https://news.ycombinator.com")
             (mkBookmark "reddit" "https://reddit.com")
             {
