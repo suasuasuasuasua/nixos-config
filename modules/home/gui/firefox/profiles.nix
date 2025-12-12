@@ -65,6 +65,7 @@ in
               name = "email";
               bookmarks = [
                 (mkBookmark "gmail" "https://mail.google.com")
+                (mkBookmark "outlook" "https://outlook.live.com/")
                 (mkBookmark "proton" "https://mail.proton.me")
               ];
             }
