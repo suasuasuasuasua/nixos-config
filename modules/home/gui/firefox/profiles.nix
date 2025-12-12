@@ -69,20 +69,20 @@ in
                 (mkBookmark "proton" "https://mail.proton.me")
               ];
             }
-            (mkBookmark "reddit" "https://reddit.com")
             (mkBookmark "hacker news" "https://news.ycombinator.com")
+            (mkBookmark "reddit" "https://reddit.com")
             {
               name = "nix";
               bookmarks = [
-                (mkBookmark "nixpkgs" "https://search.nixos.org/packages")
-                (mkBookmark "nixpkgs options" "https://search.nixos.org/options?")
-                (mkBookmark "nix wiki" "https://wiki.nixos.org")
-                (mkBookmark "home-manager options" "https://nix-community.github.io/home-manager/options.xhtml")
                 (mkBookmark "home-manager extranix options" "https://home-manager-options.extranix.com/")
-                (mkBookmark "noogle" "https://noogle.dev/")
-                (mkBookmark "nixvim" "https://nix-community.github.io/nixvim/")
-                (mkBookmark "nixvim search" "https://nix-community.github.io/nixvim/search/")
+                (mkBookmark "home-manager options" "https://nix-community.github.io/home-manager/options.xhtml")
+                (mkBookmark "nix wiki" "https://wiki.nixos.org")
                 (mkBookmark "nix2json webui" "https://json-to-nix.pages.dev")
+                (mkBookmark "nixpkgs options" "https://search.nixos.org/options?")
+                (mkBookmark "nixpkgs" "https://search.nixos.org/packages")
+                (mkBookmark "nixvim search" "https://nix-community.github.io/nixvim/search/")
+                (mkBookmark "nixvim" "https://nix-community.github.io/nixvim/")
+                (mkBookmark "noogle" "https://noogle.dev/")
               ];
             }
             {
@@ -205,8 +205,8 @@ in
     bookmarks = {
       force = true;
       settings = [
-        (mkBookmark "wikipedia" "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go")
         (mkBookmark "kernel.org" "https://www.kernel.org")
+        (mkBookmark "wikipedia" "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go")
         {
           name = "Nix sites";
           toolbar = true;
