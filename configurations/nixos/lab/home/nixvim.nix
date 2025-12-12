@@ -5,10 +5,9 @@ let
     config.plugins = {
       neorg.settings.load."core.dirman".config = {
         workspaces = {
-          "personal" = "/zshare/personal/notes/personal";
-          "productivity" = "/zshare/personal/notes/productivity";
+          "default" = "/zshare/personal/notes";
         };
-        default_workspace = "personal";
+        default_workspace = "default";
       };
       obsidian = {
         settings = {

@@ -6,29 +6,22 @@
     "mbp3" = {
       id = "V4NCONK-S2JLQLH-AQULXDL-Y4QQWBB-FO67NEP-G2Q2SSG-BQF4ZPW-5VHRGAY";
     };
+    "penguin" = {
+      id = "I5INTQG-B54MRIS-XCFCVO3-JMJRYHX-IP2U4HO-KDHB34G-ECE6SOD-7V3IQAS";
+    };
   };
   folders = {
-    "personal" = {
-      path = "/home/justinhoang/Documents/vaults/personal";
+    "default" = {
+      path = "/zshare/personal/notes/";
       devices = [
-        "lab"
+        "legion"
+        "mbp3"
+        "penguin"
       ];
       versioning = {
         type = "simple";
-        params.keep = "5";
+        params.keep = "10";
       };
-      type = "sendreceive";
-    };
-    "productivity" = {
-      path = "/home/justinhoang/Documents/vaults/productivity";
-      devices = [
-        "lab"
-      ];
-      versioning = {
-        type = "simple";
-        params.keep = "5";
-      };
-      type = "sendreceive";
     };
   };
 }

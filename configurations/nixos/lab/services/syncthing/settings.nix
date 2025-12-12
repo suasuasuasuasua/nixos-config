@@ -11,20 +11,8 @@
     };
   };
   folders = {
-    "personal" = {
-      path = "/zshare/personal/notes/personal/";
-      devices = [
-        "legion"
-        "mbp3"
-        "penguin"
-      ];
-      versioning = {
-        type = "simple";
-        params.keep = "10";
-      };
-    };
-    "productivity" = {
-      path = "/zshare/personal/notes/productivity/";
+    "default" = {
+      path = "/zshare/personal/notes/";
       devices = [
         "legion"
         "mbp3"
