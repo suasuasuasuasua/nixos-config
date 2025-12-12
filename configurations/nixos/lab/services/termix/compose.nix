@@ -20,8 +20,6 @@ in
       "${matchAll}".allowedUDPPorts = [ 53 ];
     };
 
-  virtualisation.oci-containers.backend = "podman";
-
   # Containers
   virtualisation.oci-containers.containers."termix" = {
     image = "ghcr.io/lukegus/termix:release-1.9.0";
