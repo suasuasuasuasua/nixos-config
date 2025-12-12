@@ -11,10 +11,9 @@ let
     config.plugins = {
       neorg.settings.load."core.dirman".config = {
         workspaces = {
-          "personal" = "${config.xdg.userDirs.documents}/vaults/personal";
-          "productivity" = "${config.xdg.userDirs.documents}/vaults/productivity";
+          "default" = "${config.xdg.userDirs.documents}/vaults";
         };
-        default_workspace = "personal";
+        default_workspace = "default";
       };
       obsidian = {
         settings = {
