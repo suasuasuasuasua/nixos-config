@@ -146,7 +146,7 @@ tls://dns.sua.sh:853
 
 **DoH**:
 ```
-https://dns.sua.sh/dns-query
+https://dns.sua.sh:8443/dns-query
 ```
 
 **Web Interface**:

@@ -90,8 +90,8 @@
   tls = {
     enabled = true;
     server_name = "dns.${domain}";
-    force_https = true;
-    port_https = 443;
+    force_https = false;
+    port_https = 8443;
     port_dns_over_tls = 853;
     port_dns_over_quic = 853;
     port_dnscrypt = 0;

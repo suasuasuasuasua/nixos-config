@@ -25,22 +25,25 @@ See [DNS-ENCRYPTION.md](./DNS-ENCRYPTION.md) for detailed information about each
 ### SSL/TLS Certificates
 
 Certificates are automatically provisioned and renewed via ACME (Let's Encrypt):
-- Certificate for `dns.sua.sh` used for DoT/DoH/DoQ
-- Certificate for `adguardhome.sua.sh` used for the web interface
+- Certificate for `dns.sua.sh` used for DoT/DoH/DoQ (AdGuard Home direct access)
+- Certificate for `adguardhome.sua.sh` used for the web interface (via nginx reverse proxy)
 
-### Web Interface
+### Access Points
 
-Access the AdGuard Home management interface at:
-- `https://adguardhome.sua.sh` (via nginx reverse proxy)
+- **Web Interface**: `https://adguardhome.sua.sh` (via nginx reverse proxy)
+- **DNS-over-TLS (DoT)**: `tls://dns.sua.sh:853`
+- **DNS-over-HTTPS (DoH)**: `https://dns.sua.sh:8443/dns-query`
+- **DNS-over-QUIC (DoQ)**: `dns.sua.sh:853` (UDP)
 
 ### Ports
 
 **TCP Ports:**
 - 53: Standard DNS
 - 68: DHCP client
-- 443: HTTPS (web interface + DoH)
+- 443: HTTPS web interface (nginx reverse proxy to port 3000)
 - 853: DNS-over-TLS (DoT)
-- 3000: AdGuard Home web interface (localhost only)
+- 3000: AdGuard Home web interface (localhost only, proxied by nginx)
+- 8443: DNS-over-HTTPS (DoH) and direct HTTPS access to AdGuard Home
 
 **UDP Ports:**
 - 53: Standard DNS
@@ -60,7 +63,7 @@ Install a DNS-over-HTTPS profile or use apps like AdGuard app with custom DNS se
 
 ### Firefox
 1. Settings → Privacy & Security → DNS over HTTPS
-2. Set custom DNS: `https://dns.sua.sh/dns-query`
+2. Set custom DNS: `https://dns.sua.sh:8443/dns-query`
 
 ### macOS/Linux
 Add to `/etc/systemd/resolved.conf`:
