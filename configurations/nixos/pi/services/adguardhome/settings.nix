@@ -88,19 +88,20 @@
     hostsfile_enabled = true;
   };
   tls = {
-    enabled = false;
-    server_name = "";
-    force_https = false;
+    enabled = true;
+    server_name = "dns.${domain}";
+    force_https = true;
     port_https = 443;
     port_dns_over_tls = 853;
     port_dns_over_quic = 853;
     port_dnscrypt = 0;
     dnscrypt_config_file = "";
     allow_unencrypted_doh = false;
+    # Certificate paths are managed by ACME and linked via systemd
     certificate_chain = "";
     private_key = "";
-    certificate_path = "";
-    private_key_path = "";
+    certificate_path = "/var/lib/acme/dns.${domain}/cert.pem";
+    private_key_path = "/var/lib/acme/dns.${domain}/key.pem";
     strict_sni_check = false;
   };
   querylog = {
