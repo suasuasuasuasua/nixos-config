@@ -130,8 +130,9 @@ For maximum flexibility, enable all protocols and let clients choose what works 
 This AdGuard Home instance is configured with:
 
 1. **DNS-over-TLS (DoT)** on port 853
-2. **DNS-over-HTTPS (DoH)** on port 443 (shared with HTTPS)
-3. **HTTPS** for the web interface
+2. **DNS-over-HTTPS (DoH)** on port 8443
+3. **DNS-over-QUIC (DoQ)** on port 853 (UDP)
+4. **HTTPS** for the web interface on port 443 (via nginx reverse proxy)
 
 The configuration uses Let's Encrypt certificates via ACME, automatically renewed and managed by NixOS.
 

@@ -17,7 +17,7 @@ This directory contains the NixOS configuration for AdGuard Home, a network-wide
 This configuration enables multiple encrypted DNS protocols:
 
 - **DNS-over-TLS (DoT)**: Port 853 - `tls://dns.sua.sh:853`
-- **DNS-over-HTTPS (DoH)**: Port 443 - `https://dns.sua.sh/dns-query`
+- **DNS-over-HTTPS (DoH)**: Port 8443 - `https://dns.sua.sh:8443/dns-query`
 - **DNS-over-QUIC (DoQ)**: Port 853 (UDP)
 
 See [DNS-ENCRYPTION.md](./DNS-ENCRYPTION.md) for detailed information about each protocol.
