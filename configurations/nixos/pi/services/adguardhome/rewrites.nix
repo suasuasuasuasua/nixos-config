@@ -79,6 +79,7 @@ in
   in
   mkServiceRewrites [
     "adguardhome"
+    "dns"
     "uptime-kuma"
   ] piIP hostName
   ++ [
