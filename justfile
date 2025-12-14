@@ -9,7 +9,7 @@ default:
 set shell := ["zsh", "-c"]
 
 # Update flake.nix inputs
-[group('inputes')]
+[group('inputs')]
 update +inputs="":
     nix flake update {{ inputs }}
 

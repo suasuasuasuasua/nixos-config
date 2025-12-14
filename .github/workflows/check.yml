@@ -28,7 +28,7 @@ jobs:
           fetch-depth: 0 # required for `nix flake show`
       - uses: extractions/setup-just@v3
         with:
-          just-version: 1.5.0 # optional semver specification, otherwise latest
+          just-version: 1.43.1 # optional semver specification, otherwise latest
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
