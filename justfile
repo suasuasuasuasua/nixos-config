@@ -6,8 +6,6 @@
 default:
     @just --list
 
-set shell := ["zsh", "-c"]
-
 # Update flake.nix inputs
 [group('inputs')]
 update +inputs="":
