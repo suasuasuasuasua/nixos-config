@@ -51,18 +51,18 @@ boot:
 [group('build')]
 [macos]
 build host:
-    nh darwin build . -H {{ host }}
+    nh darwin build . -H {{ host }} {{ if env_var_or_default('CI', '') != '' { '--no-nom' } else { '' } }}
 
 # Build NixOS configuration
 [group('build')]
 [linux]
 build host:
-    nh os build . -H {{ host }}
+    nh os build . -H {{ host }} {{ if env_var_or_default('CI', '') != '' { '--no-nom' } else { '' } }}
 
 # Build a home manager configuration
 [group('build')]
 build-home host:
-    nh home build . -c {{ host }}
+    nh home build . -c {{ host }} {{ if env_var_or_default('CI', '') != '' { '--no-nom' } else { '' } }}
 
 # Build an SD card image for a configuration
 [group('build')]
