@@ -64,7 +64,7 @@ build host:
 # Build a home manager configuration
 [group('build')]
 build-home host:
-    nom home build . -c {{ host }}
+    nh home build . -c {{ host }}
 
 # Build an SD card image for a configuration
 [group('build')]
