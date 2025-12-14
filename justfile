@@ -73,6 +73,15 @@ build-sd host:
 
 ###############################################################################
 
+# Build an SD card image for a configuration
+[group('deploy')]
+deploy host target-host:
+    # NOTE: old traditional way
+    # nixos-rebuild switch --target-host admin@pi.sua.sh --no-reexec --sudo --ask-sudo-password --flake .
+    nh os switch --target-host {{ target-host }} -H {{ host }} .
+
+###############################################################################
+
 # Check nix flake
 [group('dev')]
 check:
