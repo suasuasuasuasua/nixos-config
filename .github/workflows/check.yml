@@ -1,4 +1,4 @@
-name: Build & test NixOS/Darwin configurations
+name: Check NixOS/Darwin configurations
 permissions:
   contents: read
 on:
