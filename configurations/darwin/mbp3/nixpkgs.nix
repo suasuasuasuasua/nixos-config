@@ -32,7 +32,7 @@
   nixpkgs.overlays = [
     # TODO: spotify build failure on darwin
     # https://github.com/NixOS/nixpkgs/issues/465676
-    (final: prev: {
+    (_: prev: {
       spotify = prev.spotify.overrideAttrs (oldAttrs: {
         src =
           if (prev.stdenv.isDarwin && prev.stdenv.isAarch64) then
