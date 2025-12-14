@@ -2,6 +2,9 @@
 # https://just.systems/
 # run `just` from this directory to see available commands
 
+# Add --no-nom flag when running in CI for cleaner logs
+ci_flag := if env_var_or_default('CI', '') != '' { '--no-nom' } else { '' }
+
 # Default command when 'just' is run without arguments
 default:
     @just --list
@@ -51,18 +54,18 @@ boot:
 [group('build')]
 [macos]
 build host:
-    nh darwin build . -H {{ host }} {{ if env_var_or_default('CI', '') != '' { '--no-nom' } else { '' } }}
+    nh darwin build . -H {{ host }} {{ ci_flag }}
 
 # Build NixOS configuration
 [group('build')]
 [linux]
 build host:
-    nh os build . -H {{ host }} {{ if env_var_or_default('CI', '') != '' { '--no-nom' } else { '' } }}
+    nh os build . -H {{ host }} {{ ci_flag }}
 
 # Build a home manager configuration
 [group('build')]
 build-home host:
-    nh home build . -c {{ host }} {{ if env_var_or_default('CI', '') != '' { '--no-nom' } else { '' } }}
+    nh home build . -c {{ host }} {{ ci_flag }}
 
 # Build an SD card image for a configuration
 [group('build')]
