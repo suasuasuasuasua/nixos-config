@@ -6,75 +6,94 @@
 default:
     @just --list
 
-# Update all flake inputs
+set shell := ["zsh", "-c"]
+
+# Update flake.nix inputs
 [group('Main')]
-update:
-    nix flake update
+update +inputs="":
+    nix flake update {{ inputs }}
 
-# Update nixvim config input
-[group('Main')]
-update-nixvim:
-    nix flake update nixvim-config
+###############################################################################
 
-# Lint nix files
-[group('dev')]
-lint:
-    nix fmt
-
-# Switch
-[group('dev')]
+# Switch nix-darwin configuration
+[group('switch')]
 [macos]
 switch:
     nh darwin switch . -- --accept-flake-config
 
-[group('dev')]
+# Switch NixOS configuration
+[group('switch')]
 [linux]
 switch:
     nh os switch . -- --accept-flake-config
 
-# Boot
-[group('dev')]
+# Switch home-manager configuration
+[group('switch')]
+[linux]
+switch-home host:
+    nh home switch -c {{ host }} . -b bak
+
+###############################################################################
+
+# Boot nix-darwin configuration
+[group('boot')]
 [macos]
 boot:
     nh darwin boot .
 
-[group('dev')]
+# Boot NixOS configuration
+[group('boot')]
 [linux]
 boot:
     nh os boot .
 
-# Build
-[group('dev')]
+###############################################################################
+
+# Build nix-darwin configuration
+[group('build')]
 [macos]
-build:
-    nh darwin build .
+build host:
+    nh darwin build . -H {{ host }}
 
-[group('dev')]
+# Build NixOS configuration
+[group('build')]
 [linux]
-build:
-    nh os build .
+build host:
+    nh os build . -H {{ host }}
 
-# Count number of lines of code
-[group('dev')]
-count:
-    tokei .
+# Build a home manager configuration
+[group('build')]
+build-home host:
+    nom home build . -c {{ host }}
 
-# Profile neovim
-[group('dev')]
-profile-nvim:
-    vim-startuptime -vimpath nvim -count 100 | bat
+# Build an SD card image for a configuration
+[group('build')]
+build-sd host:
+    nom build .#nixosConfigurations.{{ host }}.config.formats.sd-aarch64
 
-# Build the raspberry pi image
-[group('dev')]
-build-pi:
-    nom build .#nixosConfigurations.pi.config.formats.sd-aarch64
+###############################################################################
 
 # Check nix flake
 [group('dev')]
 check:
     nix flake check
 
+# Lint nix files
+[group('dev')]
+lint:
+    nix fmt
+
+# Count number of lines of code
+[group('dev')]
+count:
+    tokei .
+
 # Manually enter dev shell
 [group('dev')]
 dev:
     nom develop
+
+# Profile neovim
+[group('dev')]
+profile-nvim:
+    vim-startuptime -vimpath nvim -count 100 | bat
