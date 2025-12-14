@@ -37,8 +37,8 @@ jobs:
         run: |
           curl -sfL https://direnv.net/install.sh | bash
           echo "$HOME/.local/bin" >> $GITHUB_PATH
-                - name: Load environment variables
-      - run: |
+      - name: Load environment variables
+        run: |
           direnv allow .
           direnv export gha > "$GITHUB_ENV"
       - name: Flake check
