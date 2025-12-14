@@ -236,12 +236,12 @@
           #   system = "x86_64-linux";
           #   userConfigs = [ users.justinhoang ];
           # }
-          {
-            name = "optiplex";
-            system = "x86_64-linux";
-            userConfigs = [ users.admin ];
-            enableHomeManager = false;
-          }
+          # {
+          #   name = "optiplex";
+          #   system = "x86_64-linux";
+          #   userConfigs = [ users.admin ];
+          #   enableHomeManager = false;
+          # }
           {
             name = "pi";
             system = "aarch64-linux";
@@ -266,11 +266,11 @@
             system = "x86_64-linux";
             userConfig = users.justinhoang;
           }
-          {
-            name = "wsl";
-            system = "x86_64-linux";
-            userConfig = users.justinhoang;
-          }
+          # {
+          #   name = "wsl";
+          #   system = "x86_64-linux";
+          #   userConfig = users.justinhoang;
+          # }
         ]
       );
     };
