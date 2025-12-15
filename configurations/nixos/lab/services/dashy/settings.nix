@@ -175,6 +175,12 @@ in
           url = mkFqdn "jellyfin";
         }
         {
+          title = "maloja";
+          description = "scrobbler";
+          icon = "hl-maloja";
+          url = mkFqdn "maloja";
+        }
+        {
           title = "miniflux";
           description = "rss feed";
           icon = "hl-miniflux";

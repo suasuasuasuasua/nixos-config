@@ -1,0 +1,14 @@
+services:
+  maloja:
+    image: "krateng/maloja:3.2.4"
+    ports:
+      - "42010:42010"
+    volumes:
+      - "maloja-data:/data"
+    environment:
+      - "MALOJA_SKIP_SETUP=true"
+      - "MALOJA_FORCE_PASSWORD=abcdef"
+      - "MALOJA_DATA_DIRECTORY=/data"
+volumes:
+  maloja-data:
+    driver: local

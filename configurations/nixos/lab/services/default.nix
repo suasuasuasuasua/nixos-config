@@ -4,6 +4,7 @@
     ./13ft
     ./dashy
     ./it-tools
+    ./maloja
     ./nginx
     ./samba
     ./syncthing

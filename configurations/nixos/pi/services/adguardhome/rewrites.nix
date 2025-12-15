@@ -45,6 +45,7 @@ in
     "it-tools"
     "jellyfin"
     "linkwarden"
+    "maloja"
     "mealie"
     "miniflux"
     "navidrome"
