@@ -7,26 +7,26 @@
 
 ### NixOS
 
-### [`lab`](./configurations/nixos/lab/README.md) (custom build)
+#### [`lab`](./configurations/nixos/lab/README.md) (custom build)
 
 - Main server for services like `mealie`, `actual`, `jellyfin`, and more!
 - NAS with ZFS pooled hdds and shared via `smb`
 
-### [`pi`](./configurations/nixos/pi/README.md) (Raspberry Pi Model 4B *(2GB RAM)*)
+#### [`pi`](./configurations/nixos/pi/README.md) (Raspberry Pi Model 4B *(2GB RAM)*)
 
 - *For fun* single board computer (acquired in college class)
 - Runs simple services like `adguardhome`
 
 ### nix-darwin
 
-### [`mbp3`](./configurations/darwin/mbp3/README.md) (MacBook Pro M3 Max)
+#### [`mbp3`](./configurations/darwin/mbp3/README.md) (MacBook Pro M3 Max)
 
 - Main daily driver (yes I'm an apple fanboy secretly)
 - Love that `nix-darwin` allows you to use the same configuration
 
 ### Other
 
-### [`penguin`](./configurations/home/penguin) (Acer 713-3W Chromebook)
+#### [`penguin`](./configurations/home/penguin) (Acer 713-3W Chromebook)
 
 - Thin client notebook (Fedora with determinate-nix running home-manager)
 - Mainly for web browsing, tinkering, note-taking, and light coding
