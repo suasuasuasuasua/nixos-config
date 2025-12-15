@@ -5,30 +5,31 @@
 
 ## Hosts
 
+### NixOS
+
 ### [`lab`](./configurations/nixos/lab/README.md) (custom build)
 
 - Main server for services like `mealie`, `actual`, `jellyfin`, and more!
 - NAS with ZFS pooled hdds and shared via `smb`
 
-### [`legion`](./configurations/nixos/legion/README.md) (pre-built)
+### [`pi`](./configurations/nixos/pi/README.md) (Raspberry Pi Model 4B *(2GB RAM)*)
 
-- Main drivers Windows 11 but experimenting with NixOS
-- Gaming is the main factor stopping me from running full NixOS
+- *For fun* single board computer (acquired in college class)
+- Runs simple services like `adguardhome`
+
+### nix-darwin
 
 ### [`mbp3`](./configurations/darwin/mbp3/README.md) (MacBook Pro M3 Max)
 
 - Main daily driver (yes I'm an apple fanboy secretly)
 - Love that `nix-darwin` allows you to use the same configuration
 
-### [`penguin`](./configurations/home/penguin) (Acer 713-3W Chromebook NixOS)
+### Other
 
-- Thin client notebook (Debian 13 running home-manager only)
+### [`penguin`](./configurations/home/penguin) (Acer 713-3W Chromebook)
+
+- Thin client notebook (Fedora with determinate-nix running home-manager)
 - Mainly for web browsing, tinkering, note-taking, and light coding
-
-### [`pi`](./configurations/nixos/pi/README.md) (Raspberry Pi Model 4B *(2GB RAM)*)
-
-- *For fun* single board computer (acquired in college class)
-- Runs simple services like `adguardhome`
 
 ## Setup
 
