@@ -30,6 +30,9 @@
 
 - Thin client notebook (Fedora with determinate-nix running home-manager)
 - Mainly for web browsing, tinkering, note-taking, and light coding
+- Running Fedora Workstation
+  - Bouncing between KDE and Gnome
+  - Decent support for the Chrombook hardware out of the box
 
 ## Setup
 
