@@ -19,7 +19,11 @@
     # Rootless podman configuration
     # https://wiki.nixos.org/wiki/Podman#Rootless_Podman
     containers = {
-      registries.search = [ "docker.io" ];
+      registries.search = [
+        "docker.io"
+        "podman.io"
+        "quay.io"
+      ];
 
       # Configure DNS servers for containers
       containersConf.settings = {
