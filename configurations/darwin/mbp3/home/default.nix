@@ -25,7 +25,7 @@
           fzf.enable = true; # fuzzy finder
           git.enable = true; # source control
           github.enable = true; # github cli integration
-          # gnupg.enable = true; # gpg key signing
+          gnupg.enable = true; # gpg key signing
           starship.enable = true;
           tmux.enable = true; # terminal multiplexer
           zsh.enable = true; # preferred shell
