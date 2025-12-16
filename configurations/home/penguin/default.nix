@@ -10,6 +10,7 @@
     "${inputs.self}/modules/home/cli"
     "${inputs.self}/modules/home/gui"
 
+    ./nix.nix
     ./nixpkgs.nix
     ./nixvim.nix
     ./stylix.nix
