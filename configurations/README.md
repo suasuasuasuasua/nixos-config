@@ -21,8 +21,8 @@ configurations/
 ```
 
 - Inside of `darwin` are the actual user configurations for `nix-darwin`
-machines
+  machines
 - Inside of `home` are the actual user profiles and user-specific configurations
-for home-manager only machines.
+  for home-manager only machines.
 - Inside of `nixos` are the hosts and host-specific configurations for NixOS
-machines.
+  machines.
