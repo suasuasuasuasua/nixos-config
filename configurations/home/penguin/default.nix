@@ -58,8 +58,14 @@
     };
   };
 
-  home.sessionVariables = {
-    "EDITOR" = "nvim";
+  home = {
+    packages = with pkgs; [
+      (config.lib.nixGL.wrap localsend)
+    ];
+
+    sessionVariables = {
+      "EDITOR" = "nvim";
+    };
   };
 
   stylix.targets = {
