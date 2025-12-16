@@ -1168,7 +1168,7 @@
       },
       "locked": {
         "lastModified": 1765752704,
-        "narHash": "sha256-4uRxKbe2kyGZcQqjweTtkfeDbELZrYNDerYWSDpNYY4=",
+        "narHash": "sha256-IIqZ3m1MAZzP/8R6j0k+KjAQXNydO3bpH94McdGePuc=",
         "owner": "suasuasuasuasua",
         "repo": "nixvim",
         "rev": "4cf221e7c9dd27c6ce4cadca587effc7e0fb638a",
