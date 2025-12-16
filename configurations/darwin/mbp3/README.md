@@ -1,12 +1,12 @@
 # MPB3 (MacBook Pro m3 max)
 
-- Main daily driver! Love this machine to death even though it cost an arm and a
-  leg.
+- Daily driver machine, though less used out of school
+  - GF is the primary user
 
 ## Quirks
 
 ```text
-fastfetch
+$ fastfetch
                      ..'          justinhoang@mbp3
                  ,xNMM.           ----------------
                .OMMMMo            OS: macOS Sequoia 15.3.1 arm64
