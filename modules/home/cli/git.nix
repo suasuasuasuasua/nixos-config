@@ -20,7 +20,7 @@ in
         enable = true;
         settings = {
           user = {
-            email = "j124.dev@proton.me";
+            email = "justinhoang@sua.sh";
             name = "Justin Hoang";
           };
           init.defaultBranch = "main";
@@ -37,7 +37,7 @@ in
         ];
 
         signing = {
-          key = "j124.dev@proton.me";
+          key = "justinhoang@sua.sh";
           signByDefault = true;
         };
       };
