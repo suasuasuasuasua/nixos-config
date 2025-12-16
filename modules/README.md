@@ -5,10 +5,9 @@ The `modules` directory is organized in the following way.
 ```text
 ❯ tree modules/
 modules/
-├── flake-parts
-│   ├── devshell.nix
-│   ├── ...
-│   └── toplevel.nix
+├── darwin
+│   ├── default.nix
+│   └── ...
 ├── home
 │   ├── default.nix
 │   └── ...
@@ -19,7 +18,6 @@ modules/
 
 ```
 
-- Inside of `flake-parts` are the setup files for the whole configuration
-  - Generally don't mess with these files unless you know what you're doing!
-- Inside of `home` are the user specific programs and configurations.
-- Inside of `nixos` are the system wide programs and configurations.
+- Inside of `darwin` are the modules for `nix-darwin` machines.
+- Inside of `home` are the modules for home-manager machines.
+- Inside of `nixos` are the modules for NixOS machines.

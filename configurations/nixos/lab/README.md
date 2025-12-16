@@ -1,34 +1,36 @@
-# Laboratory (custom home-server and NAS)
+# Lab (custom home-server and NAS)
 
+- Main server for services
+  - Actual Budget
+  - Mealie
+  - Open WebUI
 - Running `zfs` on root partitioning scheme (see ./disko.nix for more details)
-- Also running `zfs` with RAID-Z1 scheme for 3x4TB HDDs
+  - RAID-Z1 scheme for 3x4TB HDDs
 
 ## Quirks
 
 - Need to export `zshare` pool after installing
 
 ```text
-/home/justinhoang/ [justinhoang@lab] [23:04]
-> fastfetch
+$ fastfetch
           ▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖             justinhoang@lab
           ▜███▙       ▜███▙  ▟███▛             ---------------
-           ▜███▙       ▜███▙▟███▛              OS: NixOS 25.05 (Warbler) x86_64
-            ▜███▙       ▜██████▛               Kernel: Linux 6.6.74
-     ▟█████████████████▙ ▜████▛     ▟▙         Uptime: 4 hours, 20 mins
-    ▟███████████████████▙ ▜███▙    ▟██▙        Packages: 1154 (nix-system)
+           ▜███▙       ▜███▙▟███▛              OS: NixOS 25.11 (Xantusia) x86_64
+            ▜███▙       ▜██████▛               Kernel: Linux 6.12.59
+     ▟█████████████████▙ ▜████▛     ▟▙         Uptime: 10 days, 2 hours, 40 mins
+    ▟███████████████████▙ ▜███▙    ▟██▙        Packages: 2290 (nix-system), 520 (nix-user)
            ▄▄▄▄▖           ▜███▙  ▟███▛        Shell: zsh 5.9
-          ▟███▛             ▜██▛ ▟███▛         Terminal: tmux 3.5a
+          ▟███▛             ▜██▛ ▟███▛         Terminal: /dev/pts/0
          ▟███▛               ▜▛ ▟███▛          CPU: Intel(R) Core(TM) i3-14100 (8) @ 4.70 GHz
 ▟███████████▛                  ▟██████████▙    GPU: Intel UHD Graphics 730 @ 1.50 GHz [Integrated]
-▜██████████▛                  ▟███████████▛    Memory: 25.84 GiB / 31.10 GiB (83%)
+▜██████████▛                  ▟███████████▛    Memory: 22.41 GiB / 31.10 GiB (72%)
       ▟███▛ ▟▙               ▟███▛             Swap: Disabled
-     ▟███▛ ▟██▙             ▟███▛              Disk (/): 603.50 MiB / 1.74 TiB (0%) - zfs
-    ▟███▛  ▜███▙           ▝▀▀▀▀               Disk (/zshare/projects): 15.44 GiB / 6.65 TiB (0%) - zfs
-    ▜██▛    ▜███▙ ▜██████████████████▛         Disk (/ztmp/tmp): 2.12 GiB / 449.62 GiB (0%) - zfs
+     ▟███▛ ▟██▙             ▟███▛              Disk (/): 271.38 MiB / 1.58 TiB (0%) - zfs
+    ▟███▛  ▜███▙           ▝▀▀▀▀               Disk (/zshare/app): 128.00 KiB / 500.00 GiB (0%) - zfs
+    ▜██▛    ▜███▙ ▜██████████████████▛         Disk (/ztmp/tmp): 29.95 GiB / 449.62 GiB (7%) - zfs
      ▜▛     ▟████▙ ▜████████████████▛          Local IP (enp4s0): 192.168.0.240/24
            ▟██████▙       ▜███▙                Locale: en_US.UTF-8
           ▟███▛▜███▙       ▜███▙
          ▟███▛  ▜███▙       ▜███▙
          ▝▀▀▀    ▀▀▀▀▘       ▀▀▀▘
-
 ```

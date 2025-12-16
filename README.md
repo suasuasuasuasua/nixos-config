@@ -1,38 +1,14 @@
 # NixOS Config
 
-| [![.github/workflows/flake-checker.yml](https://github.com/suasuasuasuasua/nixos-config/actions/workflows/flake-checker.yml/badge.svg)](https://github.com/suasuasuasuasua/nixos-config/actions/workflows/flake-checker.yml) | [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org) |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
-
 ## Hosts
 
-### NixOS
-
-#### [`lab`](./configurations/nixos/lab/README.md) (custom build)
-
-- Main server for services like `mealie`, `actual`, `jellyfin`, and more!
-- NAS with ZFS pooled hdds and shared via `smb`
-
-#### [`pi`](./configurations/nixos/pi/README.md) (Raspberry Pi Model 4B *(2GB RAM)*)
-
-- *For fun* single board computer (acquired in college class)
-- Runs simple services like `adguardhome`
-
-### nix-darwin
-
-#### [`mbp3`](./configurations/darwin/mbp3/README.md) (MacBook Pro M3 Max)
-
-- Main daily driver (yes I'm an apple fanboy secretly)
-- Love that `nix-darwin` allows you to use the same configuration
-
-### Other
-
-#### [`penguin`](./configurations/home/penguin) (Acer 713-3W Chromebook)
-
-- Thin client notebook (Fedora with determinate-nix running home-manager)
-- Mainly for web browsing, tinkering, note-taking, and light coding
-- Running Fedora Workstation
-  - Bouncing between KDE and Gnome
-  - Decent support for the Chrombook hardware out of the box
+- NixOS
+  - [`lab`](./configurations/nixos/lab/README.md) (custom build)
+  - [`pi`](./configurations/nixos/pi/README.md) (Raspberry Pi Model 4B *(2GB RAM)*)
+- Darwin
+  - [`mbp3`](./configurations/darwin/mbp3/README.md) (MacBook Pro M3 Max)
+- Generic Linux
+  - [`penguin`](./configurations/home/penguin/README.md) (Acer 713-3W Chromebook)
 
 ## Setup
 
@@ -134,4 +110,21 @@ internet before beginning.
    ```bash
    # switch to the mbp3 device for example
    darwin-rebuild switch --flake github:suasuasuasuasua/nixos-config#mbp3
+   ```
+
+### Generic Linux
+
+The setup for other Linux machines is much simpler. Make sure to connect to the
+internet before beginning.
+
+1. Install `nix` on the machine
+
+   ```bash
+   curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+   ```
+
+1. Install `home-manager` and switch configurations
+
+   ```bash
+   nix run home-manager -- switch --flake .#penguin
    ```

@@ -6,6 +6,7 @@
 ## Quirks
 
 ```text
+$ fastfetch
                      ..'          justinhoang@mbp3
                  ,xNMM.           ----------------
                .OMMMMo            OS: macOS Tahoe 26.1 (25B78) arm64

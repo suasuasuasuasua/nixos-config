@@ -1,8 +1,5 @@
 {
   devices = {
-    "legion" = {
-      id = "EO6JDFA-ABEFHSV-W7BLOY2-L3QQLDA-QRD3RTW-FHYFDFT-ZX7X7IP-NEOC5QF";
-    };
     "mbp3" = {
       id = "V4NCONK-S2JLQLH-AQULXDL-Y4QQWBB-FO67NEP-G2Q2SSG-BQF4ZPW-5VHRGAY";
     };
@@ -14,7 +11,6 @@
     "default" = {
       path = "/zshare/personal/notes/";
       devices = [
-        "legion"
         "mbp3"
         "penguin"
       ];
