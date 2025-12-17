@@ -178,8 +178,8 @@
     filters_update_interval = 24;
     blocked_response_ttl = 10;
     filtering_enabled = true;
-    parental_enabled = false;
-    safebrowsing_enabled = false;
+    parental_enabled = true;
+    safebrowsing_enabled = true;
     protection_enabled = true;
   };
   clients = {
