@@ -173,6 +173,24 @@ in
           hostnameSwitchesString = "no-large-media: behind-the-scene false\nno-csp-reports: * true";
           userFilters = "";
         };
+        # 078512cd-c855-4a3a-8940-c19f69f315a5
+        # "{d7742d87-e61d-4b78-b8a1-b469842139fa}".settings = {
+        "{d7742d87-e61d-4b78-b8a1-b469842139fa}".settings = {
+          exclusionRules = [
+            {
+              passKeys = "/";
+              pattern = "https?://mail.google.com/*";
+            }
+            {
+              passKeys = "/";
+              pattern = "https?://duckduckgo.com/*";
+            }
+            {
+              passKeys = "/";
+              pattern = "https?://google.com/*";
+            }
+          ];
+        };
       };
     };
     search = {
