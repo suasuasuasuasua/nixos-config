@@ -28,6 +28,14 @@ in
           bookmarks = [
             (mkBookmark "youtube" "https://youtube.com")
             {
+              name = "socials";
+              bookmarks = [
+                (mkBookmark "bluesky" "https://bsky.app/")
+                (mkBookmark "hacker news" "https://news.ycombinator.com")
+                (mkBookmark "reddit" "https://reddit.com")
+              ];
+            }
+            {
               name = "servers";
               bookmarks = [
                 (mkBookmark "lab" "https://lab.sua.sh")
@@ -99,8 +107,6 @@ in
                 (mkBookmark "parking" "https://parkm.app")
               ];
             }
-            (mkBookmark "hacker news" "https://news.ycombinator.com")
-            (mkBookmark "reddit" "https://reddit.com")
             {
               name = "nix";
               bookmarks = [
