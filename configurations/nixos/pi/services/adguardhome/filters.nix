@@ -89,4 +89,10 @@
     name = "HaGeZi's Threat Intelligence Feeds";
     id = 1738618899;
   }
+  {
+    enabled = true;
+    url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_67.txt";
+    name = "HaGeZi's Apple Tracker Blocklist";
+    id = 1738618897;
+  }
 ]
