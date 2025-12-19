@@ -5,8 +5,6 @@
   imports = [
     "${inputs.self}/modules/darwin"
     "${inputs.self}/modules/darwin/development"
-
-    inputs.mac-app-util.darwinModules.default
   ];
 
   environment = {
