@@ -10,6 +10,7 @@
 
     # This allows the wireguard server to route your traffic to the internet and hence be like a VPN
     # For this to work you have to set the dnsserver IP of your router (or dnsserver of choice) in your clients
+    # Note: `end0` is the external interface name for pi host (see configurations/nixos/pi/README.md)
     # ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -j ACCEPT;
     postSetup =
       # bash

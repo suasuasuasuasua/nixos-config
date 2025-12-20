@@ -1,5 +1,10 @@
 # https://wiki.nixos.org/wiki/WireGuard
 # wireguard is a lightweight vpn protocol and server
+#
+# NOTE: This configuration requires the wireguard/private_key to be present in
+# secrets/secrets.yaml. Migrate the key from configurations/nixos/lab/secrets.yaml
+# using: sops -d configurations/nixos/lab/secrets.yaml (to view) and
+# sops secrets/secrets.yaml (to edit and add the wireguard section).
 {
   inputs,
   config,
@@ -24,8 +29,8 @@ in
     };
     nat = {
       enable = true;
-      # TODO: may need to modularize the external interface name
-      # for example, many of the examples had `eth0`
+      # External interface name for pi host (confirmed from system: see configurations/nixos/pi/README.md)
+      # Lab uses `enp4s0`, pi uses `end0`
       externalInterface = "end0";
       internalInterfaces = [ "wg0" ];
     };
