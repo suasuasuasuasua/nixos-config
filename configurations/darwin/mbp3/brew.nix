@@ -66,7 +66,6 @@
         systemCasks = [
           "adguard"
           "sf-symbols"
-          "docker-desktop" # container runner and manager
         ];
         userCasks = [
           "balenaetcher" # iso writer (*)
