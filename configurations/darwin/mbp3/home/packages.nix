@@ -11,8 +11,6 @@
     feishin
     hidden-bar
     iina
-    jetbrains.clion
-    jetbrains.pycharm-community
     obsidian
     shottr
     utm
