@@ -72,6 +72,7 @@
           "kdenlive" # linear video editor
           "obs" # studio recorder
           "podman-desktop"
+          "prismlauncher"
           "proton-mail"
           "proton-mail-bridge"
           "raspberry-pi-imager" # imager for pi
