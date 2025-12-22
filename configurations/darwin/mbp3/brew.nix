@@ -58,19 +58,37 @@
       "pinentry-mac"
     ];
 
-    casks = [
-      "adguard" # ad blocker
-      "balenaetcher" # iso writer (*)
-      "docker-desktop" # container runner and manager
-      "kdenlive" # linear video editor
-      # "logi-options+" # logitech peripherals
-      "obs" # studio recorder
-      "proton-mail"
-      "proton-mail-bridge"
-      "raspberry-pi-imager" # imager for pi
-      "scroll-reverser" # mouse util
-      "sf-symbols"
-    ];
+    # see other options
+    # https://nix-darwin.github.io/nix-darwin/manual/#opt-homebrew.casks
+    casks =
+      let
+        appdir = "~/Applications/Casks";
+        systemCasks = [
+          "adguard"
+          "sf-symbols"
+          "docker-desktop" # container runner and manager
+        ];
+        userCasks = [
+          "balenaetcher" # iso writer (*)
+          "kdenlive" # linear video editor
+          # "logi-options+" # logitech peripherals
+          "obs" # studio recorder
+          "proton-mail"
+          "proton-mail-bridge"
+          "raspberry-pi-imager" # imager for pi
+          "scroll-reverser" # mouse util
+        ];
+      in
+      systemCasks
+      ++ (
+        # add the user casks under the user applications directory
+        map (name: {
+          inherit name;
+          args = {
+            inherit appdir;
+          };
+        }) userCasks
+      );
 
     masApps = {
       amazon-kindle = 302584613; # kindle client
