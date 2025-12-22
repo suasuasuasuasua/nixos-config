@@ -12,6 +12,8 @@
     hidden-bar
     iina
     obsidian
+    podman
+    podman-tui
     shottr
     utm
     zathura

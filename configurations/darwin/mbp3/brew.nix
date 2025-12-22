@@ -70,12 +70,13 @@
         userCasks = [
           "balenaetcher" # iso writer (*)
           "kdenlive" # linear video editor
-          # "logi-options+" # logitech peripherals
           "obs" # studio recorder
+          "podman-desktop"
           "proton-mail"
           "proton-mail-bridge"
           "raspberry-pi-imager" # imager for pi
           "scroll-reverser" # mouse util
+          # "logi-options+" # logitech peripherals
         ];
       in
       systemCasks
