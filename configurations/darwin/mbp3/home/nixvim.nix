@@ -9,9 +9,7 @@ let
   nixvim = inputs.nixvim-config.packages.${system}.default.extend {
     config.plugins = {
       neorg.settings.load."core.dirman".config = {
-        workspaces = {
-          "default" = "${config.xdg.userDirs.documents}/vaults";
-        };
+        workspaces."default" = "${config.xdg.userDirs.documents}/vaults";
         default_workspace = "default";
       };
       ollama.settings.model = "gemma3";
@@ -53,7 +51,5 @@ let
   };
 in
 {
-  home.packages = [
-    nixvim
-  ];
+  home.packages = [ nixvim ];
 }
