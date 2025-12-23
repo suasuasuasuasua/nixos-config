@@ -27,6 +27,7 @@
     ./jellyfin.nix
     ./linkwarden.nix
     ./mealie.nix
+    ./minecraft-server.nix
     ./miniflux.nix
     ./navidrome.nix
     ./ollama.nix

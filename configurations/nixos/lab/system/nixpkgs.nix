@@ -4,6 +4,7 @@
     pkg:
     builtins.elem (lib.getName pkg) [
       "intel-ocl"
+      "minecraft-server"
       "open-webui"
     ];
 }
