@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ inputs, lib, ... }:
 {
   nixpkgs.config.allowUnfreePredicate =
     pkg:
@@ -7,4 +7,8 @@
       "minecraft-server"
       "open-webui"
     ];
+
+  nixpkgs.overlays = [
+    inputs.nix-minecraft.overlay
+  ];
 }
