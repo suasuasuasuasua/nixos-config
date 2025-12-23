@@ -1,6 +1,7 @@
 # self hosted minecraft server
 #
 # https://wiki.nixos.org/wiki/Minecraft_Server
+# https://github.com/Infinidoge/nix-minecraft
 { inputs, pkgs, ... }:
 let
   # default port = 25565
@@ -9,7 +10,7 @@ in
 {
   imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
 
-  # Minecraft server settings
+  # Minecraft server (multi) settings
   services.minecraft-servers = {
     enable = true;
     eula = true;
@@ -29,7 +30,7 @@ in
           difficulty = 2; # normal difficulty
           gamemode = 0; # survival
           max-players = 5;
-          motd = "the boys";
+          motd = "the boys dec-2025";
           white-list = true;
           allow-cheats = false;
         };
@@ -61,6 +62,7 @@ in
     };
   };
 
+  # NOTE: original guide with single server
   # services.minecraft-server = {
   #   enable = true;
   #   eula = true;
