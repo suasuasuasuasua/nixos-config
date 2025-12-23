@@ -20,7 +20,6 @@ in
       "theboys" = {
         enable = true;
         whitelist = {
-          "BOBSHMURDA911" = "1cf27c2c-54c6-488d-937d-5e0daee50227";
           "INSPECTORPOOPY" = "e55f7b34-6a98-4e9a-a770-1ebd0cf123b1";
           "suasuasua9582" = "a0e73908-7ac7-42f8-8e2d-6b6e4cdf3353";
         };
