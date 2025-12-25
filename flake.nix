@@ -254,11 +254,6 @@
             system = "x86_64-linux";
             userConfig = users.justinhoang;
           }
-          # {
-          #   name = "wsl";
-          #   system = "x86_64-linux";
-          #   userConfig = users.justinhoang;
-          # }
         ]
       );
     };
