@@ -20,6 +20,7 @@ in
       "theboys" = {
         enable = true;
         whitelist = {
+          "ButOnYourNooty" = "33574a43-42c6-4813-8fa1-a2e1c44e32c3";
           "INSPECTORPOOPY" = "e55f7b34-6a98-4e9a-a770-1ebd0cf123b1";
           "suasuasua9582" = "a0e73908-7ac7-42f8-8e2d-6b6e4cdf3353";
         };
