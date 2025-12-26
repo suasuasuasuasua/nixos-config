@@ -34,10 +34,10 @@
         vscode = {
           enable = true;
           profiles = {
-            data-science.enable = true;
-            flutter-development.enable = true;
-            maximal.enable = true;
-            web-development.enable = true;
+            "Data Science".enable = true;
+            "Flutter Development".enable = true;
+            "Maximal".enable = true;
+            "Web Development".enable = true;
           };
           extensions = with pkgs.vscode-extensions; [
             github.copilot
@@ -69,10 +69,10 @@
         enable = true;
         profileNames = [
           "default"
-          "data-science"
-          "flutter-development"
-          "maximal"
-          "web-development"
+          "Data Science"
+          "Flutter Development"
+          "Maximal"
+          "Web Development"
         ];
       };
     };
