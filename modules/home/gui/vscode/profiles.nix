@@ -21,7 +21,7 @@ let
     listOf (enum (attrNames opts.language-configurations));
 in
 {
-  data-science = {
+  "Data Science" = {
     enable = mkEnableOption "Enable Data Science Profile";
     languages = mkOption {
       type = enumLanguages;
@@ -81,7 +81,7 @@ in
       default = { };
     };
   };
-  flutter-development = {
+  "Flutter Development" = {
     enable = mkEnableOption "Enable Flutter Development Profile";
     languages = mkOption {
       type = enumLanguages;
@@ -109,7 +109,7 @@ in
       default = { };
     };
   };
-  markup = {
+  "Markup" = {
     enable = mkOption {
       type = bool;
       default = true;
@@ -136,7 +136,7 @@ in
       default = { };
     };
   };
-  maximal = {
+  "Maximal" = {
     enable = mkEnableOption "Enable All Profile (all languages)";
     languages = mkOption {
       type = enumLanguages;
@@ -155,7 +155,7 @@ in
       default = { };
     };
   };
-  web-development = {
+  "Web Development" = {
     enable = mkEnableOption "Enable Web Development Profile";
     languages = mkOption {
       type = enumLanguages;

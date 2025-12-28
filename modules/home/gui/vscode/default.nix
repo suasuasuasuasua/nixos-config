@@ -56,21 +56,12 @@ let
 
   profiles = builtins.foldl' (
     acc: profile:
-    # Pretty print the name
-    # jq: 1 compile error related to spaces in profile name
-    # https://github.com/nix-community/home-manager/issues/6929
     let
       inherit (lib) mkIf optionals optionalAttrs;
-      inherit (lib.strings) concatStringsSep splitString;
-      profile-name =
-        if profile == "default" then
-          profile
-        else
-          concatStringsSep "-" (map lib.toSentenceCase (splitString "-" profile));
     in
     # Add profiles that have been enabled
     optionalAttrs cfg.profiles.${profile}.enable {
-      ${profile-name} = {
+      ${profile} = {
         # Add options _only_ for default profile
         enableExtensionUpdateCheck = mkIf (profile == "default") false;
         enableUpdateCheck = mkIf (profile == "default") false;

@@ -21,7 +21,6 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mac-app-util.url = "github:hraban/mac-app-util";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
@@ -256,11 +255,6 @@
             system = "x86_64-linux";
             userConfig = users.justinhoang;
           }
-          # {
-          #   name = "wsl";
-          #   system = "x86_64-linux";
-          #   userConfig = users.justinhoang;
-          # }
         ]
       );
     };
