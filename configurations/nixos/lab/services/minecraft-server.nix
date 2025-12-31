@@ -39,6 +39,27 @@ in
         # Specify the custom minecraft server package
         package = pkgs.vanillaServers.vanilla-1_21_11;
       };
+      "kj" = {
+        enable = true;
+        whitelist = {
+          "suasuasua9582" = "a0e73908-7ac7-42f8-8e2d-6b6e4cdf3353";
+          "katierae1114" = "2bd24d98-79a8-4ec5-9f9a-992fde6b806f";
+        };
+        # https://minecraft.wiki/w/Server.properties#Keys
+        serverProperties = {
+          server-port = port + 1;
+          difficulty = 2; # normal difficulty
+          gamemode = 0; # survival
+          max-players = 5;
+          motd = "katelyn and justin";
+          white-list = true;
+          allow-cheats = false;
+        };
+        jvmOpts = "-Xms2048M -Xmx4096M";
+
+        # Specify the custom minecraft server package
+        package = pkgs.vanillaServers.vanilla-1_21_11;
+      };
       "testing" = {
         enable = true;
         whitelist = {
