@@ -19,6 +19,7 @@
             isNormalUser = true;
             extraGroups = [
               "libvirtd"
+              "minecraft"
               "samba"
               "syncthing"
               "wheel"
