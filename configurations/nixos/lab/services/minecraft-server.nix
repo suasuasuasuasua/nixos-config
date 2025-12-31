@@ -96,11 +96,11 @@ in
           allow-flight = false;
           initial-disabled-packs = "";
           broadcast-rcon-to-ops = true;
-          view-distance = 32;
+          view-distance = 10;
           server-ip = "";
           resource-pack-prompt = "";
           allow-nether = true;
-          server-port = port + 1;
+          server-port = port + 2;
           enable-rcon = false;
           sync-chunk-writes = true;
           op-permission-level = 4;
@@ -108,7 +108,7 @@ in
           hide-online-players = false;
           resource-pack = "";
           entity-broadcast-range-percentage = 100;
-          simulation-distance = 32;
+          simulation-distance = 10;
           "rcon.password" = "";
           player-idle-timeout = 0;
           force-gamemode = false;
@@ -129,7 +129,7 @@ in
           resource-pack-sha1 = "";
           max-world-size = 29999984;
         };
-        jvmOpts = "-Xms4096M -Xmx8192M";
+        jvmOpts = "-Xms1024M -Xmx2048M";
 
         # Specify the custom minecraft server package
         package = pkgs.vanillaServers.vanilla-1_21_11;
