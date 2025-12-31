@@ -46,15 +46,69 @@ in
         };
         # https://minecraft.wiki/w/Server.properties#Keys
         serverProperties = {
-          server-port = port + 1;
-          difficulty = 2; # normal difficulty
-          gamemode = 0; # survival
-          max-players = 1;
+          # Minecraft server properties
+          # https://minecraft.fandom.com/wiki/Server.properties#Java_Edition
+          # (File modification date and time)
+          allow-cheats = true;
+          enable-jmx-monitoring = false;
+          "rcon.port" = 25575;
+          level-seed = "";
+          gamemode = "creative";
+          enable-command-block = false;
+          enable-query = false;
+          generator-settings = "";
+          enforce-secure-profile = true;
+          level-name = "world";
           motd = "my testing server";
+          "query.port" = port + 1;
+          pvp = true;
+          generate-structures = true;
+          max-chained-neighbor-updates = 1000000;
+          difficulty = "peaceful";
+          network-compression-threshold = 256;
+          max-tick-time = 60000;
+          require-resource-pack = false;
+          use-native-transport = true;
+          max-players = 1;
+          online-mode = true;
+          enable-status = true;
+          allow-flight = false;
+          initial-disabled-packs = "";
+          broadcast-rcon-to-ops = true;
+          view-distance = 32;
+          server-ip = "";
+          resource-pack-prompt = "";
+          allow-nether = true;
+          server-port = port + 1;
+          enable-rcon = false;
+          sync-chunk-writes = true;
+          op-permission-level = 4;
+          prevent-proxy-connections = false;
+          hide-online-players = false;
+          resource-pack = "";
+          entity-broadcast-range-percentage = 100;
+          simulation-distance = 32;
+          "rcon.password" = "";
+          player-idle-timeout = 0;
+          force-gamemode = false;
+          rate-limit = 0;
+          hardcore = false;
           white-list = true;
-          allow-cheats = false;
+          broadcast-console-to-ops = true;
+          spawn-npcs = true;
+          spawn-animals = true;
+          log-ips = true;
+          function-permission-level = 2;
+          initial-enabled-packs = "vanilla";
+          level-type = "minecraft\:normal";
+          text-filtering-config = "";
+          spawn-monsters = true;
+          enforce-whitelist = false;
+          spawn-protection = 16;
+          resource-pack-sha1 = "";
+          max-world-size = 29999984;
         };
-        jvmOpts = "-Xms1024M -Xmx2048M";
+        jvmOpts = "-Xms4096M -Xmx8192M";
 
         # Specify the custom minecraft server package
         package = pkgs.vanillaServers.vanilla-1_21_11;
