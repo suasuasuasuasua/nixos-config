@@ -1,3 +1,54 @@
+# TODO: this setup is a day one operation. changes in this file are not
+# reflected and could possibly break things
+#
+# - https://github.com/nix-community/disko/issues/295
+# - https://github.com/nix-community/disko/issues/524
+#
+# there are a few changes that are safe like:
+# - `zfs set com.sun:auto-snapshot=true zroot/var` # enable snapshots on data
+#
+# in the future, i would like to reduce the number of datasets probably to the
+# top level ones. this makes it easier to reason about, and also for me to
+# manually apply zfs changes (ik not nixos-like), but at least disko won't break
+# everything
+#
+# 1. [zroot]
+#    - {root}
+#    - {nix}
+#    - {var}
+#      - +snapshots
+#    - {home}
+#      - +snapshots
+# 2. [zshare]
+#    - {app} (additional app data beyond /var/lib)
+#    - {backup} (time machine for macOS and Linux)
+#    - {personal} (documents, photos, videos, notes)
+#      - +snapshots
+#    - {srv} (smb and sftp accessible)
+#      - git server
+#      - linux isos
+#      - media (music, books, shows, and movies)
+#      - projects
+#      - website
+# 3. [ztmp]
+#    - {tmp} (whatever dump)
+#
+# where [x] denotes pools and {y} denotes datasets. i shouldn't worry about
+# segmenting the datasets unless absolutely necessary
+#
+# i also don't love the legacy mounting options, but writing this a year after
+# the fact, i don't remember why i chose to go one way over another. the
+# disko examples seems to be using no legacy mounts...probably need to test in a
+# virtual machine or something
+#
+# TODO: i'll eventually need a second host to backup the most important data
+# here too.
+#
+# the other host will
+# - run ZFS as well for convenience reasons (zfs send, zfs recieve)
+# - be located offsite location from `lab`
+#   - will need wireguard connection for security
+# - need between 4-8TB space (SSD preferred over HDD)
 {
   disko.devices.disk = {
     #### ZROOT ####
