@@ -50,7 +50,7 @@ in
           server-port = port + 1;
           difficulty = 2; # normal difficulty
           gamemode = 0; # survival
-          max-players = 5;
+          max-players = 2;
           motd = "katelyn and justin";
           white-list = true;
           allow-cheats = false;
