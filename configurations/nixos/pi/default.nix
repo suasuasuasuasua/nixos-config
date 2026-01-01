@@ -13,6 +13,7 @@
 
     ./hardware-configuration.nix
     ./home.nix
+    ./security.nix
     ./sops.nix
   ];
 
