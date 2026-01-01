@@ -22,7 +22,7 @@ in
 
   # Containers
   virtualisation.oci-containers.containers."13ft" = {
-    image = "ghcr.io/wasi-master/13ft:latest";
+    image = "ghcr.io/wasi-master/13ft:0.3.4";
     ports = [
       "127.0.0.1:${toString port}:5000/tcp"
     ];
