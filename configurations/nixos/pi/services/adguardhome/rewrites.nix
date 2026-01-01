@@ -35,6 +35,7 @@ in
     "13ft"
     "actual"
     "audiobookshelf"
+    "bento"
     "calibre"
     "firefox-syncserver"
     "gitea"

@@ -2,6 +2,7 @@
   # toggle the relevant services from here
   imports = [
     ./13ft
+    ./bento
     ./dashy
     ./it-tools
     ./nginx
@@ -36,7 +37,7 @@
     ./prometheus.nix
     ./searxng.nix
     ./smart.nix
-    ./stirling-pdf.nix
+    # ./stirling-pdf.nix
     ./vaultwarden.nix
     ./vscode-server.nix
     ./wastebin.nix
