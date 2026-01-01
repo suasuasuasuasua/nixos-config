@@ -235,7 +235,6 @@
             name = "pi";
             system = "aarch64-linux";
             userConfigs = [ users.admin ];
-            enableHomeManager = false;
           }
         ]
       );

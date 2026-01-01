@@ -1,4 +1,9 @@
+{ pkgs, ... }:
 {
+  # Need to enable zsh before we can actually use it. Home manager configs it,
+  # but cannot set the login shell because that's root level operation
+  programs.zsh.enable = true;
+
   users.users.admin = {
     # If you do, you can skip setting a root password by passing
     # '--no-root-passwd' to nixos-install. Be sure to change it (using
@@ -6,6 +11,7 @@
     initialHashedPassword = "$y$j9T$sXZCGwjtugZIt/C2nU8bk/$D36OrIe3eyGSM7rPysbQI1OyT56TdtJZtcvnOne2Ge0";
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    shell = pkgs.zsh;
 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA12qTb88TMH/x1T2xST2kEviP+RGGQkv+EJFWPboxuv justinhoang@iphone15"

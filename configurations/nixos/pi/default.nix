@@ -12,6 +12,7 @@
     ./system
 
     ./hardware-configuration.nix
+    ./home.nix
     ./sops.nix
   ];
 
