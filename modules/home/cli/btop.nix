@@ -12,24 +12,15 @@ in
     enable = lib.mkEnableOption ''
       Monitor of resources
     '';
-    # package = lib.mkOption {
-    #   type = lib.types.package;
-    #   default = pkgs.btop;
-    # };
+    package = lib.mkOption {
+      type = lib.types.package;
+      default = pkgs.btop;
+    };
   };
 
   config = lib.mkIf cfg.enable {
-    # TODO: add suid bits to allow gpu and wattage monitoring without explicit
-    # `sudo btop`
     programs.btop = {
-      # package = pkgs.btop
-      package = pkgs.btop.overrideAttrs (prev: {
-        postInstall = (prev.postInstall or "") + ''
-          cat Makefile
-          ls
-          make setcap
-        '';
-      });
+      inherit (cfg) package;
 
       enable = true;
       # https://github.com/aristocratos/btop#configurability
