@@ -1,10 +1,6 @@
 # https://wiki.nixos.org/wiki/Jellyfin
 # jellyfin is a self hosted media server
-{
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "jellyfin";

@@ -1,5 +1,5 @@
 # navidrome is a self hosted music server
-{ inputs, config, ... }:
+{ config, inputs, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "navidrome";

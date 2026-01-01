@@ -1,9 +1,9 @@
 {
-  options,
-  lib,
-  pkgs,
   jsonFormat,
   keybindingSubmodule,
+  lib,
+  options,
+  pkgs,
   ...
 }:
 let

@@ -2,11 +2,7 @@
 #
 # this is especially helpful for ensuring TLS compliant websites (https) for
 # security reasons
-{
-  inputs,
-  config,
-  ...
-}:
+{ config, inputs, ... }:
 let
   environmentFile = config.sops.secrets."acme/namecheap_api".path;
 in

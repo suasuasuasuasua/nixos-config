@@ -1,9 +1,5 @@
 # miniflux is a self hosted rss aggregator
-{
-  inputs,
-  config,
-  ...
-}:
+{ config, inputs, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "miniflux";

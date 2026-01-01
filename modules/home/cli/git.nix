@@ -1,8 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}:
+{ config, lib, ... }:
 let
   cfg = config.custom.home.cli.git;
 in

@@ -1,8 +1,8 @@
 # https://wiki.nixos.org/wiki/SearXNG
 # free and open-source metasearch engine that aggregates results
 {
-  inputs,
   config,
+  inputs,
   lib,
   ...
 }:

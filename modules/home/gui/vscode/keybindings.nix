@@ -1,7 +1,7 @@
 {
+  keybindingSubmodule,
   lib,
   pkgs,
-  keybindingSubmodule,
   ...
 }:
 lib.mkOption {

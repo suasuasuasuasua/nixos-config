@@ -1,9 +1,5 @@
 # linkwarden is a self-hosted collaborative bookmark manager to collect, organize, and preserve webpages, articles, and more
-{
-  inputs,
-  config,
-  ...
-}:
+{ config, inputs, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "linkwarden";

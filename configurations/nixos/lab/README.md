@@ -13,7 +13,7 @@ See the following noteworthy data
 
 - `/srv/minecraft/` for minecraft data
   - should be changed to `/var/lib/minecraft/` later, though this conflicts with
-  the native minecraft-server option
+    the native minecraft-server option
 - `/home/` for user home data
 - `/var/lib/` for services data
 - `/zshare/` for zfs pool data

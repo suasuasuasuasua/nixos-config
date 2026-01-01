@@ -1,8 +1,4 @@
-{
-  self,
-  pkgs,
-  ...
-}:
+{ self, pkgs, ... }:
 let
   inherit (pkgs.stdenv.hostPlatform) system;
 in

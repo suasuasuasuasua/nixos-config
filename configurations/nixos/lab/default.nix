@@ -1,9 +1,6 @@
 # See /modules/nixos/* for actual settings
 # This file is just *top-level* configuration.
-{
-  inputs,
-  ...
-}:
+{ inputs, ... }:
 {
   imports = [
     inputs.disko.nixosModules.disko

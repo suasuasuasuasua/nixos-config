@@ -1,8 +1,5 @@
 # dashy is a configurable dashboard to show off your services and bookmarks
-{
-  config,
-  ...
-}:
+{ config, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "dashy";

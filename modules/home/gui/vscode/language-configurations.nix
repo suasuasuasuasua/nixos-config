@@ -1,8 +1,8 @@
 {
-  lib,
-  pkgs,
   jsonFormat,
   keybindingSubmodule,
+  lib,
+  pkgs,
   ...
 }:
 let

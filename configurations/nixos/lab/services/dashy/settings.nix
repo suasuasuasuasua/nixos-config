@@ -1,6 +1,6 @@
 # custom dashy config per-host
 # https://dashy.to/docs/configuring/
-{ hostName, domain, ... }:
+{ domain, hostName, ... }:
 let
   # service.sua.sh
   mkFqdn = service: "https://${service}.${domain}";

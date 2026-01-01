@@ -1,6 +1,5 @@
 {
   # https://nixos.wiki/wiki/Storage_optimization
-
   nix = {
     # NOTE: not available on home-manager i think
     # # Optimize the storage once in a while

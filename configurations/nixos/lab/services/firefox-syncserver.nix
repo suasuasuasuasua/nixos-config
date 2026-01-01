@@ -1,8 +1,8 @@
 # https://wiki.nixos.org/wiki/Firefox_Sync_Server
 # firefox syncserver is a self hosted server used to synchronize settings
 {
-  inputs,
   config,
+  inputs,
   pkgs,
   ...
 }:

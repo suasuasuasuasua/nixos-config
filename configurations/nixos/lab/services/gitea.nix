@@ -1,7 +1,7 @@
 # gitea is a self hosted git repository
 {
-  inputs,
   config,
+  inputs,
   pkgs,
   ...
 }:

@@ -1,9 +1,6 @@
 # https://wiki.nixos.org/wiki/Hydra
 # a tool for continuous integration testing software release
-{
-  config,
-  ...
-}:
+{ config, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "hydra";

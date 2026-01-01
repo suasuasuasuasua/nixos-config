@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}:
+{ config, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "adguardhome";

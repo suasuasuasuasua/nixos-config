@@ -1,7 +1,7 @@
 {
   inputs,
-  outputs,
   lib,
+  outputs,
   pkgs,
   userConfig,
   ...

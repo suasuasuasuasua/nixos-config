@@ -1,8 +1,8 @@
 {
-  inputs,
-  outputs,
-  lib,
   config,
+  inputs,
+  lib,
+  outputs,
   pkgs,
   userConfigs,
   ...

@@ -1,6 +1,6 @@
 {
-  outputs,
   config,
+  outputs,
   pkgs,
   ...
 }:

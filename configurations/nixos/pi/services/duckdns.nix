@@ -2,11 +2,7 @@
 #
 # since ISPs usually change residential IP addresses every once in a while, we
 # run a script once in a while to ensure that the IP address is always updated
-{
-  inputs,
-  config,
-  ...
-}:
+{ config, inputs, ... }:
 let
   domainsFile = config.sops.secrets."duckdns/domains".path;
   tokenFile = config.sops.secrets."duckdns/token".path;
