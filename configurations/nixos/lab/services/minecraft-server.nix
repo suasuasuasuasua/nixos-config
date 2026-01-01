@@ -29,7 +29,7 @@ in
           server-port = port;
           difficulty = 2; # normal difficulty
           gamemode = 0; # survival
-          max-players = 5;
+          max-players = 4;
           motd = "the boys dec-2025";
           white-list = true;
           allow-cheats = false;
