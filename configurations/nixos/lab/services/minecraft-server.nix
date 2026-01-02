@@ -34,7 +34,7 @@ in
           white-list = true;
           allow-cheats = false;
         };
-        jvmOpts = "-Xms2048M -Xmx4096M";
+        jvmOpts = "-Xms1024M -Xmx2048M";
 
         # Specify the custom minecraft server package
         package = pkgs.vanillaServers.vanilla-1_21_11;
@@ -55,7 +55,7 @@ in
           white-list = true;
           allow-cheats = false;
         };
-        jvmOpts = "-Xms2048M -Xmx4096M";
+        jvmOpts = "-Xms1024M -Xmx2048M";
 
         # Specify the custom minecraft server package
         package = pkgs.vanillaServers.vanilla-1_21_11;
@@ -129,9 +129,10 @@ in
           resource-pack-sha1 = "";
           max-world-size = 29999984;
         };
-        jvmOpts = "-Xms1024M -Xmx2048M";
+        jvmOpts = "-Xms512M -Xmx1024M";
 
         # Specify the custom minecraft server package
+        # package = pkgs.vanillaServers.vanilla-1_2_5; # oldest version in flake!
         package = pkgs.vanillaServers.vanilla-1_21_11;
       };
     };
