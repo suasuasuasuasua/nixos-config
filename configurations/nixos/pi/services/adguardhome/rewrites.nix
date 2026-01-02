@@ -69,6 +69,10 @@ in
       domain = "vpn.${domain}";
       answer = labIP;
     }
+    {
+      domain = "vpn-sua.duckdns.org";
+      answer = labIP;
+    }
     (mkServiceRewrite "dashy.${hostName}" labIP)
     (mkServiceRewrite "glances.${hostName}" labIP)
   ]
