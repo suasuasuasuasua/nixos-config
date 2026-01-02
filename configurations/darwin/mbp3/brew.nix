@@ -66,6 +66,7 @@
         systemCasks = [
           "adguard"
           "sf-symbols"
+          "steam"
         ];
         userCasks = [
           "balenaetcher" # iso writer (*)
