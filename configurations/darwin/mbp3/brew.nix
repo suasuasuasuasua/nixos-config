@@ -92,7 +92,7 @@
       );
 
     masApps = {
-      amazon-kindle = 302584613; # kindle client
+      # amazon-kindle = 302584613; # kindle client
       amphetamine = 937984704; # powerful keep-awake utility
       # TODO: brew bundle failing
       # audible-audio-entertainment = 379693831; # audible client
