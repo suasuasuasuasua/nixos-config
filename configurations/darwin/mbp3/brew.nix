@@ -65,6 +65,7 @@
         appdir = "~/Applications/Casks";
         systemCasks = [
           "adguard"
+          "minecraft"
           "sf-symbols"
           "steam"
         ];
