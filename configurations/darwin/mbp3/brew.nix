@@ -75,9 +75,9 @@
           "prismlauncher"
           "proton-mail"
           "proton-mail-bridge"
-          "raspberry-pi-imager" # imager for pi
           "scroll-reverser" # mouse util
           # "logi-options+" # logitech peripherals
+          # "raspberry-pi-imager" # imager for pi
         ];
       in
       systemCasks
