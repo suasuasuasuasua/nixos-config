@@ -22,6 +22,8 @@
     settings = {
       # Opinionated: forbid root login through SSH.
       PermitRootLogin = "no";
+      KbdInteractiveAuthentication = false;
+      AllowUsers = [ "admin" ];
       # Opinionated: use keys only.
       # Remove if you want to SSH using passwords
       PasswordAuthentication = false;
