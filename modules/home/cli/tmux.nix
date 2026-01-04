@@ -18,10 +18,15 @@ in
     programs.tmux = {
       enable = true;
       plugins = with pkgs.tmuxPlugins; [
-        fpp # find and open files in the current buffer
+        # find and open files in the current buffer
+        # prefix+f
+        fpp
+        # save sessions past system restarts
+        # prefix+ctrl+s to save
+        # prefix+ctrl+r to restore
         {
 
-          plugin = resurrect; # save sessions past system restarts
+          plugin = resurrect;
           extraConfig =
             # tmux
             ''
@@ -35,8 +40,9 @@ in
               set -g @resurrect-strategy-nvim 'session'
             '';
         }
+        # continuous saving and start of tmux
         {
-          plugin = continuum; # continuous saving and start of tmux
+          plugin = continuum;
           extraConfig =
             # tmux
             ''
@@ -46,9 +52,13 @@ in
               set -g @continuum-save-interval '10'
             '';
         }
-        sensible # sensible config
-        vim-tmux-navigator # prettier statusline
-        yank # better copy and paste functionality
+        # sensible config
+        sensible
+        # move between vim and tmux windows
+        # ctrl+[hjkl\]
+        vim-tmux-navigator
+        # better copy and paste functionality
+        yank
       ];
 
       sensibleOnTop = true;
