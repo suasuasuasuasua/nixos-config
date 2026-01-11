@@ -110,7 +110,7 @@
   querylog = {
     dir_path = "";
     ignored = [
-      "||sua.sh"
+      "||sua.dev"
     ];
     interval = "2160h";
     size_memory = 1000;
@@ -120,7 +120,7 @@
   statistics = {
     dir_path = "";
     ignored = [
-      "||sua.sh"
+      "||sua.dev"
     ];
     interval = "720h";
     enabled = true;

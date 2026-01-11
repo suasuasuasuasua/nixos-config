@@ -2,9 +2,9 @@
 # https://dashy.to/docs/configuring/
 { domain, hostName, ... }:
 let
-  # service.sua.sh
+  # service.sua.dev
   mkFqdn = service: "https://${service}.${domain}";
-  # service.computer.sua.sh
+  # service.computer.sua.dev
   mkFullFqdn = service: "https://${service}.${hostName}.${domain}";
 in
 {
@@ -37,7 +37,7 @@ in
           title = "pi";
           description = "raspberry pi";
           icon = "hl-raspberry-pi";
-          url = "https://pi.sua.sh";
+          url = "https://pi.sua.dev";
         }
       ];
     }

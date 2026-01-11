@@ -30,39 +30,39 @@ in
             {
               name = "servers";
               bookmarks = [
-                (mkBookmark "lab" "https://lab.sua.sh")
-                (mkBookmark "pi" "https://pi.sua.sh")
+                (mkBookmark "lab" "https://lab.sua.dev")
+                (mkBookmark "pi" "https://pi.sua.dev")
               ];
             }
             {
               name = "self-hosted services";
               bookmarks = [
-                (mkBookmark "13ft" "https://13ft.sua.sh")
-                (mkBookmark "actual" "https://actual.sua.sh")
-                (mkBookmark "adguardhome" "https://adguardhome.sua.sh")
-                (mkBookmark "audiobookshelf" "https://audiobookshelf.sua.sh")
-                (mkBookmark "calibre" "https://calibre.sua.sh")
-                (mkBookmark "gitea" "https://gitea.sua.sh")
-                (mkBookmark "glances (lab)" "https://glances.lab.sua.sh")
-                (mkBookmark "glances (pi)" "https://glances.pi.sua.sh")
-                (mkBookmark "grafana" "https://grafana.sua.sh")
-                (mkBookmark "home-assistant" "https://home-assistant.sua.sh")
-                (mkBookmark "hydra" "https://hydra.sua.sh")
-                (mkBookmark "immich" "https://immich.sua.sh")
-                (mkBookmark "it-tools" "https://it-tools.sua.sh")
-                (mkBookmark "jellyfin" "https://jellyfin.sua.sh")
-                (mkBookmark "linkwarden" "https://linkwarden.sua.sh")
-                (mkBookmark "mealie" "https://mealie.sua.sh")
-                (mkBookmark "miniflux" "https://miniflux.sua.sh")
-                (mkBookmark "navidrome" "https://navidrome.sua.sh")
-                (mkBookmark "open-webui" "https://open-webui.sua.sh")
-                (mkBookmark "paperless" "https://paperless.sua.sh")
-                (mkBookmark "searxng" "https://searxng.sua.sh")
-                (mkBookmark "stirling-pdf" "https://stirling-pdf.sua.sh")
-                (mkBookmark "termix" "https://termix.sua.sh")
-                (mkBookmark "uptime-kuma" "https://uptime-kuma.sua.sh")
-                (mkBookmark "vaultwarden" "https://vaultwarden.sua.sh")
-                (mkBookmark "wastebin" "https://wastebin.sua.sh")
+                (mkBookmark "13ft" "https://13ft.sua.dev")
+                (mkBookmark "actual" "https://actual.sua.dev")
+                (mkBookmark "adguardhome" "https://adguardhome.sua.dev")
+                (mkBookmark "audiobookshelf" "https://audiobookshelf.sua.dev")
+                (mkBookmark "calibre" "https://calibre.sua.dev")
+                (mkBookmark "gitea" "https://gitea.sua.dev")
+                (mkBookmark "glances (lab)" "https://glances.lab.sua.dev")
+                (mkBookmark "glances (pi)" "https://glances.pi.sua.dev")
+                (mkBookmark "grafana" "https://grafana.sua.dev")
+                (mkBookmark "home-assistant" "https://home-assistant.sua.dev")
+                (mkBookmark "hydra" "https://hydra.sua.dev")
+                (mkBookmark "immich" "https://immich.sua.dev")
+                (mkBookmark "it-tools" "https://it-tools.sua.dev")
+                (mkBookmark "jellyfin" "https://jellyfin.sua.dev")
+                (mkBookmark "linkwarden" "https://linkwarden.sua.dev")
+                (mkBookmark "mealie" "https://mealie.sua.dev")
+                (mkBookmark "miniflux" "https://miniflux.sua.dev")
+                (mkBookmark "navidrome" "https://navidrome.sua.dev")
+                (mkBookmark "open-webui" "https://open-webui.sua.dev")
+                (mkBookmark "paperless" "https://paperless.sua.dev")
+                (mkBookmark "searxng" "https://searxng.sua.dev")
+                (mkBookmark "stirling-pdf" "https://stirling-pdf.sua.dev")
+                (mkBookmark "termix" "https://termix.sua.dev")
+                (mkBookmark "uptime-kuma" "https://uptime-kuma.sua.dev")
+                (mkBookmark "vaultwarden" "https://vaultwarden.sua.dev")
+                (mkBookmark "wastebin" "https://wastebin.sua.dev")
               ];
             }
             {
@@ -211,8 +211,8 @@ in
         };
         searxng = {
           name = "SearXNG";
-          urls = [ { template = "https://searxng.sua.sh/search?q={searchTerms}"; } ];
-          iconMapObj."16" = "https://searxng.sua.sh/favicon.ico";
+          urls = [ { template = "https://searxng.sua.dev/search?q={searchTerms}"; } ];
+          iconMapObj."16" = "https://searxng.sua.dev/favicon.ico";
           definedAliases = [
             "@searxng"
             "@sx"

@@ -2,9 +2,9 @@
 # https://dashy.to/docs/configuring/
 { domain, hostName, ... }:
 let
-  # service.sua.sh
+  # service.sua.dev
   mkFqdn = service: "https://${service}.${domain}";
-  # service.computer.sua.sh
+  # service.computer.sua.dev
   mkFullFqdn = service: "https://${service}.${hostName}.${domain}";
 in
 {
@@ -51,7 +51,7 @@ in
           title = "lab";
           description = "main lab server";
           icon = "hl-nixos";
-          url = "https://lab.sua.sh";
+          url = "https://lab.sua.dev";
         }
       ];
     }

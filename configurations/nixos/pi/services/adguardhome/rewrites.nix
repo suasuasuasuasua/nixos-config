@@ -18,10 +18,10 @@ let
       acc: cur:
       [
         # base rewrite
-        # ex. adguardhome.sua.sh
+        # ex. adguardhome.sua.dev
         (mkServiceRewrite cur answer)
         # fully qualified with host name rewrite
-        # ex. adguardhome.pi.sua.sh
+        # ex. adguardhome.pi.sua.dev
         (mkServiceRewrite "${cur}.${hostName}" answer)
       ]
       ++ acc

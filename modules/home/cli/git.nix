@@ -16,7 +16,7 @@ in
         enable = true;
         settings = {
           user = {
-            email = "justinhoang@sua.sh";
+            email = "justinhoang@sua.dev";
             name = "Justin Hoang";
           };
           init.defaultBranch = "main";
@@ -33,7 +33,7 @@ in
         ];
 
         signing = {
-          key = "justinhoang@sua.sh";
+          key = "justinhoang@sua.dev";
           signByDefault = true;
         };
       };

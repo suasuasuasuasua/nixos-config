@@ -3,7 +3,7 @@
   networking = {
     hostName = "lab";
     hostId = "d50c497a";
-    domain = "sua.sh";
+    domain = "sua.dev";
     networkmanager.enable = true;
 
     firewall = {

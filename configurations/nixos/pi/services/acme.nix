@@ -19,7 +19,7 @@ in
     defaults = {
       inherit environmentFile;
 
-      email = "admin+justinhoang@sua.sh";
+      email = "admin+justinhoang@sua.dev";
       dnsProvider = "namecheap";
       dnsPropagationCheck = true;
     };

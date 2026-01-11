@@ -3,7 +3,7 @@
   networking = {
     hostName = "pi";
     hostId = "cfbe2391";
-    domain = "sua.sh";
+    domain = "sua.dev";
     networkmanager.enable = true;
 
     firewall = {
