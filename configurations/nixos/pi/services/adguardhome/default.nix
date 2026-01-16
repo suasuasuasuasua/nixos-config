@@ -9,7 +9,7 @@ let
 
   settings = import ./settings.nix {
     inherit (config.networking) domain;
-    inherit labIP piIP;
+    inherit labIP piIP port;
   };
 
   # default = 3000

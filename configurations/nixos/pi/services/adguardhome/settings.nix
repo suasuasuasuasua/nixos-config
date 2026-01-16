@@ -2,6 +2,7 @@
   domain,
   labIP,
   piIP,
+  port,
   ...
 }:
 {
@@ -11,7 +12,7 @@
       port = 6060;
       enabled = false;
     };
-    address = "0.0.0.0:3000";
+    address = "0.0.0.0:${port}";
     session_ttl = "720h";
   };
   users = [
@@ -110,7 +111,7 @@
   querylog = {
     dir_path = "";
     ignored = [
-      "||sua.dev"
+      "||${domain}"
     ];
     interval = "2160h";
     size_memory = 1000;
@@ -120,7 +121,7 @@
   statistics = {
     dir_path = "";
     ignored = [
-      "||sua.dev"
+      "||${domain}"
     ];
     interval = "720h";
     enabled = true;
