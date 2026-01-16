@@ -64,6 +64,7 @@
       "127.0.0.0/8"
       "::1/128"
     ];
+    cache_enabled = true;
     cache_size = 4194304;
     cache_ttl_min = 0;
     cache_ttl_max = 0;
@@ -91,6 +92,7 @@
     use_http3_upstreams = false;
     serve_plain_dns = true;
     hostsfile_enabled = true;
+    pending_requests.enabled = true;
   };
   tls = {
     enabled = false;
