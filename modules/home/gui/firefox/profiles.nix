@@ -133,12 +133,10 @@ in
       packages =
         with pkgs.firefox-addons;
         [
-          betterttv # twitch [dot] tv integration
           bitwarden # bit/vault warden password integration
           darkreader # automatic dark mode
           linkwarden # link saver
           ublock-origin # block ads
-          unpaywall # read research papers for free
           vimium # vim-like movements
         ]
         ++ lib.optionals pkgs.stdenv.isLinux [
