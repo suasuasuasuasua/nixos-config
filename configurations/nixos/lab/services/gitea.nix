@@ -39,7 +39,7 @@ in
     };
 
     gitea-actions-runner.instances = {
-      lab = {
+      lab-runner = {
         inherit tokenFile;
 
         url = "https://${serviceName}.${domain}";
