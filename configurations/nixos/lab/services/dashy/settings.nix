@@ -82,6 +82,12 @@ in
           url = mkFqdn "actual";
         }
         {
+          title = "bento";
+          description = "pdf tools";
+          icon = "hl-bento";
+          url = mkFqdn "bento";
+        }
+        {
           title = "home assistant";
           description = "self-hosted home automation";
           icon = "hl-home-assistant";
@@ -123,12 +129,12 @@ in
           icon = "hl-searxng";
           url = mkFqdn "searxng";
         }
-        {
-          title = "stirling-pdf";
-          description = "pdf tools";
-          icon = "hl-stirling-pdf";
-          url = mkFqdn "stirling-pdf";
-        }
+        # {
+        #   title = "stirling-pdf";
+        #   description = "pdf tools";
+        #   icon = "hl-stirling-pdf";
+        #   url = mkFqdn "stirling-pdf";
+        # }
         {
           title = "vaultwarden";
           description = "secure password manager";
