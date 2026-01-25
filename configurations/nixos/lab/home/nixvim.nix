@@ -26,14 +26,25 @@ let
       };
     };
 
-    config.nixvim.plugins.custom = {
-      auto-dark-mode.enable = false;
-      img-clip.enable = false;
-      leetcode.enable = true;
-      markdown-preview.enable = false;
-      neorg.enable = true;
-      obsidian.enable = true;
-      remote-nvim.enable = false;
+    config.nixvim = {
+      lsp.languages = {
+        cmake.enable = true;
+        cssls.enable = true;
+        docker_compose_language_service.enable = true;
+        dockerls.enable = true;
+        gopls.enable = true;
+        html.enable = true;
+        vtsls.enable = true;
+      };
+      plugins.custom = {
+        auto-dark-mode.enable = false;
+        img-clip.enable = false;
+        leetcode.enable = true;
+        markdown-preview.enable = false;
+        neorg.enable = true;
+        obsidian.enable = true;
+        remote-nvim.enable = false;
+      };
     };
   };
 in
