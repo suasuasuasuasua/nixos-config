@@ -14,7 +14,7 @@ in
       enable = true;
       enableZshIntegration = true;
       nix-direnv.enable = true; # faster implementation for nix
-      silent = true; # silent mode so it doesn't flood stdout
+      # silent = true; # silent mode so it doesn't flood stdout
     };
   };
 }
