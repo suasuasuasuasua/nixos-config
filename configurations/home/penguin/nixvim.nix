@@ -31,10 +31,21 @@ let
         };
       };
     };
-    config.nixvim.plugins.custom = {
-      leetcode.enable = true;
-      neorg.enable = true;
-      obsidian.enable = true;
+    config.nixvim = {
+      lsp.languages = {
+        cmake.enable = true;
+        cssls.enable = true;
+        docker_compose_language_service.enable = true;
+        dockerls.enable = true;
+        gopls.enable = true;
+        html.enable = true;
+        vtsls.enable = true;
+      };
+      plugins.custom = {
+        leetcode.enable = true;
+        neorg.enable = true;
+        obsidian.enable = true;
+      };
     };
   };
 in
