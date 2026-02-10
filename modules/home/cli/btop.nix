@@ -19,8 +19,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # TODO: add suid bits to allow gpu and wattage monitoring without explicit
-    # `sudo btop`
     programs.btop = {
       inherit (cfg) package;
 
