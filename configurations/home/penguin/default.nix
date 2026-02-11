@@ -12,7 +12,7 @@
 
     ./nix.nix
     ./nixpkgs.nix
-    ./nixvim.nix
+    # ./nixvim.nix
     ./stylix.nix
   ];
 
@@ -64,9 +64,9 @@
       (config.lib.nixGL.wrap localsend)
     ];
 
-    sessionVariables = {
-      "EDITOR" = "nvim";
-    };
+    # sessionVariables = {
+    #   "EDITOR" = "nvim";
+    # };
   };
 
   stylix.targets = {
