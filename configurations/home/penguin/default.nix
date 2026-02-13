@@ -64,9 +64,9 @@
       (config.lib.nixGL.wrap localsend)
     ];
 
-    # sessionVariables = {
-    #   "EDITOR" = "nvim";
-    # };
+    sessionVariables = {
+      "EDITOR" = "vim";
+    };
   };
 
   stylix.targets = {
