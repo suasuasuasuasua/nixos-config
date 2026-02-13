@@ -10,7 +10,7 @@
     flake-checker.enable = false; # run `flake check`
     markdownlint.enable = true; # format markdown files
     nil.enable = true; # lsp that also has formatter
-    nixfmt-rfc-style.enable = true; # format nix files to rfc standards
+    nixfmt.enable = true; # format nix files to rfc standards
     shfmt.enable = true; # another formatter
     statix.enable = true; # check "good practices" for nix
     trim-trailing-whitespace.enable = true; # trim trailing whitespace
