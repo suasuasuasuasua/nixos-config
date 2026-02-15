@@ -1,6 +1,6 @@
 services:
   iSponsorBlockTV:
-    image: ghcr.io/dmunozv04/isponsorblocktv
+    image: ghcr.io/dmunozv04/isponsorblocktv:v2.6.1
     container_name: iSponsorBlockTV
     restart: unless-stopped
     network_mode: host

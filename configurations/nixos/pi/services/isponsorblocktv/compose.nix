@@ -18,7 +18,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."iSponsorBlockTV" = {
-    image = "ghcr.io/dmunozv04/isponsorblocktv";
+    image = "ghcr.io/dmunozv04/isponsorblocktv:v2.6.1";
     volumes = [
       "isponsorblocktv_isponsorblocktv-data:/app/data:rw"
     ];
