@@ -16,7 +16,7 @@
       };
       monospace = {
         package = pkgs.nerd-fonts.iosevka;
-        name = "Iosevka Nerd Font Mono";
+        name = "Iosevka Nerd Font";
       };
       emoji = {
         package = pkgs.noto-fonts-color-emoji;
