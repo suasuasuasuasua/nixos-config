@@ -34,6 +34,7 @@
     ./open-webui.nix
     ./paperless.nix
     ./prometheus.nix
+    ./rustdesk.nix
     ./searxng.nix
     ./smart.nix
     ./stirling-pdf.nix

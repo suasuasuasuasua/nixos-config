@@ -50,6 +50,7 @@ in
     "navidrome"
     "open-webui"
     "paperless"
+    "rustdesk-server"
     "searxng"
     "stirling-pdf"
     "termix"
