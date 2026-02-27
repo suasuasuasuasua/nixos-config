@@ -38,12 +38,12 @@
       devenv.enable = true; # easy dev environemnts
       direnv.enable = true; # switch dev environments with .envrc files
       fzf.enable = true; # fuzzy finder
-      git.enable = true; # source control
-      github.enable = true; # github cli integration
-      gnupg.enable = true; # gpg key signing
+      # git.enable = true; # source control
+      # github.enable = true; # github cli integration
+      # gnupg.enable = true; # gpg key signing
       starship.enable = true;
-      tmux.enable = true; # terminal multiplexer
-      zsh.enable = true;
+      # tmux.enable = true; # terminal multiplexer
+      # zsh.enable = true;
     };
     gui = {
       firefox = {
@@ -62,6 +62,7 @@
   home = {
     packages = with pkgs; [
       (config.lib.nixGL.wrap localsend)
+      lazygit
     ];
 
     sessionVariables = {
