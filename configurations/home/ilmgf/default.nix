@@ -56,6 +56,14 @@
         package = config.lib.nixGL.wrap pkgs.obs-studio;
       };
       spotify.enable = true;
+      vscode = {
+        enable = true;
+        package = pkgs.vscodium;
+        profiles = {
+          "Data Science".enable = true;
+          "Markup".enable = true;
+        };
+      };
     };
   };
 
