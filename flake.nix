@@ -254,6 +254,11 @@
             system = "x86_64-linux";
             userConfig = users.justinhoang;
           }
+          {
+            name = "ilmgf";
+            system = "x86_64-linux";
+            userConfig = users.justinhoang;
+          }
         ]
       );
     };
