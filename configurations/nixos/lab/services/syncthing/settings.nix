@@ -1,5 +1,8 @@
 {
   devices = {
+    "ilmgf" = {
+      id = "2SVDMBD-XGTLOY2-BBFAQPK-TLUYPYX-MZURMDA-GUGA5FM-G2VZ5BU-TFCWHQG";
+    };
     "mbp3" = {
       id = "V4NCONK-S2JLQLH-AQULXDL-Y4QQWBB-FO67NEP-G2Q2SSG-BQF4ZPW-5VHRGAY";
     };
@@ -11,6 +14,7 @@
     "default" = {
       path = "/zshare/personal/notes/";
       devices = [
+        "ilmgf"
         "mbp3"
         "penguin"
       ];
