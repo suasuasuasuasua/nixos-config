@@ -59,6 +59,11 @@
         publicKey = "saosesGsiwLmm+SNP4zRGVuWaswmimm2C0WiW2/TPXI=";
         allowedIPs = [ "10.100.0.5/32" ];
       }
+      {
+        name = "ilmgf";
+        publicKey = "vJrk3fyYDk6nEV8Ch7rhSurRDaMtBqoQTJ713aHjlWY=";
+        allowedIPs = [ "10.100.0.6/32" ];
+      }
     ];
   };
 }
