@@ -11,7 +11,8 @@
     feishin
     hidden-bar
     iina
-    nodejs_24
+    localsend
+    # nodejs_24
     obsidian
     podman
     podman-tui
