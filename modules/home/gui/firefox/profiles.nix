@@ -79,7 +79,9 @@ in
                 (mkBookmark "chase" "https://secure.chase.com")
                 (mkBookmark "empower" "https://lockheedmartinsavings.empower-retirement.com")
                 (mkBookmark "fidelity" "https://digital.fidelity.com")
+                (mkBookmark "rockey money" "https://app.rocketmoney.com")
                 (mkBookmark "usbank" "https://onlinebanking.usbank.com")
+                (mkBookmark "citi" "https://www.citi.com/")
               ];
             }
             {
