@@ -138,6 +138,7 @@ in
           bitwarden # bit/vault warden password integration
           darkreader # automatic dark mode
           linkwarden # link saver
+          mailvelope # email encryption
           ublock-origin # block ads
           vimium # vim-like movements
         ]
