@@ -26,12 +26,52 @@ in
           name = "bookmarks toolbar";
           toolbar = true;
           bookmarks = [
-            (mkBookmark "youtube" "https://youtube.com")
             {
-              name = "servers";
+              name = "email";
               bookmarks = [
-                (mkBookmark "lab" "https://lab.sua.dev")
-                (mkBookmark "pi" "https://pi.sua.dev")
+                (mkBookmark "gmail" "https://mail.google.com")
+                (mkBookmark "outlook" "https://outlook.live.com/")
+                (mkBookmark "proton" "https://mail.proton.me")
+              ];
+            }
+            {
+              name = "socials";
+              bookmarks = [
+                (mkBookmark "reddit" "https://reddit.com")
+                (mkBookmark "youtube" "https://youtube.com")
+              ];
+            }
+            {
+              name = "newsletters";
+              bookmarks = [
+                (mkBookmark "hacker news" "https://news.ycombinator.com")
+                (mkBookmark "selfhst" "https://selfh.st/")
+              ];
+            }
+            {
+              name = "dev";
+              bookmarks = [
+                (mkBookmark "github" "https://github.com")
+                {
+                  name = "nix";
+                  bookmarks = [
+                    (mkBookmark "home-manager extranix options" "https://home-manager-options.extranix.com/")
+                    (mkBookmark "home-manager options" "https://nix-community.github.io/home-manager/options.xhtml")
+                    (mkBookmark "nix wiki" "https://wiki.nixos.org")
+                    (mkBookmark "nix2json webui" "https://json-to-nix.pages.dev")
+                    (mkBookmark "nixpkgs options" "https://search.nixos.org/options?")
+                    (mkBookmark "nixpkgs" "https://search.nixos.org/packages")
+                    (mkBookmark "nixvim search" "https://nix-community.github.io/nixvim/search/")
+                    (mkBookmark "nixvim" "https://nix-community.github.io/nixvim/")
+                    (mkBookmark "noogle" "https://noogle.dev/")
+                  ];
+                }
+                {
+                  name = "darwin";
+                  bookmarks = [
+                    (mkBookmark "brew" "https://brew.sh/")
+                  ];
+                }
               ];
             }
             {
@@ -66,11 +106,10 @@ in
               ];
             }
             {
-              name = "email";
+              name = "shopping";
               bookmarks = [
-                (mkBookmark "gmail" "https://mail.google.com")
-                (mkBookmark "outlook" "https://outlook.live.com/")
-                (mkBookmark "proton" "https://mail.proton.me")
+                (mkBookmark "amazon" "https://www.amazon.com/")
+                (mkBookmark "camelcamelcamel" "https://camelcamelcamel.com/")
               ];
             }
             {
@@ -85,14 +124,6 @@ in
               ];
             }
             {
-              name = "benefits";
-              bookmarks = [
-                (mkBookmark "dental" "https://cigna.dental.com/dashboard")
-                (mkBookmark "health" "https://my.cigna.com")
-                (mkBookmark "vision" "https://www.vsp.com/")
-              ];
-            }
-            {
               name = "bills";
               bookmarks = [
                 (mkBookmark "car insurance" "https://myaccount.amfam.com/2812/overview")
@@ -101,26 +132,12 @@ in
                 (mkBookmark "parking" "https://parkm.app")
               ];
             }
-            (mkBookmark "hacker news" "https://news.ycombinator.com")
-            (mkBookmark "reddit" "https://reddit.com")
             {
-              name = "nix";
+              name = "benefits";
               bookmarks = [
-                (mkBookmark "home-manager extranix options" "https://home-manager-options.extranix.com/")
-                (mkBookmark "home-manager options" "https://nix-community.github.io/home-manager/options.xhtml")
-                (mkBookmark "nix wiki" "https://wiki.nixos.org")
-                (mkBookmark "nix2json webui" "https://json-to-nix.pages.dev")
-                (mkBookmark "nixpkgs options" "https://search.nixos.org/options?")
-                (mkBookmark "nixpkgs" "https://search.nixos.org/packages")
-                (mkBookmark "nixvim search" "https://nix-community.github.io/nixvim/search/")
-                (mkBookmark "nixvim" "https://nix-community.github.io/nixvim/")
-                (mkBookmark "noogle" "https://noogle.dev/")
-              ];
-            }
-            {
-              name = "darwin";
-              bookmarks = [
-                (mkBookmark "brew" "https://brew.sh/")
+                (mkBookmark "dental" "https://cigna.dental.com/dashboard")
+                (mkBookmark "health" "https://my.cigna.com")
+                (mkBookmark "vision" "https://www.vsp.com/")
               ];
             }
           ];
