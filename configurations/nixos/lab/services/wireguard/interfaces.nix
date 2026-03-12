@@ -61,7 +61,7 @@
       }
       {
         name = "ilmgf";
-        publicKey = "vJrk3fyYDk6nEV8Ch7rhSurRDaMtBqoQTJ713aHjlWY=";
+        publicKey = "ZdAyGNsAEFkN2lc3KtkCX6/n2m+d1wedtuTEKXFSzVc=";
         allowedIPs = [ "10.100.0.6/32" ];
       }
     ];
