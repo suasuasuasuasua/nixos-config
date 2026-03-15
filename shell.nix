@@ -4,13 +4,7 @@ let
 in
 pkgs.mkShellNoCC {
   # enable the shell hooks
-  shellHook =
-    # bash
-    ''
-      git remote update && git status -uno
-    ''
-    # install the git hooks
-    + self.checks.${system}.git-hooks-check.shellHook;
+  inherit (self.checks.${system}.git-hooks-check) shellHook;
 
   # define the programs available when running `nix develop`
   # add the packages from the git-hooks list too
