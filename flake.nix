@@ -138,35 +138,35 @@
           };
         };
 
-      # Helper function for making darwin systems
-      mkDarwinSystem =
-        {
-          name,
-          system,
-          userConfigs,
-          enableHomeManager ? true,
-        }:
-        {
-          ${name} = lib.darwinSystem {
-            modules = [
-              ./configurations/darwin/${name}
-              stylix.darwinModules.stylix
-            ]
-            ++ lib.optionals enableHomeManager [
-              home-manager.darwinModules.home-manager
-              (mkHomeManagerConfig system userConfigs)
-            ];
-            # Pass these arguments through the modules
-            specialArgs = {
-              inherit
-                self
-                inputs
-                outputs
-                userConfigs
-                ;
-            };
-          };
-        };
+      # # Helper function for making darwin systems
+      # mkDarwinSystem =
+      #   {
+      #     name,
+      #     system,
+      #     userConfigs,
+      #     enableHomeManager ? true,
+      #   }:
+      #   {
+      #     ${name} = lib.darwinSystem {
+      #       modules = [
+      #         ./configurations/darwin/${name}
+      #         stylix.darwinModules.stylix
+      #       ]
+      #       ++ lib.optionals enableHomeManager [
+      #         home-manager.darwinModules.home-manager
+      #         (mkHomeManagerConfig system userConfigs)
+      #       ];
+      #       # Pass these arguments through the modules
+      #       specialArgs = {
+      #         inherit
+      #           self
+      #           inputs
+      #           outputs
+      #           userConfigs
+      #           ;
+      #       };
+      #     };
+      #   };
       # Helper function for making standalone home-manager configurations
       mkHomeConfiguration =
         {
@@ -238,24 +238,20 @@
           }
         ]
       );
-      darwinConfigurations = lib.mergeAttrsList (
-        map mkDarwinSystem [
-          {
-            name = "mbp3";
-            system = "aarch64-darwin";
-            userConfigs = [ users.justinhoang ];
-          }
-        ]
-      );
       homeConfigurations = lib.mergeAttrsList (
         map mkHomeConfiguration [
           {
-            name = "penguin";
+            name = "ilmgf";
             system = "x86_64-linux";
             userConfig = users.justinhoang;
           }
           {
-            name = "ilmgf";
+            name = "mbp3";
+            system = "aarch64-darwin";
+            userConfig = users.justinhoang;
+          }
+          {
+            name = "penguin";
             system = "x86_64-linux";
             userConfig = users.justinhoang;
           }

@@ -6,13 +6,15 @@
 }:
 let
   inherit (pkgs.stdenv.hostPlatform) system;
+
   nixvim = inputs.nixvim-config.packages.${system}.default.extend {
     config.plugins = {
       neorg.settings.load."core.dirman".config = {
-        workspaces."default" = "${config.xdg.userDirs.documents}/vaults";
+        workspaces = {
+          "default" = "${config.xdg.userDirs.documents}/vaults";
+        };
         default_workspace = "default";
       };
-      ollama.settings.model = "gemma3";
       obsidian = {
         settings = {
           legacy_commands = false;
@@ -29,7 +31,6 @@ let
         };
       };
     };
-
     config.nixvim = {
       lsp.languages = {
         cmake.enable = true;
@@ -41,11 +42,9 @@ let
         vtsls.enable = true;
       };
       plugins.custom = {
-        auto-dark-mode.enable = true;
         leetcode.enable = true;
         neorg.enable = true;
         obsidian.enable = true;
-        ollama.enable = true;
       };
     };
   };

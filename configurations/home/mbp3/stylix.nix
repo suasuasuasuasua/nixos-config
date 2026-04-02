@@ -10,23 +10,22 @@
         package = pkgs.dejavu_fonts;
         name = "DejaVu Serif";
       };
-
       sansSerif = {
         package = pkgs.dejavu_fonts;
         name = "DejaVu Sans";
       };
-
       monospace = {
         package = pkgs.nerd-fonts.iosevka;
         name = "Iosevka Nerd Font";
-        # package = pkgs.nerd-fonts.jetbrains-mono;
-        # name = "JetBrainsMono Nerd Font";
       };
-
       emoji = {
         package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
     };
+
+    # prefer dark theme
+    # one of either, light, dark
+    polarity = "dark";
   };
 }
