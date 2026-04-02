@@ -27,7 +27,6 @@ switch:
 
 # Switch home-manager configuration
 [group('switch')]
-[linux]
 switch-home host:
     nh home switch -c {{ host }} . -b bak
 
