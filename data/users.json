@@ -1,11 +1,13 @@
 {
   "admin": {
-    "username": "admin",
-    "initialHashedPassword": "$y$j9T$sXZCGwjtugZIt/C2nU8bk/$D36OrIe3eyGSM7rPysbQI1OyT56TdtJZtcvnOne2Ge0"
+    "username": "admin"
   },
   "justinhoang": {
     "username": "justinhoang",
-    "email": "justinhoang@sua.dev",
-    "initialHashedPassword": "$y$j9T$sXZCGwjtugZIt/C2nU8bk/$D36OrIe3eyGSM7rPysbQI1OyT56TdtJZtcvnOne2Ge0"
+    "email": "justinhoang@sua.dev"
+  },
+  "katelynjascha": {
+    "username": "katelynjacsha",
+    "email": "katelynjascha@gmail.com"
   }
 }

@@ -28,7 +28,7 @@
   # Backups
   tm_share = {
     "path" = "/zshare/backup/tm_share";
-    "valid users" = "justinhoang";
+    "valid users" = "justinhoang katelynjascha";
     "public" = "no";
     "writeable" = "yes";
     "force group" = "samba";
@@ -75,7 +75,7 @@
   # Temp!
   tmp = {
     "path" = "/ztmp/tmp";
-    "valid users" = "justinhoang";
+    "valid users" = "justinhoang katelynjascha";
     "browseable" = "yes";
     "public" = "no";
     "read only" = "no";

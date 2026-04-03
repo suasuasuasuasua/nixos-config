@@ -1,14 +1,26 @@
-{ pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
+let
+  admin_password = config.sops.secrets."passwords/admin".path;
+in
 {
   # Need to enable zsh before we can actually use it. Home manager configs it,
   # but cannot set the login shell because that's root level operation
   programs.zsh.enable = true;
 
+  sops.secrets = {
+    "passwords/admin" = {
+      neededForUsers = true;
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
+    };
+  };
+
   users.users.admin = {
-    # If you do, you can skip setting a root password by passing
-    # '--no-root-passwd' to nixos-install. Be sure to change it (using
-    # passwd) after rebooting!
-    initialHashedPassword = "$y$j9T$sXZCGwjtugZIt/C2nU8bk/$D36OrIe3eyGSM7rPysbQI1OyT56TdtJZtcvnOne2Ge0";
+    hashedPasswordFile = admin_password;
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     shell = pkgs.zsh;
