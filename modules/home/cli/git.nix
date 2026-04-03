@@ -44,7 +44,7 @@ in
             commit = {
               signoff = true;
             };
-            overrideGpg = true;
+            overrideGpg = false; # NOTE: saves gpg headaches
             pagers = [
               {
                 # side by side view with git-delta
