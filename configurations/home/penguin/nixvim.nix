@@ -41,11 +41,6 @@ let
         html.enable = true;
         vtsls.enable = true;
       };
-      plugins.custom = {
-        leetcode.enable = true;
-        neorg.enable = true;
-        obsidian.enable = true;
-      };
     };
   };
 in
