@@ -2,7 +2,6 @@
   description = "suasuasuasuasua's nixos configuration";
 
   inputs = {
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     disko.url = "github:nix-community/disko/latest";
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -263,12 +262,10 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://suasuasuasuasua.cachix.org"
-      "https://install.determinate.systems"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "suasuasuasuasua.cachix.org-1:JAh0OWpJOvPHGS4zyK13xV+RBxgucR7TUwIAcr4j8KM="
-      "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
     ];
   };
 }

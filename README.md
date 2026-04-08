@@ -88,15 +88,9 @@ The initial setup is pretty simple now thanks to `disko`.
 The setup for `darwin` machines is much simpler. Make sure to connect to the
 internet before beginning.
 
-> See the [website](https://docs.determinate.systems) for an updated guide on
-> Darwin
-
-1. Install `nix` on the machine. You may be prompted to install developer tools
-   (like `git`, `xcode`, etc.), so make sure to accept and be patient.
-
-   ```bash
-   curl -fsSL https://install.determinate.systems/nix | sh -s -- install
-   ```
+1. Install `nix` on the machine from [the page](https://nixos.org/download/).
+   You may be prompted to install developer tools (like `git`, `xcode`, etc.),
+   so make sure to accept and be patient.
 
 1. Install `nix-darwin`
 
@@ -117,11 +111,7 @@ internet before beginning.
 The setup for other Linux machines is much simpler. Make sure to connect to the
 internet before beginning.
 
-1. Install `nix` on the machine
-
-   ```bash
-   curl -fsSL https://install.determinate.systems/nix | sh -s -- install
-   ```
+1. Install `nix` on the machine from the [main page](https://nixos.org/download/)
 
 1. Install `home-manager` and switch configurations
 
