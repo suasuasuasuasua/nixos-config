@@ -36,15 +36,6 @@ let
         html.enable = true;
         vtsls.enable = true;
       };
-      plugins.custom = {
-        auto-dark-mode.enable = false;
-        img-clip.enable = false;
-        leetcode.enable = true;
-        markdown-preview.enable = false;
-        neorg.enable = true;
-        obsidian.enable = true;
-        remote-nvim.enable = false;
-      };
     };
   };
 in
