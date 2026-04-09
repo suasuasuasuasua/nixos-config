@@ -1,5 +1,6 @@
 # calibre is a self hosted e-book manager
 {
+  inputs,
   config,
   pkgs,
   ...
@@ -24,6 +25,9 @@ in
 
     calibre-web = {
       enable = true;
+
+      # https://github.com/NixOS/nixpkgs/issues/503251
+      package = inputs.nixpkgs-calibre-web.legacyPackages.${pkgs.stdenv.hostPlatform.system}.calibre-web;
       listen = {
         inherit (web) port;
 
