@@ -18,7 +18,7 @@ in
 
     servers = {
       "theboys" = {
-        enable = false;
+        enable = true;
         whitelist = {
           "ButOnYourNooty" = "33574a43-42c6-4813-8fa1-a2e1c44e32c3";
           "INSPECTORPOOPY" = "e55f7b34-6a98-4e9a-a770-1ebd0cf123b1";
@@ -37,7 +37,9 @@ in
         jvmOpts = "-Xms1024M -Xmx2048M";
 
         # Specify the custom minecraft server package
-        package = pkgs.vanillaServers.vanilla-1_21_11;
+        package = pkgs.vanillaServers.vanilla-26_1_1.override {
+          jre_headless = pkgs.openjdk25.headless;
+        };
       };
       "kj" = {
         enable = true;
@@ -58,10 +60,13 @@ in
         jvmOpts = "-Xms1024M -Xmx2048M";
 
         # Specify the custom minecraft server package
-        package = pkgs.vanillaServers.vanilla-1_21_11;
+        # https://github.com/Infinidoge/nix-minecraft/discussions/203
+        package = pkgs.vanillaServers.vanilla-26_1_1.override {
+          jre_headless = pkgs.openjdk25.headless;
+        };
       };
       "testing" = {
-        enable = false;
+        enable = true;
         whitelist = {
           "suasuasua9582" = "a0e73908-7ac7-42f8-8e2d-6b6e4cdf3353";
         };
@@ -133,7 +138,9 @@ in
 
         # Specify the custom minecraft server package
         # package = pkgs.vanillaServers.vanilla-1_2_5; # oldest version in flake!
-        package = pkgs.vanillaServers.vanilla-1_21_11;
+        package = pkgs.vanillaServers.vanilla-26_1_1.override {
+          jre_headless = pkgs.openjdk25.headless;
+        };
       };
     };
   };
