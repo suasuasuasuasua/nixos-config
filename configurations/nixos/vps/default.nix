@@ -13,8 +13,5 @@
     ./sops.nix
   ];
 
-  # Disko only runs during initial deployment, not at runtime
-  disko.enableNew = false;
-
   system.stateVersion = "25.11";
 }
