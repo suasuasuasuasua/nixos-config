@@ -16,6 +16,7 @@ creation_rules:
       - age:
           - *lab
           - *pi
+          - *vps
   - path_regex: configurations/nixos/lab/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
