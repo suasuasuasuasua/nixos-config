@@ -1,12 +1,12 @@
 {
-  boot.loader.grub = {
-    enable = true;
-    device = "/dev/sda";
-  };
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
 
-  # For VPS environments, typically want to enable Serial console
-  boot.kernelParams = [
-    "console=tty1"
-    "console=ttyS0"
-  ];
+    # For VPS environments, typically want to enable Serial console
+    kernelParams = [
+      "console=tty1"
+      "console=ttyS0"
+    ];
+  };
 }
