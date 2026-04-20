@@ -1,8 +1,11 @@
-# VPS Hardware configuration
-# Generated from nixos-generate-config, adjust based on your VPS
+{ lib, modulesPath, ... }:
 {
-  imports = [ ];
+  imports = [
+    (modulesPath + "/profiles/qemu-guest.nix")
+  ];
 
-  # This is typically auto-generated on a real system
-  # For now, this is a placeholder
+  networking.useDHCP = lib.mkDefault true;
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+  system.stateVersion = "25.11";
 }
