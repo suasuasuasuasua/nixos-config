@@ -9,7 +9,7 @@
 keys:
   - &lab age1z873m77wql5652lewr95323ejpvl85fchwq22xg8yd6x4kperejqg9wlph
   - &pi age1ed2wgryukz5xq6t8w6nhjvldwgvw5lj2aq37n7q23et2ycqwtueqaaw4fj
-  - &vps age1t3emq0m59pq20c9dcf9aev07ey3tm3fal8wswgvx8ds4g72hhf5qyk22sl
+  - &vps age153m7e4mhyc5kgrqq8lvaujj96cp0m00wvfexxm7g66wxre56maqs3ccv9e
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
