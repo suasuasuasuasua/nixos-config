@@ -3,7 +3,10 @@
   # "wg0" is the network interface name. You can name the interface arbitrarily.
   wg0 = {
     # Determines the IP address and subnet of the server's end of the tunnel interface.
-    ips = [ "10.100.0.1/24" ];
+    ips = [
+      "10.100.0.1/24" # server
+      "10.101.0.2/24" # vps client
+    ];
 
     # The port that WireGuard listens to. Must be accessible by the client.
     listenPort = 51820;
@@ -63,6 +66,12 @@
         name = "ilmgf";
         publicKey = "ZdAyGNsAEFkN2lc3KtkCX6/n2m+d1wedtuTEKXFSzVc=";
         allowedIPs = [ "10.100.0.6/32" ];
+      }
+      {
+        name = "vps-server";
+        publicKey = "REPLACE_WITH_VPS_PUBLIC_KEY";
+        endpoint = "5.78.184.15:51820";
+        allowedIPs = [ "10.101.0.0/24" ];
       }
     ];
   };

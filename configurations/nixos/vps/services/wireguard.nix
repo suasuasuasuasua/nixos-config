@@ -9,7 +9,7 @@
 let
   # Lab server's WireGuard IP and public key
   # You'll need to generate keys and fill these in
-  labPublicKey = "REPLACE_WITH_LAB_PUBLIC_KEY";
+  labPublicKey = "JVBP0NWpR70JT0bUoFsunFkGT9YZSY8O/UeMdUxAXlU=";
 in
 {
   sops.secrets = {
@@ -25,7 +25,7 @@ in
   networking.wireguard = {
     enable = true;
     interfaces.wg0 = {
-      ips = [ "10.1.0.1/24" ];
+      ips = [ "10.101.0.1/24" ];
       listenPort = 51820;
 
       privateKeyFile = config.sops.secrets."wireguard/vps_private_key".path;
@@ -34,7 +34,7 @@ in
         {
           name = "lab";
           publicKey = labPublicKey;
-          allowedIPs = [ "10.1.0.2/32" ];
+          allowedIPs = [ "10.101.0.2/32" ];
         }
       ];
     };

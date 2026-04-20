@@ -22,7 +22,7 @@
     settings = {
       PermitRootLogin = "no";
       KbdInteractiveAuthentication = false;
-      AllowUsers = [ "justinhoang" ];
+      AllowUsers = [ "admin" ];
       PasswordAuthentication = false;
     };
   };

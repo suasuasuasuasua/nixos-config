@@ -1,5 +1,5 @@
 {
-  users.users.justinhoang = {
+  users.users.admin = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
