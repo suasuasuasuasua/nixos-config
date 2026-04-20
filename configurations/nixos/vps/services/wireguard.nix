@@ -27,7 +27,7 @@ in
       listenPort = 51820;
 
       # TODO: Generate private key and place in this file
-      privateKeyFile = "/etc/wireguard/wg0.key";
+      privateKeyFile = "/etc/wireguard/privatekey.key";
 
       peers = [
         {
