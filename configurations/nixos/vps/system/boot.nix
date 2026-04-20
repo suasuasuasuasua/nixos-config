@@ -3,7 +3,6 @@
     loader.grub = {
       enable = true;
       device = "/dev/sda";
-      useEfi = false; # Hetzner VPS uses BIOS, not EFI
     };
 
     # For VPS environments, typically want to enable Serial console
