@@ -5,7 +5,7 @@
 }:
 let
   inherit (config.networking) domain;
-  labVpnIp = "10.1.0.2";
+  labVpnIp = "10.101.0.2";
 in
 {
   services.nginx = {
