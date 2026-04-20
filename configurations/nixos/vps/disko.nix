@@ -1,6 +1,6 @@
 # VPS Disk configuration
-# Adjust this based on your VPS provider's disk setup
-# This is a basic example for a simple /dev/sda partition
+# Hetzner VPS requires BIOS boot, not EFI
+# Use GPT with BIOS Boot Partition
 {
   disko.devices = {
     disk = {
@@ -10,15 +10,10 @@
         content = {
           type = "gpt";
           partitions = {
-            ESP = {
-              type = "EF00";
-              size = "500M";
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
-                mountOptions = [ "umask=0077" ];
-              };
+            # BIOS Boot Partition for GPT + GRUB
+            bios_boot = {
+              type = "EF02";
+              size = "1M";
             };
             root = {
               size = "100%";
