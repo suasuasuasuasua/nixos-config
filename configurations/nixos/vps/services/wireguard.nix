@@ -13,7 +13,7 @@ let
 in
 {
   sops.secrets = {
-    "wireguard/vps_private_key" = {
+    "wireguard/private_key" = {
       sopsFile = "${inputs.self}/configurations/nixos/vps/secrets.yaml";
     };
   };
@@ -28,7 +28,7 @@ in
       ips = [ "10.101.0.1/24" ];
       listenPort = 51820;
 
-      privateKeyFile = config.sops.secrets."wireguard/vps_private_key".path;
+      privateKeyFile = config.sops.secrets."wireguard/private_key".path;
 
       peers = [
         {

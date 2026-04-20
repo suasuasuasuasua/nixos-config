@@ -69,7 +69,7 @@
       }
       {
         name = "vps-server";
-        publicKey = "REPLACE_WITH_VPS_PUBLIC_KEY";
+        publicKey = "+OvupglehkIl42bJlo64t2KgP6RTEGjGxDYOpySiDis=";
         endpoint = "5.78.184.15:51820";
         allowedIPs = [ "10.101.0.0/24" ];
       }
