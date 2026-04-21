@@ -22,7 +22,6 @@
     settings = {
       PermitRootLogin = "no";
       KbdInteractiveAuthentication = false;
-      AllowUsers = [ "admin" ];
       PasswordAuthentication = false;
     };
   };

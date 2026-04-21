@@ -27,6 +27,8 @@ in
         server = {
           DOMAIN = "${serviceName}.${domain}";
           HTTP_PORT = port;
+          SSH_PORT = 22;
+          SSH_LISTEN_PORT = 2222;
           ROOT_URL = "https://${serviceName}.${domain}";
         };
         service = {
@@ -34,6 +36,10 @@ in
         };
         session = {
           COOKIE_SECURE = true;
+        };
+        repository = {
+          ENABLE_PUSH_CREATE_USER = true;
+          ENABLE_PUSH_CREATE_ORG = true;
         };
       };
     };
