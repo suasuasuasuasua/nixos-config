@@ -3,10 +3,7 @@
   # "wg0" is the network interface name. You can name the interface arbitrarily.
   wg0 = {
     # Determines the IP address and subnet of the server's end of the tunnel interface.
-    ips = [
-      "10.100.0.1/24" # server
-      "10.101.0.2/24" # vps client
-    ];
+    ips = [ "10.100.0.1/24" ];
 
     # The port that WireGuard listens to. Must be accessible by the client.
     listenPort = 51820;
@@ -67,6 +64,18 @@
         publicKey = "ZdAyGNsAEFkN2lc3KtkCX6/n2m+d1wedtuTEKXFSzVc=";
         allowedIPs = [ "10.100.0.6/32" ];
       }
+    ];
+  };
+
+  # Separate interface for the VPS tunnel so source address selection is
+  # unambiguous — wg1 only has 10.101.0.2/24, so the kernel always uses
+  # 10.101.0.2 as the source when reaching 10.101.0.1.
+  wg1 = {
+    ips = [ "10.101.0.2/24" ];
+
+    privateKeyFile = config.sops.secrets."wireguard/private_key".path;
+
+    peers = [
       {
         name = "vps-server";
         publicKey = "k2a0D0OUEsZQV6geIKOscTNVbiUVZquqh49zT6A1MRo=";
