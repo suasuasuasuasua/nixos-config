@@ -27,6 +27,7 @@ in
         server = {
           DOMAIN = "${serviceName}.${domain}";
           HTTP_PORT = port;
+          START_SSH_SERVER = true;
           SSH_PORT = 2222;
           SSH_LISTEN_PORT = 2222;
           ROOT_URL = "https://${serviceName}.${domain}";
