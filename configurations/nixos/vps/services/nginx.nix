@@ -23,9 +23,15 @@ in
     locations."/" = {
       # Proxy to lab's nginx over the WireGuard tunnel. Lab nginx handles
       # routing to the actual service — VPS doesn't need to know port numbers.
-      proxyPass = "http://${labVpnIp}";
+      # HTTPS is used so lab's existing virtualHost matches without needing a
+      # separate HTTP-only block. WireGuard already encrypts transit, so cert
+      # verification on the internal connection is skipped.
+      proxyPass = "https://${labVpnIp}";
       proxyWebsockets = true;
-      extraConfig = "client_max_body_size 0;";
+      extraConfig = ''
+        client_max_body_size 0;
+        proxy_ssl_verify off;
+      '';
     };
   };
 }
