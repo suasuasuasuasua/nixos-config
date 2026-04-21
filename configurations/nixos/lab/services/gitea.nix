@@ -85,14 +85,30 @@ in
       acmeRoot = null;
       locations."/" = {
         proxyPass = "http://127.0.0.1:${toString port}";
-        proxyWebsockets = true; # needed if you need to use WebSocket
-
-        extraConfig =
-          # allow for larger file uploads like videos through the reverse proxy
-          "client_max_body_size 0;";
+        proxyWebsockets = true;
+        extraConfig = "client_max_body_size 0;";
       };
-
       serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
+    };
+
+    # Listens only on the WireGuard interface (wg1) so the VPS can proxy here
+    # over the tunnel without knowing internal port numbers. No SSL needed —
+    # the WireGuard tunnel already encrypts transit, and the VPS terminates
+    # TLS for the public internet.
+    "${serviceName}-wg.${domain}" = {
+      serverName = "${serviceName}.${domain}";
+      listen = [
+        {
+          addr = "10.101.0.2";
+          port = 80;
+          ssl = false;
+        }
+      ];
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyWebsockets = true;
+        extraConfig = "client_max_body_size 0;";
+      };
     };
   };
 }

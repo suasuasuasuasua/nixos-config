@@ -21,7 +21,9 @@ in
     acmeRoot = null;
 
     locations."/" = {
-      proxyPass = "http://${labVpnIp}:3001";
+      # Proxy to lab's nginx over the WireGuard tunnel. Lab nginx handles
+      # routing to the actual service — VPS doesn't need to know port numbers.
+      proxyPass = "http://${labVpnIp}";
       proxyWebsockets = true;
       extraConfig = "client_max_body_size 0;";
     };

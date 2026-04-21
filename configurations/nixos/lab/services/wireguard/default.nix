@@ -26,6 +26,9 @@ in
   networking = {
     firewall = {
       allowedUDPPorts = [ 51820 ];
+      # Allow the VPS to reach lab's nginx over the WireGuard tunnel.
+      # Port 80 is only open on wg1 — it remains closed on the public interface.
+      interfaces.wg1.allowedTCPPorts = [ 80 ];
     };
     # NAT for wg0 so devices on 10.100.0.0/24 can reach the internet through lab.
     # wg1 is a client-only tunnel and does not need NAT.
