@@ -14,6 +14,7 @@
       allowedTCPPorts = [
         80
         443
+        2222 # Gitea SSH (reachable from VPS over WireGuard)
       ];
     };
   };

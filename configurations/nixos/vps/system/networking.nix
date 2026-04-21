@@ -12,6 +12,7 @@
       allowedTCPPorts = [
         80
         443
+        2222 # Gitea SSH proxy (nginx stream → lab)
       ];
       allowedUDPPorts = [ 51820 ];
     };

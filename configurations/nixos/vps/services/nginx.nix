@@ -18,7 +18,7 @@ in
       # nginx
       ''
         upstream gitea_ssh {
-          server 10.101.0.2:22;
+          server 10.101.0.2:2222;
         }
 
         server {
