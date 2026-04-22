@@ -1,6 +1,6 @@
 # See /modules/nixos/* for actual settings
 # This file is just *top-level* configuration.
-{ inputs, ... }:
+{ pkgs, inputs, ... }:
 {
 
   imports = [
@@ -11,6 +11,10 @@
   environment.variables = {
     EDITOR = "nvim";
   };
+
+  environment.systemPackages = [
+    pkgs.claude-code
+  ];
 
   custom.nixos.development = {
     cli.enable = true;
