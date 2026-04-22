@@ -237,6 +237,11 @@
             system = "aarch64-linux";
             userConfigs = [ users.admin ];
           }
+          {
+            name = "vps";
+            system = "x86_64-linux";
+            userConfigs = [ users.admin ];
+          }
         ]
       );
       homeConfigurations = lib.mergeAttrsList (

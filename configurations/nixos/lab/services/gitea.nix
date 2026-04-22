@@ -27,6 +27,9 @@ in
         server = {
           DOMAIN = "${serviceName}.${domain}";
           HTTP_PORT = port;
+          START_SSH_SERVER = true;
+          SSH_PORT = 2222;
+          SSH_LISTEN_PORT = 2222;
           ROOT_URL = "https://${serviceName}.${domain}";
         };
         service = {
@@ -34,6 +37,10 @@ in
         };
         session = {
           COOKIE_SECURE = true;
+        };
+        repository = {
+          ENABLE_PUSH_CREATE_USER = true;
+          ENABLE_PUSH_CREATE_ORG = true;
         };
       };
     };
@@ -78,21 +85,15 @@ in
     };
   };
 
-  services.nginx.virtualHosts = {
-    "${serviceName}.${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      acmeRoot = null;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
-        proxyWebsockets = true; # needed if you need to use WebSocket
-
-        extraConfig =
-          # allow for larger file uploads like videos through the reverse proxy
-          "client_max_body_size 0;";
-      };
-
-      serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
+  services.nginx.virtualHosts."${serviceName}.${domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    acmeRoot = null;
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:${toString port}";
+      proxyWebsockets = true;
+      extraConfig = "client_max_body_size 0;";
     };
+    serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
   };
 }

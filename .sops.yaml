@@ -6,16 +6,42 @@
 # - nix run nixpkgs#ssh-to-age -- -private-key -i $HOME/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt
 # Generate a public age key from a public ssh key
 # - nix run nixpkgs#ssh-to-age -- -i $HOME/.ssh/id_ed25519.pub -o pub-key.txt
+#
+# Deploying to a new VPS with nixos-anywhere (so SOPS works on first activation):
+#
+# 1. Pre-generate the SSH host key locally:
+#    ssh-keygen -t ed25519 -f /tmp/ssh_host_ed25519_key -N ""
+#
+# 2. Convert to age pubkey and update &vps above:
+#    nix run nixpkgs#ssh-to-age -- -i /tmp/ssh_host_ed25519_key.pub
+#
+# 3. Re-encrypt secrets with the new key:
+#    sops updatekeys secrets/secrets.yaml
+#
+# 4. Stage the host key for nixos-anywhere:
+#    mkdir -p /tmp/extra-files/etc/ssh
+#    cp /tmp/ssh_host_ed25519_key /tmp/extra-files/etc/ssh/ssh_host_ed25519_key
+#    chmod 600 /tmp/extra-files/etc/ssh/ssh_host_ed25519_key
+#
+# 5. Deploy:
+#    nixos-anywhere --extra-files /tmp/extra-files --flake .#vps root@<ip>
 keys:
   - &lab age1z873m77wql5652lewr95323ejpvl85fchwq22xg8yd6x4kperejqg9wlph
   - &pi age1ed2wgryukz5xq6t8w6nhjvldwgvw5lj2aq37n7q23et2ycqwtueqaaw4fj
+  - &vps age139f88emrmhu7wmx85zq0pn6y9h6f4rhwk7v2r5pze5jk82ye8vgqv4g6de
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
           - *lab
           - *pi
+          - *vps
   - path_regex: configurations/nixos/lab/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
           - *lab
+  - path_regex: configurations/nixos/vps/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *lab
+          - *vps
