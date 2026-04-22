@@ -14,20 +14,14 @@ in
     recommendedProxySettings = true;
     recommendedOptimisation = true;
 
-    streamConfig =
-      # nginx
-      ''
-        upstream gitea_ssh {
-          server 10.101.0.2:2222;
-        }
-
-        server {
-          listen 2222;
-          proxy_pass gitea_ssh;
-          proxy_timeout 10m;
-          proxy_connect_timeout 10s;
-        }
-      '';
+    streamConfig = ''
+      server {
+        listen 2222;
+        proxy_pass 10.101.0.2:2222;
+        proxy_timeout 10m;
+        proxy_connect_timeout 10s;
+      }
+    '';
   };
 
   services.nginx.virtualHosts."gitea.${domain}" = {
