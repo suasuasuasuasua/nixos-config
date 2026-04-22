@@ -1,9 +1,20 @@
 #!/usr/bin/env bash
 # Set up GitHub push mirrors for all Gitea repositories.
 # Gitea is the source of truth; GitHub repos are created as mirrors.
-# Usage: ./setup-gitea-github-mirrors.sh
+# Usage: ./setup-gitea-github-mirrors.sh [--include-archived]
 
 set -euo pipefail
+
+INCLUDE_ARCHIVED=false
+for arg in "$@"; do
+	case $arg in
+	--include-archived) INCLUDE_ARCHIVED=true ;;
+	*)
+		echo "Unknown argument: $arg"
+		exit 1
+		;;
+	esac
+done
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=.env
@@ -12,26 +23,35 @@ source "$SCRIPT_DIR/.env"
 # Fetch all repos from Gitea
 repos=$(curl -s \
 	-H "Authorization: token $GITEA_TOKEN" \
-	"$GITEA_URL/api/v1/repos/search?limit=50&token=$GITEA_TOKEN" |
+	"$GITEA_URL/api/v1/repos/search?limit=100&token=$GITEA_TOKEN" |
 	jq -r '.data[] | select(.owner.login == "'"$GITEA_USER"'") | .name')
 
 for repo in $repos; do
 	echo "--- $repo ---"
 
 	# 1. Create GitHub repo if it doesn't exist
-	http_code=$(curl -s -o /dev/null -w "%{http_code}" \
+	github_repo=$(curl -s \
 		-H "Authorization: token $GITHUB_TOKEN" \
 		"https://api.github.com/repos/$GITHUB_USER/$repo")
+	http_code=$(echo "$github_repo" | jq -r 'if .id then "200" else "404" end')
 
 	if [ "$http_code" = "404" ]; then
 		echo "  Creating GitHub repo $GITHUB_USER/$repo..."
-		curl -s -X POST \
+		github_repo=$(curl -s -X POST \
 			-H "Authorization: token $GITHUB_TOKEN" \
 			-H "Content-Type: application/json" \
 			"https://api.github.com/user/repos" \
-			-d "{\"name\": \"$repo\", \"private\": false}" | jq -r '.full_name // .message'
+			-d "{\"name\": \"$repo\", \"private\": false}")
+		echo "  $(echo "$github_repo" | jq -r '.full_name // .message')"
 	else
 		echo "  GitHub repo already exists, skipping creation."
+	fi
+
+	# Skip archived repos unless --include-archived is set
+	is_archived=$(echo "$github_repo" | jq -r '.archived // false')
+	if [ "$is_archived" = "true" ] && [ "$INCLUDE_ARCHIVED" = "false" ]; then
+		echo "  GitHub repo is archived, skipping. (use --include-archived to force)"
+		continue
 	fi
 
 	# 2. Add push mirror on Gitea → GitHub (skip if mirror already exists)
