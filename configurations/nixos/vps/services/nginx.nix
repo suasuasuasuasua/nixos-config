@@ -32,7 +32,7 @@ in
     locations."/" = {
       # Proxy to Anubis over a local unix socket. Anubis then proxies to lab
       # nginx over the WireGuard tunnel and filters bad actors/bots.
-      proxyPass = "http://unix:${anubisGiteaSocket}";
+      proxyPass = "http://unix:${anubisGiteaSocket}:/";
       proxyWebsockets = true;
       extraConfig = ''
         client_max_body_size 0;
