@@ -39,7 +39,8 @@ in
       proxyWebsockets = true;
       extraConfig = ''
         client_max_body_size 0;
-        proxy_ssl_verify off;
+        proxy_ssl_server_name on;
+        proxy_ssl_name gitea.${domain};
       '';
     };
   };
