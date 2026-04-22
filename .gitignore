@@ -17,3 +17,6 @@ devenv.local.nix
 
 # startup time logs
 **/startuptime.log
+
+# secrets
+**/.env

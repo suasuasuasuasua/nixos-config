@@ -2,11 +2,11 @@
 # Migrate all GitHub repos (with issues, labels, milestones, releases, PRs) to Gitea
 # Usage: ./migrate-github-to-gitea.sh
 
-GITHUB_USER="your-github-username"
-GITHUB_TOKEN="ghp_..." # GitHub PAT (repo scope for private, public_repo for public)
-GITEA_URL="https://gitea.sua.dev"
-GITEA_USER="your-gitea-username"
-GITEA_TOKEN="..." # Gitea API token (User Settings → Applications → Generate Token)
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=.env
+source "$SCRIPT_DIR/.env"
 
 repos=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
 	"https://api.github.com/user/repos?per_page=100&type=owner" |
