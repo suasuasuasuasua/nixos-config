@@ -9,6 +9,7 @@ forwards traffic over the tunnel.
 ```text
 Public Internet
   → VPS nginx (sua.dev, TLS)
+    → Anubis bot/challenge filter
     → WireGuard tunnel (10.101.0.0/24)
       → Lab services (10.101.0.2)
 ```
@@ -18,6 +19,9 @@ Currently proxied services:
 | Domain          | Lab target        |
 |-----------------|-------------------|
 | `gitea.sua.dev` | `10.101.0.2:3001` |
+
+`gitea.sua.dev` traffic is filtered by Anubis on the VPS before being proxied
+to lab over WireGuard.
 
 ## WireGuard tunnel
 
