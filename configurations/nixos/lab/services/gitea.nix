@@ -98,6 +98,7 @@ in
           gnused
           just
           nh
+          nix
           nodejs
           wget
         ];
