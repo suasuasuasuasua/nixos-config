@@ -15,16 +15,16 @@ Public Internet
 
 Currently proxied services:
 
-| Domain          | Lab target        |
+| Domain | Lab target |
 |-----------------|-------------------|
 | `gitea.sua.dev` | `10.101.0.2:3001` |
 
 ## WireGuard tunnel
 
-| Machine | Interface | IP              |
-|---------|-----------|----             |
-| VPS     | `wg0`     | `10.101.0.1/24` |
-| Lab     | `wg1`     | `10.101.0.2/24` |
+| Machine | Interface | IP |
+|---------|-----------|---- |
+| VPS | `wg0` | `10.101.0.1/24` |
+| Lab | `wg1` | `10.101.0.2/24` |
 
 VPS is the listener (`listenPort = 51820`). Lab initiates the connection and
 sends keepalives every 25 seconds (lab is behind NAT).

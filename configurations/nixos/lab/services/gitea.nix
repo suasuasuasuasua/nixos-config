@@ -85,14 +85,20 @@ in
           # provide native execution on the host
           "native:host"
         ];
-        settings = { };
+        settings = {
+          runner.capacity = 4;
+        };
         hostPackages = with pkgs; [
           bash
           coreutils
           curl
+          direnv
           gawk
           gitMinimal
           gnused
+          just
+          nh
+          nix
           nodejs
           wget
         ];
