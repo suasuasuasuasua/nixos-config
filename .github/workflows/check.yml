@@ -2,8 +2,18 @@ name: Check NixOS/Darwin configurations
 permissions:
   contents: read
 on:
-  pull_request:
   push:
+    paths:
+      - "**/*.nix"
+      - "**/*.yml"
+      - "flake.lock"
+      - "flake.nix"
+  pull_request:
+    paths:
+      - "**/*.nix"
+      - "**/*.yml"
+      - "flake.lock"
+      - "flake.nix"
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -12,10 +22,8 @@ jobs:
         # Define each OS & configuration you want to build
         include:
           - os: ubuntu-latest
-            system: nixos
             config: lab
           - os: ubuntu-latest
-            system: nixos
             config: pi
       fail-fast: false # let all matrix jobs finish even if one fails
     steps:
