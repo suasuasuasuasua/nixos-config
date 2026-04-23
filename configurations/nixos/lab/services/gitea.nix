@@ -106,13 +106,6 @@ in
     };
   };
 
-  users.users.gitea-runner-lab-runner = {
-    extraGroups = [ "podman" ];
-    isSystemUser = true;
-    group = "gitea-runner-lab-runner";
-  };
-  users.groups.gitea-runner-lab-runner = { };
-
   networking.firewall.allowedTCPPorts = [ 2222 ];
 
   environment.systemPackages = with pkgs; [
