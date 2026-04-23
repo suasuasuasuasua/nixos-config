@@ -32,27 +32,14 @@ let
       gzip
       xz
     ];
-    # fakeNss via contents creates symlinks to store paths, which the Nix sandbox
-    # doesn't follow when constructing its own /etc/passwd. Real files are required.
-    fakeRootCommands = ''
-      mkdir -p etc var/empty home/runner workspace tmp
-      printf "root:x:0:0:root:/root:/bin/sh\nrunner:x:1000:1000:runner:/home/runner:/bin/sh\nnobody:x:65534:65534:nobody:/var/empty:/bin/nologin\n" > etc/passwd
-      printf "root:x:0:\nrunner:x:1000:\nnobody:x:65534:\n" > etc/group
-      echo "hosts: files dns" > etc/nsswitch.conf
-      chown 1000:1000 home/runner workspace
-      chmod 1777 tmp
-    '';
     config = {
-      User = "runner";
       Env = [
-        "HOME=/home/runner"
         "SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
         "GIT_SSL_CAINFO=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
         "NIX_SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
         "NIX_CONFIG=${''
           experimental-features = nix-command flakes
           build-users-group =
-          extra-platforms = aarch64-linux
         ''}"
       ];
     };
