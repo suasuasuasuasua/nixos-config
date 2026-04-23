@@ -35,6 +35,7 @@ let
     extraCommands = ''
       mkdir -p etc/nix
       echo "experimental-features = nix-command flakes" > etc/nix/nix.conf
+      echo "build-users-group =" >> etc/nix/nix.conf
     '';
     config = {
       Env = [
