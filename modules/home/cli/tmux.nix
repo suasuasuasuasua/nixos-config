@@ -75,6 +75,14 @@ in
           set -gu default-command
           set -g default-shell "$SHELL"
 
+          # Forward extended key sequences to applications
+          set -s extended-keys on
+          # Tell tmux your outer terminal supports extended keys
+          # Adjust the glob to match your terminal's $TERM value
+          set -as terminal-features 'xterm*:extkeys'
+          # Use CSI u encoding format
+          set -s extended-keys-format csi-u
+
           bind 'c' new-window -c "#{pane_current_path}"
           bind '"' split-window -c "#{pane_current_path}"
           bind '%' split-window -h -c "#{pane_current_path}"
