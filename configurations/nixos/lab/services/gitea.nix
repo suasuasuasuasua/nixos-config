@@ -86,7 +86,7 @@ in
           "native:host"
         ];
         settings = {
-          container.docker_host = "unix:///run/podman/podman.sock";
+          runner.capacity = 4;
         };
         hostPackages = with pkgs; [
           bash
