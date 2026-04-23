@@ -31,8 +31,9 @@
     jails.sshd.settings = {
       enabled = true;
       # %(action_)s is the default ban action; geoip-log runs alongside it
-      action = ''%(action_)s
-                 geoip-log'';
+      action = ''
+        %(action_)s geoip-log
+      '';
     };
   };
 }

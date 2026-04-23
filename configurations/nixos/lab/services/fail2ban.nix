@@ -6,13 +6,6 @@
 {
   environment.systemPackages = [ pkgs.geoip ];
 
-  # Custom action: logs country info to the systemd journal on ban
-  environment.etc."fail2ban/action.d/geoip-log.conf".text = ''
-    [Definition]
-    actionban = geoiplookup <ip> | systemd-cat -t fail2ban-geo -p warning
-    actionunban =
-  '';
-
   services.fail2ban = {
     enable = true;
 
@@ -29,11 +22,33 @@
       overalljails = true; # Calculate the bantime based on all the violations
     };
 
+    jails.gitea.settings = {
+      enabled = true;
+      filter = "gitea";
+      logpath = "/zshare/srv/gitea/log/gitea.log";
+      action = ''
+        %(action_)s geoip-log
+      '';
+    };
     jails.sshd.settings = {
       enabled = true;
       # %(action_)s is the default ban action; geoip-log runs alongside it
-      action = ''%(action_)s
-                 geoip-log'';
+      action = ''
+        %(action_)s geoip-log
+      '';
     };
+  };
+
+  environment.etc = {
+    "fail2ban/action.d/geoip-log.conf".text = ''
+      [Definition]
+      actionban = geoiplookup <ip> | systemd-cat -t fail2ban-geo -p warning
+      actionunban =
+    '';
+    "fail2ban/filter.d/gitea.conf".text = ''
+      [Definition]
+      failregex = .*(Failed authentication attempt|invalid credentials|Attempted access of unknown user).* from <HOST>
+      ignoreregex =
+    '';
   };
 }
