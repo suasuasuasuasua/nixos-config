@@ -82,26 +82,12 @@ in
           "debian-latest:docker://node:25-trixie"
           # fake the ubuntu name, because node provides no ubuntu builds
           "ubuntu-latest:docker://node:25-trixie"
-          # provide native execution on the host
-          "native:host"
+          # ephemeral nix container for nix/nixos workflows
+          "nix:docker://nixpkgs/nix-flakes"
         ];
         settings = {
           runner.capacity = 4;
         };
-        hostPackages = with pkgs; [
-          bash
-          coreutils
-          curl
-          direnv
-          gawk
-          gitMinimal
-          gnused
-          just
-          nh
-          nix
-          nodejs
-          wget
-        ];
       };
     };
   };

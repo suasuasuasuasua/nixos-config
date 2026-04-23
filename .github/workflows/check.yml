@@ -16,7 +16,7 @@ on:
       - "flake.nix"
 jobs:
   build:
-    runs-on: native
+    runs-on: nix
     steps:
       - name: Checkout
         uses: actions/checkout@v6

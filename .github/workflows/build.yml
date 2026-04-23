@@ -16,7 +16,7 @@ on:
       - "flake.nix"
 jobs:
   build:
-    runs-on: native
+    runs-on: nix
     strategy:
       matrix:
         # Define each OS & configuration you want to build
@@ -37,7 +37,7 @@ jobs:
         run: |
           just build ${{matrix.config}}
   build-home:
-    runs-on: native
+    runs-on: nix
     strategy:
       matrix:
         # Define each OS & configuration you want to build
