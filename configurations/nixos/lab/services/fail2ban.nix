@@ -2,7 +2,10 @@
 # fail2ban monitors log files looking for suspicious activity like brute force
 # attempts to login. it can ban ip addresses for a certain amount of time (hence
 # the jail)
+{ pkgs, ... }:
 {
+  environment.systemPackages = [ pkgs.geoip ];
+
   services.fail2ban = {
     enable = true;
 
@@ -25,16 +28,29 @@
       logpath = "/zshare/srv/gitea/log/gitea.log";
       action = ''
         %(action_)s
-                         geoip-log'';
+        geoip-log
+      '';
+    };
+    jails.sshd.settings = {
+      enabled = true;
+      # %(action_)s is the default ban action; geoip-log runs alongside it
+      action = ''
+        %(action_)s
+        geoip-log
+      '';
     };
   };
 
   environment.etc = {
+    "fail2ban/action.d/geoip-log.conf".text = ''
+      [Definition]
+      actionban = geoiplookup <ip> | systemd-cat -t fail2ban-geo -p warning
+      actionunban =
+    '';
     "fail2ban/filter.d/gitea.conf".text = ''
       [Definition]
       failregex = .*(Failed authentication attempt|invalid credentials|Attempted access of unknown user).* from <HOST>
       ignoreregex =
     '';
   };
-
 }
