@@ -5,7 +5,7 @@
 }:
 let
   inherit (config.networking) domain;
-  labVpnIp = "10.101.0.2";
+  anubisGiteaSocket = config.services.anubis.instances.gitea.settings.BIND;
 in
 {
   services.nginx = {
@@ -33,7 +33,7 @@ in
       # Proxy to Anubis on localhost. Anubis filters bots/scrapers with a
       # proof-of-work challenge, then forwards clean traffic to lab over the
       # WireGuard tunnel. See anubis.nix for Anubis configuration.
-      proxyPass = "http://127.0.0.1:8923";
+      proxyPass = "http://unix:${anubisGiteaSocket}";
       proxyWebsockets = true;
       extraConfig = ''
         client_max_body_size 0;

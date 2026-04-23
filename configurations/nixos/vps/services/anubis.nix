@@ -17,9 +17,14 @@ in
   services.anubis.instances."gitea" = {
     settings = {
       TARGET = "https://gitea.${domain}";
-      BIND = "127.0.0.1:8923";
-      DIFFICULTY = 5;
+      BIND = "/run/anubis/anubis-gitea/anubis.sock";
+      METRICS_BIND = "/run/anubis/anubis-gitea/anubis-metrics.sock";
       SERVE_ROBOTS_TXT = true;
+      OG_PASSTHROUGH = true;
+      DIFFICULTY = 5;
+      WEBMASTER_EMAIL = "justinhoang@sua.dev";
     };
   };
+
+  users.users.nginx.extraGroups = [ config.users.groups.anubis.name ];
 }
