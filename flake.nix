@@ -241,6 +241,7 @@
             name = "vps";
             system = "x86_64-linux";
             userConfigs = [ users.admin ];
+            enableHomeManager = false;
           }
         ]
       );
