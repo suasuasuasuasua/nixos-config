@@ -35,7 +35,7 @@ jobs:
           fetch-depth: 0 # required for `nix flake show`
       - name: Build ${{ matrix.config }}
         run: |
-          nix develop --command just build ${{matrix.config}}
+          nix develop --command just build-ci ${{matrix.config}}
   build-home:
     runs-on: nix
     strategy:
@@ -52,4 +52,4 @@ jobs:
           fetch-depth: 0 # required for `nix flake show`
       - name: Build ${{ matrix.config }}
         run: |
-          nix develop --command just build-home ${{matrix.config}}
+          nix develop --command just build-home-ci ${{matrix.config}}
