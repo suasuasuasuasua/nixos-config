@@ -11,6 +11,7 @@ let
 
   stateDir = "/zshare/srv/gitea";
   tokenFile = config.sops.secrets."gitea/token".path;
+  signingKeyPub = config.sops.secrets."gitea/signing-key.pub".path;
 
   # default = 3000
   port = 3001;
@@ -41,6 +42,20 @@ in
         repository = {
           ENABLE_PUSH_CREATE_USER = true;
           ENABLE_PUSH_CREATE_ORG = true;
+          signing =
+            # ini
+            ''
+              # Points to .pub file; git looks for private key at same path minus .pub
+              # i.e. /run/secrets/gitea/signing-key (also a sops secret)
+              SIGNING_KEY = ${signingKeyPub}
+              SIGNING_NAME = gitea
+              SIGNING_EMAIL = gitea@gitea.sua.dev
+              SIGNING_FORMAT = ssh
+              INITIAL_COMMIT = always
+              CRUD_ACTIONS = pubkey, twofa, parentsigned
+              WIKI = never
+              MERGES = pubkey, twofa, basesigned, commitssigned
+            '';
         };
         security = {
           # Required for fail2ban to see real client IPs (not 127.0.0.1) when behind nginx
@@ -96,6 +111,15 @@ in
   sops.secrets = {
     "gitea/token" = {
       sopsFile = "${inputs.self}/secrets/secrets.yaml";
+    };
+    "gitea/signing-key" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
+      owner = config.services.gitea.user;
+      mode = "0400";
+    };
+    "gitea/signing-key.pub" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
+      owner = config.services.gitea.user;
     };
   };
 
