@@ -9,15 +9,15 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/.env"
 
 repos=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-	"https://api.github.com/user/repos?per_page=100&type=owner" |
-	jq -r '.[].name')
+    "https://api.github.com/user/repos?per_page=100&type=owner" |
+jq -r '.[].name')
 
 for repo in $repos; do
-	echo "Migrating $repo..."
-	curl -s -X POST "$GITEA_URL/api/v1/repos/migrate" \
-		-H "Authorization: token $GITEA_TOKEN" \
-		-H "Content-Type: application/json" \
-		-d "{
+  echo "Migrating $repo..."
+  curl -s -X POST "$GITEA_URL/api/v1/repos/migrate" \
+    -H "Authorization: token $GITEA_TOKEN" \
+    -H "Content-Type: application/json" \
+  -d "{
       \"clone_addr\": \"https://github.com/$GITHUB_USER/$repo\",
       \"auth_token\": \"$GITHUB_TOKEN\",
       \"repo_name\": \"$repo\",
