@@ -42,7 +42,7 @@ jobs:
       matrix:
         # Define each OS & configuration you want to build
         include:
-          - config: mbp3
+          # - config: mbp3
           - config: penguin
       fail-fast: false # let all matrix jobs finish even if one fails
     steps:
