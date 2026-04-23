@@ -58,10 +58,21 @@ build host:
 build host:
     nh os build . -H {{ host }}
 
+# Build NixOS configuration (CI: no root required, bypasses nh)
+[group('build')]
+[linux]
+build-ci host:
+    nix build .#nixosConfigurations.{{ host }}.config.system.build.toplevel
+
 # Build a home manager configuration
 [group('build')]
 build-home host:
     nh home build . -c {{ host }}
+
+# Build a home manager configuration (CI: no root required, bypasses nh)
+[group('build')]
+build-home-ci host:
+    nix build .#homeConfigurations.{{ host }}.activationPackage
 
 # Build an SD card image for a configuration
 [group('build')]

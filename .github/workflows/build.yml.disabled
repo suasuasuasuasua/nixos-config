@@ -3,6 +3,7 @@ permissions:
   contents: read
 on:
   push:
+    branches: [main]
     paths:
       - "**/*.nix"
       - "**/*.yml"
@@ -14,30 +15,29 @@ on:
       - "**/*.yml"
       - "flake.lock"
       - "flake.nix"
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   build:
-    runs-on: native
+    runs-on: nix
     strategy:
       matrix:
         # Define each OS & configuration you want to build
         include:
           - config: lab
-          - config: pi
+          # - config: pi
       fail-fast: false # let all matrix jobs finish even if one fails
     steps:
       - name: Checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 0 # required for `nix flake show`
-      - name: Load environment variables
-        run: |
-          direnv allow .
-          direnv export gha > "$GITHUB_ENV"
       - name: Build ${{ matrix.config }}
         run: |
-          just build ${{matrix.config}}
+          nix develop --command just build-ci ${{matrix.config}}
   build-home:
-    runs-on: native
+    runs-on: nix
     strategy:
       matrix:
         # Define each OS & configuration you want to build
@@ -50,10 +50,6 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0 # required for `nix flake show`
-      - name: Load environment variables
-        run: |
-          direnv allow .
-          direnv export gha > "$GITHUB_ENV"
       - name: Build ${{ matrix.config }}
         run: |
-          just build-home ${{matrix.config}}
+          nix develop --command just build-home-ci ${{matrix.config}}

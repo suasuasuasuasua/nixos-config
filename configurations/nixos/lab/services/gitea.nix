@@ -15,6 +15,35 @@ let
 
   # default = 3000
   port = 3001;
+
+  # Custom runner image: Nix (flakes enabled) + Node.js for JS-based actions
+  runnerImage = pkgs.dockerTools.buildLayeredImage {
+    name = "gitea-runner-nix";
+    tag = "latest";
+    contents = with pkgs; [
+      nix
+      nodejs
+      bash
+      coreutils
+      curl
+      git
+      cacert
+      gnutar
+      gzip
+      xz
+    ];
+    config = {
+      Env = [
+        "SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
+        "GIT_SSL_CAINFO=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
+        "NIX_SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
+        "NIX_CONFIG=${''
+          experimental-features = nix-command flakes
+          build-users-group =
+        ''}"
+      ];
+    };
+  };
 in
 {
   services = {
@@ -82,27 +111,30 @@ in
           "debian-latest:docker://node:25-trixie"
           # fake the ubuntu name, because node provides no ubuntu builds
           "ubuntu-latest:docker://node:25-trixie"
-          # provide native execution on the host
-          "native:host"
+          # ephemeral nix container for nix/nixos workflows (locally built image)
+          "nix:docker://localhost/gitea-runner-nix:latest"
         ];
         settings = {
           runner.capacity = 4;
         };
-        hostPackages = with pkgs; [
-          bash
-          coreutils
-          curl
-          direnv
-          gawk
-          gitMinimal
-          gnused
-          just
-          nh
-          nix
-          nodejs
-          wget
-        ];
       };
+    };
+  };
+
+  # Load the custom runner image into Podman before the runner starts.
+  # RestartTriggers ensures systemd restarts this service (and the runner)
+  # automatically whenever the image derivation changes after a rebuild.
+  systemd.services.load-gitea-runner-image = {
+    description = "Load gitea runner OCI image into podman";
+    wantedBy = [ "gitea-runner-lab-runner.service" ];
+    before = [ "gitea-runner-lab-runner.service" ];
+    # Restart whenever the image derivation changes (store path is in ExecStart,
+    # so restartTriggers picks up the change automatically after nixos-rebuild)
+    restartTriggers = [ runnerImage ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.podman}/bin/podman load -i ${runnerImage}";
     };
   };
 
