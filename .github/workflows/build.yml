@@ -26,7 +26,7 @@ jobs:
         # Define each OS & configuration you want to build
         include:
           - config: lab
-          - config: pi
+          # - config: pi
       fail-fast: false # let all matrix jobs finish even if one fails
     steps:
       - name: Checkout

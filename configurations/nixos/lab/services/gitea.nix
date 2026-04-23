@@ -31,10 +31,21 @@ let
       gnutar
       gzip
       xz
-      dockerTools.fakeNss
     ];
+    # fakeNss via contents creates symlinks to store paths, which the Nix sandbox
+    # doesn't follow when constructing its own /etc/passwd. Real files are required.
+    fakeRootCommands = ''
+      mkdir -p etc var/empty home/runner workspace tmp
+      printf "root:x:0:0:root:/root:/bin/sh\nrunner:x:1000:1000:runner:/home/runner:/bin/sh\nnobody:x:65534:65534:nobody:/var/empty:/bin/nologin\n" > etc/passwd
+      printf "root:x:0:\nrunner:x:1000:\nnobody:x:65534:\n" > etc/group
+      echo "hosts: files dns" > etc/nsswitch.conf
+      chown 1000:1000 home/runner workspace
+      chmod 1777 tmp
+    '';
     config = {
+      User = "runner";
       Env = [
+        "HOME=/home/runner"
         "SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
         "GIT_SSL_CAINFO=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
         "NIX_SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
@@ -124,14 +135,18 @@ in
   };
 
   # Load the custom runner image into Podman before the runner starts.
-  # No RemainAfterExit so this re-runs on every runner restart, ensuring
-  # the image is always present (e.g. after a NixOS rebuild).
+  # RestartTriggers ensures systemd restarts this service (and the runner)
+  # automatically whenever the image derivation changes after a rebuild.
   systemd.services.load-gitea-runner-image = {
     description = "Load gitea runner OCI image into podman";
     wantedBy = [ "gitea-runner-lab-runner.service" ];
     before = [ "gitea-runner-lab-runner.service" ];
+    # Restart whenever the image derivation changes (store path is in ExecStart,
+    # so restartTriggers picks up the change automatically after nixos-rebuild)
+    restartTriggers = [ runnerImage ];
     serviceConfig = {
       Type = "oneshot";
+      RemainAfterExit = true;
       ExecStart = "${pkgs.podman}/bin/podman load -i ${runnerImage}";
     };
   };
