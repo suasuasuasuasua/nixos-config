@@ -5,7 +5,7 @@
 }:
 let
   inherit (config.networking) domain;
-  labVpnIp = "10.101.0.2";
+  anubisGiteaSocket = config.services.anubis.instances.gitea.settings.BIND;
 in
 {
   services.nginx = {
@@ -30,17 +30,13 @@ in
     acmeRoot = null;
 
     locations."/" = {
-      # Proxy to lab's nginx over the WireGuard tunnel. Lab nginx handles
-      # routing to the actual service — VPS doesn't need to know port numbers.
-      # HTTPS is used so lab's existing virtualHost matches without needing a
-      # separate HTTP-only block. WireGuard already encrypts transit, so cert
-      # verification on the internal connection is skipped.
-      proxyPass = "https://${labVpnIp}";
+      # Proxy to Anubis on localhost. Anubis filters bots/scrapers with a
+      # proof-of-work challenge, then forwards clean traffic to lab over the
+      # WireGuard tunnel. See anubis.nix for Anubis configuration.
+      proxyPass = "http://unix:${anubisGiteaSocket}";
       proxyWebsockets = true;
       extraConfig = ''
         client_max_body_size 0;
-        proxy_ssl_server_name on;
-        proxy_ssl_name gitea.${domain};
       '';
     };
   };
