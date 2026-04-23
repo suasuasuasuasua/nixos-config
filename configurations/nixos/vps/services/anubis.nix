@@ -19,7 +19,7 @@ in
       TARGET = "https://gitea.${domain}";
       BIND = "127.0.0.1:8923";
       DIFFICULTY = 5;
-      SERVE_ROBOTS_TXT = "true";
+      SERVE_ROBOTS_TXT = true;
     };
   };
 }
