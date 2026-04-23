@@ -25,6 +25,7 @@ jobs:
       - uses: extractions/setup-just@v4
         with:
           just-version: 1.43.1 # optional semver specification, otherwise latest
+          github-token: "" # avoid using Gitea token against GitHub API
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
