@@ -75,6 +75,8 @@ in
     };
   };
 
+  networking.firewall.allowedTCPPorts = [ 2222 ];
+
   environment.systemPackages = with pkgs; [
     gitea # gitea command line interface
   ];
