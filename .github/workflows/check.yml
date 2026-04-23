@@ -14,7 +14,7 @@ jobs:
           - os: ubuntu-latest
             system: nixos
             config: lab
-          - os: ubuntu-24.04-arm
+          - os: ubuntu-latest
             system: nixos
             config: pi
       fail-fast: false # let all matrix jobs finish even if one fails
