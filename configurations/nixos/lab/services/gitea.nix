@@ -42,6 +42,11 @@ in
           ENABLE_PUSH_CREATE_USER = true;
           ENABLE_PUSH_CREATE_ORG = true;
         };
+        security = {
+          # Required for fail2ban to see real client IPs (not 127.0.0.1) when behind nginx
+          REVERSE_PROXY_LIMIT = 1;
+          REVERSE_PROXY_TRUSTED_PROXIES = "127.0.0.1/8";
+        };
         indexer = {
           REPO_INDEXER_ENABLED = true;
           REPO_INDEXER_PATH = "indexers/repos.bleve";

@@ -19,22 +19,22 @@
       overalljails = true; # Calculate the bantime based on all the violations
     };
 
-    # TODO: review the jail configuration
-    #
-    # src: https://nixos.wiki/wiki/Fail2ban
-    # jails = {
-    #   apache-nohome-iptables.settings = {
-    #     # Block an IP address if it accessed a non-existent home directory
-    #     # more than 5 times in 10 minutes since that indicates that it's
-    #     # scanning
-    #     filter = "apache-nohome";
-    #     action = ''iptables-multiport[name=HTTP, port="http,https"]'';
-    #     logpath = "/var/log/httpd/error_log*";
-    #     backend = "auto";
-    #     findtime = 600;
-    #     bantime = 600;
-    #     maxretry = 5;
-    #   };
-    # };
+    jails.gitea.settings = {
+      enabled = true;
+      filter = "gitea";
+      logpath = "/zshare/srv/gitea/log/gitea.log";
+      action = ''
+        %(action_)s
+                         geoip-log'';
+    };
   };
+
+  environment.etc = {
+    "fail2ban/filter.d/gitea.conf".text = ''
+      [Definition]
+      failregex = .*(Failed authentication attempt|invalid credentials|Attempted access of unknown user).* from <HOST>
+      ignoreregex =
+    '';
+  };
+
 }
