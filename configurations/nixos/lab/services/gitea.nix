@@ -42,6 +42,13 @@ in
           ENABLE_PUSH_CREATE_USER = true;
           ENABLE_PUSH_CREATE_ORG = true;
         };
+        indexer = {
+          REPO_INDEXER_ENABLED = true;
+          REPO_INDEXER_PATH = "indexers/repos.bleve";
+          MAX_FILE_SIZE = 1048576;
+          REPO_INDEXER_INCLUDE = "";
+          REPO_INDEXER_EXCLUDE = "resources/bin/**";
+        };
       };
     };
 
