@@ -32,16 +32,12 @@ let
       gzip
       xz
     ];
-    extraCommands = ''
-      mkdir -p etc/nix
-      echo "experimental-features = nix-command flakes" > etc/nix/nix.conf
-      echo "build-users-group =" >> etc/nix/nix.conf
-    '';
     config = {
       Env = [
         "SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
         "GIT_SSL_CAINFO=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
         "NIX_SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
+        "NIX_CONFIG=experimental-features = nix-command flakes\nbuild-users-group ="
       ];
     };
   };

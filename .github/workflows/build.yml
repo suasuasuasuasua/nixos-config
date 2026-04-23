@@ -3,6 +3,7 @@ permissions:
   contents: read
 on:
   push:
+    branches: [main]
     paths:
       - "**/*.nix"
       - "**/*.yml"
@@ -14,6 +15,9 @@ on:
       - "**/*.yml"
       - "flake.lock"
       - "flake.nix"
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: nix
