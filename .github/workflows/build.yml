@@ -16,15 +16,13 @@ on:
       - "flake.nix"
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         # Define each OS & configuration you want to build
         include:
-          - os: ubuntu-latest
-            config: lab
-          - os: ubuntu-latest
-            config: pi
+          - config: lab
+          - config: pi
       fail-fast: false # let all matrix jobs finish even if one fails
     steps:
       - name: Checkout
