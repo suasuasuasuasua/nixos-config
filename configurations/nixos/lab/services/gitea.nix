@@ -92,9 +92,11 @@ in
           bash
           coreutils
           curl
+          direnv
           gawk
           gitMinimal
           gnused
+          just
           nodejs
           wget
         ];
