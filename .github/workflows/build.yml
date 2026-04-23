@@ -17,9 +17,6 @@ jobs:
           - os: ubuntu-24.04-arm
             system: nixos
             config: pi
-          - os: macos-latest
-            system: darwin
-            config: mbp3
       fail-fast: false # let all matrix jobs finish even if one fails
     steps:
       - name: Checkout
