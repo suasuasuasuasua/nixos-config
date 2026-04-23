@@ -1,0 +1,12 @@
+services:
+  bentopdf:
+    image: ghcr.io/alam00000/bentopdf:v1.15.3
+    container_name: bentopdf
+    ports:
+      - "3006:8080"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
