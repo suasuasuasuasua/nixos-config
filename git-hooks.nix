@@ -7,6 +7,8 @@
     deadnix.enable = true; # remove any unused variabes and imports
     end-of-file-fixer.enable = true; # add a line at the end of the file
     flake-checker.enable = false; # run `flake check`
+    nil.enable = true; # lsp that also has formatter
+    nixfmt.enable = true; # format nix files to rfc standards
     statix.enable = true; # check "good practices" for nix
     trim-trailing-whitespace.enable = true; # trim trailing whitespace
   };

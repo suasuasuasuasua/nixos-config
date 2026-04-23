@@ -36,3 +36,24 @@ jobs:
       - name: Build ${{ matrix.config }}
         run: |
           just build ${{matrix.config}}
+  build-home:
+    runs-on: native
+    strategy:
+      matrix:
+        # Define each OS & configuration you want to build
+        include:
+          - config: mbp3
+          - config: penguin
+      fail-fast: false # let all matrix jobs finish even if one fails
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # required for `nix flake show`
+      - name: Load environment variables
+        run: |
+          direnv allow .
+          direnv export gha > "$GITHUB_ENV"
+      - name: Build ${{ matrix.config }}
+        run: |
+          just build-home ${{matrix.config}}
