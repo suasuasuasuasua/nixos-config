@@ -15,6 +15,7 @@
     ./config.nix
     ./disko.nix
     ./hardware-configuration.nix
+    ./security.nix
     ./sops.nix
     ./stylix.nix
   ];
