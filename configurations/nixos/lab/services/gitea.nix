@@ -15,6 +15,35 @@ let
 
   # default = 3000
   port = 3001;
+
+  # Custom runner image: Nix (flakes enabled) + Node.js for JS-based actions
+  runnerImage = pkgs.dockerTools.buildLayeredImage {
+    name = "gitea-runner-nix";
+    tag = "latest";
+    contents = with pkgs; [
+      nix
+      nodejs
+      bash
+      coreutils
+      curl
+      git
+      cacert
+      gnutar
+      gzip
+      xz
+    ];
+    extraCommands = ''
+      mkdir -p etc/nix
+      echo "experimental-features = nix-command flakes" > etc/nix/nix.conf
+    '';
+    config = {
+      Env = [
+        "SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
+        "GIT_SSL_CAINFO=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
+        "NIX_SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
+      ];
+    };
+  };
 in
 {
   services = {
@@ -82,13 +111,26 @@ in
           "debian-latest:docker://node:25-trixie"
           # fake the ubuntu name, because node provides no ubuntu builds
           "ubuntu-latest:docker://node:25-trixie"
-          # ephemeral nix container for nix/nixos workflows
-          "nix:docker://nixpkgs/nix-flakes"
+          # ephemeral nix container for nix/nixos workflows (locally built image)
+          "nix:docker://localhost/gitea-runner-nix:latest"
         ];
         settings = {
           runner.capacity = 4;
         };
       };
+    };
+  };
+
+  # Load the custom runner image into Podman before the runner starts.
+  # No RemainAfterExit so this re-runs on every runner restart, ensuring
+  # the image is always present (e.g. after a NixOS rebuild).
+  systemd.services.load-gitea-runner-image = {
+    description = "Load gitea runner OCI image into podman";
+    wantedBy = [ "gitea-runner-lab-runner.service" ];
+    before = [ "gitea-runner-lab-runner.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.podman}/bin/podman load -i ${runnerImage}";
     };
   };
 
