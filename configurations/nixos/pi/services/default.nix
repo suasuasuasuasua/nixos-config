@@ -3,6 +3,7 @@
     ./adguardhome
     ./dashy
     ./isponsorblocktv
+    ./wireguard
 
     ./acme.nix
     ./avahi.nix
