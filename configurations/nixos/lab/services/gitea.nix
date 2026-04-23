@@ -97,6 +97,7 @@ in
           gitMinimal
           gnused
           just
+          nh
           nodejs
           wget
         ];
