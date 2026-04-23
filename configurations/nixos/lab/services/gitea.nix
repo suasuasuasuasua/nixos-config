@@ -37,7 +37,7 @@ let
         "SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
         "GIT_SSL_CAINFO=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
         "NIX_SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
-        "NIX_CONFIG=experimental-features = nix-command flakes\nbuild-users-group ="
+        "NIX_CONFIG=experimental-features = nix-command flakes\nbuild-users-group =\nextra-platforms = aarch64-linux"
       ];
     };
   };
