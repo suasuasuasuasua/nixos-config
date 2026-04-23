@@ -2,7 +2,17 @@
 # fail2ban monitors log files looking for suspicious activity like brute force
 # attempts to login. it can ban ip addresses for a certain amount of time (hence
 # the jail)
+{ pkgs, ... }:
 {
+  environment.systemPackages = [ pkgs.geoip ];
+
+  # Custom action: logs country info to the systemd journal on ban
+  environment.etc."fail2ban/action.d/geoip-log.conf".text = ''
+    [Definition]
+    actionban = geoiplookup <ip> | systemd-cat -t fail2ban-geo -p warning
+    actionunban =
+  '';
+
   services.fail2ban = {
     enable = true;
 
@@ -19,22 +29,11 @@
       overalljails = true; # Calculate the bantime based on all the violations
     };
 
-    # TODO: review the jail configuration
-    #
-    # src: https://nixos.wiki/wiki/Fail2ban
-    # jails = {
-    #   apache-nohome-iptables.settings = {
-    #     # Block an IP address if it accessed a non-existent home directory
-    #     # more than 5 times in 10 minutes since that indicates that it's
-    #     # scanning
-    #     filter = "apache-nohome";
-    #     action = ''iptables-multiport[name=HTTP, port="http,https"]'';
-    #     logpath = "/var/log/httpd/error_log*";
-    #     backend = "auto";
-    #     findtime = 600;
-    #     bantime = 600;
-    #     maxretry = 5;
-    #   };
-    # };
+    jails.sshd.settings = {
+      enabled = true;
+      # %(action_)s is the default ban action; geoip-log runs alongside it
+      action = ''%(action_)s
+                 geoip-log'';
+    };
   };
 }
