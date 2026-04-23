@@ -42,20 +42,18 @@ in
         repository = {
           ENABLE_PUSH_CREATE_USER = true;
           ENABLE_PUSH_CREATE_ORG = true;
-          signing =
-            # ini
-            ''
-              # Points to .pub file; git looks for private key at same path minus .pub
-              # i.e. /run/secrets/gitea/signing-key (also a sops secret)
-              SIGNING_KEY = ${signingKeyPub}
-              SIGNING_NAME = gitea
-              SIGNING_EMAIL = gitea@gitea.sua.dev
-              SIGNING_FORMAT = ssh
-              INITIAL_COMMIT = always
-              CRUD_ACTIONS = pubkey, twofa, parentsigned
-              WIKI = never
-              MERGES = pubkey, twofa, basesigned, commitssigned
-            '';
+        };
+        "repository.signing" = {
+          # Points to .pub file; git looks for private key at same path minus .pub
+          # i.e. /run/secrets/gitea/signing-key (also a sops secret)
+          SIGNING_KEY = signingKeyPub;
+          SIGNING_NAME = "gitea";
+          SIGNING_EMAIL = "gitea@gitea.sua.dev";
+          SIGNING_FORMAT = "ssh";
+          INITIAL_COMMIT = "always";
+          CRUD_ACTIONS = "pubkey, twofa, parentsigned";
+          WIKI = "never";
+          MERGES = "pubkey, twofa, basesigned, commitssigned";
         };
         security = {
           # Required for fail2ban to see real client IPs (not 127.0.0.1) when behind nginx
