@@ -37,6 +37,28 @@ in
         tryFiles = "$uri $uri/ =404";
       };
     };
+    "www.${domain}" = {
+      enableACME = true;
+      forceSSL = true;
+      acmeRoot = null;
+
+      globalRedirect = domain;
+    };
+    "files.${domain}" = {
+      enableACME = true;
+      forceSSL = true;
+      acmeRoot = null;
+
+      locations."/" = {
+        root = "/var/www/files";
+        extraConfig = ''
+          autoindex on;
+          autoindex_exact_size off;
+          autoindex_localtime on;
+          limit_rate 10m;  # cap per-connection download speed
+        '';
+      };
+    };
     "gitea.${domain}" = {
       enableACME = true;
       forceSSL = true;
