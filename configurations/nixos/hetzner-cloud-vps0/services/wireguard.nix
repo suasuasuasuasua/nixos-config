@@ -2,18 +2,11 @@
 # This is the endpoint that lab connects to
 {
   config,
+  infra,
   inputs,
   pkgs,
   ...
 }:
-let
-  vps0Ip = "10.101.0.1";
-  labIp = "10.101.0.2";
-  vps1Ip = "10.101.0.3";
-
-  labPublicKey = "JVBP0NWpR70JT0bUoFsunFkGT9YZSY8O/UeMdUxAXlU=";
-  hetzner-cloud-vps1-key = "X/sp+cUKT7sx9sNnFUXDLylXuIEBx8iTLyG4QBllfS0=";
-in
 {
   sops.secrets."wireguard/private_key" = {
     sopsFile = "${inputs.self}/configurations/nixos/hetzner-cloud-vps0/secrets.yaml";
@@ -22,21 +15,21 @@ in
   networking.wireguard = {
     enable = true;
     interfaces.wg0 = {
-      ips = [ "${vps0Ip}/24" ];
-      listenPort = 51820;
+      ips = [ "${infra.vps0.wgIp}/24" ];
+      listenPort = infra.vps0.wgPort;
 
       privateKeyFile = config.sops.secrets."wireguard/private_key".path;
 
       peers = [
         {
           name = "lab";
-          publicKey = labPublicKey;
-          allowedIPs = [ "${labIp}/32" ];
+          publicKey = infra.lab.wgPublicKey;
+          allowedIPs = [ "${infra.lab.wgIp}/32" ];
         }
         {
           name = "hetzner-cloud-vps1";
-          publicKey = hetzner-cloud-vps1-key;
-          allowedIPs = [ "${vps1Ip}/32" ];
+          publicKey = infra.vps1.wgPublicKey;
+          allowedIPs = [ "${infra.vps1.wgIp}/32" ];
         }
       ];
     };

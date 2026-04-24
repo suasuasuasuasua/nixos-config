@@ -134,7 +134,12 @@
             ];
             # Pass these arguments through the modules
             specialArgs = {
-              inherit inputs outputs userConfigs;
+              inherit
+                inputs
+                outputs
+                userConfigs
+                infra
+                ;
             };
           };
         };
@@ -202,7 +207,8 @@
         };
 
       # Read the users from a file
-      users = builtins.fromJSON (builtins.readFile ./data/users.json);
+      users = import ./lib/users.nix;
+      infra = import ./lib/infra.nix;
     in
     {
       inherit lib;
