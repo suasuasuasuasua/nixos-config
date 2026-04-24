@@ -5,9 +5,12 @@
 - NixOS
   - [`lab`](./configurations/nixos/lab/README.md) (custom build)
   - [`pi`](./configurations/nixos/pi/README.md) (Raspberry Pi Model 4B *(2GB RAM)*)
+  - [`hetzner-cloud-vps0`](./configurations/nixos/hetzner-cloud-vps0/README.md) (CPX11)
+  - [`hetzner-cloud-vps1`](./configurations/nixos/hetzner-cloud-vps1/README.md) (CPX11)
 - Darwin
+  - None right now...
+- Home Manager (Any OS)
   - [`mbp3`](./configurations/darwin/mbp3/README.md) (MacBook Pro M3 Max)
-- Generic Linux
   - [`penguin`](./configurations/home/penguin/README.md) (Acer 713-3W Chromebook)
 
 ## Setup
