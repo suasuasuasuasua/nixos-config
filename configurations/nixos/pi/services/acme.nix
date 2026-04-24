@@ -2,7 +2,12 @@
 #
 # this is especially helpful for ensuring TLS compliant websites (https) for
 # security reasons
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  userConfigs,
+  ...
+}:
 let
   environmentFile = config.sops.secrets."acme/namecheap_api".path;
 in
@@ -18,8 +23,8 @@ in
 
     defaults = {
       inherit environmentFile;
+      inherit (userConfigs.admin) email;
 
-      email = "admin+justinhoang@sua.dev";
       dnsProvider = "namecheap";
       dnsPropagationCheck = true;
     };

@@ -33,7 +33,7 @@ in
 
       locations."/" = {
         index = "index.html";
-        root = "/var/www/sua.dev";
+        root = "/var/www/${domain}";
         tryFiles = "$uri $uri/ =404";
       };
     };

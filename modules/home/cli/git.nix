@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  userConfigs,
+  ...
+}:
 let
   cfg = config.custom.home.cli.git;
 in
@@ -16,8 +21,7 @@ in
         enable = true;
         settings = {
           user = {
-            email = "justinhoang@sua.dev";
-            name = "Justin Hoang";
+            inherit (userConfigs.justinhoang) name email;
           };
           init.defaultBranch = "main";
           pull.rebase = "false";
@@ -33,7 +37,7 @@ in
         ];
 
         signing = {
-          key = "justinhoang@sua.dev";
+          key = userConfigs.justinhoang.email;
           signByDefault = true;
         };
       };

@@ -236,7 +236,9 @@
           {
             name = "lab";
             system = "x86_64-linux";
-            userConfigs = [ users.justinhoang ];
+            userConfigs = {
+              inherit (users) justinhoang;
+            };
           }
           {
             name = "pi";

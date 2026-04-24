@@ -4,6 +4,7 @@
 {
   config,
   infra,
+  userConfigs,
   ...
 }:
 let
@@ -22,7 +23,7 @@ in
       SERVE_ROBOTS_TXT = true;
       OG_PASSTHROUGH = true;
       DIFFICULTY = 5;
-      WEBMASTER_EMAIL = "justinhoang@sua.dev";
+      WEBMASTER_EMAIL = userConfigs.justinhoang.email;
     };
   };
 
