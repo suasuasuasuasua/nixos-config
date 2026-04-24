@@ -62,7 +62,7 @@
 
     peers = [
       {
-        name = "vps";
+        name = "hetzner-cloud-vps0";
         publicKey = "k2a0D0OUEsZQV6geIKOscTNVbiUVZquqh49zT6A1MRo=";
         endpoint = "5.78.184.15:51820";
         allowedIPs = [ "10.101.0.1/32" ];

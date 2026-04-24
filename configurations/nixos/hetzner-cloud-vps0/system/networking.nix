@@ -1,6 +1,6 @@
 {
   networking = {
-    hostName = "vps";
+    hostName = "hetzner-cloud-vps0";
     domain = "sua.dev";
     networkmanager.enable = true;
 

@@ -11,7 +11,7 @@ let
 in
 {
   sops.secrets."wireguard/private_key" = {
-    sopsFile = "${inputs.self}/configurations/nixos/vps/secrets.yaml";
+    sopsFile = "${inputs.self}/configurations/nixos/hetzner-cloud-vps0/secrets.yaml";
   };
 
   networking.firewall = {

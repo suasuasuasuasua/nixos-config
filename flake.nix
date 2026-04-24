@@ -238,7 +238,7 @@
             userConfigs = [ users.admin ];
           }
           {
-            name = "vps";
+            name = "hetzner-cloud-vps0";
             system = "x86_64-linux";
             userConfigs = [ users.admin ];
             enableHomeManager = false;
