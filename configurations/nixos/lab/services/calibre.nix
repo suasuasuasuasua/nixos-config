@@ -3,6 +3,7 @@
   inputs,
   config,
   pkgs,
+  infra,
   ...
 }:
 let
@@ -10,15 +11,13 @@ let
   serviceName = "calibre";
 
   libraries = [ "/zshare/media/books/ebooks/" ];
-  server.port = 8080;
-  web.port = 8083;
 in
 
 {
   services = {
     calibre-server = {
       inherit libraries;
-      inherit (server) port;
+      port = infra.ports.calibre.server;
 
       enable = true;
     };
@@ -29,7 +28,7 @@ in
       # https://github.com/NixOS/nixpkgs/issues/503251
       package = inputs.nixpkgs-calibre-web.legacyPackages.${pkgs.stdenv.hostPlatform.system}.calibre-web;
       listen = {
-        inherit (web) port;
+        port = infra.ports.calibre.web;
 
         ip = "127.0.0.1";
       };
@@ -56,7 +55,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString web.port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.calibre.web}";
       };
 
       serverAliases = [ "${serviceName}.${hostName}.${domain}" ];

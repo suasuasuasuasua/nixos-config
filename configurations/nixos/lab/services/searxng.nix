@@ -4,6 +4,7 @@
   config,
   inputs,
   lib,
+  infra,
   ...
 }:
 let
@@ -11,8 +12,6 @@ let
   inherit (config.networking) hostName domain;
 
   environmentFile = config.sops.secrets."searxng/environmentFile";
-  # port = 8080
-  port = 8084;
 in
 {
   sops.secrets = {
@@ -74,9 +73,8 @@ in
       };
 
       server = {
-        inherit port;
-
         base_url = "https://${serviceName}.${domain}";
+        port = infra.ports.searxng;
         bind_address = "::1";
         limiter = true;
         public_instance = false;
@@ -415,7 +413,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://[::1]:${toString port}";
+        proxyPass = "http://[::1]:${toString infra.ports.searxng}";
         proxyWebsockets = true; # needed if you need to use WebSocket
       };
 

@@ -1,10 +1,8 @@
 # https://wiki.nixos.org/wiki/Uptime_Kuma
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "uptime-kuma";
-
-  port = 4000;
 in
 {
   services.uptime-kuma = {
@@ -12,7 +10,7 @@ in
 
     appriseSupport = true;
     settings = {
-      UPTIME_KUMA_PORT = toString port;
+      UPTIME_KUMA_PORT = toString infra.ports.uptime-kuma;
     };
   };
 
@@ -22,7 +20,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://localhost:${toString port}";
+        proxyPass = "http://localhost:${toString infra.ports.uptime-kuma}";
         proxyWebsockets = true; # needed if you need to use WebSocket
       };
 

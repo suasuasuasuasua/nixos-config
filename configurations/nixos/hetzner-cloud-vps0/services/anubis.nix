@@ -3,16 +3,16 @@
 # before requests reach Gitea over the WireGuard tunnel.
 {
   config,
+  infra,
   ...
 }:
 let
   inherit (config.networking) domain;
-  labVpnIp = "10.101.0.2";
 in
 {
   # Map the Gitea domain to the lab's WireGuard IP locally so Anubis sends
   # the correct SNI when establishing the HTTPS connection to lab's nginx.
-  networking.hosts."${labVpnIp}" = [ "gitea.${domain}" ];
+  networking.hosts."${infra.lab.wg1Ip}" = [ "gitea.${domain}" ];
 
   services.anubis.instances."gitea" = {
     settings = {

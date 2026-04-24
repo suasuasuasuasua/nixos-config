@@ -1,11 +1,14 @@
 # navidrome is a self hosted music server
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  infra,
+  ...
+}:
 let
   inherit (config.networking) hostName domain;
   serviceName = "navidrome";
 
-  # default = 4533
-  Port = 4533;
   MusicFolder = "/zshare/media/music";
   environmentFile = config.sops.secrets."navidrome/environment".path;
 in
@@ -15,9 +18,10 @@ in
     enable = true;
 
     settings = {
-      inherit Port MusicFolder;
+      inherit MusicFolder;
 
       Address = "127.0.0.1";
+      Port = infra.ports.navidrome;
       EnableInsightsCollector = false;
     };
   };
@@ -36,7 +40,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString Port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.navidrome}";
       };
 
       serverAliases = [ "${serviceName}.${hostName}.${domain}" ];

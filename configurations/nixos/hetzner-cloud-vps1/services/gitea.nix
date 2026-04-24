@@ -1,6 +1,7 @@
 # gitea is a self hosted git repository
 {
   config,
+  infra,
   inputs,
   ...
 }:
@@ -8,8 +9,6 @@ let
   inherit (config.networking) hostName domain;
   serviceName = "gitea";
 
-  labIp = "10.101.0.2";
-  registryPort = 5002;
   tokenFile = config.sops.secrets."gitea/token".path;
 in
 {
@@ -64,7 +63,7 @@ in
       "quay.io"
     ];
     # Lab's registry is HTTP-only (no TLS) — reachable only over the WireGuard tunnel
-    registries.insecure = [ "${labIp}:${toString registryPort}" ];
+    registries.insecure = [ "${infra.lab.wg1Ip}:${toString infra.ports.dockerRegistry}" ];
 
     # Configure DNS servers for containers
     containersConf.settings = {

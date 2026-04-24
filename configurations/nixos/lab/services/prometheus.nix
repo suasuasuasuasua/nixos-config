@@ -1,26 +1,22 @@
 # Prometheus monitoring server
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "prometheus";
-
-  # default = 9090
-  port = 9090;
 in
 {
   services.prometheus = {
-    inherit port;
-
     enable = true;
 
     # Retain metrics for 15 days
     retentionTime = "15d";
 
+    port = infra.ports.prometheus.server;
     exporters = {
       node = {
         enable = true;
         enabledCollectors = [ "systemd" ];
-        port = 9100;
+        port = infra.ports.prometheus.exporter;
         extraFlags = [
           "--collector.ethtool"
           "--collector.softirqs"
@@ -31,17 +27,17 @@ in
 
       nginx = {
         enable = true;
-        port = 9113;
+        port = infra.ports.prometheus.nginx;
       };
 
       wireguard = {
         enable = true;
-        port = 9586;
+        port = infra.ports.prometheus.wireguard;
       };
 
       zfs = {
         enable = true;
-        port = 9134;
+        port = infra.ports.prometheus.zfs;
       };
     };
 
@@ -82,7 +78,7 @@ in
         job_name = "pi";
         static_configs = [
           {
-            targets = [ "pi.${domain}:9100" ];
+            targets = [ "pi.${domain}:${toString infra.ports.prometheus.exporter}" ];
           }
         ];
       }
@@ -95,7 +91,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.prometheus.server}";
       };
 
       serverAliases = [ "${serviceName}.${hostName}.${domain}" ];

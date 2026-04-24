@@ -1,11 +1,8 @@
 # 13ft bypasses paywalls
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "13ft";
-
-  # default = 5000
-  port = 5001;
 in
 {
   imports = [ ./compose.nix ];
@@ -16,7 +13,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports."13ft"}";
       };
 
       serverAliases = [ "${serviceName}.${hostName}.${domain}" ];

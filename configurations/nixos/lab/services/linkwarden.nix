@@ -1,11 +1,13 @@
 # linkwarden is a self-hosted collaborative bookmark manager to collect, organize, and preserve webpages, articles, and more
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  infra,
+  ...
+}:
 let
   inherit (config.networking) hostName domain;
   serviceName = "linkwarden";
-
-  # default = 3000
-  port = 3004;
   environmentFile = config.sops.secrets."linkwarden/environmentFile".path;
 in
 {
@@ -16,10 +18,11 @@ in
   };
 
   services.linkwarden = {
-    inherit environmentFile port;
+    inherit environmentFile;
 
     enable = true;
     host = "127.0.0.1";
+    port = infra.ports.linkwarden;
 
     database.createLocally = true;
   };
@@ -30,7 +33,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.linkwarden}";
         proxyWebsockets = true; # needed if you need to use WebSocket
 
         extraConfig =

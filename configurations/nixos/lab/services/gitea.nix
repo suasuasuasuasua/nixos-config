@@ -1,6 +1,7 @@
 # gitea is a self hosted git repository
 {
   config,
+  infra,
   inputs,
   pkgs,
   ...
@@ -12,13 +13,6 @@ let
   stateDir = "/zshare/srv/gitea";
   tokenFile = config.sops.secrets."gitea/token".path;
   signingKeyPub = config.sops.secrets."gitea/signing-key.pub".path;
-
-  # default = 3000
-  port = 3001;
-
-  vps0WgIp = "10.101.0.1"; # VPS0 WireGuard IP (trusted reverse proxy)
-
-  registryPort = 5002;
 
   # Custom runner image: Nix (flakes enabled) + Node.js for JS-based actions
   runnerImage = pkgs.dockerTools.buildLayeredImage {
@@ -75,10 +69,10 @@ in
       settings = {
         server = {
           DOMAIN = "${serviceName}.${domain}";
-          HTTP_PORT = port;
+          HTTP_PORT = infra.ports.gitea.http;
           START_SSH_SERVER = true;
-          SSH_PORT = 2222;
-          SSH_LISTEN_PORT = 2222;
+          SSH_PORT = infra.ports.gitea.ssh;
+          SSH_LISTEN_PORT = infra.ports.gitea.ssh;
           ROOT_URL = "https://${serviceName}.${domain}";
         };
         service = {
@@ -108,7 +102,7 @@ in
           # Without trusting both, Gitea attributes all requests to VPS0's WireGuard IP,
           # causing fail2ban to ban VPS0 instead of real attackers.
           REVERSE_PROXY_LIMIT = 2;
-          REVERSE_PROXY_TRUSTED_PROXIES = "127.0.0.1/8,${vps0WgIp}/32";
+          REVERSE_PROXY_TRUSTED_PROXIES = "127.0.0.1/8,${infra.vps0.wg1Ip}/32";
         };
         indexer = {
           REPO_INDEXER_ENABLED = true;
@@ -133,7 +127,7 @@ in
           # fake the ubuntu name, because node provides no ubuntu builds
           "ubuntu-latest:docker://node:25-trixie"
           # ephemeral nix container for nix/nixos workflows (pulled from local registry)
-          "nix:docker://localhost:${toString registryPort}/gitea-runner-nix:latest"
+          "nix:docker://localhost:${toString infra.ports.dockerRegistry}/gitea-runner-nix:latest"
         ];
         settings = {
           runner.capacity = 4;
@@ -151,7 +145,7 @@ in
     listenAddress = "0.0.0.0";
     enableGarbageCollect = true;
     garbageCollectDates = "daily";
-    port = registryPort;
+    port = infra.ports.dockerRegistry;
   };
 
   # Load the runner image into podman and push it to the local registry.
@@ -168,12 +162,12 @@ in
       RemainAfterExit = true;
       ExecStart = pkgs.writeShellScript "load-gitea-runner-image" ''
         ${pkgs.podman}/bin/podman load -i ${runnerImage}
-        ${pkgs.podman}/bin/podman push --tls-verify=false gitea-runner-nix:latest localhost:${toString registryPort}/gitea-runner-nix:latest
+        ${pkgs.podman}/bin/podman push --tls-verify=false gitea-runner-nix:latest localhost:${toString infra.ports.dockerRegistry}/gitea-runner-nix:latest
       '';
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 2222 ];
+  networking.firewall.allowedTCPPorts = [ infra.ports.gitea.ssh ];
 
   environment.systemPackages = with pkgs; [
     gitea # gitea command line interface
@@ -184,7 +178,7 @@ in
     forceSSL = true;
     acmeRoot = null;
     locations."/" = {
-      proxyPass = "http://127.0.0.1:${toString port}";
+      proxyPass = "http://127.0.0.1:${toString infra.ports.gitea.http}";
       proxyWebsockets = true;
       extraConfig = "client_max_body_size 0;";
     };

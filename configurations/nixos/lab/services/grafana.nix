@@ -1,11 +1,8 @@
 # Grafana visualization and dashboards
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "grafana";
-
-  # default = 3000
-  port = 3005;
 in
 {
   services.grafana = {
@@ -14,7 +11,7 @@ in
     settings = {
       server = {
         http_addr = "127.0.0.1";
-        http_port = port;
+        http_port = infra.ports.grafana;
         domain = "${serviceName}.${domain}";
         root_url = "https://${serviceName}.${domain}";
       };
@@ -41,7 +38,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.grafana}";
         # needed if you need to use WebSocket
         proxyWebsockets = true;
       };

@@ -2,11 +2,12 @@
 #
 # https://wiki.nixos.org/wiki/Minecraft_Server
 # https://github.com/Infinidoge/nix-minecraft
-{ inputs, pkgs, ... }:
-let
-  # default port = 25565
-  port = 25565;
-in
+{
+  inputs,
+  pkgs,
+  infra,
+  ...
+}:
 {
   imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
 
@@ -26,7 +27,7 @@ in
         };
         # https://minecraft.wiki/w/Server.properties#Keys
         serverProperties = {
-          server-port = port;
+          server-port = infra.ports.minecraft-server;
           difficulty = 2; # normal difficulty
           gamemode = 0; # survival
           max-players = 4;
@@ -49,7 +50,7 @@ in
         };
         # https://minecraft.wiki/w/Server.properties#Keys
         serverProperties = {
-          server-port = port + 1;
+          server-port = infra.ports.minecraft-server + 1;
           difficulty = 2; # normal difficulty
           gamemode = 0; # survival
           max-players = 2;
@@ -86,7 +87,7 @@ in
           enforce-secure-profile = true;
           level-name = "world";
           motd = "my testing server";
-          "query.port" = port + 1;
+          "query.port" = infra.ports.minecraft-server + 1;
           pvp = true;
           generate-structures = true;
           max-chained-neighbor-updates = 1000000;
@@ -105,7 +106,7 @@ in
           server-ip = "";
           resource-pack-prompt = "";
           allow-nether = true;
-          server-port = port + 2;
+          server-port = infra.ports.minecraft-server + 2;
           enable-rcon = false;
           sync-chunk-writes = true;
           op-permission-level = 4;

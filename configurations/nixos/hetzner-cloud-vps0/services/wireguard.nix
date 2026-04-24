@@ -14,8 +14,8 @@
 
   networking.wireguard = {
     enable = true;
-    interfaces.wg0 = {
-      ips = [ "${infra.vps0.wgIp}/24" ];
+    interfaces.wg1 = {
+      ips = [ "${infra.vps0.wg1Ip}/24" ];
       listenPort = infra.vps0.wgPort;
 
       privateKeyFile = config.sops.secrets."wireguard/private_key".path;
@@ -24,12 +24,12 @@
         {
           name = "lab";
           publicKey = infra.lab.wgPublicKey;
-          allowedIPs = [ "${infra.lab.wgIp}/32" ];
+          allowedIPs = [ "${infra.lab.wg1Ip}/32" ];
         }
         {
           name = "hetzner-cloud-vps1";
           publicKey = infra.vps1.wgPublicKey;
-          allowedIPs = [ "${infra.vps1.wgIp}/32" ];
+          allowedIPs = [ "${infra.vps1.wg1Ip}/32" ];
         }
       ];
     };

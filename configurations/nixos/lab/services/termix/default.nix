@@ -1,11 +1,8 @@
 # termix is a web based terminal ssh manager
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "termix";
-
-  # default = 8080
-  port = 8086;
 in
 {
   imports = [ ./compose.nix ];
@@ -16,7 +13,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.termix}";
       };
 
       serverAliases = [ "${serviceName}.${hostName}.${domain}" ];

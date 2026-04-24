@@ -4,13 +4,13 @@
   config,
   inputs,
   pkgs,
+  infra,
   ...
 }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "firefox-syncserver";
 
-  port = 5000;
   secrets = config.sops.secrets."firefox-syncserver/token".path;
 in
 {
@@ -47,7 +47,7 @@ in
       acmeRoot = null;
       locations."/" = {
         # enableNginx does 127.0.0.1 for some reason so fine
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.firefox-syncserver}";
       };
 
       serverAliases = [ "${serviceName}.${hostName}.${domain}" ];

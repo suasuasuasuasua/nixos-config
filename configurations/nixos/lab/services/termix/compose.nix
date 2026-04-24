@@ -4,12 +4,9 @@
   config,
   lib,
   pkgs,
+  infra,
   ...
 }:
-let
-  # default = 8080
-  port = 8086;
-in
 {
   # Enable container name DNS for all Podman networks.
   networking.firewall.interfaces =
@@ -31,7 +28,7 @@ in
       "termix_termix-data:/app/data:rw"
     ];
     ports = [
-      "127.0.0.1:${toString port}:8080/tcp"
+      "127.0.0.1:${toString infra.ports.termix}:8080/tcp"
     ];
     log-driver = "journald";
     extraOptions = [

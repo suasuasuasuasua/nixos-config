@@ -1,5 +1,5 @@
 # https://wiki.nixos.org/wiki/Paperless-ngx
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "paperless";
@@ -9,9 +9,10 @@ let
 in
 {
   services.paperless = {
-    inherit port mediaDir;
+    inherit mediaDir;
 
     enable = true;
+    port = infra.ports.paperless;
     consumptionDirIsPublic = true;
     settings = {
       PAPERLESS_CONSUMER_IGNORE_PATTERN = [

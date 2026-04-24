@@ -3,12 +3,9 @@
   config,
   lib,
   pkgs,
+  infra,
   ...
 }:
-let
-  # default = 8080
-  port = 8085;
-in
 {
   # Enable container name DNS for all Podman networks.
   networking.firewall.interfaces =
@@ -23,7 +20,7 @@ in
   virtualisation.oci-containers.containers."it-tools" = {
     image = "corentinth/it-tools:2024.10.22-7ca5933";
     ports = [
-      "127.0.0.1:${toString port}:80/tcp"
+      "127.0.0.1:${toString infra.ports.it-tools}:80/tcp"
     ];
     log-driver = "journald";
     extraOptions = [

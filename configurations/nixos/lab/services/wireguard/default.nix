@@ -9,11 +9,12 @@
   config,
   inputs,
   pkgs,
+  infra,
   ...
 }:
 let
   interfaces = import ./interfaces.nix {
-    inherit config pkgs;
+    inherit config pkgs infra;
   };
 in
 {
@@ -25,12 +26,12 @@ in
 
   networking = {
     firewall = {
-      allowedUDPPorts = [ 51820 ];
+      allowedUDPPorts = [ infra.lab.wgPort ];
       # Allow the VPS to reach lab's nginx and container registry over WireGuard.
       # These ports are only open on wg1 — they remain closed on the public interface.
       interfaces.wg1.allowedTCPPorts = [
-        443 # nginx → Gitea
-        5002 # container registry for VPS1 runner image
+        infra.ports.https # nginx → Gitea
+        infra.ports.dockerRegistry # container registry for VPS1 runner image
       ];
     };
     # NAT for wg0 so devices on 10.100.0.0/24 can reach the internet through lab.

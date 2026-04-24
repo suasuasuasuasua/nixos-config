@@ -1,12 +1,14 @@
 # https://wiki.nixos.org/wiki/Jellyfin
 # jellyfin is a self hosted media server
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  infra,
+  ...
+}:
 let
   inherit (config.networking) hostName domain;
   serviceName = "jellyfin";
-
-  # default = 8096
-  port = 8096;
 in
 {
   services.jellyfin = {
@@ -27,7 +29,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.jellyfin}";
       };
 
       serverAliases = [ "${serviceName}.${hostName}.${domain}" ];

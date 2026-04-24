@@ -1,15 +1,14 @@
 {
   config,
+  infra,
   ...
 }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "stirling-pdf";
 
-  # default = 8081
-  port = 8081;
   environment = {
-    SERVER_PORT = port;
+    SERVER_PORT = infra.ports.stirling-pdf;
     SYSTEM_ENABLEANALYTICS = "false";
   };
 in
@@ -26,7 +25,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.stirling-pdf}";
         proxyWebsockets = true; # needed if you need to use WebSocket
 
         extraConfig =

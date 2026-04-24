@@ -4,7 +4,6 @@
     ./13ft
     ./dashy
     ./it-tools
-    ./nginx
     ./samba
     ./syncthing
     ./termix
@@ -30,6 +29,7 @@
     ./minecraft-server.nix
     ./miniflux.nix
     ./navidrome.nix
+    ./nginx.nix
     ./ollama.nix
     ./open-webui.nix
     ./paperless.nix

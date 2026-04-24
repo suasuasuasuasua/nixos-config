@@ -1,9 +1,10 @@
 # Prometheus node exporter for system metrics
+{ infra, ... }:
 {
   services.prometheus.exporters.node = {
     enable = true;
     enabledCollectors = [ "systemd" ];
-    port = 9100;
+    port = infra.ports.prometheus.exporter;
     openFirewall = true;
     extraFlags = [
       "--collector.ethtool"
