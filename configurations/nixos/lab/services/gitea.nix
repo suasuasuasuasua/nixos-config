@@ -16,6 +16,10 @@ let
   # default = 3000
   port = 3001;
 
+  vps0WgIp = "10.101.0.1"; # VPS0 WireGuard IP (trusted reverse proxy)
+
+  registryPort = 5002;
+
   # Custom runner image: Nix (flakes enabled) + Node.js for JS-based actions
   runnerImage = pkgs.dockerTools.buildLayeredImage {
     name = "gitea-runner-nix";
@@ -46,6 +50,21 @@ let
   };
 in
 {
+  sops.secrets = {
+    "gitea/token" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
+    };
+    "gitea/signing-key" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
+      owner = config.services.gitea.user;
+      mode = "0400";
+    };
+    "gitea/signing-key.pub" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
+      owner = config.services.gitea.user;
+    };
+  };
+
   services = {
     gitea = {
       inherit stateDir;
@@ -85,9 +104,11 @@ in
           MERGES = "pubkey, twofa, basesigned, commitssigned";
         };
         security = {
-          # Required for fail2ban to see real client IPs (not 127.0.0.1) when behind nginx
-          REVERSE_PROXY_LIMIT = 1;
-          REVERSE_PROXY_TRUSTED_PROXIES = "127.0.0.1/8";
+          # Two proxy hops: lab nginx (127.0.0.1) + VPS0 nginx (10.101.0.1 over WireGuard).
+          # Without trusting both, Gitea attributes all requests to VPS0's WireGuard IP,
+          # causing fail2ban to ban VPS0 instead of real attackers.
+          REVERSE_PROXY_LIMIT = 2;
+          REVERSE_PROXY_TRUSTED_PROXIES = "127.0.0.1/8,${vps0WgIp}/32";
         };
         indexer = {
           REPO_INDEXER_ENABLED = true;
@@ -100,7 +121,7 @@ in
     };
 
     gitea-actions-runner.instances = {
-      lab-runner = {
+      default = {
         inherit tokenFile;
 
         url = "https://${serviceName}.${domain}";
@@ -111,8 +132,8 @@ in
           "debian-latest:docker://node:25-trixie"
           # fake the ubuntu name, because node provides no ubuntu builds
           "ubuntu-latest:docker://node:25-trixie"
-          # ephemeral nix container for nix/nixos workflows (locally built image)
-          "nix:docker://localhost/gitea-runner-nix:latest"
+          # ephemeral nix container for nix/nixos workflows (pulled from local registry)
+          "nix:docker://localhost:${toString registryPort}/gitea-runner-nix:latest"
         ];
         settings = {
           runner.capacity = 4;
@@ -121,20 +142,34 @@ in
     };
   };
 
-  # Load the custom runner image into Podman before the runner starts.
-  # RestartTriggers ensures systemd restarts this service (and the runner)
-  # automatically whenever the image derivation changes after a rebuild.
+  # Container registry for lab and VPS1 runners.
+  # Bound to 0.0.0.0 so both localhost (lab runner) and 10.101.0.2 (VPS1 over WireGuard) can reach it.
+  # Port 5002 is only opened on wg1 in wireguard/default.nix, so it's not exposed publicly.
+  services.dockerRegistry = {
+    enable = true;
+
+    listenAddress = "0.0.0.0";
+    enableGarbageCollect = true;
+    garbageCollectDates = "daily";
+    port = registryPort;
+  };
+
+  # Load the runner image into podman and push it to the local registry.
+  # Runs before the runner starts and re-runs whenever the image derivation changes.
   systemd.services.load-gitea-runner-image = {
-    description = "Load gitea runner OCI image into podman";
+    description = "Load and publish gitea runner OCI image";
     wantedBy = [ "gitea-runner-lab-runner.service" ];
+    after = [ "docker-registry.service" ];
+    requires = [ "docker-registry.service" ];
     before = [ "gitea-runner-lab-runner.service" ];
-    # Restart whenever the image derivation changes (store path is in ExecStart,
-    # so restartTriggers picks up the change automatically after nixos-rebuild)
     restartTriggers = [ runnerImage ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStart = "${pkgs.podman}/bin/podman load -i ${runnerImage}";
+      ExecStart = pkgs.writeShellScript "load-gitea-runner-image" ''
+        ${pkgs.podman}/bin/podman load -i ${runnerImage}
+        ${pkgs.podman}/bin/podman push --tls-verify=false gitea-runner-nix:latest localhost:${toString registryPort}/gitea-runner-nix:latest
+      '';
     };
   };
 
@@ -143,21 +178,6 @@ in
   environment.systemPackages = with pkgs; [
     gitea # gitea command line interface
   ];
-
-  sops.secrets = {
-    "gitea/token" = {
-      sopsFile = "${inputs.self}/secrets/secrets.yaml";
-    };
-    "gitea/signing-key" = {
-      sopsFile = "${inputs.self}/secrets/secrets.yaml";
-      owner = config.services.gitea.user;
-      mode = "0400";
-    };
-    "gitea/signing-key.pub" = {
-      sopsFile = "${inputs.self}/secrets/secrets.yaml";
-      owner = config.services.gitea.user;
-    };
-  };
 
   services.nginx.virtualHosts."${serviceName}.${domain}" = {
     enableACME = true;

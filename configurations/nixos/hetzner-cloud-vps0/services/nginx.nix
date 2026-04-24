@@ -6,6 +6,7 @@
 let
   inherit (config.networking) domain;
   anubisGiteaSocket = config.services.anubis.instances.gitea.settings.BIND;
+  labIp = "10.101.0.2";
 in
 {
   services.nginx = {
@@ -17,7 +18,7 @@ in
     streamConfig = ''
       server {
         listen 2222;
-        proxy_pass 10.101.0.2:2222;
+        proxy_pass ${labIp}:2222;
         proxy_timeout 10m;
         proxy_connect_timeout 10s;
       }

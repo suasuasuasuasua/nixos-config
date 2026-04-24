@@ -1,9 +1,6 @@
 {
-  # Allow VPS0 to forward packets between WireGuard peers (lab ↔ VPS1)
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-
   networking = {
-    hostName = "hetzner-cloud-vps0";
+    hostName = "hetzner-cloud-vps1";
     domain = "sua.dev";
     networkmanager.enable = true;
 
@@ -11,12 +8,6 @@
       enable = true;
       allowPing = true;
 
-      # Allow web server and WireGuard
-      allowedTCPPorts = [
-        80
-        443
-        2222 # Gitea SSH proxy (nginx stream → lab)
-      ];
       allowedUDPPorts = [ 51820 ];
     };
   };

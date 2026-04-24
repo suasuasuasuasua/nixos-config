@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  piIp = "192.168.0.250";
+in
 {
   virtualisation = {
     oci-containers.backend = "podman";
@@ -32,7 +35,7 @@
     containersConf.settings = {
       network = {
         dns_servers = [
-          "192.168.0.250" # local dns
+          piIp # local dns
           "1.1.1.1" # cloudflare
           "8.8.8.8" # google
         ];

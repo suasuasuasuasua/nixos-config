@@ -243,6 +243,12 @@
             userConfigs = [ users.admin ];
             enableHomeManager = false;
           }
+          {
+            name = "hetzner-cloud-vps1";
+            system = "x86_64-linux";
+            userConfigs = [ users.admin ];
+            enableHomeManager = false;
+          }
         ]
       );
       homeConfigurations = lib.mergeAttrsList (
