@@ -1,7 +1,7 @@
 {
   domain,
-  labIP,
-  piIP,
+  labIp,
+  piIp,
   ...
 }:
 let
@@ -55,7 +55,7 @@ in
     "termix"
     "vaultwarden"
     "wastebin"
-  ] labIP hostName
+  ] labIp hostName
   ++ [
     # {
     #   inherit domain;
@@ -63,18 +63,18 @@ in
     # }
     {
       domain = "${hostName}.${domain}";
-      answer = labIP;
+      answer = labIp;
     }
     {
       domain = "vpn.${domain}";
-      answer = labIP;
+      answer = labIp;
     }
     {
       domain = "vpn-sua.duckdns.org";
-      answer = labIP;
+      answer = labIp;
     }
-    (mkServiceRewrite "dashy.${hostName}" labIP)
-    (mkServiceRewrite "glances.${hostName}" labIP)
+    (mkServiceRewrite "dashy.${hostName}" labIp)
+    (mkServiceRewrite "glances.${hostName}" labIp)
   ]
 )
 ++ (
@@ -84,13 +84,13 @@ in
   mkServiceRewrites [
     "adguardhome"
     "uptime-kuma"
-  ] piIP hostName
+  ] piIp hostName
   ++ [
     {
       domain = "${hostName}.${domain}";
-      answer = piIP;
+      answer = piIp;
     }
-    (mkServiceRewrite "dashy.${hostName}" piIP)
-    (mkServiceRewrite "glances.${hostName}" piIP)
+    (mkServiceRewrite "dashy.${hostName}" piIp)
+    (mkServiceRewrite "glances.${hostName}" piIp)
   ]
 )
