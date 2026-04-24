@@ -1,3 +1,4 @@
+{ infra, ... }:
 {
   # Define the hostname
   networking = {
@@ -12,8 +13,8 @@
 
       # allow these ports for web server communications
       allowedTCPPorts = [
-        80
-        443
+        infra.ports.http
+        infra.ports.https
       ];
     };
   };

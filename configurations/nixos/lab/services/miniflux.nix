@@ -1,11 +1,15 @@
 # miniflux is a self hosted rss aggregator
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  infra,
+  ...
+}:
 let
   inherit (config.networking) hostName domain;
   serviceName = "miniflux";
 
   adminCredentialsFile = config.sops.secrets."miniflux/credentials".path;
-  port = 9001;
 in
 {
   sops.secrets = {
@@ -19,7 +23,7 @@ in
 
     enable = true;
     config = {
-      LISTEN_ADDR = "127.0.0.1:${toString port}";
+      LISTEN_ADDR = "127.0.0.1:${toString infra.ports.miniflux}";
     };
   };
 
@@ -29,7 +33,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.miniflux}";
       };
 
       serverAliases = [ "${serviceName}.${hostName}.${domain}" ];

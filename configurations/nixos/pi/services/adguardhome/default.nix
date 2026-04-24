@@ -1,25 +1,21 @@
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "adguardhome";
 
-  # define static ips
-  labIP = "192.168.0.240";
-  piIP = "192.168.0.250";
-
   settings = import ./settings.nix {
     inherit (config.networking) domain;
-    inherit labIP piIP port;
+    labIp = infra.lab.lanIp;
+    piIp = infra.pi.lanIp;
+    port = infra.ports.adguardhome;
   };
-
-  # default = 3000
-  port = 3000;
 in
 {
   services.adguardhome = {
-    inherit port settings;
+    inherit settings;
 
     enable = true;
+    port = infra.ports.adguardhome;
   };
 
   services.nginx.virtualHosts = {
@@ -28,7 +24,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://localhost:${toString port}";
+        proxyPass = "http://localhost:${toString infra.ports.adguardhome}";
       };
 
       serverAliases = [

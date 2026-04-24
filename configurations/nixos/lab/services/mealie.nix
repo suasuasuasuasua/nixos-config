@@ -1,17 +1,14 @@
 # mealie is a self hosted recipe manager
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "mealie";
-
-  # default = 9000
-  port = 9000;
 in
 {
   services.mealie = {
-    inherit port;
-
     enable = true;
+
+    port = infra.ports.mealie;
     settings = { };
   };
 
@@ -21,7 +18,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.mealie}";
       };
 
       serverAliases = [ "${serviceName}.${hostName}.${domain}" ];

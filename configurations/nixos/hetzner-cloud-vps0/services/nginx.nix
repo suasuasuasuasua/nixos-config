@@ -1,12 +1,12 @@
 # nginx on VPS acts as public reverse proxy to lab services over WireGuard tunnel
 {
   config,
+  infra,
   ...
 }:
 let
   inherit (config.networking) domain;
   anubisGiteaSocket = config.services.anubis.instances.gitea.settings.BIND;
-  labIp = "10.101.0.2";
 in
 {
   services.nginx = {
@@ -17,8 +17,8 @@ in
 
     streamConfig = ''
       server {
-        listen 2222;
-        proxy_pass ${labIp}:2222;
+        listen ${toString infra.ports.gitea.ssh};
+        proxy_pass ${infra.lab.wg1Ip}:${toString infra.ports.gitea.ssh};
         proxy_timeout 10m;
         proxy_connect_timeout 10s;
       }
@@ -35,6 +35,28 @@ in
         index = "index.html";
         root = "/var/www/sua.dev";
         tryFiles = "$uri $uri/ =404";
+      };
+    };
+    "www.${domain}" = {
+      enableACME = true;
+      forceSSL = true;
+      acmeRoot = null;
+
+      globalRedirect = domain;
+    };
+    "files.${domain}" = {
+      enableACME = true;
+      forceSSL = true;
+      acmeRoot = null;
+
+      locations."/" = {
+        root = "/var/www/files";
+        extraConfig = ''
+          autoindex on;
+          autoindex_exact_size off;
+          autoindex_localtime on;
+          limit_rate 10m;  # cap per-connection download speed
+        '';
       };
     };
     "gitea.${domain}" = {

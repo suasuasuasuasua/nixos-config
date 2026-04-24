@@ -1,14 +1,15 @@
 # https://wiki.nixos.org/wiki/Ollama
+{ infra, ... }:
 let
   acceleration = null;
-  port = 11434;
 in
 {
   services.ollama = {
-    inherit port acceleration;
+    inherit acceleration;
 
     enable = true;
 
     host = "127.0.0.1";
+    port = infra.ports.ollama;
   };
 }

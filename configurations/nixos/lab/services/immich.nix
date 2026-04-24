@@ -1,20 +1,19 @@
 # https://wiki.nixos.org/wiki/Immich
 # immich is a self hosted photo and video organizer
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "immich";
 
   mediaLocation = "/zshare/personal/images";
-  # default = 2283
-  port = 2283;
 in
 {
   # https://wiki.nixos.org/wiki/Immich
   services.immich = {
-    inherit port mediaLocation;
+    inherit mediaLocation;
 
     enable = true;
+    port = infra.ports.immich;
     accelerationDevices = null;
     machine-learning.enable = true;
     settings = { };
@@ -32,7 +31,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://[::1]:${toString port}";
+        proxyPass = "http://[::1]:${toString infra.ports.immich}";
         proxyWebsockets = true; # needed if you need to use WebSocket
 
         extraConfig =

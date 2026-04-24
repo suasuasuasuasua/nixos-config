@@ -1,18 +1,15 @@
 # glances provides a quick overview on system resource usage and processes
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "glances";
   cfg = config.services.${serviceName};
-
-  # default = 61208
-  port = 61208;
 in
 {
   services.glances = {
-    inherit port;
-
     enable = true;
+
+    port = infra.ports.glances;
     extraArgs = [
       "--webserver"
     ];

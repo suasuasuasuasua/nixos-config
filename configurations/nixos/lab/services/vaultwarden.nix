@@ -1,13 +1,13 @@
 {
   config,
   inputs,
+  infra,
   ...
 }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "vaultwarden";
 
-  port = 8222;
   environmentFile = config.sops.secrets."vaultwarden/environmentFile".path;
 in
 {
@@ -23,7 +23,7 @@ in
     enable = true;
     config = {
       ROCKET_ADDRESS = "127.0.0.1";
-      ROCKET_PORT = port;
+      ROCKET_PORT = infra.ports.vaultwarden;
       DOMAIN = "https://${serviceName}.${domain}";
 
       ROCKET_LOG = "critical";
@@ -37,7 +37,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.vaultwarden}";
         proxyWebsockets = true; # needed if you need to use WebSocket
       };
 

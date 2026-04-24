@@ -1,19 +1,15 @@
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "open-webui";
-
-  # default = 8080
-  port = 8082;
 in
 {
   services.open-webui = {
     # Enable the web interface
-    inherit port;
-
     enable = true;
 
     host = "127.0.0.1";
+    port = infra.ports.open-webui;
   };
 
   services.nginx.virtualHosts = {
@@ -22,7 +18,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.open-webui}";
         proxyWebsockets = true; # needed if you need to use WebSocket
 
         extraConfig =

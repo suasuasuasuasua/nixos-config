@@ -1,3 +1,4 @@
+{ infra, ... }:
 {
   # Define the hostname
   networking = {
@@ -10,8 +11,8 @@
       enable = true;
       allowPing = true;
       allowedTCPPorts = [
-        80
-        443
+        infra.ports.http
+        infra.ports.https
       ];
     };
   };

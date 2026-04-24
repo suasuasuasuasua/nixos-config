@@ -1,17 +1,14 @@
 # actual is a self hosted budgeting application
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "actual";
-
-  # default = 3000
-  port = 3000;
 in
 {
   services.actual = {
     enable = true;
     settings = {
-      inherit port;
+      port = infra.ports.actual;
     };
   };
 
@@ -21,7 +18,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.actual}";
       };
 
       serverAliases = [ "${serviceName}.${hostName}.${domain}" ];

@@ -1,3 +1,4 @@
+{ infra, ... }:
 {
   networking = {
     hostName = "hetzner-cloud-vps1";
@@ -8,7 +9,7 @@
       enable = true;
       allowPing = true;
 
-      allowedUDPPorts = [ 51820 ];
+      allowedUDPPorts = [ infra.vps0.wgPort ];
     };
   };
 

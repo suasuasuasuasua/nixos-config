@@ -1,15 +1,12 @@
 # glances provides a quick overview on system resource usage and processes
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "glances";
-
-  # default = 61208
-  port = 61208;
 in
 {
   services.glances = {
-    inherit port;
+    port = infra.ports.glances;
 
     enable = true;
     extraArgs = [
@@ -23,7 +20,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.glances}";
       };
     };
   };

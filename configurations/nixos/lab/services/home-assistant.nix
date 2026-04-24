@@ -1,12 +1,9 @@
 # https://wiki.nixos.org/wiki/Home_Assistant
 # self hosted automation and home management solution
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "home-assistant";
-
-  # default = 8123
-  port = 8123;
 in
 {
   services.home-assistant = {
@@ -31,7 +28,7 @@ in
     ];
     config = {
       http = {
-        server_port = port;
+        server_port = infra.ports.home-assistant;
         server_host = "::1";
         trusted_proxies = [ "::1" ];
         use_x_forwarded_for = true;
@@ -51,7 +48,7 @@ in
         proxy_buffering off;
       '';
       locations."/" = {
-        proxyPass = "http://[::1]:${toString port}";
+        proxyPass = "http://[::1]:${toString infra.ports.home-assistant}";
         proxyWebsockets = true;
       };
       serverAliases = [

@@ -1,15 +1,12 @@
 # audiobookshelf is a self hosted audiobook manager application
-{ config, ... }:
+{ config, infra, ... }:
 let
   inherit (config.networking) hostName domain;
   serviceName = "audiobookshelf";
-
-  # default = 8000
-  port = 8000;
 in
 {
   services.audiobookshelf = {
-    inherit port;
+    port = infra.ports.audiobookshelf;
 
     enable = true;
     host = "127.0.0.1";
@@ -23,7 +20,7 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString port}";
+        proxyPass = "http://127.0.0.1:${toString infra.ports.audiobookshelf}";
         proxyWebsockets = true; # needed if you need to use WebSocket
       };
 
