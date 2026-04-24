@@ -24,20 +24,35 @@ in
     '';
   };
 
-  services.nginx.virtualHosts."gitea.${domain}" = {
-    enableACME = true;
-    forceSSL = true;
-    acmeRoot = null;
+  services.nginx.virtualHosts = {
+    ${domain} = {
+      enableACME = true;
+      forceSSL = true;
+      acmeRoot = null;
 
-    locations."/" = {
-      # Proxy to Anubis on localhost. Anubis filters bots/scrapers with a
-      # proof-of-work challenge, then forwards clean traffic to lab over the
-      # WireGuard tunnel. See anubis.nix for Anubis configuration.
-      proxyPass = "http://unix:${anubisGiteaSocket}";
-      proxyWebsockets = true;
-      extraConfig = ''
-        client_max_body_size 0;
-      '';
+      locations."/" = {
+        index = "index.html";
+        root = "/var/www/sua.dev";
+        tryFiles = "$uri $uri/ =404";
+      };
+    };
+    "gitea.${domain}" = {
+      enableACME = true;
+      forceSSL = true;
+      acmeRoot = null;
+
+      locations."/" = {
+        # Proxy to Anubis on localhost. Anubis filters bots/scrapers with a
+        # proof-of-work challenge, then forwards clean traffic to lab over the
+        # WireGuard tunnel. See anubis.nix for Anubis configuration.
+        proxyPass = "http://unix:${anubisGiteaSocket}";
+        proxyWebsockets = true;
+        extraConfig = ''
+          client_max_body_size 0;
+        '';
+      };
     };
   };
+
+  users.users.admin.extraGroups = [ "nginx" ];
 }
