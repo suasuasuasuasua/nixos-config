@@ -1,6 +1,6 @@
 locals {
-  vps0_ip = "5.78.184.15"
-  vps1_ip = "5.78.145.94"
+  hetzner_cloud_vps0_ip = "5.78.184.15"
+  hetzner_cloud_vps1_ip = "5.78.145.94"
 }
 
 resource "namecheap_domain_records" "sua_dev" {
@@ -10,36 +10,36 @@ resource "namecheap_domain_records" "sua_dev" {
   record {
     hostname = "@"
     type     = "A"
-    address  = local.vps0_ip
+    address  = local.hetzner_cloud_vps0_ip
   }
 
   record {
     hostname = "gitea"
     type     = "A"
-    address  = local.vps0_ip
+    address  = local.hetzner_cloud_vps0_ip
   }
 
   record {
     hostname = "files"
     type     = "A"
-    address  = local.vps0_ip
+    address  = local.hetzner_cloud_vps0_ip
   }
 
   record {
     hostname = "www"
     type     = "A"
-    address  = local.vps0_ip
+    address  = local.hetzner_cloud_vps0_ip
   }
 
   record {
-    hostname = "vps0"
+    hostname = "hetzner-cloud-vps0"
     type     = "A"
-    address  = local.vps0_ip
+    address  = local.hetzner_cloud_vps0_ip
   }
 
   record {
-    hostname = "vps1"
+    hostname = "hetzner-cloud-vps1"
     type     = "A"
-    address  = local.vps1_ip
+    address  = local.hetzner_cloud_vps1_ip
   }
 }
