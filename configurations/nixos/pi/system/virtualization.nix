@@ -32,7 +32,7 @@
     containersConf.settings = {
       network = {
         dns_servers = [
-          infra.pi.lanIp # local dns
+          infra.pi.lanIP # local dns
           "1.1.1.1" # cloudflare
           "8.8.8.8" # google
         ];

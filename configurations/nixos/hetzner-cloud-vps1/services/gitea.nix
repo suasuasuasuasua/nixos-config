@@ -63,7 +63,7 @@ in
       "quay.io"
     ];
     # Lab's registry is HTTP-only (no TLS) — reachable only over the WireGuard tunnel
-    registries.insecure = [ "${infra.lab.wg1Ip}:${toString infra.ports.dockerRegistry}" ];
+    registries.insecure = [ "${infra.lab.wg1IP}:${toString infra.ports.dockerRegistry}" ];
 
     # Configure DNS servers for containers
     containersConf.settings = {

@@ -102,7 +102,7 @@ in
           # Without trusting both, Gitea attributes all requests to VPS0's WireGuard IP,
           # causing fail2ban to ban VPS0 instead of real attackers.
           REVERSE_PROXY_LIMIT = 2;
-          REVERSE_PROXY_TRUSTED_PROXIES = "127.0.0.1/8,${infra.vps0.wg1Ip}/32";
+          REVERSE_PROXY_TRUSTED_PROXIES = "127.0.0.1/8,${infra.vps0.wg1IP}/32";
         };
         indexer = {
           REPO_INDEXER_ENABLED = true;

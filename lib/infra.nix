@@ -3,27 +3,27 @@
 # Public keys are not secrets — WireGuard public keys are safe to commit.
 {
   vps0 = {
-    publicIp = "5.78.184.15";
-    wg1Ip = "10.101.0.1";
+    publicIP = "5.78.184.15";
+    wg1IP = "10.101.0.1";
     wg1Subnet = "10.101.0.0/24";
     wgPort = 51820;
     wgPublicKey = "k2a0D0OUEsZQV6geIKOscTNVbiUVZquqh49zT6A1MRo=";
   };
   vps1 = {
-    wg1Ip = "10.101.0.3";
+    wg1IP = "10.101.0.3";
     wgPort = 51820;
     wgPublicKey = "X/sp+cUKT7sx9sNnFUXDLylXuIEBx8iTLyG4QBllfS0=";
   };
   lab = {
-    lanIp = "192.168.0.240";
-    wg0Ip = "10.100.0.1";
+    lanIP = "192.168.0.240";
+    wg0IP = "10.100.0.1";
     wg0Subnet = "10.100.0.0/24";
-    wg1Ip = "10.101.0.2";
+    wg1IP = "10.101.0.2";
     wgPort = 51820;
     wgPublicKey = "JVBP0NWpR70JT0bUoFsunFkGT9YZSY8O/UeMdUxAXlU=";
   };
   pi = {
-    lanIp = "192.168.0.250";
+    lanIP = "192.168.0.250";
   };
   ports = {
     http = 80;

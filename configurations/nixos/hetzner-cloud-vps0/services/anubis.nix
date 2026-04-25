@@ -12,7 +12,7 @@ in
 {
   # Map the Gitea domain to the lab's WireGuard IP locally so Anubis sends
   # the correct SNI when establishing the HTTPS connection to lab's nginx.
-  networking.hosts."${infra.lab.wg1Ip}" = [ "gitea.${domain}" ];
+  networking.hosts."${infra.lab.wg1IP}" = [ "gitea.${domain}" ];
 
   services.anubis.instances."gitea" = {
     settings = {

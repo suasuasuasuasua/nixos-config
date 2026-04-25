@@ -2,7 +2,7 @@
 # fail2ban monitors log files looking for suspicious activity like brute force
 # attempts to login. it can ban ip addresses for a certain amount of time (hence
 # the jail)
-{ pkgs, ... }:
+{ pkgs, infra, ... }:
 {
   environment.systemPackages = [ pkgs.geoip ];
 
@@ -32,7 +32,7 @@
       # Ignore the VPS0 WireGuard IP — it's a trusted reverse proxy, never a real attacker.
       # Even if Gitea logs 10.101.0.1 (e.g. due to proxy header misconfiguration),
       # banning it would cut off all public Gitea traffic.
-      ignoreIP = "127.0.0.1/8 10.101.0.1/32";
+      ignoreIP = "127.0.0.1/8 ${infra.vps0.wg1IP}/32";
     };
     jails.sshd.settings = {
       enabled = true;

@@ -5,8 +5,8 @@ let
 
   settings = import ./settings.nix {
     inherit (config.networking) domain;
-    labIp = infra.lab.lanIp;
-    piIp = infra.pi.lanIp;
+    labIP = infra.lab.lanIP;
+    piIP = infra.pi.lanIP;
     port = infra.ports.adguardhome;
   };
 in
