@@ -29,6 +29,10 @@
       action = ''
         %(action_)s geoip-log
       '';
+      # Ignore the VPS0 WireGuard IP — it's a trusted reverse proxy, never a real attacker.
+      # Even if Gitea logs 10.101.0.1 (e.g. due to proxy header misconfiguration),
+      # banning it would cut off all public Gitea traffic.
+      ignoreIP = "127.0.0.1/8 10.101.0.1/32";
     };
     jails.sshd.settings = {
       enabled = true;
