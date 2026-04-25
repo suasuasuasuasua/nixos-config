@@ -13,7 +13,7 @@
   networking.wireguard = {
     enable = true;
     interfaces.wg1 = {
-      ips = [ "${infra.vps1.wg1Ip}/24" ];
+      ips = [ "${infra.vps1.wg1IP}/24" ];
 
       privateKeyFile = config.sops.secrets."wireguard/private_key".path;
 
@@ -21,11 +21,11 @@
         {
           name = "hetzner-cloud-vps0";
           publicKey = infra.vps0.wgPublicKey;
-          endpoint = "${infra.vps0.publicIp}:${toString infra.vps0.wgPort}";
-          # lab (${infra.lab.wgIp}) is routed through VPS0 as hub
+          endpoint = "${infra.vps0.publicIP}:${toString infra.vps0.wgPort}";
+          # lab (${infra.lab.wgIP}) is routed through VPS0 as hub
           allowedIPs = [
-            "${infra.vps0.wg1Ip}/32"
-            "${infra.lab.wg1Ip}/32"
+            "${infra.vps0.wg1IP}/32"
+            "${infra.lab.wg1IP}/32"
           ];
           persistentKeepalive = 25;
         }

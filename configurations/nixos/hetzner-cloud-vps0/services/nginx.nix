@@ -18,7 +18,7 @@ in
     streamConfig = ''
       server {
         listen ${toString infra.ports.gitea.ssh};
-        proxy_pass ${infra.lab.wg1Ip}:${toString infra.ports.gitea.ssh};
+        proxy_pass ${infra.lab.wg1IP}:${toString infra.ports.gitea.ssh};
         proxy_timeout 10m;
         proxy_connect_timeout 10s;
       }

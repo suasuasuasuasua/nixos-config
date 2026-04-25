@@ -8,7 +8,7 @@
   # wg0: lab acts as a VPN server for personal devices (phones, laptops, etc.)
   # on the 10.100.0.0/24 subnet.
   wg0 = {
-    ips = [ "${infra.lab.wg0Ip}/24" ];
+    ips = [ "${infra.lab.wg0IP}/24" ];
     listenPort = infra.lab.wgPort;
 
     postSetup =
@@ -61,7 +61,7 @@
   # traffic to the VPS, but VPS only allows 10.101.0.2. Splitting into wg1
   # gives the tunnel its own interface with a single unambiguous IP.
   wg1 = {
-    ips = [ "${infra.lab.wg1Ip}/24" ];
+    ips = [ "${infra.lab.wg1IP}/24" ];
 
     privateKeyFile = config.sops.secrets."wireguard/private_key".path;
 
@@ -69,10 +69,10 @@
       {
         name = "hetzner-cloud-vps0";
         publicKey = "k2a0D0OUEsZQV6geIKOscTNVbiUVZquqh49zT6A1MRo=";
-        endpoint = "${infra.vps0.publicIp}:${toString infra.vps0.wgPort}";
+        endpoint = "${infra.vps0.publicIP}:${toString infra.vps0.wgPort}";
         allowedIPs = [
-          "${infra.vps0.wg1Ip}/32" # VPS0
-          "${infra.vps1.wg1Ip}/32" # VPS1 (routed through VPS0 as hub)
+          "${infra.vps0.wg1IP}/32" # VPS0
+          "${infra.vps1.wg1IP}/32" # VPS1 (routed through VPS0 as hub)
         ];
         # Lab is behind NAT, so it must send keepalives to maintain the
         # mapping and allow VPS to initiate traffic back.
