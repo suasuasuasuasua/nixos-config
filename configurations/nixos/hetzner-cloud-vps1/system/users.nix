@@ -15,7 +15,7 @@ in
   };
 
   users.users.admin = {
-    hashedPasswordFile = admin_password;
+    initialHashedPassword = admin_password;
     isNormalUser = true;
     extraGroups = [ "wheel" ];
 

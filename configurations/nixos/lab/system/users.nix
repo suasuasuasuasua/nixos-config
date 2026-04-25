@@ -26,7 +26,7 @@ in
 
   users.users = {
     justinhoang = {
-      hashedPasswordFile = justinhoang_password;
+      initialHashedPassword = justinhoang_password;
 
       isNormalUser = true;
       extraGroups = [
@@ -47,11 +47,14 @@ in
       ];
     };
     katelynjascha = {
-      hashedPasswordFile = katelyn_password;
+      initialHashedPassword = katelyn_password;
 
       isNormalUser = true;
       extraGroups = [ "samba" ];
       shell = pkgs.zsh;
     };
   };
+
+  # # NOTE: may be required on first load due to sops chicken and egg problem
+  # security.sudo.wheelNeedsPassword = false;
 }

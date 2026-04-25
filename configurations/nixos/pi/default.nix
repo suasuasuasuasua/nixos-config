@@ -5,7 +5,6 @@
   imports = [
     # hardware setup
     # see https://github.com/NixOS/nixos-hardware/blob/master/raspberry-pi/4/default.nix
-    inputs.nixos-generators.nixosModules.all-formats
     inputs.nixos-hardware.nixosModules.raspberry-pi-4
 
     ./services
