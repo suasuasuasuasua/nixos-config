@@ -27,7 +27,7 @@
 #    nixos-anywhere --extra-files /tmp/extra-files --flake .#vps root@<ip>
 keys:
   - &lab age1z873m77wql5652lewr95323ejpvl85fchwq22xg8yd6x4kperejqg9wlph
-  - &pi age1ed2wgryukz5xq6t8w6nhjvldwgvw5lj2aq37n7q23et2ycqwtueqaaw4fj
+  - &pi age1l7pwlljdyq9jrtrl9c2sp2q0jt2kklydv03289ykpd9604susansvt2tjm
   - &hetzner-cloud-vps0 age139f88emrmhu7wmx85zq0pn6y9h6f4rhwk7v2r5pze5jk82ye8vgqv4g6de
   - &hetzner-cloud-vps1 age1mgprnw502csh4qku7fqrhhpen9cqnt5rrx8xfkvkdfhvfhren9aq2fptus
 creation_rules:

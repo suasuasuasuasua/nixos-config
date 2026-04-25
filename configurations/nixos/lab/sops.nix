@@ -1,4 +1,9 @@
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  ...
+}:
 {
   imports = [ inputs.sops-nix.nixosModules.sops ];
 
@@ -18,4 +23,13 @@
       generateKey = true;
     };
   };
+
+  # first time launch
+  system.activationScripts.fixSopsKeyOwnership = lib.mkAfter ''
+    keyFile="${config.users.users.justinhoang.home}/.config/sops/age/keys.txt"
+    if [ -f "$keyFile" ]; then
+      chown justinhoang:users "$keyFile"
+      chmod 600 "$keyFile"
+    fi
+  '';
 }

@@ -20,7 +20,7 @@ in
   };
 
   users.users.admin = {
-    hashedPasswordFile = admin_password;
+    initialHashedPassword = admin_password;
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     shell = pkgs.zsh;
@@ -31,6 +31,10 @@ in
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUijrS7uoSrbIA/R1EmnvzU7xcv6h8u+RVYBU9Ruw31 justinhoang@ilmgf"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILBclQTbAA8JkwD5mV17zhuISaF5t6vliyOsEaRdMpsw justinhoang@fedora"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILSeaDq9Cb9lhnEPP6SHAJ8pJ2TPiF/y8hXpJtvsSCMk justinhoang@ipadProM2"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP5vx5WQe2m2fXDFhjnNeYYrY6OIR0y5X0nfdAAlchcl justinhoang@lab"
     ];
   };
+
+  # # NOTE: may be required on first load due to sops chicken and egg problem
+  # security.sudo.wheelNeedsPassword = false;
 }

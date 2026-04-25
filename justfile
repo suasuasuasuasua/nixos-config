@@ -77,7 +77,7 @@ build-home-ci host:
 # Build an SD card image for a configuration
 [group('build')]
 build-sd host:
-    nom build .#nixosConfigurations.{{ host }}.config.formats.sd-aarch64
+    nixos-rebuild build-image --image-variant sd-card --flake .#{{ host }}
 
 ###############################################################################
 
