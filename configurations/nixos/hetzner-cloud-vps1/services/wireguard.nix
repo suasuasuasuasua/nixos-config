@@ -20,8 +20,8 @@
       peers = [
         {
           name = "hetzner-cloud-vps0";
-          publicKey = infra.vps0.wgPublicKey;
-          endpoint = "${infra.vps0.publicIP}:${toString infra.vps0.wgPort}";
+          publicKey = infra.vps0.wg1PublicKey;
+          endpoint = "${infra.vps0.publicIP}:${toString infra.vps0.wg1Port}";
           # lab (${infra.lab.wgIP}) is routed through VPS0 as hub
           allowedIPs = [
             "${infra.vps0.wg1IP}/32"

@@ -42,6 +42,11 @@ creation_rules:
     key_groups:
       - age:
           - *lab
+  - path_regex: configurations/nixos/pi/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *lab
+          - *pi
   - path_regex: configurations/nixos/hetzner-cloud-vps0/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:

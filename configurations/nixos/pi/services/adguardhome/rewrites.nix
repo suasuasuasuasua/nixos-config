@@ -57,20 +57,8 @@ in
     "wastebin"
   ] labIP hostName
   ++ [
-    # {
-    #   inherit domain;
-    #   answer = labIP;
-    # }
     {
       domain = "${hostName}.${domain}";
-      answer = labIP;
-    }
-    {
-      domain = "vpn.${domain}";
-      answer = labIP;
-    }
-    {
-      domain = "vpn-sua.duckdns.org";
       answer = labIP;
     }
     (mkServiceRewrite "dashy.${hostName}" labIP)

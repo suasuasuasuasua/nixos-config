@@ -2,7 +2,6 @@
 
 - Secondary server running more important services
   - AdGuard Home
-  - DuckDNS
 
 ## Quirks
 

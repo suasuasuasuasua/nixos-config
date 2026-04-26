@@ -9,7 +9,7 @@
       enable = true;
       allowPing = true;
 
-      allowedUDPPorts = [ infra.vps0.wgPort ];
+      allowedUDPPorts = [ infra.vps0.wg1Port ];
     };
   };
 

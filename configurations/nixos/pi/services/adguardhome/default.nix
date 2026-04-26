@@ -7,6 +7,7 @@ let
     inherit (config.networking) domain;
     labIP = infra.lab.lanIP;
     piIP = infra.pi.lanIP;
+    piWg0IP = infra.pi.wg0IP;
     port = infra.ports.adguardhome;
   };
 in

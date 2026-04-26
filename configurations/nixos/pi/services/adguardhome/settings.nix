@@ -2,6 +2,7 @@
   domain,
   labIP,
   piIP,
+  piWg0IP,
   port,
   ...
 }:
@@ -27,10 +28,13 @@
   language = "";
   theme = "auto";
   dns = {
-    # Bind only to the pi's specific IP to avoid conflicts with Podman's aardvark-dns
-    # This allows Podman DNS to bind to the podman bridge interface (10.88.0.1:53)
-    # while AdGuard Home handles DNS on the host interface
-    bind_hosts = [ piIP ];
+    # Bind to pi's LAN IP and wg0 IP (for VPN clients using 10.100.0.8 as DNS).
+    # Deliberately not 0.0.0.0 to avoid conflicts with Podman's aardvark-dns
+    # (which binds to the podman bridge at 10.88.0.1:53).
+    bind_hosts = [
+      piIP
+      piWg0IP
+    ];
     port = 53;
     anonymize_client_ip = false;
     ratelimit = 20;

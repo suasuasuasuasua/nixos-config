@@ -4,26 +4,32 @@
 {
   vps0 = {
     publicIP = "5.78.184.15";
+    # wg0: VPN server for personal devices, lab, and pi (10.100.0.0/24)
+    wg0IP = "10.100.0.1";
+    wg0Subnet = "10.100.0.0/24";
+    wg0Port = 51820;
+    wg0PublicKey = "vbOVT6tJ33lEhDqVBVX6ScF3c7wmijF4vCTqg0ug0z4=";
+    # wg1: proxy tunnel to lab and VPS1 (10.101.0.0/24)
     wg1IP = "10.101.0.1";
     wg1Subnet = "10.101.0.0/24";
-    wgPort = 51820;
-    wgPublicKey = "k2a0D0OUEsZQV6geIKOscTNVbiUVZquqh49zT6A1MRo=";
+    wg1Port = 51821;
+    wg1PublicKey = "k2a0D0OUEsZQV6geIKOscTNVbiUVZquqh49zT6A1MRo=";
   };
   vps1 = {
     wg1IP = "10.101.0.3";
-    wgPort = 51820;
+    wg1Port = 51820;
     wgPublicKey = "X/sp+cUKT7sx9sNnFUXDLylXuIEBx8iTLyG4QBllfS0=";
   };
   lab = {
     lanIP = "192.168.0.240";
-    wg0IP = "10.100.0.1";
-    wg0Subnet = "10.100.0.0/24";
+    wg0IP = "10.100.0.7"; # lab's IP on VPS0's wg0 (client, not server)
     wg1IP = "10.101.0.2";
-    wgPort = 51820;
     wgPublicKey = "JVBP0NWpR70JT0bUoFsunFkGT9YZSY8O/UeMdUxAXlU=";
   };
   pi = {
     lanIP = "192.168.0.250";
+    wg0IP = "10.100.0.8"; # pi's IP on VPS0's wg0 (client)
+    wg0PublicKey = "lfHsRVu1iRoxVDBUFNVAPY9JWDdGyIyaLKC83HnknFQ=";
   };
   ports = {
     http = 80;

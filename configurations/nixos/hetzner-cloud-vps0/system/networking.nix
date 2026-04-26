@@ -18,7 +18,10 @@
         infra.ports.https
         infra.ports.gitea.ssh # Gitea SSH proxy (nginx stream → lab)
       ];
-      allowedUDPPorts = [ infra.vps0.wgPort ];
+      allowedUDPPorts = [
+        infra.vps0.wg0Port # wg0: VPN for personal devices / lab / pi
+        infra.vps0.wg1Port # wg1: proxy tunnel to lab and VPS1
+      ];
     };
   };
 

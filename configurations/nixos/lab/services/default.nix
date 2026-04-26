@@ -7,7 +7,6 @@
     ./samba
     ./syncthing
     ./termix
-    ./wireguard
     ./ytdl-sub
 
     ./acme.nix
@@ -40,5 +39,6 @@
     ./vaultwarden.nix
     ./vscode-server.nix
     ./wastebin.nix
+    ./wireguard.nix
   ];
 }
