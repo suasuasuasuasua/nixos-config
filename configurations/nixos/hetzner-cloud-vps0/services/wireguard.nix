@@ -66,7 +66,10 @@
         {
           name = "lab";
           publicKey = infra.lab.wgPublicKey;
-          allowedIPs = [ "${infra.lab.wg0IP}/32" ];
+          allowedIPs = [
+            "${infra.lab.wg0IP}/32"
+            "192.168.0.0/24"
+          ];
         }
         {
           name = "pi";

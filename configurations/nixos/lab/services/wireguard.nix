@@ -28,6 +28,13 @@
         infra.ports.dockerRegistry # container registry for VPS1 runner image
       ];
     };
+
+    # allows for routing from wg0 to LAN, acting like the middleman essentially
+    nat = {
+      enable = true;
+      externalInterface = "enp4s0";
+      internalInterfaces = [ "wg0" ];
+    };
   };
 
   networking.wireguard = {
