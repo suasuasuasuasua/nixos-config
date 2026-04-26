@@ -225,6 +225,9 @@
         default = import ./shell.nix {
           inherit pkgs self;
         };
+        ci = import ./shell-ci.nix {
+          inherit pkgs self;
+        };
       });
 
       nixosConfigurations = lib.mergeAttrsList (

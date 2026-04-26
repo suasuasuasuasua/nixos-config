@@ -28,7 +28,7 @@ jobs:
           fetch-depth: 0 # required for `nix flake show`
       - name: Flake check
         run: |
-          nix develop --command just check
+          nix develop .#ci --command just check
   fmt:
     runs-on: nix
     steps:
