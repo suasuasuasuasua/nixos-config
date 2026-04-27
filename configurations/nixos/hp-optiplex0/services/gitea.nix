@@ -27,9 +27,9 @@ in
       enable = true;
       labels = [
         # provide a debian base with nodejs for actions
-        "debian-latest:docker://node:25-trixie"
+        "debian-latest:docker://node:24-trixie"
         # fake the ubuntu name, because node provides no ubuntu builds
-        "ubuntu-latest:docker://node:25-trixie"
+        "ubuntu-latest:docker://node:24-trixie"
         # ephemeral nix container for nix/nixos workflows (pulled from local registry)
         "nix:docker://${infra.lab.wg1IP}:${toString infra.ports.dockerRegistry}/gitea-runner-nix:latest"
       ];
