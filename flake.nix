@@ -243,6 +243,12 @@
             userConfigs = [ users.admin ];
           }
           {
+            name = "hp-optiplex0";
+            system = "x86_64-linux";
+            userConfigs = [ users.admin ];
+            enableHomeManager = false;
+          }
+          {
             name = "hetzner-cloud-vps0";
             system = "x86_64-linux";
             userConfigs = [ users.admin ];

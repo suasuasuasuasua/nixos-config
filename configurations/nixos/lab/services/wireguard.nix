@@ -78,8 +78,8 @@
             publicKey = infra.vps0.wg1PublicKey;
             endpoint = "${infra.vps0.publicIP}:${toString infra.vps0.wg1Port}";
             allowedIPs = [
-              "${infra.vps0.wg1IP}/32" # VPS0
-              "${infra.vps1.wg1IP}/32" # VPS1 (routed through VPS0 as hub)
+              "${infra.hp-optiplex0.wg1IP}/32"
+              "${infra.vps0.wg1IP}/32"
             ];
             # Lab is behind NAT, so it must send keepalives to maintain the
             # mapping and allow VPS to initiate traffic back.

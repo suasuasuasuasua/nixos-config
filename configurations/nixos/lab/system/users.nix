@@ -26,7 +26,7 @@ in
 
   users.users = {
     justinhoang = {
-      initialHashedPassword = justinhoang_password;
+      hashedPasswordFile = justinhoang_password;
 
       isNormalUser = true;
       extraGroups = [
@@ -47,7 +47,7 @@ in
       ];
     };
     katelynjascha = {
-      initialHashedPassword = katelyn_password;
+      hashedPasswordFile = katelyn_password;
 
       isNormalUser = true;
       extraGroups = [ "samba" ];

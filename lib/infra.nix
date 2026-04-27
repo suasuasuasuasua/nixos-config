@@ -2,6 +2,23 @@
 # Passed to all NixOS hosts via specialArgs as `infra`.
 # Public keys are not secrets — WireGuard public keys are safe to commit.
 {
+  lab = {
+    lanIP = "192.168.0.240";
+    wg0IP = "10.100.0.7"; # lab's IP on VPS0's wg0 (client, not server)
+    wg1IP = "10.101.0.2";
+    wgPublicKey = "JVBP0NWpR70JT0bUoFsunFkGT9YZSY8O/UeMdUxAXlU=";
+  };
+  pi = {
+    lanIP = "192.168.0.250";
+    wg0IP = "10.100.0.8"; # pi's IP on VPS0's wg0 (client)
+    wg0PublicKey = "lfHsRVu1iRoxVDBUFNVAPY9JWDdGyIyaLKC83HnknFQ=";
+  };
+  hp-optiplex0 = {
+    lanIP = "192.168.0.251";
+    wg1IP = "10.101.0.4";
+    wg1Port = 51820;
+    wg1PublicKey = "4/h51BZcx+kRFW43X4yoNPmoECX7HYnEn9HFQ+O+zzM=";
+  };
   vps0 = {
     publicIP = "5.78.184.15";
     # wg0: VPN server for personal devices, lab, and pi (10.100.0.0/24)
@@ -19,17 +36,6 @@
     wg1IP = "10.101.0.3";
     wg1Port = 51820;
     wgPublicKey = "X/sp+cUKT7sx9sNnFUXDLylXuIEBx8iTLyG4QBllfS0=";
-  };
-  lab = {
-    lanIP = "192.168.0.240";
-    wg0IP = "10.100.0.7"; # lab's IP on VPS0's wg0 (client, not server)
-    wg1IP = "10.101.0.2";
-    wgPublicKey = "JVBP0NWpR70JT0bUoFsunFkGT9YZSY8O/UeMdUxAXlU=";
-  };
-  pi = {
-    lanIP = "192.168.0.250";
-    wg0IP = "10.100.0.8"; # pi's IP on VPS0's wg0 (client)
-    wg0PublicKey = "lfHsRVu1iRoxVDBUFNVAPY9JWDdGyIyaLKC83HnknFQ=";
   };
   ports = {
     http = 80;

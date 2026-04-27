@@ -1,6 +1,4 @@
-# VPS Disk configuration
-# Hetzner VPS requires BIOS boot, not EFI
-# Use GPT with BIOS Boot Partition
+# Optiplex Disk configuration
 {
   disko.devices.disk.main = {
     type = "disk";
@@ -8,13 +6,8 @@
     content = {
       type = "gpt";
       partitions = {
-        boot = {
-          size = "1M";
-          type = "EF02";
-          priority = 1;
-        };
         ESP = {
-          size = "512M";
+          size = "1G";
           type = "EF00";
           content = {
             type = "filesystem";

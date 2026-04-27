@@ -62,7 +62,6 @@
           publicKey = "ZdAyGNsAEFkN2lc3KtkCX6/n2m+d1wedtuTEKXFSzVc=";
           allowedIPs = [ "10.100.0.6/32" ];
         }
-        # Lab and pi — NixOS machines configured as wg0 clients below.
         {
           name = "lab";
           publicKey = infra.lab.wgPublicKey;
@@ -95,6 +94,11 @@
           name = "hetzner-cloud-vps1";
           publicKey = infra.vps1.wgPublicKey;
           allowedIPs = [ "${infra.vps1.wg1IP}/32" ];
+        }
+        {
+          name = "hp-optiplex0";
+          publicKey = infra.hp-optiplex0.wg1PublicKey;
+          allowedIPs = [ "${infra.hp-optiplex0.wg1IP}/32" ];
         }
       ];
     };

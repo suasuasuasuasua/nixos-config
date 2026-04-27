@@ -7,13 +7,13 @@
 }:
 {
   sops.secrets."wireguard/private_key" = {
-    sopsFile = "${inputs.self}/configurations/nixos/hetzner-cloud-vps1/secrets.yaml";
+    sopsFile = "${inputs.self}/configurations/nixos/hp-optiplex0/secrets.yaml";
   };
 
   networking.wireguard = {
     enable = true;
     interfaces.wg1 = {
-      ips = [ "${infra.vps1.wg1IP}/24" ];
+      ips = [ "${infra.hp-optiplex0.wg1IP}/24" ];
 
       privateKeyFile = config.sops.secrets."wireguard/private_key".path;
 
@@ -22,7 +22,10 @@
           name = "hetzner-cloud-vps0";
           publicKey = infra.vps0.wg1PublicKey;
           endpoint = "${infra.vps0.publicIP}:${toString infra.vps0.wg1Port}";
-          allowedIPs = [ "${infra.vps0.wg1IP}/32" ];
+          allowedIPs = [
+            "${infra.lab.wg1IP}/32"
+            "${infra.vps0.wg1IP}/32"
+          ];
           persistentKeepalive = 25;
         }
       ];
