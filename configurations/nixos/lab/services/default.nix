@@ -15,29 +15,23 @@
     ./avahi.nix
     ./calibre.nix
     ./fail2ban.nix
-    ./firefox-syncserver.nix
     ./gitea.nix
     ./glances.nix
     ./grafana.nix
     ./home-assistant.nix
-    ./hydra.nix
     ./immich.nix
     ./jellyfin.nix
     ./linkwarden.nix
     ./mealie.nix
     ./minecraft-server.nix
-    ./miniflux.nix
     ./navidrome.nix
     ./nginx.nix
-    ./ollama.nix
-    ./open-webui.nix
     ./paperless.nix
     ./prometheus.nix
     ./searxng.nix
     ./smart.nix
     ./stirling-pdf.nix
     ./vaultwarden.nix
-    ./vscode-server.nix
     ./wastebin.nix
     ./wireguard.nix
   ];
