@@ -47,12 +47,10 @@
     immich = 2283;
     adguardhome = 3000; # pi
     actual = 3000; # lab
-    hydra = 3002;
     linkwarden = 3004;
     grafana = 3005;
     uptime-kuma = 4000;
     navidrome = 4533;
-    firefox-syncserver = 5000;
     "13ft" = 5001;
     dockerRegistry = 5002; # lab-internal Docker registry (WireGuard only)
     audiobookshelf = 8000;
@@ -61,7 +59,6 @@
       web = 8083;
     };
     stirling-pdf = 8081;
-    open-webui = 8082;
     searxng = 8084;
     it-tools = 8085;
     termix = 8086;
@@ -71,7 +68,6 @@
     vaultwarden = 8222;
     syncthing = 8384;
     mealie = 9000;
-    miniflux = 9001;
     prometheus = {
       server = 9090;
       exporter = 9100;
@@ -79,7 +75,6 @@
       wireguard = 9586;
       zfs = 9134;
     };
-    ollama = 11434;
     minecraft-server = 25565;
     paperless = 28981;
     glances = 61208;

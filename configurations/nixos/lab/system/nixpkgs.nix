@@ -11,7 +11,6 @@
       "claude-code"
       "intel-ocl"
       "minecraft-server"
-      "open-webui"
     ];
 
   nixpkgs.overlays = [

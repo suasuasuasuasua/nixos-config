@@ -78,7 +78,31 @@ in
         job_name = "pi";
         static_configs = [
           {
-            targets = [ "pi.${domain}:${toString infra.ports.prometheus.exporter}" ];
+            targets = [ "${infra.pi.wg0IP}:${toString infra.ports.prometheus.exporter}" ];
+          }
+        ];
+      }
+      {
+        job_name = "vps0";
+        static_configs = [
+          {
+            targets = [ "${infra.vps0.wg1IP}:${toString infra.ports.prometheus.exporter}" ];
+          }
+        ];
+      }
+      {
+        job_name = "vps1";
+        static_configs = [
+          {
+            targets = [ "${infra.vps1.wg1IP}:${toString infra.ports.prometheus.exporter}" ];
+          }
+        ];
+      }
+      {
+        job_name = "optiplex0";
+        static_configs = [
+          {
+            targets = [ "${infra.hp-optiplex0.wg1IP}:${toString infra.ports.prometheus.exporter}" ];
           }
         ];
       }

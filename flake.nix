@@ -47,7 +47,6 @@
     };
     systems.url = "github:nix-systems/default";
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
     # patches
     nixpkgs-calibre-web.url = "github:NixOS/nixpkgs/refs/pull/503253/head";
   };

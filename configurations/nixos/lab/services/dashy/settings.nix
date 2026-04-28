@@ -106,12 +106,6 @@ in
           url = mkFqdn "mealie";
         }
         {
-          title = "open webui";
-          description = "local hosted LLMs";
-          icon = "hl-open-webui";
-          url = mkFqdn "open-webui";
-        }
-        {
           title = "paperless";
           description = "document manager";
           icon = "hl-paperless";
@@ -175,12 +169,6 @@ in
           url = mkFqdn "jellyfin";
         }
         {
-          title = "miniflux";
-          description = "rss feed";
-          icon = "hl-miniflux";
-          url = mkFqdn "miniflux";
-        }
-        {
           title = "navidrome";
           description = "music manager";
           icon = "hl-navidrome";
@@ -200,12 +188,6 @@ in
           description = "gitea server";
           icon = "hl-gitea";
           url = mkFqdn "gitea";
-        }
-        {
-          title = "hydra";
-          description = "nix continuous build system";
-          icon = "hl-nixos";
-          url = mkFqdn "hydra";
         }
         {
           title = "wastebin";
