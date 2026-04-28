@@ -80,6 +80,7 @@
             allowedIPs = [
               "${infra.hp-optiplex0.wg1IP}/32"
               "${infra.vps0.wg1IP}/32"
+              "${infra.vps1.wg1IP}/32"
             ];
             # Lab is behind NAT, so it must send keepalives to maintain the
             # mapping and allow VPS to initiate traffic back.

@@ -22,7 +22,10 @@
           name = "hetzner-cloud-vps0";
           publicKey = infra.vps0.wg1PublicKey;
           endpoint = "${infra.vps0.publicIP}:${toString infra.vps0.wg1Port}";
-          allowedIPs = [ "${infra.vps0.wg1IP}/32" ];
+          allowedIPs = [
+            "${infra.vps0.wg1IP}/32"
+            "${infra.lab.wg1IP}/32"
+          ];
           persistentKeepalive = 25;
         }
       ];
