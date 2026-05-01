@@ -13,6 +13,7 @@
     ./actual.nix
     ./audiobookshelf.nix
     ./avahi.nix
+    ./bazarr.nix
     ./calibre.nix
     ./fail2ban.nix
     ./gitea.nix
@@ -21,6 +22,7 @@
     ./home-assistant.nix
     ./immich.nix
     ./jellyfin.nix
+    ./lidarr.nix
     ./linkwarden.nix
     ./mealie.nix
     ./minecraft-server.nix
@@ -28,8 +30,13 @@
     ./nginx.nix
     ./paperless.nix
     ./prometheus.nix
+    ./prowlarr.nix
+    ./qbittorrent.nix
+    ./radarr.nix
+    ./readarr.nix
     ./searxng.nix
     ./smart.nix
+    ./sonarr.nix
     ./stirling-pdf.nix
     ./vaultwarden.nix
     ./wastebin.nix

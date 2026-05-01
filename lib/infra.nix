@@ -75,6 +75,13 @@
       wireguard = 9586;
       zfs = 9134;
     };
+    prowlarr = 9696;
+    sonarr = 8989;
+    radarr = 7878;
+    lidarr = 8686;
+    readarr = 8787;
+    bazarr = 6767;
+    qbittorrent = 8090;
     minecraft-server = 25565;
     paperless = 28981;
     glances = 61208;

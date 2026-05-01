@@ -177,6 +177,57 @@ in
       ];
     }
     {
+      name = "arr";
+      displayData = {
+        cols = 2;
+        itemSize = "large";
+      };
+      items = [
+        {
+          title = "prowlarr";
+          description = "indexer manager";
+          icon = "hl-prowlarr";
+          url = mkFqdn "prowlarr";
+        }
+        {
+          title = "sonarr";
+          description = "tv show collection manager";
+          icon = "hl-sonarr";
+          url = mkFqdn "sonarr";
+        }
+        {
+          title = "radarr";
+          description = "movie collection manager";
+          icon = "hl-radarr";
+          url = mkFqdn "radarr";
+        }
+        {
+          title = "lidarr";
+          description = "music collection manager";
+          icon = "hl-lidarr";
+          url = mkFqdn "lidarr";
+        }
+        {
+          title = "readarr";
+          description = "book collection manager";
+          icon = "hl-readarr";
+          url = mkFqdn "readarr";
+        }
+        {
+          title = "bazarr";
+          description = "subtitle manager";
+          icon = "hl-bazarr";
+          url = mkFqdn "bazarr";
+        }
+        {
+          title = "qbittorrent";
+          description = "torrent download client";
+          icon = "hl-qbittorrent";
+          url = mkFqdn "qbittorrent";
+        }
+      ];
+    }
+    {
       name = "sharing";
       displayData = {
         cols = 2;
