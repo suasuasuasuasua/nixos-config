@@ -14,6 +14,12 @@ resource "namecheap_domain_records" "sua_dev" {
   }
 
   record {
+    hostname = "staging"
+    type     = "A"
+    address  = local.hetzner_cloud_vps0_ip
+  }
+
+  record {
     hostname = "gitea"
     type     = "A"
     address  = local.hetzner_cloud_vps0_ip

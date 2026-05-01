@@ -42,7 +42,6 @@ in
       enableACME = true;
       forceSSL = true;
       acmeRoot = null;
-
       locations."/" = {
         index = "index.html";
         root = "/var/www/sua.dev";
@@ -53,14 +52,28 @@ in
       enableACME = true;
       forceSSL = true;
       acmeRoot = null;
-
+      globalRedirect = domain;
+    };
+    "staging.${domain}" = {
+      enableACME = true;
+      forceSSL = true;
+      acmeRoot = null;
+      locations."/" = {
+        index = "index.html";
+        root = "/var/www/staging.sua.dev";
+        tryFiles = "$uri $uri/ =404";
+      };
+    };
+    "www.staging.${domain}" = {
+      enableACME = true;
+      forceSSL = true;
+      acmeRoot = null;
       globalRedirect = domain;
     };
     "files.${domain}" = {
       enableACME = true;
       forceSSL = true;
       acmeRoot = null;
-
       locations."/" = {
         root = "/var/www/files";
         extraConfig = ''
@@ -75,7 +88,6 @@ in
       enableACME = true;
       forceSSL = true;
       acmeRoot = null;
-
       locations."/" = {
         # Proxy to Anubis on localhost. Anubis filters bots/scrapers with a
         # proof-of-work challenge, then forwards clean traffic to lab over the

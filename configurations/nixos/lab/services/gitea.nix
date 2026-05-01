@@ -19,15 +19,16 @@ let
     name = "gitea-runner-nix";
     tag = "latest";
     contents = with pkgs; [
-      nix
-      nodejs
       bash
+      cacert
       coreutils
       curl
+      dockerTools.fakeNss # adds /etc/passwd and /etc/group with root entry
       git
-      cacert
       gnutar
       gzip
+      nix
+      nodejs
       xz
     ];
     config = {
@@ -152,10 +153,10 @@ in
   # Runs before the runner starts and re-runs whenever the image derivation changes.
   systemd.services.load-gitea-runner-image = {
     description = "Load and publish gitea runner OCI image";
-    wantedBy = [ "gitea-runner-lab-runner.service" ];
+    wantedBy = [ "gitea-runner-default.service" ];
     after = [ "docker-registry.service" ];
     requires = [ "docker-registry.service" ];
-    before = [ "gitea-runner-lab-runner.service" ];
+    before = [ "gitea-runner-default.service" ];
     restartTriggers = [ runnerImage ];
     serviceConfig = {
       Type = "oneshot";
@@ -163,6 +164,9 @@ in
       ExecStart = pkgs.writeShellScript "load-gitea-runner-image" ''
         ${pkgs.podman}/bin/podman load -i ${runnerImage}
         ${pkgs.podman}/bin/podman push --tls-verify=false gitea-runner-nix:latest localhost:${toString infra.ports.dockerRegistry}/gitea-runner-nix:latest
+        ${pkgs.podman}/bin/podman push --tls-verify=false gitea-runner-nix:latest localhost:${toString infra.ports.dockerRegistry}/gitea-runner-nix:${
+          inputs.self.shortRev or "dirty"
+        }
       '';
     };
   };

@@ -9,6 +9,7 @@
     just.enable = true; # format just files
     mdformat.enable = true; # format markdown
     nixfmt.enable = true;
+    terraform.enable = true;
     yamlfmt.enable = true; # format yaml
   };
 
