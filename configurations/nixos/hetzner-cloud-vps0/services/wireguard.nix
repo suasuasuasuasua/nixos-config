@@ -4,7 +4,7 @@
 #   Personal devices use split-tunnel (AllowedIPs = 10.100.0.0/24) so they
 #   keep their normal internet access and only route VPN traffic here.
 #
-# wg1 (port 51821): Proxy tunnel to lab and VPS1 for public service forwarding.
+# wg1 (port 51821): Proxy tunnel to lab for public service forwarding.
 {
   config,
   infra,
@@ -89,11 +89,6 @@
           name = "lab";
           publicKey = infra.lab.wgPublicKey;
           allowedIPs = [ "${infra.lab.wg1IP}/32" ];
-        }
-        {
-          name = "hetzner-cloud-vps1";
-          publicKey = infra.vps1.wgPublicKey;
-          allowedIPs = [ "${infra.vps1.wg1IP}/32" ];
         }
         {
           name = "hp-optiplex0";

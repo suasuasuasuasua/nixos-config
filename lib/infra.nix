@@ -26,16 +26,11 @@
     wg0Subnet = "10.100.0.0/24";
     wg0Port = 51820;
     wg0PublicKey = "vbOVT6tJ33lEhDqVBVX6ScF3c7wmijF4vCTqg0ug0z4=";
-    # wg1: proxy tunnel to lab and VPS1 (10.101.0.0/24)
+    # wg1: proxy tunnel to lab (10.101.0.0/24)
     wg1IP = "10.101.0.1";
     wg1Subnet = "10.101.0.0/24";
     wg1Port = 51821;
     wg1PublicKey = "k2a0D0OUEsZQV6geIKOscTNVbiUVZquqh49zT6A1MRo=";
-  };
-  vps1 = {
-    wg1IP = "10.101.0.3";
-    wg1Port = 51820;
-    wgPublicKey = "X/sp+cUKT7sx9sNnFUXDLylXuIEBx8iTLyG4QBllfS0=";
   };
   ports = {
     http = 80;

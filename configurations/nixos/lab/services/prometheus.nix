@@ -91,14 +91,6 @@ in
         ];
       }
       {
-        job_name = "vps1";
-        static_configs = [
-          {
-            targets = [ "${infra.vps1.wg1IP}:${toString infra.ports.prometheus.exporter}" ];
-          }
-        ];
-      }
-      {
         job_name = "optiplex0";
         static_configs = [
           {

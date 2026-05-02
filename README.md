@@ -6,7 +6,7 @@
   - [`lab`](./configurations/nixos/lab/README.md) (custom build)
   - [`pi`](./configurations/nixos/pi/README.md) (Raspberry Pi Model 4B *(2GB RAM)*)
   - [`hetzner-cloud-vps0`](./configurations/nixos/hetzner-cloud-vps0/README.md) (CPX11)
-  - [`hetzner-cloud-vps1`](./configurations/nixos/hetzner-cloud-vps1/README.md) (CPX11)
+  - [`hp-optiplex0`](./configurations/nixos/hp-optiplex0/README.md) (5060)
 - Darwin
   - None right now...
 - Home Manager (Any OS)

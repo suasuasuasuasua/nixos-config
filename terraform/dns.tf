@@ -1,6 +1,5 @@
 locals {
   hetzner_cloud_vps0_ip = "5.78.184.15"
-  hetzner_cloud_vps1_ip = "5.78.145.94"
 }
 
 resource "namecheap_domain_records" "sua_dev" {
@@ -53,11 +52,5 @@ resource "namecheap_domain_records" "sua_dev" {
     hostname = "hetzner-cloud-vps0"
     type     = "A"
     address  = local.hetzner_cloud_vps0_ip
-  }
-
-  record {
-    hostname = "hetzner-cloud-vps1"
-    type     = "A"
-    address  = local.hetzner_cloud_vps1_ip
   }
 }

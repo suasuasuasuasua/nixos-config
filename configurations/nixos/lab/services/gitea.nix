@@ -137,8 +137,8 @@ in
     };
   };
 
-  # Container registry for lab and VPS1 runners.
-  # Bound to 0.0.0.0 so both localhost (lab runner) and 10.101.0.2 (VPS1 over WireGuard) can reach it.
+  # Container registry for runners.
+  # Bound to 0.0.0.0 so both localhost (lab runner) and others can reach it.
   # Port 5002 is only opened on wg1 in wireguard/default.nix, so it's not exposed publicly.
   services.dockerRegistry = {
     enable = true;

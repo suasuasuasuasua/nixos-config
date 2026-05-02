@@ -25,7 +25,7 @@
       # These ports are only open on wg1 — they remain closed on the public interface.
       interfaces.wg1.allowedTCPPorts = [
         infra.ports.https # nginx → Gitea
-        infra.ports.dockerRegistry # container registry for VPS1 runner image
+        infra.ports.dockerRegistry # container registry for custom images on runners
       ];
     };
 
@@ -80,7 +80,6 @@
             allowedIPs = [
               "${infra.hp-optiplex0.wg1IP}/32"
               "${infra.vps0.wg1IP}/32"
-              "${infra.vps1.wg1IP}/32"
             ];
             # Lab is behind NAT, so it must send keepalives to maintain the
             # mapping and allow VPS to initiate traffic back.

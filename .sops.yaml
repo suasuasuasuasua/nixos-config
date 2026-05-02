@@ -30,7 +30,6 @@ keys:
   - &pi age1l7pwlljdyq9jrtrl9c2sp2q0jt2kklydv03289ykpd9604susansvt2tjm
   - &hp-optiplex0 age1szgvv2wmmm2qljmndcqs3jx3zxdxu03xjf5x5kx4km0rzmrnjuksd3hy6y
   - &hetzner-cloud-vps0 age139f88emrmhu7wmx85zq0pn6y9h6f4rhwk7v2r5pze5jk82ye8vgqv4g6de
-  - &hetzner-cloud-vps1 age1mgprnw502csh4qku7fqrhhpen9cqnt5rrx8xfkvkdfhvfhren9aq2fptus
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
@@ -39,7 +38,6 @@ creation_rules:
           - *pi
           - *hp-optiplex0
           - *hetzner-cloud-vps0
-          - *hetzner-cloud-vps1
   - path_regex: configurations/nixos/lab/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
@@ -59,8 +57,3 @@ creation_rules:
       - age:
           - *lab
           - *hetzner-cloud-vps0
-  - path_regex: configurations/nixos/hetzner-cloud-vps1/[^/]+\.(yaml|json|env|ini)$
-    key_groups:
-      - age:
-          - *lab
-          - *hetzner-cloud-vps1

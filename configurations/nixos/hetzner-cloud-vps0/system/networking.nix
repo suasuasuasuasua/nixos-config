@@ -1,6 +1,6 @@
 { infra, ... }:
 {
-  # Allow VPS0 to forward packets between WireGuard peers (lab ↔ VPS1)
+  # Allow VPS0 to forward packets between WireGuard peers on wg1
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
   networking = {
@@ -22,7 +22,7 @@
       ];
       allowedUDPPorts = [
         infra.vps0.wg0Port # wg0: VPN for personal devices / lab / pi
-        infra.vps0.wg1Port # wg1: proxy tunnel to lab and VPS1
+        infra.vps0.wg1Port # wg1: proxy tunnel to lab and others
       ];
     };
   };
