@@ -37,14 +37,6 @@
         # NOTE: use firefox ESR for stability
         package = config.lib.nixGL.wrap pkgs.firefox-esr;
       };
-      vscode = {
-        enable = true;
-        package = pkgs.vscodium;
-        profiles = {
-          "Data Science".enable = true;
-          "Markup".enable = true;
-        };
-      };
     };
   };
 
