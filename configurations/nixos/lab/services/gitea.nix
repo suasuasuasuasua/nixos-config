@@ -27,6 +27,7 @@ let
       git
       gnutar
       gzip
+      jq
       nix
       nodejs
       xz
