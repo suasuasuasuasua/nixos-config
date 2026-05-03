@@ -10,14 +10,14 @@ jobs:
       id-token: write
       issues: write
       pull-requests: write
-    runs-on: ubuntu-latest
+    runs-on: nix
     steps:
       - uses: actions/checkout@v6
-      - uses: DeterminateSystems/determinate-nix-action@v3
       - name: Update flake.lock and open PR
         if: ${{ github.event_name != 'pull_request' }}
         env:
           GITEA_TOKEN: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
+          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
           GITEA_URL: ${{ github.server_url }}
           REPO: ${{ github.repository }}
           BRANCH: update_flake_lock_action
@@ -26,7 +26,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
           git checkout -B "$BRANCH"
-          nix flake update
+          nix flake update --option access-tokens "github.com=$GITHUB_TOKEN"
           git add flake.lock
           if git diff --cached --quiet; then
             echo "flake.lock is already up to date, nothing to do."
