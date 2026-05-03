@@ -25,7 +25,8 @@ jobs:
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
-          git checkout -B "$BRANCH"
+          git fetch origin "$BASE"
+          git checkout -B "$BRANCH" origin/"$BASE"
           nix flake update --option access-tokens "github.com=$GITHUB_TOKEN"
           git add flake.lock
           if git diff --cached --quiet; then
@@ -34,19 +35,16 @@ jobs:
           fi
           git commit -m "flake.lock: Update Nix inputs"
           git push origin "$BRANCH" --force
-          PULLS=$(curl -sw "\n%{http_code}" \
+          OPEN=$(curl -s \
             -H "Authorization: token $GITEA_TOKEN" \
-            "$GITEA_URL/api/v1/repos/$REPO/pulls?state=open&limit=50")
-          HTTP_CODE=$(echo "$PULLS" | tail -1)
-          BODY=$(echo "$PULLS" | head -n -1)
-          echo "List PRs HTTP $HTTP_CODE: $BODY"
-          OPEN=$(echo "$BODY" | jq "[.[] | select(.head.ref == \"$BRANCH\")] | length" 2>/dev/null || echo "0")
+            "$GITEA_URL/api/v1/repos/$REPO/pulls?state=open&limit=50" \
+            | jq "[.[] | select(.head.ref == \"$BRANCH\")] | length")
           if [ "$OPEN" = "0" ]; then
-            RESULT=$(curl -sw "\n%{http_code}" -X POST "$GITEA_URL/api/v1/repos/$REPO/pulls" \
+            curl -s -o /dev/null -X POST "$GITEA_URL/api/v1/repos/$REPO/pulls" \
               -H "Authorization: token $GITEA_TOKEN" \
               -H "Content-Type: application/json" \
-              -d "{\"title\":\"Update Nix flake inputs\",\"head\":\"$BRANCH\",\"base\":\"$BASE\"}")
-            echo "Create PR HTTP $(echo "$RESULT" | tail -1): $(echo "$RESULT" | head -n -1)"
+              -d "{\"title\":\"Update Nix flake inputs\",\"head\":\"$BRANCH\",\"base\":\"$BASE\"}"
+            echo "Pull request created."
           else
             echo "Pull request already open, branch updated."
           fi
