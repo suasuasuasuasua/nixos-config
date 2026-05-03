@@ -34,16 +34,19 @@ jobs:
           fi
           git commit -m "flake.lock: Update Nix inputs"
           git push origin "$BRANCH" --force
-          OPEN=$(curl -sf \
+          PULLS=$(curl -sw "\n%{http_code}" \
             -H "Authorization: token $GITEA_TOKEN" \
-            "$GITEA_URL/api/v1/repos/$REPO/pulls?state=open&head=${REPO%%/*}:$BRANCH&base=$BASE" \
-            | jq length)
+            "$GITEA_URL/api/v1/repos/$REPO/pulls?state=open&limit=50")
+          HTTP_CODE=$(echo "$PULLS" | tail -1)
+          BODY=$(echo "$PULLS" | head -n -1)
+          echo "List PRs HTTP $HTTP_CODE: $BODY"
+          OPEN=$(echo "$BODY" | jq "[.[] | select(.head.ref == \"$BRANCH\")] | length" 2>/dev/null || echo "0")
           if [ "$OPEN" = "0" ]; then
-            curl -sf -X POST "$GITEA_URL/api/v1/repos/$REPO/pulls" \
+            RESULT=$(curl -sw "\n%{http_code}" -X POST "$GITEA_URL/api/v1/repos/$REPO/pulls" \
               -H "Authorization: token $GITEA_TOKEN" \
               -H "Content-Type: application/json" \
-              -d "{\"title\":\"Update Nix flake inputs\",\"head\":\"$BRANCH\",\"base\":\"$BASE\",\"labels\":[\"dependencies\",\"automated\"]}"
-            echo "Pull request created."
+              -d "{\"title\":\"Update Nix flake inputs\",\"head\":\"$BRANCH\",\"base\":\"$BASE\"}")
+            echo "Create PR HTTP $(echo "$RESULT" | tail -1): $(echo "$RESULT" | head -n -1)"
           else
             echo "Pull request already open, branch updated."
           fi
