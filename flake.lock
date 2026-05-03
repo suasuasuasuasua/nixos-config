@@ -68,23 +68,6 @@
         "type": "github"
       }
     },
-    "brew-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1776478798,
-        "narHash": "sha256-ERStG27tf83VbCfYMxtDSs+sa8FUMJ/3jSu/QfX9rKE=",
-        "owner": "Homebrew",
-        "repo": "brew",
-        "rev": "3aae056b8d072624255bc8fd27febb7f327b2265",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Homebrew",
-        "ref": "5.1.7",
-        "repo": "brew",
-        "type": "github"
-      }
-    },
     "disko": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -429,38 +412,6 @@
         "type": "github"
       }
     },
-    "homebrew-cask": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1777829783,
-        "narHash": "sha256-IhDtJI3VwxzJ1/z9w3JdYkYhZUw8Dja6vKLEVZHqkUE=",
-        "owner": "homebrew",
-        "repo": "homebrew-cask",
-        "rev": "da84bc894f1242ca0ea5b5273e14edce26d596f5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "homebrew",
-        "repo": "homebrew-cask",
-        "type": "github"
-      }
-    },
-    "homebrew-core": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1777830181,
-        "narHash": "sha256-3VsURe22Ok74T78wd9YGUPEjLTlRUfVNtrNH7Dv3UW4=",
-        "owner": "homebrew",
-        "repo": "homebrew-core",
-        "rev": "cdab9ad041ad3a4677fdd5f43f56c7a5ddc9392d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "homebrew",
-        "repo": "homebrew-core",
-        "type": "github"
-      }
-    },
     "ixx": {
       "inputs": {
         "flake-utils": [
@@ -488,45 +439,6 @@
         "owner": "NuschtOS",
         "ref": "v0.1.1",
         "repo": "ixx",
-        "type": "github"
-      }
-    },
-    "nix-darwin": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1772129556,
-        "narHash": "sha256-Utk0zd8STPsUJPyjabhzPc5BpPodLTXrwkpXBHYnpeg=",
-        "owner": "nix-darwin",
-        "repo": "nix-darwin",
-        "rev": "ebec37af18215214173c98cf6356d0aca24a2585",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-darwin",
-        "ref": "nix-darwin-25.11",
-        "repo": "nix-darwin",
-        "type": "github"
-      }
-    },
-    "nix-homebrew": {
-      "inputs": {
-        "brew-src": "brew-src"
-      },
-      "locked": {
-        "lastModified": 1777250621,
-        "narHash": "sha256-WynkkG0hdZ5niYPJUbVg7oMfu8MVwGGzKZ6lKmfa+O8=",
-        "owner": "zhaofengli-wip",
-        "repo": "nix-homebrew",
-        "rev": "aeb2069920742d0d6570089e8b3b8620050bacf2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zhaofengli-wip",
-        "repo": "nix-homebrew",
         "type": "github"
       }
     },
@@ -621,22 +533,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-calibre-web": {
-      "locked": {
-        "lastModified": 1774632356,
-        "narHash": "sha256-KrrPv0I++KI5bj+5Ula0uAWWD2V0lNDlLIKXIYHyVmo=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "921aa794bfdbe9221de72caffd02bd8c5f14aa29",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "refs/pull/503253/head",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1777168982,
@@ -649,22 +545,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "type": "github"
-      }
-    },
-    "nixpkgs-unstable": {
-      "locked": {
-        "lastModified": 1777578337,
-        "narHash": "sha256-Ad49moKWeXtKBJNy2ebiTQUEgdLyvGmTeykAQ9xM+Z4=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "15f4ee454b1dce334612fa6843b3e05cf546efab",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
         "type": "github"
       }
     },
@@ -890,17 +770,11 @@
         "firefox-addons": "firefox-addons",
         "git-hooks-nix": "git-hooks-nix",
         "home-manager": "home-manager",
-        "homebrew-cask": "homebrew-cask",
-        "homebrew-core": "homebrew-core",
-        "nix-darwin": "nix-darwin",
-        "nix-homebrew": "nix-homebrew",
         "nix-index-database": "nix-index-database",
         "nix-minecraft": "nix-minecraft",
         "nixgl": "nixgl",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",
-        "nixpkgs-calibre-web": "nixpkgs-calibre-web",
-        "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim-config": "nixvim-config",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",

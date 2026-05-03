@@ -19,13 +19,6 @@
 
   # Adds pkgs.unstable == inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}
   # unstable = inputs.nixpkgs-unstable.legacyPackages.${final.system};
-  unstable = final: _: {
-    unstable = import inputs.nixpkgs-unstable {
-      inherit (final) system;
-
-      config.allowUnfree = true; # for unstable packages and extensions
-    };
-  };
 
   # nix user repository
   # NOTE: add it explicitly so i can set config options

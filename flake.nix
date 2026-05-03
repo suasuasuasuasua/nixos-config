@@ -1,5 +1,5 @@
 {
-  description = "suasuasuasuasua's nixos configuration";
+  description = "sua's nixos configuration";
 
   inputs = {
     disko.url = "github:nix-community/disko/latest";
@@ -8,24 +8,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +20,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixgl.url = "github:nix-community/nixGL";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim-config.url = "git+https://gitea.sua.dev/sua/nixvim";
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -46,15 +32,12 @@
     };
     systems.url = "github:nix-systems/default";
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    # patches
-    nixpkgs-calibre-web.url = "github:NixOS/nixpkgs/refs/pull/503253/head";
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      nix-darwin,
       home-manager,
       stylix,
       systems,
@@ -63,7 +46,7 @@
     let
       inherit (self) outputs;
 
-      lib = nixpkgs.lib // nix-darwin.lib // home-manager.lib;
+      lib = nixpkgs.lib // home-manager.lib;
       # This is a function that generates an attribute by calling a function you
       # pass to it, with each system as an argument
       forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
@@ -138,35 +121,6 @@
           };
         };
 
-      # # Helper function for making darwin systems
-      # mkDarwinSystem =
-      #   {
-      #     name,
-      #     system,
-      #     userConfigs,
-      #     enableHomeManager ? true,
-      #   }:
-      #   {
-      #     ${name} = lib.darwinSystem {
-      #       modules = [
-      #         ./configurations/darwin/${name}
-      #         stylix.darwinModules.stylix
-      #       ]
-      #       ++ lib.optionals enableHomeManager [
-      #         home-manager.darwinModules.home-manager
-      #         (mkHomeManagerConfig system userConfigs)
-      #       ];
-      #       # Pass these arguments through the modules
-      #       specialArgs = {
-      #         inherit
-      #           self
-      #           inputs
-      #           outputs
-      #           userConfigs
-      #           ;
-      #       };
-      #     };
-      #   };
       # Helper function for making standalone home-manager configurations
       mkHomeConfiguration =
         {
