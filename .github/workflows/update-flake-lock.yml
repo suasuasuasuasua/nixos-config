@@ -14,14 +14,36 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: DeterminateSystems/determinate-nix-action@v3
-      - name: Update flake.lock
+      - name: Update flake.lock and open PR
         if: ${{ github.event_name != 'pull_request' }}
-        uses: DeterminateSystems/update-flake-lock@main
-        with:
-          pr-title: "Update Nix flake inputs" # Title of PR to be created
-          pr-labels: | # Labels to be set on the PR
-            dependencies
-            automated
-          token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
-      - name: Print PR number
-        run: echo Pull request number is ${{ steps.update.outputs.pull-request-number }}.
+        env:
+          GITEA_TOKEN: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
+          GITEA_URL: ${{ github.server_url }}
+          REPO: ${{ github.repository }}
+          BRANCH: update_flake_lock_action
+          BASE: main
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git checkout -B "$BRANCH"
+          nix flake update
+          git add flake.lock
+          if git diff --cached --quiet; then
+            echo "flake.lock is already up to date, nothing to do."
+            exit 0
+          fi
+          git commit -m "flake.lock: Update Nix inputs"
+          git push origin "$BRANCH" --force
+          OPEN=$(curl -sf \
+            -H "Authorization: token $GITEA_TOKEN" \
+            "$GITEA_URL/api/v1/repos/$REPO/pulls?state=open&head=${REPO%%/*}:$BRANCH&base=$BASE" \
+            | jq length)
+          if [ "$OPEN" = "0" ]; then
+            curl -sf -X POST "$GITEA_URL/api/v1/repos/$REPO/pulls" \
+              -H "Authorization: token $GITEA_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "{\"title\":\"Update Nix flake inputs\",\"head\":\"$BRANCH\",\"base\":\"$BASE\",\"labels\":[\"dependencies\",\"automated\"]}"
+            echo "Pull request created."
+          else
+            echo "Pull request already open, branch updated."
+          fi
