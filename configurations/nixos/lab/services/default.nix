@@ -11,6 +11,7 @@
 
     ./acme.nix
     ./actual.nix
+    ./anki-sync-server.nix
     ./audiobookshelf.nix
     ./avahi.nix
     ./calibre.nix

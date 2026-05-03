@@ -71,6 +71,7 @@
       zfs = 9134;
     };
     minecraft-server = 25565;
+    anki-sync-server = 27701;
     paperless = 28981;
     glances = 61208;
   };
