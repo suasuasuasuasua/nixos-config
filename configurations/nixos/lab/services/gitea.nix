@@ -97,7 +97,7 @@ in
           INITIAL_COMMIT = "always";
           CRUD_ACTIONS = "pubkey, twofa, parentsigned";
           WIKI = "never";
-          MERGES = "pubkey, twofa, basesigned, commitssigned";
+          MERGES = "pubkey, twofa, basesigned";
         };
         security = {
           # Two proxy hops: lab nginx (127.0.0.1) + VPS0 nginx (10.101.0.1 over WireGuard).
