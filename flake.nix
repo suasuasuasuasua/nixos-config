@@ -116,6 +116,7 @@
                 outputs
                 userConfigs
                 infra
+                users
                 ;
             };
           };
