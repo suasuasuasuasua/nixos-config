@@ -15,9 +15,9 @@
   };
   hp-optiplex0 = {
     lanIP = "192.168.0.251";
+    wg0IP = "10.100.0.9";
     wg1IP = "10.101.0.4";
-    wg1Port = 51820;
-    wg1PublicKey = "4/h51BZcx+kRFW43X4yoNPmoECX7HYnEn9HFQ+O+zzM=";
+    wgPublicKey = "4/h51BZcx+kRFW43X4yoNPmoECX7HYnEn9HFQ+O+zzM=";
   };
   vps0 = {
     publicIP = "5.78.184.15";

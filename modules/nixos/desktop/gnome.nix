@@ -14,13 +14,10 @@ in
 
   config = lib.mkIf cfg.enable {
     services = {
-      # TODO: 25.11 xserver will no longer be an option
-      xserver = {
-        desktopManager.gnome.enable = true;
-        displayManager.gdm = {
-          enable = true;
-          autoSuspend = false;
-        };
+      desktopManager.gnome.enable = true;
+      displayManager.gdm = {
+        enable = true;
+        autoSuspend = false;
       };
 
       gnome.core-apps.enable = true;

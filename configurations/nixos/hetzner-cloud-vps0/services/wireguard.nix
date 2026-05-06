@@ -75,6 +75,11 @@
           publicKey = infra.pi.wg0PublicKey;
           allowedIPs = [ "${infra.pi.wg0IP}/32" ];
         }
+        {
+          name = "hp-optiplex0";
+          publicKey = infra.hp-optiplex0.wgPublicKey;
+          allowedIPs = [ "${infra.hp-optiplex0.wg0IP}/32" ];
+        }
       ];
     };
 
@@ -92,7 +97,7 @@
         }
         {
           name = "hp-optiplex0";
-          publicKey = infra.hp-optiplex0.wg1PublicKey;
+          publicKey = infra.hp-optiplex0.wgPublicKey;
           allowedIPs = [ "${infra.hp-optiplex0.wg1IP}/32" ];
         }
       ];
