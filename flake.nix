@@ -39,145 +39,48 @@
       self,
       nixpkgs,
       home-manager,
-      stylix,
       systems,
       ...
     }@inputs:
     let
-      inherit (self) outputs;
-
       lib = nixpkgs.lib // home-manager.lib;
-      # This is a function that generates an attribute by calling a function you
-      # pass to it, with each system as an argument
       forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
       pkgsFor = lib.genAttrs (import systems) (system: nixpkgs.legacyPackages.${system});
-
-      # Eval the treefmt modules from ./treefmt.nix
       treefmtEval = forEachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
 
-      # Helper function for making nixos and darwin user configurations
-      mkUsers =
-        system: userConfigs:
-        let
-          # Define packages based on the system architecture
-          pkgs = pkgsFor.${system};
-
-          # Inner function to collect the configuration for each user
-          mkUser =
-            acc:
-            # deconstruct each user to find their username
-            { username, ... }:
-            {
-              ${username} = import ./configurations/home/base.nix {
-                inherit lib pkgs username;
-              };
-            }
-            // acc;
-        in
-        # build the attrset
-        # https://noogle.dev/f/builtins/foldl'
-        builtins.foldl' mkUser { } userConfigs;
-      # Helper function for setting up home manager
-      mkHomeManagerConfig = system: userConfigs: {
-        home-manager = {
-          backupFileExtension = "bak";
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = { inherit inputs outputs userConfigs; };
-
-          users = mkUsers system userConfigs;
-        };
-      };
-
-      # Helper function for making nixos systems
-      mkNixosSystem =
-        {
-          name,
-          system,
-          userConfigs,
-          enableHomeManager ? true,
-        }:
-        {
-          ${name} = lib.nixosSystem {
-            modules = [
-              ./configurations/nixos/${name}
-              stylix.nixosModules.stylix
-            ]
-            ++ lib.optionals enableHomeManager [
-              home-manager.nixosModules.home-manager
-              (mkHomeManagerConfig system userConfigs)
-            ];
-            # Pass these arguments through the modules
-            specialArgs = {
-              inherit
-                inputs
-                outputs
-                userConfigs
-                infra
-                users
-                ;
-            };
-          };
-        };
-
-      # Helper function for making standalone home-manager configurations
-      mkHomeConfiguration =
-        {
-          name,
-          system,
-          userConfig,
-        }:
-        let
-          inherit (userConfig) username;
-
-          pkgs = pkgsFor.${system};
-        in
-        {
-          ${name} = lib.homeManagerConfiguration {
-            inherit pkgs;
-            modules = [
-              stylix.homeModules.stylix
-
-              ./configurations/home/base.nix
-              ./configurations/home/nixpkgs.nix
-              ./configurations/home/${name}
-            ];
-            extraSpecialArgs = {
-              inherit
-                inputs
-                outputs
-                userConfig
-                username
-                ;
-            };
-          };
-        };
-
-      # Read the users from a file
       users = import ./lib/users.nix;
       infra = import ./lib/infra.nix;
+
+      inherit
+        (import ./lib/mk.nix {
+          inherit
+            inputs
+            lib
+            pkgsFor
+            users
+            infra
+            ;
+        })
+        mkNixosSystem
+        mkHomeConfiguration
+        ;
     in
     {
       inherit lib;
 
-      formatter = forEachSystem (
-        pkgs: treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.wrapper
-      );
+      formatter = lib.mapAttrs (_: eval: eval.config.build.wrapper) treefmtEval;
 
-      checks = forEachSystem (pkgs: {
-        formatting = treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.check self;
-        git-hooks-check = inputs.git-hooks-nix.lib.${pkgs.stdenv.hostPlatform.system}.run {
+      checks = lib.mapAttrs (system: eval: {
+        formatting = eval.config.build.check self;
+        git-hooks-check = inputs.git-hooks-nix.lib.${system}.run {
           src = ./.;
           imports = [ ./git-hooks.nix ];
         };
-      });
+      }) treefmtEval;
+
       devShells = forEachSystem (pkgs: {
-        default = import ./shell.nix {
-          inherit pkgs self;
-        };
-        ci = import ./shell-ci.nix {
-          inherit pkgs self;
-        };
+        default = import ./shell.nix { inherit pkgs self; };
+        ci = import ./shell-ci.nix { inherit pkgs self; };
       });
 
       # Your custom packages
@@ -215,6 +118,7 @@
           }
         ]
       );
+
       homeConfigurations = lib.mergeAttrsList (
         map mkHomeConfiguration [
           {
