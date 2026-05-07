@@ -11,28 +11,22 @@ let
   serviceName = "jellyfin";
 in
 {
-  services.jellyfin = {
-    enable = true;
-  };
+  services.jellyfin.enable = true;
 
   users.users.jellyfin.extraGroups = [ "samba" ];
 
-  environment.systemPackages = with pkgs; [
-    jellyfin
-    jellyfin-web
-    jellyfin-ffmpeg
+  environment.systemPackages = [
+    pkgs.jellyfin
+    pkgs.jellyfin-web
+    pkgs.jellyfin-ffmpeg
   ];
 
-  services.nginx.virtualHosts = {
-    "${serviceName}.${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      acmeRoot = null;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString infra.ports.jellyfin}";
-      };
+  services.nginx.virtualHosts."${serviceName}.${domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    acmeRoot = null;
+    locations."/".proxyPass = "http://127.0.0.1:${toString infra.ports.jellyfin}";
 
-      serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
-    };
+    serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
   };
 }

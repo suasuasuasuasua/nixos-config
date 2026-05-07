@@ -18,15 +18,11 @@ in
     };
   };
 
-  services.nginx.virtualHosts = {
-    "${hostName}.${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      acmeRoot = null;
+  services.nginx.virtualHosts."${hostName}.${domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    acmeRoot = null;
 
-      serverAliases = [
-        "${serviceName}.${hostName}.${domain}"
-      ];
-    };
+    serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
   };
 }

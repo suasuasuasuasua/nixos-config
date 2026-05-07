@@ -35,7 +35,6 @@
       bat.enable = true; # better cat
       btop.enable = true; # system monitor
       comma.enable = true; # try out programs with `,`
-      devenv.enable = true; # easy dev environemnts
       direnv.enable = true; # switch dev environments with .envrc files
       fzf.enable = true; # fuzzy finder
       # git.enable = true; # source control
@@ -55,13 +54,12 @@
   };
 
   home = {
-    packages = with pkgs; [
-      lazygit
+    packages = [
+      pkgs.lazygit
+      pkgs.devenv
     ];
 
-    sessionVariables = {
-      "EDITOR" = "vim";
-    };
+    sessionVariables.EDITOR = "vim";
   };
 
   stylix.targets = {

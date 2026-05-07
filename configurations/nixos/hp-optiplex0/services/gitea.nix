@@ -12,11 +12,7 @@ let
   tokenFile = config.sops.secrets."gitea/token".path;
 in
 {
-  sops.secrets = {
-    "gitea/token" = {
-      sopsFile = "${inputs.self}/secrets/secrets.yaml";
-    };
-  };
+  sops.secrets."gitea/token".sopsFile = "${inputs.self}/secrets/secrets.yaml";
 
   services.gitea-actions-runner.instances = {
     default = {

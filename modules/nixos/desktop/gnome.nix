@@ -21,64 +21,61 @@ in
       };
 
       gnome.core-apps.enable = true;
-      udev.packages = with pkgs; [
-        gnome-settings-daemon
-      ];
+      udev.packages = [ pkgs.gnome-settings-daemon ];
 
     };
     programs.dconf.enable = true;
 
     # Add these gnome packages
-    environment.systemPackages =
-      (with pkgs; [
-        eog # image viewer
-        totem # video player
-        evince # document viewer
-        baobab # disk usage analyzer
-        file-roller # archive manager
-        nautilus # file browser
-        dialect # translator
-        shotcut # video editor
-        libreoffice-qt # office suite
-        hunspell # spell check (for office suite)
-        hunspellDicts.en_US
-        gnome-calendar
-        gnome-disk-utility
-        lollypop
-        gnome-boxes
-        gnome-tweaks
-      ])
-      ++ (with pkgs.gnomeExtensions; [
-        # Add these gnome extensions
-        tray-icons-reloaded
-        open-bar
-      ]);
+    environment.systemPackages = [
+      pkgs.eog # image viewer
+      pkgs.totem # video player
+      pkgs.evince # document viewer
+      pkgs.baobab # disk usage analyzer
+      pkgs.file-roller # archive manager
+      pkgs.nautilus # file browser
+      pkgs.dialect # translator
+      pkgs.shotcut # video editor
+      pkgs.libreoffice-qt # office suite
+      pkgs.hunspell # spell check (for office suite)
+      pkgs.hunspellDicts.en_US
+      pkgs.gnome-calendar
+      pkgs.gnome-disk-utility
+      pkgs.lollypop
+      pkgs.gnome-boxes
+      pkgs.gnome-tweaks
+    ]
+    ++ [
+      # Add these gnome extensions
+      pkgs.gnomeExtensions.tray-icons-reloaded
+      pkgs.gnomeExtensions.open-bar
+    ];
 
     # Remove these gnome packages from the default installation
-    environment.gnome.excludePackages = with pkgs; [
-      cheese # photo booth
-      epiphany # web browser
-      gedit # text editor
-      simple-scan # document scanner
-      yelp # help viewer
-      geary # email client
-      seahorse # password manager
+    environment.gnome.excludePackages = [
+      pkgs.cheese # photo booth
+      pkgs.epiphany # web browser
+      pkgs.gedit # text editor
+      pkgs.simple-scan # document scanner
+      pkgs.yelp # help viewer
+      pkgs.geary # email client
+      pkgs.seahorse # password manager
 
       # these should be self explanatory
-      gnome-calculator
-      gnome-characters
-      gnome-clocks
-      gnome-contacts
-      gnome-font-viewer
-      gnome-logs
-      gnome-maps
-      gnome-music
-      gnome-photos
-      gnome-screenshot
-      gnome-system-monitor
-      gnome-tour
-      gnome-weather
-      gnome-connections
+      pkgs.gnome-calculator
+      pkgs.gnome-characters
+      pkgs.gnome-clocks
+      pkgs.gnome-contacts
+      pkgs.gnome-font-viewer
+      pkgs.gnome-logs
+      pkgs.gnome-maps
+      pkgs.gnome-music
+      pkgs.gnome-photos
+      pkgs.gnome-screenshot
+      pkgs.gnome-system-monitor
+      pkgs.gnome-tour
+      pkgs.gnome-weather
+      pkgs.gnome-connections
     ];
   };
 }

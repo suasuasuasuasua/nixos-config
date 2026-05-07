@@ -14,57 +14,50 @@ in
 
   config = lib.mkIf cfg.enable {
     services = {
-      displayManager = {
-        sddm = {
-          enable = true;
-          wayland.enable = true;
-          autoNumlock = true;
-        };
+      displayManager.sddm = {
+        enable = true;
+        wayland.enable = true;
+        autoNumlock = true;
       };
 
       desktopManager.plasma6.enable = true;
       displayManager.defaultSession = "plasma";
-
     };
 
     environment = {
-      sessionVariables = {
-        PLASMA_USE_QT_SCALING = "1";
-      };
+      sessionVariables.PLASMA_USE_QT_SCALING = "1";
 
       # Add these kde packages
-      systemPackages =
-        with pkgs;
-        [
-          application-title-bar
-          dmidecode
-          fwupd
-          hunspell # spell check
-          hunspellDicts.en_US # US english package
-          libreoffice-qt # office suite -- calligra wasn't working
-          plasmusic-toolbar
-        ]
-        ++ (with pkgs.kdePackages; [
-          elisa # music player
-          filelight # disk usage
-          haruna # video player
-          kate # text editor
-          kdeconnect-kde # connect with devices
-          kgpg # gnupg client
-          kmail # mail client
-          kmail-account-wizard # mail client helper
-          krita # photo editing
-          kwin # window manager (not sure why not installed by default?)
-          merkuro # app suite
-          plasma-thunderbolt # thunderbolt panel
-          yakuake # drop down terminal
-        ]);
+      systemPackages = [
+        pkgs.application-title-bar
+        pkgs.dmidecode
+        pkgs.fwupd
+        pkgs.hunspell # spell check
+        pkgs.hunspellDicts.en_US # US english package
+        pkgs.libreoffice-qt # office suite -- calligra wasn't working
+        pkgs.plasmusic-toolbar
+      ]
+      ++ [
+        pkgs.kdePackages.elisa # music player
+        pkgs.kdePackages.filelight # disk usage
+        pkgs.kdePackages.haruna # video player
+        pkgs.kdePackages.kate # text editor
+        pkgs.kdePackages.kdeconnect-kde # connect with devices
+        pkgs.kdePackages.kgpg # gnupg client
+        pkgs.kdePackages.kmail # mail client
+        pkgs.kdePackages.kmail-account-wizard # mail client helper
+        pkgs.kdePackages.krita # photo editing
+        pkgs.kdePackages.kwin # window manager (not sure why not installed by default?)
+        pkgs.kdePackages.merkuro # app suite
+        pkgs.kdePackages.plasma-thunderbolt # thunderbolt panel
+        pkgs.kdePackages.yakuake # drop down terminal
+      ];
 
-      plasma6.excludePackages = with pkgs.kdePackages; [
-        plasma-browser-integration
-        oxygen # app style
-        kwrited # text editor
-        kdevelop # text editor / ide
+      plasma6.excludePackages = [
+        pkgs.kdePackages.plasma-browser-integration
+        pkgs.kdePackages.oxygen # app style
+        pkgs.kdePackages.kwrited # text editor
+        pkgs.kdePackages.kdevelop # text editor / ide
       ];
     };
 

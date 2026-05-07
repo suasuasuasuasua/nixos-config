@@ -6,9 +6,8 @@
   ...
 }:
 {
-  sops.secrets."wireguard/private_key" = {
-    sopsFile = "${inputs.self}/configurations/nixos/hp-optiplex0/secrets.yaml";
-  };
+  sops.secrets."wireguard/private_key".sopsFile =
+    "${inputs.self}/configurations/nixos/hp-optiplex0/secrets.yaml";
 
   networking.wireguard = {
     enable = true;
@@ -54,7 +53,7 @@
   # Trust the wg0 VPN interface — allows all traffic from 10.100.0.0/24 peers
   networking.firewall.trustedInterfaces = [ "wg0" ];
 
-  environment.systemPackages = with pkgs; [
-    wireguard-tools
+  environment.systemPackages = [
+    pkgs.wireguard-tools
   ];
 }

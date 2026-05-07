@@ -9,19 +9,13 @@ in
     port = infra.ports.glances;
 
     enable = true;
-    extraArgs = [
-      "--webserver"
-    ];
+    extraArgs = [ "--webserver" ];
   };
 
-  services.nginx.virtualHosts = {
-    "${serviceName}.${hostName}.${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      acmeRoot = null;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString infra.ports.glances}";
-      };
-    };
+  services.nginx.virtualHosts."${serviceName}.${hostName}.${domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    acmeRoot = null;
+    locations."/".proxyPass = "http://127.0.0.1:${toString infra.ports.glances}";
   };
 }

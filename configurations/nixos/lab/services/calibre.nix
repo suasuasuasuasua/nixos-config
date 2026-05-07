@@ -46,17 +46,13 @@ in
     calibre-web.extraGroups = [ "samba" ];
   };
 
-  services.nginx.virtualHosts = {
-    "${serviceName}.${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      acmeRoot = null;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString infra.ports.calibre.web}";
-      };
+  services.nginx.virtualHosts."${serviceName}.${domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    acmeRoot = null;
+    locations."/".proxyPass = "http://127.0.0.1:${toString infra.ports.calibre.web}";
 
-      serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
-    };
+    serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
   };
 
   environment.systemPackages = [ pkgs.calibre ];

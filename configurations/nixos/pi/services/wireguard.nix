@@ -8,9 +8,8 @@
   ...
 }:
 {
-  sops.secrets."wireguard/private_key" = {
-    sopsFile = "${inputs.self}/configurations/nixos/pi/secrets.yaml";
-  };
+  sops.secrets."wireguard/private_key".sopsFile =
+    "${inputs.self}/configurations/nixos/pi/secrets.yaml";
 
   networking.wireguard = {
     enable = true;
@@ -33,7 +32,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    wireguard-tools
+  environment.systemPackages = [
+    pkgs.wireguard-tools
   ];
 }

@@ -1,6 +1,4 @@
 { outputs, ... }:
 {
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-  };
+  nixpkgs.overlays = builtins.attrValues outputs.overlays;
 }

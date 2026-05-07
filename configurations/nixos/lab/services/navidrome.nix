@@ -13,6 +13,8 @@ let
   environmentFile = config.sops.secrets."navidrome/environment".path;
 in
 {
+  sops.secrets."navidrome/environment".sopsFile = "${inputs.self}/secrets/secrets.yaml";
+
   services.navidrome = {
     inherit environmentFile;
     enable = true;
@@ -28,22 +30,12 @@ in
 
   users.users.navidrome.extraGroups = [ "samba" ];
 
-  sops.secrets = {
-    "navidrome/environment" = {
-      sopsFile = "${inputs.self}/secrets/secrets.yaml";
-    };
-  };
+  services.nginx.virtualHosts."${serviceName}.${domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    acmeRoot = null;
+    locations."/".proxyPass = "http://127.0.0.1:${toString infra.ports.navidrome}";
 
-  services.nginx.virtualHosts = {
-    "${serviceName}.${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      acmeRoot = null;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString infra.ports.navidrome}";
-      };
-
-      serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
-    };
+    serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
   };
 }

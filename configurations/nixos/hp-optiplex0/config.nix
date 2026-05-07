@@ -5,9 +5,7 @@
     "${inputs.self}/modules/nixos/development"
   ];
 
-  environment.variables = {
-    EDITOR = "nvim";
-  };
+  environment.variables.EDITOR = "nvim";
 
   environment.systemPackages = [
     pkgs.direnv

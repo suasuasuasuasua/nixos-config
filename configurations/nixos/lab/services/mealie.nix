@@ -12,16 +12,12 @@ in
     settings = { };
   };
 
-  services.nginx.virtualHosts = {
-    "${serviceName}.${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      acmeRoot = null;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString infra.ports.mealie}";
-      };
+  services.nginx.virtualHosts."${serviceName}.${domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    acmeRoot = null;
+    locations."/".proxyPass = "http://127.0.0.1:${toString infra.ports.mealie}";
 
-      serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
-    };
+    serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
   };
 }

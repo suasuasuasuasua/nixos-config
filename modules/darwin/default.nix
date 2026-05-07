@@ -28,9 +28,6 @@
     in
     formatted;
 
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-  };
-
-  nix.enable = false;
+  nixpkgs.overlays = builtins.attrValues outputs.overlays;
+  nix.enable = true;
 }

@@ -14,16 +14,14 @@ in
   # the correct SNI when establishing the HTTPS connection to lab's nginx.
   networking.hosts."${infra.lab.wg1IP}" = [ "gitea.${domain}" ];
 
-  services.anubis.instances."gitea" = {
-    settings = {
-      TARGET = "https://gitea.${domain}";
-      BIND = "/run/anubis/anubis-gitea/anubis.sock";
-      METRICS_BIND = "/run/anubis/anubis-gitea/anubis-metrics.sock";
-      SERVE_ROBOTS_TXT = true;
-      OG_PASSTHROUGH = true;
-      DIFFICULTY = 5;
-      WEBMASTER_EMAIL = "justinhoang@sua.dev";
-    };
+  services.anubis.instances."gitea".settings = {
+    TARGET = "https://gitea.${domain}";
+    BIND = "/run/anubis/anubis-gitea/anubis.sock";
+    METRICS_BIND = "/run/anubis/anubis-gitea/anubis-metrics.sock";
+    SERVE_ROBOTS_TXT = true;
+    OG_PASSTHROUGH = true;
+    DIFFICULTY = 5;
+    WEBMASTER_EMAIL = "justinhoang@sua.dev";
   };
 
   users.users.nginx.extraGroups = [ config.users.groups.anubis.name ];

@@ -14,12 +14,10 @@
 }:
 {
   sops.secrets = {
-    "wireguard/wg0_private_key" = {
-      sopsFile = "${inputs.self}/configurations/nixos/hetzner-cloud-vps0/secrets.yaml";
-    };
-    "wireguard/wg1_private_key" = {
-      sopsFile = "${inputs.self}/configurations/nixos/hetzner-cloud-vps0/secrets.yaml";
-    };
+    "wireguard/wg0_private_key".sopsFile =
+      "${inputs.self}/configurations/nixos/hetzner-cloud-vps0/secrets.yaml";
+    "wireguard/wg1_private_key".sopsFile =
+      "${inputs.self}/configurations/nixos/hetzner-cloud-vps0/secrets.yaml";
   };
 
   networking.wireguard = {
@@ -104,7 +102,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    wireguard-tools
+  environment.systemPackages = [
+    pkgs.wireguard-tools
   ];
 }

@@ -30,8 +30,8 @@ in
       extraGroups = [ "wheel" ];
 
       openssh.authorizedKeys.keys = with users.justinhoang.sshKeys; [
-        mbp
         lab
+        mbp
       ];
     };
     justinhoang = {
@@ -40,11 +40,11 @@ in
       extraGroups = [ "wheel" ];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = with users.justinhoang.sshKeys; [
+        fedora
+        ilmgf
+        ipadProM2
         iphone15
         mbp
-        ilmgf
-        fedora
-        ipadProM2
       ];
     };
   };

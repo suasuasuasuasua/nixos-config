@@ -13,23 +13,23 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = [
       # docker # TODO: either use nixpkgs version (with service) or brew
-      btop # monitor of resources
-      fastfetch # system information tool
-      fd # find alternative
-      ffmpeg # solution to record, convert and stream audio and video
-      just # save command line configs
-      macpm # perf monitoring cli tool for apple silicon
-      manix # cli tool for nix packages
-      nix-output-monitor # processes output of nix commands to show information
-      nvd # nix/nixos package version diff tool
-      onefetch # git repository summary on your terminal
-      ripgrep
-      tea # gitea command line tool helper
-      tree
-      yt-dlp # cli tool to download videos from YouTube.com and other sites
-      zstd # Zstandard real-time compression algorithm
+      pkgs.btop # monitor of resources
+      pkgs.fastfetch # system information tool
+      pkgs.fd # find alternative
+      pkgs.ffmpeg # solution to record, convert and stream audio and video
+      pkgs.just # save command line configs
+      pkgs.macpm # perf monitoring cli tool for apple silicon
+      pkgs.manix # cli tool for nix packages
+      pkgs.nix-output-monitor # processes output of nix commands to show information
+      pkgs.nvd # nix/nixos package version diff tool
+      pkgs.onefetch # git repository summary on your terminal
+      pkgs.ripgrep
+      pkgs.tea # gitea command line tool helper
+      pkgs.tree
+      pkgs.yt-dlp # cli tool to download videos from YouTube.com and other sites
+      pkgs.zstd # Zstandard real-time compression algorithm
     ];
   };
 }

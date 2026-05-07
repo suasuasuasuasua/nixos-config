@@ -17,16 +17,16 @@ in
   config = lib.mkIf cfg.enable {
     programs.tmux = {
       enable = true;
-      plugins = with pkgs.tmuxPlugins; [
+      plugins = [
         # find and open files in the current buffer
         # prefix+f
-        fpp
+        pkgs.tmuxPlugins.fpp
         # save sessions past system restarts
         # prefix+ctrl+s to save
         # prefix+ctrl+r to restore
         {
 
-          plugin = resurrect;
+          plugin = pkgs.tmuxPlugins.resurrect;
           extraConfig =
             # tmux
             ''
@@ -42,7 +42,7 @@ in
         }
         # continuous saving and start of tmux
         {
-          plugin = continuum;
+          plugin = pkgs.tmuxPlugins.continuum;
           extraConfig =
             # tmux
             ''
@@ -53,12 +53,12 @@ in
             '';
         }
         # sensible config
-        sensible
+        pkgs.tmuxPlugins.sensible
         # move between vim and tmux windows
         # ctrl+[hjkl\]
-        vim-tmux-navigator
+        pkgs.tmuxPlugins.vim-tmux-navigator
         # better copy and paste functionality
-        yank
+        pkgs.tmuxPlugins.yank
       ];
 
       sensibleOnTop = true;

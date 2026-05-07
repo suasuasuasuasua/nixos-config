@@ -11,11 +11,7 @@ let
   environmentFile = config.sops.secrets."vaultwarden/environmentFile".path;
 in
 {
-  sops.secrets = {
-    "vaultwarden/environmentFile" = {
-      sopsFile = "${inputs.self}/secrets/secrets.yaml";
-    };
-  };
+  sops.secrets."vaultwarden/environmentFile".sopsFile = "${inputs.self}/secrets/secrets.yaml";
 
   services.vaultwarden = {
     inherit environmentFile;
@@ -31,17 +27,15 @@ in
     };
   };
 
-  services.nginx.virtualHosts = {
-    "${serviceName}.${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      acmeRoot = null;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString infra.ports.vaultwarden}";
-        proxyWebsockets = true; # needed if you need to use WebSocket
-      };
-
-      serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
+  services.nginx.virtualHosts."${serviceName}.${domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    acmeRoot = null;
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:${toString infra.ports.vaultwarden}";
+      proxyWebsockets = true; # needed if you need to use WebSocket
     };
+
+    serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
   };
 }

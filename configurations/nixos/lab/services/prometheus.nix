@@ -101,16 +101,12 @@ in
     ];
   };
 
-  services.nginx.virtualHosts = {
-    "${serviceName}.${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      acmeRoot = null;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString infra.ports.prometheus.server}";
-      };
+  services.nginx.virtualHosts."${serviceName}.${domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    acmeRoot = null;
+    locations."/".proxyPass = "http://127.0.0.1:${toString infra.ports.prometheus.server}";
 
-      serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
-    };
+    serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
   };
 }

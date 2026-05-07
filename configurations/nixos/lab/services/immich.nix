@@ -25,28 +25,24 @@ in
     "render"
   ];
 
-  services.nginx.virtualHosts = {
-    "${serviceName}.${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      acmeRoot = null;
-      locations."/" = {
-        proxyPass = "http://[::1]:${toString infra.ports.immich}";
-        proxyWebsockets = true; # needed if you need to use WebSocket
+  services.nginx.virtualHosts."${serviceName}.${domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    acmeRoot = null;
+    locations."/" = {
+      proxyPass = "http://[::1]:${toString infra.ports.immich}";
+      proxyWebsockets = true; # needed if you need to use WebSocket
 
-        extraConfig =
-          # allow for larger file uploads like videos through the reverse proxy
-          ''
-            client_max_body_size 50000M;
-            proxy_read_timeout   600s;
-            proxy_send_timeout   600s;
-            send_timeout         600s;
-          '';
-      };
-
-      serverAliases = [
-        "${serviceName}.${hostName}.${domain}"
-      ];
+      extraConfig =
+        # allow for larger file uploads like videos through the reverse proxy
+        ''
+          client_max_body_size 50000M;
+          proxy_read_timeout   600s;
+          proxy_send_timeout   600s;
+          send_timeout         600s;
+        '';
     };
+
+    serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
   };
 }

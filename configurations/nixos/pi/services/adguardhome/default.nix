@@ -19,19 +19,13 @@ in
     port = infra.ports.adguardhome;
   };
 
-  services.nginx.virtualHosts = {
-    "${serviceName}.${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      acmeRoot = null;
-      locations."/" = {
-        proxyPass = "http://localhost:${toString infra.ports.adguardhome}";
-      };
+  services.nginx.virtualHosts."${serviceName}.${domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    acmeRoot = null;
+    locations."/".proxyPass = "http://localhost:${toString infra.ports.adguardhome}";
 
-      serverAliases = [
-        "${serviceName}.${hostName}.${domain}"
-      ];
-    };
+    serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
   };
 
   networking.firewall = {

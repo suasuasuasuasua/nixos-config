@@ -4,12 +4,11 @@
     let
       inherit (pkgs.stdenv.hostPlatform) system;
     in
-    with pkgs;
     [
       # add basic nixvim config
       inputs.nixvim-config.packages.${system}.minimal
-      btop
-      git
-      tmux
+      pkgs.btop
+      pkgs.git
+      pkgs.tmux
     ];
 }

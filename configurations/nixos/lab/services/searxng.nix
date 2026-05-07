@@ -14,11 +14,7 @@ let
   environmentFile = config.sops.secrets."searxng/environmentFile";
 in
 {
-  sops.secrets = {
-    "searxng/environmentFile" = {
-      sopsFile = "${inputs.self}/secrets/secrets.yaml";
-    };
-  };
+  sops.secrets."searxng/environmentFile".sopsFile = "${inputs.self}/secrets/secrets.yaml";
 
   services.searx = {
     enable = true;
@@ -407,17 +403,15 @@ in
   users.groups.searx.members = [ "nginx" ];
 
   # Nginx configuration
-  services.nginx.virtualHosts = {
-    "${serviceName}.${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      acmeRoot = null;
-      locations."/" = {
-        proxyPass = "http://[::1]:${toString infra.ports.searxng}";
-        proxyWebsockets = true; # needed if you need to use WebSocket
-      };
-
-      serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
+  services.nginx.virtualHosts."${serviceName}.${domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    acmeRoot = null;
+    locations."/" = {
+      proxyPass = "http://[::1]:${toString infra.ports.searxng}";
+      proxyWebsockets = true; # needed if you need to use WebSocket
     };
+
+    serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
   };
 }

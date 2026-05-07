@@ -29,9 +29,7 @@ in
         size = 10000;
         path = "${config.xdg.dataHome}/zsh/history";
       };
-      localVariables = {
-        ZVM_VI_ESCAPE_BINDKEY = "jk";
-      };
+      localVariables.ZVM_VI_ESCAPE_BINDKEY = "jk";
       oh-my-zsh = {
         enable = true;
         plugins = [
@@ -39,10 +37,10 @@ in
           "sudo"
         ];
       };
-      plugins = with pkgs; [
+      plugins = [
         {
           name = "vi-mode";
-          src = zsh-vi-mode;
+          src = pkgs.zsh-vi-mode;
           file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
         }
       ];

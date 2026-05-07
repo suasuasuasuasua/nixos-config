@@ -13,11 +13,8 @@
   ...
 }:
 {
-  sops.secrets = {
-    "wireguard/private_key" = {
-      sopsFile = "${inputs.self}/configurations/nixos/lab/secrets.yaml";
-    };
-  };
+  sops.secrets."wireguard/private_key".sopsFile =
+    "${inputs.self}/configurations/nixos/lab/secrets.yaml";
 
   networking = {
     firewall = {
@@ -90,7 +87,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    wireguard-tools
+  environment.systemPackages = [
+    pkgs.wireguard-tools
   ];
 }

@@ -29,19 +29,15 @@
     ];
 
     # Configure DNS servers for containers
-    containersConf.settings = {
-      network = {
-        dns_servers = [
-          infra.pi.lanIP # local dns
-          "1.1.1.1" # cloudflare
-          "8.8.8.8" # google
-        ];
-      };
-    };
+    containersConf.settings.network.dns_servers = [
+      infra.pi.lanIP # local dns
+      "1.1.1.1" # cloudflare
+      "8.8.8.8" # google
+    ];
   };
 
-  environment.systemPackages = with pkgs; [
-    lazydocker
-    podman-tui
+  environment.systemPackages = [
+    pkgs.lazydocker
+    pkgs.podman-tui
   ];
 }

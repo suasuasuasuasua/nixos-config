@@ -41,9 +41,7 @@ in
         enable = true;
         settings = {
           git = {
-            commit = {
-              signoff = true;
-            };
+            commit.signoff = true;
             overrideGpg = false; # NOTE: saves gpg headaches
             pagers = [
               {

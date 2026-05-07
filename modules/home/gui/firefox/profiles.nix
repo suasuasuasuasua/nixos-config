@@ -146,19 +146,17 @@ in
       force = true;
       # TODO: add configs for extensions
       #       for example, dark reader should follow system theme
-      packages =
-        with pkgs.firefox-addons;
-        [
-          bitwarden # bit/vault warden password integration
-          darkreader # automatic dark mode
-          linkwarden # link saver
-          mailvelope # email encryption
-          ublock-origin # block ads
-          vimium # vim-like movements
-        ]
-        ++ lib.optionals pkgs.stdenv.isLinux [
-          plasma-integration
-        ];
+      packages = [
+        pkgs.firefox-addons.bitwarden # bit/vault warden password integration
+        pkgs.firefox-addons.darkreader # automatic dark mode
+        pkgs.firefox-addons.linkwarden # link saver
+        pkgs.firefox-addons.mailvelope # email encryption
+        pkgs.firefox-addons.ublock-origin # block ads
+        pkgs.firefox-addons.vimium # vim-like movements
+      ]
+      ++ lib.optionals pkgs.stdenv.isLinux [
+        pkgs.firefox-addons.plasma-integration
+      ];
     };
     search = {
       force = true;
@@ -264,8 +262,6 @@ in
     };
 
     # https://nur.nix-community.org/repos/rycee/
-    extensions = {
-      force = true;
-    };
+    extensions.force = true;
   };
 }

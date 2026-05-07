@@ -17,11 +17,11 @@ in
   config = lib.mkIf cfg.enable {
     programs.bat = {
       enable = true;
-      extraPackages = with pkgs.bat-extras; [
-        batdiff
-        batman
-        batgrep
-        batwatch
+      extraPackages = [
+        pkgs.bat-extras.batdiff
+        pkgs.bat-extras.batman
+        pkgs.bat-extras.batgrep
+        pkgs.bat-extras.batwatch
       ];
     };
   };

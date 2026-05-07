@@ -39,21 +39,17 @@ in
       default_config = { };
     };
   };
-  services.nginx.virtualHosts = {
-    "${serviceName}.${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      acmeRoot = null;
-      extraConfig = ''
-        proxy_buffering off;
-      '';
-      locations."/" = {
-        proxyPass = "http://[::1]:${toString infra.ports.home-assistant}";
-        proxyWebsockets = true;
-      };
-      serverAliases = [
-        "${serviceName}.${hostName}.${domain}"
-      ];
+  services.nginx.virtualHosts."${serviceName}.${domain}" = {
+    enableACME = true;
+    forceSSL = true;
+    acmeRoot = null;
+    extraConfig = ''
+      proxy_buffering off;
+    '';
+    locations."/" = {
+      proxyPass = "http://[::1]:${toString infra.ports.home-assistant}";
+      proxyWebsockets = true;
     };
+    serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
   };
 }

@@ -13,11 +13,9 @@ in
   # but cannot set the login shell because that's root level operation
   programs.zsh.enable = true;
 
-  sops.secrets = {
-    "passwords/admin" = {
-      neededForUsers = true;
-      sopsFile = "${inputs.self}/secrets/secrets.yaml";
-    };
+  sops.secrets."passwords/admin" = {
+    neededForUsers = true;
+    sopsFile = "${inputs.self}/secrets/secrets.yaml";
   };
 
   users.users.admin = {

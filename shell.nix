@@ -9,24 +9,24 @@ pkgs.mkShellNoCC {
   # define the programs available when running `nix develop`
   # add the packages from the git-hooks list too
   buildInputs = self.checks.${system}.git-hooks-check.enabledPackages;
-  packages = with pkgs; [
-    caligula
-    commitizen
-    fastfetch
-    git
-    home-manager
-    just
-    markdownlint-cli
-    marksman
-    nh
-    nil
-    nix-output-monitor
-    nixd
-    nixfmt
-    nvd
-    opentofu
-    sops
-    tokei
-    vim-startuptime
+  packages = [
+    pkgs.caligula
+    pkgs.commitizen
+    pkgs.fastfetch
+    pkgs.git
+    pkgs.home-manager
+    pkgs.just
+    pkgs.markdownlint-cli
+    pkgs.marksman
+    pkgs.nh
+    pkgs.nil
+    pkgs.nix-output-monitor
+    pkgs.nixd
+    pkgs.nixfmt
+    pkgs.nvd
+    pkgs.opentofu
+    pkgs.sops
+    pkgs.tokei
+    pkgs.vim-startuptime
   ];
 }

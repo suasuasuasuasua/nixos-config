@@ -6,11 +6,7 @@ let
   environmentFile = config.sops.secrets."acme/namecheap_api".path;
 in
 {
-  sops.secrets = {
-    "acme/namecheap_api" = {
-      sopsFile = "${inputs.self}/secrets/secrets.yaml";
-    };
-  };
+  sops.secrets."acme/namecheap_api".sopsFile = "${inputs.self}/secrets/secrets.yaml";
 
   security.acme = {
     acceptTerms = true;

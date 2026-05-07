@@ -8,11 +8,9 @@ let
   admin_password = config.sops.secrets."passwords/admin".path;
 in
 {
-  sops.secrets = {
-    "passwords/admin" = {
-      neededForUsers = true;
-      sopsFile = "${inputs.self}/secrets/secrets.yaml";
-    };
+  sops.secrets."passwords/admin" = {
+    neededForUsers = true;
+    sopsFile = "${inputs.self}/secrets/secrets.yaml";
   };
 
   users.users.admin = {
@@ -21,9 +19,9 @@ in
     extraGroups = [ "wheel" ];
 
     openssh.authorizedKeys.keys = [
+      users.justinhoang.sshKeys.lab
       users.justinhoang.sshKeys.mbp
       users.serviceKeys.giteaDeployment
-      users.justinhoang.sshKeys.lab
     ];
   };
 

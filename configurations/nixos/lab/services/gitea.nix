@@ -18,38 +18,34 @@ let
   runnerImage = pkgs.dockerTools.buildLayeredImage {
     name = "gitea-runner-nix";
     tag = "latest";
-    contents = with pkgs; [
-      bash
-      cacert
-      coreutils
-      curl
-      dockerTools.fakeNss # adds /etc/passwd and /etc/group with root entry
-      git
-      gnutar
-      gzip
-      jq
-      nix
-      nodejs
-      xz
+    contents = [
+      pkgs.bash
+      pkgs.cacert
+      pkgs.coreutils
+      pkgs.curl
+      pkgs.dockerTools.fakeNss # adds /etc/passwd and /etc/group with root entry
+      pkgs.git
+      pkgs.gnutar
+      pkgs.gzip
+      pkgs.jq
+      pkgs.nix
+      pkgs.nodejs
+      pkgs.xz
     ];
-    config = {
-      Env = [
-        "SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
-        "GIT_SSL_CAINFO=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
-        "NIX_SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
-        "NIX_CONFIG=${''
-          experimental-features = nix-command flakes
-          build-users-group =
-        ''}"
-      ];
-    };
+    config.Env = [
+      "SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
+      "GIT_SSL_CAINFO=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
+      "NIX_SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
+      "NIX_CONFIG=${''
+        experimental-features = nix-command flakes
+        build-users-group =
+      ''}"
+    ];
   };
 in
 {
   sops.secrets = {
-    "gitea/token" = {
-      sopsFile = "${inputs.self}/secrets/secrets.yaml";
-    };
+    "gitea/token".sopsFile = "${inputs.self}/secrets/secrets.yaml";
     "gitea/signing-key" = {
       sopsFile = "${inputs.self}/secrets/secrets.yaml";
       owner = config.services.gitea.user;
@@ -77,12 +73,8 @@ in
           SSH_LISTEN_PORT = infra.ports.gitea.ssh;
           ROOT_URL = "https://${serviceName}.${domain}";
         };
-        service = {
-          DISABLE_REGISTRATION = true;
-        };
-        session = {
-          COOKIE_SECURE = true;
-        };
+        service.DISABLE_REGISTRATION = true;
+        session.COOKIE_SECURE = true;
         repository = {
           ENABLE_PUSH_CREATE_USER = true;
           ENABLE_PUSH_CREATE_ORG = true;
@@ -131,9 +123,7 @@ in
           # ephemeral nix container for nix/nixos workflows (pulled from local registry)
           "nix:docker://localhost:${toString infra.ports.dockerRegistry}/gitea-runner-nix:latest"
         ];
-        settings = {
-          runner.capacity = 2;
-        };
+        settings.runner.capacity = 2;
       };
     };
   };
@@ -174,9 +164,7 @@ in
 
   networking.firewall.allowedTCPPorts = [ infra.ports.gitea.ssh ];
 
-  environment.systemPackages = with pkgs; [
-    gitea # gitea command line interface
-  ];
+  environment.systemPackages = [ pkgs.gitea ];
 
   services.nginx.virtualHosts."${serviceName}.${domain}" = {
     enableACME = true;
