@@ -2,8 +2,8 @@
 { inputs, ... }:
 {
   imports = [
-    "${inputs.self}/modules/nixos"
-    "${inputs.self}/modules/nixos/development"
+    inputs.self.nixosModules.base
+    inputs.self.nixosModules.development
   ];
 
   environment.variables.EDITOR = "nvim";

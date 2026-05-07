@@ -6,9 +6,9 @@
 }:
 {
   imports = [
-    "${inputs.self}/modules/home"
-    "${inputs.self}/modules/home/cli"
-    "${inputs.self}/modules/home/gui"
+    inputs.self.homeManagerModules.base
+    inputs.self.homeManagerModules.cli
+    inputs.self.homeManagerModules.gui
 
     ./nix.nix
     ./nixpkgs.nix

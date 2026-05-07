@@ -2,7 +2,7 @@
 {
   home-manager.users.justinhoang = {
     imports = [
-      "${inputs.self}/modules/home/cli"
+      inputs.self.homeManagerModules.cli
 
       ./nixvim.nix
     ];

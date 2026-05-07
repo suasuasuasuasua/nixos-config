@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   home-manager.users.admin = {
-    imports = [ "${inputs.self}/modules/home/cli" ];
+    imports = [ inputs.self.homeManagerModules.cli ];
 
     custom.home.cli = {
       fzf.enable = true;

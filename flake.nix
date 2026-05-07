@@ -160,7 +160,6 @@
     {
       inherit lib;
 
-      overlays = import ./overlays { inherit inputs lib; };
       formatter = forEachSystem (
         pkgs: treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.wrapper
       );
@@ -180,6 +179,15 @@
           inherit pkgs self;
         };
       });
+
+      # Your custom packages
+      # Accessible through 'nix build', 'nix shell', etc
+      packages = forEachSystem (pkgs: import ./pkgs pkgs);
+      overlays = import ./overlays { inherit inputs lib; };
+      nixosModules = import ./modules/nixos;
+      darwinModules = import ./modules/darwin;
+      homeManagerModules = import ./modules/home;
+      sharedModules = import ./modules/shared;
 
       nixosConfigurations = lib.mergeAttrsList (
         map mkNixosSystem [

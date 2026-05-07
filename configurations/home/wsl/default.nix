@@ -1,8 +1,8 @@
 { inputs, pkgs, ... }:
 {
   imports = [
-    "${inputs.self}/modules/home"
-    "${inputs.self}/modules/home/cli"
+    inputs.self.homeManagerModules.base
+    inputs.self.homeManagerModules.cli
 
     ./nixvim.nix
   ];
