@@ -13,6 +13,7 @@ let
   stateDir = "/zshare/srv/gitea";
   tokenFile = config.sops.secrets."gitea/token".path;
   signingKeyPub = config.sops.secrets."gitea/signing-key.pub".path;
+  smtpPasswordFile = config.sops.secrets."gitea/smtp-password".path;
 
   # Custom runner image: Nix (flakes enabled) + Node.js for JS-based actions
   runnerImage = pkgs.dockerTools.buildLayeredImage {
@@ -46,6 +47,10 @@ in
 {
   sops.secrets = {
     "gitea/token".sopsFile = "${inputs.self}/secrets/secrets.yaml";
+    "gitea/smtp-password" = {
+      sopsFile = "${inputs.self}/secrets/secrets.yaml";
+      owner = config.services.gitea.user;
+    };
     "gitea/signing-key" = {
       sopsFile = "${inputs.self}/secrets/secrets.yaml";
       owner = config.services.gitea.user;
@@ -63,8 +68,17 @@ in
 
       enable = true;
       lfs.enable = true;
+      mailerPasswordFile = smtpPasswordFile;
 
       settings = {
+        mailer = {
+          ENABLED = true;
+          PROTOCOL = "smtp+startls";
+          SMTP_ADDR = "smtp.gmail.com";
+          SMTP_PORT = 587;
+          USER = "CHANGEME@gmail.com";
+          FROM = "gitea@CHANGEME_DOMAIN";
+        };
         server = {
           DOMAIN = "${serviceName}.${domain}";
           HTTP_PORT = infra.ports.gitea.http;
