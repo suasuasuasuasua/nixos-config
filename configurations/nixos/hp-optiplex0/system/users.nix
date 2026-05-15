@@ -44,6 +44,7 @@ in
         ilmgf
         ipadProM2
         iphone15
+        lab
         mbp
       ];
     };
