@@ -107,8 +107,10 @@
           {
             name = "hp-optiplex0";
             system = "x86_64-linux";
-            userConfigs = [ users.admin ];
-            enableHomeManager = false;
+            userConfigs = [
+              users.admin
+              users.justinhoang
+            ];
           }
           {
             name = "hetzner-cloud-vps0";

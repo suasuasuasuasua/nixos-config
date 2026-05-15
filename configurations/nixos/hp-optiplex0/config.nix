@@ -8,11 +8,7 @@
   environment.variables.EDITOR = "nvim";
 
   environment.systemPackages = [
-    pkgs.direnv
-    pkgs.fzf
-    pkgs.git
-    pkgs.neovim
-    pkgs.tmux
+    pkgs.claude-code
   ];
 
   custom.nixos.development = {

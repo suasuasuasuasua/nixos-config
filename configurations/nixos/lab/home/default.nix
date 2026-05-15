@@ -9,7 +9,7 @@
 
     custom.home.cli = {
       bat.enable = true;
-      btop.enable = true; # system monitor
+      btop.enable = true;
       comma.enable = true;
       direnv.enable = true;
       fzf.enable = true;
