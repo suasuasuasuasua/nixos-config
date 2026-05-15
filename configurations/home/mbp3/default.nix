@@ -41,6 +41,7 @@
     packages = [
       pkgs.lazygit
       pkgs.devenv
+      pkgs.tldr
     ];
 
     sessionVariables.EDITOR = "vim";
