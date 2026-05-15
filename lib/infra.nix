@@ -4,29 +4,21 @@
 {
   lab = {
     lanIP = "192.168.0.240";
-    wg0IP = "10.100.0.7"; # lab's IP on VPS0's wg0 (client, not server)
+    lanSubnet = "192.168.0.0/24"; # advertised as Tailscale subnet route
     wg1IP = "10.101.0.2";
     wgPublicKey = "JVBP0NWpR70JT0bUoFsunFkGT9YZSY8O/UeMdUxAXlU=";
   };
   pi = {
     lanIP = "192.168.0.250";
-    wg0IP = "10.100.0.8"; # pi's IP on VPS0's wg0 (client)
-    wg0PublicKey = "lfHsRVu1iRoxVDBUFNVAPY9JWDdGyIyaLKC83HnknFQ=";
   };
   hp-optiplex0 = {
     lanIP = "192.168.0.251";
-    wg0IP = "10.100.0.9";
     wg1IP = "10.101.0.4";
     wgPublicKey = "4/h51BZcx+kRFW43X4yoNPmoECX7HYnEn9HFQ+O+zzM=";
   };
   vps0 = {
     publicIP = "5.78.184.15";
-    # wg0: VPN server for personal devices, lab, and pi (10.100.0.0/24)
-    wg0IP = "10.100.0.1";
-    wg0Subnet = "10.100.0.0/24";
-    wg0Port = 51820;
-    wg0PublicKey = "vbOVT6tJ33lEhDqVBVX6ScF3c7wmijF4vCTqg0ug0z4=";
-    # wg1: proxy tunnel to lab (10.101.0.0/24)
+    # wg1: proxy tunnel to lab and hp-optiplex0 (10.101.0.0/24)
     wg1IP = "10.101.0.1";
     wg1Subnet = "10.101.0.0/24";
     wg1Port = 51821;
@@ -57,6 +49,7 @@
     searxng = 8084;
     it-tools = 8085;
     termix = 8086;
+    headscale = 8087;
     wastebin = 8088;
     jellyfin = 8096;
     home-assistant = 8123;

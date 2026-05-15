@@ -78,7 +78,7 @@ in
         job_name = "pi";
         static_configs = [
           {
-            targets = [ "${infra.pi.wg0IP}:${toString infra.ports.prometheus.exporter}" ];
+            targets = [ "${infra.pi.lanIP}:${toString infra.ports.prometheus.exporter}" ];
           }
         ];
       }

@@ -31,6 +31,7 @@
     ./searxng.nix
     ./smart.nix
     ./stirling-pdf.nix
+    ./tailscale.nix
     ./vaultwarden.nix
     ./wastebin.nix
     ./wireguard.nix

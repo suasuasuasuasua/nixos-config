@@ -1,13 +1,9 @@
 {
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xterm.enable = false;
-      xfce.enable = true;
-    };
+  services = {
+    xserver.enable = true;
+    desktopManager.plasma6.enable = true;
+    displayManager.defaultSession = "plasmax11";
   };
-
-  services.displayManager.defaultSession = "xfce";
 
   programs.firefox.enable = true;
 }

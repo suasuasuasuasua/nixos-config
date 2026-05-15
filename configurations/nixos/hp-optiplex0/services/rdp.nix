@@ -1,9 +1,9 @@
 {
   services.xrdp = {
     enable = true;
-    defaultWindowManager = "startxfce4";
+    defaultWindowManager = "startplasma-x11";
   };
 
-  # Only allow RDP on the WireGuard interface (not exposed publicly)
-  networking.firewall.interfaces.wg1.allowedTCPPorts = [ 3389 ];
+  # Only allow RDP on the Tailscale interface (not exposed publicly)
+  networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 3389 ];
 }

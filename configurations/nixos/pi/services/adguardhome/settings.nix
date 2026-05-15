@@ -2,7 +2,6 @@
   domain,
   labIP,
   piIP,
-  piWg0IP,
   port,
   ...
 }:
@@ -28,12 +27,12 @@
   language = "";
   theme = "auto";
   dns = {
-    # Bind to pi's LAN IP and wg0 IP (for VPN clients using 10.100.0.8 as DNS).
+    # Bind to pi's LAN IP only.
     # Deliberately not 0.0.0.0 to avoid conflicts with Podman's aardvark-dns
     # (which binds to the podman bridge at 10.88.0.1:53).
+    # Tailscale nodes can reach this via lab's advertised subnet route (192.168.0.0/24).
     bind_hosts = [
       piIP
-      piWg0IP
     ];
     port = 53;
     anonymize_client_ip = false;

@@ -1,5 +1,17 @@
-{ infra, ... }:
+{ infra, pkgs, ... }:
 {
+  # Enable UDP GRO forwarding on the physical interface for better Tailscale throughput
+  systemd.services.tailscale-udp-gro = {
+    description = "Enable UDP GRO forwarding for Tailscale on enp4s0";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.ethtool}/bin/ethtool -K enp4s0 rx-udp-gro-forwarding on rx-gro-list off";
+    };
+  };
+
   # Define the hostname
   networking = {
     hostName = "lab";

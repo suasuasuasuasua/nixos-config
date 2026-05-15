@@ -84,6 +84,15 @@ in
         '';
       };
     };
+    "hs.${domain}" = {
+      enableACME = true;
+      forceSSL = true;
+      acmeRoot = null;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:${toString config.services.headscale.port}";
+        proxyWebsockets = true;
+      };
+    };
     "gitea.${domain}" = {
       enableACME = true;
       forceSSL = true;
