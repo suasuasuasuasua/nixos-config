@@ -11,7 +11,10 @@ in
     enableACME = true;
     forceSSL = true;
     acmeRoot = null;
-    locations."/".proxyPass = "http://127.0.0.1:${toString infra.ports.termix}";
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:${toString infra.ports.termix}";
+      proxyWebsockets = true;
+    };
 
     serverAliases = [ "${serviceName}.${hostName}.${domain}" ];
   };
