@@ -14,11 +14,12 @@ and `tofu apply` makes it so. Benefits:
 
 ```
 terraform/
-├── main.tf           # provider config (Namecheap API settings)
-├── variables.tf      # input variable declarations
-├── dns.tf            # the actual DNS records
-├── .gitignore        # excludes secrets and local state from git
-└── terraform.tfvars  # your secrets — NOT committed to git, create manually
+├── main.tf            # provider configs (Namecheap + Uptime Kuma)
+├── variables.tf       # input variable declarations
+├── dns.tf             # DNS records
+├── uptime-kuma.tf     # monitor groups and monitors
+├── .gitignore         # excludes secrets and local state from git
+└── terraform.tfvars   # your secrets — NOT committed to git, create manually
 ```
 
 ## First-time setup
@@ -35,6 +36,11 @@ This file is gitignored and holds your secrets:
 namecheap_username = "your-namecheap-username"
 namecheap_api_key  = "your-api-key"
 client_ip          = "your-public-ip"  # curl ifconfig.me
+
+# Uptime Kuma admin credentials
+uptime_kuma_username = "admin"
+uptime_kuma_password = "your-uptime-kuma-password"
+# uptime_kuma_endpoint defaults to "https://uptime-kuma.sua.dev" — override here if needed
 ```
 
 ### 3. Initialize and apply

@@ -112,3 +112,20 @@ dev:
 [group('dev')]
 profile-nvim:
     vim-startuptime -vimpath nvim -count 100 | bat
+
+###############################################################################
+
+# Initialize OpenTofu (download providers)
+[group('tofu')]
+tofu-init:
+    cd terraform && tofu init
+
+# Preview infrastructure changes
+[group('tofu')]
+tofu-plan:
+    cd terraform && tofu plan
+
+# Apply infrastructure changes
+[group('tofu')]
+tofu-apply:
+    cd terraform && tofu apply
