@@ -1,15 +1,26 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   services = {
     xserver.enable = true;
-    desktopManager.plasma6.enable = true;
-    displayManager.defaultSession = "plasmax11";
+    desktopManager.gnome.enable = true;
+    displayManager = {
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
+      # Required for headless use: gnome-remote-desktop attaches to a running
+      # session, so one must exist before any RDP client connects.
+      autoLogin = {
+        enable = true;
+        user = "justinhoang";
+      };
+    };
   };
 
-  # VA-API for Intel UHD 630 (needed for Sunshine hardware encoding)
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
-      intel-media-driver # iHD driver, required for 8th-gen+ Intel (i5-8600T)
+      intel-media-driver
     ];
   };
 
