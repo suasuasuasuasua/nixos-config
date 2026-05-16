@@ -49,6 +49,12 @@ resource "namecheap_domain_records" "sua_dev" {
   }
 
   record {
+    hostname = "uptime-kuma"
+    type     = "A"
+    address  = local.hetzner_cloud_vps0_ip
+  }
+
+  record {
     hostname = "mc"
     type     = "A"
     address  = local.hetzner_cloud_vps0_ip

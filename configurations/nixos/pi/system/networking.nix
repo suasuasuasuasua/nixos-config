@@ -1,6 +1,17 @@
-{ infra, ... }:
+{ infra, pkgs, ... }:
 {
-  # Define the hostname
+  # Enable UDP GRO forwarding on the physical interface for better Tailscale throughput
+  systemd.services.tailscale-udp-gro = {
+    description = "Enable UDP GRO forwarding for Tailscale on end0";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.ethtool}/bin/ethtool -K end0 rx-udp-gro-forwarding on rx-gro-list off";
+    };
+  };
+
   networking = {
     hostName = "pi";
     hostId = "cfbe2391";
@@ -16,17 +27,12 @@
       ];
     };
   };
-  # This setups a SSH server. Very important if you're setting up a headless system.
-  # Feel free to remove if you don't need it.
   services.openssh = {
     enable = true;
     settings = {
-      # Opinionated: forbid root login through SSH.
       PermitRootLogin = "no";
       KbdInteractiveAuthentication = false;
       AllowUsers = [ "admin" ];
-      # Opinionated: use keys only.
-      # Remove if you want to SSH using passwords
       PasswordAuthentication = false;
     };
   };

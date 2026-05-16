@@ -1,8 +1,14 @@
 # https://wiki.nixos.org/wiki/Uptime_Kuma
-{ config, infra, ... }:
+{
+  config,
+  infra,
+  pkgs,
+  ...
+}:
 let
   inherit (config.networking) hostName domain;
   serviceName = "uptime-kuma";
+  statusIndex = pkgs.writeTextDir "index.html" (builtins.readFile ./uptime-kuma-status-index.html);
 in
 {
   services.uptime-kuma = {
@@ -16,9 +22,16 @@ in
     enableACME = true;
     forceSSL = true;
     acmeRoot = null;
-    locations."/" = {
-      proxyPass = "http://localhost:${toString infra.ports.uptime-kuma}";
-      proxyWebsockets = true; # needed if you need to use WebSocket
+    locations = {
+      "= /status/" = {
+        root = "${statusIndex}";
+        index = "index.html";
+        extraConfig = "try_files /index.html =404;";
+      };
+      "/" = {
+        proxyPass = "http://localhost:${toString infra.ports.uptime-kuma}";
+        proxyWebsockets = true;
+      };
     };
 
     serverAliases = [ "${serviceName}.${hostName}.${domain}" ];

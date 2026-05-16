@@ -1,6 +1,6 @@
 # Anubis is a bot-filtering proof-of-work challenge proxy.
-# It sits between nginx and the lab backend, filtering out scrapers and bad actors
-# before requests reach Gitea over the WireGuard tunnel.
+# It sits between nginx and the backend, filtering out scrapers and bad actors
+# before requests reach services over the WireGuard tunnel.
 {
   config,
   infra,
@@ -10,8 +10,8 @@ let
   inherit (config.networking) domain;
 in
 {
-  # Map the Gitea domain to the lab's WireGuard IP locally so Anubis sends
-  # the correct SNI when establishing the HTTPS connection to lab's nginx.
+  # Map Gitea's domain to the lab's WireGuard IP so Anubis sends the correct
+  # SNI when establishing the HTTPS connection to lab's nginx.
   networking.hosts."${infra.lab.wg1IP}" = [ "gitea.${domain}" ];
 
   services.anubis.instances."gitea".settings = {

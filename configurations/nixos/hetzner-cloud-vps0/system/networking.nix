@@ -34,6 +34,7 @@
       ];
       allowedUDPPorts = [
         infra.vps0.wg1Port # wg1: proxy tunnel to lab and others
+        infra.ports.stun # STUN for Headscale embedded DERP (NAT traversal)
       ];
     };
   };

@@ -4,12 +4,15 @@
 {
   lab = {
     lanIP = "192.168.0.240";
-    lanSubnet = "192.168.0.0/24"; # advertised as Tailscale subnet route
     wg1IP = "10.101.0.2";
     wgPublicKey = "JVBP0NWpR70JT0bUoFsunFkGT9YZSY8O/UeMdUxAXlU=";
   };
   pi = {
     lanIP = "192.168.0.250";
+    lanSubnet = "192.168.0.0/24"; # advertised as Tailscale subnet route
+    tsIP = "100.64.0.4"; # stable Headscale-assigned Tailscale IP
+    wg1IP = "10.101.0.3";
+    wg1PublicKey = "lfHsRVu1iRoxVDBUFNVAPY9JWDdGyIyaLKC83HnknFQ=";
   };
   hp-optiplex0 = {
     lanIP = "192.168.0.251";
@@ -36,6 +39,7 @@
     actual = 3000; # lab
     linkwarden = 3004;
     grafana = 3005;
+    stun = 3478; # STUN for Headscale embedded DERP (NAT traversal)
     uptime-kuma = 4000;
     navidrome = 4533;
     "13ft" = 5001;

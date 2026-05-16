@@ -2,6 +2,7 @@
   domain,
   labIP,
   piIP,
+  tsIP,
   port,
   ...
 }:
@@ -27,12 +28,14 @@
   language = "";
   theme = "auto";
   dns = {
-    # Bind to pi's LAN IP only.
+    # Bind to LAN IP and Tailscale IP.
     # Deliberately not 0.0.0.0 to avoid conflicts with Podman's aardvark-dns
     # (which binds to the podman bridge at 10.88.0.1:53).
-    # Tailscale nodes can reach this via lab's advertised subnet route (192.168.0.0/24).
+    # The Tailscale IP makes AdGuard reachable peer-to-peer for Tailscale nodes
+    # without depending on the subnet route or any other machine being up.
     bind_hosts = [
       piIP
+      tsIP
     ];
     port = 53;
     anonymize_client_ip = false;

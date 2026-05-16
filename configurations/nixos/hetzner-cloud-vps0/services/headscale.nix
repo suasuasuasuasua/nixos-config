@@ -8,8 +8,8 @@
 #   1. Create a user:       headscale users create sua
 #   2. Enroll a node:       sudo tailscale up --login-server https://hs.sua.dev
 #                           headscale nodes register --user sua --key nodekey:xxxx
-#   3. Enable lab's subnet: headscale nodes approve-routes --identifier <id> \
-#                             --routes "192.168.0.0/24,0.0.0.0/0,::/0"
+#   3. Enable pi's subnet:  headscale nodes approve-routes --identifier <id> \
+#                             --routes "192.168.0.0/24"
 #
 # Personal devices (iOS, macOS): Tailscale app → Settings → Use custom login server → https://hs.sua.dev
 {
@@ -31,15 +31,28 @@
         magic_dns = true;
         # Nodes get names like lab.ts.sua.dev
         base_domain = "ts.${config.networking.domain}";
-        # Required when override_local_dns = true (the default).
-        # Switch to infra.pi.lanIP once the lab subnet route is active
-        # and you want AdGuardHome as the network-wide DNS for Tailscale nodes.
-        nameservers.global = [
-          infra.pi.lanIP
-          # fallbacks
-          "1.1.1.1"
-          "8.8.8.8"
-        ];
+        # Split DNS routes sua.dev queries to AdGuard; public DNS handles everything else.
+        nameservers = {
+          split."${config.networking.domain}" = [ infra.pi.tsIP ];
+          global = [
+            "1.1.1.1"
+            "8.8.8.8"
+          ];
+        };
+      };
+      # Embedded DERP relay for clients behind CGNAT that can't do direct P2P.
+      # STUN (UDP 3478) is opened in the firewall; DERP runs over port 443 via nginx.
+      derp = {
+        server = {
+          enabled = true;
+          region_id = 999;
+          region_code = "headscale";
+          region_name = "Headscale Embedded DERP";
+          stun_listen_addr = "0.0.0.0:${toString infra.ports.stun}";
+        };
+        urls = [ "https://controlplane.tailscale.com/derpmap/default" ];
+        auto_update_enabled = true;
+        update_frequency = "24h";
       };
       log.level = "info";
     };

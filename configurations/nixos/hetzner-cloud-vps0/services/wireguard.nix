@@ -1,6 +1,6 @@
 # WireGuard on VPS0.
 #
-# wg1 (port 51821): Proxy tunnel to lab and hp-optiplex0 for public service forwarding.
+# wg1 (port 51821): Proxy tunnel to lab, hp-optiplex0, and pi for public service forwarding.
 # wg0 has been replaced by Headscale/Tailscale — see headscale.nix.
 {
   config,
@@ -34,6 +34,11 @@
           name = "hp-optiplex0";
           publicKey = infra.hp-optiplex0.wgPublicKey;
           allowedIPs = [ "${infra.hp-optiplex0.wg1IP}/32" ];
+        }
+        {
+          name = "pi";
+          publicKey = infra.pi.wg1PublicKey;
+          allowedIPs = [ "${infra.pi.wg1IP}/32" ];
         }
       ];
     };

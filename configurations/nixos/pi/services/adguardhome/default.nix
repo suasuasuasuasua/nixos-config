@@ -5,6 +5,7 @@ let
 
   settings = import ./settings.nix {
     inherit (config.networking) domain;
+    inherit (infra.pi) tsIP;
     labIP = infra.lab.lanIP;
     piIP = infra.pi.lanIP;
     port = infra.ports.adguardhome;
@@ -18,6 +19,9 @@ in
     port = infra.ports.adguardhome;
   };
 
+  # Must start after tailscaled so it can bind to the Tailscale IP (100.64.0.4).
+  systemd.services.adguardhome.after = [ "tailscaled.service" ];
+
   services.nginx.virtualHosts."${serviceName}.${domain}" = {
     enableACME = true;
     forceSSL = true;
@@ -28,17 +32,7 @@ in
   };
 
   networking.firewall = {
-    # https://github.com/AdguardTeam/AdGuardHome/wiki/Docker
-    # copying these ports
-    allowedTCPPorts = [
-      53
-      68
-      853
-    ];
-    allowedUDPPorts = [
-      53
-      67
-      68
-    ];
+    allowedTCPPorts = [ 53 ];
+    allowedUDPPorts = [ 53 ];
   };
 }
