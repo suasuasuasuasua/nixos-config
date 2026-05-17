@@ -103,6 +103,9 @@ in
       forceSSL = true;
       acmeRoot = null;
       locations = {
+        "= /status" = {
+          extraConfig = "return 301 /status/;";
+        };
         # Serve a static index listing the status pages.
         # Edit services/uptime-kuma-status-index.html to update the content.
         "= /status/" = {
