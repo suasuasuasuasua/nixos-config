@@ -1,7 +1,6 @@
 {
   imports = [
     ./adguardhome
-    ./dashy
     ./isponsorblocktv
 
     ./acme.nix

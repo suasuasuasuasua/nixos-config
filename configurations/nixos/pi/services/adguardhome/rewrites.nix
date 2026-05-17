@@ -71,11 +71,6 @@ in
     "uptime-kuma"
   ] piIP hostName
   ++ [
-    {
-      domain = "${hostName}.${domain}";
-      answer = piIP;
-    }
-    (mkServiceRewrite "dashy.${hostName}" piIP)
     (mkServiceRewrite "glances.${hostName}" piIP)
   ]
 )

@@ -6,6 +6,8 @@ let
   mkFqdn = service: "https://${service}.${domain}";
   # service.computer.sua.dev
   mkFullFqdn = service: "https://${service}.${hostName}.${domain}";
+  # service.host.sua.dev
+  mkHostFqdn = host: service: "https://${service}.${host}.${domain}";
 in
 {
   pageInfo = {
@@ -27,21 +29,6 @@ in
   # - https://dashy.to/docs/icons/
   sections = [
     {
-      name = "servers";
-      displayData = {
-        cols = 2;
-        itemSize = "large";
-      };
-      items = [
-        {
-          title = "pi";
-          description = "raspberry pi";
-          icon = "hl-raspberry-pi";
-          url = "https://pi.sua.dev";
-        }
-      ];
-    }
-    {
       name = "monitoring";
       displayData = {
         cols = 2;
@@ -49,10 +36,18 @@ in
       };
       items = [
         {
-          title = "glances";
+          title = "glances (lab)";
           description = "system overview";
           icon = "hl-glances";
           url = mkFullFqdn "glances";
+          tags = [ "lab" ];
+        }
+        {
+          title = "glances (pi)";
+          description = "system overview";
+          icon = "hl-glances";
+          url = mkHostFqdn "pi" "glances";
+          tags = [ "pi" ];
         }
         {
           title = "grafana";
@@ -65,6 +60,20 @@ in
           description = "multi-ssh host manager";
           icon = "hl-termix";
           url = mkFqdn "termix";
+        }
+        {
+          title = "adguardhome";
+          description = "dns blocker";
+          icon = "hl-adguard-home";
+          url = mkFqdn "adguardhome";
+          tags = [ "pi" ];
+        }
+        {
+          title = "uptime-kuma";
+          description = "fancy service monitoring";
+          icon = "hl-uptime-kuma";
+          url = mkFqdn "uptime-kuma";
+          tags = [ "pi" ];
         }
       ];
     }
