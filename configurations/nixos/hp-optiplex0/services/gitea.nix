@@ -30,7 +30,8 @@ in
         "nix:docker://${infra.lab.wg1IP}:${toString infra.ports.dockerRegistry}/gitea-runner-nix:latest"
       ];
       settings = {
-        runner.capacity = 4;
+        runner.capacity = 2;
+        container.memory = "6g";
       };
     };
   };
