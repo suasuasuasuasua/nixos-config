@@ -44,6 +44,7 @@
     navidrome = 4533;
     "13ft" = 5001;
     dockerRegistry = 5002; # lab-internal Docker registry (WireGuard only)
+    harmonia = 5003;
     audiobookshelf = 8000;
     calibre = {
       server = 8080;

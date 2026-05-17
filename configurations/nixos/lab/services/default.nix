@@ -18,6 +18,7 @@
     ./gitea.nix
     ./glances.nix
     ./grafana.nix
+    ./harmonia.nix
     ./home-assistant.nix
     ./immich.nix
     ./jellyfin.nix

@@ -29,10 +29,13 @@ in
       isNormalUser = true;
       extraGroups = [ "wheel" ];
 
-      openssh.authorizedKeys.keys = with users.justinhoang.sshKeys; [
-        lab
-        mbp
-      ];
+      openssh.authorizedKeys.keys =
+        with users.justinhoang.sshKeys;
+        [
+          lab
+          mbp
+        ]
+        ++ [ users.serviceKeys.labNixDaemon ];
     };
     justinhoang = {
       hashedPasswordFile = justinhoang_password;

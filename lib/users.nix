@@ -16,5 +16,8 @@
     username = "katelynjacsha";
     email = "katelynjascha@gmail.com";
   };
-  serviceKeys.giteaDeployment = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIj5A33KUdeHGh1q0/yql45KfdW0+byou1c0XRdPWrmQ gitea.deployment";
+  serviceKeys = {
+    giteaDeployment = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIj5A33KUdeHGh1q0/yql45KfdW0+byou1c0XRdPWrmQ gitea.deployment";
+    labNixDaemon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFylVb7vmLVPAy8abQ+iPURXDq9tRjbwRtH8qGZdtXkq nix-daemon";
+  };
 }

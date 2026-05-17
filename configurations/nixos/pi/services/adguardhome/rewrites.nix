@@ -35,6 +35,7 @@ in
     "13ft"
     "actual"
     "audiobookshelf"
+    "cache"
     "calibre"
     "gitea"
     "grafana"
