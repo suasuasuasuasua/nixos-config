@@ -9,7 +9,10 @@
     buildMachines = [
       {
         hostName = infra.hp-optiplex0.lanIP;
-        system = "x86_64-linux";
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
         protocol = "ssh-ng";
         sshUser = "admin";
         sshKey = "/root/.ssh/id_ed25519";
