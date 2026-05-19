@@ -167,7 +167,7 @@
   };
 
   disko.devices.zpool = {
-    # https://nixos.wiki/wiki/ZFS
+    # https://wiki.nixos.org/wiki/ZFS
     # General root
     zroot = {
       type = "zpool";
@@ -218,7 +218,7 @@
         };
       };
     };
-    # https://nixos.wiki/wiki/ZFS
+    # https://wiki.nixos.org/wiki/ZFS
     zshare = {
       type = "zpool";
       mode = "raidz1"; # allow for one drive failure

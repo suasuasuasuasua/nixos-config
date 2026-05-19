@@ -1,5 +1,5 @@
 # https://wiki.nixos.org/wiki/Jellyfin
-# https://nixos.wiki/wiki/Intel_Graphics
+# https://wiki.nixos.org/wiki/Intel_Graphics
 { pkgs, ... }:
 {
   systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD"; # Or "i965" if using older driver
