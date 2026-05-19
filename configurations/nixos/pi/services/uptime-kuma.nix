@@ -23,6 +23,9 @@ in
     forceSSL = true;
     acmeRoot = null;
     locations = {
+      "= /status" = {
+        extraConfig = "return 301 /status/;";
+      };
       "= /status/" = {
         root = "${statusIndex}";
         index = "index.html";
