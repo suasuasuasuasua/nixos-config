@@ -2,7 +2,6 @@
   inputs,
   lib,
   pkgs,
-  userConfig,
   ...
 }:
 {
@@ -18,7 +17,7 @@
     settings = {
       trusted-users = [
         "root"
-        "${userConfig.username}"
+        "@wheel"
       ];
 
       # darwin specific extra platform builders

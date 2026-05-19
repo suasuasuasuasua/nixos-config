@@ -1,4 +1,4 @@
-{ inputs, userConfigs, ... }:
+{ inputs, ... }:
 {
   imports = [
     inputs.self.sharedModules.overlays
@@ -9,8 +9,8 @@
   nix = {
     settings.trusted-users = [
       "root"
-    ]
-    ++ map ({ username, ... }: username) userConfigs;
+      "@wheel"
+    ];
 
     channel.enable = false;
   };

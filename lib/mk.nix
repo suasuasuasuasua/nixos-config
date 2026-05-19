@@ -27,7 +27,7 @@ let
       backupFileExtension = "bak";
       useGlobalPkgs = true;
       useUserPackages = true;
-      extraSpecialArgs = { inherit inputs userConfigs; };
+      extraSpecialArgs = { inherit inputs; };
       users = mkUsers system userConfigs;
     };
   };
@@ -53,7 +53,6 @@ in
         specialArgs = {
           inherit
             inputs
-            userConfigs
             infra
             users
             ;
@@ -80,7 +79,7 @@ in
           ../configurations/home/${name}
         ];
         extraSpecialArgs = {
-          inherit inputs userConfig username;
+          inherit inputs username;
         };
       };
     };

@@ -5,7 +5,6 @@
   nix = {
     nrBuildUsers = 64;
     settings = {
-      trusted-users = [ "@users" ]; # allow for remote builds
       min-free = 10 * 1024 * 1024;
       max-free = 200 * 1024 * 1024;
       cores = 0;
