@@ -6,6 +6,7 @@
   imports = [
     inputs.self.nixosModules.base
     inputs.self.nixosModules.development
+    inputs.self.nixosModules.server
   ];
 
   environment.variables.EDITOR = "nvim";

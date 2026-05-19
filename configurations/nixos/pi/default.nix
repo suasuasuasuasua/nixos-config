@@ -3,6 +3,8 @@
 { inputs, ... }:
 {
   imports = [
+    inputs.self.nixosModules.base
+    inputs.self.nixosModules.server
     # hardware setup
     # see https://github.com/NixOS/nixos-hardware/blob/master/raspberry-pi/4/default.nix
     inputs.nixos-hardware.nixosModules.raspberry-pi-4

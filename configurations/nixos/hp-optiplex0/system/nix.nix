@@ -8,12 +8,9 @@
       trusted-users = [ "@users" ]; # allow for remote builds
       min-free = 10 * 1024 * 1024;
       max-free = 200 * 1024 * 1024;
-      max-jobs = "auto";
       cores = 0;
 
       extra-platforms = [ "aarch64-linux" ];
-
-      experimental-features = "nix-command flakes";
     };
   };
 

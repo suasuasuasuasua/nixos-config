@@ -5,7 +5,7 @@
 
     ./acme.nix
     ./avahi.nix
-    ./fail2ban.nix
+
     ./glances.nix
     ./nginx.nix
     ./prometheus-node-exporter.nix
