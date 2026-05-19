@@ -27,7 +27,7 @@
         };
         # https://minecraft.wiki/w/Server.properties#Keys
         serverProperties = {
-          server-port = infra.ports.minecraft-server;
+          server-port = infra.ports.minecraft-server.theboys;
           difficulty = 2; # normal difficulty
           gamemode = 0; # survival
           max-players = 4;
@@ -50,7 +50,7 @@
         };
         # https://minecraft.wiki/w/Server.properties#Keys
         serverProperties = {
-          server-port = infra.ports.minecraft-server + 1;
+          server-port = infra.ports.minecraft-server.kj;
           difficulty = 2; # normal difficulty
           gamemode = 0; # survival
           max-players = 2;
@@ -87,7 +87,7 @@
           enforce-secure-profile = true;
           level-name = "world";
           motd = "my testing server";
-          "query.port" = infra.ports.minecraft-server + 1;
+          "query.port" = infra.ports.minecraft-server.kj;
           pvp = true;
           generate-structures = true;
           max-chained-neighbor-updates = 1000000;
@@ -106,7 +106,7 @@
           server-ip = "";
           resource-pack-prompt = "";
           allow-nether = true;
-          server-port = infra.ports.minecraft-server + 2;
+          server-port = infra.ports.minecraft-server.testing;
           enable-rcon = false;
           sync-chunk-writes = true;
           op-permission-level = 4;

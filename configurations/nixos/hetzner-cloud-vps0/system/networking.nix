@@ -29,8 +29,8 @@
         infra.ports.http
         infra.ports.https
         infra.ports.gitea.ssh # Gitea SSH proxy (nginx stream → lab)
-        infra.ports.minecraft-server # theboys (nginx stream → lab)
-        (infra.ports.minecraft-server + 1) # kj (nginx stream → lab)
+        infra.ports.minecraft-server.theboys # theboys (nginx stream → lab)
+        infra.ports.minecraft-server.kj # kj (nginx stream → lab)
       ];
       allowedUDPPorts = [
         infra.vps0.wg1Port # wg1: proxy tunnel to lab and others

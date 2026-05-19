@@ -68,7 +68,11 @@
       wireguard = 9586;
       zfs = 9134;
     };
-    minecraft-server = 25565;
+    minecraft-server = {
+      theboys = 25565;
+      kj = 25566;
+      testing = 25567;
+    };
     paperless = 28981;
     glances = 61208;
   };

@@ -37,14 +37,14 @@ in
         proxy_connect_timeout 10s;
       }
       server {
-        listen ${toString infra.ports.minecraft-server};
-        proxy_pass ${infra.lab.wg1IP}:${toString infra.ports.minecraft-server};
+        listen ${toString infra.ports.minecraft-server.theboys};
+        proxy_pass ${infra.lab.wg1IP}:${toString infra.ports.minecraft-server.theboys};
         proxy_timeout 10m;
         proxy_connect_timeout 10s;
       }
       server {
-        listen ${toString (infra.ports.minecraft-server + 1)};
-        proxy_pass ${infra.lab.wg1IP}:${toString (infra.ports.minecraft-server + 1)};
+        listen ${toString infra.ports.minecraft-server.kj};
+        proxy_pass ${infra.lab.wg1IP}:${toString infra.ports.minecraft-server.kj};
         proxy_timeout 10m;
         proxy_connect_timeout 10s;
       }
