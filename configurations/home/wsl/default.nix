@@ -20,5 +20,6 @@
     zsh.enable = true;
   };
 
+  home.stateVersion = "24.11";
   home.packages = [ pkgs.devenv ];
 }

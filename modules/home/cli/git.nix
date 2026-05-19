@@ -1,13 +1,18 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  users,
+  ...
+}:
 let
   cfg = config.custom.home.cli.git;
+  userInfo = users.${config.home.username};
 in
 {
   options.custom.home.cli.git = {
     enable = lib.mkEnableOption ''
       Distributed version control system
     '';
-    # TODO: add dynamic username, email, gpg signing, etc.
   };
 
   config = lib.mkIf cfg.enable {
@@ -15,9 +20,8 @@ in
       git = {
         enable = true;
         settings = {
-          user = {
-            email = "justinhoang@sua.dev";
-            name = "Justin Hoang";
+          user = lib.optionalAttrs (userInfo ? email) {
+            inherit (userInfo) email name;
           };
           init.defaultBranch = "main";
           pull.rebase = "false";
@@ -32,8 +36,8 @@ in
           ".DS_Store"
         ];
 
-        signing = {
-          key = "justinhoang@sua.dev";
+        signing = lib.mkIf (userInfo ? email) {
+          key = userInfo.email;
           signByDefault = true;
         };
       };
@@ -51,7 +55,7 @@ in
               }
             ];
           };
-          # disable prompt tp return from subprocess
+          # disable prompt to return from subprocess
           promptToReturnFromSubprocess = false;
         };
       };
@@ -61,6 +65,5 @@ in
         enableGitIntegration = true;
       };
     };
-
   };
 }

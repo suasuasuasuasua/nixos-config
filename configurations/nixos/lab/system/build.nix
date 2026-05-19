@@ -1,4 +1,4 @@
-{ infra, ... }:
+{ config, infra, ... }:
 {
   # nix-daemon will defer to other processes so CPU is not overwhelmed
   systemd.services.nix-daemon.serviceConfig = {
@@ -11,6 +11,7 @@
   nix = {
     distributedBuilds = true;
     settings.builders-use-substitutes = true;
+    settings.secret-key-files = [ config.sops.secrets."harmonia/signing-key".path ];
     buildMachines = [
       {
         hostName = infra.hp-optiplex0.lanIP;

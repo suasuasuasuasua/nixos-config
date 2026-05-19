@@ -1,6 +1,7 @@
 { inputs, ... }:
 {
   home-manager.users.admin = {
+    home.stateVersion = "24.11";
     imports = [ inputs.self.homeManagerModules.cli ];
 
     custom.home.cli = {

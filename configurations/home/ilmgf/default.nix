@@ -54,6 +54,7 @@
   };
 
   home = {
+    stateVersion = "24.11";
     packages = [
       pkgs.lazygit
       pkgs.devenv

@@ -25,6 +25,7 @@
       gui.firefox.enable = true;
     };
 
+    home.stateVersion = "25.11";
     home.packages = [ pkgs.devenv ];
 
     stylix.targets = {

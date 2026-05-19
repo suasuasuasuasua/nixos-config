@@ -15,7 +15,6 @@ in
       enable = true;
 
       enableZshIntegration = true;
-      settings = { };
     };
   };
 }

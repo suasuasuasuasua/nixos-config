@@ -59,6 +59,7 @@
   };
 
   home = {
+    stateVersion = "24.11";
     packages = [
       (config.lib.nixGL.wrap pkgs.localsend)
       pkgs.lazygit

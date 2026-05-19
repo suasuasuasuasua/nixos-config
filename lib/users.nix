@@ -2,6 +2,7 @@
   admin.username = "admin";
   justinhoang = {
     username = "justinhoang";
+    name = "Justin Hoang";
     email = "justinhoang@sua.dev";
     sshKeys = {
       iphone15 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA12qTb88TMH/x1T2xST2kEviP+RGGQkv+EJFWPboxuv justinhoang@iphone15";

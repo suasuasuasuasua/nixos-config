@@ -43,7 +43,7 @@
       ...
     }@inputs:
     let
-      lib = nixpkgs.lib // home-manager.lib;
+      lib = nixpkgs.lib.extend (_final: _prev: home-manager.lib);
       forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
       pkgsFor = lib.genAttrs (import systems) (system: nixpkgs.legacyPackages.${system});
       treefmtEval = forEachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
