@@ -13,8 +13,8 @@
     i2c1.enable = false;
     # disable fkms-3b
     fkms-3d.enable = false;
-    # enable pkgs overlay
-    apply-overlays-dtmerge.enable = true;
+    # disable pkgs overlay (patching the kernel changes its hash, causing cache misses and full kernel recompiles)
+    apply-overlays-dtmerge.enable = false;
     # disable poe hat
     poe-hat.enable = false;
     poe-plus-hat.enable = false;
