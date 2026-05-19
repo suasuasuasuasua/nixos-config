@@ -1,5 +1,10 @@
 { infra, ... }:
 {
+  # nix-daemon will defer to other processes so CPU is not overwhelmed
+  systemd.services.nix-daemon.serviceConfig = {
+    CPUWeight = 20;
+    IOWeight = 20;
+  };
   # allow for cross platform builds
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
