@@ -1,5 +1,6 @@
 {
-  imports =
-    with builtins;
-    map (fn: ./${fn}) (filter (fn: fn != "default.nix") (attrNames (readDir ./.)));
+  imports = [
+    ./gnome.nix
+    ./kde.nix
+  ];
 }

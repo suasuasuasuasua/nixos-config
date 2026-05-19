@@ -1,6 +1,16 @@
-# A module that automatically imports everything else in the parent folder.
 {
-  imports =
-    with builtins;
-    map (fn: ./${fn}) (filter (fn: fn != "default.nix") (attrNames (readDir ./.)));
+  imports = [
+    ./atuin.nix
+    ./bat.nix
+    ./btop.nix
+    ./comma.nix
+    ./direnv.nix
+    ./fzf.nix
+    ./git.nix
+    ./github.nix
+    ./gnupg.nix
+    ./starship.nix
+    ./tmux.nix
+    ./zsh.nix
+  ];
 }

@@ -1,6 +1,15 @@
-# A module that automatically imports everything else in the parent folder.
 {
-  imports =
-    with builtins;
-    map (fn: ./${fn}) (filter (fn: fn != "default.nix") (attrNames (readDir ./.)));
+  imports = [
+    ./bluetooth.nix
+    ./boot.nix
+    ./build.nix
+    ./intel.nix
+    ./locale.nix
+    ./networking.nix
+    ./nixpkgs.nix
+    ./storage.nix
+    ./users.nix
+    ./virtualization.nix
+    ./zfs.nix
+  ];
 }

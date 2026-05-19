@@ -1,6 +1,11 @@
-# A module that automatically imports everything else in the parent folder.
 {
-  imports =
-    with builtins;
-    map (fn: ./${fn}) (filter (fn: fn != "default.nix") (attrNames (readDir ./.)));
+  imports = [
+    ./locale.nix
+    ./networking.nix
+    ./nixpkgs.nix
+    ./packages.nix
+    ./pi.nix
+    ./users.nix
+    ./virtualization.nix
+  ];
 }
