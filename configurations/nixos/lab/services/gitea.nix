@@ -39,6 +39,9 @@ let
       "NIX_CONFIG=${''
         experimental-features = nix-command flakes
         build-users-group =
+        accept-flake-config = true
+        extra-substituters = https://cache.sua.dev https://nix-community.cachix.org
+        extra-trusted-public-keys = cache.sua.dev:LAOD0dIC9Yp/IlZqv+OgJ0O3elYQAhlInOCI7x+75yE= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
       ''}"
     ];
   };

@@ -97,26 +97,33 @@
           {
             name = "lab";
             system = "x86_64-linux";
-            userConfigs = [ users.justinhoang ];
+            userConfigs = [ { user = users.justinhoang; } ];
           }
           {
             name = "pi";
             system = "aarch64-linux";
-            userConfigs = [ users.admin ];
+            userConfigs = [ { user = users.admin; } ];
           }
           {
             name = "hp-optiplex0";
             system = "x86_64-linux";
             userConfigs = [
-              users.admin
-              users.justinhoang
+              {
+                user = users.admin;
+                enableHomeManager = false;
+              }
+              { user = users.justinhoang; }
             ];
           }
           {
             name = "hetzner-cloud-vps0";
             system = "x86_64-linux";
-            userConfigs = [ users.admin ];
-            enableHomeManager = false;
+            userConfigs = [
+              {
+                user = users.admin;
+                enableHomeManager = false;
+              }
+            ];
           }
         ]
       );

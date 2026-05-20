@@ -15,9 +15,15 @@ let
     in
     lib.mergeAttrsList (
       map (
-        { username, ... }:
         {
-          ${username} = import ../configurations/home/base.nix { inherit lib pkgs username; };
+          user,
+          enableHomeManager ? true,
+        }:
+        lib.optionalAttrs enableHomeManager {
+          ${user.username} = import ../configurations/home/base.nix {
+            inherit lib pkgs;
+            inherit (user) username;
+          };
         }
       ) userConfigs
     );
@@ -38,15 +44,12 @@ in
       name,
       system,
       userConfigs,
-      enableHomeManager ? true,
     }:
     {
       ${name} = lib.nixosSystem {
         modules = [
           ../configurations/nixos/${name}
           stylix.nixosModules.stylix
-        ]
-        ++ lib.optionals enableHomeManager [
           home-manager.nixosModules.home-manager
           (mkHomeManagerConfig system userConfigs)
         ];
