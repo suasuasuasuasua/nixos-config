@@ -1,5 +1,7 @@
 { inputs, pkgs, ... }:
 {
+  home-manager.users.admin.home.stateVersion = "25.11";
+
   home-manager.users.justinhoang = {
     imports = [
       inputs.self.homeManagerModules.cli
