@@ -25,9 +25,6 @@
       "podman.io"
       "quay.io"
     ];
-    # Local registry is HTTP-only
-    registries.insecure = [ "localhost:5002" ];
-
     # Configure DNS servers for containers
     containersConf.settings.network.dns_servers = [
       infra.pi.lanIP # local dns

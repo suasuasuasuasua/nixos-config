@@ -17,7 +17,6 @@
     # These ports are only open on wg1 — closed on the public interface.
     interfaces.wg1.allowedTCPPorts = [
       infra.ports.https # nginx → Gitea
-      infra.ports.dockerRegistry # container registry for custom images on runners
     ];
   };
 

@@ -1,7 +1,6 @@
 # gitea is a self hosted git repository
 {
   config,
-  infra,
   inputs,
   ...
 }:
@@ -26,8 +25,8 @@ in
         "debian-latest:docker://node:24-trixie"
         # fake the ubuntu name, because node provides no ubuntu builds
         "ubuntu-latest:docker://node:24-trixie"
-        # ephemeral nix container for nix/nixos workflows (pulled from local registry)
-        "nix:docker://${infra.lab.wg1IP}:${toString infra.ports.dockerRegistry}/gitea-runner-nix:latest"
+        # ephemeral nix container for nix/nixos workflows
+        "nix:docker://gitea.sua.dev/sua/nixos-config/gitea-runner-nix:latest"
       ];
       settings = {
         runner.capacity = 2;
@@ -61,8 +60,6 @@ in
       "podman.io"
       "quay.io"
     ];
-    # Lab's registry is HTTP-only (no TLS) — reachable only over the WireGuard tunnel
-    registries.insecure = [ "${infra.lab.wg1IP}:${toString infra.ports.dockerRegistry}" ];
 
     # Configure DNS servers for containers
     containersConf.settings = {
