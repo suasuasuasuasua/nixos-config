@@ -2,25 +2,20 @@
   # toggle the relevant services from here
   imports = [
     ./13ft
-    ./dashy
-    ./it-tools
-    ./samba
-    ./syncthing
-    ./termix
-    ./ytdl-sub
-
     ./acme.nix
     ./actual.nix
     ./audiobookshelf.nix
     ./avahi.nix
     ./calibre.nix
+    ./dashy
     ./fail2ban.nix
-    ./gitea.nix
+    ./gitea
     ./glances.nix
     ./grafana.nix
     ./harmonia.nix
     ./home-assistant.nix
     ./immich.nix
+    ./it-tools
     ./jellyfin.nix
     ./linkwarden.nix
     ./mealie.nix
@@ -29,12 +24,16 @@
     ./nginx.nix
     ./paperless.nix
     ./prometheus.nix
+    ./samba
     ./searxng.nix
     ./smart.nix
     ./stirling-pdf.nix
+    ./syncthing
     ./tailscale.nix
+    ./termix
     ./vaultwarden.nix
     ./wastebin.nix
     ./wireguard.nix
+    ./ytdl-sub
   ];
 }
