@@ -13,7 +13,11 @@ in
 {
   services.jellyfin.enable = true;
 
-  users.users.jellyfin.extraGroups = [ "samba" ];
+  users.users.jellyfin.extraGroups = [
+    "samba"
+    "video"
+    "render"
+  ];
 
   environment.systemPackages = [
     pkgs.jellyfin

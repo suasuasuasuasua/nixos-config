@@ -6,9 +6,11 @@
     ./actual.nix
     ./audiobookshelf.nix
     ./avahi.nix
+    ./bazarr.nix
     ./calibre.nix
     ./dashy
     ./fail2ban.nix
+    ./flaresolverr.nix
     ./gitea
     ./glances.nix
     ./grafana.nix
@@ -17,6 +19,7 @@
     ./immich.nix
     ./it-tools
     ./jellyfin.nix
+    ./lidarr.nix
     ./linkwarden.nix
     ./mealie.nix
     ./minecraft-server.nix
@@ -24,9 +27,14 @@
     ./nginx.nix
     ./paperless.nix
     ./prometheus.nix
+    ./prowlarr.nix
+    ./qbittorrent.nix
+    ./radarr.nix
+    ./readarr.nix
     ./samba
     ./searxng.nix
     ./smart.nix
+    ./sonarr.nix
     ./stirling-pdf.nix
     ./syncthing
     ./tailscale.nix
@@ -34,6 +42,5 @@
     ./vaultwarden.nix
     ./wastebin.nix
     ./wireguard.nix
-    ./ytdl-sub
   ];
 }

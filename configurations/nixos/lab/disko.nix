@@ -340,62 +340,16 @@
           mountpoint = "/zshare/media";
           options.mountpoint = "legacy";
         };
-        # Books -- audio and ebooks
-        "media/books" = {
-          type = "zfs_fs";
-          # options.mountpoint = "/zshare/media/books";
-          mountpoint = "/zshare/media/books";
-          options.mountpoint = "legacy";
-        };
         # Recordings, images, screenshots, etc.
+        # images, recordings, screenshots are plain directories (migrated from sub-datasets)
         "media/captures" = {
           type = "zfs_fs";
           # options.mountpoint = "/zshare/media/captures";
           mountpoint = "/zshare/media/captures";
           options.mountpoint = "legacy";
         };
-        # Images, etc.
-        "media/captures/images" = {
-          type = "zfs_fs";
-          # options.mountpoint = "/zshare/media/captures/images";
-          mountpoint = "/zshare/media/captures/images";
-          options.mountpoint = "legacy";
-        };
-        # Recordings, etc.
-        "media/captures/recordings" = {
-          type = "zfs_fs";
-          # options.mountpoint = "/zshare/media/captures/recordings";
-          mountpoint = "/zshare/media/captures/recordings";
-          options.mountpoint = "legacy";
-        };
-        # Screenshots, etc.
-        "media/captures/screenshots" = {
-          type = "zfs_fs";
-          # options.mountpoint = "/zshare/media/captures/screenshots";
-          mountpoint = "/zshare/media/captures/screenshots";
-          options.mountpoint = "legacy";
-        };
-        # Movies
-        "media/movies" = {
-          type = "zfs_fs";
-          # options.mountpoint = "/zshare/media/movies";
-          mountpoint = "/zshare/media/movies";
-          options.mountpoint = "legacy";
-        };
-        # Music
-        "media/music" = {
-          type = "zfs_fs";
-          # options.mountpoint = "/zshare/media/music";
-          mountpoint = "/zshare/media/music";
-          options.mountpoint = "legacy";
-        };
-        # TV Shows
-        "media/shows" = {
-          type = "zfs_fs";
-          # options.mountpoint = "/zshare/media/shows";
-          mountpoint = "/zshare/media/shows";
-          options.mountpoint = "legacy";
-        };
+        # movies, music, shows, books are plain directories under zshare/media
+        # (migrated from sub-datasets to enable hardlinks with downloads)
       };
     };
     # Additional *whatever* pool for whatever
