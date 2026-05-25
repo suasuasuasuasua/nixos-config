@@ -30,6 +30,8 @@
   # patch for kde and qt (https://github.com/nix-community/stylix/issues/412)
   xdg.systemDirs.config = [ "/etc/xdg" ];
 
+  xresources.properties."Xft.dpi" = 144;
+
   custom.home = {
     cli = {
       bat.enable = true; # better cat
