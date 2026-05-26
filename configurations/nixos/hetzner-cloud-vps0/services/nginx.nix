@@ -8,6 +8,7 @@
 let
   inherit (config.networking) domain;
   anubisGiteaSocket = config.services.anubis.instances.gitea.settings.BIND;
+  anubisMattermostSocket = config.services.anubis.instances.mattermost.settings.BIND;
   # Route to the pi's nginx over WireGuard. Uptime-kuma binds to localhost,
   # so we must go through pi's nginx rather than directly to the port.
   # networking.hosts maps uptime-kuma.sua.dev → pi wg1IP so nginx sends
@@ -135,6 +136,15 @@ in
       acmeRoot = null;
       locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.headscale.port}";
+        proxyWebsockets = true;
+      };
+    };
+    "mattermost.${domain}" = {
+      enableACME = true;
+      forceSSL = true;
+      acmeRoot = null;
+      locations."/" = {
+        proxyPass = "http://unix:${anubisMattermostSocket}";
         proxyWebsockets = true;
       };
     };

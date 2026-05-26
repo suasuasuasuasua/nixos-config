@@ -59,6 +59,10 @@
     home-assistant = 8123;
     vaultwarden = 8222;
     syncthing = 8384;
+    mattermost = {
+      http = 8065;
+      calls = 8443; # UDP SFU port for Mattermost Calls plugin (WebRTC media)
+    };
     mealie = 9000;
     prometheus = {
       server = 9090;

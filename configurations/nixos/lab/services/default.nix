@@ -21,6 +21,7 @@
     ./jellyfin.nix
     ./lidarr.nix
     ./linkwarden.nix
+    ./mattermost.nix
     ./mealie.nix
     ./minecraft-server.nix
     ./navidrome.nix

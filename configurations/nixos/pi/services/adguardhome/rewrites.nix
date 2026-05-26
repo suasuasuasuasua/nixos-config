@@ -46,6 +46,7 @@ in
     "jellyfin"
     "lidarr"
     "linkwarden"
+    "mattermost"
     "mealie"
     "navidrome"
     "paperless"

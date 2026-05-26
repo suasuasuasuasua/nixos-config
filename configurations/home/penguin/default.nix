@@ -66,6 +66,7 @@
       (config.lib.nixGL.wrap pkgs.localsend)
       pkgs.lazygit
       pkgs.devenv
+      pkgs.mattermost-desktop
     ];
 
     sessionVariables.EDITOR = "vim";
