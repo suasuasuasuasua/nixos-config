@@ -22,7 +22,10 @@
         tmux.enable = true;
         zsh.enable = true;
       };
-      gui.firefox.enable = true;
+      gui = {
+        alacritty.enable = true;
+        firefox.enable = true;
+      };
     };
 
     home.stateVersion = "25.11";

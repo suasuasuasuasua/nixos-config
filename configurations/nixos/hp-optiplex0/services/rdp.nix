@@ -1,7 +1,8 @@
+{ pkgs, ... }:
 {
   services.xrdp = {
     enable = true;
-    defaultWindowManager = "startplasma-x11";
+    defaultWindowManager = "${pkgs.i3-rounded}/bin/i3";
   };
 
   # Only allow RDP on the Tailscale interface (not exposed publicly)
