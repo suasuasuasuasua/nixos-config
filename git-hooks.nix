@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   # https://github.com/cachix/git-hooks.nix
   hooks = {
@@ -12,4 +13,6 @@
     statix.enable = true; # check "good practices" for nix
     trim-trailing-whitespace.enable = true; # trim trailing whitespace
   };
+
+  package = pkgs.prek;
 }
