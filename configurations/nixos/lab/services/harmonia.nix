@@ -11,11 +11,10 @@ in
 {
   sops.secrets."harmonia/signing-key" = {
     sopsFile = "${inputs.self}/secrets/secrets.yaml";
-    owner = "harmonia";
     mode = "0400";
   };
 
-  services.harmonia = {
+  services.harmonia.cache = {
     enable = true;
     signKeyPaths = [ config.sops.secrets."harmonia/signing-key".path ];
     settings.bind = "127.0.0.1:${toString infra.ports.harmonia}";

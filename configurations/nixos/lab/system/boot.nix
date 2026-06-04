@@ -9,6 +9,7 @@
       enable = true;
       memtest86.enable = true;
     };
+    zfs.forceImportRoot = false;
 
     loader.efi.canTouchEfiVariables = true;
   };

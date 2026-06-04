@@ -8,11 +8,14 @@ in
   services.grafana = {
     enable = true;
 
-    settings.server = {
-      http_addr = "127.0.0.1";
-      http_port = infra.ports.grafana;
-      domain = "${serviceName}.${domain}";
-      root_url = "https://${serviceName}.${domain}";
+    settings = {
+      security.secret_key = "SW2YcwTIb9zpOOhoPsMm";
+      server = {
+        http_addr = "127.0.0.1";
+        http_port = infra.ports.grafana;
+        domain = "${serviceName}.${domain}";
+        root_url = "https://${serviceName}.${domain}";
+      };
     };
 
     provision = {

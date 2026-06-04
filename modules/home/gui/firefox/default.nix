@@ -32,6 +32,7 @@ in
       inherit profiles policies;
 
       enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
     };
   };
 }
