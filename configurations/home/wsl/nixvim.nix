@@ -1,5 +1,8 @@
 { inputs, pkgs, ... }:
 let
   inherit (pkgs.stdenv.hostPlatform) system;
+  nixvim = inputs.nixvim-config.packages.${system}.default;
 in
-inputs.nixvim-config.packages.${system}.default
+{
+  home.packages = [ nixvim ];
+}

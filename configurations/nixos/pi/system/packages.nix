@@ -6,7 +6,7 @@
     in
     [
       # add basic nixvim config
-      inputs.nixvim-config.packages.${system}.minimal
+      inputs.nixvim-config.packages.${system}.default
       pkgs.btop
       pkgs.git
       pkgs.tmux

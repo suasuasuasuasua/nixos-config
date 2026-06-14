@@ -26,15 +26,6 @@ let
         ];
       };
     };
-    config.nixvim.lsp.languages = {
-      cmake.enable = true;
-      cssls.enable = true;
-      docker_compose_language_service.enable = true;
-      dockerls.enable = true;
-      gopls.enable = true;
-      html.enable = true;
-      vtsls.enable = true;
-    };
   };
 in
 {
