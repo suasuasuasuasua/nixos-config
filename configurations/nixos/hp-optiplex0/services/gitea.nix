@@ -21,10 +21,8 @@ in
       name = hostName;
       enable = true;
       labels = [
-        # provide a debian base with nodejs for actions
-        "debian-latest:docker://node:24-trixie"
-        # fake the ubuntu name, because node provides no ubuntu builds
-        "ubuntu-latest:docker://node:24-trixie"
+        # https://gitea.com/gitea/runner-images
+        "ubuntu-latest:docker://catthehacker/ubuntu:act-24.04"
         # ephemeral nix container for nix/nixos workflows
         "nix:docker://gitea.sua.dev/sua/nixos-config/gitea-runner-nix:latest"
       ];
