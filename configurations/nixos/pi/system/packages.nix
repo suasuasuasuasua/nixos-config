@@ -5,8 +5,7 @@
       inherit (pkgs.stdenv.hostPlatform) system;
     in
     [
-      # add basic nixvim config
-      inputs.nixvim-config.packages.${system}.default
+      inputs.nvim-config.packages.${system}.nvim
       pkgs.btop
       pkgs.git
       pkgs.tmux

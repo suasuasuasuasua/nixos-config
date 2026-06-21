@@ -5,7 +5,7 @@
       inputs.self.homeManagerModules.cli
       inputs.self.homeManagerModules.gui
 
-      ./nixvim.nix
+      ./nvim.nix
     ];
 
     custom.home = {

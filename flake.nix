@@ -20,7 +20,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixgl.url = "github:nix-community/nixGL";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
-    nixvim-config.url = "git+https://gitea.sua.dev/sua/nixvim";
+    nvim-config.url = "git+https://gitea.sua.dev/sua/dotfiles?dir=nvim/.config/nvim";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";

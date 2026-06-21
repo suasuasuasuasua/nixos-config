@@ -12,7 +12,7 @@
 
     ./nix.nix
     ./nixpkgs.nix
-    # ./nixvim.nix
+    # ./nvim.nix
     ./stylix.nix
   ];
 

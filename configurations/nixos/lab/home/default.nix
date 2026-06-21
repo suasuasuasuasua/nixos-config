@@ -4,7 +4,7 @@
     imports = [
       inputs.self.homeManagerModules.cli
 
-      ./nixvim.nix
+      ./nvim.nix
     ];
 
     custom.home.cli = {
