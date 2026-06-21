@@ -572,11 +572,11 @@
       },
       "locked": {
         "dir": "nvim/.config/nvim",
-        "lastModified": 1782054986,
-        "narHash": "sha256-vFfAZYq6bmlGYIYwEJkmdrX4i2r225LV73zMsx6jDW8=",
+        "lastModified": 1782056029,
+        "narHash": "sha256-Q1wf/8wqErqiT06SsAkxaDJRvhapawJ+EkuMNMEEUe4=",
         "ref": "refs/heads/main",
-        "rev": "434571e67f41d0347748f3a04a71ee767781752f",
-        "revCount": 286,
+        "rev": "0a180846330bd60fece7faae5e58778297a210bf",
+        "revCount": 287,
         "type": "git",
         "url": "https://gitea.sua.dev/sua/dotfiles"
       },
