@@ -44,6 +44,9 @@ in
           file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
         }
       ];
+      initContent = lib.mkBefore ''
+        export RIPGREP_CONFIG_PATH="${config.xdg.configHome}/ripgrep/ripgreprc"
+      '';
     };
   };
 }
