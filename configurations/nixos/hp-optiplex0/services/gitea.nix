@@ -27,8 +27,8 @@ in
         "nix:docker://gitea.sua.dev/sua/nixos-config/gitea-runner-nix:latest"
       ];
       settings = {
-        runner.capacity = 2;
-        container.memory = "6g";
+        runner.capacity = 4;
+        container.memory = "3g";
       };
     };
   };
