@@ -23,6 +23,7 @@
       comma.enable = true; # try out programs with `,`
       direnv.enable = true; # switch dev environments with .envrc files
       fzf.enable = true; # fuzzy finder
+      ripgrep.enable = true; # fast search
       # git.enable = true; # source control
       # github.enable = true; # github cli integration
       # gnupg.enable = true; # gpg key signing

@@ -13,6 +13,7 @@
       comma.enable = true;
       direnv.enable = true;
       fzf.enable = true;
+      ripgrep.enable = true;
       git.enable = true;
       github.enable = true;
       gnupg.enable = true;
