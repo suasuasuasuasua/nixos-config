@@ -1,8 +1,7 @@
-{ pkgs, ... }:
 {
   services.xrdp = {
     enable = true;
-    defaultWindowManager = "${pkgs.i3-rounded}/bin/i3";
+    defaultWindowManager = "xfce4-session";
   };
 
   # Only allow RDP on the Tailscale interface (not exposed publicly)
