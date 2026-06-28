@@ -11,7 +11,11 @@ in
     listenPort = infra.ports.bazarr;
   };
 
-  users.users.bazarr.extraGroups = [ "samba" ];
+  users.users.bazarr.extraGroups = [
+    "radarr"
+    "samba"
+    "sonarr"
+  ];
 
   services.nginx.virtualHosts = {
     "${serviceName}.${domain}" = {

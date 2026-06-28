@@ -1,7 +1,12 @@
 # https://wiki.nixos.org/wiki/Sonarr
 # sonarr is a TV show collection manager
 # configure root folder to /zshare/media/shows via the web UI
-{ config, infra, ... }:
+{
+  config,
+  infra,
+  lib,
+  ...
+}:
 let
   inherit (config.networking) hostName domain;
   serviceName = "sonarr";
@@ -11,6 +16,8 @@ in
     enable = true;
     settings.server.port = infra.ports.sonarr;
   };
+
+  systemd.services.sonarr.serviceConfig.UMask = lib.mkForce "0002";
 
   users.users.sonarr.extraGroups = [ "samba" ];
 

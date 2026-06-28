@@ -1,7 +1,12 @@
 # https://wiki.nixos.org/wiki/Radarr
 # radarr is a movie collection manager
 # configure root folder to /zshare/media/movies via the web UI
-{ config, infra, ... }:
+{
+  config,
+  infra,
+  lib,
+  ...
+}:
 let
   inherit (config.networking) hostName domain;
   serviceName = "radarr";
@@ -11,6 +16,8 @@ in
     enable = true;
     settings.server.port = infra.ports.radarr;
   };
+
+  systemd.services.radarr.serviceConfig.UMask = lib.mkForce "0002";
 
   users.users.radarr.extraGroups = [ "samba" ];
 
