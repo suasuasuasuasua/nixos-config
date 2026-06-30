@@ -19,14 +19,13 @@ in
       }
     ];
     title = hostName; # tagged with hostname
-    # TODO: broken safari lol
-    logo = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nix-snowflake-colours.svg";
   };
 
   # define the sections for the home page
   #
   # icon plug
   # - https://dashy.to/docs/icons/
+  # - selfh.st icons use sh- prefix (https://dashy.to/docs/icons#selfhst-icons)
   sections = [
     {
       name = "monitoring";
@@ -38,40 +37,40 @@ in
         {
           title = "glances (lab)";
           description = "system overview";
-          icon = "hl-glances";
+          icon = "sh-glances";
           url = mkFullFqdn "glances";
           tags = [ "lab" ];
         }
         {
           title = "glances (pi)";
           description = "system overview";
-          icon = "hl-glances";
+          icon = "sh-glances";
           url = mkHostFqdn "pi" "glances";
           tags = [ "pi" ];
         }
         {
           title = "grafana";
           description = "hollistic system overview";
-          icon = "hl-grafana";
+          icon = "sh-grafana";
           url = mkFqdn "grafana";
         }
         {
           title = "termix";
           description = "multi-ssh host manager";
-          icon = "hl-termix";
+          icon = "sh-termix";
           url = mkFqdn "termix";
         }
         {
           title = "adguardhome";
           description = "dns blocker";
-          icon = "hl-adguard-home";
+          icon = "sh-adguard-home";
           url = mkFqdn "adguardhome";
           tags = [ "pi" ];
         }
         {
           title = "uptime-kuma";
           description = "fancy service monitoring";
-          icon = "hl-uptime-kuma";
+          icon = "sh-uptime-kuma";
           url = mkFqdn "uptime-kuma";
           tags = [ "pi" ];
         }
@@ -87,55 +86,55 @@ in
         {
           title = "actual";
           description = "finance tracker";
-          icon = "hl-actual";
+          icon = "sh-actual-budget";
           url = mkFqdn "actual";
         }
         {
           title = "home assistant";
           description = "self-hosted home automation";
-          icon = "hl-home-assistant";
+          icon = "sh-home-assistant";
           url = mkFqdn "home-assistant";
         }
         {
           title = "it-tools";
           description = "handy developer tools";
-          icon = "hl-it-tools";
+          icon = "sh-it-tools";
           url = mkFqdn "it-tools";
         }
         {
           title = "linkwarden";
           description = "link tracker";
-          icon = "hl-linkwarden";
+          icon = "sh-linkwarden";
           url = mkFqdn "linkwarden";
         }
         {
           title = "mealie";
           description = "recipe and meal manager";
-          icon = "hl-mealie";
+          icon = "sh-mealie";
           url = mkFqdn "mealie";
         }
         {
           title = "paperless";
           description = "document manager";
-          icon = "hl-paperless";
+          icon = "sh-paperless-ngx";
           url = mkFqdn "paperless";
         }
         {
           title = "searxng";
           description = "self-hosted meta search engine";
-          icon = "hl-searxng";
+          icon = "sh-searxng";
           url = mkFqdn "searxng";
         }
         {
           title = "stirling-pdf";
           description = "pdf tools";
-          icon = "hl-stirling-pdf";
+          icon = "sh-stirling-pdf";
           url = mkFqdn "stirling-pdf";
         }
         {
           title = "vaultwarden";
           description = "secure password manager";
-          icon = "hl-vaultwarden";
+          icon = "sh-vaultwarden";
           url = mkFqdn "vaultwarden";
         }
       ];
@@ -150,37 +149,37 @@ in
         {
           title = "13ft";
           description = "paywall bypasser";
-          icon = "hl-13ft";
+          icon = "fas fa-unlock";
           url = mkFqdn "13ft";
         }
         {
           title = "audiobookshelf";
           description = "audiobook manager";
-          icon = "hl-audiobookshelf";
+          icon = "sh-audiobookshelf";
           url = mkFqdn "audiobookshelf";
         }
         {
           title = "calibre web";
           description = "ebook manager";
-          icon = "hl-calibre-web";
+          icon = "sh-calibre-web";
           url = mkFqdn "calibre";
         }
         {
           title = "immich";
           description = "photo manager";
-          icon = "hl-immich";
+          icon = "sh-immich";
           url = mkFqdn "immich";
         }
         {
           title = "jellyfin";
           description = "media server";
-          icon = "hl-jellyfin";
+          icon = "sh-jellyfin";
           url = mkFqdn "jellyfin";
         }
         {
           title = "navidrome";
           description = "music manager";
-          icon = "hl-navidrome";
+          icon = "sh-navidrome";
           url = mkFqdn "navidrome";
         }
       ];
@@ -195,37 +194,37 @@ in
         {
           title = "prowlarr";
           description = "indexer manager";
-          icon = "hl-prowlarr";
+          icon = "sh-prowlarr";
           url = mkFqdn "prowlarr";
         }
         {
           title = "sonarr";
           description = "tv show collection manager";
-          icon = "hl-sonarr";
+          icon = "sh-sonarr";
           url = mkFqdn "sonarr";
         }
         {
           title = "radarr";
           description = "movie collection manager";
-          icon = "hl-radarr";
+          icon = "sh-radarr";
           url = mkFqdn "radarr";
         }
         {
           title = "lidarr";
           description = "music collection manager";
-          icon = "hl-lidarr";
+          icon = "sh-lidarr";
           url = mkFqdn "lidarr";
         }
         {
           title = "bazarr";
           description = "subtitle manager";
-          icon = "hl-bazarr";
+          icon = "sh-bazarr";
           url = mkFqdn "bazarr";
         }
         {
           title = "qbittorrent";
           description = "torrent download client";
-          icon = "hl-qbittorrent";
+          icon = "sh-qbittorrent";
           url = mkFqdn "qbittorrent";
         }
       ];
@@ -240,13 +239,13 @@ in
         {
           title = "gitea";
           description = "gitea server";
-          icon = "hl-gitea";
+          icon = "sh-gitea";
           url = mkFqdn "gitea";
         }
         {
           title = "wastebin";
           description = "pastebin";
-          icon = "hl-pastebin";
+          icon = "sh-wastebin";
           url = mkFqdn "wastebin";
         }
       ];
