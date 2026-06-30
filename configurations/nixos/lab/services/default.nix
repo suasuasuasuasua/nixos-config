@@ -31,7 +31,6 @@
     ./prowlarr.nix
     ./qbittorrent.nix
     ./radarr.nix
-    ./readarr.nix
     ./samba
     ./searxng.nix
     ./smart.nix

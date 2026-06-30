@@ -217,12 +217,6 @@ in
           url = mkFqdn "lidarr";
         }
         {
-          title = "readarr";
-          description = "book collection manager";
-          icon = "hl-readarr";
-          url = mkFqdn "readarr";
-        }
-        {
           title = "bazarr";
           description = "subtitle manager";
           icon = "hl-bazarr";

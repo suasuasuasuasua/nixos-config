@@ -53,7 +53,6 @@ in
     "prowlarr"
     "qbittorrent"
     "radarr"
-    "readarr"
     "searxng"
     "sonarr"
     "stirling-pdf"

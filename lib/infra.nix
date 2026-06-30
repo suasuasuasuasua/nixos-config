@@ -80,7 +80,6 @@
     sonarr = 8989;
     radarr = 7878;
     lidarr = 8686;
-    readarr = 8787;
     bazarr = 6767;
     qbittorrent = 8090;
     flaresolverr = 8191;
