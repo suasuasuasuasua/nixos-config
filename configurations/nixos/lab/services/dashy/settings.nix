@@ -10,6 +10,11 @@ let
   mkHostFqdn = host: service: "https://${service}.${host}.${domain}";
 in
 {
+  appConfig = {
+    theme = "Tokyo-Night";
+    customCss = "img.site-logo { width: auto; height: 48px; aspect-ratio: 1; }";
+  };
+
   pageInfo = {
     description = "sua's homelab";
     navLinks = [
@@ -19,6 +24,7 @@ in
       }
     ];
     title = hostName; # tagged with hostname
+    logo = "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/nixos.webp";
   };
 
   # define the sections for the home page
