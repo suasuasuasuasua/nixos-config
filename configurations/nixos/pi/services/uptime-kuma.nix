@@ -15,7 +15,7 @@ in
     enable = true;
 
     appriseSupport = true;
-    settings.UPTIME_KUMA_PORT = toString infra.ports.uptime-kuma;
+    settings.PORT = toString infra.ports.uptime-kuma;
   };
 
   services.nginx.virtualHosts."${serviceName}.${domain}" = {
