@@ -3,5 +3,8 @@ let
   inherit (pkgs.stdenv.hostPlatform) system;
 in
 {
-  home.packages = [ inputs.nvim-config.packages.${system}.nvim ];
+  home.packages = [
+    pkgs.vim
+    inputs.nvim-config.packages.${system}.nvim
+  ];
 }
