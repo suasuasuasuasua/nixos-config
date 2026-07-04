@@ -32,6 +32,7 @@ in
       pkgs.speedtest-cli # cli for testing internet bandwidth using speedtest.net
       pkgs.tea # gitea cli tool
       pkgs.tree
+      pkgs.universal-ctags # tags generator
       pkgs.unzip # extraction utility for archives compressed in .zip format
       pkgs.wget # tool for retrieving files using http, https, and ftp
       pkgs.wl-clipboard # command-line copy/paste utilities for wayland
