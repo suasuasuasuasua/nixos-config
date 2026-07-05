@@ -17,7 +17,6 @@
       git.enable = true;
       github.enable = true;
       gnupg.enable = true;
-      starship.enable = true;
       tmux.enable = true;
       zsh.enable = true;
     };

@@ -10,7 +10,6 @@
     ./github.nix
     ./gnupg.nix
     ./ripgrep.nix
-    ./starship.nix
     ./tmux.nix
     ./zsh.nix
   ];
