@@ -26,6 +26,7 @@
     ./minecraft-server.nix
     ./navidrome.nix
     ./nginx.nix
+    ./organice
     ./paperless.nix
     ./prometheus.nix
     ./prowlarr.nix

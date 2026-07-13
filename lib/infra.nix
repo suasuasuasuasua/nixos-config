@@ -52,6 +52,10 @@
     stirling-pdf = 8081;
     searxng = 8084;
     it-tools = 8085;
+    organice = {
+      app = 8089;
+      webdav = 8091;
+    };
     termix = 8086;
     headscale = 8087;
     wastebin = 8088;

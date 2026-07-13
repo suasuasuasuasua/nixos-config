@@ -49,6 +49,7 @@ in
     "mattermost"
     "mealie"
     "navidrome"
+    "organice"
     "paperless"
     "prowlarr"
     "qbittorrent"

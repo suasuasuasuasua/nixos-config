@@ -1,0 +1,11 @@
+services:
+  organice:
+    image: twohundredok/organice:5873
+    container_name: organice
+    environment:
+      # prefills the WebDAV server URL in organice's signin form; served
+      # same-origin under /dav on this vhost (no CORS needed)
+      - ORGANICE_WEBDAV_URL=https://organice.sua.dev/dav
+    ports:
+      - "8089:5000"
+    restart: unless-stopped
