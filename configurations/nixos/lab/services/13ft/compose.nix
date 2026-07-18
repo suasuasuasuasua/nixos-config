@@ -19,7 +19,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."13ft" = {
-    image = "ghcr.io/wasi-master/13ft:0.3.4";
+    image = "ghcr.io/wasi-master/13ft:0.4.1";
     ports = [
       "127.0.0.1:${toString infra.ports."13ft"}:5000/tcp"
     ];
