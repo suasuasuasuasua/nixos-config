@@ -19,7 +19,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."termix" = {
-    image = "ghcr.io/lukegus/termix:release-2.0.0";
+    image = "ghcr.io/lukegus/termix:release-2.5.0";
     environment = {
       # "Enable_SLL" = "true";
       # "SSL_DOMAIN" = "termix.sua.dev";
