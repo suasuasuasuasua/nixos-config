@@ -23,10 +23,13 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   # https://wiki.nixos.org/wiki/Overlays
-  modifications = _final: _prev: {
-    # example = prev.example.overrideAttrs (oldAttrs: rec {
-    # ...
-    # });
+  modifications = _final: prev: {
+    # commitizen 4.13.9 has multiple test failures in the nix sandbox (python3.13
+    # argparse format, missing gpg, git hook perms); upstream fix in nixpkgs#539725
+    # (commitizen 4.16.4, merged to master only). Drop this once 26.05 gets it.
+    commitizen = prev.commitizen.overrideAttrs (_: {
+      dontUsePytestCheck = true;
+    });
   };
 
   # Adds pkgs.unstable == inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}

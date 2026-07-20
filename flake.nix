@@ -42,7 +42,13 @@
     let
       lib = nixpkgs.lib.extend (_final: _prev: home-manager.lib);
       forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
-      pkgsFor = lib.genAttrs (import systems) (system: nixpkgs.legacyPackages.${system});
+      pkgsFor = lib.genAttrs (import systems) (
+        system:
+        import nixpkgs {
+          inherit system;
+          overlays = builtins.attrValues (import ./overlays { inherit inputs lib; });
+        }
+      );
       treefmtEval = forEachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
 
       users = import ./lib/users.nix;
