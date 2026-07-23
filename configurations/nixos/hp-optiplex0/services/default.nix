@@ -1,6 +1,7 @@
 {
   imports = [
 
+    ./acme.nix
     ./gitea.nix
     ./prometheus-node-exporter.nix
     ./rdp.nix
