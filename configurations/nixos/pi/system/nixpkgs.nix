@@ -10,6 +10,15 @@
           doCheck = false;
           doInstallCheck = false;
         });
+        pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+          # paho-mqtt 2.1.0 on_disconnect callback timing tests flake in the nix
+          # sandbox on aarch64; on_disconnect is never fired before assertion
+          (_: pyPrev: {
+            paho-mqtt = pyPrev.paho-mqtt.overrideAttrs (_: {
+              dontUsePytestCheck = true;
+            });
+          })
+        ];
       })
     ];
   };
